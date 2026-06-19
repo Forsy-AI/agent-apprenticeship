@@ -1,0 +1,81 @@
+{
+  "schema_version": "aa-seed-task-v0.1",
+  "task_id": "508",
+  "title": "DMC Interim Safety Monitoring Boundary Reconstruction for Blinded Clinical Trial",
+  "domain": "clinical_biostatistics_regulated_trial_safety",
+  "subdomain": "dmc_interim_safety_monitoring",
+  "domains": [
+    "clinical_biostatistics_regulated_trial_safety"
+  ],
+  "subdomains": [
+    "dmc_interim_safety_monitoring"
+  ],
+  "agent_apprentice_role": "clinical trial biostatistician",
+  "task_family": "interim_monitoring_and_safety_governance",
+  "difficulty_tier": "expert",
+  "expected_economic_value": "$170k-$280k clinical biostatistics / DMC support consulting",
+  "expected_economic_value_for_agent_apprentice": "$250+",
+  "expected_deliverable": "dmc_interim_monitoring_report.xlsx + closed_session_recommendation.md",
+  "deliverables": [
+    "dmc_interim_monitoring_report.xlsx",
+    "closed_session_recommendation.md"
+  ],
+  "normalized_title": "DMC Interim Safety Monitoring Boundary Reconstruction for Blinded Clinical Trial",
+  "instruction": "Context: an independent Data Monitoring Committee for a regulated phase 2b trial must review unblinded interim safety, efficacy, and enrollment integrity data in closed session and recommend continue, modify, pause, or stop while preserving the trial blind for operational staff. Task packet: trial=NEURO-217; randomization 1:1 active vs control; interim_cutoff after 160 randomized of planned 300; alpha_spending efficacy_boundary_z=2.80 futility_boundary_conditional_power<0.18 safety_pause_rule posterior_Pr(active_SAE_rate-control_SAE_rate>0.06)>0.90; primary_endpoint response_week12 known only if followup_days>=84; unblinded_counts: active n=81 exposure_patient_months=312 response_known=52 responders=31 SAE_neuro=9 SAE_hepatic=4 discontinuations_AE=11 deaths=0; control n=79 exposure=305 response_known=55 responders=25 SAE_neuro=3 SAE_hepatic=2 discontinuations_AE=5 deaths=0; enrollment_by_region US active=34 control=32 EU active=29 control=31 APAC active=18 control=16; data_quality: missing_week12_active=6 missing_week12_control=4 unresolved_SAE_queries_active=3 unresolved_SAE_queries_control=1 late_ePRO_pct_active=7.4 late_ePRO_pct_control=6.9; external_context expected_neuro_SAE_background_per_patient_month=0.012; prior_beta_safety active_minus_control Beta_grid prior_mean=0 prior_sd=0.04; approximate_posterior_samples for SAE_rate_diff active-control = [-0.005,0.012,0.028,0.041,0.055,0.066,0.074,0.081,0.093,0.118] with equal weights; conditional_power_inputs observed_response_diff=0.142 information_fraction=0.48 planned_effect=0.12 current_z=1.54. Rules and constraints: compute response rates among known outcomes only and a conservative sensitivity treating all missing active as nonresponse and missing control as response; efficacy z=current_z and crosses only if >=2.80; conditional_power = Phi((current_z*sqrt(info_fraction)+(planned_effect/0.12)*(1-info_fraction))/sqrt(1-info_fraction) - 1.96); safety posterior probability is share of samples >0.06; pause if safety_pause_rule met or unresolved active SAE queries>2 with neuro_SAE observed_rate more than 1.8x background; recommend modification if safety amber but not pause; preserve DMC confidentiality language. Required work: deliver dmc_interim_monitoring_report.xlsx + closed_session_recommendation.md with safety rates per patient-month, posterior safety probability, efficacy/futility calculations, missing-data sensitivity, regional balance, data-quality findings, and a DMC closed-session governance recommendation. Use only the embedded aggregate interim data; no patient-level data or external trial data is available. This task is self-contained: use the task packet as the factual record, do not add source references or external datasets, and preserve a high-fidelity audit trail for every calculation, classification, and recommendation. State assumptions and unresolved evidence gaps explicitly. When executed locally, place final deliverables under the artifacts/ directory.",
+  "task_status": "ready_to_run",
+  "run_status": "not_run",
+  "seed_rank": 8,
+  "display_order": 8,
+  "allowed_tools": [
+    "Local text editor or Markdown editor",
+    "Local spreadsheet, CSV, JSON, YAML, or scripting tools for deterministic calculations",
+    "Local validation or linting commands",
+    "Local plotting or diagramming tools when useful"
+  ],
+  "disallowed_tools": [
+    "External fact lookup or live data pulls",
+    "Live production systems, cloud accounts, trading systems, clinical systems, or industrial controls",
+    "Secret discovery, credential testing, or any action outside the prepared task workspace"
+  ],
+  "privacy_classification": "synthetic",
+  "needs_expert_review": true,
+  "input_requirements": [
+    "Use the task packet as the sole factual input.",
+    "Cite row IDs, record IDs, thresholds, formulas, and option IDs from the packet wherever they control a conclusion.",
+    "Mark missing, contradictory, or under-supported values as needs_review instead of inventing them."
+  ],
+  "inputs": [
+    "All factual inputs are embedded in the task packet.",
+    "Use row IDs, record IDs, thresholds, formulas, option IDs, and deliverable names exactly as provided."
+  ],
+  "output_requirements": [
+    "Produce the required deliverable files with the specified filenames when filenames are provided.",
+    "Include intermediate calculations or executable logic sufficient for another reviewer to reproduce the result.",
+    "Include validation checks, sensitivity notes around controlling thresholds, and a final decision or recommendation table."
+  ],
+  "constraints": [
+    "Use the task packet as the factual record.",
+    "Do not browse, call live services, import external datasets, or invent missing values.",
+    "Treat regulated or safety-critical outputs as review packets, not authorization to act."
+  ],
+  "quality_bar": [
+    "Treat the task as realistic professional work with domain-appropriate rigor.",
+    "Preserve the packet's domain detail, identifiers, thresholds, and edge cases in the final deliverables.",
+    "Make every recommendation traceable to explicit task-packet evidence or mark it as needs_review."
+  ],
+  "validation_expectations": [
+    "Check required fields, row counts, totals, thresholds, and classifications before finalizing.",
+    "Show enough formulas, script logic, or tables for an independent reviewer to reproduce the result.",
+    "Flag any contradiction, missing input, or threshold-sensitive conclusion."
+  ],
+  "edge_cases": [
+    "If packet evidence is incomplete, do not infer missing values; label the item needs_review.",
+    "If multiple options satisfy hard constraints, rank them using the packet's stated priorities and explain ties.",
+    "If a regulated or safety-critical conclusion appears, frame the output as a review packet rather than authorization to act."
+  ],
+  "privacy_safety_expectations": [
+    "Do not use live systems, private accounts, credentials, or external datasets.",
+    "Do not include raw secrets or operational instructions that would execute real-world changes.",
+    "Keep synthetic identifiers from the packet only when needed for verification."
+  ]
+}

@@ -1,0 +1,81 @@
+{
+  "schema_version": "aa-seed-task-v0.1",
+  "task_id": "450",
+  "title": "Weld Bead Anomaly Model Threshold Audit",
+  "domain": "welding_ai",
+  "subdomain": "weld_anomaly_threshold",
+  "domains": [
+    "welding_ai"
+  ],
+  "subdomains": [
+    "weld_anomaly_threshold"
+  ],
+  "agent_apprentice_role": "manufacturing AI engineer",
+  "task_family": "threshold_audit",
+  "difficulty_tier": "expert",
+  "expected_economic_value": "$150-$250/hr expert freelance",
+  "expected_economic_value_for_agent_apprentice": "$100-$250",
+  "expected_deliverable": "weld_threshold_audit.csv + quality_memo.md",
+  "deliverables": [
+    "weld_threshold_audit.csv",
+    "quality_memo.md"
+  ],
+  "normalized_title": "Weld Bead Anomaly Model Threshold Audit",
+  "instruction": "Context: a weld inspection model is causing scrap spikes while missing rare defects. Task packet: records: R1 model_score=7.31 porosity_area_mm2=0.95 false_reject_cost=246625 escape_cost=640048; R2 model_score=5.01 porosity_area_mm2=67.26 false_reject_cost=54515 escape_cost=437838; R3 model_score=1.28 porosity_area_mm2=57.3 false_reject_cost=15647 escape_cost=818644; R4 model_score=1.95 porosity_area_mm2=76.39 false_reject_cost=708054 escape_cost=507066; limit_model_score=9.3; limit_porosity_area_mm2=38.6; limit_false_reject_cost=780925; decision_budget_usd=250000; sensitivity_shift_pct=5; hard_threshold_record_count=1;. Rules and constraints: Compute margin = escape_cost - (0.35*model_score + 0.25*porosity_area_mm2 + 0.15*false_reject_cost); negative margin is fail and margin below 8% of the largest driver is warn. Recommendations cannot use external measurements, specialized licensed software, or hidden assumptions; all calculations must use only the task packet, and any contradictory or under-supported record must be marked needs_review. Required work: choose threshold and sampling plan; build a reproducible workbook or script, preserve intermediate calculations, and produce an expert-review memo. Deliver weld_threshold_audit.CSV + quality_memo.md with formulas or executable logic, record-level citations, validation checks, sensitivity notes, and a final recommendation table suitable for expert review. This task is self-contained: use the task packet as the factual record, do not add source references or external datasets, and preserve a high-fidelity audit trail for every calculation, classification, and recommendation. State assumptions and unresolved evidence gaps explicitly. When executed locally, place final deliverables under the artifacts/ directory.",
+  "task_status": "ready_to_run",
+  "run_status": "not_run",
+  "seed_rank": 155,
+  "display_order": 155,
+  "allowed_tools": [
+    "Local text editor or Markdown editor",
+    "Local spreadsheet, CSV, JSON, YAML, or scripting tools for deterministic calculations",
+    "Local validation or linting commands",
+    "Local plotting or diagramming tools when useful"
+  ],
+  "disallowed_tools": [
+    "External fact lookup or live data pulls",
+    "Live production systems, cloud accounts, trading systems, clinical systems, or industrial controls",
+    "Secret discovery, credential testing, or any action outside the prepared task workspace"
+  ],
+  "privacy_classification": "synthetic",
+  "needs_expert_review": true,
+  "input_requirements": [
+    "Use the task packet as the sole factual input.",
+    "Cite row IDs, record IDs, thresholds, formulas, and option IDs from the packet wherever they control a conclusion.",
+    "Mark missing, contradictory, or under-supported values as needs_review instead of inventing them."
+  ],
+  "inputs": [
+    "All factual inputs are embedded in the task packet.",
+    "Use row IDs, record IDs, thresholds, formulas, option IDs, and deliverable names exactly as provided."
+  ],
+  "output_requirements": [
+    "Produce the required deliverable files with the specified filenames when filenames are provided.",
+    "Include intermediate calculations or executable logic sufficient for another reviewer to reproduce the result.",
+    "Include validation checks, sensitivity notes around controlling thresholds, and a final decision or recommendation table."
+  ],
+  "constraints": [
+    "Use the task packet as the factual record.",
+    "Do not browse, call live services, import external datasets, or invent missing values.",
+    "Treat regulated or safety-critical outputs as review packets, not authorization to act."
+  ],
+  "quality_bar": [
+    "Treat the task as realistic professional work with domain-appropriate rigor.",
+    "Preserve the packet's domain detail, identifiers, thresholds, and edge cases in the final deliverables.",
+    "Make every recommendation traceable to explicit task-packet evidence or mark it as needs_review."
+  ],
+  "validation_expectations": [
+    "Check required fields, row counts, totals, thresholds, and classifications before finalizing.",
+    "Show enough formulas, script logic, or tables for an independent reviewer to reproduce the result.",
+    "Flag any contradiction, missing input, or threshold-sensitive conclusion."
+  ],
+  "edge_cases": [
+    "If packet evidence is incomplete, do not infer missing values; label the item needs_review.",
+    "If multiple options satisfy hard constraints, rank them using the packet's stated priorities and explain ties.",
+    "If a regulated or safety-critical conclusion appears, frame the output as a review packet rather than authorization to act."
+  ],
+  "privacy_safety_expectations": [
+    "Do not use live systems, private accounts, credentials, or external datasets.",
+    "Do not include raw secrets or operational instructions that would execute real-world changes.",
+    "Keep synthetic identifiers from the packet only when needed for verification."
+  ]
+}

@@ -1,0 +1,871 @@
+{
+  "actual_outputs": {
+    "original_internal_attempt_id": "aa_task_0089_baseline",
+    "attempt_id": "689-baseline",
+    "attempt_kind": "baseline",
+    "error_message": null,
+    "error_type": null,
+    "metadata_json": {
+      "actual_outputs_discarded_field_count": 0,
+      "actual_outputs_normalized": true,
+      "expected_deliverable_items": [
+        "mortality_improvement_review.xlsx",
+        "actuarial_committee_memo.md"
+      ],
+      "original_fields": {
+        "artifacts": {
+          "actuarial_committee_memo": {
+            "description": "Committee-ready memorandum containing calculation methodology, intermediate results, uncertainty notes, threshold sensitivity checks, and decision labels (pass/warn/fail/needs_review)."
+          },
+          "mortality_improvement_review": {
+            "description": "Reproducible Excel workbook with cohort A/E calculations, materiality logic, validations, threshold sensitivity, and liability sensitivity mapping from embedded packet."
+          }
+        },
+        "attempt": "baseline",
+        "created_at": "2026-06-18",
+        "notes": "No external data imported; all calculations use embedded packet values only.",
+        "source_inputs": {
+          "task_brief": "input/task_brief.md",
+          "task_json": "input/task.json"
+        }
+      },
+      "produced_deliverable_items": [
+        "mortality_improvement_review.xlsx",
+        "actuarial_committee_memo.md"
+      ],
+      "raw_actual_outputs": {
+        "artifacts": {
+          "actuarial_committee_memo": {
+            "description": "Committee-ready memorandum containing calculation methodology, intermediate results, uncertainty notes, threshold sensitivity checks, and decision labels (pass/warn/fail/needs_review)."
+          },
+          "mortality_improvement_review": {
+            "description": "Reproducible Excel workbook with cohort A/E calculations, materiality logic, validations, threshold sensitivity, and liability sensitivity mapping from embedded packet."
+          }
+        },
+        "attempt": "baseline",
+        "created_at": "2026-06-18",
+        "notes": "No external data imported; all calculations use embedded packet values only.",
+        "source_inputs": {
+          "task_brief": "input/task_brief.md",
+          "task_json": "input/task.json"
+        },
+        "status": "completed",
+        "original_internal_task_id": "aa_task_0089",
+        "task_id": "689"
+      }
+    },
+    "output_summary": "Normalized actual outputs from artifact files.",
+    "status": "success",
+    "original_internal_task_id": "aa_task_0089",
+    "task_id": "689",
+    "required_deliverables": [
+      "mortality_improvement_review.xlsx",
+      "actuarial_committee_memo.md"
+    ],
+    "produced_deliverables": [
+      "mortality_improvement_review.xlsx",
+      "actuarial_committee_memo.md"
+    ],
+    "missing_required_deliverables": [],
+    "deliverable_produced": true,
+    "deliverable_file_included": false,
+    "included_generated_artifacts": false,
+    "artifacts_excluded_reason": "Generated output artifacts are excluded from the public seed dataset by default.",
+    "logs_included": false,
+    "logs_excluded_reason": "Raw runner logs are excluded from the public seed dataset."
+  },
+  "agent_config": null,
+  "agent_tools": [
+    "codex_cli",
+    "Bash",
+    "python",
+    "file_read",
+    "file_write",
+    "apply_patch"
+  ],
+  "artifacts": [],
+  "original_internal_attempt_id": "aa_task_0089_baseline",
+  "attempt_id": "689-baseline",
+  "attempt_kind": "baseline",
+  "attempt_status": "completed",
+  "collection_id": null,
+  "completion_reason": null,
+  "ended_at": null,
+  "final_attempt_id": null,
+  "initial_attempt_id": null,
+  "iteration_index": null,
+  "learning": null,
+  "memory": null,
+  "metadata_json": {
+    "codex_command": [
+      "codex",
+      "exec",
+      "--sandbox",
+      "workspace-write",
+      "<prompt>"
+    ],
+    "codex_sandbox": "workspace-write",
+    "discarded_step_count": 0,
+    "raw_trace_list": [
+      {
+        "action": "Read embedded task inputs from input/task.json and input/task_brief.md",
+        "actor": "worker",
+        "artifact_refs": [
+          "input/task.json",
+          "input/task_brief.md"
+        ],
+        "causal_note": "Input read was prerequisite for all subsequent calculations.",
+        "causal_type": "seeding",
+        "caused_by": "initial_request",
+        "error_message": null,
+        "error_type": null,
+        "input": "cat ./input/task.json and cat ./input/task_brief.md",
+        "metadata_json": {
+          "attempt": "baseline",
+          "files_read": 2
+        },
+        "observation": "Loaded task definition and embedded packet values from input files in-task.",
+        "operation": "read",
+        "output": "Captured packet: C1 (65, 0.012, 0.014, 8200), C2 (75, 0.031, 0.034, 5100), C3 (85, 0.091, 0.083, 1700); materiality rule and 1% sensitivity = 2.4M.",
+        "reasoning": "Confirmed required outputs and constraints before any edits; avoids using external data and preserves task scope.",
+        "state_change": "Established task context and calculation constraints for this attempt.",
+        "step": 1,
+        "step_outcome": "success",
+        "success": true,
+        "tool": "functions.exec_command",
+        "turn": 1
+      },
+      {
+        "action": "Attempted to create Excel output with Python Excel library stack",
+        "actor": "worker",
+        "causal_note": "Failure to import openpyxl forced fallback implementation path.",
+        "causal_type": "dependency",
+        "caused_by": "step_1",
+        "error_message": "No module named 'openpyxl'",
+        "error_type": "ModuleNotFoundError",
+        "input": "python - <<'PY' ... import openpyxl ... wb = Workbook() ... save(...)",
+        "metadata_json": {
+          "checked_libs": [
+            "openpyxl",
+            "xlsxwriter",
+            "pandas"
+          ]
+        },
+        "observation": "Tried creating workbook using openpyxl (and later check for alternatives), but the environment has no supported library.",
+        "operation": "execute",
+        "output": "Traceback: ModuleNotFoundError: No module named 'openpyxl'.",
+        "reasoning": "Dependency required by preferred workflow is unavailable in sandbox; switched to fallback without external installs.",
+        "state_change": "No file artifacts were created in this failed attempt.",
+        "step": 2,
+        "step_outcome": "dependency_missing",
+        "success": false,
+        "tool": "functions.exec_command",
+        "turn": 1
+      },
+      {
+        "action": "Checked for alternative Python Excel libraries",
+        "actor": "worker",
+        "causal_note": "Library availability check guided direct OpenXML construction.",
+        "causal_type": "constraint_resolution",
+        "caused_by": "step_2",
+        "error_message": null,
+        "error_type": null,
+        "input": "python - <<'PY' importlib.util.find_spec('xlsxwriter'|'pandas'|'openpyxl')",
+        "metadata_json": {
+          "library_checks": 3
+        },
+        "observation": "Confirmed xlsxwriter and pandas are also unavailable in current environment.",
+        "operation": "read",
+        "output": "openpyxl False, xlsxwriter False, pandas False",
+        "reasoning": "Need to proceed without package installs and preserve offline restrictions.",
+        "state_change": "Confirmed environment constraints and selected pure standard-library OpenXML generation path.",
+        "step": 3,
+        "step_outcome": "success",
+        "success": true,
+        "tool": "functions.exec_command",
+        "turn": 1
+      },
+      {
+        "action": "Generated mortality_improvement_review.xlsx using manual OpenXML package assembly",
+        "actor": "worker",
+        "causal_note": "Used OpenXML authoring to preserve formula transparency and reproducibility.",
+        "causal_type": "tool_fallback",
+        "caused_by": "step_3",
+        "error_message": null,
+        "error_type": null,
+        "input": "Python script creating zip package with [Content_Types].xml, xl/workbook.xml, xl/worksheets/sheet1.xml, xl/worksheets/sheet2.xml, styles, and rels.",
+        "metadata_json": {
+          "formula_cells": "core+2 sheets",
+          "sheet_names": [
+            "Core_Calculations",
+            "Threshold_Sensitivity"
+          ]
+        },
+        "observation": "Built workbook with two sheets, inline formulas, cohort-level calculations, validation table, and threshold-sensitivity checks.",
+        "operation": "write",
+        "output": "[EXCLUDED_GENERATED_ARTIFACT] created with 7 core package parts.",
+        "reasoning": "Ensured requirement of executable logic and formulas is met even without external Excel dependency.",
+        "state_change": "Created deliverable file [EXCLUDED_GENERATED_ARTIFACT]",
+        "step": 4,
+        "step_outcome": "success",
+        "success": true,
+        "tool": "functions.exec_command",
+        "turn": 1
+      },
+      {
+        "action": "Performed package sanity inspection on generated workbook",
+        "actor": "worker",
+        "causal_note": "Used to confirm successful write and formula emission after fallback generation.",
+        "causal_type": "validation",
+        "caused_by": "step_4",
+        "error_message": null,
+        "error_type": null,
+        "input": "unzip -l [EXCLUDED_GENERATED_ARTIFACT] unzip -p ...xl/worksheets/sheet1.xml",
+        "metadata_json": {
+          "archive_file_count": 7,
+          "verification_command_count": 2
+        },
+        "observation": "Confirmed expected xlsx members exist and reviewed XML structure for formula rows and sheet count.",
+        "operation": "verify",
+        "output": "Archive contains 7 files including content types, workbook, relations, styles, and two worksheet parts; formula text verified in XML.",
+        "reasoning": "Capture minimal verification evidence for traceability of deliverable structure and formula presence.",
+        "state_change": "No state change; only validation evidence collected.",
+        "step": 5,
+        "step_outcome": "success",
+        "success": true,
+        "tool": "functions.exec_command",
+        "turn": 1
+      },
+      {
+        "action": "Created actuarial committee memo with calculations, sensitivity checks, uncertainty notes, and final decision labels",
+        "actor": "worker",
+        "causal_note": "Memo complements spreadsheet and provides narrative/decision context.",
+        "causal_type": "parallel_to_trace_output",
+        "caused_by": "step_4",
+        "error_message": null,
+        "error_type": null,
+        "input": "python write_text to [EXCLUDED_GENERATED_ARTIFACT]",
+        "metadata_json": {
+          "decision_labels": [
+            "warn",
+            "pass",
+            "needs_review",
+            "warn"
+          ]
+        },
+        "observation": "Assembled markdown memo in required path with formulas, table outputs, and committee recommendation aligned to provided packet.",
+        "operation": "write",
+        "output": "[EXCLUDED_GENERATED_ARTIFACT] written.",
+        "reasoning": "Required artifact includes row-level packet citations and decision table with pass/warn/needs_review/fail labels.",
+        "state_change": "Created markdown deliverable for committee review.",
+        "step": 6,
+        "step_outcome": "success",
+        "success": true,
+        "tool": "functions.exec_command",
+        "turn": 1
+      },
+      {
+        "action": "Created actual_outputs.json with required output contract references",
+        "actor": "worker",
+        "artifact_refs": [
+          "actual_outputs.json"
+        ],
+        "causal_note": "Manifest completed after all deliverables are in place.",
+        "causal_type": "delivery",
+        "caused_by": "step_6",
+        "error_message": null,
+        "error_type": null,
+        "input": "python dump json to actual_outputs.json",
+        "metadata_json": {
+          "artifact_count": 2
+        },
+        "observation": "Wrote a structured output manifest for both required deliverables and source context.",
+        "operation": "write",
+        "output": "actual_outputs.json created.",
+        "reasoning": "Expected output contract explicitly requires this artifact for run bookkeeping.",
+        "state_change": "Added machine-readable execution summary for evaluation pipeline.",
+        "step": 7,
+        "step_outcome": "success",
+        "success": true,
+        "tool": "functions.exec_command",
+        "turn": 1
+      },
+      {
+        "action": "Assembled structured agent trace with canonical fields for each meaningful action",
+        "actor": "worker",
+        "artifact_refs": [
+          "agent_trace.json",
+          "actual_outputs.json"
+        ],
+        "causal_note": "Final compliance artifact for workflow auditability.",
+        "causal_type": "recordkeeping",
+        "caused_by": "step_7",
+        "error_message": null,
+        "error_type": null,
+        "input": "json dump list[step...] to agent_trace.json",
+        "metadata_json": {
+          "total_steps": 8
+        },
+        "observation": "Logged read/execute/validation/write operations with causality and outcomes in required schema keys; included dependency error and recovery context.",
+        "operation": "write",
+        "output": "agent_trace.json created.",
+        "reasoning": "Trace is required for apprenticeship workflow grading and must include tool/action evidence.",
+        "state_change": "Created canonical workflow log file in attempt directory.",
+        "step": 8,
+        "step_outcome": "success",
+        "success": true,
+        "tool": "functions.exec_command",
+        "turn": 1
+      }
+    ],
+    "raw_trace_preserved": true,
+    "raw_trace_shape": "list",
+    "raw_trace_step_source": "steps",
+    "schema_valid": true,
+    "trace_normalization_status": "normalized",
+    "trace_valid": true
+  },
+  "preferred_attempt_id": null,
+  "previous_attempt_id": null,
+  "prior_trace_id": null,
+  "revision_attempt_ids": [],
+  "revision_group_id": null,
+  "schema_version": "aa-trace-v0.1",
+  "skills": null,
+  "started_at": null,
+  "steps": [
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "artifact_refs": [
+        "input/task.json",
+        "input/task_brief.md"
+      ],
+      "causal_note": "Input read was prerequisite for all subsequent calculations.",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "cat ./input/task.json and cat ./input/task_brief.md",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "attempt": "baseline",
+        "files_read": 2,
+        "original_action": "Read embedded task inputs from input/task.json and input/task_brief.md",
+        "original_causal_type": "seeding",
+        "original_step_outcome": "success",
+        "raw_step": {
+          "action": "Read embedded task inputs from input/task.json and input/task_brief.md",
+          "actor": "worker",
+          "artifact_refs": [
+            "input/task.json",
+            "input/task_brief.md"
+          ],
+          "causal_note": "Input read was prerequisite for all subsequent calculations.",
+          "causal_type": "seeding",
+          "caused_by": "initial_request",
+          "error_message": null,
+          "error_type": null,
+          "input": "cat ./input/task.json and cat ./input/task_brief.md",
+          "metadata_json": {
+            "attempt": "baseline",
+            "files_read": 2
+          },
+          "observation": "Loaded task definition and embedded packet values from input files in-task.",
+          "operation": "read",
+          "output": "Captured packet: C1 (65, 0.012, 0.014, 8200), C2 (75, 0.031, 0.034, 5100), C3 (85, 0.091, 0.083, 1700); materiality rule and 1% sensitivity = 2.4M.",
+          "reasoning": "Confirmed required outputs and constraints before any edits; avoids using external data and preserves task scope.",
+          "state_change": "Established task context and calculation constraints for this attempt.",
+          "step": 1,
+          "step_outcome": "success",
+          "success": true,
+          "tool": "functions.exec_command",
+          "turn": 1
+        }
+      },
+      "observation": "Loaded task definition and embedded packet values from input files in-task.",
+      "operation": "read",
+      "output": "Captured packet: C1 (65, 0.012, 0.014, 8200), C2 (75, 0.031, 0.034, 5100), C3 (85, 0.091, 0.083, 1700); materiality rule and 1% sensitivity = 2.4M.",
+      "parallel_group": null,
+      "reasoning": "Confirmed required outputs and constraints before any edits; avoids using external data and preserves task scope.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Established task context and calculation constraints for this attempt.",
+      "step": 1,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "Bash",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "causal_note": "Failure to import openpyxl forced fallback implementation path.",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": "No module named 'openpyxl'",
+      "error_type": "ModuleNotFoundError",
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "python - <<'PY' ... import openpyxl ... wb = Workbook() ... save(...)",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "checked_libs": [
+          "openpyxl",
+          "xlsxwriter",
+          "pandas"
+        ],
+        "original_action": "Attempted to create Excel output with Python Excel library stack",
+        "original_causal_type": "dependency",
+        "original_step_outcome": "dependency_missing",
+        "raw_step": {
+          "action": "Attempted to create Excel output with Python Excel library stack",
+          "actor": "worker",
+          "causal_note": "Failure to import openpyxl forced fallback implementation path.",
+          "causal_type": "dependency",
+          "caused_by": "step_1",
+          "error_message": "No module named 'openpyxl'",
+          "error_type": "ModuleNotFoundError",
+          "input": "python - <<'PY' ... import openpyxl ... wb = Workbook() ... save(...)",
+          "metadata_json": {
+            "checked_libs": [
+              "openpyxl",
+              "xlsxwriter",
+              "pandas"
+            ]
+          },
+          "observation": "Tried creating workbook using openpyxl (and later check for alternatives), but the environment has no supported library.",
+          "operation": "execute",
+          "output": "Traceback: ModuleNotFoundError: No module named 'openpyxl'.",
+          "reasoning": "Dependency required by preferred workflow is unavailable in sandbox; switched to fallback without external installs.",
+          "state_change": "No file artifacts were created in this failed attempt.",
+          "step": 2,
+          "step_outcome": "dependency_missing",
+          "success": false,
+          "tool": "functions.exec_command",
+          "turn": 1
+        }
+      },
+      "observation": "Tried creating workbook using openpyxl (and later check for alternatives), but the environment has no supported library.",
+      "operation": "execute",
+      "output": "Traceback: ModuleNotFoundError: No module named 'openpyxl'.",
+      "parallel_group": null,
+      "reasoning": "Dependency required by preferred workflow is unavailable in sandbox; switched to fallback without external installs.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "No file artifacts were created in this failed attempt.",
+      "step": 2,
+      "step_outcome": "neutral",
+      "success": false,
+      "tool": "python",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "causal_note": "Library availability check guided direct OpenXML construction.",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "python - <<'PY' importlib.util.find_spec('xlsxwriter'|'pandas'|'openpyxl')",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "library_checks": 3,
+        "original_action": "Checked for alternative Python Excel libraries",
+        "original_causal_type": "constraint_resolution",
+        "original_step_outcome": "success",
+        "raw_step": {
+          "action": "Checked for alternative Python Excel libraries",
+          "actor": "worker",
+          "causal_note": "Library availability check guided direct OpenXML construction.",
+          "causal_type": "constraint_resolution",
+          "caused_by": "step_2",
+          "error_message": null,
+          "error_type": null,
+          "input": "python - <<'PY' importlib.util.find_spec('xlsxwriter'|'pandas'|'openpyxl')",
+          "metadata_json": {
+            "library_checks": 3
+          },
+          "observation": "Confirmed xlsxwriter and pandas are also unavailable in current environment.",
+          "operation": "read",
+          "output": "openpyxl False, xlsxwriter False, pandas False",
+          "reasoning": "Need to proceed without package installs and preserve offline restrictions.",
+          "state_change": "Confirmed environment constraints and selected pure standard-library OpenXML generation path.",
+          "step": 3,
+          "step_outcome": "success",
+          "success": true,
+          "tool": "functions.exec_command",
+          "turn": 1
+        }
+      },
+      "observation": "Confirmed xlsxwriter and pandas are also unavailable in current environment.",
+      "operation": "read",
+      "output": "openpyxl False, xlsxwriter False, pandas False",
+      "parallel_group": null,
+      "reasoning": "Need to proceed without package installs and preserve offline restrictions.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Confirmed environment constraints and selected pure standard-library OpenXML generation path.",
+      "step": 3,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "python",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "causal_note": "Used OpenXML authoring to preserve formula transparency and reproducibility.",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "Python script creating zip package with [Content_Types].xml, xl/workbook.xml, xl/worksheets/sheet1.xml, xl/worksheets/sheet2.xml, styles, and rels.",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "formula_cells": "core+2 sheets",
+        "original_action": "Generated mortality_improvement_review.xlsx using manual OpenXML package assembly",
+        "original_causal_type": "tool_fallback",
+        "original_step_outcome": "success",
+        "raw_step": {
+          "action": "Generated mortality_improvement_review.xlsx using manual OpenXML package assembly",
+          "actor": "worker",
+          "causal_note": "Used OpenXML authoring to preserve formula transparency and reproducibility.",
+          "causal_type": "tool_fallback",
+          "caused_by": "step_3",
+          "error_message": null,
+          "error_type": null,
+          "input": "Python script creating zip package with [Content_Types].xml, xl/workbook.xml, xl/worksheets/sheet1.xml, xl/worksheets/sheet2.xml, styles, and rels.",
+          "metadata_json": {
+            "formula_cells": "core+2 sheets",
+            "sheet_names": [
+              "Core_Calculations",
+              "Threshold_Sensitivity"
+            ]
+          },
+          "observation": "Built workbook with two sheets, inline formulas, cohort-level calculations, validation table, and threshold-sensitivity checks.",
+          "operation": "write",
+          "output": "[EXCLUDED_GENERATED_ARTIFACT] created with 7 core package parts.",
+          "reasoning": "Ensured requirement of executable logic and formulas is met even without external Excel dependency.",
+          "state_change": "Created deliverable file [EXCLUDED_GENERATED_ARTIFACT]",
+          "step": 4,
+          "step_outcome": "success",
+          "success": true,
+          "tool": "functions.exec_command",
+          "turn": 1
+        },
+        "sheet_names": [
+          "Core_Calculations",
+          "Threshold_Sensitivity"
+        ]
+      },
+      "observation": "Built workbook with two sheets, inline formulas, cohort-level calculations, validation table, and threshold-sensitivity checks.",
+      "operation": "write",
+      "output": "[EXCLUDED_GENERATED_ARTIFACT] created with 7 core package parts.",
+      "parallel_group": null,
+      "reasoning": "Ensured requirement of executable logic and formulas is met even without external Excel dependency.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Created deliverable file [EXCLUDED_GENERATED_ARTIFACT]",
+      "step": 4,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "python",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "causal_note": "Used to confirm successful write and formula emission after fallback generation.",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "unzip -l [EXCLUDED_GENERATED_ARTIFACT] unzip -p ...xl/worksheets/sheet1.xml",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "archive_file_count": 7,
+        "original_action": "Performed package sanity inspection on generated workbook",
+        "original_causal_type": "validation",
+        "original_step_outcome": "success",
+        "raw_step": {
+          "action": "Performed package sanity inspection on generated workbook",
+          "actor": "worker",
+          "causal_note": "Used to confirm successful write and formula emission after fallback generation.",
+          "causal_type": "validation",
+          "caused_by": "step_4",
+          "error_message": null,
+          "error_type": null,
+          "input": "unzip -l [EXCLUDED_GENERATED_ARTIFACT] unzip -p ...xl/worksheets/sheet1.xml",
+          "metadata_json": {
+            "archive_file_count": 7,
+            "verification_command_count": 2
+          },
+          "observation": "Confirmed expected xlsx members exist and reviewed XML structure for formula rows and sheet count.",
+          "operation": "verify",
+          "output": "Archive contains 7 files including content types, workbook, relations, styles, and two worksheet parts; formula text verified in XML.",
+          "reasoning": "Capture minimal verification evidence for traceability of deliverable structure and formula presence.",
+          "state_change": "No state change; only validation evidence collected.",
+          "step": 5,
+          "step_outcome": "success",
+          "success": true,
+          "tool": "functions.exec_command",
+          "turn": 1
+        },
+        "verification_command_count": 2
+      },
+      "observation": "Confirmed expected xlsx members exist and reviewed XML structure for formula rows and sheet count.",
+      "operation": "verify",
+      "output": "Archive contains 7 files including content types, workbook, relations, styles, and two worksheet parts; formula text verified in XML.",
+      "parallel_group": null,
+      "reasoning": "Capture minimal verification evidence for traceability of deliverable structure and formula presence.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "No state change; only validation evidence collected.",
+      "step": 5,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "Bash",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "causal_note": "Memo complements spreadsheet and provides narrative/decision context.",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "python write_text to [EXCLUDED_GENERATED_ARTIFACT]",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "decision_labels": [
+          "warn",
+          "pass",
+          "needs_review",
+          "warn"
+        ],
+        "original_action": "Created actuarial committee memo with calculations, sensitivity checks, uncertainty notes, and final decision labels",
+        "original_causal_type": "parallel_to_trace_output",
+        "original_step_outcome": "success",
+        "raw_step": {
+          "action": "Created actuarial committee memo with calculations, sensitivity checks, uncertainty notes, and final decision labels",
+          "actor": "worker",
+          "causal_note": "Memo complements spreadsheet and provides narrative/decision context.",
+          "causal_type": "parallel_to_trace_output",
+          "caused_by": "step_4",
+          "error_message": null,
+          "error_type": null,
+          "input": "python write_text to [EXCLUDED_GENERATED_ARTIFACT]",
+          "metadata_json": {
+            "decision_labels": [
+              "warn",
+              "pass",
+              "needs_review",
+              "warn"
+            ]
+          },
+          "observation": "Assembled markdown memo in required path with formulas, table outputs, and committee recommendation aligned to provided packet.",
+          "operation": "write",
+          "output": "[EXCLUDED_GENERATED_ARTIFACT] written.",
+          "reasoning": "Required artifact includes row-level packet citations and decision table with pass/warn/needs_review/fail labels.",
+          "state_change": "Created markdown deliverable for committee review.",
+          "step": 6,
+          "step_outcome": "success",
+          "success": true,
+          "tool": "functions.exec_command",
+          "turn": 1
+        }
+      },
+      "observation": "Assembled markdown memo in required path with formulas, table outputs, and committee recommendation aligned to provided packet.",
+      "operation": "write",
+      "output": "[EXCLUDED_GENERATED_ARTIFACT] written.",
+      "parallel_group": null,
+      "reasoning": "Required artifact includes row-level packet citations and decision table with pass/warn/needs_review/fail labels.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Created markdown deliverable for committee review.",
+      "step": 6,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "python",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "artifact_refs": [
+        "actual_outputs.json"
+      ],
+      "causal_note": "Manifest completed after all deliverables are in place.",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "python dump json to actual_outputs.json",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "artifact_count": 2,
+        "original_action": "Created actual_outputs.json with required output contract references",
+        "original_causal_type": "delivery",
+        "original_step_outcome": "success",
+        "raw_step": {
+          "action": "Created actual_outputs.json with required output contract references",
+          "actor": "worker",
+          "artifact_refs": [
+            "actual_outputs.json"
+          ],
+          "causal_note": "Manifest completed after all deliverables are in place.",
+          "causal_type": "delivery",
+          "caused_by": "step_6",
+          "error_message": null,
+          "error_type": null,
+          "input": "python dump json to actual_outputs.json",
+          "metadata_json": {
+            "artifact_count": 2
+          },
+          "observation": "Wrote a structured output manifest for both required deliverables and source context.",
+          "operation": "write",
+          "output": "actual_outputs.json created.",
+          "reasoning": "Expected output contract explicitly requires this artifact for run bookkeeping.",
+          "state_change": "Added machine-readable execution summary for evaluation pipeline.",
+          "step": 7,
+          "step_outcome": "success",
+          "success": true,
+          "tool": "functions.exec_command",
+          "turn": 1
+        }
+      },
+      "observation": "Wrote a structured output manifest for both required deliverables and source context.",
+      "operation": "write",
+      "output": "actual_outputs.json created.",
+      "parallel_group": null,
+      "reasoning": "Expected output contract explicitly requires this artifact for run bookkeeping.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Added machine-readable execution summary for evaluation pipeline.",
+      "step": 7,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "python",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "artifact_refs": [
+        "agent_trace.json",
+        "actual_outputs.json"
+      ],
+      "causal_note": "Final compliance artifact for workflow auditability.",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "json dump list[step...] to agent_trace.json",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "original_action": "Assembled structured agent trace with canonical fields for each meaningful action",
+        "original_causal_type": "recordkeeping",
+        "original_step_outcome": "success",
+        "raw_step": {
+          "action": "Assembled structured agent trace with canonical fields for each meaningful action",
+          "actor": "worker",
+          "artifact_refs": [
+            "agent_trace.json",
+            "actual_outputs.json"
+          ],
+          "causal_note": "Final compliance artifact for workflow auditability.",
+          "causal_type": "recordkeeping",
+          "caused_by": "step_7",
+          "error_message": null,
+          "error_type": null,
+          "input": "json dump list[step...] to agent_trace.json",
+          "metadata_json": {
+            "total_steps": 8
+          },
+          "observation": "Logged read/execute/validation/write operations with causality and outcomes in required schema keys; included dependency error and recovery context.",
+          "operation": "write",
+          "output": "agent_trace.json created.",
+          "reasoning": "Trace is required for apprenticeship workflow grading and must include tool/action evidence.",
+          "state_change": "Created canonical workflow log file in attempt directory.",
+          "step": 8,
+          "step_outcome": "success",
+          "success": true,
+          "tool": "functions.exec_command",
+          "turn": 1
+        },
+        "total_steps": 8
+      },
+      "observation": "Logged read/execute/validation/write operations with causality and outcomes in required schema keys; included dependency error and recovery context.",
+      "operation": "write",
+      "output": "agent_trace.json created.",
+      "parallel_group": null,
+      "reasoning": "Trace is required for apprenticeship workflow grading and must include tool/action evidence.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Created canonical workflow log file in attempt directory.",
+      "step": 8,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "file_write",
+      "turn": 1
+    }
+  ],
+  "system_prompt": null,
+  "system_prompt_hash": null,
+  "task": "Flagship expert task: Actuarial Mortality-Improvement Assumption Drift Review. Reality context: a pension plan must review mortality-improvement assumptions after new experience data. Embedded packet: cohorts: C1 age=65 expected_qx=0.012 observed_qx=0.014 exposure=8200, C2 age=75 expected=0.031 observed=0.034 exposure=5100, C3 age=85 expected=0.091 observed=0.083 exposure=1700; materiality if observed/expected deviates >10% and exposure>3000; liability_sensitivity 1pct mortality improvement change = 2.4M. Rules and constraints: Compute A/E ratios, materiality, and recommended assumption update. Required work: deliver mortality_improvement_review.xlsx + actuarial_committee_memo.md. The deliverables must include formulas or executable logic, intermediate calculations, row-level citations to the embedded packet, validation checks, uncertainty notes, sensitivity checks around the controlling thresholds, and a final decision table with pass/warn/fail/needs_review labels. Use only the embedded packet. Do not import external data, invent missing values, or hide unresolved assumptions.",
+  "task_family_id": null,
+  "original_internal_task_id": "aa_task_0089",
+  "task_id": "689",
+  "termination_reason": "task_complete",
+  "trace_id": "trace_689-baseline_normalized",
+  "trace_mode": "live"
+}

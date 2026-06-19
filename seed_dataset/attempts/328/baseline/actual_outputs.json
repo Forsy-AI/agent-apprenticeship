@@ -1,0 +1,437 @@
+{
+  "original_internal_attempt_id": "aa_task_0628_baseline",
+  "attempt_id": "328-baseline",
+  "attempt_kind": "baseline",
+  "error_message": null,
+  "error_type": null,
+  "metadata_json": {
+    "actual_outputs_discarded_field_count": 0,
+    "actual_outputs_normalized": true,
+    "codex_sandbox": "workspace-write",
+    "expected_deliverable_items": [
+      "coherency_counterexample_min.md",
+      "state_trace.csv"
+    ],
+    "original_fields": {
+      "artifact_paths": {
+        "review_md": "[EXCLUDED_GENERATED_ARTIFACT]",
+        "state_trace_csv": "[EXCLUDED_GENERATED_ARTIFACT]"
+      },
+      "final_decision": {
+        "portfolio_recommendation": "redesign",
+        "reasoning": "Both fail records (R2, R4) remain fail under all budget-feasible remediation combinations; no sensitivity-induced class change found."
+      },
+      "flags": {
+        "needs_review": true,
+        "needs_review_reason": "metric mapping ambiguity: sharer_count present but not in 3-term score formula"
+      },
+      "normalization": {
+        "method": "minmax",
+        "metrics_used_for_context": [
+          "sharer_count"
+        ],
+        "metrics_used_for_score": [
+          "step",
+          "owner_count",
+          "invariant_breach"
+        ],
+        "needs_review": [
+          "sharer_count is present in packet but not part of 3-term score formula"
+        ],
+        "scale": "0..100"
+      },
+      "records": [
+        {
+          "class": "pass",
+          "id": "R1",
+          "normalized": {
+            "breach_n": 100,
+            "owner_n": 0,
+            "step_n": 50
+          },
+          "score": 25.0,
+          "source_tuple": {
+            "invariant_breach": 1,
+            "owner_count": 0,
+            "sharer_count": 3,
+            "step": 4
+          },
+          "status_change_with_5pct": false
+        },
+        {
+          "class": "fail",
+          "id": "R2",
+          "normalized": {
+            "breach_n": 0,
+            "owner_n": 100,
+            "step_n": 100
+          },
+          "score": 160.0,
+          "source_tuple": {
+            "invariant_breach": 0,
+            "owner_count": 1,
+            "sharer_count": 3,
+            "step": 6
+          },
+          "status_change_with_5pct": false
+        },
+        {
+          "class": "pass",
+          "id": "R3",
+          "normalized": {
+            "breach_n": 100,
+            "owner_n": 100,
+            "step_n": 0
+          },
+          "score": 35.0,
+          "source_tuple": {
+            "invariant_breach": 1,
+            "owner_count": 1,
+            "sharer_count": 1,
+            "step": 2
+          },
+          "status_change_with_5pct": false
+        },
+        {
+          "class": "fail",
+          "id": "R4",
+          "normalized": {
+            "breach_n": 0,
+            "owner_n": 100,
+            "step_n": 100
+          },
+          "score": 160.0,
+          "source_tuple": {
+            "invariant_breach": 0,
+            "owner_count": 1,
+            "sharer_count": 3,
+            "step": 6
+          },
+          "status_change_with_5pct": false
+        }
+      ],
+      "remediation": {
+        "budget_usd": 165000,
+        "feasible_combinations": [
+          {
+            "all_below_60": false,
+            "combo": [
+              "O1"
+            ],
+            "cost": 51150,
+            "resulting_fail_record_scores": {
+              "R2": 148.0,
+              "R4": 148.0
+            }
+          },
+          {
+            "all_below_60": false,
+            "combo": [
+              "O2"
+            ],
+            "cost": 77550,
+            "resulting_fail_record_scores": {
+              "R2": 149.2,
+              "R4": 149.2
+            }
+          },
+          {
+            "all_below_60": false,
+            "combo": [
+              "O1",
+              "O2"
+            ],
+            "cost": 128700,
+            "resulting_fail_record_scores": {
+              "R2": 137.2,
+              "R4": 137.2
+            }
+          },
+          {
+            "all_below_60": false,
+            "combo": [
+              "O3"
+            ],
+            "cost": 89100,
+            "resulting_fail_record_scores": {
+              "R2": 160.0,
+              "R4": 160.0
+            }
+          },
+          {
+            "all_below_60": false,
+            "combo": [
+              "O1",
+              "O3"
+            ],
+            "cost": 140250,
+            "resulting_fail_record_scores": {
+              "R2": 148.0,
+              "R4": 148.0
+            }
+          }
+        ],
+        "options": [
+          {
+            "cost": 51150,
+            "driver": "step",
+            "id": "O1",
+            "reduction_pct": 12
+          },
+          {
+            "cost": 77550,
+            "driver": "owner_count",
+            "id": "O2",
+            "reduction_pct": 18
+          },
+          {
+            "cost": 89100,
+            "driver": "invariant_breach",
+            "id": "O3",
+            "improvement_pct": 9
+          }
+        ]
+      },
+      "score_formula": "score = step_n + 0.6*owner_n - 0.25*breach_n",
+      "sensitivity": {
+        "class_change_records": [],
+        "expert_review_triggered": false,
+        "mode": "one-metric-at-a-time on normalized metrics",
+        "rationale": "no record changes class under +/-5% shifts",
+        "shift_pct": 5
+      },
+      "thresholds": {
+        "fail_gt": 60.0,
+        "normalized_threshold": 60.0,
+        "pass_lt": 54.0,
+        "warn_range": [
+          54.0,
+          60.0
+        ]
+      }
+    },
+    "produced_deliverable_items": [
+      "coherency_counterexample_min.md",
+      "state_trace.csv"
+    ],
+    "raw_actual_outputs": {
+      "artifact_paths": {
+        "review_md": "[EXCLUDED_GENERATED_ARTIFACT]",
+        "state_trace_csv": "[EXCLUDED_GENERATED_ARTIFACT]"
+      },
+      "final_decision": {
+        "portfolio_recommendation": "redesign",
+        "reasoning": "Both fail records (R2, R4) remain fail under all budget-feasible remediation combinations; no sensitivity-induced class change found."
+      },
+      "flags": {
+        "needs_review": true,
+        "needs_review_reason": "metric mapping ambiguity: sharer_count present but not in 3-term score formula"
+      },
+      "normalization": {
+        "method": "minmax",
+        "metrics_used_for_context": [
+          "sharer_count"
+        ],
+        "metrics_used_for_score": [
+          "step",
+          "owner_count",
+          "invariant_breach"
+        ],
+        "needs_review": [
+          "sharer_count is present in packet but not part of 3-term score formula"
+        ],
+        "scale": "0..100"
+      },
+      "records": [
+        {
+          "class": "pass",
+          "id": "R1",
+          "normalized": {
+            "breach_n": 100,
+            "owner_n": 0,
+            "step_n": 50
+          },
+          "score": 25.0,
+          "source_tuple": {
+            "invariant_breach": 1,
+            "owner_count": 0,
+            "sharer_count": 3,
+            "step": 4
+          },
+          "status_change_with_5pct": false
+        },
+        {
+          "class": "fail",
+          "id": "R2",
+          "normalized": {
+            "breach_n": 0,
+            "owner_n": 100,
+            "step_n": 100
+          },
+          "score": 160.0,
+          "source_tuple": {
+            "invariant_breach": 0,
+            "owner_count": 1,
+            "sharer_count": 3,
+            "step": 6
+          },
+          "status_change_with_5pct": false
+        },
+        {
+          "class": "pass",
+          "id": "R3",
+          "normalized": {
+            "breach_n": 100,
+            "owner_n": 100,
+            "step_n": 0
+          },
+          "score": 35.0,
+          "source_tuple": {
+            "invariant_breach": 1,
+            "owner_count": 1,
+            "sharer_count": 1,
+            "step": 2
+          },
+          "status_change_with_5pct": false
+        },
+        {
+          "class": "fail",
+          "id": "R4",
+          "normalized": {
+            "breach_n": 0,
+            "owner_n": 100,
+            "step_n": 100
+          },
+          "score": 160.0,
+          "source_tuple": {
+            "invariant_breach": 0,
+            "owner_count": 1,
+            "sharer_count": 3,
+            "step": 6
+          },
+          "status_change_with_5pct": false
+        }
+      ],
+      "remediation": {
+        "budget_usd": 165000,
+        "feasible_combinations": [
+          {
+            "all_below_60": false,
+            "combo": [
+              "O1"
+            ],
+            "cost": 51150,
+            "resulting_fail_record_scores": {
+              "R2": 148.0,
+              "R4": 148.0
+            }
+          },
+          {
+            "all_below_60": false,
+            "combo": [
+              "O2"
+            ],
+            "cost": 77550,
+            "resulting_fail_record_scores": {
+              "R2": 149.2,
+              "R4": 149.2
+            }
+          },
+          {
+            "all_below_60": false,
+            "combo": [
+              "O1",
+              "O2"
+            ],
+            "cost": 128700,
+            "resulting_fail_record_scores": {
+              "R2": 137.2,
+              "R4": 137.2
+            }
+          },
+          {
+            "all_below_60": false,
+            "combo": [
+              "O3"
+            ],
+            "cost": 89100,
+            "resulting_fail_record_scores": {
+              "R2": 160.0,
+              "R4": 160.0
+            }
+          },
+          {
+            "all_below_60": false,
+            "combo": [
+              "O1",
+              "O3"
+            ],
+            "cost": 140250,
+            "resulting_fail_record_scores": {
+              "R2": 148.0,
+              "R4": 148.0
+            }
+          }
+        ],
+        "options": [
+          {
+            "cost": 51150,
+            "driver": "step",
+            "id": "O1",
+            "reduction_pct": 12
+          },
+          {
+            "cost": 77550,
+            "driver": "owner_count",
+            "id": "O2",
+            "reduction_pct": 18
+          },
+          {
+            "cost": 89100,
+            "driver": "invariant_breach",
+            "id": "O3",
+            "improvement_pct": 9
+          }
+        ]
+      },
+      "score_formula": "score = step_n + 0.6*owner_n - 0.25*breach_n",
+      "sensitivity": {
+        "class_change_records": [],
+        "expert_review_triggered": false,
+        "mode": "one-metric-at-a-time on normalized metrics",
+        "rationale": "no record changes class under +/-5% shifts",
+        "shift_pct": 5
+      },
+      "original_internal_task_id": "aa_task_0628",
+      "task_id": "328",
+      "thresholds": {
+        "fail_gt": 60.0,
+        "normalized_threshold": 60.0,
+        "pass_lt": 54.0,
+        "warn_range": [
+          54.0,
+          60.0
+        ]
+      }
+    }
+  },
+  "output_summary": "Normalized actual outputs from artifact files.",
+  "status": "success",
+  "original_internal_task_id": "aa_task_0628",
+  "task_id": "328",
+  "required_deliverables": [
+    "coherency_counterexample_min.md",
+    "state_trace.csv"
+  ],
+  "produced_deliverables": [
+    "coherency_counterexample_min.md",
+    "state_trace.csv"
+  ],
+  "missing_required_deliverables": [],
+  "deliverable_produced": true,
+  "deliverable_file_included": false,
+  "included_generated_artifacts": false,
+  "artifacts_excluded_reason": "Generated output artifacts are excluded from the public seed dataset by default.",
+  "logs_included": false,
+  "logs_excluded_reason": "Raw runner logs are excluded from the public seed dataset."
+}

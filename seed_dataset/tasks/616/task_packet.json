@@ -1,0 +1,81 @@
+{
+  "schema_version": "aa-seed-task-v0.1",
+  "task_id": "616",
+  "title": "Organ Transplant Cold-Ischemia Allocation Exception Review",
+  "domain": "transplant_operations",
+  "subdomain": "cold_ischemia_allocation",
+  "domains": [
+    "transplant_operations"
+  ],
+  "subdomains": [
+    "cold_ischemia_allocation"
+  ],
+  "agent_apprentice_role": "transplant logistics analyst",
+  "task_family": "allocation_exception_review",
+  "difficulty_tier": "expert",
+  "expected_economic_value": "Transplant operations and clinical logistics specialist compensation",
+  "expected_economic_value_for_agent_apprentice": "$250+",
+  "expected_deliverable": "organ_allocation_review.xlsx + transplant_operations_memo.md",
+  "deliverables": [
+    "organ_allocation_review.xlsx",
+    "transplant_operations_memo.md"
+  ],
+  "normalized_title": "Organ Transplant Cold-Ischemia Allocation Exception Review",
+  "instruction": "Context: a transplant center must choose among candidate recipients after transport delays threaten cold-ischemia limits. Task packet: organ=kidney; recovery_time=02:10; max_cold_ischemia_h=24; candidates: C1 distance_km=220 crossmatch=negative sensitization_pct=88 expected_arrival_h=8.5 wait_score=72, C2 distance=760 crossmatch=negative sensitization=22 arrival=16.2 wait=91, C3 distance=410 crossmatch=weak_positive sensitization=96 arrival=12.4 wait=84, C4 distance=130 crossmatch=negative sensitization=40 arrival=6.8 wait=66; penalty weak_positive=-30 unless virtual_crossmatch_override; cold_ischemia_risk if arrival>18h. Rules and constraints: Compute adjusted allocation score, cold-ischemia risk, and exception rationale. Recommend candidate and backup sequence, with needs_review for weak-positive crossmatch. Required work: deliver organ_allocation_review.xlsx + transplant_operations_memo.md. The deliverables must include formulas or executable logic, intermediate calculations, row-level citations to the task packet, validation checks, uncertainty notes, sensitivity checks around the controlling thresholds, and a final decision table with pass/warn/fail/needs_review labels. Use only the task packet. Do not import external data, invent missing values, or hide unresolved assumptions. This task is self-contained: use the task packet as the factual record, do not add source references or external datasets, and preserve a high-fidelity audit trail for every calculation, classification, and recommendation. State assumptions and unresolved evidence gaps explicitly. When executed locally, place final deliverables under the artifacts/ directory.",
+  "task_status": "ready_to_run",
+  "run_status": "not_run",
+  "seed_rank": 31,
+  "display_order": 31,
+  "allowed_tools": [
+    "Local text editor or Markdown editor",
+    "Local spreadsheet, CSV, JSON, YAML, or scripting tools for deterministic calculations",
+    "Local validation or linting commands",
+    "Local plotting or diagramming tools when useful"
+  ],
+  "disallowed_tools": [
+    "External fact lookup or live data pulls",
+    "Live production systems, cloud accounts, trading systems, clinical systems, or industrial controls",
+    "Secret discovery, credential testing, or any action outside the prepared task workspace"
+  ],
+  "privacy_classification": "synthetic",
+  "needs_expert_review": true,
+  "input_requirements": [
+    "Use the task packet as the sole factual input.",
+    "Cite row IDs, record IDs, thresholds, formulas, and option IDs from the packet wherever they control a conclusion.",
+    "Mark missing, contradictory, or under-supported values as needs_review instead of inventing them."
+  ],
+  "inputs": [
+    "All factual inputs are embedded in the task packet.",
+    "Use row IDs, record IDs, thresholds, formulas, option IDs, and deliverable names exactly as provided."
+  ],
+  "output_requirements": [
+    "Produce the required deliverable files with the specified filenames when filenames are provided.",
+    "Include intermediate calculations or executable logic sufficient for another reviewer to reproduce the result.",
+    "Include validation checks, sensitivity notes around controlling thresholds, and a final decision or recommendation table."
+  ],
+  "constraints": [
+    "Use the task packet as the factual record.",
+    "Do not browse, call live services, import external datasets, or invent missing values.",
+    "Treat regulated or safety-critical outputs as review packets, not authorization to act."
+  ],
+  "quality_bar": [
+    "Treat the task as realistic professional work with domain-appropriate rigor.",
+    "Preserve the packet's domain detail, identifiers, thresholds, and edge cases in the final deliverables.",
+    "Make every recommendation traceable to explicit task-packet evidence or mark it as needs_review."
+  ],
+  "validation_expectations": [
+    "Check required fields, row counts, totals, thresholds, and classifications before finalizing.",
+    "Show enough formulas, script logic, or tables for an independent reviewer to reproduce the result.",
+    "Flag any contradiction, missing input, or threshold-sensitive conclusion."
+  ],
+  "edge_cases": [
+    "If packet evidence is incomplete, do not infer missing values; label the item needs_review.",
+    "If multiple options satisfy hard constraints, rank them using the packet's stated priorities and explain ties.",
+    "If a regulated or safety-critical conclusion appears, frame the output as a review packet rather than authorization to act."
+  ],
+  "privacy_safety_expectations": [
+    "Do not use live systems, private accounts, credentials, or external datasets.",
+    "Do not include raw secrets or operational instructions that would execute real-world changes.",
+    "Keep synthetic identifiers from the packet only when needed for verification."
+  ]
+}

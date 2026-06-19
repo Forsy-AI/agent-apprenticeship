@@ -1,0 +1,81 @@
+{
+  "schema_version": "aa-seed-task-v0.1",
+  "task_id": "505",
+  "title": "OT Distillation Unit Setpoint Manipulation Reconstruction and Safe-Recovery Runbook",
+  "domain": "ot_ics_cyber_physical_incident_response",
+  "subdomain": "distillation_unit_setpoint_manipulation_and_safe_recovery",
+  "domains": [
+    "ot_ics_cyber_physical_incident_response"
+  ],
+  "subdomains": [
+    "distillation_unit_setpoint_manipulation_and_safe_recovery"
+  ],
+  "agent_apprentice_role": "OT incident response and process safety liaison",
+  "task_family": "cyber_physical_incident_reconstruction",
+  "difficulty_tier": "expert",
+  "expected_economic_value": "$185k-$330k OT cybersecurity incident response / industrial safety consulting",
+  "expected_economic_value_for_agent_apprentice": "$250+",
+  "expected_deliverable": "ot_incident_reconstruction.xlsx + safe_recovery_runbook.md",
+  "deliverables": [
+    "ot_incident_reconstruction.xlsx",
+    "safe_recovery_runbook.md"
+  ],
+  "normalized_title": "OT Distillation Unit Setpoint Manipulation Reconstruction and Safe-Recovery Runbook",
+  "instruction": "A specialty-chemicals plant saw an unsafe distillation-column pressure excursion after engineering-workstation credentials were abused. The plant manager needs a cyber-physical incident reconstruction and a restart runbook that protects safety and evidence. This is defensive OT response; no exploit development is needed. Task packet: unit=Solvent Recovery Column C-240, normal pressure=2.1 bar, high_alarm=2.6 bar, trip=2.9 bar, max_safe_reboiler_duty=8.4 MW, normal_reflux_ratio=1.8, safe_shutdown_inventory_limit=62%, historian samples every 5 min from 01:00-01:40: pressure_bar=[2.10,2.12,2.18,2.31,2.49,2.67,2.74,2.58,2.33], reboiler_MW=[6.9,7.0,7.6,8.3,9.1,9.4,8.7,7.2,6.8], reflux_ratio=[1.80,1.80,1.45,1.20,1.10,1.55,1.90,1.95,1.90], overhead_valve_pct=[44,44,39,34,30,32,41,45,45]. Alarm log: 01:12 reflux_low, 01:18 reboiler_high, 01:23 pressure_high, 01:27 operator_manual_reduce_reboiler, 01:31 pressure_returning. Network/security log: 00:56 VPN login engineer_E from ASN unfamiliar country, MFA push approved, 01:04 SMB read recipe_share, 01:09 PLC write tag C240_REFLUX_SP 1.80->1.20 from engineering_workstation, 01:10 PLC write C240_REBOILER_LIMIT 8.4->9.5, 01:16 historian service account disabled for 3 min, 01:21 operator console command rejected bad privilege, 01:28 local panel manual override. Asset zones: enterprise, DMZ, engineering, control, safety; allowed flows engineering->PLC only during change_window with ticket; active change ticket CHG-661 covered pump P-22, not C-240. Rules and constraints: classify cyber-physical severity using safety margin breach if pressure>=2.6 or duty>8.4; reconstruct causal chain with time deltas; do not recommend wiping PLCs before preserving volatile evidence and exporting current logic; safe recovery requires verifying setpoints C240_REFLUX_SP=1.80, REBOILER_LIMIT<=8.4, overhead valve auto, historian integrity, and safety instrumented system independent status; containment must maintain plant in safe state before credential resets that could lock operators out. Required work: deliver ot_incident_reconstruction.xlsx + safe_recovery_runbook.md with timeline, tag-change diff, safety-margin chart, ATT&CK-for-ICS mapping, containment order, evidence-preservation checklist, restart gates, and executive summary. This task is self-contained: use the task packet as the factual record, do not add source references or external datasets, and preserve a high-fidelity audit trail for every calculation, classification, and recommendation. State assumptions and unresolved evidence gaps explicitly. When executed locally, place final deliverables under the artifacts/ directory.",
+  "task_status": "ready_to_run",
+  "run_status": "not_run",
+  "seed_rank": 5,
+  "display_order": 5,
+  "allowed_tools": [
+    "Local text editor or Markdown editor",
+    "Local spreadsheet, CSV, JSON, YAML, or scripting tools for deterministic calculations",
+    "Local validation or linting commands",
+    "Local plotting or diagramming tools when useful"
+  ],
+  "disallowed_tools": [
+    "External fact lookup or live data pulls",
+    "Live production systems, cloud accounts, trading systems, clinical systems, or industrial controls",
+    "Secret discovery, credential testing, or any action outside the prepared task workspace"
+  ],
+  "privacy_classification": "synthetic",
+  "needs_expert_review": true,
+  "input_requirements": [
+    "Use the task packet as the sole factual input.",
+    "Cite row IDs, record IDs, thresholds, formulas, and option IDs from the packet wherever they control a conclusion.",
+    "Mark missing, contradictory, or under-supported values as needs_review instead of inventing them."
+  ],
+  "inputs": [
+    "All factual inputs are embedded in the task packet.",
+    "Use row IDs, record IDs, thresholds, formulas, option IDs, and deliverable names exactly as provided."
+  ],
+  "output_requirements": [
+    "Produce the required deliverable files with the specified filenames when filenames are provided.",
+    "Include intermediate calculations or executable logic sufficient for another reviewer to reproduce the result.",
+    "Include validation checks, sensitivity notes around controlling thresholds, and a final decision or recommendation table."
+  ],
+  "constraints": [
+    "Use the task packet as the factual record.",
+    "Do not browse, call live services, import external datasets, or invent missing values.",
+    "Treat regulated or safety-critical outputs as review packets, not authorization to act."
+  ],
+  "quality_bar": [
+    "Treat the task as realistic professional work with domain-appropriate rigor.",
+    "Preserve the packet's domain detail, identifiers, thresholds, and edge cases in the final deliverables.",
+    "Make every recommendation traceable to explicit task-packet evidence or mark it as needs_review."
+  ],
+  "validation_expectations": [
+    "Check required fields, row counts, totals, thresholds, and classifications before finalizing.",
+    "Show enough formulas, script logic, or tables for an independent reviewer to reproduce the result.",
+    "Flag any contradiction, missing input, or threshold-sensitive conclusion."
+  ],
+  "edge_cases": [
+    "If packet evidence is incomplete, do not infer missing values; label the item needs_review.",
+    "If multiple options satisfy hard constraints, rank them using the packet's stated priorities and explain ties.",
+    "If a regulated or safety-critical conclusion appears, frame the output as a review packet rather than authorization to act."
+  ],
+  "privacy_safety_expectations": [
+    "Do not use live systems, private accounts, credentials, or external datasets.",
+    "Do not include raw secrets or operational instructions that would execute real-world changes.",
+    "Keep synthetic identifiers from the packet only when needed for verification."
+  ]
+}

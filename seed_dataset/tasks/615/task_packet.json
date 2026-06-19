@@ -1,0 +1,81 @@
+{
+  "schema_version": "aa-seed-task-v0.1",
+  "task_id": "615",
+  "title": "Blood Bank Emergency Inventory and Crossmatch Risk Plan",
+  "domain": "transfusion_medicine",
+  "subdomain": "blood_inventory_crossmatch",
+  "domains": [
+    "transfusion_medicine"
+  ],
+  "subdomains": [
+    "blood_inventory_crossmatch"
+  ],
+  "agent_apprentice_role": "transfusion service operations lead",
+  "task_family": "inventory_allocation_risk",
+  "difficulty_tier": "expert",
+  "expected_economic_value": "Transfusion medicine operations and blood bank specialist compensation",
+  "expected_economic_value_for_agent_apprentice": "$250+",
+  "expected_deliverable": "blood_inventory_plan.xlsx + transfusion_risk_memo.md",
+  "deliverables": [
+    "blood_inventory_plan.xlsx",
+    "transfusion_risk_memo.md"
+  ],
+  "normalized_title": "Blood Bank Emergency Inventory and Crossmatch Risk Plan",
+  "instruction": "Context: a hospital blood bank faces a trauma surge with limited O-negative supply and pending antibody workups. Task packet: inventory: O_neg_units=18, O_pos=44, A_pos=37, B_pos=16, AB_plasma=22; requests: R1 trauma_unknown 10 RBC emergent antibody_unknown, R2 postpartum_O_neg 4 RBC emergent anti_K, R3 oncology_A_pos 3 RBC routine irradiated_required, R4 surgery_B_pos 6 RBC urgent antibody_screen_negative; rules O_neg reserved for unknown/emergent and O_neg patients; anti_K requires K-negative units availability=9; irradiated units available A_pos=5; shortage penalty trauma=100, postpartum=90, urgent=50, routine=15. Rules and constraints: Allocate units, identify compatibility constraints, calculate remaining safety stock, and recommend substitution/escalation. Do not invent antigen availability beyond packet. Required work: deliver blood_inventory_plan.xlsx + transfusion_risk_memo.md. The deliverables must include formulas or executable logic, intermediate calculations, row-level citations to the task packet, validation checks, uncertainty notes, sensitivity checks around the controlling thresholds, and a final decision table with pass/warn/fail/needs_review labels. Use only the task packet. Do not import external data, invent missing values, or hide unresolved assumptions. This task is self-contained: use the task packet as the factual record, do not add source references or external datasets, and preserve a high-fidelity audit trail for every calculation, classification, and recommendation. State assumptions and unresolved evidence gaps explicitly. When executed locally, place final deliverables under the artifacts/ directory.",
+  "task_status": "ready_to_run",
+  "run_status": "not_run",
+  "seed_rank": 30,
+  "display_order": 30,
+  "allowed_tools": [
+    "Local text editor or Markdown editor",
+    "Local spreadsheet, CSV, JSON, YAML, or scripting tools for deterministic calculations",
+    "Local validation or linting commands",
+    "Local plotting or diagramming tools when useful"
+  ],
+  "disallowed_tools": [
+    "External fact lookup or live data pulls",
+    "Live production systems, cloud accounts, trading systems, clinical systems, or industrial controls",
+    "Secret discovery, credential testing, or any action outside the prepared task workspace"
+  ],
+  "privacy_classification": "synthetic",
+  "needs_expert_review": true,
+  "input_requirements": [
+    "Use the task packet as the sole factual input.",
+    "Cite row IDs, record IDs, thresholds, formulas, and option IDs from the packet wherever they control a conclusion.",
+    "Mark missing, contradictory, or under-supported values as needs_review instead of inventing them."
+  ],
+  "inputs": [
+    "All factual inputs are embedded in the task packet.",
+    "Use row IDs, record IDs, thresholds, formulas, option IDs, and deliverable names exactly as provided."
+  ],
+  "output_requirements": [
+    "Produce the required deliverable files with the specified filenames when filenames are provided.",
+    "Include intermediate calculations or executable logic sufficient for another reviewer to reproduce the result.",
+    "Include validation checks, sensitivity notes around controlling thresholds, and a final decision or recommendation table."
+  ],
+  "constraints": [
+    "Use the task packet as the factual record.",
+    "Do not browse, call live services, import external datasets, or invent missing values.",
+    "Treat regulated or safety-critical outputs as review packets, not authorization to act."
+  ],
+  "quality_bar": [
+    "Treat the task as realistic professional work with domain-appropriate rigor.",
+    "Preserve the packet's domain detail, identifiers, thresholds, and edge cases in the final deliverables.",
+    "Make every recommendation traceable to explicit task-packet evidence or mark it as needs_review."
+  ],
+  "validation_expectations": [
+    "Check required fields, row counts, totals, thresholds, and classifications before finalizing.",
+    "Show enough formulas, script logic, or tables for an independent reviewer to reproduce the result.",
+    "Flag any contradiction, missing input, or threshold-sensitive conclusion."
+  ],
+  "edge_cases": [
+    "If packet evidence is incomplete, do not infer missing values; label the item needs_review.",
+    "If multiple options satisfy hard constraints, rank them using the packet's stated priorities and explain ties.",
+    "If a regulated or safety-critical conclusion appears, frame the output as a review packet rather than authorization to act."
+  ],
+  "privacy_safety_expectations": [
+    "Do not use live systems, private accounts, credentials, or external datasets.",
+    "Do not include raw secrets or operational instructions that would execute real-world changes.",
+    "Keep synthetic identifiers from the packet only when needed for verification."
+  ]
+}

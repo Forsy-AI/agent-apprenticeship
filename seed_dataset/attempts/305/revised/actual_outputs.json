@@ -1,0 +1,217 @@
+{
+  "original_internal_attempt_id": "aa_task_0605_revised",
+  "attempt_id": "305-revised",
+  "attempt_kind": "revised",
+  "error_message": null,
+  "error_type": null,
+  "metadata_json": {
+    "actual_outputs_discarded_field_count": 0,
+    "actual_outputs_normalized": true,
+    "codex_sandbox": "workspace-write",
+    "expected_deliverable_items": [
+      "local_vol_arbitrage_check.xlsx",
+      "model_risk_memo.md"
+    ],
+    "original_fields": {
+      "artifact_sha256": {
+        "local_vol_arbitrage_check.xlsx": "f612c5f2b754e2d51910137d19e593ac7bacc8c6d1b01d7fb2048f60f85589b0",
+        "model_risk_memo.md": "adb8de6ef71c1b82d31751bc7c5c0e9931a956c155cb0a207534ec61dd7fc0b6"
+      },
+      "decision": "DO_NOT_APPROVE_NEEDS_REVIEW",
+      "deliverables": {
+        "local_vol_arbitrage_check.xlsx": "[EXCLUDED_GENERATED_ARTIFACT]",
+        "model_risk_memo.md": "[EXCLUDED_GENERATED_ARTIFACT]"
+      },
+      "normalization_assumption": "Min-max normalize each selected metric to a 0-100 scale using only the embedded records. This is marked needs_review because the prompt does not define the unit-normalization convention.",
+      "record_results": [
+        {
+          "citation": "Embedded packet R1: call_K90=12.26, call_K100=7.73, call_K110=3.77, convexity=0",
+          "classification": "fail",
+          "convexity_flag_check": "OK",
+          "expert_review_flag_from_sensitivity": "no",
+          "governing_driver": "call_K90",
+          "record_id": "R1",
+          "score": 84.683433
+        },
+        {
+          "citation": "Embedded packet R2: call_K90=11.14, call_K100=5.08, call_K110=4.98, convexity=0",
+          "classification": "pass",
+          "convexity_flag_check": "OK",
+          "expert_review_flag_from_sensitivity": "no",
+          "governing_driver": "convexity_margin_shortfall",
+          "record_id": "R2",
+          "score": -24.335664
+        },
+        {
+          "citation": "Embedded packet R3: call_K90=12.81, call_K100=8.82, call_K110=3.83, convexity=0",
+          "classification": "fail",
+          "convexity_flag_check": "needs_review",
+          "expert_review_flag_from_sensitivity": "no",
+          "governing_driver": "call_K90",
+          "record_id": "R3",
+          "score": 131.06383
+        },
+        {
+          "citation": "Embedded packet R4: call_K90=13.49, call_K100=5.24, call_K110=3.14, convexity=1",
+          "classification": "fail",
+          "convexity_flag_check": "needs_review",
+          "expert_review_flag_from_sensitivity": "no",
+          "governing_driver": "call_K90",
+          "record_id": "R4",
+          "score": 77.566845
+        }
+      ],
+      "remediation": {
+        "best_feasible_combination": "O1+O2",
+        "best_feasible_cost_usd": 60450,
+        "best_feasible_fail_count": 3,
+        "best_feasible_max_residual_score": 111.73617,
+        "budget_usd": 77500,
+        "smallest_sufficient_action": null,
+        "smallest_sufficient_action_note": "No embedded remediation combination within budget clears all fail classifications."
+      },
+      "remediation_assumption": "O1 and O2 reduce the weighted normalized risk contribution for their drivers. O3 adds 9 normalized percentage points to convexity margin, capped at 100. This interpretation is marked needs_review because the packet says 9% but not whether that is relative or absolute.",
+      "risk_driver_ranking": [
+        {
+          "aggregate_pressure": 218.723404,
+          "driver": "call_K90",
+          "rank": 1,
+          "share": 0.592781
+        },
+        {
+          "aggregate_pressure": 105.080214,
+          "driver": "call_K100",
+          "rank": 2,
+          "share": 0.284787
+        },
+        {
+          "aggregate_pressure": 45.174825,
+          "driver": "convexity_margin_shortfall",
+          "rank": 3,
+          "share": 0.122432
+        }
+      ],
+      "score_mapping_assumption": "First metric = call_K90 normalized risk driver; second metric = call_K100 normalized risk driver; third metric = derived convexity margin normalized from call_K90 - 2*call_K100 + call_K110. The embedded convexity flag is retained as a source field and reconciled to the derived margin.",
+      "validation": {
+        "convexity_reconciliation_needs_review_count": 2,
+        "fail_record_count": 3,
+        "option_count": 3,
+        "record_count": 4,
+        "sensitivity_class_change_count": 0,
+        "sufficient_feasible_remediation_count": 0
+      }
+    },
+    "produced_deliverable_items": [
+      "local_vol_arbitrage_check.xlsx",
+      "model_risk_memo.md"
+    ],
+    "raw_actual_outputs": {
+      "artifact_sha256": {
+        "local_vol_arbitrage_check.xlsx": "f612c5f2b754e2d51910137d19e593ac7bacc8c6d1b01d7fb2048f60f85589b0",
+        "model_risk_memo.md": "adb8de6ef71c1b82d31751bc7c5c0e9931a956c155cb0a207534ec61dd7fc0b6"
+      },
+      "decision": "DO_NOT_APPROVE_NEEDS_REVIEW",
+      "deliverables": {
+        "local_vol_arbitrage_check.xlsx": "[EXCLUDED_GENERATED_ARTIFACT]",
+        "model_risk_memo.md": "[EXCLUDED_GENERATED_ARTIFACT]"
+      },
+      "normalization_assumption": "Min-max normalize each selected metric to a 0-100 scale using only the embedded records. This is marked needs_review because the prompt does not define the unit-normalization convention.",
+      "record_results": [
+        {
+          "citation": "Embedded packet R1: call_K90=12.26, call_K100=7.73, call_K110=3.77, convexity=0",
+          "classification": "fail",
+          "convexity_flag_check": "OK",
+          "expert_review_flag_from_sensitivity": "no",
+          "governing_driver": "call_K90",
+          "record_id": "R1",
+          "score": 84.683433
+        },
+        {
+          "citation": "Embedded packet R2: call_K90=11.14, call_K100=5.08, call_K110=4.98, convexity=0",
+          "classification": "pass",
+          "convexity_flag_check": "OK",
+          "expert_review_flag_from_sensitivity": "no",
+          "governing_driver": "convexity_margin_shortfall",
+          "record_id": "R2",
+          "score": -24.335664
+        },
+        {
+          "citation": "Embedded packet R3: call_K90=12.81, call_K100=8.82, call_K110=3.83, convexity=0",
+          "classification": "fail",
+          "convexity_flag_check": "needs_review",
+          "expert_review_flag_from_sensitivity": "no",
+          "governing_driver": "call_K90",
+          "record_id": "R3",
+          "score": 131.06383
+        },
+        {
+          "citation": "Embedded packet R4: call_K90=13.49, call_K100=5.24, call_K110=3.14, convexity=1",
+          "classification": "fail",
+          "convexity_flag_check": "needs_review",
+          "expert_review_flag_from_sensitivity": "no",
+          "governing_driver": "call_K90",
+          "record_id": "R4",
+          "score": 77.566845
+        }
+      ],
+      "remediation": {
+        "best_feasible_combination": "O1+O2",
+        "best_feasible_cost_usd": 60450,
+        "best_feasible_fail_count": 3,
+        "best_feasible_max_residual_score": 111.73617,
+        "budget_usd": 77500,
+        "smallest_sufficient_action": null,
+        "smallest_sufficient_action_note": "No embedded remediation combination within budget clears all fail classifications."
+      },
+      "remediation_assumption": "O1 and O2 reduce the weighted normalized risk contribution for their drivers. O3 adds 9 normalized percentage points to convexity margin, capped at 100. This interpretation is marked needs_review because the packet says 9% but not whether that is relative or absolute.",
+      "risk_driver_ranking": [
+        {
+          "aggregate_pressure": 218.723404,
+          "driver": "call_K90",
+          "rank": 1,
+          "share": 0.592781
+        },
+        {
+          "aggregate_pressure": 105.080214,
+          "driver": "call_K100",
+          "rank": 2,
+          "share": 0.284787
+        },
+        {
+          "aggregate_pressure": 45.174825,
+          "driver": "convexity_margin_shortfall",
+          "rank": 3,
+          "share": 0.122432
+        }
+      ],
+      "score_mapping_assumption": "First metric = call_K90 normalized risk driver; second metric = call_K100 normalized risk driver; third metric = derived convexity margin normalized from call_K90 - 2*call_K100 + call_K110. The embedded convexity flag is retained as a source field and reconciled to the derived margin.",
+      "validation": {
+        "convexity_reconciliation_needs_review_count": 2,
+        "fail_record_count": 3,
+        "option_count": 3,
+        "record_count": 4,
+        "sensitivity_class_change_count": 0,
+        "sufficient_feasible_remediation_count": 0
+      }
+    }
+  },
+  "output_summary": "Normalized actual outputs from artifact files.",
+  "status": "success",
+  "original_internal_task_id": "aa_task_0605",
+  "task_id": "305",
+  "required_deliverables": [
+    "local_vol_arbitrage_check.xlsx",
+    "model_risk_memo.md"
+  ],
+  "produced_deliverables": [
+    "local_vol_arbitrage_check.xlsx",
+    "model_risk_memo.md"
+  ],
+  "missing_required_deliverables": [],
+  "deliverable_produced": true,
+  "deliverable_file_included": false,
+  "included_generated_artifacts": false,
+  "artifacts_excluded_reason": "Generated output artifacts are excluded from the public seed dataset by default.",
+  "logs_included": false,
+  "logs_excluded_reason": "Raw runner logs are excluded from the public seed dataset."
+}

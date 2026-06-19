@@ -1,0 +1,653 @@
+{
+  "actual_outputs": {
+    "original_internal_attempt_id": "aa_task_0001_revised",
+    "attempt_id": "601-revised",
+    "attempt_kind": "revised",
+    "error_message": null,
+    "error_type": null,
+    "metadata_json": {
+      "actual_outputs_discarded_field_count": 0,
+      "actual_outputs_normalized": true,
+      "expected_deliverable_items": [
+        "rod_worth_review.xlsx",
+        "startup_authorization_memo.md"
+      ],
+      "original_fields": {
+        "artifacts": [
+          {
+            "description": "Formula-driven rod-worth and shutdown-margin acceptance review with baseline and B2 contingency, validations, and sensitivity checks.",
+            "name": "rod_worth_review",
+            "type": "spreadsheet"
+          },
+          {
+            "description": "Executive summary and decision table for acceptance recommendation.",
+            "name": "startup_authorization_memo",
+            "type": "memo"
+          }
+        ]
+      },
+      "produced_deliverable_items": [
+        "startup_authorization_memo.md",
+        "rod_worth_review.xlsx"
+      ],
+      "raw_actual_outputs": {
+        "artifacts": [
+          {
+            "description": "Formula-driven rod-worth and shutdown-margin acceptance review with baseline and B2 contingency, validations, and sensitivity checks.",
+            "name": "rod_worth_review",
+            "type": "spreadsheet"
+          },
+          {
+            "description": "Executive summary and decision table for acceptance recommendation.",
+            "name": "startup_authorization_memo",
+            "type": "memo"
+          }
+        ],
+        "original_internal_task_id": "aa_task_0001",
+        "task_id": "601"
+      }
+    },
+    "output_summary": "Normalized actual outputs from artifact files.",
+    "status": "success",
+    "original_internal_task_id": "aa_task_0001",
+    "task_id": "601",
+    "required_deliverables": [
+      "rod_worth_review.xlsx",
+      "startup_authorization_memo.md"
+    ],
+    "produced_deliverables": [
+      "startup_authorization_memo.md",
+      "rod_worth_review.xlsx"
+    ],
+    "missing_required_deliverables": [],
+    "deliverable_produced": true,
+    "deliverable_file_included": false,
+    "included_generated_artifacts": false,
+    "artifacts_excluded_reason": "Generated output artifacts are excluded from the public seed dataset by default.",
+    "logs_included": false,
+    "logs_excluded_reason": "Raw runner logs are excluded from the public seed dataset."
+  },
+  "agent_config": null,
+  "agent_tools": [
+    "codex_cli",
+    "Bash",
+    "python",
+    "file_read",
+    "file_write",
+    "apply_patch"
+  ],
+  "artifacts": [],
+  "original_internal_attempt_id": "aa_task_0001_revised",
+  "attempt_id": "601-revised",
+  "attempt_kind": "revised",
+  "attempt_status": "completed",
+  "collection_id": null,
+  "completion_reason": null,
+  "ended_at": null,
+  "final_attempt_id": null,
+  "initial_attempt_id": null,
+  "iteration_index": null,
+  "learning": null,
+  "memory": null,
+  "metadata_json": {
+    "codex_command": [
+      "codex",
+      "exec",
+      "--sandbox",
+      "workspace-write",
+      "<prompt>"
+    ],
+    "codex_sandbox": "workspace-write",
+    "discarded_step_count": 0,
+    "raw_trace_preserved": true,
+    "raw_trace_step_source": "steps",
+    "schema_valid": true,
+    "trace_normalization_status": "partial",
+    "trace_valid": true
+  },
+  "preferred_attempt_id": null,
+  "previous_attempt_id": null,
+  "prior_trace_id": null,
+  "revision_attempt_ids": [],
+  "revision_group_id": null,
+  "schema_version": "aa-trace-v0.1",
+  "skills": null,
+  "started_at": null,
+  "steps": [
+    {
+      "action": "agent_step",
+      "actor": "reviser_agent",
+      "alternatives_considered": null,
+      "causal_note": "Defines all constants for formulas and scenario logic.",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "./input/task_brief.md and ./input/task.json",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "fields_used": [
+          "required_shutdown_margin_pcm",
+          "measured_worth_pcm",
+          "uncertainty_pcm",
+          "stuck_worth_pcm",
+          "excess_reactivity_pcm",
+          "temp_defect_pcm",
+          "xenon_pcm",
+          "admin_limit_single_bank_withdrawal_pcm"
+        ],
+        "normalization_warnings": [
+          "step value 'Read task instructions and embedded packet payload' was not numeric; defaulted to 1"
+        ],
+        "original_action": "Parsed workflow requirements from task_brief.md and task.json",
+        "original_causal_type": "direct",
+        "original_step": "Read task instructions and embedded packet payload",
+        "raw_step": {
+          "action": "Parsed workflow requirements from task_brief.md and task.json",
+          "actor": "reviser_agent",
+          "causal_note": "Defines all constants for formulas and scenario logic.",
+          "causal_type": "direct",
+          "caused_by": "Task start",
+          "error_message": null,
+          "error_type": null,
+          "input": "./input/task_brief.md and ./input/task.json",
+          "metadata_json": {
+            "fields_used": [
+              "required_shutdown_margin_pcm",
+              "measured_worth_pcm",
+              "uncertainty_pcm",
+              "stuck_worth_pcm",
+              "excess_reactivity_pcm",
+              "temp_defect_pcm",
+              "xenon_pcm",
+              "admin_limit_single_bank_withdrawal_pcm"
+            ]
+          },
+          "observation": "Task scope, formula rules, and required outputs extracted from provided inputs.",
+          "operation": "read",
+          "output": "Captured all numeric inputs: required_margin=1350, B1(920,55,0), B2(780,60,120), B3(610,50,0), excess=820, temp_defect=145, xenon=0, admin_limit=500.",
+          "reasoning": "Need complete packet values before creating calculations; no assumptions allowed beyond provided fields.",
+          "state_change": "Context loaded; no file system state changed.",
+          "step": "Read task instructions and embedded packet payload",
+          "step_outcome": "completed",
+          "success": true,
+          "tool": "shell",
+          "turn": 1
+        }
+      },
+      "observation": "Task scope, formula rules, and required outputs extracted from provided inputs.",
+      "operation": "read",
+      "output": "Captured all numeric inputs: required_margin=1350, B1(920,55,0), B2(780,60,120), B3(610,50,0), excess=820, temp_defect=145, xenon=0, admin_limit=500.",
+      "parallel_group": null,
+      "reasoning": "Need complete packet values before creating calculations; no assumptions allowed beyond provided fields.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Context loaded; no file system state changed.",
+      "step": 1,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "file_read",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "reviser_agent",
+      "alternatives_considered": null,
+      "causal_note": "Computed results drove formula layout and decision tables.",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "computed_rule=measured-2*uncertainty; margin_formula=sum(conservative-stuck)-excess-temp_defect-xenon",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "baseline_margin": 895,
+        "contingency_margin": 355,
+        "normalization_warnings": [
+          "step value 'Compute conservative and margin values' was not numeric; defaulted to 2"
+        ],
+        "original_action": "Derived baseline and contingency formulas and expected numeric outcomes from packet values",
+        "original_causal_type": "dependent",
+        "original_step": "Compute conservative and margin values",
+        "raw_step": {
+          "action": "Derived baseline and contingency formulas and expected numeric outcomes from packet values",
+          "actor": "reviser_agent",
+          "causal_note": "Computed results drove formula layout and decision tables.",
+          "causal_type": "dependent",
+          "caused_by": "Step 1 data extraction",
+          "error_message": null,
+          "error_type": null,
+          "input": "computed_rule=measured-2*uncertainty; margin_formula=sum(conservative-stuck)-excess-temp_defect-xenon",
+          "metadata_json": {
+            "baseline_margin": 895,
+            "contingency_margin": 355
+          },
+          "observation": "Calculated conservative bank worth and margins per required equation.",
+          "operation": "execute",
+          "output": "Baseline: B1 810, B2 660, B3 510; margin=895 (FAIL). Contingency B2 unavailable: margin=355 (FAIL).",
+          "reasoning": "Numerical sanity check before encoding formulas to spreadsheet; validates expected pass/fail path.",
+          "state_change": "No persistent file changes; calculation plan prepared for artifact tables.",
+          "step": "Compute conservative and margin values",
+          "step_outcome": "completed",
+          "success": true,
+          "tool": "internal reasoning",
+          "turn": 2
+        }
+      },
+      "observation": "Calculated conservative bank worth and margins per required equation.",
+      "operation": "execute",
+      "output": "Baseline: B1 810, B2 660, B3 510; margin=895 (FAIL). Contingency B2 unavailable: margin=355 (FAIL).",
+      "parallel_group": null,
+      "reasoning": "Numerical sanity check before encoding formulas to spreadsheet; validates expected pass/fail path.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "No persistent file changes; calculation plan prepared for artifact tables.",
+      "step": 2,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "Bash",
+      "turn": 2
+    },
+    {
+      "action": "agent_step",
+      "actor": "reviser_agent",
+      "alternatives_considered": null,
+      "causal_note": "Switched to manual OOXML zip generation to satisfy required workbook output.",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": "No module named 'openpyxl'",
+      "error_type": "ModuleNotFoundError",
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "python script using openpyxl Workbook object",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "attempted_tool": "openpyxl",
+        "fallback_used": true,
+        "normalization_warnings": [
+          "step value 'Attempt high-level spreadsheet generation with Python Excel library' was not numeric; defaulted to 3"
+        ],
+        "original_action": "Tried to create rod_worth_review.xlsx using openpyxl.",
+        "original_causal_type": "block_and_switch",
+        "original_step": "Attempt high-level spreadsheet generation with Python Excel library",
+        "raw_step": {
+          "action": "Tried to create rod_worth_review.xlsx using openpyxl.",
+          "actor": "reviser_agent",
+          "causal_note": "Switched to manual OOXML zip generation to satisfy required workbook output.",
+          "causal_type": "block_and_switch",
+          "caused_by": "Need to produce required xlsx artifact",
+          "error_message": "No module named 'openpyxl'",
+          "error_type": "ModuleNotFoundError",
+          "input": "python script using openpyxl Workbook object",
+          "metadata_json": {
+            "attempted_tool": "openpyxl",
+            "fallback_used": true
+          },
+          "observation": "Dependency missing in environment.",
+          "operation": "execute",
+          "output": "Failure: ModuleNotFoundError: No module named 'openpyxl'.",
+          "reasoning": "Need fallback method because external dependency unavailable in environment.",
+          "state_change": "No files written in this step.",
+          "step": "Attempt high-level spreadsheet generation with Python Excel library",
+          "step_outcome": "failed",
+          "success": false,
+          "tool": "functions.exec_command",
+          "turn": 3
+        }
+      },
+      "observation": "Dependency missing in environment.",
+      "operation": "execute",
+      "output": "Failure: ModuleNotFoundError: No module named 'openpyxl'.",
+      "parallel_group": null,
+      "reasoning": "Need fallback method because external dependency unavailable in environment.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "No files written in this step.",
+      "step": 3,
+      "step_outcome": "failed",
+      "success": false,
+      "tool": "python",
+      "turn": 3
+    },
+    {
+      "action": "agent_step",
+      "actor": "reviser_agent",
+      "alternatives_considered": null,
+      "causal_note": "Implemented fallback file-format generator preserving required formula logic.",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "Python script producing zip package with worksheet XML, workbook relationships, and formula cells.",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "normalization_warnings": [
+          "step value 'Generate required spreadsheet directly as Office Open XML package' was not numeric; defaulted to 4"
+        ],
+        "original_action": "Created rod_worth_review.xlsx from minimal OOXML XML + ZIP with formulas, baseline and B2 contingency analyses, and checks.",
+        "original_causal_type": "fallback",
+        "original_step": "Generate required spreadsheet directly as Office Open XML package",
+        "output_bytes": 7399,
+        "raw_step": {
+          "action": "Created rod_worth_review.xlsx from minimal OOXML XML + ZIP with formulas, baseline and B2 contingency analyses, and checks.",
+          "actor": "reviser_agent",
+          "causal_note": "Implemented fallback file-format generator preserving required formula logic.",
+          "causal_type": "fallback",
+          "caused_by": "Step 3 library failure",
+          "error_message": null,
+          "error_type": null,
+          "input": "Python script producing zip package with worksheet XML, workbook relationships, and formula cells.",
+          "metadata_json": {
+            "output_bytes": 7399,
+            "sheets": [
+              "Inputs",
+              "Baseline",
+              "Contingency_B2_Unavailable",
+              "Sensitivity_checks",
+              "Decision_Table"
+            ]
+          },
+          "observation": "Created xlsx file successfully with input and scenario sheets.",
+          "operation": "write",
+          "output": "[EXCLUDED_GENERATED_ARTIFACT] written (7399 bytes).",
+          "reasoning": "Manual OOXML generation preserves compatibility while avoiding unavailable dependency.",
+          "state_change": "Added artifact file: [EXCLUDED_GENERATED_ARTIFACT]",
+          "step": "Generate required spreadsheet directly as Office Open XML package",
+          "step_outcome": "completed",
+          "success": true,
+          "tool": "functions.exec_command",
+          "turn": 4
+        },
+        "sheets": [
+          "Inputs",
+          "Baseline",
+          "Contingency_B2_Unavailable",
+          "Sensitivity_checks",
+          "Decision_Table"
+        ]
+      },
+      "observation": "Created xlsx file successfully with input and scenario sheets.",
+      "operation": "write",
+      "output": "[EXCLUDED_GENERATED_ARTIFACT] written (7399 bytes).",
+      "parallel_group": null,
+      "reasoning": "Manual OOXML generation preserves compatibility while avoiding unavailable dependency.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Added artifact file: [EXCLUDED_GENERATED_ARTIFACT]",
+      "step": 4,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "python",
+      "turn": 4
+    },
+    {
+      "action": "agent_step",
+      "actor": "reviser_agent",
+      "alternatives_considered": null,
+      "causal_note": "Memo consumes and summarizes spreadsheet outputs.",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "[EXCLUDED_GENERATED_ARTIFACT] content from computed packet values",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "normalization_warnings": [
+          "step value 'Write startup authorization memo' was not numeric; defaulted to 5"
+        ],
+        "original_action": "Authored startup_authorization_memo.md with methods, results, decision table, and recommendation.",
+        "original_causal_type": "dependent",
+        "original_step": "Write startup authorization memo",
+        "raw_step": {
+          "action": "Authored startup_authorization_memo.md with methods, results, decision table, and recommendation.",
+          "actor": "reviser_agent",
+          "causal_note": "Memo consumes and summarizes spreadsheet outputs.",
+          "causal_type": "dependent",
+          "caused_by": "Spreadsheet and numeric outputs from steps 2-4",
+          "error_message": null,
+          "error_type": null,
+          "input": "[EXCLUDED_GENERATED_ARTIFACT] content from computed packet values",
+          "metadata_json": {
+            "recommendation": "DO NOT AUTHORIZE"
+          },
+          "observation": "Memo includes baseline and contingency margins, fail reasons, and missing planned-withdrawal caveat.",
+          "operation": "write",
+          "output": "[EXCLUDED_GENERATED_ARTIFACT] written (2953 bytes).",
+          "reasoning": "Required explanatory output requested by task; include row-level method and authorization action.",
+          "state_change": "Added artifact file: [EXCLUDED_GENERATED_ARTIFACT]",
+          "step": "Write startup authorization memo",
+          "step_outcome": "completed",
+          "success": true,
+          "tool": "functions.exec_command",
+          "turn": 5
+        },
+        "recommendation": "DO NOT AUTHORIZE"
+      },
+      "observation": "Memo includes baseline and contingency margins, fail reasons, and missing planned-withdrawal caveat.",
+      "operation": "write",
+      "output": "[EXCLUDED_GENERATED_ARTIFACT] written (2953 bytes).",
+      "parallel_group": null,
+      "reasoning": "Required explanatory output requested by task; include row-level method and authorization action.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Added artifact file: [EXCLUDED_GENERATED_ARTIFACT]",
+      "step": 5,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "file_write",
+      "turn": 5
+    },
+    {
+      "action": "agent_step",
+      "actor": "reviser_agent",
+      "alternatives_considered": null,
+      "artifact_refs": [
+        "actual_outputs.json"
+      ],
+      "causal_note": "Final traceable list of deliverables for evaluator.",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "artifact metadata for xlsx and md files",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "normalization_warnings": [
+          "step value 'Write actual outputs catalog' was not numeric; defaulted to 6"
+        ],
+        "original_action": "Created actual_outputs.json enumerating generated deliverables.",
+        "original_causal_type": "dependent",
+        "original_step": "Write actual outputs catalog",
+        "raw_step": {
+          "action": "Created actual_outputs.json enumerating generated deliverables.",
+          "actor": "reviser_agent",
+          "artifact_refs": [
+            "actual_outputs.json"
+          ],
+          "causal_note": "Final traceable list of deliverables for evaluator.",
+          "causal_type": "dependent",
+          "caused_by": "Completion of files in steps 4-5",
+          "error_message": null,
+          "error_type": null,
+          "input": "artifact metadata for xlsx and md files",
+          "metadata_json": {
+            "original_internal_task_id": "aa_task_0001",
+            "task_id": "601"
+          },
+          "observation": "Catalog file includes task id and two required artifact paths.",
+          "operation": "write",
+          "output": "./actual_outputs.json written with artifact entries for rod_worth_review.xlsx and startup_authorization_memo.md.",
+          "reasoning": "Required by task contract for output reporting.",
+          "state_change": "Added artifact registry file: actual_outputs.json.",
+          "step": "Write actual outputs catalog",
+          "step_outcome": "completed",
+          "success": true,
+          "tool": "functions.exec_command",
+          "turn": 6
+        },
+        "original_internal_task_id": "aa_task_0001",
+        "task_id": "601"
+      },
+      "observation": "Catalog file includes task id and two required artifact paths.",
+      "operation": "write",
+      "output": "./actual_outputs.json written with artifact entries for rod_worth_review.xlsx and startup_authorization_memo.md.",
+      "parallel_group": null,
+      "reasoning": "Required by task contract for output reporting.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Added artifact registry file: actual_outputs.json.",
+      "step": 6,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "Bash",
+      "turn": 6
+    },
+    {
+      "action": "agent_step",
+      "actor": "reviser_agent",
+      "alternatives_considered": null,
+      "artifact_refs": [
+        "agent_trace.json"
+      ],
+      "causal_note": "Captures end-to-end evidence for reproducibility.",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "Trace data for all prior steps",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "canonical_fields_used": [
+          "step",
+          "turn",
+          "actor",
+          "action",
+          "operation",
+          "tool",
+          "observation",
+          "input",
+          "output",
+          "state_change",
+          "reasoning",
+          "caused_by",
+          "causal_type",
+          "causal_note",
+          "success",
+          "step_outcome",
+          "error_type",
+          "error_message",
+          "artifact_refs",
+          "metadata_json"
+        ],
+        "normalization_warnings": [
+          "step value 'Record structured workflow trace' was not numeric; defaulted to 7"
+        ],
+        "original_action": "Created agent_trace.json with canonical step fields and full workflow causality.",
+        "original_causal_type": "required_completion",
+        "original_step": "Record structured workflow trace",
+        "raw_step": {
+          "action": "Created agent_trace.json with canonical step fields and full workflow causality.",
+          "actor": "reviser_agent",
+          "artifact_refs": [
+            "agent_trace.json"
+          ],
+          "causal_note": "Captures end-to-end evidence for reproducibility.",
+          "causal_type": "required_completion",
+          "caused_by": "Completion of required outputs",
+          "error_message": null,
+          "error_type": null,
+          "input": "Trace data for all prior steps",
+          "metadata_json": {
+            "canonical_fields_used": [
+              "step",
+              "turn",
+              "actor",
+              "action",
+              "operation",
+              "tool",
+              "observation",
+              "input",
+              "output",
+              "state_change",
+              "reasoning",
+              "caused_by",
+              "causal_type",
+              "causal_note",
+              "success",
+              "step_outcome",
+              "error_type",
+              "error_message",
+              "artifact_refs",
+              "metadata_json"
+            ]
+          },
+          "observation": "Trace includes read/write/compute/fallback and artifact references.",
+          "operation": "write",
+          "output": "./agent_trace.json written with canonical fields and action log.",
+          "reasoning": "Task requires exact structured trace of meaningful actions for downstream evaluator.",
+          "state_change": "Added required workflow trace artifact: agent_trace.json.",
+          "step": "Record structured workflow trace",
+          "step_outcome": "completed",
+          "success": true,
+          "tool": "functions.exec_command",
+          "turn": 7
+        }
+      },
+      "observation": "Trace includes read/write/compute/fallback and artifact references.",
+      "operation": "write",
+      "output": "./agent_trace.json written with canonical fields and action log.",
+      "parallel_group": null,
+      "reasoning": "Task requires exact structured trace of meaningful actions for downstream evaluator.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Added required workflow trace artifact: agent_trace.json.",
+      "step": 7,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "file_write",
+      "turn": 7
+    }
+  ],
+  "system_prompt": null,
+  "system_prompt_hash": null,
+  "task": "Perform a defensible rod-worth and shutdown-margin acceptance review for a low-power reactor startup using only the provided embedded packet. Compute conservative bank worths using the 95% validation rule (conservative_bank_worth = measured_worth_pcm - 2 * uncertainty_pcm). Compute conservative_available_shutdown_margin = sum(conservative_bank_worth - stuck_worth_pcm) - excess_reactivity_pcm - temp_defect_pcm - xenon_pcm. Compare margin to required_shutdown_margin_pcm. Fail if margin < required; warn if margin within 10% above required; otherwise pass. Block startup if any single planned withdrawal exceeds admin_limit_single_bank_withdrawal_pcm. Produce two analyses: baseline (all banks available) and contingency (B2 unavailable). Deliver a spreadsheet (rod_worth_review.xlsx) with executable formulas, intermediate calculations, row-level citations to the embedded packet, validation checks, uncertainty notes, and sensitivity checks around controlling thresholds; and a memo (startup_authorization_memo.md) summarizing methods, results, decision table, and recommended authorization action. Do not import external data or invent missing values.",
+  "task_family_id": null,
+  "original_internal_task_id": "aa_task_0001",
+  "task_id": "601",
+  "termination_reason": "task_complete",
+  "trace_id": "trace_601-revised_normalized",
+  "trace_mode": "live"
+}

@@ -1,0 +1,812 @@
+{
+  "actual_outputs": {
+    "original_internal_attempt_id": "aa_task_0563_revised",
+    "attempt_id": "263-revised",
+    "attempt_kind": "revised",
+    "error_message": null,
+    "error_type": null,
+    "metadata_json": {
+      "actual_outputs_discarded_field_count": 0,
+      "actual_outputs_normalized": true,
+      "expected_deliverable_items": [
+        "SLO_burn_3.xlsx",
+        "expert_memo.md"
+      ],
+      "original_fields": {
+        "artifacts": [
+          {
+            "description": "Packet_Analysis and Policy_Inputs with explicit formulas, derived metrics, sensitivity checks, and sequence feasibility",
+            "type": "excel"
+          },
+          {
+            "description": "Explanation with assumptions, row-level citations, needs_review handling, sensitivity checks, and final recommendation",
+            "type": "markdown"
+          }
+        ],
+        "attempt_directory": "[REDACTED_LOCAL_PATH]",
+        "required_files": [
+          "[EXCLUDED_GENERATED_ARTIFACT]",
+          "[EXCLUDED_GENERATED_ARTIFACT]",
+          "agent_trace.json",
+          "actual_outputs.json"
+        ]
+      },
+      "produced_deliverable_items": [
+        "SLO_burn_3.xlsx",
+        "expert_memo.md"
+      ],
+      "raw_actual_outputs": {
+        "artifacts": [
+          {
+            "description": "Packet_Analysis and Policy_Inputs with explicit formulas, derived metrics, sensitivity checks, and sequence feasibility",
+            "type": "excel"
+          },
+          {
+            "description": "Explanation with assumptions, row-level citations, needs_review handling, sensitivity checks, and final recommendation",
+            "type": "markdown"
+          }
+        ],
+        "attempt_directory": "[REDACTED_LOCAL_PATH]",
+        "required_files": [
+          "[EXCLUDED_GENERATED_ARTIFACT]",
+          "[EXCLUDED_GENERATED_ARTIFACT]",
+          "agent_trace.json",
+          "actual_outputs.json"
+        ],
+        "original_internal_task_id": "aa_task_0563",
+        "task_id": "263"
+      }
+    },
+    "output_summary": "Normalized actual outputs from artifact files.",
+    "status": "success",
+    "original_internal_task_id": "aa_task_0563",
+    "task_id": "263",
+    "required_deliverables": [
+      "SLO_burn_3.xlsx",
+      "expert_memo.md"
+    ],
+    "produced_deliverables": [
+      "SLO_burn_3.xlsx",
+      "expert_memo.md"
+    ],
+    "missing_required_deliverables": [],
+    "deliverable_produced": true,
+    "deliverable_file_included": false,
+    "included_generated_artifacts": false,
+    "artifacts_excluded_reason": "Generated output artifacts are excluded from the public seed dataset by default.",
+    "logs_included": false,
+    "logs_excluded_reason": "Raw runner logs are excluded from the public seed dataset."
+  },
+  "agent_config": null,
+  "agent_tools": [
+    "codex_cli",
+    "Bash",
+    "python",
+    "file_read",
+    "file_write",
+    "apply_patch"
+  ],
+  "artifacts": [],
+  "original_internal_attempt_id": "aa_task_0563_revised",
+  "attempt_id": "263-revised",
+  "attempt_kind": "revised",
+  "attempt_status": "completed",
+  "collection_id": null,
+  "completion_reason": null,
+  "ended_at": null,
+  "final_attempt_id": null,
+  "initial_attempt_id": null,
+  "iteration_index": null,
+  "learning": null,
+  "memory": null,
+  "metadata_json": {
+    "codex_command": [
+      "codex",
+      "exec",
+      "--sandbox",
+      "workspace-write",
+      "<prompt>"
+    ],
+    "codex_sandbox": "workspace-write",
+    "discarded_step_count": 0,
+    "raw_trace_list": [
+      {
+        "action": "read_inputs",
+        "actor": "worker",
+        "artifact_refs": [
+          "input/task.json",
+          "input/task_brief.md"
+        ],
+        "causal_note": "Defines authoritative source data",
+        "causal_type": "init",
+        "caused_by": null,
+        "error_message": null,
+        "error_type": null,
+        "input": "cat input/task.json; cat input/task_brief.md",
+        "metadata_json": {
+          "needs_review_items": [
+            "SLO",
+            "policy short/long thresholds",
+            "window-to-policy mapping"
+          ]
+        },
+        "observation": "Task packet and constraints loaded; no hidden parameters such as SLO or explicit policy thresholds in input.",
+        "operation": "Read task.json and task_brief.md",
+        "output": "Embedded packet: R1(48,78,7), R2(57,74,10), R3(43,89,6); options and constraints parsed.",
+        "reasoning": "Scope identification is required before choosing formulas and ambiguity handling.",
+        "state_change": "No state change",
+        "step": 1,
+        "step_outcome": "passed",
+        "success": true,
+        "tool": "functions.exec_command",
+        "turn": 1
+      },
+      {
+        "action": "inspect_workspace",
+        "actor": "worker",
+        "causal_note": "Prepares deterministic file write path",
+        "causal_type": "dependency",
+        "caused_by": 1,
+        "error_message": null,
+        "error_type": null,
+        "input": "ls -la artifacts; ls -la .",
+        "metadata_json": {
+          "cwd": "[REDACTED_LOCAL_PATH]"
+        },
+        "observation": "artifacts directory existed and was empty at task start.",
+        "operation": "List artifacts directory and repository root",
+        "output": "Baseline output folder state confirmed clean.",
+        "reasoning": "Needed baseline before creating required outputs in-place.",
+        "state_change": "No state change",
+        "step": 2,
+        "step_outcome": "passed",
+        "success": true,
+        "tool": "functions.exec_command",
+        "turn": 1
+      },
+      {
+        "action": "attempt_excel_generation",
+        "actor": "worker",
+        "causal_note": "Missing openpyxl prevented direct xlsx object model usage",
+        "causal_type": "blocked_by_environment",
+        "caused_by": 2,
+        "error_message": "No module named 'openpyxl'",
+        "error_type": "ModuleNotFoundError",
+        "input": "python3 script that writes SLO_burn_3.xlsx and expert_memo.md using openpyxl",
+        "metadata_json": {
+          "attempted_tool": "openpyxl",
+          "fallback_required": true
+        },
+        "observation": "Dependency not available in environment.",
+        "operation": "Generate artifacts via openpyxl-based Python script",
+        "output": "ModuleNotFoundError: No module named 'openpyxl'",
+        "reasoning": "Failed dependency required fallback path while preserving formulas and citations.",
+        "state_change": "No artifact written in this attempt",
+        "step": 3,
+        "step_outcome": "failed",
+        "success": false,
+        "tool": "functions.exec_command",
+        "turn": 1
+      },
+      {
+        "action": "generate_outputs_fallback",
+        "actor": "worker",
+        "artifact_refs": [
+          "actual_outputs.json"
+        ],
+        "causal_note": "Switched implementation strategy after dependency error",
+        "causal_type": "fallback",
+        "caused_by": 3,
+        "error_message": null,
+        "error_type": null,
+        "input": "python3 script with zipfile + worksheet XML and formula cells",
+        "metadata_json": {
+          "ambiguity_tags": [
+            "needs_review",
+            "assumed_slo_for_sensitivity"
+          ],
+          "excel_creation_method": "native OOXML zip assembly",
+          "generated_files": 3
+        },
+        "observation": "Fallback writer produced all required artifacts successfully.",
+        "operation": "Create OOXML workbook manually from XML + write expert memo + actual_outputs.json",
+        "output": "WROTE [EXCLUDED_GENERATED_ARTIFACT] [EXCLUDED_GENERATED_ARTIFACT] actual_outputs.json",
+        "reasoning": "Preserve required output contract without external spreadsheet libraries.",
+        "state_change": "Added/overwrote required deliverables in artifacts and current directory",
+        "step": 4,
+        "step_outcome": "passed",
+        "success": true,
+        "tool": "functions.exec_command",
+        "turn": 1
+      },
+      {
+        "action": "postprocess_formula_cells",
+        "actor": "worker",
+        "causal_note": "Small compatibility correction after initial OOXML emission",
+        "causal_type": "error_recovery",
+        "caused_by": 4,
+        "error_message": null,
+        "error_type": null,
+        "input": "python3 zip rewrite replacing formula cell type markers",
+        "metadata_json": {
+          "formula_cell_fix_applied": true,
+          "patch_target": "xl/worksheets/*.xml"
+        },
+        "observation": "Adjusted formula nodes to standard OOXML (`<f>` cells without `t='str'`).",
+        "operation": "Normalize formula cell XML attributes in generated xlsx",
+        "output": "Patched worksheet XML entries in [EXCLUDED_GENERATED_ARTIFACT]",
+        "reasoning": "Ensures downstream readers treat formulas as formula cells, not string-typed nodes.",
+        "state_change": "Updated existing [EXCLUDED_GENERATED_ARTIFACT] in place",
+        "step": 5,
+        "step_outcome": "passed",
+        "success": true,
+        "tool": "functions.exec_command",
+        "turn": 1
+      },
+      {
+        "action": "normalize_ascii_memo_text",
+        "actor": "worker",
+        "causal_note": "Non-ASCII cleanup step",
+        "causal_type": "postprocess",
+        "caused_by": 5,
+        "error_message": null,
+        "error_type": null,
+        "input": "python3 replace '-' with '-' in [EXCLUDED_GENERATED_ARTIFACT]",
+        "metadata_json": {
+          "non_ascii_replacements": 1
+        },
+        "observation": "One non-ASCII hyphen was removed from expert_memo.md.",
+        "operation": "Replace non-ASCII hyphen char in memo to ASCII",
+        "output": "expert_memo.md updated to ASCII-first text",
+        "reasoning": "Keep artifact formatting aligned with repository constraints favoring ASCII text.",
+        "state_change": "Updated expert memo text in place",
+        "step": 6,
+        "step_outcome": "passed",
+        "success": true,
+        "tool": "functions.exec_command",
+        "turn": 1
+      },
+      {
+        "action": "record_trace",
+        "actor": "worker",
+        "artifact_refs": [
+          "agent_trace.json"
+        ],
+        "causal_note": "Completes logging contract",
+        "causal_type": "finalization",
+        "caused_by": 6,
+        "error_message": null,
+        "error_type": null,
+        "input": "cat > agent_trace.json",
+        "metadata_json": {
+          "output_contract_items": [
+            "[EXCLUDED_GENERATED_ARTIFACT]",
+            "[EXCLUDED_GENERATED_ARTIFACT]",
+            "actual_outputs.json",
+            "agent_trace.json"
+          ],
+          "total_steps": 7
+        },
+        "observation": "Trace written and includes retry, correction, and compatibility cleanup sequence.",
+        "operation": "Write agent_trace.json with canonical schema steps",
+        "output": "WROTE agent_trace.json",
+        "reasoning": "Final required evidence file must persist before handoff.",
+        "state_change": "Added required trace artifact",
+        "step": 7,
+        "step_outcome": "passed",
+        "success": true,
+        "tool": "functions.exec_command",
+        "turn": 1
+      }
+    ],
+    "raw_trace_preserved": true,
+    "raw_trace_shape": "list",
+    "raw_trace_step_source": "steps",
+    "schema_valid": true,
+    "trace_normalization_status": "normalized",
+    "trace_valid": true
+  },
+  "preferred_attempt_id": null,
+  "previous_attempt_id": null,
+  "prior_trace_id": null,
+  "revision_attempt_ids": [],
+  "revision_group_id": null,
+  "schema_version": "aa-trace-v0.1",
+  "skills": null,
+  "started_at": null,
+  "steps": [
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "artifact_refs": [
+        "input/task.json",
+        "input/task_brief.md"
+      ],
+      "causal_note": null,
+      "causal_type": null,
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "cat input/task.json; cat input/task_brief.md",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "needs_review_items": [
+          "SLO",
+          "policy short/long thresholds",
+          "window-to-policy mapping"
+        ],
+        "original_action": "read_inputs",
+        "original_operation": "Read task.json and task_brief.md",
+        "original_step_outcome": "passed",
+        "raw_step": {
+          "action": "read_inputs",
+          "actor": "worker",
+          "artifact_refs": [
+            "input/task.json",
+            "input/task_brief.md"
+          ],
+          "causal_note": "Defines authoritative source data",
+          "causal_type": "init",
+          "caused_by": null,
+          "error_message": null,
+          "error_type": null,
+          "input": "cat input/task.json; cat input/task_brief.md",
+          "metadata_json": {
+            "needs_review_items": [
+              "SLO",
+              "policy short/long thresholds",
+              "window-to-policy mapping"
+            ]
+          },
+          "observation": "Task packet and constraints loaded; no hidden parameters such as SLO or explicit policy thresholds in input.",
+          "operation": "Read task.json and task_brief.md",
+          "output": "Embedded packet: R1(48,78,7), R2(57,74,10), R3(43,89,6); options and constraints parsed.",
+          "reasoning": "Scope identification is required before choosing formulas and ambiguity handling.",
+          "state_change": "No state change",
+          "step": 1,
+          "step_outcome": "passed",
+          "success": true,
+          "tool": "functions.exec_command",
+          "turn": 1
+        }
+      },
+      "observation": "Task packet and constraints loaded; no hidden parameters such as SLO or explicit policy thresholds in input.",
+      "operation": "read",
+      "output": "Embedded packet: R1(48,78,7), R2(57,74,10), R3(43,89,6); options and constraints parsed.",
+      "parallel_group": null,
+      "reasoning": "Scope identification is required before choosing formulas and ambiguity handling.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "No state change",
+      "step": 1,
+      "step_outcome": "neutral",
+      "success": true,
+      "tool": "Bash",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "causal_note": "Prepares deterministic file write path",
+      "causal_type": "other",
+      "caused_by": [
+        1
+      ],
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "ls -la artifacts; ls -la .",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "cwd": "[REDACTED_LOCAL_PATH]",
+        "original_action": "inspect_workspace",
+        "original_causal_type": "dependency",
+        "original_operation": "List artifacts directory and repository root",
+        "original_step_outcome": "passed",
+        "raw_step": {
+          "action": "inspect_workspace",
+          "actor": "worker",
+          "causal_note": "Prepares deterministic file write path",
+          "causal_type": "dependency",
+          "caused_by": 1,
+          "error_message": null,
+          "error_type": null,
+          "input": "ls -la artifacts; ls -la .",
+          "metadata_json": {
+            "cwd": "[REDACTED_LOCAL_PATH]"
+          },
+          "observation": "artifacts directory existed and was empty at task start.",
+          "operation": "List artifacts directory and repository root",
+          "output": "Baseline output folder state confirmed clean.",
+          "reasoning": "Needed baseline before creating required outputs in-place.",
+          "state_change": "No state change",
+          "step": 2,
+          "step_outcome": "passed",
+          "success": true,
+          "tool": "functions.exec_command",
+          "turn": 1
+        }
+      },
+      "observation": "artifacts directory existed and was empty at task start.",
+      "operation": "read",
+      "output": "Baseline output folder state confirmed clean.",
+      "parallel_group": null,
+      "reasoning": "Needed baseline before creating required outputs in-place.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "No state change",
+      "step": 2,
+      "step_outcome": "neutral",
+      "success": true,
+      "tool": "Bash",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "causal_note": "Missing openpyxl prevented direct xlsx object model usage",
+      "causal_type": "other",
+      "caused_by": [
+        2
+      ],
+      "ended_at": null,
+      "error_message": "No module named 'openpyxl'",
+      "error_type": "ModuleNotFoundError",
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "python3 script that writes SLO_burn_3.xlsx and expert_memo.md using openpyxl",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "attempted_tool": "openpyxl",
+        "fallback_required": true,
+        "original_action": "attempt_excel_generation",
+        "original_causal_type": "blocked_by_environment",
+        "original_operation": "Generate artifacts via openpyxl-based Python script",
+        "raw_step": {
+          "action": "attempt_excel_generation",
+          "actor": "worker",
+          "causal_note": "Missing openpyxl prevented direct xlsx object model usage",
+          "causal_type": "blocked_by_environment",
+          "caused_by": 2,
+          "error_message": "No module named 'openpyxl'",
+          "error_type": "ModuleNotFoundError",
+          "input": "python3 script that writes SLO_burn_3.xlsx and expert_memo.md using openpyxl",
+          "metadata_json": {
+            "attempted_tool": "openpyxl",
+            "fallback_required": true
+          },
+          "observation": "Dependency not available in environment.",
+          "operation": "Generate artifacts via openpyxl-based Python script",
+          "output": "ModuleNotFoundError: No module named 'openpyxl'",
+          "reasoning": "Failed dependency required fallback path while preserving formulas and citations.",
+          "state_change": "No artifact written in this attempt",
+          "step": 3,
+          "step_outcome": "failed",
+          "success": false,
+          "tool": "functions.exec_command",
+          "turn": 1
+        }
+      },
+      "observation": "Dependency not available in environment.",
+      "operation": "verify",
+      "output": "ModuleNotFoundError: No module named 'openpyxl'",
+      "parallel_group": null,
+      "reasoning": "Failed dependency required fallback path while preserving formulas and citations.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "No artifact written in this attempt",
+      "step": 3,
+      "step_outcome": "failed",
+      "success": false,
+      "tool": "python",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "artifact_refs": [
+        "actual_outputs.json"
+      ],
+      "causal_note": "Switched implementation strategy after dependency error",
+      "causal_type": "other",
+      "caused_by": [
+        3
+      ],
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "python3 script with zipfile + worksheet XML and formula cells",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "ambiguity_tags": [
+          "needs_review",
+          "assumed_slo_for_sensitivity"
+        ],
+        "excel_creation_method": "native OOXML zip assembly",
+        "generated_files": 3,
+        "original_action": "generate_outputs_fallback",
+        "original_causal_type": "fallback",
+        "original_operation": "Create OOXML workbook manually from XML + write expert memo + actual_outputs.json",
+        "original_step_outcome": "passed",
+        "raw_step": {
+          "action": "generate_outputs_fallback",
+          "actor": "worker",
+          "artifact_refs": [
+            "actual_outputs.json"
+          ],
+          "causal_note": "Switched implementation strategy after dependency error",
+          "causal_type": "fallback",
+          "caused_by": 3,
+          "error_message": null,
+          "error_type": null,
+          "input": "python3 script with zipfile + worksheet XML and formula cells",
+          "metadata_json": {
+            "ambiguity_tags": [
+              "needs_review",
+              "assumed_slo_for_sensitivity"
+            ],
+            "excel_creation_method": "native OOXML zip assembly",
+            "generated_files": 3
+          },
+          "observation": "Fallback writer produced all required artifacts successfully.",
+          "operation": "Create OOXML workbook manually from XML + write expert memo + actual_outputs.json",
+          "output": "WROTE [EXCLUDED_GENERATED_ARTIFACT] [EXCLUDED_GENERATED_ARTIFACT] actual_outputs.json",
+          "reasoning": "Preserve required output contract without external spreadsheet libraries.",
+          "state_change": "Added/overwrote required deliverables in artifacts and current directory",
+          "step": 4,
+          "step_outcome": "passed",
+          "success": true,
+          "tool": "functions.exec_command",
+          "turn": 1
+        }
+      },
+      "observation": "Fallback writer produced all required artifacts successfully.",
+      "operation": "execute",
+      "output": "WROTE [EXCLUDED_GENERATED_ARTIFACT] [EXCLUDED_GENERATED_ARTIFACT] actual_outputs.json",
+      "parallel_group": null,
+      "reasoning": "Preserve required output contract without external spreadsheet libraries.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Added/overwrote required deliverables in artifacts and current directory",
+      "step": 4,
+      "step_outcome": "neutral",
+      "success": true,
+      "tool": "python",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "causal_note": "Small compatibility correction after initial OOXML emission",
+      "causal_type": "other",
+      "caused_by": [
+        4
+      ],
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "python3 zip rewrite replacing formula cell type markers",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "formula_cell_fix_applied": true,
+        "original_action": "postprocess_formula_cells",
+        "original_causal_type": "error_recovery",
+        "original_operation": "Normalize formula cell XML attributes in generated xlsx",
+        "original_step_outcome": "passed",
+        "patch_target": "xl/worksheets/*.xml",
+        "raw_step": {
+          "action": "postprocess_formula_cells",
+          "actor": "worker",
+          "causal_note": "Small compatibility correction after initial OOXML emission",
+          "causal_type": "error_recovery",
+          "caused_by": 4,
+          "error_message": null,
+          "error_type": null,
+          "input": "python3 zip rewrite replacing formula cell type markers",
+          "metadata_json": {
+            "formula_cell_fix_applied": true,
+            "patch_target": "xl/worksheets/*.xml"
+          },
+          "observation": "Adjusted formula nodes to standard OOXML (`<f>` cells without `t='str'`).",
+          "operation": "Normalize formula cell XML attributes in generated xlsx",
+          "output": "Patched worksheet XML entries in [EXCLUDED_GENERATED_ARTIFACT]",
+          "reasoning": "Ensures downstream readers treat formulas as formula cells, not string-typed nodes.",
+          "state_change": "Updated existing [EXCLUDED_GENERATED_ARTIFACT] in place",
+          "step": 5,
+          "step_outcome": "passed",
+          "success": true,
+          "tool": "functions.exec_command",
+          "turn": 1
+        }
+      },
+      "observation": "Adjusted formula nodes to standard OOXML (`<f>` cells without `t='str'`).",
+      "operation": "execute",
+      "output": "Patched worksheet XML entries in [EXCLUDED_GENERATED_ARTIFACT]",
+      "parallel_group": null,
+      "reasoning": "Ensures downstream readers treat formulas as formula cells, not string-typed nodes.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Updated existing [EXCLUDED_GENERATED_ARTIFACT] in place",
+      "step": 5,
+      "step_outcome": "neutral",
+      "success": true,
+      "tool": "python",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "causal_note": "Non-ASCII cleanup step",
+      "causal_type": "other",
+      "caused_by": [
+        5
+      ],
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "python3 replace '-' with '-' in [EXCLUDED_GENERATED_ARTIFACT]",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "non_ascii_replacements": 1,
+        "original_action": "normalize_ascii_memo_text",
+        "original_causal_type": "postprocess",
+        "original_operation": "Replace non-ASCII hyphen char in memo to ASCII",
+        "original_step_outcome": "passed",
+        "raw_step": {
+          "action": "normalize_ascii_memo_text",
+          "actor": "worker",
+          "causal_note": "Non-ASCII cleanup step",
+          "causal_type": "postprocess",
+          "caused_by": 5,
+          "error_message": null,
+          "error_type": null,
+          "input": "python3 replace '-' with '-' in [EXCLUDED_GENERATED_ARTIFACT]",
+          "metadata_json": {
+            "non_ascii_replacements": 1
+          },
+          "observation": "One non-ASCII hyphen was removed from expert_memo.md.",
+          "operation": "Replace non-ASCII hyphen char in memo to ASCII",
+          "output": "expert_memo.md updated to ASCII-first text",
+          "reasoning": "Keep artifact formatting aligned with repository constraints favoring ASCII text.",
+          "state_change": "Updated expert memo text in place",
+          "step": 6,
+          "step_outcome": "passed",
+          "success": true,
+          "tool": "functions.exec_command",
+          "turn": 1
+        }
+      },
+      "observation": "One non-ASCII hyphen was removed from expert_memo.md.",
+      "operation": "execute",
+      "output": "expert_memo.md updated to ASCII-first text",
+      "parallel_group": null,
+      "reasoning": "Keep artifact formatting aligned with repository constraints favoring ASCII text.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Updated expert memo text in place",
+      "step": 6,
+      "step_outcome": "neutral",
+      "success": true,
+      "tool": "python",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "artifact_refs": [
+        "agent_trace.json"
+      ],
+      "causal_note": "Completes logging contract",
+      "causal_type": "other",
+      "caused_by": [
+        6
+      ],
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "cat > agent_trace.json",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "original_action": "record_trace",
+        "original_causal_type": "finalization",
+        "original_operation": "Write agent_trace.json with canonical schema steps",
+        "original_step_outcome": "passed",
+        "output_contract_items": [
+          "[EXCLUDED_GENERATED_ARTIFACT]",
+          "[EXCLUDED_GENERATED_ARTIFACT]",
+          "actual_outputs.json",
+          "agent_trace.json"
+        ],
+        "raw_step": {
+          "action": "record_trace",
+          "actor": "worker",
+          "artifact_refs": [
+            "agent_trace.json"
+          ],
+          "causal_note": "Completes logging contract",
+          "causal_type": "finalization",
+          "caused_by": 6,
+          "error_message": null,
+          "error_type": null,
+          "input": "cat > agent_trace.json",
+          "metadata_json": {
+            "output_contract_items": [
+              "[EXCLUDED_GENERATED_ARTIFACT]",
+              "[EXCLUDED_GENERATED_ARTIFACT]",
+              "actual_outputs.json",
+              "agent_trace.json"
+            ],
+            "total_steps": 7
+          },
+          "observation": "Trace written and includes retry, correction, and compatibility cleanup sequence.",
+          "operation": "Write agent_trace.json with canonical schema steps",
+          "output": "WROTE agent_trace.json",
+          "reasoning": "Final required evidence file must persist before handoff.",
+          "state_change": "Added required trace artifact",
+          "step": 7,
+          "step_outcome": "passed",
+          "success": true,
+          "tool": "functions.exec_command",
+          "turn": 1
+        },
+        "total_steps": 7
+      },
+      "observation": "Trace written and includes retry, correction, and compatibility cleanup sequence.",
+      "operation": "read",
+      "output": "WROTE agent_trace.json",
+      "parallel_group": null,
+      "reasoning": "Final required evidence file must persist before handoff.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Added required trace artifact",
+      "step": 7,
+      "step_outcome": "neutral",
+      "success": true,
+      "tool": "Bash",
+      "turn": 1
+    }
+  ],
+  "system_prompt": null,
+  "system_prompt_hash": null,
+  "task": "Advanced high-value task: Slo Burn-Rate Window Remediation Sequencing Note. Scenario: an expert team is preparing a launch or release decision and needs a calculation-backed recommendation for slo burn-rate window. Embedded packet: Records: R1 error_count=48 request_count=78 window_minutes=7; R2 error_count=57 request_count=74 window_minutes=10; R3 error_count=43 request_count=89 window_minutes=6. Remediation options: O1 changes error_count by -12% cost=80000; O2 changes request_count by -18% cost=97200; O3 changes window_minutes by -25% cost=56800; max_budget=122400. Rules and constraints: burn_rate=(error_rate)/(1-SLO); page when short and long windows exceed policy; missing values cannot be imputed and all calculations must use only the embedded packet. Required work: calculate all derived metrics, classify each record, and explain the smallest set of values that determines the recommendation. Deliver SLO_burn_3.xlsx + expert_memo.md with formulas, intermediate values, row-level citations, explicit assumptions, sensitivity checks, and a final recommendation table. Do not invent inputs; mark ambiguous items as needs_review.",
+  "task_family_id": null,
+  "original_internal_task_id": "aa_task_0563",
+  "task_id": "263",
+  "termination_reason": "task_complete",
+  "trace_id": "trace_263-revised_normalized",
+  "trace_mode": "live"
+}

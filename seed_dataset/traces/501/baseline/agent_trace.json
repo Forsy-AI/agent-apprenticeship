@@ -1,0 +1,1470 @@
+{
+  "actual_outputs": {
+    "original_internal_attempt_id": "aa_task_0801_baseline",
+    "attempt_id": "501-baseline",
+    "attempt_kind": "baseline",
+    "error_message": null,
+    "error_type": null,
+    "metadata_json": {
+      "actual_outputs_discarded_field_count": 0,
+      "actual_outputs_normalized": true,
+      "expected_deliverable_items": [
+        "cloud_oidc_blast_radius.md",
+        "iam_regression_tests.yaml"
+      ],
+      "original_fields": {
+        "artifacts": [
+          {
+            "description": "Packet-grounded blast-radius reconstruction, event matrix, exposure scoring, containment optimization, evidence gaps, and follow-up checks."
+          },
+          {
+            "description": "Deterministic IAM regression tests covering observed allow/deny boundaries and adjacent scope checks."
+          }
+        ],
+        "notes": [
+          "Analysis is constrained to the embedded packet only.",
+          "Residual severity is presented as a lower bound because the packet does not enumerate the full /prod/payments/* parameter inventory."
+        ]
+      },
+      "produced_deliverable_items": [
+        "cloud_oidc_blast_radius.md"
+      ],
+      "raw_actual_outputs": {
+        "artifacts": [
+          {
+            "description": "Packet-grounded blast-radius reconstruction, event matrix, exposure scoring, containment optimization, evidence gaps, and follow-up checks."
+          },
+          {
+            "description": "Deterministic IAM regression tests covering observed allow/deny boundaries and adjacent scope checks."
+          }
+        ],
+        "notes": [
+          "Analysis is constrained to the embedded packet only.",
+          "Residual severity is presented as a lower bound because the packet does not enumerate the full /prod/payments/* parameter inventory."
+        ],
+        "status": "completed"
+      }
+    },
+    "output_summary": "Normalized actual outputs from artifact files.",
+    "status": "partial",
+    "original_internal_task_id": "aa_task_0801",
+    "task_id": "501",
+    "original_status": "success",
+    "required_deliverables": [
+      "cloud_oidc_blast_radius.md",
+      "iam_regression_tests.yaml"
+    ],
+    "produced_deliverables": [
+      "cloud_oidc_blast_radius.md"
+    ],
+    "missing_required_deliverables": [
+      "iam_regression_tests.yaml"
+    ],
+    "deliverable_produced": false,
+    "deliverable_file_included": false,
+    "included_generated_artifacts": false,
+    "artifacts_excluded_reason": "Generated output artifacts are excluded from the public seed dataset by default.",
+    "logs_included": false,
+    "logs_excluded_reason": "Raw runner logs are excluded from the public seed dataset."
+  },
+  "agent_config": null,
+  "agent_tools": [
+    "codex_cli",
+    "Bash",
+    "python",
+    "file_read",
+    "file_write",
+    "apply_patch"
+  ],
+  "artifacts": [],
+  "original_internal_attempt_id": "aa_task_0801_baseline",
+  "attempt_id": "501-baseline",
+  "attempt_kind": "baseline",
+  "attempt_status": "completed",
+  "collection_id": null,
+  "completion_reason": null,
+  "ended_at": null,
+  "final_attempt_id": null,
+  "initial_attempt_id": null,
+  "iteration_index": null,
+  "learning": null,
+  "memory": null,
+  "metadata_json": {
+    "codex_command": [
+      "codex",
+      "exec",
+      "--sandbox",
+      "workspace-write",
+      "<prompt>"
+    ],
+    "codex_sandbox": "workspace-write",
+    "discarded_step_count": 0,
+    "raw_trace_list": [
+      {
+        "action": "Inspect workspace and read task inputs",
+        "actor": "assistant",
+        "artifact_refs": [
+          "./input/task.json",
+          "./input/task_brief.md"
+        ],
+        "causal_note": "The user requested artifact generation for the apprenticeship workflow task.",
+        "causal_type": "user_request",
+        "caused_by": "user_request",
+        "error_message": null,
+        "error_type": null,
+        "input": {
+          "commands": [
+            "pwd",
+            "rg --files .",
+            "sed -n '1,220p' input/task.json",
+            "sed -n '1,220p' input/task_brief.md"
+          ]
+        },
+        "metadata_json": {
+          "difficulty_tier": "expert",
+          "original_internal_task_id": "aa_task_0801",
+          "task_id": "501"
+        },
+        "observation": "The attempt directory contained only the prompt and two input files. The task required two deliverable artifacts plus trace and output manifest files.",
+        "operation": "read",
+        "output": {
+          "files": [
+            "./input/task_brief.md",
+            "./input/task.json"
+          ],
+          "learned": [
+            "Required report: cloud_oidc_blast_radius.md",
+            "Required test pack: iam_regression_tests.yaml",
+            "Use only the embedded packet; do not assume live cloud access"
+          ],
+          "pwd": "[REDACTED_LOCAL_PATH]"
+        },
+        "reasoning": "Start by reading the task packet and confirming the required output contract before performing any analysis.",
+        "state_change": "No files changed.",
+        "step": 1,
+        "step_outcome": "completed",
+        "success": true,
+        "tool": "multi_tool_use.parallel",
+        "turn": 1
+      },
+      {
+        "action": "Compute feasible containment combinations and residual severities",
+        "actor": "assistant",
+        "artifact_refs": [
+          "./input/task.json",
+          "./input/task_brief.md"
+        ],
+        "causal_note": "Uses the packet details read from the task inputs.",
+        "causal_type": "depends_on",
+        "caused_by": 1,
+        "error_message": null,
+        "error_type": null,
+        "input": {
+          "command": "python3 - <<'PY'\nfrom itertools import combinations\nbase={\n'X1_db_password':75,\n'X2_refund_hmac':75,\n'X3_api_update':55,\n'X4_passrole_enabler':65,\n'P1_additional_non_cardholder_reads':75*0.35,\n'P2_worker_update':55*0.35,\n'P3_debug_assume_with_ticket':65*0.35,\n}\nkeys=['C2','C3','C4','C5']\nimpact={'C2':14,'C3':0,'C4':19,'C5':6}\ndef residual(combo):\n    rem=base.copy()\n    s=set(combo)\n    if 'C5' in s:\n        rem['X1_db_password']*=0.2\n        rem['X2_refund_hmac']*=0.2\n    if 'C2' in s:\n        rem['X4_passrole_enabler']=0\n        rem['P1_additional_non_cardholder_reads']=0\n        rem['P2_worker_update']=0\n        rem['P3_debug_assume_with_ticket']=0\n    if 'C3' in s and 'C2' not in s:\n        rem['P1_additional_non_cardholder_reads']=0\n    if 'C4' in s and 'C2' not in s:\n        rem['X4_passrole_enabler']=0\n        rem['P2_worker_update']=0\n    return round(sum(rem.values()),2), rem\nfor r in range(0,len(keys)+1):\n    for combo in combinations(keys,r):\n        imp=sum(impact[c] for c in combo)\n        if imp<=25:\n            total, rem = residual(combo)\n            print(combo, imp, total)\nPY"
+        },
+        "metadata_json": {
+          "infeasible_option": "C1",
+          "max_customer_impact_min": 25
+        },
+        "observation": "A packet-bounded scoring script showed the best feasible lower-bound residual at 85.00 for combinations that include C2 and C5.",
+        "operation": "execute",
+        "output": {
+          "decision_hint": "Select C2+C3+C5 because it ties for the minimum residual and C3 adds zero-cost hardening.",
+          "feasible_sets": [
+            {
+              "impact": 0,
+              "residual": 338.25,
+              "set": []
+            },
+            {
+              "impact": 14,
+              "residual": 205.0,
+              "set": [
+                "C2"
+              ]
+            },
+            {
+              "impact": 0,
+              "residual": 312.0,
+              "set": [
+                "C3"
+              ]
+            },
+            {
+              "impact": 19,
+              "residual": 254.0,
+              "set": [
+                "C4"
+              ]
+            },
+            {
+              "impact": 6,
+              "residual": 218.25,
+              "set": [
+                "C5"
+              ]
+            },
+            {
+              "impact": 14,
+              "residual": 205.0,
+              "set": [
+                "C2",
+                "C3"
+              ]
+            },
+            {
+              "impact": 20,
+              "residual": 85.0,
+              "set": [
+                "C2",
+                "C5"
+              ]
+            },
+            {
+              "impact": 19,
+              "residual": 227.75,
+              "set": [
+                "C3",
+                "C4"
+              ]
+            },
+            {
+              "impact": 6,
+              "residual": 192.0,
+              "set": [
+                "C3",
+                "C5"
+              ]
+            },
+            {
+              "impact": 25,
+              "residual": 134.0,
+              "set": [
+                "C4",
+                "C5"
+              ]
+            },
+            {
+              "impact": 20,
+              "residual": 85.0,
+              "set": [
+                "C2",
+                "C3",
+                "C5"
+              ]
+            },
+            {
+              "impact": 25,
+              "residual": 107.75,
+              "set": [
+                "C3",
+                "C4",
+                "C5"
+              ]
+            }
+          ]
+        },
+        "reasoning": "Make the containment choice explicit and reproducible before writing the narrative artifact.",
+        "state_change": "No files changed.",
+        "step": 2,
+        "step_outcome": "completed",
+        "success": true,
+        "tool": "functions.exec_command",
+        "turn": 1
+      },
+      {
+        "action": "Create artifacts directory",
+        "actor": "assistant",
+        "causal_note": "Directory creation followed the containment and scope analysis.",
+        "causal_type": "depends_on",
+        "caused_by": 2,
+        "error_message": null,
+        "error_type": null,
+        "input": {
+          "command": "mkdir -p artifacts"
+        },
+        "metadata_json": {},
+        "observation": "The required output directory did not exist and was created.",
+        "operation": "write",
+        "output": {
+          "exit_code": 0
+        },
+        "reasoning": "Prepare the required location before writing the markdown report and YAML regression tests.",
+        "state_change": "Created ./artifacts/ for final deliverables.",
+        "step": 3,
+        "step_outcome": "completed",
+        "success": true,
+        "tool": "functions.exec_command",
+        "turn": 1
+      },
+      {
+        "action": "Write the blast-radius report and IAM regression test pack",
+        "actor": "assistant",
+        "causal_note": "The artifacts depend on the computed rule scope and containment scoring.",
+        "causal_type": "depends_on",
+        "caused_by": 3,
+        "error_message": null,
+        "error_type": null,
+        "input": {
+          "files_added": [
+            "[EXCLUDED_GENERATED_ARTIFACT]",
+            "[EXCLUDED_GENERATED_ARTIFACT]"
+          ]
+        },
+        "metadata_json": {
+          "report_sections": [
+            "Observed event allow/deny matrix",
+            "Confirmed and potential exposures",
+            "Containment optimizer",
+            "Evidence gaps"
+          ],
+          "test_count_target": ">=10"
+        },
+        "observation": "Both required deliverable artifacts were created with packet-grounded policy analysis and deterministic tests.",
+        "operation": "write",
+        "output": {
+          "apply_patch_result": "Success. Updated the following files: cloud_oidc_blast_radius.md, iam_regression_tests.yaml"
+        },
+        "reasoning": "Capture the event matrix, exposure scoring, containment optimizer, evidence gaps, and regression boundaries in the exact filenames required by the task.",
+        "state_change": "Created the markdown report and YAML regression suite.",
+        "step": 4,
+        "step_outcome": "completed",
+        "success": true,
+        "tool": "functions.apply_patch",
+        "turn": 1
+      },
+      {
+        "action": "Inspect the created artifacts and attempt structural validation",
+        "actor": "assistant",
+        "causal_note": "Triggered after artifact creation to confirm content integrity.",
+        "causal_type": "depends_on",
+        "caused_by": 4,
+        "error_message": "No module named 'yaml'",
+        "error_type": "ModuleNotFoundError",
+        "input": {
+          "commands": [
+            "sed -n '1,260p' [EXCLUDED_GENERATED_ARTIFACT]",
+            "sed -n '1,260p' [EXCLUDED_GENERATED_ARTIFACT]",
+            "python3 - <<'PY'\nfrom pathlib import Path\nimport yaml\np=Path('[EXCLUDED_GENERATED_ARTIFACT]')\nobj=yaml.safe_load(p.read_text())\nprint({'test_count': len(obj['tests']), 'ids': [t['id'] for t in obj['tests']]})\nPY"
+          ]
+        },
+        "metadata_json": {
+          "failed_validator": "python3 + PyYAML"
+        },
+        "observation": "The markdown and YAML content rendered as expected on readback, but the initial Python YAML parse failed because PyYAML was unavailable.",
+        "operation": "verify",
+        "output": {
+          "readback": "Artifact contents matched the intended policy matrix, exposure tables, and test definitions.",
+          "validation_error": "ModuleNotFoundError: No module named 'yaml'"
+        },
+        "reasoning": "Validate the deliverables immediately after writing them and capture any environment issue as trace evidence instead of silently skipping validation.",
+        "state_change": "No files changed.",
+        "step": 5,
+        "step_outcome": "failed",
+        "success": false,
+        "tool": "multi_tool_use.parallel",
+        "turn": 1
+      },
+      {
+        "action": "Retry YAML validation with a built-in parser and count tests",
+        "actor": "assistant",
+        "causal_note": "This verification retry addresses the missing PyYAML dependency recorded in the previous step.",
+        "causal_type": "retry_after_error",
+        "caused_by": 5,
+        "error_message": null,
+        "error_type": null,
+        "input": {
+          "commands": [
+            "ruby -e 'require \"yaml\"; data = YAML.load_file(\"[EXCLUDED_GENERATED_ARTIFACT]\"); puts({test_count: data[\"tests\"].size, first_id: data[\"tests\"][0][\"id\"], last_id: data[\"tests\"][-1][\"id\"]}.inspect)'",
+            "python3 - <<'PY'\nfrom pathlib import Path\np=Path('[EXCLUDED_GENERATED_ARTIFACT]')\ntext=p.read_text()\nprint({'line_count': len(text.splitlines()), 'test_id_count': text.count('- id: T')})\nPY"
+          ]
+        },
+        "metadata_json": {
+          "validated_test_count": 14
+        },
+        "observation": "Ruby's built-in YAML parser successfully loaded the regression file and confirmed 14 tests.",
+        "operation": "verify",
+        "output": {
+          "ruby_yaml_parse": {
+            "first_id": "T01",
+            "last_id": "T14",
+            "test_count": 14
+          },
+          "text_check": {
+            "line_count": 221,
+            "test_id_count": 14
+          }
+        },
+        "reasoning": "Recover from the missing Python dependency by using an available standard-library parser and an independent text count.",
+        "state_change": "No files changed.",
+        "step": 6,
+        "step_outcome": "completed",
+        "success": true,
+        "tool": "multi_tool_use.parallel",
+        "turn": 1
+      },
+      {
+        "action": "Write actual outputs manifest",
+        "actor": "assistant",
+        "artifact_refs": [
+          "./actual_outputs.json"
+        ],
+        "causal_note": "Written after artifact validation succeeded.",
+        "causal_type": "depends_on",
+        "caused_by": 6,
+        "error_message": null,
+        "error_type": null,
+        "input": {
+          "file_added": "./actual_outputs.json"
+        },
+        "metadata_json": {},
+        "observation": "A machine-readable manifest was added for the two final artifacts and packet-bounded notes.",
+        "operation": "write",
+        "output": {
+          "apply_patch_result": "Success. Updated the following files: actual_outputs.json"
+        },
+        "reasoning": "The run requires a simple manifest that points to the report and regression test artifacts.",
+        "state_change": "Created ./actual_outputs.json.",
+        "step": 7,
+        "step_outcome": "completed",
+        "success": true,
+        "tool": "functions.apply_patch",
+        "turn": 1
+      },
+      {
+        "action": "Write structured workflow trace",
+        "actor": "assistant",
+        "artifact_refs": [
+          "./agent_trace.json"
+        ],
+        "causal_note": "Written after the deliverables and output manifest were in place.",
+        "causal_type": "depends_on",
+        "caused_by": 7,
+        "error_message": null,
+        "error_type": null,
+        "input": {
+          "file_added": "./agent_trace.json"
+        },
+        "metadata_json": {
+          "trace_step_count": 8
+        },
+        "observation": "The trace file captured the commands, outputs, error, retry, and artifact creation steps in canonical fields.",
+        "operation": "write",
+        "output": {
+          "apply_patch_result": "Success. Updated the following files: agent_trace.json"
+        },
+        "reasoning": "The apprenticeship workflow requires a preserved action-by-action trace, including the failed PyYAML validation and recovery path.",
+        "state_change": "Created ./agent_trace.json.",
+        "step": 8,
+        "step_outcome": "completed",
+        "success": true,
+        "tool": "functions.apply_patch",
+        "turn": 1
+      },
+      {
+        "action": "Validate final JSON outputs and enumerate generated files",
+        "actor": "assistant",
+        "artifact_refs": [
+          "./actual_outputs.json",
+          "./agent_trace.json"
+        ],
+        "causal_note": "This is the final integrity check before delivery.",
+        "causal_type": "depends_on",
+        "caused_by": 8,
+        "error_message": null,
+        "error_type": null,
+        "input": {
+          "command": "python3 - <<'PY'\nimport json\nfrom pathlib import Path\nfor name in ['actual_outputs.json', 'agent_trace.json']:\n    with open(name) as f:\n        obj=json.load(f)\n    print(name, 'ok', type(obj).__name__)\nprint(sorted(str(p) for p in Path('artifacts').glob('*')))\nPY"
+        },
+        "metadata_json": {
+          "final_artifact_count": 2
+        },
+        "observation": "Both JSON files parsed successfully, and the attempt directory now contains the required outputs and the two artifact files.",
+        "operation": "verify",
+        "output": {
+          "artifact_listing": [
+            "[EXCLUDED_GENERATED_ARTIFACT]",
+            "[EXCLUDED_GENERATED_ARTIFACT]"
+          ],
+          "json_checks": [
+            "actual_outputs.json ok dict",
+            "agent_trace.json ok list"
+          ]
+        },
+        "reasoning": "Finish with machine-readable validation to ensure the required outputs exist and parse cleanly.",
+        "state_change": "No files changed.",
+        "step": 9,
+        "step_outcome": "completed",
+        "success": true,
+        "tool": "functions.exec_command",
+        "turn": 1
+      }
+    ],
+    "raw_trace_preserved": true,
+    "raw_trace_shape": "list",
+    "raw_trace_step_source": "steps",
+    "schema_valid": true,
+    "trace_normalization_status": "normalized",
+    "trace_valid": true
+  },
+  "preferred_attempt_id": null,
+  "previous_attempt_id": null,
+  "prior_trace_id": null,
+  "revision_attempt_ids": [],
+  "revision_group_id": null,
+  "schema_version": "aa-trace-v0.1",
+  "skills": null,
+  "started_at": null,
+  "steps": [
+    {
+      "action": "agent_step",
+      "actor": "assistant",
+      "alternatives_considered": null,
+      "artifact_refs": [
+        "./input/task.json",
+        "./input/task_brief.md"
+      ],
+      "causal_note": "The user requested artifact generation for the apprenticeship workflow task.",
+      "causal_type": "user_request",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "{\"commands\": [\"pwd\", \"rg --files .\", \"sed -n '1,220p' input/task.json\", \"sed -n '1,220p' input/task_brief.md\"]}",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "difficulty_tier": "expert",
+        "inputs": {
+          "commands": [
+            "pwd",
+            "rg --files .",
+            "sed -n '1,220p' input/task.json",
+            "sed -n '1,220p' input/task_brief.md"
+          ]
+        },
+        "original_action": "Inspect workspace and read task inputs",
+        "outputs": {
+          "files": [
+            "./input/task_brief.md",
+            "./input/task.json"
+          ],
+          "learned": [
+            "Required report: cloud_oidc_blast_radius.md",
+            "Required test pack: iam_regression_tests.yaml",
+            "Use only the embedded packet; do not assume live cloud access"
+          ],
+          "pwd": "[REDACTED_LOCAL_PATH]"
+        },
+        "raw_step": {
+          "action": "Inspect workspace and read task inputs",
+          "actor": "assistant",
+          "artifact_refs": [
+            "./input/task.json",
+            "./input/task_brief.md"
+          ],
+          "causal_note": "The user requested artifact generation for the apprenticeship workflow task.",
+          "causal_type": "user_request",
+          "caused_by": "user_request",
+          "error_message": null,
+          "error_type": null,
+          "input": {
+            "commands": [
+              "pwd",
+              "rg --files .",
+              "sed -n '1,220p' input/task.json",
+              "sed -n '1,220p' input/task_brief.md"
+            ]
+          },
+          "metadata_json": {
+            "difficulty_tier": "expert",
+            "original_internal_task_id": "aa_task_0801",
+            "task_id": "501"
+          },
+          "observation": "The attempt directory contained only the prompt and two input files. The task required two deliverable artifacts plus trace and output manifest files.",
+          "operation": "read",
+          "output": {
+            "files": [
+              "./input/task_brief.md",
+              "./input/task.json"
+            ],
+            "learned": [
+              "Required report: cloud_oidc_blast_radius.md",
+              "Required test pack: iam_regression_tests.yaml",
+              "Use only the embedded packet; do not assume live cloud access"
+            ],
+            "pwd": "[REDACTED_LOCAL_PATH]"
+          },
+          "reasoning": "Start by reading the task packet and confirming the required output contract before performing any analysis.",
+          "state_change": "No files changed.",
+          "step": 1,
+          "step_outcome": "completed",
+          "success": true,
+          "tool": "multi_tool_use.parallel",
+          "turn": 1
+        },
+        "original_internal_task_id": "aa_task_0801",
+        "task_id": "501"
+      },
+      "observation": "The attempt directory contained only the prompt and two input files. The task required two deliverable artifacts plus trace and output manifest files.",
+      "operation": "read",
+      "output": "{\"files\": [\"./prompt.md\", \"./input/task_brief.md\", \"./input/task.json\"], \"learned\": [\"Required report: cloud_oidc_blast_radius.md\", \"Required test pack: iam_regression_tests.yaml\", \"Use only the embedded packet; do not assume live cloud access\"], \"pwd\": \"[REDACTED_LOCAL_PATH]\"}",
+      "parallel_group": null,
+      "reasoning": "Start by reading the task packet and confirming the required output contract before performing any analysis.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "No files changed.",
+      "step": 1,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "Bash",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "assistant",
+      "alternatives_considered": null,
+      "artifact_refs": [
+        "./input/task.json",
+        "./input/task_brief.md"
+      ],
+      "causal_note": "Uses the packet details read from the task inputs.",
+      "causal_type": "other",
+      "caused_by": [
+        1
+      ],
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "{\"command\": \"python3 - <<'PY'\\nfrom itertools import combinations\\nbase={\\n'X1_db_password':75,\\n'X2_refund_hmac':75,\\n'X3_api_update':55,\\n'X4_passrole_enabler':65,\\n'P1_additional_non_cardholder_reads':75*0.35,\\n'P2_worker_update':55*0.35,\\n'P3_debug_assume_with_ticket':65*0.35,\\n}\\nkeys=['C2','C3','C4','C5']\\nimpact={'C2':14,'C3':0,'C4':19,'C5':6}\\ndef residual(combo):\\n    rem=base.copy()\\n    s=set(combo)\\n    if 'C5' in s:\\n        rem['X1_db_password']*=0.2\\n        rem['X2_refund_hmac']*=0.2\\n    if 'C2' in s:\\n        rem['X4_passrole_enabler']=0\\n        rem['P1_additional_non_cardholder_reads']=0\\n        rem['P2_worker_update']=0\\n        rem['P3_debug_assume_with_ticket']=0\\n    if 'C3' in s and 'C2' not in s:\\n        rem['P1_additional_non_cardholder_reads']=0\\n    if 'C4' in s and 'C2' not in s:\\n        rem['X4_passrole_enabler']=0\\n        rem['P2_worker_update']=0\\n    return round(sum(rem.values()),2), rem\\nfor r in range(0,len(keys)+1):\\n    for combo in combinations(keys,r):\\n        imp=sum(impact[c] for c in combo)\\n        if imp<=25:\\n            total, rem = residual(combo)\\n            print(combo, imp, total)\\nPY\"}",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "infeasible_option": "C1",
+        "inputs": {
+          "command": "python3 - <<'PY'\nfrom itertools import combinations\nbase={\n'X1_db_password':75,\n'X2_refund_hmac':75,\n'X3_api_update':55,\n'X4_passrole_enabler':65,\n'P1_additional_non_cardholder_reads':75*0.35,\n'P2_worker_update':55*0.35,\n'P3_debug_assume_with_ticket':65*0.35,\n}\nkeys=['C2','C3','C4','C5']\nimpact={'C2':14,'C3':0,'C4':19,'C5':6}\ndef residual(combo):\n    rem=base.copy()\n    s=set(combo)\n    if 'C5' in s:\n        rem['X1_db_password']*=0.2\n        rem['X2_refund_hmac']*=0.2\n    if 'C2' in s:\n        rem['X4_passrole_enabler']=0\n        rem['P1_additional_non_cardholder_reads']=0\n        rem['P2_worker_update']=0\n        rem['P3_debug_assume_with_ticket']=0\n    if 'C3' in s and 'C2' not in s:\n        rem['P1_additional_non_cardholder_reads']=0\n    if 'C4' in s and 'C2' not in s:\n        rem['X4_passrole_enabler']=0\n        rem['P2_worker_update']=0\n    return round(sum(rem.values()),2), rem\nfor r in range(0,len(keys)+1):\n    for combo in combinations(keys,r):\n        imp=sum(impact[c] for c in combo)\n        if imp<=25:\n            total, rem = residual(combo)\n            print(combo, imp, total)\nPY"
+        },
+        "max_customer_impact_min": 25,
+        "original_action": "Compute feasible containment combinations and residual severities",
+        "original_causal_type": "depends_on",
+        "outputs": {
+          "decision_hint": "Select C2+C3+C5 because it ties for the minimum residual and C3 adds zero-cost hardening.",
+          "feasible_sets": [
+            {
+              "impact": 0,
+              "residual": 338.25,
+              "set": []
+            },
+            {
+              "impact": 14,
+              "residual": 205.0,
+              "set": [
+                "C2"
+              ]
+            },
+            {
+              "impact": 0,
+              "residual": 312.0,
+              "set": [
+                "C3"
+              ]
+            },
+            {
+              "impact": 19,
+              "residual": 254.0,
+              "set": [
+                "C4"
+              ]
+            },
+            {
+              "impact": 6,
+              "residual": 218.25,
+              "set": [
+                "C5"
+              ]
+            },
+            {
+              "impact": 14,
+              "residual": 205.0,
+              "set": [
+                "C2",
+                "C3"
+              ]
+            },
+            {
+              "impact": 20,
+              "residual": 85.0,
+              "set": [
+                "C2",
+                "C5"
+              ]
+            },
+            {
+              "impact": 19,
+              "residual": 227.75,
+              "set": [
+                "C3",
+                "C4"
+              ]
+            },
+            {
+              "impact": 6,
+              "residual": 192.0,
+              "set": [
+                "C3",
+                "C5"
+              ]
+            },
+            {
+              "impact": 25,
+              "residual": 134.0,
+              "set": [
+                "C4",
+                "C5"
+              ]
+            },
+            {
+              "impact": 20,
+              "residual": 85.0,
+              "set": [
+                "C2",
+                "C3",
+                "C5"
+              ]
+            },
+            {
+              "impact": 25,
+              "residual": 107.75,
+              "set": [
+                "C3",
+                "C4",
+                "C5"
+              ]
+            }
+          ]
+        },
+        "raw_step": {
+          "action": "Compute feasible containment combinations and residual severities",
+          "actor": "assistant",
+          "artifact_refs": [
+            "./input/task.json",
+            "./input/task_brief.md"
+          ],
+          "causal_note": "Uses the packet details read from the task inputs.",
+          "causal_type": "depends_on",
+          "caused_by": 1,
+          "error_message": null,
+          "error_type": null,
+          "input": {
+            "command": "python3 - <<'PY'\nfrom itertools import combinations\nbase={\n'X1_db_password':75,\n'X2_refund_hmac':75,\n'X3_api_update':55,\n'X4_passrole_enabler':65,\n'P1_additional_non_cardholder_reads':75*0.35,\n'P2_worker_update':55*0.35,\n'P3_debug_assume_with_ticket':65*0.35,\n}\nkeys=['C2','C3','C4','C5']\nimpact={'C2':14,'C3':0,'C4':19,'C5':6}\ndef residual(combo):\n    rem=base.copy()\n    s=set(combo)\n    if 'C5' in s:\n        rem['X1_db_password']*=0.2\n        rem['X2_refund_hmac']*=0.2\n    if 'C2' in s:\n        rem['X4_passrole_enabler']=0\n        rem['P1_additional_non_cardholder_reads']=0\n        rem['P2_worker_update']=0\n        rem['P3_debug_assume_with_ticket']=0\n    if 'C3' in s and 'C2' not in s:\n        rem['P1_additional_non_cardholder_reads']=0\n    if 'C4' in s and 'C2' not in s:\n        rem['X4_passrole_enabler']=0\n        rem['P2_worker_update']=0\n    return round(sum(rem.values()),2), rem\nfor r in range(0,len(keys)+1):\n    for combo in combinations(keys,r):\n        imp=sum(impact[c] for c in combo)\n        if imp<=25:\n            total, rem = residual(combo)\n            print(combo, imp, total)\nPY"
+          },
+          "metadata_json": {
+            "infeasible_option": "C1",
+            "max_customer_impact_min": 25
+          },
+          "observation": "A packet-bounded scoring script showed the best feasible lower-bound residual at 85.00 for combinations that include C2 and C5.",
+          "operation": "execute",
+          "output": {
+            "decision_hint": "Select C2+C3+C5 because it ties for the minimum residual and C3 adds zero-cost hardening.",
+            "feasible_sets": [
+              {
+                "impact": 0,
+                "residual": 338.25,
+                "set": []
+              },
+              {
+                "impact": 14,
+                "residual": 205.0,
+                "set": [
+                  "C2"
+                ]
+              },
+              {
+                "impact": 0,
+                "residual": 312.0,
+                "set": [
+                  "C3"
+                ]
+              },
+              {
+                "impact": 19,
+                "residual": 254.0,
+                "set": [
+                  "C4"
+                ]
+              },
+              {
+                "impact": 6,
+                "residual": 218.25,
+                "set": [
+                  "C5"
+                ]
+              },
+              {
+                "impact": 14,
+                "residual": 205.0,
+                "set": [
+                  "C2",
+                  "C3"
+                ]
+              },
+              {
+                "impact": 20,
+                "residual": 85.0,
+                "set": [
+                  "C2",
+                  "C5"
+                ]
+              },
+              {
+                "impact": 19,
+                "residual": 227.75,
+                "set": [
+                  "C3",
+                  "C4"
+                ]
+              },
+              {
+                "impact": 6,
+                "residual": 192.0,
+                "set": [
+                  "C3",
+                  "C5"
+                ]
+              },
+              {
+                "impact": 25,
+                "residual": 134.0,
+                "set": [
+                  "C4",
+                  "C5"
+                ]
+              },
+              {
+                "impact": 20,
+                "residual": 85.0,
+                "set": [
+                  "C2",
+                  "C3",
+                  "C5"
+                ]
+              },
+              {
+                "impact": 25,
+                "residual": 107.75,
+                "set": [
+                  "C3",
+                  "C4",
+                  "C5"
+                ]
+              }
+            ]
+          },
+          "reasoning": "Make the containment choice explicit and reproducible before writing the narrative artifact.",
+          "state_change": "No files changed.",
+          "step": 2,
+          "step_outcome": "completed",
+          "success": true,
+          "tool": "functions.exec_command",
+          "turn": 1
+        }
+      },
+      "observation": "A packet-bounded scoring script showed the best feasible lower-bound residual at 85.00 for combinations that include C2 and C5.",
+      "operation": "execute",
+      "output": "{\"decision_hint\": \"Select C2+C3+C5 because it ties for the minimum residual and C3 adds zero-cost hardening.\", \"feasible_sets\": [{\"impact\": 0, \"residual\": 338.25, \"set\": []}, {\"impact\": 14, \"residual\": 205.0, \"set\": [\"C2\"]}, {\"impact\": 0, \"residual\": 312.0, \"set\": [\"C3\"]}, {\"impact\": 19, \"residual\": 254.0, \"set\": [\"C4\"]}, {\"impact\": 6, \"residual\": 218.25, \"set\": [\"C5\"]}, {\"impact\": 14, \"residual\": 205.0, \"set\": [\"C2\", \"C3\"]}, {\"impact\": 20, \"residual\": 85.0, \"set\": [\"C2\", \"C5\"]}, {\"impact\": 19, \"residual\": 227.75, \"set\": [\"C3\", \"C4\"]}, {\"impact\": 6, \"residual\": 192.0, \"set\": [\"C3\", \"C5\"]}, {\"impact\": 25, \"residual\": 134.0, \"set\": [\"C4\", \"C5\"]}, {\"impact\": 20, \"residual\": 85.0, \"set\": [\"C2\", \"C3\", \"C5\"]}, {\"impact\": 25, \"residual\": 107.75, \"set\": [\"C3\", \"C4\", \"C5\"]}]}",
+      "parallel_group": null,
+      "reasoning": "Make the containment choice explicit and reproducible before writing the narrative artifact.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "No files changed.",
+      "step": 2,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "Bash",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "assistant",
+      "alternatives_considered": null,
+      "causal_note": "Directory creation followed the containment and scope analysis.",
+      "causal_type": "other",
+      "caused_by": [
+        2
+      ],
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "{\"command\": \"mkdir -p artifacts\"}",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "inputs": {
+          "command": "mkdir -p artifacts"
+        },
+        "original_action": "Create artifacts directory",
+        "original_causal_type": "depends_on",
+        "outputs": {
+          "exit_code": 0
+        },
+        "raw_step": {
+          "action": "Create artifacts directory",
+          "actor": "assistant",
+          "causal_note": "Directory creation followed the containment and scope analysis.",
+          "causal_type": "depends_on",
+          "caused_by": 2,
+          "error_message": null,
+          "error_type": null,
+          "input": {
+            "command": "mkdir -p artifacts"
+          },
+          "metadata_json": {},
+          "observation": "The required output directory did not exist and was created.",
+          "operation": "write",
+          "output": {
+            "exit_code": 0
+          },
+          "reasoning": "Prepare the required location before writing the markdown report and YAML regression tests.",
+          "state_change": "Created ./artifacts/ for final deliverables.",
+          "step": 3,
+          "step_outcome": "completed",
+          "success": true,
+          "tool": "functions.exec_command",
+          "turn": 1
+        }
+      },
+      "observation": "The required output directory did not exist and was created.",
+      "operation": "write",
+      "output": "exit_code: 0",
+      "parallel_group": null,
+      "reasoning": "Prepare the required location before writing the markdown report and YAML regression tests.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Created ./artifacts/ for final deliverables.",
+      "step": 3,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "Bash",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "assistant",
+      "alternatives_considered": null,
+      "causal_note": "The artifacts depend on the computed rule scope and containment scoring.",
+      "causal_type": "other",
+      "caused_by": [
+        3
+      ],
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "{\"files_added\": [\"[EXCLUDED_GENERATED_ARTIFACT]\", \"[EXCLUDED_GENERATED_ARTIFACT]\"]}",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "inputs": {
+          "files_added": [
+            "[EXCLUDED_GENERATED_ARTIFACT]",
+            "[EXCLUDED_GENERATED_ARTIFACT]"
+          ]
+        },
+        "original_action": "Write the blast-radius report and IAM regression test pack",
+        "original_causal_type": "depends_on",
+        "outputs": {
+          "apply_patch_result": "Success. Updated the following files: cloud_oidc_blast_radius.md, iam_regression_tests.yaml"
+        },
+        "raw_step": {
+          "action": "Write the blast-radius report and IAM regression test pack",
+          "actor": "assistant",
+          "causal_note": "The artifacts depend on the computed rule scope and containment scoring.",
+          "causal_type": "depends_on",
+          "caused_by": 3,
+          "error_message": null,
+          "error_type": null,
+          "input": {
+            "files_added": [
+              "[EXCLUDED_GENERATED_ARTIFACT]",
+              "[EXCLUDED_GENERATED_ARTIFACT]"
+            ]
+          },
+          "metadata_json": {
+            "report_sections": [
+              "Observed event allow/deny matrix",
+              "Confirmed and potential exposures",
+              "Containment optimizer",
+              "Evidence gaps"
+            ],
+            "test_count_target": ">=10"
+          },
+          "observation": "Both required deliverable artifacts were created with packet-grounded policy analysis and deterministic tests.",
+          "operation": "write",
+          "output": {
+            "apply_patch_result": "Success. Updated the following files: cloud_oidc_blast_radius.md, iam_regression_tests.yaml"
+          },
+          "reasoning": "Capture the event matrix, exposure scoring, containment optimizer, evidence gaps, and regression boundaries in the exact filenames required by the task.",
+          "state_change": "Created the markdown report and YAML regression suite.",
+          "step": 4,
+          "step_outcome": "completed",
+          "success": true,
+          "tool": "functions.apply_patch",
+          "turn": 1
+        },
+        "report_sections": [
+          "Observed event allow/deny matrix",
+          "Confirmed and potential exposures",
+          "Containment optimizer",
+          "Evidence gaps"
+        ],
+        "test_count_target": ">=10"
+      },
+      "observation": "Both required deliverable artifacts were created with packet-grounded policy analysis and deterministic tests.",
+      "operation": "write",
+      "output": "{\"apply_patch_result\": \"Success. Updated the following files: cloud_oidc_blast_radius.md, iam_regression_tests.yaml\"}",
+      "parallel_group": null,
+      "reasoning": "Capture the event matrix, exposure scoring, containment optimizer, evidence gaps, and regression boundaries in the exact filenames required by the task.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Created the markdown report and YAML regression suite.",
+      "step": 4,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "file_write",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "assistant",
+      "alternatives_considered": null,
+      "causal_note": "Triggered after artifact creation to confirm content integrity.",
+      "causal_type": "other",
+      "caused_by": [
+        4
+      ],
+      "ended_at": null,
+      "error_message": "No module named 'yaml'",
+      "error_type": "ModuleNotFoundError",
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "{\"commands\": [\"sed -n '1,260p' [EXCLUDED_GENERATED_ARTIFACT]\", \"sed -n '1,260p' [EXCLUDED_GENERATED_ARTIFACT]\", \"python3 - <<'PY'\\nfrom pathlib import Path\\nimport yaml\\np=Path('[EXCLUDED_GENERATED_ARTIFACT]')\\nobj=yaml.safe_load(p.read_text())\\nprint({'test_count': len(obj['tests']), 'ids': [t['id'] for t in obj['tests']]})\\nPY\"]}",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "failed_validator": "python3 + PyYAML",
+        "inputs": {
+          "commands": [
+            "sed -n '1,260p' [EXCLUDED_GENERATED_ARTIFACT]",
+            "sed -n '1,260p' [EXCLUDED_GENERATED_ARTIFACT]",
+            "python3 - <<'PY'\nfrom pathlib import Path\nimport yaml\np=Path('[EXCLUDED_GENERATED_ARTIFACT]')\nobj=yaml.safe_load(p.read_text())\nprint({'test_count': len(obj['tests']), 'ids': [t['id'] for t in obj['tests']]})\nPY"
+          ]
+        },
+        "original_action": "Inspect the created artifacts and attempt structural validation",
+        "original_causal_type": "depends_on",
+        "outputs": {
+          "readback": "Artifact contents matched the intended policy matrix, exposure tables, and test definitions.",
+          "validation_error": "ModuleNotFoundError: No module named 'yaml'"
+        },
+        "raw_step": {
+          "action": "Inspect the created artifacts and attempt structural validation",
+          "actor": "assistant",
+          "causal_note": "Triggered after artifact creation to confirm content integrity.",
+          "causal_type": "depends_on",
+          "caused_by": 4,
+          "error_message": "No module named 'yaml'",
+          "error_type": "ModuleNotFoundError",
+          "input": {
+            "commands": [
+              "sed -n '1,260p' [EXCLUDED_GENERATED_ARTIFACT]",
+              "sed -n '1,260p' [EXCLUDED_GENERATED_ARTIFACT]",
+              "python3 - <<'PY'\nfrom pathlib import Path\nimport yaml\np=Path('[EXCLUDED_GENERATED_ARTIFACT]')\nobj=yaml.safe_load(p.read_text())\nprint({'test_count': len(obj['tests']), 'ids': [t['id'] for t in obj['tests']]})\nPY"
+            ]
+          },
+          "metadata_json": {
+            "failed_validator": "python3 + PyYAML"
+          },
+          "observation": "The markdown and YAML content rendered as expected on readback, but the initial Python YAML parse failed because PyYAML was unavailable.",
+          "operation": "verify",
+          "output": {
+            "readback": "Artifact contents matched the intended policy matrix, exposure tables, and test definitions.",
+            "validation_error": "ModuleNotFoundError: No module named 'yaml'"
+          },
+          "reasoning": "Validate the deliverables immediately after writing them and capture any environment issue as trace evidence instead of silently skipping validation.",
+          "state_change": "No files changed.",
+          "step": 5,
+          "step_outcome": "failed",
+          "success": false,
+          "tool": "multi_tool_use.parallel",
+          "turn": 1
+        }
+      },
+      "observation": "The markdown and YAML content rendered as expected on readback, but the initial Python YAML parse failed because PyYAML was unavailable.",
+      "operation": "verify",
+      "output": "{\"readback\": \"Artifact contents matched the intended policy matrix, exposure tables, and test definitions.\", \"validation_error\": \"ModuleNotFoundError: No module named 'yaml'\"}",
+      "parallel_group": null,
+      "reasoning": "Validate the deliverables immediately after writing them and capture any environment issue as trace evidence instead of silently skipping validation.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "No files changed.",
+      "step": 5,
+      "step_outcome": "failed",
+      "success": false,
+      "tool": "Bash",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "assistant",
+      "alternatives_considered": null,
+      "causal_note": "This verification retry addresses the missing PyYAML dependency recorded in the previous step.",
+      "causal_type": "other",
+      "caused_by": [
+        5
+      ],
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "{\"commands\": [\"ruby -e 'require \\\"yaml\\\"; data = YAML.load_file(\\\"[EXCLUDED_GENERATED_ARTIFACT]\"); puts({test_count: data[\\\"tests\\\"].size, first_id: data[\\\"tests\\\"][0][\\\"id\\\"], last_id: data[\\\"tests\\\"][-1][\\\"id\\\"]}.inspect)'\", \"python3 - <<'PY'\\nfrom pathlib import Path\\np=Path('[EXCLUDED_GENERATED_ARTIFACT]')\\ntext=p.read_text()\\nprint({'line_count': len(text.splitlines()), 'test_id_count': text.count('- id: T')})\\nPY\"]}",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "inputs": {
+          "commands": [
+            "ruby -e 'require \"yaml\"; data = YAML.load_file(\"[EXCLUDED_GENERATED_ARTIFACT]\"); puts({test_count: data[\"tests\"].size, first_id: data[\"tests\"][0][\"id\"], last_id: data[\"tests\"][-1][\"id\"]}.inspect)'",
+            "python3 - <<'PY'\nfrom pathlib import Path\np=Path('[EXCLUDED_GENERATED_ARTIFACT]')\ntext=p.read_text()\nprint({'line_count': len(text.splitlines()), 'test_id_count': text.count('- id: T')})\nPY"
+          ]
+        },
+        "original_action": "Retry YAML validation with a built-in parser and count tests",
+        "original_causal_type": "retry_after_error",
+        "outputs": {
+          "ruby_yaml_parse": {
+            "first_id": "T01",
+            "last_id": "T14",
+            "test_count": 14
+          },
+          "text_check": {
+            "line_count": 221,
+            "test_id_count": 14
+          }
+        },
+        "raw_step": {
+          "action": "Retry YAML validation with a built-in parser and count tests",
+          "actor": "assistant",
+          "causal_note": "This verification retry addresses the missing PyYAML dependency recorded in the previous step.",
+          "causal_type": "retry_after_error",
+          "caused_by": 5,
+          "error_message": null,
+          "error_type": null,
+          "input": {
+            "commands": [
+              "ruby -e 'require \"yaml\"; data = YAML.load_file(\"[EXCLUDED_GENERATED_ARTIFACT]\"); puts({test_count: data[\"tests\"].size, first_id: data[\"tests\"][0][\"id\"], last_id: data[\"tests\"][-1][\"id\"]}.inspect)'",
+              "python3 - <<'PY'\nfrom pathlib import Path\np=Path('[EXCLUDED_GENERATED_ARTIFACT]')\ntext=p.read_text()\nprint({'line_count': len(text.splitlines()), 'test_id_count': text.count('- id: T')})\nPY"
+            ]
+          },
+          "metadata_json": {
+            "validated_test_count": 14
+          },
+          "observation": "Ruby's built-in YAML parser successfully loaded the regression file and confirmed 14 tests.",
+          "operation": "verify",
+          "output": {
+            "ruby_yaml_parse": {
+              "first_id": "T01",
+              "last_id": "T14",
+              "test_count": 14
+            },
+            "text_check": {
+              "line_count": 221,
+              "test_id_count": 14
+            }
+          },
+          "reasoning": "Recover from the missing Python dependency by using an available standard-library parser and an independent text count.",
+          "state_change": "No files changed.",
+          "step": 6,
+          "step_outcome": "completed",
+          "success": true,
+          "tool": "multi_tool_use.parallel",
+          "turn": 1
+        },
+        "validated_test_count": 14
+      },
+      "observation": "Ruby's built-in YAML parser successfully loaded the regression file and confirmed 14 tests.",
+      "operation": "verify",
+      "output": "{\"ruby_yaml_parse\": {\"first_id\": \"T01\", \"last_id\": \"T14\", \"test_count\": 14}, \"text_check\": {\"line_count\": 221, \"test_id_count\": 14}}",
+      "parallel_group": null,
+      "reasoning": "Recover from the missing Python dependency by using an available standard-library parser and an independent text count.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "No files changed.",
+      "step": 6,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "Bash",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "assistant",
+      "alternatives_considered": null,
+      "artifact_refs": [
+        "./actual_outputs.json"
+      ],
+      "causal_note": "Written after artifact validation succeeded.",
+      "causal_type": "other",
+      "caused_by": [
+        6
+      ],
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "{\"file_added\": \"./actual_outputs.json\"}",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "inputs": {
+          "file_added": "./actual_outputs.json"
+        },
+        "original_action": "Write actual outputs manifest",
+        "original_causal_type": "depends_on",
+        "outputs": {
+          "apply_patch_result": "Success. Updated the following files: actual_outputs.json"
+        },
+        "raw_step": {
+          "action": "Write actual outputs manifest",
+          "actor": "assistant",
+          "artifact_refs": [
+            "./actual_outputs.json"
+          ],
+          "causal_note": "Written after artifact validation succeeded.",
+          "causal_type": "depends_on",
+          "caused_by": 6,
+          "error_message": null,
+          "error_type": null,
+          "input": {
+            "file_added": "./actual_outputs.json"
+          },
+          "metadata_json": {},
+          "observation": "A machine-readable manifest was added for the two final artifacts and packet-bounded notes.",
+          "operation": "write",
+          "output": {
+            "apply_patch_result": "Success. Updated the following files: actual_outputs.json"
+          },
+          "reasoning": "The run requires a simple manifest that points to the report and regression test artifacts.",
+          "state_change": "Created ./actual_outputs.json.",
+          "step": 7,
+          "step_outcome": "completed",
+          "success": true,
+          "tool": "functions.apply_patch",
+          "turn": 1
+        }
+      },
+      "observation": "A machine-readable manifest was added for the two final artifacts and packet-bounded notes.",
+      "operation": "write",
+      "output": "{\"apply_patch_result\": \"Success. Updated the following files: actual_outputs.json\"}",
+      "parallel_group": null,
+      "reasoning": "The run requires a simple manifest that points to the report and regression test artifacts.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Created ./actual_outputs.json.",
+      "step": 7,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "file_write",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "assistant",
+      "alternatives_considered": null,
+      "artifact_refs": [
+        "./agent_trace.json"
+      ],
+      "causal_note": "Written after the deliverables and output manifest were in place.",
+      "causal_type": "other",
+      "caused_by": [
+        7
+      ],
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "{\"file_added\": \"./agent_trace.json\"}",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "inputs": {
+          "file_added": "./agent_trace.json"
+        },
+        "original_action": "Write structured workflow trace",
+        "original_causal_type": "depends_on",
+        "outputs": {
+          "apply_patch_result": "Success. Updated the following files: agent_trace.json"
+        },
+        "raw_step": {
+          "action": "Write structured workflow trace",
+          "actor": "assistant",
+          "artifact_refs": [
+            "./agent_trace.json"
+          ],
+          "causal_note": "Written after the deliverables and output manifest were in place.",
+          "causal_type": "depends_on",
+          "caused_by": 7,
+          "error_message": null,
+          "error_type": null,
+          "input": {
+            "file_added": "./agent_trace.json"
+          },
+          "metadata_json": {
+            "trace_step_count": 8
+          },
+          "observation": "The trace file captured the commands, outputs, error, retry, and artifact creation steps in canonical fields.",
+          "operation": "write",
+          "output": {
+            "apply_patch_result": "Success. Updated the following files: agent_trace.json"
+          },
+          "reasoning": "The apprenticeship workflow requires a preserved action-by-action trace, including the failed PyYAML validation and recovery path.",
+          "state_change": "Created ./agent_trace.json.",
+          "step": 8,
+          "step_outcome": "completed",
+          "success": true,
+          "tool": "functions.apply_patch",
+          "turn": 1
+        },
+        "trace_step_count": 8
+      },
+      "observation": "The trace file captured the commands, outputs, error, retry, and artifact creation steps in canonical fields.",
+      "operation": "write",
+      "output": "{\"apply_patch_result\": \"Success. Updated the following files: agent_trace.json\"}",
+      "parallel_group": null,
+      "reasoning": "The apprenticeship workflow requires a preserved action-by-action trace, including the failed PyYAML validation and recovery path.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Created ./agent_trace.json.",
+      "step": 8,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "file_write",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "assistant",
+      "alternatives_considered": null,
+      "artifact_refs": [
+        "./actual_outputs.json",
+        "./agent_trace.json"
+      ],
+      "causal_note": "This is the final integrity check before delivery.",
+      "causal_type": "other",
+      "caused_by": [
+        8
+      ],
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "{\"command\": \"python3 - <<'PY'\\nimport json\\nfrom pathlib import Path\\nfor name in ['actual_outputs.json', 'agent_trace.json']:\\n    with open(name) as f:\\n        obj=json.load(f)\\n    print(name, 'ok', type(obj).__name__)\\nprint(sorted(str(p) for p in Path('artifacts').glob('*')))\\nPY\"}",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "final_artifact_count": 2,
+        "inputs": {
+          "command": "python3 - <<'PY'\nimport json\nfrom pathlib import Path\nfor name in ['actual_outputs.json', 'agent_trace.json']:\n    with open(name) as f:\n        obj=json.load(f)\n    print(name, 'ok', type(obj).__name__)\nprint(sorted(str(p) for p in Path('artifacts').glob('*')))\nPY"
+        },
+        "original_action": "Validate final JSON outputs and enumerate generated files",
+        "original_causal_type": "depends_on",
+        "outputs": {
+          "artifact_listing": [
+            "[EXCLUDED_GENERATED_ARTIFACT]",
+            "[EXCLUDED_GENERATED_ARTIFACT]"
+          ],
+          "json_checks": [
+            "actual_outputs.json ok dict",
+            "agent_trace.json ok list"
+          ]
+        },
+        "raw_step": {
+          "action": "Validate final JSON outputs and enumerate generated files",
+          "actor": "assistant",
+          "artifact_refs": [
+            "./actual_outputs.json",
+            "./agent_trace.json"
+          ],
+          "causal_note": "This is the final integrity check before delivery.",
+          "causal_type": "depends_on",
+          "caused_by": 8,
+          "error_message": null,
+          "error_type": null,
+          "input": {
+            "command": "python3 - <<'PY'\nimport json\nfrom pathlib import Path\nfor name in ['actual_outputs.json', 'agent_trace.json']:\n    with open(name) as f:\n        obj=json.load(f)\n    print(name, 'ok', type(obj).__name__)\nprint(sorted(str(p) for p in Path('artifacts').glob('*')))\nPY"
+          },
+          "metadata_json": {
+            "final_artifact_count": 2
+          },
+          "observation": "Both JSON files parsed successfully, and the attempt directory now contains the required outputs and the two artifact files.",
+          "operation": "verify",
+          "output": {
+            "artifact_listing": [
+              "[EXCLUDED_GENERATED_ARTIFACT]",
+              "[EXCLUDED_GENERATED_ARTIFACT]"
+            ],
+            "json_checks": [
+              "actual_outputs.json ok dict",
+              "agent_trace.json ok list"
+            ]
+          },
+          "reasoning": "Finish with machine-readable validation to ensure the required outputs exist and parse cleanly.",
+          "state_change": "No files changed.",
+          "step": 9,
+          "step_outcome": "completed",
+          "success": true,
+          "tool": "functions.exec_command",
+          "turn": 1
+        }
+      },
+      "observation": "Both JSON files parsed successfully, and the attempt directory now contains the required outputs and the two artifact files.",
+      "operation": "verify",
+      "output": "{\"artifact_listing\": [\"[EXCLUDED_GENERATED_ARTIFACT]\", \"[EXCLUDED_GENERATED_ARTIFACT]\"], \"json_checks\": [\"actual_outputs.json ok dict\", \"agent_trace.json ok list\"]}",
+      "parallel_group": null,
+      "reasoning": "Finish with machine-readable validation to ensure the required outputs exist and parse cleanly.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "No files changed.",
+      "step": 9,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "Bash",
+      "turn": 1
+    }
+  ],
+  "system_prompt": null,
+  "system_prompt_hash": null,
+  "task": "Showcase-grade advanced task: OIDC CI Token Compromise Blast Radius and Cloud Control Regression Pack. Reality context: a cloud platform team discovered a stolen CI OIDC token minutes before a production deploy freeze and needs a precise blast-radius reconstruction plus policy regression tests before re-enabling automation. removed context excerpt: NIST incident-response guidance emphasizes analyzing incident data and determining appropriate response; zero-trust and cloud IAM practices require explicit policy evaluation rather than assuming network trust. Embedded packet: compromised_subject=repo:payments/api:ref:refs/heads/release; token_iat=2026-06-17T10:12:04Z token_exp=10:57:04Z; federation_rules: R1 role=ci-payments-prod condition repo=payments/api branch=release aud=sts max_session_min=45 policies=deploy_payments,read_payment_params,pass_payments_task,assume_debug_if_ticket; R2 role=ci-analytics-dev condition repo=analytics/etl branch=* aud=sts policies=deploy_dev,read_dev_secrets; R3 role=breakglass-observer condition mfa=true policies=read_all_logs; policy_details: deploy_payments allows ecs:UpdateService cluster=prod-payments services=api,worker; read_payment_params allows ssm:GetParameter path=/prod/payments/* except tag:data_class=cardholder; pass_payments_task allows iam:PassRole role=payments-task only when passed_to=ecs-tasks; assume_debug_if_ticket allows sts:AssumeRole role=payments-runtime-debug only when ticket_tag matches INC-[0-9]+; observed_events: E1 10:14:18 ssm:GetParameter /prod/payments/db_password tag=customer_data result=Success source_ip=198.51.100.17, E2 10:16:03 ssm:GetParameter /prod/payments/card_processor_key tag=cardholder result=Denied, E3 10:19:44 ecs:UpdateService prod-payments/api desired_count 18->22 result=Success, E4 10:22:11 sts:AssumeRole payments-runtime-debug ticket_tag=missing result=Denied, E5 10:31:09 iam:PassRole payments-task passed_to=ecs-tasks result=Success, E6 10:43:20 ssm:GetParameter /prod/payments/refund_hmac tag=customer_data result=Success; resource_weights cardholder=100 customer_data=75 production_availability=55 privilege_escalation_enabler=65; containment_options: C1 disable_federation_provider impact_min=38 closes_all_roles, C2 pin_subject_to_signed_tag impact=14 blocks_branch_subjects, C3 deny_prod_payment_params impact=0 blocks_secret_reads, C4 remove_passrole impact=19 blocks_deploy, C5 rotate_customer_data_params impact=6 reduces_confirmed_secret_residual_by=80%; max_customer_impact_min=25. Rules and constraints: an action is allowed only if subject matches a federation rule, policy allows it, and no exception denies it; confirmed exposure requires Success; potential exposure includes allowed actions not observed before token_exp; residual_severity=sum(weight for confirmed/potential exposures not neutralized by containment), with confirmed secrets weighted 1.0 and potential exposures weighted 0.35; choose containment set with impact<=25 minimizing residual severity, then write regression tests for each observed allow/deny boundary. Required work: deliver cloud_oidc_blast_radius.md + iam_regression_tests.yaml with event allow/deny matrix, confirmed/potential exposure table, containment optimizer, chosen response, evidence gaps, and at least ten deterministic policy tests. Use only the packet; do not assume access to live cloud accounts.",
+  "task_family_id": null,
+  "original_internal_task_id": "aa_task_0801",
+  "task_id": "501",
+  "termination_reason": "task_complete",
+  "trace_id": "trace_501-baseline_normalized",
+  "trace_mode": "live"
+}

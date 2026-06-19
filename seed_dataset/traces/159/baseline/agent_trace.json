@@ -1,0 +1,1230 @@
+{
+  "actual_outputs": {
+    "original_internal_attempt_id": "aa_task_0359_baseline",
+    "attempt_id": "159-baseline",
+    "attempt_kind": "baseline",
+    "error_message": null,
+    "error_type": null,
+    "metadata_json": {
+      "actual_outputs_discarded_field_count": 0,
+      "actual_outputs_normalized": true,
+      "expected_deliverable_items": [
+        "LCMS_peak_QC.csv"
+      ],
+      "original_fields": {
+        "artifacts": [
+          {
+            "rows": 3,
+            "sha256": "bcfcc842d6014a0522762f963218710e0fc2b854912a862fb22da7b0328b66cc",
+            "type": "csv"
+          },
+          {
+            "sha256": "4780e5bb60844a0860b4a93f51608846e74e5338bfdcd62d407e387dcfc0f48f",
+            "type": "report"
+          }
+        ],
+        "attempt": "baseline",
+        "notes": [
+          "No external data lookup was used.",
+          "All supplied run values were present in the embedded packet."
+        ],
+        "validation": {
+          "csv_parse_check": "passed",
+          "missing_inputs_flagged_as_needs_review": false,
+          "outcomes": {
+            "Run1": "fail",
+            "Run2": "fail",
+            "Run3": "fail"
+          },
+          "row_count": 3,
+          "rule_application": {
+            "impurity_rule": "impurity < 10",
+            "yield_rule": "yield > 70"
+          }
+        }
+      },
+      "produced_deliverable_items": [
+        "LCMS_peak_QC.csv"
+      ],
+      "raw_actual_outputs": {
+        "artifacts": [
+          {
+            "rows": 3,
+            "sha256": "bcfcc842d6014a0522762f963218710e0fc2b854912a862fb22da7b0328b66cc",
+            "type": "csv"
+          },
+          {
+            "sha256": "4780e5bb60844a0860b4a93f51608846e74e5338bfdcd62d407e387dcfc0f48f",
+            "type": "report"
+          }
+        ],
+        "attempt": "baseline",
+        "notes": [
+          "No external data lookup was used.",
+          "All supplied run values were present in the embedded packet."
+        ],
+        "status": "complete",
+        "original_internal_task_id": "aa_task_0359",
+        "task_id": "159",
+        "validation": {
+          "csv_parse_check": "passed",
+          "missing_inputs_flagged_as_needs_review": false,
+          "outcomes": {
+            "Run1": "fail",
+            "Run2": "fail",
+            "Run3": "fail"
+          },
+          "row_count": 3,
+          "rule_application": {
+            "impurity_rule": "impurity < 10",
+            "yield_rule": "yield > 70"
+          }
+        }
+      }
+    },
+    "output_summary": "Normalized actual outputs from artifact files.",
+    "status": "success",
+    "original_internal_task_id": "aa_task_0359",
+    "task_id": "159",
+    "required_deliverables": [
+      "LCMS_peak_QC.csv"
+    ],
+    "produced_deliverables": [
+      "LCMS_peak_QC.csv"
+    ],
+    "missing_required_deliverables": [],
+    "deliverable_produced": true,
+    "deliverable_file_included": false,
+    "included_generated_artifacts": false,
+    "artifacts_excluded_reason": "Generated output artifacts are excluded from the public seed dataset by default.",
+    "logs_included": false,
+    "logs_excluded_reason": "Raw runner logs are excluded from the public seed dataset."
+  },
+  "agent_config": null,
+  "agent_tools": [
+    "codex_cli",
+    "Bash",
+    "python",
+    "file_read",
+    "file_write",
+    "apply_patch"
+  ],
+  "artifacts": [],
+  "original_internal_attempt_id": "aa_task_0359_baseline",
+  "attempt_id": "159-baseline",
+  "attempt_kind": "baseline",
+  "collection_id": null,
+  "completion_reason": null,
+  "ended_at": null,
+  "final_attempt_id": null,
+  "initial_attempt_id": null,
+  "iteration_index": null,
+  "learning": null,
+  "memory": null,
+  "metadata_json": {
+    "codex_command": [
+      "codex",
+      "exec",
+      "--sandbox",
+      "workspace-write",
+      "<prompt>"
+    ],
+    "codex_sandbox": "workspace-write",
+    "discarded_step_count": 0,
+    "original_fields": {
+      "final_artifacts": [
+        "[EXCLUDED_GENERATED_ARTIFACT]",
+        "[EXCLUDED_GENERATED_ARTIFACT]",
+        "actual_outputs.json",
+        "agent_trace.json"
+      ],
+      "final_status": "complete",
+      "trace": [
+        {
+          "action": "read_context",
+          "actor": "worker",
+          "artifact_refs": [
+            "input/task.json",
+            "input/task_brief.md"
+          ],
+          "causal_note": "Initial context gathering before any artifact creation.",
+          "causal_type": "start",
+          "caused_by": null,
+          "error_message": null,
+          "error_type": null,
+          "input": {
+            "commands": [
+              "pwd && rg --files ./input ./ .agents .codex 2>/dev/null | sed 's#^#FILE #'",
+              "sed -n '1,220p' ./input/task.json && printf '\\n---BRIEF---\\n' && sed -n '1,220p' ./input/task_brief.md",
+              "find . -maxdepth 3 -type f | sort"
+            ]
+          },
+          "metadata_json": {
+            "cwd": "[REDACTED_LOCAL_PATH]"
+          },
+          "observation": "Workspace contained prompt.md and the two input files; task.json embedded the three LC-MS runs and the strict QC rule.",
+          "operation": "inspect workspace and task inputs",
+          "output": {
+            "key_findings": [
+              "Run1: 68C, 2mol%, MeCN, yield 62%, impurity 16%",
+              "Run2: 83C, 3mol%, EtOAc, yield 76%, impurity 13%",
+              "Run3: 98C, 3mol%, MeCN, yield 79%, impurity 22%",
+              "Rule: yield > 70 and impurity < 10"
+            ]
+          },
+          "reasoning": "The packet is embedded in the task text, so citations must reference packet rows and values reconstructed from the prompt.",
+          "state_change": "Confirmed source packet and output contract; no extra input artifact was present.",
+          "step": 1,
+          "step_outcome": "success",
+          "success": true,
+          "tool": "exec_command",
+          "turn": 1
+        },
+        {
+          "action": "derive_plan",
+          "actor": "worker",
+          "causal_note": "Derived the output schema from the packet and rubric.",
+          "causal_type": "derivation",
+          "caused_by": 1,
+          "error_message": null,
+          "error_type": null,
+          "input": {
+            "rule": {
+              "impurity": "< 10",
+              "yield": "> 70"
+            },
+            "source_rows": [
+              {
+                "catalyst_mol_pct": 2,
+                "impurity_pct": 16,
+                "row": 1,
+                "solvent": "MeCN",
+                "temp_c": 68,
+                "yield_pct": 62
+              },
+              {
+                "catalyst_mol_pct": 3,
+                "impurity_pct": 13,
+                "row": 2,
+                "solvent": "EtOAc",
+                "temp_c": 83,
+                "yield_pct": 76
+              },
+              {
+                "catalyst_mol_pct": 3,
+                "impurity_pct": 22,
+                "row": 3,
+                "solvent": "MeCN",
+                "temp_c": 98,
+                "yield_pct": 79
+              }
+            ]
+          },
+          "metadata_json": {
+            "assumptions": [
+              "Row numbers 1-3 map directly to Run1-Run3.",
+              "Strict inequalities are applied literally.",
+              "No external data lookup is used."
+            ],
+            "citation_format": "packet row N / field=value"
+          },
+          "observation": "Derived a row-based citation scheme and QC formulas from the supplied values.",
+          "operation": "define citations, calculations, and sensitivity notes",
+          "output": {
+            "planned_artifacts": [
+              "[EXCLUDED_GENERATED_ARTIFACT]",
+              "[EXCLUDED_GENERATED_ARTIFACT]"
+            ],
+            "planned_calculations": [
+              "yield_margin_pp = yield_pct - 70",
+              "impurity_margin_pp = 10 - impurity_pct",
+              "qc_decision = pass only when both strict rules pass"
+            ]
+          },
+          "reasoning": "The supplied packet is complete, so the only valid sensitivity notes are threshold-distance notes, not invented uncertainty intervals.",
+          "state_change": "Defined exact reporting fields and a conservative no-uncertainty policy.",
+          "step": 2,
+          "step_outcome": "success",
+          "success": true,
+          "tool": "none",
+          "turn": 1
+        },
+        {
+          "action": "create_artifacts",
+          "actor": "worker",
+          "causal_note": "Implemented the planned schema and documentation.",
+          "causal_type": "implementation",
+          "caused_by": 2,
+          "error_message": null,
+          "error_type": null,
+          "input": {
+            "files_added": [
+              "[EXCLUDED_GENERATED_ARTIFACT]",
+              "[EXCLUDED_GENERATED_ARTIFACT]"
+            ]
+          },
+          "metadata_json": {
+            "csv_columns": [
+              "run_id",
+              "packet_row",
+              "temp_c",
+              "temp_citation",
+              "catalyst_mol_pct",
+              "catalyst_citation",
+              "solvent",
+              "solvent_citation",
+              "yield_pct",
+              "yield_citation",
+              "impurity_pct",
+              "impurity_citation",
+              "yield_margin_pp",
+              "yield_margin_citation",
+              "impurity_margin_pp",
+              "impurity_margin_citation",
+              "yield_rule_eval",
+              "yield_rule_citation",
+              "impurity_rule_eval",
+              "impurity_rule_citation",
+              "qc_decision",
+              "qc_decision_citation",
+              "decision_basis",
+              "uncertainty_or_sensitivity_note",
+              "validation_check",
+              "needs_review"
+            ]
+          },
+          "observation": "Created the required CSV under artifacts/ and a companion report with calculations and the final decision table.",
+          "operation": "write CSV deliverable and human-readable report",
+          "output": {
+            "csv_rows": 3,
+            "report_sections": [
+              "source packet reconstruction",
+              "QC rule",
+              "calculations",
+              "validation checks",
+              "final decision table",
+              "citation convention"
+            ]
+          },
+          "reasoning": "The CSV needed explicit row-level citations for source values plus citation columns for computed metrics and rule evaluations.",
+          "state_change": "Deliverables were materialized in the required artifacts directory.",
+          "step": 3,
+          "step_outcome": "success",
+          "success": true,
+          "tool": "apply_patch",
+          "turn": 1
+        },
+        {
+          "action": "validate_output",
+          "actor": "worker",
+          "causal_note": "Validation followed artifact creation.",
+          "causal_type": "verification",
+          "caused_by": 3,
+          "error_message": null,
+          "error_type": null,
+          "input": {
+            "checks": [
+              "row count = 3",
+              "all citation columns populated",
+              "Run1 fail/fail/fail with margins -8 and -6",
+              "Run2 pass/fail/fail with margins 6 and -3",
+              "Run3 pass/fail/fail with margins 9 and -12"
+            ],
+            "command": "node - <<'NODE' ... NODE"
+          },
+          "metadata_json": {
+            "expected_decisions": {
+              "Run1": "fail",
+              "Run2": "fail",
+              "Run3": "fail"
+            },
+            "validation_tool": "node"
+          },
+          "observation": "The CSV parsed cleanly and the expected outcomes matched all three rows.",
+          "operation": "parse CSV and verify row-level decisions",
+          "output": {
+            "result": {
+              "columns": 26,
+              "ok": true,
+              "rows": 3
+            }
+          },
+          "reasoning": "This check ensures the deliverable is reproducible from the packet alone and that the strict rule was applied correctly.",
+          "state_change": "Confirmed the CSV is syntactically valid and internally consistent.",
+          "step": 4,
+          "step_outcome": "success",
+          "success": true,
+          "tool": "exec_command",
+          "turn": 1
+        },
+        {
+          "action": "handle_error",
+          "actor": "worker",
+          "causal_note": "A missing utility required a fallback command.",
+          "causal_type": "retry",
+          "caused_by": 4,
+          "error_message": "sha256sum: command not found",
+          "error_type": "command_not_found",
+          "input": {
+            "command": "sha256sum [EXCLUDED_GENERATED_ARTIFACT] [EXCLUDED_GENERATED_ARTIFACT]"
+          },
+          "metadata_json": {
+            "fallback_tool": "shasum -a 256"
+          },
+          "observation": "The sha256sum command was not available in this environment.",
+          "operation": "attempt digest check with unavailable utility",
+          "output": {
+            "stderr": "zsh:1: command not found: sha256sum"
+          },
+          "reasoning": "The failure was environmental, not content-related, so retrying with shasum was the correct recovery path.",
+          "state_change": "Digest validation paused and retried with the macOS-compatible hash tool.",
+          "step": 5,
+          "step_outcome": "error",
+          "success": false,
+          "tool": "exec_command",
+          "turn": 1
+        },
+        {
+          "action": "validate_output",
+          "actor": "worker",
+          "causal_note": "Recovered from the missing command by using the supported hash utility.",
+          "causal_type": "retry_success",
+          "caused_by": 5,
+          "error_message": null,
+          "error_type": null,
+          "input": {
+            "command": "shasum -a 256 [EXCLUDED_GENERATED_ARTIFACT] [EXCLUDED_GENERATED_ARTIFACT] && sed -n '1,220p' [EXCLUDED_GENERATED_ARTIFACT]"
+          },
+          "metadata_json": {
+            "locale_warning": "perl locale warnings appeared during shasum execution but did not affect the computed digests"
+          },
+          "observation": "The fallback digest check succeeded and the report content matched the intended calculations.",
+          "operation": "compute file hashes and inspect report content",
+          "output": {
+            "hashes": {
+              "[EXCLUDED_GENERATED_ARTIFACT]": "4780e5bb60844a0860b4a93f51608846e74e5338bfdcd62d407e387dcfc0f48f"
+            },
+            "report_check": "report contains source reconstruction, calculations, validation, and final decision table"
+          },
+          "reasoning": "Persisting hashes and a report readback gives an auditable record that the final files match the validated content.",
+          "state_change": "Captured integrity evidence for both deliverables and confirmed the report text.",
+          "step": 6,
+          "step_outcome": "success",
+          "success": true,
+          "tool": "exec_command",
+          "turn": 1
+        },
+        {
+          "action": "persist_outputs",
+          "actor": "worker",
+          "artifact_refs": [
+            "actual_outputs.json",
+            "agent_trace.json"
+          ],
+          "causal_note": "Last step after validation and integrity capture.",
+          "causal_type": "finalization",
+          "caused_by": 6,
+          "error_message": null,
+          "error_type": null,
+          "input": {
+            "files_added": [
+              "actual_outputs.json",
+              "agent_trace.json"
+            ]
+          },
+          "metadata_json": {
+            "final_artifact_count": 4
+          },
+          "observation": "Wrote the final run manifest and workflow trace to the attempt directory.",
+          "operation": "write actual_outputs.json and agent_trace.json",
+          "output": {
+            "artifacts_recorded": [
+              "[EXCLUDED_GENERATED_ARTIFACT]",
+              "[EXCLUDED_GENERATED_ARTIFACT]"
+            ],
+            "status": "complete"
+          },
+          "reasoning": "The required artifacts and the execution evidence are now frozen in the attempt directory.",
+          "state_change": "Final metadata persisted; attempt is self-contained.",
+          "step": 7,
+          "step_outcome": "success",
+          "success": true,
+          "tool": "apply_patch",
+          "turn": 1
+        }
+      ]
+    },
+    "raw_trace_preserved": true,
+    "raw_trace_shape": "trace",
+    "raw_trace_step_source": "steps",
+    "schema_valid": true,
+    "trace_normalization_status": "normalized",
+    "trace_valid": true
+  },
+  "preferred_attempt_id": null,
+  "previous_attempt_id": null,
+  "prior_trace_id": null,
+  "revision_attempt_ids": [],
+  "revision_group_id": null,
+  "schema_version": "AgentTrace-1.0",
+  "skills": null,
+  "started_at": null,
+  "steps": [
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "artifact_refs": [
+        "input/task.json",
+        "input/task_brief.md"
+      ],
+      "causal_note": null,
+      "causal_type": null,
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "{\"commands\": [\"pwd && rg --files ./input ./ .agents .codex 2>/dev/null | sed 's#^#FILE #'\", \"sed -n '1,220p' ./input/task.json && printf '\\\\n---BRIEF---\\\\n' && sed -n '1,220p' ./input/task_brief.md\", \"sed -n '1,240p' ./prompt.md\", \"find . -maxdepth 3 -type f | sort\"]}",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "cwd": "[REDACTED_LOCAL_PATH]",
+        "inputs": {
+          "commands": [
+            "pwd && rg --files ./input ./ .agents .codex 2>/dev/null | sed 's#^#FILE #'",
+            "sed -n '1,220p' ./input/task.json && printf '\\n---BRIEF---\\n' && sed -n '1,220p' ./input/task_brief.md",
+            "find . -maxdepth 3 -type f | sort"
+          ]
+        },
+        "original_action": "read_context",
+        "original_operation": "inspect workspace and task inputs",
+        "original_step_outcome": "success",
+        "outputs": {
+          "key_findings": [
+            "Run1: 68C, 2mol%, MeCN, yield 62%, impurity 16%",
+            "Run2: 83C, 3mol%, EtOAc, yield 76%, impurity 13%",
+            "Run3: 98C, 3mol%, MeCN, yield 79%, impurity 22%",
+            "Rule: yield > 70 and impurity < 10"
+          ]
+        },
+        "raw_step": {
+          "action": "read_context",
+          "actor": "worker",
+          "artifact_refs": [
+            "input/task.json",
+            "input/task_brief.md"
+          ],
+          "causal_note": "Initial context gathering before any artifact creation.",
+          "causal_type": "start",
+          "caused_by": null,
+          "error_message": null,
+          "error_type": null,
+          "input": {
+            "commands": [
+              "pwd && rg --files ./input ./ .agents .codex 2>/dev/null | sed 's#^#FILE #'",
+              "sed -n '1,220p' ./input/task.json && printf '\\n---BRIEF---\\n' && sed -n '1,220p' ./input/task_brief.md",
+              "find . -maxdepth 3 -type f | sort"
+            ]
+          },
+          "metadata_json": {
+            "cwd": "[REDACTED_LOCAL_PATH]"
+          },
+          "observation": "Workspace contained prompt.md and the two input files; task.json embedded the three LC-MS runs and the strict QC rule.",
+          "operation": "inspect workspace and task inputs",
+          "output": {
+            "key_findings": [
+              "Run1: 68C, 2mol%, MeCN, yield 62%, impurity 16%",
+              "Run2: 83C, 3mol%, EtOAc, yield 76%, impurity 13%",
+              "Run3: 98C, 3mol%, MeCN, yield 79%, impurity 22%",
+              "Rule: yield > 70 and impurity < 10"
+            ]
+          },
+          "reasoning": "The packet is embedded in the task text, so citations must reference packet rows and values reconstructed from the prompt.",
+          "state_change": "Confirmed source packet and output contract; no extra input artifact was present.",
+          "step": 1,
+          "step_outcome": "success",
+          "success": true,
+          "tool": "exec_command",
+          "turn": 1
+        }
+      },
+      "observation": "Workspace contained prompt.md and the two input files; task.json embedded the three LC-MS runs and the strict QC rule.",
+      "operation": "read",
+      "output": "{\"key_findings\": [\"Run1: 68C, 2mol%, MeCN, yield 62%, impurity 16%\", \"Run2: 83C, 3mol%, EtOAc, yield 76%, impurity 13%\", \"Run3: 98C, 3mol%, MeCN, yield 79%, impurity 22%\", \"Rule: yield > 70 and impurity < 10\"]}",
+      "parallel_group": null,
+      "reasoning": "The packet is embedded in the task text, so citations must reference packet rows and values reconstructed from the prompt.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Confirmed source packet and output contract; no extra input artifact was present.",
+      "step": 1,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "Bash",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "causal_note": "Derived the output schema from the packet and rubric.",
+      "causal_type": "other",
+      "caused_by": [
+        1
+      ],
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "{\"rule\": {\"impurity\": \"< 10\", \"yield\": \"> 70\"}, \"source_rows\": [{\"catalyst_mol_pct\": 2, \"impurity_pct\": 16, \"row\": 1, \"solvent\": \"MeCN\", \"temp_c\": 68, \"yield_pct\": 62}, {\"catalyst_mol_pct\": 3, \"impurity_pct\": 13, \"row\": 2, \"solvent\": \"EtOAc\", \"temp_c\": 83, \"yield_pct\": 76}, {\"catalyst_mol_pct\": 3, \"impurity_pct\": 22, \"row\": 3, \"solvent\": \"MeCN\", \"temp_c\": 98, \"yield_pct\": 79}]}",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "assumptions": [
+          "Row numbers 1-3 map directly to Run1-Run3.",
+          "Strict inequalities are applied literally.",
+          "No external data lookup is used."
+        ],
+        "citation_format": "packet row N / field=value",
+        "inputs": {
+          "rule": {
+            "impurity": "< 10",
+            "yield": "> 70"
+          },
+          "source_rows": [
+            {
+              "catalyst_mol_pct": 2,
+              "impurity_pct": 16,
+              "row": 1,
+              "solvent": "MeCN",
+              "temp_c": 68,
+              "yield_pct": 62
+            },
+            {
+              "catalyst_mol_pct": 3,
+              "impurity_pct": 13,
+              "row": 2,
+              "solvent": "EtOAc",
+              "temp_c": 83,
+              "yield_pct": 76
+            },
+            {
+              "catalyst_mol_pct": 3,
+              "impurity_pct": 22,
+              "row": 3,
+              "solvent": "MeCN",
+              "temp_c": 98,
+              "yield_pct": 79
+            }
+          ]
+        },
+        "original_action": "derive_plan",
+        "original_causal_type": "derivation",
+        "original_operation": "define citations, calculations, and sensitivity notes",
+        "original_step_outcome": "success",
+        "outputs": {
+          "planned_artifacts": [
+            "[EXCLUDED_GENERATED_ARTIFACT]",
+            "[EXCLUDED_GENERATED_ARTIFACT]"
+          ],
+          "planned_calculations": [
+            "yield_margin_pp = yield_pct - 70",
+            "impurity_margin_pp = 10 - impurity_pct",
+            "qc_decision = pass only when both strict rules pass"
+          ]
+        },
+        "raw_step": {
+          "action": "derive_plan",
+          "actor": "worker",
+          "causal_note": "Derived the output schema from the packet and rubric.",
+          "causal_type": "derivation",
+          "caused_by": 1,
+          "error_message": null,
+          "error_type": null,
+          "input": {
+            "rule": {
+              "impurity": "< 10",
+              "yield": "> 70"
+            },
+            "source_rows": [
+              {
+                "catalyst_mol_pct": 2,
+                "impurity_pct": 16,
+                "row": 1,
+                "solvent": "MeCN",
+                "temp_c": 68,
+                "yield_pct": 62
+              },
+              {
+                "catalyst_mol_pct": 3,
+                "impurity_pct": 13,
+                "row": 2,
+                "solvent": "EtOAc",
+                "temp_c": 83,
+                "yield_pct": 76
+              },
+              {
+                "catalyst_mol_pct": 3,
+                "impurity_pct": 22,
+                "row": 3,
+                "solvent": "MeCN",
+                "temp_c": 98,
+                "yield_pct": 79
+              }
+            ]
+          },
+          "metadata_json": {
+            "assumptions": [
+              "Row numbers 1-3 map directly to Run1-Run3.",
+              "Strict inequalities are applied literally.",
+              "No external data lookup is used."
+            ],
+            "citation_format": "packet row N / field=value"
+          },
+          "observation": "Derived a row-based citation scheme and QC formulas from the supplied values.",
+          "operation": "define citations, calculations, and sensitivity notes",
+          "output": {
+            "planned_artifacts": [
+              "[EXCLUDED_GENERATED_ARTIFACT]",
+              "[EXCLUDED_GENERATED_ARTIFACT]"
+            ],
+            "planned_calculations": [
+              "yield_margin_pp = yield_pct - 70",
+              "impurity_margin_pp = 10 - impurity_pct",
+              "qc_decision = pass only when both strict rules pass"
+            ]
+          },
+          "reasoning": "The supplied packet is complete, so the only valid sensitivity notes are threshold-distance notes, not invented uncertainty intervals.",
+          "state_change": "Defined exact reporting fields and a conservative no-uncertainty policy.",
+          "step": 2,
+          "step_outcome": "success",
+          "success": true,
+          "tool": "none",
+          "turn": 1
+        }
+      },
+      "observation": "Derived a row-based citation scheme and QC formulas from the supplied values.",
+      "operation": "other",
+      "output": "{\"planned_artifacts\": [\"[EXCLUDED_GENERATED_ARTIFACT]\", \"[EXCLUDED_GENERATED_ARTIFACT]\"], \"planned_calculations\": [\"yield_margin_pp = yield_pct - 70\", \"impurity_margin_pp = 10 - impurity_pct\", \"qc_decision = pass only when both strict rules pass\"]}",
+      "parallel_group": null,
+      "reasoning": "The supplied packet is complete, so the only valid sensitivity notes are threshold-distance notes, not invented uncertainty intervals.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Defined exact reporting fields and a conservative no-uncertainty policy.",
+      "step": 2,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "Bash",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "causal_note": "Implemented the planned schema and documentation.",
+      "causal_type": "other",
+      "caused_by": [
+        2
+      ],
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "{\"files_added\": [\"[EXCLUDED_GENERATED_ARTIFACT]\", \"[EXCLUDED_GENERATED_ARTIFACT]\"]}",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "csv_columns": [
+          "run_id",
+          "packet_row",
+          "temp_c",
+          "temp_citation",
+          "catalyst_mol_pct",
+          "catalyst_citation",
+          "solvent",
+          "solvent_citation",
+          "yield_pct",
+          "yield_citation",
+          "impurity_pct",
+          "impurity_citation",
+          "yield_margin_pp",
+          "yield_margin_citation",
+          "impurity_margin_pp",
+          "impurity_margin_citation",
+          "yield_rule_eval",
+          "yield_rule_citation",
+          "impurity_rule_eval",
+          "impurity_rule_citation",
+          "qc_decision",
+          "qc_decision_citation",
+          "decision_basis",
+          "uncertainty_or_sensitivity_note",
+          "validation_check",
+          "needs_review"
+        ],
+        "inputs": {
+          "files_added": [
+            "[EXCLUDED_GENERATED_ARTIFACT]",
+            "[EXCLUDED_GENERATED_ARTIFACT]"
+          ]
+        },
+        "original_action": "create_artifacts",
+        "original_causal_type": "implementation",
+        "original_operation": "write CSV deliverable and human-readable report",
+        "original_step_outcome": "success",
+        "outputs": {
+          "csv_rows": 3,
+          "report_sections": [
+            "source packet reconstruction",
+            "QC rule",
+            "calculations",
+            "validation checks",
+            "final decision table",
+            "citation convention"
+          ]
+        },
+        "raw_step": {
+          "action": "create_artifacts",
+          "actor": "worker",
+          "causal_note": "Implemented the planned schema and documentation.",
+          "causal_type": "implementation",
+          "caused_by": 2,
+          "error_message": null,
+          "error_type": null,
+          "input": {
+            "files_added": [
+              "[EXCLUDED_GENERATED_ARTIFACT]",
+              "[EXCLUDED_GENERATED_ARTIFACT]"
+            ]
+          },
+          "metadata_json": {
+            "csv_columns": [
+              "run_id",
+              "packet_row",
+              "temp_c",
+              "temp_citation",
+              "catalyst_mol_pct",
+              "catalyst_citation",
+              "solvent",
+              "solvent_citation",
+              "yield_pct",
+              "yield_citation",
+              "impurity_pct",
+              "impurity_citation",
+              "yield_margin_pp",
+              "yield_margin_citation",
+              "impurity_margin_pp",
+              "impurity_margin_citation",
+              "yield_rule_eval",
+              "yield_rule_citation",
+              "impurity_rule_eval",
+              "impurity_rule_citation",
+              "qc_decision",
+              "qc_decision_citation",
+              "decision_basis",
+              "uncertainty_or_sensitivity_note",
+              "validation_check",
+              "needs_review"
+            ]
+          },
+          "observation": "Created the required CSV under artifacts/ and a companion report with calculations and the final decision table.",
+          "operation": "write CSV deliverable and human-readable report",
+          "output": {
+            "csv_rows": 3,
+            "report_sections": [
+              "source packet reconstruction",
+              "QC rule",
+              "calculations",
+              "validation checks",
+              "final decision table",
+              "citation convention"
+            ]
+          },
+          "reasoning": "The CSV needed explicit row-level citations for source values plus citation columns for computed metrics and rule evaluations.",
+          "state_change": "Deliverables were materialized in the required artifacts directory.",
+          "step": 3,
+          "step_outcome": "success",
+          "success": true,
+          "tool": "apply_patch",
+          "turn": 1
+        }
+      },
+      "observation": "Created the required CSV under artifacts/ and a companion report with calculations and the final decision table.",
+      "operation": "other",
+      "output": "{\"csv_rows\": 3, \"report_sections\": [\"source packet reconstruction\", \"QC rule\", \"calculations\", \"validation checks\", \"final decision table\", \"citation convention\"]}",
+      "parallel_group": null,
+      "reasoning": "The CSV needed explicit row-level citations for source values plus citation columns for computed metrics and rule evaluations.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Deliverables were materialized in the required artifacts directory.",
+      "step": 3,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "apply_patch",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "causal_note": "Validation followed artifact creation.",
+      "causal_type": "other",
+      "caused_by": [
+        3
+      ],
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "{\"checks\": [\"row count = 3\", \"all citation columns populated\", \"Run1 fail/fail/fail with margins -8 and -6\", \"Run2 pass/fail/fail with margins 6 and -3\", \"Run3 pass/fail/fail with margins 9 and -12\"], \"command\": \"node - <<'NODE' ... NODE\"}",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "expected_decisions": {
+          "Run1": "fail",
+          "Run2": "fail",
+          "Run3": "fail"
+        },
+        "inputs": {
+          "checks": [
+            "row count = 3",
+            "all citation columns populated",
+            "Run1 fail/fail/fail with margins -8 and -6",
+            "Run2 pass/fail/fail with margins 6 and -3",
+            "Run3 pass/fail/fail with margins 9 and -12"
+          ],
+          "command": "node - <<'NODE' ... NODE"
+        },
+        "original_action": "validate_output",
+        "original_causal_type": "verification",
+        "original_operation": "parse CSV and verify row-level decisions",
+        "original_step_outcome": "success",
+        "outputs": {
+          "result": {
+            "columns": 26,
+            "ok": true,
+            "rows": 3
+          }
+        },
+        "raw_step": {
+          "action": "validate_output",
+          "actor": "worker",
+          "causal_note": "Validation followed artifact creation.",
+          "causal_type": "verification",
+          "caused_by": 3,
+          "error_message": null,
+          "error_type": null,
+          "input": {
+            "checks": [
+              "row count = 3",
+              "all citation columns populated",
+              "Run1 fail/fail/fail with margins -8 and -6",
+              "Run2 pass/fail/fail with margins 6 and -3",
+              "Run3 pass/fail/fail with margins 9 and -12"
+            ],
+            "command": "node - <<'NODE' ... NODE"
+          },
+          "metadata_json": {
+            "expected_decisions": {
+              "Run1": "fail",
+              "Run2": "fail",
+              "Run3": "fail"
+            },
+            "validation_tool": "node"
+          },
+          "observation": "The CSV parsed cleanly and the expected outcomes matched all three rows.",
+          "operation": "parse CSV and verify row-level decisions",
+          "output": {
+            "result": {
+              "columns": 26,
+              "ok": true,
+              "rows": 3
+            }
+          },
+          "reasoning": "This check ensures the deliverable is reproducible from the packet alone and that the strict rule was applied correctly.",
+          "state_change": "Confirmed the CSV is syntactically valid and internally consistent.",
+          "step": 4,
+          "step_outcome": "success",
+          "success": true,
+          "tool": "exec_command",
+          "turn": 1
+        },
+        "validation_tool": "node"
+      },
+      "observation": "The CSV parsed cleanly and the expected outcomes matched all three rows.",
+      "operation": "other",
+      "output": "{\"result\": {\"columns\": 26, \"ok\": true, \"rows\": 3}}",
+      "parallel_group": null,
+      "reasoning": "This check ensures the deliverable is reproducible from the packet alone and that the strict rule was applied correctly.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Confirmed the CSV is syntactically valid and internally consistent.",
+      "step": 4,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "Bash",
+      "turn": 1
+    },
+    {
+      "action": "error",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "causal_note": "A missing utility required a fallback command.",
+      "causal_type": "other",
+      "caused_by": [
+        4
+      ],
+      "ended_at": null,
+      "error_message": "sha256sum: command not found",
+      "error_type": "command_not_found",
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "{\"command\": \"sha256sum [EXCLUDED_GENERATED_ARTIFACT] [EXCLUDED_GENERATED_ARTIFACT]\"}",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "fallback_tool": "shasum -a 256",
+        "inputs": {
+          "command": "sha256sum [EXCLUDED_GENERATED_ARTIFACT] [EXCLUDED_GENERATED_ARTIFACT]"
+        },
+        "original_action": "handle_error",
+        "original_causal_type": "retry",
+        "original_operation": "attempt digest check with unavailable utility",
+        "original_step_outcome": "error",
+        "outputs": {
+          "stderr": "zsh:1: command not found: sha256sum"
+        },
+        "raw_step": {
+          "action": "handle_error",
+          "actor": "worker",
+          "causal_note": "A missing utility required a fallback command.",
+          "causal_type": "retry",
+          "caused_by": 4,
+          "error_message": "sha256sum: command not found",
+          "error_type": "command_not_found",
+          "input": {
+            "command": "sha256sum [EXCLUDED_GENERATED_ARTIFACT] [EXCLUDED_GENERATED_ARTIFACT]"
+          },
+          "metadata_json": {
+            "fallback_tool": "shasum -a 256"
+          },
+          "observation": "The sha256sum command was not available in this environment.",
+          "operation": "attempt digest check with unavailable utility",
+          "output": {
+            "stderr": "zsh:1: command not found: sha256sum"
+          },
+          "reasoning": "The failure was environmental, not content-related, so retrying with shasum was the correct recovery path.",
+          "state_change": "Digest validation paused and retried with the macOS-compatible hash tool.",
+          "step": 5,
+          "step_outcome": "error",
+          "success": false,
+          "tool": "exec_command",
+          "turn": 1
+        }
+      },
+      "observation": "The sha256sum command was not available in this environment.",
+      "operation": "other",
+      "output": "stderr: zsh:1: command not found: sha256sum",
+      "parallel_group": null,
+      "reasoning": "The failure was environmental, not content-related, so retrying with shasum was the correct recovery path.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Digest validation paused and retried with the macOS-compatible hash tool.",
+      "step": 5,
+      "step_outcome": "failed",
+      "success": false,
+      "tool": "exec_command",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "causal_note": "Recovered from the missing command by using the supported hash utility.",
+      "causal_type": "other",
+      "caused_by": [
+        5
+      ],
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "{\"command\": \"shasum -a 256 [EXCLUDED_GENERATED_ARTIFACT] [EXCLUDED_GENERATED_ARTIFACT] && sed -n '1,220p' [EXCLUDED_GENERATED_ARTIFACT]\"}",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "inputs": {
+          "command": "shasum -a 256 [EXCLUDED_GENERATED_ARTIFACT] [EXCLUDED_GENERATED_ARTIFACT] && sed -n '1,220p' [EXCLUDED_GENERATED_ARTIFACT]"
+        },
+        "locale_warning": "perl locale warnings appeared during shasum execution but did not affect the computed digests",
+        "original_action": "validate_output",
+        "original_causal_type": "retry_success",
+        "original_operation": "compute file hashes and inspect report content",
+        "original_step_outcome": "success",
+        "outputs": {
+          "hashes": {
+            "[EXCLUDED_GENERATED_ARTIFACT]": "4780e5bb60844a0860b4a93f51608846e74e5338bfdcd62d407e387dcfc0f48f"
+          },
+          "report_check": "report contains source reconstruction, calculations, validation, and final decision table"
+        },
+        "raw_step": {
+          "action": "validate_output",
+          "actor": "worker",
+          "causal_note": "Recovered from the missing command by using the supported hash utility.",
+          "causal_type": "retry_success",
+          "caused_by": 5,
+          "error_message": null,
+          "error_type": null,
+          "input": {
+            "command": "shasum -a 256 [EXCLUDED_GENERATED_ARTIFACT] [EXCLUDED_GENERATED_ARTIFACT] && sed -n '1,220p' [EXCLUDED_GENERATED_ARTIFACT]"
+          },
+          "metadata_json": {
+            "locale_warning": "perl locale warnings appeared during shasum execution but did not affect the computed digests"
+          },
+          "observation": "The fallback digest check succeeded and the report content matched the intended calculations.",
+          "operation": "compute file hashes and inspect report content",
+          "output": {
+            "hashes": {
+              "[EXCLUDED_GENERATED_ARTIFACT]": "4780e5bb60844a0860b4a93f51608846e74e5338bfdcd62d407e387dcfc0f48f"
+            },
+            "report_check": "report contains source reconstruction, calculations, validation, and final decision table"
+          },
+          "reasoning": "Persisting hashes and a report readback gives an auditable record that the final files match the validated content.",
+          "state_change": "Captured integrity evidence for both deliverables and confirmed the report text.",
+          "step": 6,
+          "step_outcome": "success",
+          "success": true,
+          "tool": "exec_command",
+          "turn": 1
+        }
+      },
+      "observation": "The fallback digest check succeeded and the report content matched the intended calculations.",
+      "operation": "other",
+      "output": "{\"hashes\": {\"[EXCLUDED_GENERATED_ARTIFACT]\": \"bcfcc842d6014a0522762f963218710e0fc2b854912a862fb22da7b0328b66cc\", \"[EXCLUDED_GENERATED_ARTIFACT]\": \"4780e5bb60844a0860b4a93f51608846e74e5338bfdcd62d407e387dcfc0f48f\"}, \"report_check\": \"report contains source reconstruction, calculations, validation, and final decision table\"}",
+      "parallel_group": null,
+      "reasoning": "Persisting hashes and a report readback gives an auditable record that the final files match the validated content.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Captured integrity evidence for both deliverables and confirmed the report text.",
+      "step": 6,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "Bash",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "artifact_refs": [
+        "actual_outputs.json",
+        "agent_trace.json"
+      ],
+      "causal_note": "Last step after validation and integrity capture.",
+      "causal_type": "other",
+      "caused_by": [
+        6
+      ],
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "{\"files_added\": [\"actual_outputs.json\", \"agent_trace.json\"]}",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "final_artifact_count": 4,
+        "inputs": {
+          "files_added": [
+            "actual_outputs.json",
+            "agent_trace.json"
+          ]
+        },
+        "original_action": "persist_outputs",
+        "original_causal_type": "finalization",
+        "original_operation": "write actual_outputs.json and agent_trace.json",
+        "original_step_outcome": "success",
+        "outputs": {
+          "artifacts_recorded": [
+            "[EXCLUDED_GENERATED_ARTIFACT]",
+            "[EXCLUDED_GENERATED_ARTIFACT]"
+          ],
+          "status": "complete"
+        },
+        "raw_step": {
+          "action": "persist_outputs",
+          "actor": "worker",
+          "artifact_refs": [
+            "actual_outputs.json",
+            "agent_trace.json"
+          ],
+          "causal_note": "Last step after validation and integrity capture.",
+          "causal_type": "finalization",
+          "caused_by": 6,
+          "error_message": null,
+          "error_type": null,
+          "input": {
+            "files_added": [
+              "actual_outputs.json",
+              "agent_trace.json"
+            ]
+          },
+          "metadata_json": {
+            "final_artifact_count": 4
+          },
+          "observation": "Wrote the final run manifest and workflow trace to the attempt directory.",
+          "operation": "write actual_outputs.json and agent_trace.json",
+          "output": {
+            "artifacts_recorded": [
+              "[EXCLUDED_GENERATED_ARTIFACT]",
+              "[EXCLUDED_GENERATED_ARTIFACT]"
+            ],
+            "status": "complete"
+          },
+          "reasoning": "The required artifacts and the execution evidence are now frozen in the attempt directory.",
+          "state_change": "Final metadata persisted; attempt is self-contained.",
+          "step": 7,
+          "step_outcome": "success",
+          "success": true,
+          "tool": "apply_patch",
+          "turn": 1
+        }
+      },
+      "observation": "Wrote the final run manifest and workflow trace to the attempt directory.",
+      "operation": "other",
+      "output": "{\"artifacts_recorded\": [\"[EXCLUDED_GENERATED_ARTIFACT]\", \"[EXCLUDED_GENERATED_ARTIFACT]\"], \"status\": \"complete\"}",
+      "parallel_group": null,
+      "reasoning": "The required artifacts and the execution evidence are now frozen in the attempt directory.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Final metadata persisted; attempt is self-contained.",
+      "step": 7,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "apply_patch",
+      "turn": 1
+    }
+  ],
+  "system_prompt": null,
+  "system_prompt_hash": null,
+  "task": "Given the embedded chemistry packet containing LC-MS peak integration results for three runs (each with temperature, catalyst loading, solvent, yield %, and impurity %), apply the rule target yield > 70 and impurity < 10 to produce a deliverable named LCMS_peak_QC.csv. The CSV must include one row per provided run with original supplied values, computed QC metrics, pass/fail flags, uncertainty or sensitivity notes, and an exact citation (row/value) to the embedded packet for every reported value. Include all intermediate calculations, explicit assumptions, exceptions, validation checks, and a final decision table that ties every recommendation back to the supplied values. Do not invent additional records; mark any missing inputs as needs_review. The response must be executable from the embedded packet alone (no external data lookup).",
+  "task_family_id": null,
+  "original_internal_task_id": "aa_task_0359",
+  "task_id": "159",
+  "termination_reason": "task_complete",
+  "trace_id": "trace_159-baseline_normalized",
+  "trace_mode": "live"
+}

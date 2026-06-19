@@ -1,0 +1,618 @@
+{
+  "actual_outputs": {
+    "original_internal_attempt_id": "aa_task_0683_baseline",
+    "attempt_id": "383-baseline",
+    "attempt_kind": "baseline",
+    "error_message": null,
+    "error_type": null,
+    "metadata_json": {
+      "actual_outputs_discarded_field_count": 0,
+      "actual_outputs_normalized": true,
+      "expected_deliverable_items": [
+        "mutant_priority_table.csv",
+        "experiment_brief.md"
+      ],
+      "original_fields": {
+        "assumptions": [
+          "observed_risk_score=20*priority (reconstruction)",
+          "driver share decomposition uses max-normalization across packet rows",
+          "O3 applied as +9% threshold margin uplift",
+          "exhaustive feasible combinations evaluated against budget"
+        ],
+        "generated_at_utc": "2026-06-16T00:00:00.000Z",
+        "generated_by": "worker/reviser agent",
+        "output_artifacts": [
+          "[EXCLUDED_GENERATED_ARTIFACT]",
+          "[EXCLUDED_GENERATED_ARTIFACT]"
+        ]
+      },
+      "produced_deliverable_items": [
+        "experiment_brief.md",
+        "mutant_priority_table.csv"
+      ],
+      "raw_actual_outputs": {
+        "assumptions": [
+          "observed_risk_score=20*priority (reconstruction)",
+          "driver share decomposition uses max-normalization across packet rows",
+          "O3 applied as +9% threshold margin uplift",
+          "exhaustive feasible combinations evaluated against budget"
+        ],
+        "generated_at_utc": "2026-06-16T00:00:00.000Z",
+        "generated_by": "worker/reviser agent",
+        "output_artifacts": [
+          "[EXCLUDED_GENERATED_ARTIFACT]",
+          "[EXCLUDED_GENERATED_ARTIFACT]"
+        ],
+        "original_internal_task_id": "aa_task_0683",
+        "task_id": "383"
+      }
+    },
+    "output_summary": "Normalized actual outputs from artifact files.",
+    "status": "success",
+    "original_internal_task_id": "aa_task_0683",
+    "task_id": "383",
+    "required_deliverables": [
+      "mutant_priority_table.csv",
+      "experiment_brief.md"
+    ],
+    "produced_deliverables": [
+      "experiment_brief.md",
+      "mutant_priority_table.csv"
+    ],
+    "missing_required_deliverables": [],
+    "deliverable_produced": true,
+    "deliverable_file_included": false,
+    "included_generated_artifacts": false,
+    "artifacts_excluded_reason": "Generated output artifacts are excluded from the public seed dataset by default.",
+    "logs_included": false,
+    "logs_excluded_reason": "Raw runner logs are excluded from the public seed dataset."
+  },
+  "agent_config": null,
+  "agent_tools": [
+    "codex_cli",
+    "Bash",
+    "python",
+    "file_read",
+    "file_write",
+    "apply_patch"
+  ],
+  "artifacts": [],
+  "original_internal_attempt_id": "aa_task_0683_baseline",
+  "attempt_id": "383-baseline",
+  "attempt_kind": "baseline",
+  "attempt_status": "completed",
+  "collection_id": null,
+  "completion_reason": null,
+  "ended_at": null,
+  "final_attempt_id": null,
+  "initial_attempt_id": null,
+  "iteration_index": null,
+  "learning": null,
+  "memory": null,
+  "metadata_json": {
+    "codex_command": [
+      "codex",
+      "exec",
+      "--sandbox",
+      "workspace-write",
+      "<prompt>"
+    ],
+    "codex_sandbox": "workspace-write",
+    "discarded_step_count": 0,
+    "raw_trace_list": [
+      {
+        "action": "Read task assets",
+        "actor": "agent",
+        "artifact_refs": [
+          "input/task.json",
+          "input/task_brief.md"
+        ],
+        "causal_note": "Formula reconstruction and scoring depend on these fields.",
+        "causal_type": "precondition",
+        "caused_by": "User task request",
+        "error_message": null,
+        "error_type": null,
+        "input": "cat input/task.json; cat input/task_brief.md",
+        "metadata_json": {
+          "source": [
+            "task.json",
+            "task_brief.md"
+          ]
+        },
+        "observation": "Loaded both packet sources and extracted required inputs/constraints.",
+        "operation": "read",
+        "output": "Captured record values, threshold, budget, options, and classification rules.",
+        "reasoning": "All subsequent logic is constrained to embedded packet values only.",
+        "state_change": "No files created or modified.",
+        "step": 1,
+        "step_outcome": "packet_loaded",
+        "success": true,
+        "tool": "exec_command",
+        "turn": 1
+      },
+      {
+        "action": "Run decision-logic reconstruction and sensitivity engine",
+        "actor": "agent",
+        "causal_note": "Uses extracted packet thresholds and constants.",
+        "causal_type": "depends_on",
+        "caused_by": "Step 1",
+        "error_message": null,
+        "error_type": null,
+        "input": "Node script implementing explicit formulas and combo ranking.",
+        "metadata_json": {
+          "budget_usd": 25000,
+          "combos_evaluated": [
+            "none",
+            "O1",
+            "O2",
+            "O3",
+            "O1+O2",
+            "O2+O3",
+            "O1+O3",
+            "O1+O2+O3"
+          ],
+          "formulas": [
+            "obs=20*priority",
+            "margin=55-obs",
+            "classif = fail|warn|pass"
+          ]
+        },
+        "observation": "Computed baseline score/margin/class and all feasible/infeasible remediation combos per row with 5% sensitivity classes.",
+        "operation": "write",
+        "output": "Generated row-level matrix fields and intermediate values.",
+        "reasoning": "Needed to rebuild transparent, auditable per-row logic and budget-aware options.",
+        "state_change": "Computed remediation scenario outputs internally for artifact rendering.",
+        "step": 2,
+        "step_outcome": "logic_execution_complete",
+        "success": true,
+        "tool": "exec_command",
+        "turn": 1
+      },
+      {
+        "action": "Write CSV deliverable",
+        "actor": "agent",
+        "causal_note": "Uses computed row payload and headers from step 2.",
+        "causal_type": "depends_on",
+        "caused_by": "Step 2",
+        "error_message": null,
+        "error_type": null,
+        "input": "Write [EXCLUDED_GENERATED_ARTIFACT]",
+        "metadata_json": {
+          "delimiter": "csv",
+          "row_count": 4
+        },
+        "observation": "Serialized full row-level table with formulas, decomposition, class-by-combo outcomes, sensitivity columns, and best-feasible recommendation.",
+        "operation": "write",
+        "output": "Mutant priority table artifact generated.",
+        "reasoning": "CSV is required for audit-ready table output.",
+        "state_change": "Created [EXCLUDED_GENERATED_ARTIFACT]",
+        "step": 3,
+        "step_outcome": "csv_written",
+        "success": true,
+        "tool": "exec_command",
+        "turn": 1
+      },
+      {
+        "action": "Write experiment brief",
+        "actor": "agent",
+        "causal_note": "Summarizes computed outcomes in reviewer-facing format.",
+        "causal_type": "depends_on",
+        "caused_by": "Step 2",
+        "error_message": null,
+        "error_type": null,
+        "input": "Write [EXCLUDED_GENERATED_ARTIFACT]",
+        "metadata_json": {
+          "includes_needs_review": true
+        },
+        "observation": "Produced methods and per-row trace narrative with sensitivity + acceptance checks and final decision table.",
+        "operation": "write",
+        "output": "Experiment brief artifact generated.",
+        "reasoning": "Brief captures assumptions, validation, unresolved ambiguities, and decisions.",
+        "state_change": "Created [EXCLUDED_GENERATED_ARTIFACT]",
+        "step": 4,
+        "step_outcome": "brief_written",
+        "success": true,
+        "tool": "exec_command",
+        "turn": 1
+      },
+      {
+        "action": "Write execution manifest",
+        "actor": "agent",
+        "artifact_refs": [
+          "actual_outputs.json"
+        ],
+        "causal_note": "Captures output pointers and assumptions.",
+        "causal_type": "depends_on",
+        "caused_by": "Step 2",
+        "error_message": null,
+        "error_type": null,
+        "input": "Write actual_outputs.json",
+        "metadata_json": {
+          "artifact_count": 2
+        },
+        "observation": "Assembled actual_outputs contract file with required artifact metadata and assumptions.",
+        "operation": "write",
+        "output": "actual_outputs.json written.",
+        "reasoning": "Contract requires this file for downstream artifact discovery.",
+        "state_change": "Created actual_outputs.json in attempt root.",
+        "step": 5,
+        "step_outcome": "manifest_written",
+        "success": true,
+        "tool": "exec_command",
+        "turn": 1
+      }
+    ],
+    "raw_trace_preserved": true,
+    "raw_trace_shape": "list",
+    "raw_trace_step_source": "steps",
+    "schema_valid": true,
+    "trace_normalization_status": "normalized",
+    "trace_valid": true
+  },
+  "preferred_attempt_id": null,
+  "previous_attempt_id": null,
+  "prior_trace_id": null,
+  "revision_attempt_ids": [],
+  "revision_group_id": null,
+  "schema_version": "aa-trace-v0.1",
+  "skills": null,
+  "started_at": null,
+  "steps": [
+    {
+      "action": "agent_step",
+      "actor": "agent",
+      "alternatives_considered": null,
+      "artifact_refs": [
+        "input/task.json",
+        "input/task_brief.md"
+      ],
+      "causal_note": "Formula reconstruction and scoring depend on these fields.",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "cat input/task.json; cat input/task_brief.md",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "original_action": "Read task assets",
+        "original_causal_type": "precondition",
+        "original_step_outcome": "packet_loaded",
+        "raw_step": {
+          "action": "Read task assets",
+          "actor": "agent",
+          "artifact_refs": [
+            "input/task.json",
+            "input/task_brief.md"
+          ],
+          "causal_note": "Formula reconstruction and scoring depend on these fields.",
+          "causal_type": "precondition",
+          "caused_by": "User task request",
+          "error_message": null,
+          "error_type": null,
+          "input": "cat input/task.json; cat input/task_brief.md",
+          "metadata_json": {
+            "source": [
+              "task.json",
+              "task_brief.md"
+            ]
+          },
+          "observation": "Loaded both packet sources and extracted required inputs/constraints.",
+          "operation": "read",
+          "output": "Captured record values, threshold, budget, options, and classification rules.",
+          "reasoning": "All subsequent logic is constrained to embedded packet values only.",
+          "state_change": "No files created or modified.",
+          "step": 1,
+          "step_outcome": "packet_loaded",
+          "success": true,
+          "tool": "exec_command",
+          "turn": 1
+        },
+        "source": [
+          "task.json",
+          "task_brief.md"
+        ]
+      },
+      "observation": "Loaded both packet sources and extracted required inputs/constraints.",
+      "operation": "read",
+      "output": "Captured record values, threshold, budget, options, and classification rules.",
+      "parallel_group": null,
+      "reasoning": "All subsequent logic is constrained to embedded packet values only.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "No files created or modified.",
+      "step": 1,
+      "step_outcome": "neutral",
+      "success": true,
+      "tool": "Bash",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "agent",
+      "alternatives_considered": null,
+      "causal_note": "Uses extracted packet thresholds and constants.",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "Node script implementing explicit formulas and combo ranking.",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "budget_usd": 25000,
+        "combos_evaluated": [
+          "none",
+          "O1",
+          "O2",
+          "O3",
+          "O1+O2",
+          "O2+O3",
+          "O1+O3",
+          "O1+O2+O3"
+        ],
+        "formulas": [
+          "obs=20*priority",
+          "margin=55-obs",
+          "classif = fail|warn|pass"
+        ],
+        "original_action": "Run decision-logic reconstruction and sensitivity engine",
+        "original_causal_type": "depends_on",
+        "original_step_outcome": "logic_execution_complete",
+        "raw_step": {
+          "action": "Run decision-logic reconstruction and sensitivity engine",
+          "actor": "agent",
+          "causal_note": "Uses extracted packet thresholds and constants.",
+          "causal_type": "depends_on",
+          "caused_by": "Step 1",
+          "error_message": null,
+          "error_type": null,
+          "input": "Node script implementing explicit formulas and combo ranking.",
+          "metadata_json": {
+            "budget_usd": 25000,
+            "combos_evaluated": [
+              "none",
+              "O1",
+              "O2",
+              "O3",
+              "O1+O2",
+              "O2+O3",
+              "O1+O3",
+              "O1+O2+O3"
+            ],
+            "formulas": [
+              "obs=20*priority",
+              "margin=55-obs",
+              "classif = fail|warn|pass"
+            ]
+          },
+          "observation": "Computed baseline score/margin/class and all feasible/infeasible remediation combos per row with 5% sensitivity classes.",
+          "operation": "write",
+          "output": "Generated row-level matrix fields and intermediate values.",
+          "reasoning": "Needed to rebuild transparent, auditable per-row logic and budget-aware options.",
+          "state_change": "Computed remediation scenario outputs internally for artifact rendering.",
+          "step": 2,
+          "step_outcome": "logic_execution_complete",
+          "success": true,
+          "tool": "exec_command",
+          "turn": 1
+        }
+      },
+      "observation": "Computed baseline score/margin/class and all feasible/infeasible remediation combos per row with 5% sensitivity classes.",
+      "operation": "write",
+      "output": "Generated row-level matrix fields and intermediate values.",
+      "parallel_group": null,
+      "reasoning": "Needed to rebuild transparent, auditable per-row logic and budget-aware options.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Computed remediation scenario outputs internally for artifact rendering.",
+      "step": 2,
+      "step_outcome": "neutral",
+      "success": true,
+      "tool": "file_write",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "agent",
+      "alternatives_considered": null,
+      "causal_note": "Uses computed row payload and headers from step 2.",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "Write [EXCLUDED_GENERATED_ARTIFACT]",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "delimiter": "csv",
+        "original_action": "Write CSV deliverable",
+        "original_causal_type": "depends_on",
+        "original_step_outcome": "csv_written",
+        "raw_step": {
+          "action": "Write CSV deliverable",
+          "actor": "agent",
+          "causal_note": "Uses computed row payload and headers from step 2.",
+          "causal_type": "depends_on",
+          "caused_by": "Step 2",
+          "error_message": null,
+          "error_type": null,
+          "input": "Write [EXCLUDED_GENERATED_ARTIFACT]",
+          "metadata_json": {
+            "delimiter": "csv",
+            "row_count": 4
+          },
+          "observation": "Serialized full row-level table with formulas, decomposition, class-by-combo outcomes, sensitivity columns, and best-feasible recommendation.",
+          "operation": "write",
+          "output": "Mutant priority table artifact generated.",
+          "reasoning": "CSV is required for audit-ready table output.",
+          "state_change": "Created [EXCLUDED_GENERATED_ARTIFACT]",
+          "step": 3,
+          "step_outcome": "csv_written",
+          "success": true,
+          "tool": "exec_command",
+          "turn": 1
+        },
+        "row_count": 4
+      },
+      "observation": "Serialized full row-level table with formulas, decomposition, class-by-combo outcomes, sensitivity columns, and best-feasible recommendation.",
+      "operation": "write",
+      "output": "Mutant priority table artifact generated.",
+      "parallel_group": null,
+      "reasoning": "CSV is required for audit-ready table output.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Created [EXCLUDED_GENERATED_ARTIFACT]",
+      "step": 3,
+      "step_outcome": "neutral",
+      "success": true,
+      "tool": "file_write",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "agent",
+      "alternatives_considered": null,
+      "causal_note": "Summarizes computed outcomes in reviewer-facing format.",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "Write [EXCLUDED_GENERATED_ARTIFACT]",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "includes_needs_review": true,
+        "original_action": "Write experiment brief",
+        "original_causal_type": "depends_on",
+        "original_step_outcome": "brief_written",
+        "raw_step": {
+          "action": "Write experiment brief",
+          "actor": "agent",
+          "causal_note": "Summarizes computed outcomes in reviewer-facing format.",
+          "causal_type": "depends_on",
+          "caused_by": "Step 2",
+          "error_message": null,
+          "error_type": null,
+          "input": "Write [EXCLUDED_GENERATED_ARTIFACT]",
+          "metadata_json": {
+            "includes_needs_review": true
+          },
+          "observation": "Produced methods and per-row trace narrative with sensitivity + acceptance checks and final decision table.",
+          "operation": "write",
+          "output": "Experiment brief artifact generated.",
+          "reasoning": "Brief captures assumptions, validation, unresolved ambiguities, and decisions.",
+          "state_change": "Created [EXCLUDED_GENERATED_ARTIFACT]",
+          "step": 4,
+          "step_outcome": "brief_written",
+          "success": true,
+          "tool": "exec_command",
+          "turn": 1
+        }
+      },
+      "observation": "Produced methods and per-row trace narrative with sensitivity + acceptance checks and final decision table.",
+      "operation": "write",
+      "output": "Experiment brief artifact generated.",
+      "parallel_group": null,
+      "reasoning": "Brief captures assumptions, validation, unresolved ambiguities, and decisions.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Created [EXCLUDED_GENERATED_ARTIFACT]",
+      "step": 4,
+      "step_outcome": "neutral",
+      "success": true,
+      "tool": "file_write",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "agent",
+      "alternatives_considered": null,
+      "artifact_refs": [
+        "actual_outputs.json"
+      ],
+      "causal_note": "Captures output pointers and assumptions.",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "Write actual_outputs.json",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "artifact_count": 2,
+        "original_action": "Write execution manifest",
+        "original_causal_type": "depends_on",
+        "original_step_outcome": "manifest_written",
+        "raw_step": {
+          "action": "Write execution manifest",
+          "actor": "agent",
+          "artifact_refs": [
+            "actual_outputs.json"
+          ],
+          "causal_note": "Captures output pointers and assumptions.",
+          "causal_type": "depends_on",
+          "caused_by": "Step 2",
+          "error_message": null,
+          "error_type": null,
+          "input": "Write actual_outputs.json",
+          "metadata_json": {
+            "artifact_count": 2
+          },
+          "observation": "Assembled actual_outputs contract file with required artifact metadata and assumptions.",
+          "operation": "write",
+          "output": "actual_outputs.json written.",
+          "reasoning": "Contract requires this file for downstream artifact discovery.",
+          "state_change": "Created actual_outputs.json in attempt root.",
+          "step": 5,
+          "step_outcome": "manifest_written",
+          "success": true,
+          "tool": "exec_command",
+          "turn": 1
+        }
+      },
+      "observation": "Assembled actual_outputs contract file with required artifact metadata and assumptions.",
+      "operation": "write",
+      "output": "actual_outputs.json written.",
+      "parallel_group": null,
+      "reasoning": "Contract requires this file for downstream artifact discovery.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Created actual_outputs.json in attempt root.",
+      "step": 5,
+      "step_outcome": "neutral",
+      "success": true,
+      "tool": "file_write",
+      "turn": 1
+    }
+  ],
+  "system_prompt": null,
+  "system_prompt_hash": null,
+  "task": "Using only the provided embedded packet, rebuild the decision logic for a protein-language-model-based mutant prioritization filter, identify any threshold crossings, perform sensitivity testing (including 5% shifts) of classifications, and produce review-ready deliverables: (1) mutant_priority_table.csv containing row-level calculations, formulas/executable logic, intermediate values, row-level citations to the embedded packet, classification, margin, remediation recommendation(s) and cost accounting; and (2) experiment_brief.md containing methods, traceable calculations, assumptions, validation checks, sensitivity analysis, acceptance criteria, unresolved ambiguities (marked needs_review), and a final decision table. Do not use external data or invent inputs. Mark expert-review required where the rules demand it.",
+  "task_family_id": null,
+  "original_internal_task_id": "aa_task_0683",
+  "task_id": "383",
+  "termination_reason": "task_complete",
+  "trace_id": "trace_383-baseline_normalized",
+  "trace_mode": "live"
+}

@@ -1,0 +1,81 @@
+{
+  "schema_version": "aa-seed-task-v0.1",
+  "task_id": "428",
+  "title": "Port Congestion AIS Anomaly Reconstruction",
+  "domain": "maritime_analytics",
+  "subdomain": "port_congestion_anomaly",
+  "domains": [
+    "maritime_analytics"
+  ],
+  "subdomains": [
+    "port_congestion_anomaly"
+  ],
+  "agent_apprentice_role": "maritime data scientist",
+  "task_family": "anomaly_reconstruction",
+  "difficulty_tier": "hard",
+  "expected_economic_value": "$80,000-$190,000 regulated technical consulting",
+  "expected_economic_value_for_agent_apprentice": "$250+",
+  "expected_deliverable": "port_ais_anomaly.csv + ops_brief.md",
+  "deliverables": [
+    "port_ais_anomaly.csv",
+    "ops_brief.md"
+  ],
+  "normalized_title": "Port Congestion AIS Anomaly Reconstruction",
+  "instruction": "Context: a port operator sees unexplained queue spikes around berth maintenance. Task packet: records: R1 anchorage_hours=49 berth_delay_hours=92 draught_m=32.2 ais_gap_hours=54; R2 anchorage_hours=45 berth_delay_hours=66 draught_m=31.27 ais_gap_hours=71; R3 anchorage_hours=73 berth_delay_hours=25 draught_m=31.4 ais_gap_hours=34; R4 anchorage_hours=55 berth_delay_hours=10 draught_m=13.09 ais_gap_hours=79; limit_anchorage_hours=32; limit_berth_delay_hours=17; limit_draught_m=2.35; decision_budget_usd=47500; sensitivity_shift_pct=5; hard_threshold_record_count=1;. Rules and constraints: Fit a simple linear or monotone relationship from the embedded rows only; flag records whose residual exceeds the supplied tolerance or reverses expected direction. Recommendations cannot use external measurements, specialized licensed software, or hidden assumptions; all calculations must use only the task packet, and any contradictory or under-supported record must be marked needs_review. Required work: reconstruct anomaly drivers and economic impact; convert the packet into an auditable evidence table, cite the governing values, and list unresolved assumptions. Deliver port_ais_anomaly.CSV + ops_brief.md with formulas or executable logic, record-level citations, validation checks, sensitivity notes, and a final recommendation table suitable for expert review. This task is self-contained: use the task packet as the factual record, do not add source references or external datasets, and preserve a high-fidelity audit trail for every calculation, classification, and recommendation. State assumptions and unresolved evidence gaps explicitly. When executed locally, place final deliverables under the artifacts/ directory.",
+  "task_status": "ready_to_run",
+  "run_status": "not_run",
+  "seed_rank": 133,
+  "display_order": 133,
+  "allowed_tools": [
+    "Local text editor or Markdown editor",
+    "Local spreadsheet, CSV, JSON, YAML, or scripting tools for deterministic calculations",
+    "Local validation or linting commands",
+    "Local plotting or diagramming tools when useful"
+  ],
+  "disallowed_tools": [
+    "External fact lookup or live data pulls",
+    "Live production systems, cloud accounts, trading systems, clinical systems, or industrial controls",
+    "Secret discovery, credential testing, or any action outside the prepared task workspace"
+  ],
+  "privacy_classification": "synthetic",
+  "needs_expert_review": true,
+  "input_requirements": [
+    "Use the task packet as the sole factual input.",
+    "Cite row IDs, record IDs, thresholds, formulas, and option IDs from the packet wherever they control a conclusion.",
+    "Mark missing, contradictory, or under-supported values as needs_review instead of inventing them."
+  ],
+  "inputs": [
+    "All factual inputs are embedded in the task packet.",
+    "Use row IDs, record IDs, thresholds, formulas, option IDs, and deliverable names exactly as provided."
+  ],
+  "output_requirements": [
+    "Produce the required deliverable files with the specified filenames when filenames are provided.",
+    "Include intermediate calculations or executable logic sufficient for another reviewer to reproduce the result.",
+    "Include validation checks, sensitivity notes around controlling thresholds, and a final decision or recommendation table."
+  ],
+  "constraints": [
+    "Use the task packet as the factual record.",
+    "Do not browse, call live services, import external datasets, or invent missing values.",
+    "Treat regulated or safety-critical outputs as review packets, not authorization to act."
+  ],
+  "quality_bar": [
+    "Treat the task as realistic professional work with domain-appropriate rigor.",
+    "Preserve the packet's domain detail, identifiers, thresholds, and edge cases in the final deliverables.",
+    "Make every recommendation traceable to explicit task-packet evidence or mark it as needs_review."
+  ],
+  "validation_expectations": [
+    "Check required fields, row counts, totals, thresholds, and classifications before finalizing.",
+    "Show enough formulas, script logic, or tables for an independent reviewer to reproduce the result.",
+    "Flag any contradiction, missing input, or threshold-sensitive conclusion."
+  ],
+  "edge_cases": [
+    "If packet evidence is incomplete, do not infer missing values; label the item needs_review.",
+    "If multiple options satisfy hard constraints, rank them using the packet's stated priorities and explain ties.",
+    "If a regulated or safety-critical conclusion appears, frame the output as a review packet rather than authorization to act."
+  ],
+  "privacy_safety_expectations": [
+    "Do not use live systems, private accounts, credentials, or external datasets.",
+    "Do not include raw secrets or operational instructions that would execute real-world changes.",
+    "Keep synthetic identifiers from the packet only when needed for verification."
+  ]
+}

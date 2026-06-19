@@ -1,0 +1,759 @@
+{
+  "actual_outputs": {
+    "original_internal_attempt_id": "aa_task_0071_baseline",
+    "attempt_id": "671-baseline",
+    "attempt_kind": "baseline",
+    "error_message": null,
+    "error_type": null,
+    "metadata_json": {
+      "actual_outputs_discarded_field_count": 0,
+      "actual_outputs_normalized": true,
+      "expected_deliverable_items": [
+        "conditional_access_drift.xlsx",
+        "id_governance_memo.md"
+      ],
+      "original_fields": {
+        "attempt": "baseline",
+        "constraints": "No external data; use only embedded packet.",
+        "input_artifacts": [
+          "input/task.json",
+          "input/task_brief.md"
+        ],
+        "outputs": [
+          {
+            "description": "Privileged-group conditional-access drift artifact with formulas, validation checks, sensitivity checks, residual risk calculation, and final decision states.",
+            "type": "spreadsheet/xlsx"
+          },
+          {
+            "description": "Governance memo with embedded-packet-only citations, intermediate computations, uncertainty notes, and mitigation mapping.",
+            "type": "text/markdown"
+          }
+        ]
+      },
+      "produced_deliverable_items": [
+        "conditional_access_drift.xlsx",
+        "id_governance_memo.md"
+      ],
+      "raw_actual_outputs": {
+        "attempt": "baseline",
+        "constraints": "No external data; use only embedded packet.",
+        "input_artifacts": [
+          "input/task.json",
+          "input/task_brief.md"
+        ],
+        "outputs": [
+          {
+            "description": "Privileged-group conditional-access drift artifact with formulas, validation checks, sensitivity checks, residual risk calculation, and final decision states.",
+            "type": "spreadsheet/xlsx"
+          },
+          {
+            "description": "Governance memo with embedded-packet-only citations, intermediate computations, uncertainty notes, and mitigation mapping.",
+            "type": "text/markdown"
+          }
+        ],
+        "original_internal_task_id": "aa_task_0071",
+        "task_id": "671"
+      }
+    },
+    "output_summary": "Normalized actual outputs from artifact files.",
+    "status": "success",
+    "original_internal_task_id": "aa_task_0071",
+    "task_id": "671",
+    "required_deliverables": [
+      "conditional_access_drift.xlsx",
+      "id_governance_memo.md"
+    ],
+    "produced_deliverables": [
+      "conditional_access_drift.xlsx",
+      "id_governance_memo.md"
+    ],
+    "missing_required_deliverables": [],
+    "deliverable_produced": true,
+    "deliverable_file_included": false,
+    "included_generated_artifacts": false,
+    "artifacts_excluded_reason": "Generated output artifacts are excluded from the public seed dataset by default.",
+    "logs_included": false,
+    "logs_excluded_reason": "Raw runner logs are excluded from the public seed dataset."
+  },
+  "agent_config": null,
+  "agent_tools": [
+    "codex_cli",
+    "Bash",
+    "python",
+    "file_read",
+    "file_write",
+    "apply_patch"
+  ],
+  "artifacts": [],
+  "original_internal_attempt_id": "aa_task_0071_baseline",
+  "attempt_id": "671-baseline",
+  "attempt_kind": "baseline",
+  "attempt_status": "completed",
+  "collection_id": null,
+  "completion_reason": null,
+  "ended_at": null,
+  "final_attempt_id": null,
+  "initial_attempt_id": null,
+  "iteration_index": null,
+  "learning": null,
+  "memory": null,
+  "metadata_json": {
+    "codex_command": [
+      "codex",
+      "exec",
+      "--sandbox",
+      "workspace-write",
+      "<prompt>"
+    ],
+    "codex_sandbox": "workspace-write",
+    "discarded_step_count": 0,
+    "raw_trace_preserved": true,
+    "raw_trace_step_source": "steps",
+    "schema_valid": true,
+    "trace_normalization_status": "partial",
+    "trace_valid": true
+  },
+  "preferred_attempt_id": null,
+  "previous_attempt_id": null,
+  "prior_trace_id": null,
+  "revision_attempt_ids": [],
+  "revision_group_id": null,
+  "schema_version": "aa-trace-v0.1",
+  "skills": null,
+  "started_at": null,
+  "steps": [
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "artifact_refs": [
+        "input/task.json"
+      ],
+      "causal_note": "Source discovery step for required group/control values.",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "cat input/task.json",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "json_fields": [
+          "normalized_instruction",
+          "removed_description",
+          "requirements"
+        ],
+        "normalization_warnings": [
+          "step value 'Load task payload' was not numeric; defaulted to 1"
+        ],
+        "original_action": "Read input/task.json",
+        "original_causal_type": "direct",
+        "original_step": "Load task payload",
+        "original_step_outcome": "task_json_parsed",
+        "raw_step": {
+          "action": "Read input/task.json",
+          "actor": "worker",
+          "artifact_refs": [
+            "input/task.json"
+          ],
+          "causal_note": "Source discovery step for required group/control values.",
+          "causal_type": "direct",
+          "caused_by": "user_task_request",
+          "error_message": null,
+          "error_type": null,
+          "input": "cat input/task.json",
+          "metadata_json": {
+            "json_fields": [
+              "normalized_instruction",
+              "removed_description",
+              "requirements"
+            ]
+          },
+          "observation": "Embedded packet and execution constraints were extracted from the task record.",
+          "operation": "read",
+          "output": "Parsed packet with groups G1..G3 and thresholds MFA>=95, legacy_auth=0, risky_signins<5; actions block_legacy, enforce_phishing_resistant, remove_inactive.",
+          "reasoning": "Task directives require strict use of embedded packet only; this file contains all required base facts and constraints.",
+          "state_change": "Working context established with source-of-truth data loaded.",
+          "step": "Load task payload",
+          "step_outcome": "task_json_parsed",
+          "success": true,
+          "tool": "functions.exec_command",
+          "turn": 1
+        }
+      },
+      "observation": "Embedded packet and execution constraints were extracted from the task record.",
+      "operation": "read",
+      "output": "Parsed packet with groups G1..G3 and thresholds MFA>=95, legacy_auth=0, risky_signins<5; actions block_legacy, enforce_phishing_resistant, remove_inactive.",
+      "parallel_group": null,
+      "reasoning": "Task directives require strict use of embedded packet only; this file contains all required base facts and constraints.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Working context established with source-of-truth data loaded.",
+      "step": 1,
+      "step_outcome": "neutral",
+      "success": true,
+      "tool": "Bash",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "artifact_refs": [
+        "input/task_brief.md"
+      ],
+      "causal_note": "Instruction file defines contract semantics for all downstream artifacts.",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "cat input/task_brief.md",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "normalization_warnings": [
+          "step value 'Load task instructions' was not numeric; defaulted to 2"
+        ],
+        "original_action": "Read input/task_brief.md",
+        "original_causal_type": "direct",
+        "original_step": "Load task instructions",
+        "original_step_outcome": "instructions_confirmed",
+        "raw_step": {
+          "action": "Read input/task_brief.md",
+          "actor": "worker",
+          "artifact_refs": [
+            "input/task_brief.md"
+          ],
+          "causal_note": "Instruction file defines contract semantics for all downstream artifacts.",
+          "causal_type": "direct",
+          "caused_by": "task_json_parsed",
+          "error_message": null,
+          "error_type": null,
+          "input": "cat input/task_brief.md",
+          "metadata_json": {
+            "required_checks": [
+              "validation",
+              "sensitivity",
+              "residual_risk",
+              "citations"
+            ]
+          },
+          "observation": "Instruction text confirms required output contract and constraints.",
+          "operation": "read",
+          "output": "Confirmed required deliverables and non-negotiables: formulas/executable logic, row-level packet citations, validation checks, uncertainty notes, sensitivity checks, and final decision table.",
+          "reasoning": "Needed to align produced artifacts with rubric before any calculation or file creation.",
+          "state_change": "Final output format and validation criteria confirmed.",
+          "step": "Load task instructions",
+          "step_outcome": "instructions_confirmed",
+          "success": true,
+          "tool": "functions.exec_command",
+          "turn": 1
+        },
+        "required_checks": [
+          "validation",
+          "sensitivity",
+          "residual_risk",
+          "citations"
+        ]
+      },
+      "observation": "Instruction text confirms required output contract and constraints.",
+      "operation": "read",
+      "output": "Confirmed required deliverables and non-negotiables: formulas/executable logic, row-level packet citations, validation checks, uncertainty notes, sensitivity checks, and final decision table.",
+      "parallel_group": null,
+      "reasoning": "Needed to align produced artifacts with rubric before any calculation or file creation.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Final output format and validation criteria confirmed.",
+      "step": 2,
+      "step_outcome": "neutral",
+      "success": true,
+      "tool": "Bash",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "artifact_refs": [
+        "input/"
+      ],
+      "causal_note": "Directory check before writes.",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "ls -la",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "cwd": "[REDACTED_LOCAL_PATH]",
+        "normalization_warnings": [
+          "step value 'Inspect workspace' was not numeric; defaulted to 3"
+        ],
+        "original_action": "List baseline directory",
+        "original_causal_type": "supportive",
+        "original_step": "Inspect workspace",
+        "original_step_outcome": "paths_confirmed",
+        "raw_step": {
+          "action": "List baseline directory",
+          "actor": "worker",
+          "artifact_refs": [
+            "input/"
+          ],
+          "causal_note": "Directory check before writes.",
+          "causal_type": "supportive",
+          "caused_by": "instructions_confirmed",
+          "error_message": null,
+          "error_type": null,
+          "input": "ls -la",
+          "metadata_json": {
+            "cwd": "[REDACTED_LOCAL_PATH]"
+          },
+          "observation": "Checked available top-level paths and confirmed write target exists.",
+          "operation": "read",
+          "output": "Observed writable ./artifacts directory and ./input input files.",
+          "reasoning": "Prevents write failures due to absent output path.",
+          "state_change": "Confirmed destination directories for required outputs.",
+          "step": "Inspect workspace",
+          "step_outcome": "paths_confirmed",
+          "success": true,
+          "tool": "functions.exec_command",
+          "turn": 1
+        }
+      },
+      "observation": "Checked available top-level paths and confirmed write target exists.",
+      "operation": "read",
+      "output": "Observed writable ./artifacts directory and ./input input files.",
+      "parallel_group": null,
+      "reasoning": "Prevents write failures due to absent output path.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Confirmed destination directories for required outputs.",
+      "step": 3,
+      "step_outcome": "neutral",
+      "success": true,
+      "tool": "Bash",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "causal_note": "Error triggered fallback decision for output generation.",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": "No module named 'openpyxl'",
+      "error_type": "ModuleNotFoundError",
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "python3 script importing openpyxl and writing Data/Validation/Sensitivity formula-driven workbook",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "attempted_library": "openpyxl",
+        "normalization_warnings": [
+          "step value 'Attempt Excel generation with preferred library' was not numeric; defaulted to 4"
+        ],
+        "original_action": "Generate conditional_access_drift.xlsx via openpyxl",
+        "original_causal_type": "direct",
+        "original_step": "Attempt Excel generation with preferred library",
+        "original_step_outcome": "dependency_missing",
+        "raw_step": {
+          "action": "Generate conditional_access_drift.xlsx via openpyxl",
+          "actor": "worker",
+          "causal_note": "Error triggered fallback decision for output generation.",
+          "causal_type": "direct",
+          "caused_by": "paths_confirmed",
+          "error_message": "No module named 'openpyxl'",
+          "error_type": "ModuleNotFoundError",
+          "input": "python3 script importing openpyxl and writing Data/Validation/Sensitivity formula-driven workbook",
+          "metadata_json": {
+            "attempted_library": "openpyxl"
+          },
+          "observation": "Attempted standard library-based workbook generation.",
+          "operation": "execute",
+          "output": "Failed with ModuleNotFoundError: No module named 'openpyxl'.",
+          "reasoning": "Dependency not present in sandbox, requiring fallback path that still satisfies artifact requirements.",
+          "state_change": "No output artifact was written in this attempt.",
+          "step": "Attempt Excel generation with preferred library",
+          "step_outcome": "dependency_missing",
+          "success": false,
+          "tool": "functions.exec_command",
+          "turn": 2
+        }
+      },
+      "observation": "Attempted standard library-based workbook generation.",
+      "operation": "execute",
+      "output": "Failed with ModuleNotFoundError: No module named 'openpyxl'.",
+      "parallel_group": null,
+      "reasoning": "Dependency not present in sandbox, requiring fallback path that still satisfies artifact requirements.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "No output artifact was written in this attempt.",
+      "step": 4,
+      "step_outcome": "neutral",
+      "success": false,
+      "tool": "python",
+      "turn": 2
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "causal_note": "Follows same packet-only logic and required checks as fallback path.",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "python3 script writing minimal OpenXML package and formulas for thresholds, residual risk, validation, sensitivity, and logic",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "normalization_warnings": [
+          "step value 'Generate spreadsheet via direct OpenXML' was not numeric; defaulted to 5"
+        ],
+        "original_action": "Create conditional_access_drift.xlsx from packet using stdlib ZIP/XML packer",
+        "original_causal_type": "direct",
+        "original_step": "Generate spreadsheet via direct OpenXML",
+        "original_step_outcome": "xlsx_created",
+        "raw_step": {
+          "action": "Create conditional_access_drift.xlsx from packet using stdlib ZIP/XML packer",
+          "actor": "worker",
+          "causal_note": "Follows same packet-only logic and required checks as fallback path.",
+          "causal_type": "direct",
+          "caused_by": "dependency_missing",
+          "error_message": null,
+          "error_type": null,
+          "input": "python3 script writing minimal OpenXML package and formulas for thresholds, residual risk, validation, sensitivity, and logic",
+          "metadata_json": {
+            "sheets": [
+              "Data",
+              "Validation",
+              "Sensitivity",
+              "Decision_Logic",
+              "Unresolved_Assumptions"
+            ],
+            "writer": "openxml_direct_pack"
+          },
+          "observation": "Created .xlsx package directly with multiple worksheets and embedded formulas.",
+          "operation": "write",
+          "output": "CREATED [EXCLUDED_GENERATED_ARTIFACT] sheets included Data, Validation, Sensitivity, Decision_Logic, Unresolved_Assumptions.",
+          "reasoning": "Fallback to native zip/xml generation preserves requirements without external libraries.",
+          "state_change": "Required spreadsheet artifact created with formula-driven decision and checks.",
+          "step": "Generate spreadsheet via direct OpenXML",
+          "step_outcome": "xlsx_created",
+          "success": true,
+          "tool": "functions.exec_command",
+          "turn": 2
+        },
+        "sheets": [
+          "Data",
+          "Validation",
+          "Sensitivity",
+          "Decision_Logic",
+          "Unresolved_Assumptions"
+        ],
+        "writer": "openxml_direct_pack"
+      },
+      "observation": "Created .xlsx package directly with multiple worksheets and embedded formulas.",
+      "operation": "write",
+      "output": "CREATED [EXCLUDED_GENERATED_ARTIFACT] sheets included Data, Validation, Sensitivity, Decision_Logic, Unresolved_Assumptions.",
+      "parallel_group": null,
+      "reasoning": "Fallback to native zip/xml generation preserves requirements without external libraries.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Required spreadsheet artifact created with formula-driven decision and checks.",
+      "step": 5,
+      "step_outcome": "neutral",
+      "success": true,
+      "tool": "python",
+      "turn": 2
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "causal_note": "Memo operationalizes spreadsheet output for governance review.",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "cat > [EXCLUDED_GENERATED_ARTIFACT]",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "normalization_warnings": [
+          "step value 'Write governance memo' was not numeric; defaulted to 6"
+        ],
+        "original_action": "Create id_governance_memo.md",
+        "original_causal_type": "direct",
+        "original_step": "Write governance memo",
+        "original_step_outcome": "memo_created",
+        "raw_step": {
+          "action": "Create id_governance_memo.md",
+          "actor": "worker",
+          "causal_note": "Memo operationalizes spreadsheet output for governance review.",
+          "causal_type": "direct",
+          "caused_by": "xlsx_created",
+          "error_message": null,
+          "error_type": null,
+          "input": "cat > [EXCLUDED_GENERATED_ARTIFACT]",
+          "metadata_json": {
+            "sections": [
+              "logic",
+              "validation",
+              "sensitivity",
+              "decision_table",
+              "uncertainty"
+            ]
+          },
+          "observation": "Memo includes packet citations, classification tables, residual-risk arithmetic, and remediation rationale.",
+          "operation": "write",
+          "output": "Created memo with decision table, formulas, uncertainty notes, and explicit remediation mapping.",
+          "reasoning": "Supplemented spreadsheet with interpretation and explicit assumptions/risk context.",
+          "state_change": "Required narrative deliverable created.",
+          "step": "Write governance memo",
+          "step_outcome": "memo_created",
+          "success": true,
+          "tool": "functions.exec_command",
+          "turn": 3
+        },
+        "sections": [
+          "logic",
+          "validation",
+          "sensitivity",
+          "decision_table",
+          "uncertainty"
+        ]
+      },
+      "observation": "Memo includes packet citations, classification tables, residual-risk arithmetic, and remediation rationale.",
+      "operation": "write",
+      "output": "Created memo with decision table, formulas, uncertainty notes, and explicit remediation mapping.",
+      "parallel_group": null,
+      "reasoning": "Supplemented spreadsheet with interpretation and explicit assumptions/risk context.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Required narrative deliverable created.",
+      "step": 6,
+      "step_outcome": "neutral",
+      "success": true,
+      "tool": "Bash",
+      "turn": 3
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "artifact_refs": [
+        "actual_outputs.json"
+      ],
+      "causal_note": "Required by task contract.",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "cat > actual_outputs.json",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "format": "json",
+        "normalization_warnings": [
+          "step value 'Write actual outputs index' was not numeric; defaulted to 7"
+        ],
+        "original_action": "Create actual_outputs.json",
+        "original_causal_type": "direct",
+        "original_step": "Write actual outputs index",
+        "original_step_outcome": "manifest_written",
+        "raw_step": {
+          "action": "Create actual_outputs.json",
+          "actor": "worker",
+          "artifact_refs": [
+            "actual_outputs.json"
+          ],
+          "causal_note": "Required by task contract.",
+          "causal_type": "direct",
+          "caused_by": "memo_created",
+          "error_message": null,
+          "error_type": null,
+          "input": "cat > actual_outputs.json",
+          "metadata_json": {
+            "format": "json",
+            "original_internal_task_id": "aa_task_0071",
+            "task_id": "671"
+          },
+          "observation": "Captured output artifact list and source constraints in JSON manifest.",
+          "operation": "write",
+          "output": "Registered both required deliverables and input artifacts in run manifest.",
+          "reasoning": "Provides explicit, deterministic run outputs for evaluators.",
+          "state_change": "Output registry file created.",
+          "step": "Write actual outputs index",
+          "step_outcome": "manifest_written",
+          "success": true,
+          "tool": "functions.exec_command",
+          "turn": 4
+        },
+        "original_internal_task_id": "aa_task_0071",
+        "task_id": "671"
+      },
+      "observation": "Captured output artifact list and source constraints in JSON manifest.",
+      "operation": "write",
+      "output": "Registered both required deliverables and input artifacts in run manifest.",
+      "parallel_group": null,
+      "reasoning": "Provides explicit, deterministic run outputs for evaluators.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Output registry file created.",
+      "step": 7,
+      "step_outcome": "neutral",
+      "success": true,
+      "tool": "Bash",
+      "turn": 4
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "artifact_refs": [
+        "agent_trace.json"
+      ],
+      "causal_note": "Trace finalization after all required outputs were produced.",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "cat > agent_trace.json",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "canonical_fields_used": [
+          "step",
+          "turn",
+          "actor",
+          "action",
+          "operation",
+          "tool",
+          "observation",
+          "input",
+          "output",
+          "state_change",
+          "reasoning",
+          "caused_by",
+          "causal_type",
+          "causal_note",
+          "success",
+          "step_outcome",
+          "error_type",
+          "error_message",
+          "artifact_refs",
+          "metadata_json"
+        ],
+        "normalization_warnings": [
+          "step value 'Write workflow trace' was not numeric; defaulted to 8"
+        ],
+        "original_action": "Create agent_trace.json with canonical fields",
+        "original_causal_type": "direct",
+        "original_step": "Write workflow trace",
+        "original_step_outcome": "trace_written",
+        "raw_step": {
+          "action": "Create agent_trace.json with canonical fields",
+          "actor": "worker",
+          "artifact_refs": [
+            "agent_trace.json"
+          ],
+          "causal_note": "Trace finalization after all required outputs were produced.",
+          "causal_type": "direct",
+          "caused_by": "manifest_written",
+          "error_message": null,
+          "error_type": null,
+          "input": "cat > agent_trace.json",
+          "metadata_json": {
+            "canonical_fields_used": [
+              "step",
+              "turn",
+              "actor",
+              "action",
+              "operation",
+              "tool",
+              "observation",
+              "input",
+              "output",
+              "state_change",
+              "reasoning",
+              "caused_by",
+              "causal_type",
+              "causal_note",
+              "success",
+              "step_outcome",
+              "error_type",
+              "error_message",
+              "artifact_refs",
+              "metadata_json"
+            ]
+          },
+          "observation": "Consolidated all actions and outcomes into canonical trace schema.",
+          "operation": "write",
+          "output": "Serialized trace with required field names and causal chain.",
+          "reasoning": "Ensures complete auditability of actions and error handling for this apprenticeship run.",
+          "state_change": "Final required artifact trace generated.",
+          "step": "Write workflow trace",
+          "step_outcome": "trace_written",
+          "success": true,
+          "tool": "functions.exec_command",
+          "turn": 4
+        }
+      },
+      "observation": "Consolidated all actions and outcomes into canonical trace schema.",
+      "operation": "write",
+      "output": "Serialized trace with required field names and causal chain.",
+      "parallel_group": null,
+      "reasoning": "Ensures complete auditability of actions and error handling for this apprenticeship run.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Final required artifact trace generated.",
+      "step": 8,
+      "step_outcome": "neutral",
+      "success": true,
+      "tool": "Bash",
+      "turn": 4
+    }
+  ],
+  "system_prompt": null,
+  "system_prompt_hash": null,
+  "task": "Using only the embedded packet, classify the privileged groups against the provided thresholds, recommend access changes, quantify residual risk, and produce two deliverables: conditional_access_drift.xlsx and id_governance_memo.md. The deliverables must include formulas or executable logic (spreadsheet formulas or pseudocode), intermediate calculations, row-level citations to the embedded packet, validation checks, explicit uncertainty notes, sensitivity checks around controlling thresholds, and a final decision table labeling each group as pass/warn/fail/needs_review. Do not import external data or invent missing values; explicitly surface any unresolved assumptions.",
+  "task_family_id": null,
+  "original_internal_task_id": "aa_task_0071",
+  "task_id": "671",
+  "termination_reason": "task_complete",
+  "trace_id": "trace_671-baseline_normalized",
+  "trace_mode": "live"
+}

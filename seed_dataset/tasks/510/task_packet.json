@@ -1,0 +1,81 @@
+{
+  "schema_version": "aa-seed-task-v0.1",
+  "task_id": "510",
+  "title": "Aerospace Thermal-Structural Nonconformance MRB Disposition Analysis",
+  "domain": "aerospace_thermal_structural_nonconformance",
+  "subdomain": "thermal_shield_bracket_mrb_disposition_and_margin_analysis",
+  "domains": [
+    "aerospace_thermal_structural_nonconformance"
+  ],
+  "subdomains": [
+    "thermal_shield_bracket_mrb_disposition_and_margin_analysis"
+  ],
+  "agent_apprentice_role": "aerospace thermal-structural MRB engineer",
+  "task_family": "nonconformance_margin_analysis_and_disposition",
+  "difficulty_tier": "expert",
+  "expected_economic_value": "$175k-$325k aerospace MRB / propulsion thermal-structural engineering",
+  "expected_economic_value_for_agent_apprentice": "$250+",
+  "expected_deliverable": "thermal_structural_mrb_analysis.xlsx + nonconformance_disposition_memo.md",
+  "deliverables": [
+    "thermal_structural_mrb_analysis.xlsx",
+    "nonconformance_disposition_memo.md"
+  ],
+  "normalized_title": "Aerospace Thermal-Structural Nonconformance MRB Disposition Analysis",
+  "instruction": "An aerospace propulsion program found a thermal-shield support bracket outside drawing tolerance after engine hot-fire acceptance testing. The material-review board needs a computational disposition pack: use-as-is, repair, rework, or scrap, with fatigue and thermal-margin evidence. Task packet: part=exhaust thermal shield bracket BRK-77, material=Inconel 718 aged, drawing thickness=2.40 mm +/-0.10, measured thickness grid mm=[2.31,2.28,2.25,2.22,2.19,2.24,2.29,2.33], hole_edge_distance spec>=5.00 mm measured=[5.12,5.08,4.86,5.02], flatness spec<=0.35 mm measured=0.62, hot-fire exposure=3 cycles, peak metal temperature thermocouples C=[612,628,641,637], design_limit_temp=650 C, normal operating cycles remaining=18,000, stress_model_nominal MPa at 2.40mm=382, stress scales inversely with thickness, local Kt for edge_distance<5.0 =1.08, flatness bending add=22 MPa if flatness>0.50, material allowable yield at 650C=860 MPa, fatigue allowable alternating stress for 20k cycles at 640C=510 MPa with scatter_factor=1.35, inspection finding: no crack by fluorescent penetrant, oxide discoloration moderate, repair option R1 blend hole edge cost=$9,800 downtime=2 days removes Kt but consumes 0.04 mm local thickness, R2 re-form flatness cost=$18,500 downtime=4 days reduces flatness to 0.28 but requires repeat heat tint inspection, R3 replacement cost=$74,000 lead_time=21 days, program slip cost=$46,000/day. Rules and constraints: compute minimum-thickness stress=382*(2.40/min_thickness); apply Kt and flatness add where applicable; fatigue_margin = fatigue_allowable/scatter_factor - computed_stress; use-as-is allowed only if temperature margin>=9 C, yield margin>=1.5, fatigue_margin>=25 MPa, all dimensional nonconformances have risk rationale, and no crack indication; repair plan must include post-repair stress effect; choose disposition minimizing cost+slip while satisfying margins; flag expert-review items separately from calculations. Required work: deliver thermal_structural_mrb_analysis.xlsx + nonconformance_disposition_memo.md with stress/fatigue calculations, dimensional map, repair economics, MRB disposition recommendation, required inspections, and airworthiness-style rationale based only on the packet. This task is self-contained: use the task packet as the factual record, do not add source references or external datasets, and preserve a high-fidelity audit trail for every calculation, classification, and recommendation. State assumptions and unresolved evidence gaps explicitly. When executed locally, place final deliverables under the artifacts/ directory.",
+  "task_status": "ready_to_run",
+  "run_status": "not_run",
+  "seed_rank": 10,
+  "display_order": 10,
+  "allowed_tools": [
+    "Local text editor or Markdown editor",
+    "Local spreadsheet, CSV, JSON, YAML, or scripting tools for deterministic calculations",
+    "Local validation or linting commands",
+    "Local plotting or diagramming tools when useful"
+  ],
+  "disallowed_tools": [
+    "External fact lookup or live data pulls",
+    "Live production systems, cloud accounts, trading systems, clinical systems, or industrial controls",
+    "Secret discovery, credential testing, or any action outside the prepared task workspace"
+  ],
+  "privacy_classification": "synthetic",
+  "needs_expert_review": true,
+  "input_requirements": [
+    "Use the task packet as the sole factual input.",
+    "Cite row IDs, record IDs, thresholds, formulas, and option IDs from the packet wherever they control a conclusion.",
+    "Mark missing, contradictory, or under-supported values as needs_review instead of inventing them."
+  ],
+  "inputs": [
+    "All factual inputs are embedded in the task packet.",
+    "Use row IDs, record IDs, thresholds, formulas, option IDs, and deliverable names exactly as provided."
+  ],
+  "output_requirements": [
+    "Produce the required deliverable files with the specified filenames when filenames are provided.",
+    "Include intermediate calculations or executable logic sufficient for another reviewer to reproduce the result.",
+    "Include validation checks, sensitivity notes around controlling thresholds, and a final decision or recommendation table."
+  ],
+  "constraints": [
+    "Use the task packet as the factual record.",
+    "Do not browse, call live services, import external datasets, or invent missing values.",
+    "Treat regulated or safety-critical outputs as review packets, not authorization to act."
+  ],
+  "quality_bar": [
+    "Treat the task as realistic professional work with domain-appropriate rigor.",
+    "Preserve the packet's domain detail, identifiers, thresholds, and edge cases in the final deliverables.",
+    "Make every recommendation traceable to explicit task-packet evidence or mark it as needs_review."
+  ],
+  "validation_expectations": [
+    "Check required fields, row counts, totals, thresholds, and classifications before finalizing.",
+    "Show enough formulas, script logic, or tables for an independent reviewer to reproduce the result.",
+    "Flag any contradiction, missing input, or threshold-sensitive conclusion."
+  ],
+  "edge_cases": [
+    "If packet evidence is incomplete, do not infer missing values; label the item needs_review.",
+    "If multiple options satisfy hard constraints, rank them using the packet's stated priorities and explain ties.",
+    "If a regulated or safety-critical conclusion appears, frame the output as a review packet rather than authorization to act."
+  ],
+  "privacy_safety_expectations": [
+    "Do not use live systems, private accounts, credentials, or external datasets.",
+    "Do not include raw secrets or operational instructions that would execute real-world changes.",
+    "Keep synthetic identifiers from the packet only when needed for verification."
+  ]
+}

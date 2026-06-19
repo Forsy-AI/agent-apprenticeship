@@ -1,0 +1,1107 @@
+{
+  "actual_outputs": {
+    "original_internal_attempt_id": "aa_task_0628_baseline",
+    "attempt_id": "328-baseline",
+    "attempt_kind": "baseline",
+    "error_message": null,
+    "error_type": null,
+    "metadata_json": {
+      "actual_outputs_discarded_field_count": 0,
+      "actual_outputs_normalized": true,
+      "expected_deliverable_items": [
+        "coherency_counterexample_min.md",
+        "state_trace.csv"
+      ],
+      "original_fields": {
+        "artifact_paths": {
+          "review_md": "[EXCLUDED_GENERATED_ARTIFACT]",
+          "state_trace_csv": "[EXCLUDED_GENERATED_ARTIFACT]"
+        },
+        "final_decision": {
+          "portfolio_recommendation": "redesign",
+          "reasoning": "Both fail records (R2, R4) remain fail under all budget-feasible remediation combinations; no sensitivity-induced class change found."
+        },
+        "flags": {
+          "needs_review": true,
+          "needs_review_reason": "metric mapping ambiguity: sharer_count present but not in 3-term score formula"
+        },
+        "normalization": {
+          "method": "minmax",
+          "metrics_used_for_context": [
+            "sharer_count"
+          ],
+          "metrics_used_for_score": [
+            "step",
+            "owner_count",
+            "invariant_breach"
+          ],
+          "needs_review": [
+            "sharer_count is present in packet but not part of 3-term score formula"
+          ],
+          "scale": "0..100"
+        },
+        "records": [
+          {
+            "class": "pass",
+            "id": "R1",
+            "normalized": {
+              "breach_n": 100,
+              "owner_n": 0,
+              "step_n": 50
+            },
+            "score": 25.0,
+            "source_tuple": {
+              "invariant_breach": 1,
+              "owner_count": 0,
+              "sharer_count": 3,
+              "step": 4
+            },
+            "status_change_with_5pct": false
+          },
+          {
+            "class": "fail",
+            "id": "R2",
+            "normalized": {
+              "breach_n": 0,
+              "owner_n": 100,
+              "step_n": 100
+            },
+            "score": 160.0,
+            "source_tuple": {
+              "invariant_breach": 0,
+              "owner_count": 1,
+              "sharer_count": 3,
+              "step": 6
+            },
+            "status_change_with_5pct": false
+          },
+          {
+            "class": "pass",
+            "id": "R3",
+            "normalized": {
+              "breach_n": 100,
+              "owner_n": 100,
+              "step_n": 0
+            },
+            "score": 35.0,
+            "source_tuple": {
+              "invariant_breach": 1,
+              "owner_count": 1,
+              "sharer_count": 1,
+              "step": 2
+            },
+            "status_change_with_5pct": false
+          },
+          {
+            "class": "fail",
+            "id": "R4",
+            "normalized": {
+              "breach_n": 0,
+              "owner_n": 100,
+              "step_n": 100
+            },
+            "score": 160.0,
+            "source_tuple": {
+              "invariant_breach": 0,
+              "owner_count": 1,
+              "sharer_count": 3,
+              "step": 6
+            },
+            "status_change_with_5pct": false
+          }
+        ],
+        "remediation": {
+          "budget_usd": 165000,
+          "feasible_combinations": [
+            {
+              "all_below_60": false,
+              "combo": [
+                "O1"
+              ],
+              "cost": 51150,
+              "resulting_fail_record_scores": {
+                "R2": 148.0,
+                "R4": 148.0
+              }
+            },
+            {
+              "all_below_60": false,
+              "combo": [
+                "O2"
+              ],
+              "cost": 77550,
+              "resulting_fail_record_scores": {
+                "R2": 149.2,
+                "R4": 149.2
+              }
+            },
+            {
+              "all_below_60": false,
+              "combo": [
+                "O1",
+                "O2"
+              ],
+              "cost": 128700,
+              "resulting_fail_record_scores": {
+                "R2": 137.2,
+                "R4": 137.2
+              }
+            },
+            {
+              "all_below_60": false,
+              "combo": [
+                "O3"
+              ],
+              "cost": 89100,
+              "resulting_fail_record_scores": {
+                "R2": 160.0,
+                "R4": 160.0
+              }
+            },
+            {
+              "all_below_60": false,
+              "combo": [
+                "O1",
+                "O3"
+              ],
+              "cost": 140250,
+              "resulting_fail_record_scores": {
+                "R2": 148.0,
+                "R4": 148.0
+              }
+            }
+          ],
+          "options": [
+            {
+              "cost": 51150,
+              "driver": "step",
+              "id": "O1",
+              "reduction_pct": 12
+            },
+            {
+              "cost": 77550,
+              "driver": "owner_count",
+              "id": "O2",
+              "reduction_pct": 18
+            },
+            {
+              "cost": 89100,
+              "driver": "invariant_breach",
+              "id": "O3",
+              "improvement_pct": 9
+            }
+          ]
+        },
+        "score_formula": "score = step_n + 0.6*owner_n - 0.25*breach_n",
+        "sensitivity": {
+          "class_change_records": [],
+          "expert_review_triggered": false,
+          "mode": "one-metric-at-a-time on normalized metrics",
+          "rationale": "no record changes class under +/-5% shifts",
+          "shift_pct": 5
+        },
+        "thresholds": {
+          "fail_gt": 60.0,
+          "normalized_threshold": 60.0,
+          "pass_lt": 54.0,
+          "warn_range": [
+            54.0,
+            60.0
+          ]
+        }
+      },
+      "produced_deliverable_items": [
+        "coherency_counterexample_min.md",
+        "state_trace.csv"
+      ],
+      "raw_actual_outputs": {
+        "artifact_paths": {
+          "review_md": "[EXCLUDED_GENERATED_ARTIFACT]",
+          "state_trace_csv": "[EXCLUDED_GENERATED_ARTIFACT]"
+        },
+        "final_decision": {
+          "portfolio_recommendation": "redesign",
+          "reasoning": "Both fail records (R2, R4) remain fail under all budget-feasible remediation combinations; no sensitivity-induced class change found."
+        },
+        "flags": {
+          "needs_review": true,
+          "needs_review_reason": "metric mapping ambiguity: sharer_count present but not in 3-term score formula"
+        },
+        "normalization": {
+          "method": "minmax",
+          "metrics_used_for_context": [
+            "sharer_count"
+          ],
+          "metrics_used_for_score": [
+            "step",
+            "owner_count",
+            "invariant_breach"
+          ],
+          "needs_review": [
+            "sharer_count is present in packet but not part of 3-term score formula"
+          ],
+          "scale": "0..100"
+        },
+        "records": [
+          {
+            "class": "pass",
+            "id": "R1",
+            "normalized": {
+              "breach_n": 100,
+              "owner_n": 0,
+              "step_n": 50
+            },
+            "score": 25.0,
+            "source_tuple": {
+              "invariant_breach": 1,
+              "owner_count": 0,
+              "sharer_count": 3,
+              "step": 4
+            },
+            "status_change_with_5pct": false
+          },
+          {
+            "class": "fail",
+            "id": "R2",
+            "normalized": {
+              "breach_n": 0,
+              "owner_n": 100,
+              "step_n": 100
+            },
+            "score": 160.0,
+            "source_tuple": {
+              "invariant_breach": 0,
+              "owner_count": 1,
+              "sharer_count": 3,
+              "step": 6
+            },
+            "status_change_with_5pct": false
+          },
+          {
+            "class": "pass",
+            "id": "R3",
+            "normalized": {
+              "breach_n": 100,
+              "owner_n": 100,
+              "step_n": 0
+            },
+            "score": 35.0,
+            "source_tuple": {
+              "invariant_breach": 1,
+              "owner_count": 1,
+              "sharer_count": 1,
+              "step": 2
+            },
+            "status_change_with_5pct": false
+          },
+          {
+            "class": "fail",
+            "id": "R4",
+            "normalized": {
+              "breach_n": 0,
+              "owner_n": 100,
+              "step_n": 100
+            },
+            "score": 160.0,
+            "source_tuple": {
+              "invariant_breach": 0,
+              "owner_count": 1,
+              "sharer_count": 3,
+              "step": 6
+            },
+            "status_change_with_5pct": false
+          }
+        ],
+        "remediation": {
+          "budget_usd": 165000,
+          "feasible_combinations": [
+            {
+              "all_below_60": false,
+              "combo": [
+                "O1"
+              ],
+              "cost": 51150,
+              "resulting_fail_record_scores": {
+                "R2": 148.0,
+                "R4": 148.0
+              }
+            },
+            {
+              "all_below_60": false,
+              "combo": [
+                "O2"
+              ],
+              "cost": 77550,
+              "resulting_fail_record_scores": {
+                "R2": 149.2,
+                "R4": 149.2
+              }
+            },
+            {
+              "all_below_60": false,
+              "combo": [
+                "O1",
+                "O2"
+              ],
+              "cost": 128700,
+              "resulting_fail_record_scores": {
+                "R2": 137.2,
+                "R4": 137.2
+              }
+            },
+            {
+              "all_below_60": false,
+              "combo": [
+                "O3"
+              ],
+              "cost": 89100,
+              "resulting_fail_record_scores": {
+                "R2": 160.0,
+                "R4": 160.0
+              }
+            },
+            {
+              "all_below_60": false,
+              "combo": [
+                "O1",
+                "O3"
+              ],
+              "cost": 140250,
+              "resulting_fail_record_scores": {
+                "R2": 148.0,
+                "R4": 148.0
+              }
+            }
+          ],
+          "options": [
+            {
+              "cost": 51150,
+              "driver": "step",
+              "id": "O1",
+              "reduction_pct": 12
+            },
+            {
+              "cost": 77550,
+              "driver": "owner_count",
+              "id": "O2",
+              "reduction_pct": 18
+            },
+            {
+              "cost": 89100,
+              "driver": "invariant_breach",
+              "id": "O3",
+              "improvement_pct": 9
+            }
+          ]
+        },
+        "score_formula": "score = step_n + 0.6*owner_n - 0.25*breach_n",
+        "sensitivity": {
+          "class_change_records": [],
+          "expert_review_triggered": false,
+          "mode": "one-metric-at-a-time on normalized metrics",
+          "rationale": "no record changes class under +/-5% shifts",
+          "shift_pct": 5
+        },
+        "original_internal_task_id": "aa_task_0628",
+        "task_id": "328",
+        "thresholds": {
+          "fail_gt": 60.0,
+          "normalized_threshold": 60.0,
+          "pass_lt": 54.0,
+          "warn_range": [
+            54.0,
+            60.0
+          ]
+        }
+      }
+    },
+    "output_summary": "Normalized actual outputs from artifact files.",
+    "status": "success",
+    "original_internal_task_id": "aa_task_0628",
+    "task_id": "328",
+    "required_deliverables": [
+      "coherency_counterexample_min.md",
+      "state_trace.csv"
+    ],
+    "produced_deliverables": [
+      "coherency_counterexample_min.md",
+      "state_trace.csv"
+    ],
+    "missing_required_deliverables": [],
+    "deliverable_produced": true,
+    "deliverable_file_included": false,
+    "included_generated_artifacts": false,
+    "artifacts_excluded_reason": "Generated output artifacts are excluded from the public seed dataset by default.",
+    "logs_included": false,
+    "logs_excluded_reason": "Raw runner logs are excluded from the public seed dataset."
+  },
+  "agent_config": null,
+  "agent_tools": [
+    "codex_cli",
+    "Bash",
+    "python",
+    "file_read",
+    "file_write",
+    "apply_patch"
+  ],
+  "artifacts": [],
+  "original_internal_attempt_id": "aa_task_0628_baseline",
+  "attempt_id": "328-baseline",
+  "attempt_kind": "baseline",
+  "attempt_status": "completed",
+  "collection_id": null,
+  "completion_reason": null,
+  "ended_at": null,
+  "final_attempt_id": null,
+  "initial_attempt_id": null,
+  "iteration_index": null,
+  "learning": null,
+  "memory": null,
+  "metadata_json": {
+    "codex_command": [
+      "codex",
+      "exec",
+      "--sandbox",
+      "workspace-write",
+      "<prompt>"
+    ],
+    "codex_sandbox": "workspace-write",
+    "discarded_step_count": 0,
+    "raw_trace_list": [
+      {
+        "action": "Read task inputs and extract packet constraints",
+        "actor": "worker",
+        "artifact_refs": [
+          "input/task.json",
+          "input/task_brief.md"
+        ],
+        "causal_note": "All subsequent calculations require packet-grounded inputs.",
+        "causal_type": "initialize",
+        "caused_by": "user_task_start",
+        "error_message": null,
+        "error_type": null,
+        "input": "cat input/task.json && cat input/task_brief.md",
+        "metadata_json": {
+          "inputs_read": 2
+        },
+        "observation": "Embedded packet and instruction successfully loaded from provided files.",
+        "operation": "read",
+        "output": "Collected records R1..R4, normalized_threshold_score=60.0, remediation_budget=165000, score formula and classification constraints.",
+        "reasoning": "Need authoritative packet-grounded values before any computations.",
+        "state_change": "Context captured from source files only; no filesystem state mutated.",
+        "step": 1,
+        "step_outcome": "completed",
+        "success": true,
+        "tool": "exec_command",
+        "turn": 1
+      },
+      {
+        "action": "Rebuild decision logic and normalization model",
+        "actor": "worker",
+        "causal_note": "Normalization is required before applying score formula.",
+        "causal_type": "logic_derivation",
+        "caused_by": "agent_trace.step=1",
+        "error_message": null,
+        "error_type": null,
+        "input": "score = first + 0.6*second - 0.25*third with packet normalization and threshold rules",
+        "metadata_json": {
+          "ambiguity_flag": "sharer_count_not_in_formula",
+          "formula_defined": true
+        },
+        "observation": "Derived executable logic from packet-provided formula and constraints.",
+        "operation": "execute",
+        "output": "Chosen min-max normalization to 0..100 for step/owner/invariant_breach; explicit ambiguity noted for sharer_count.",
+        "reasoning": "Directly mirrors provided formula and prevents threshold misuse with unscaled raw metrics.",
+        "state_change": "Established formal score/classification pipeline in memory.",
+        "step": 2,
+        "step_outcome": "completed",
+        "success": true,
+        "tool": "local_reasoning",
+        "turn": 1
+      },
+      {
+        "action": "Compute row scores and base classes",
+        "actor": "worker",
+        "causal_note": "Score computation precedes sensitivity and remediation checks.",
+        "causal_type": "compute",
+        "caused_by": "agent_trace.step=2",
+        "error_message": null,
+        "error_type": null,
+        "input": "R1..R4 normalized values and score equation",
+        "metadata_json": {
+          "record_count": 4
+        },
+        "observation": "Calculated normalized metrics and scores for each record.",
+        "operation": "execute",
+        "output": "Base classes: R1 pass(25), R2 fail(160), R3 pass(35), R4 fail(160).",
+        "reasoning": "Apply formula and threshold boundaries exactly as packet defines: fail>60, warn 54-60, pass<54.",
+        "state_change": "Class assignment for all records established in memory.",
+        "step": 3,
+        "step_outcome": "completed",
+        "success": true,
+        "tool": "local_reasoning",
+        "turn": 1
+      },
+      {
+        "action": "Generate review document with formulas, intermediate values, sensitivity, and decision logic",
+        "actor": "worker",
+        "causal_note": "Required deliverable includes this markdown artifact.",
+        "causal_type": "artifact_write",
+        "caused_by": "agent_trace.step=3",
+        "error_message": null,
+        "error_type": null,
+        "input": "hermetic markdown composition with scoring tables and remediation analysis",
+        "metadata_json": {
+          "format": "md",
+          "rows": 4
+        },
+        "observation": "Created markdown with citations to packet, calculations, assumption notes, and final recommendation.",
+        "operation": "write",
+        "output": "[EXCLUDED_GENERATED_ARTIFACT]",
+        "reasoning": "User requested review-ready markdown and explicit assumptions/validation.",
+        "state_change": "New file created under artifacts directory with full review artifact.",
+        "step": 4,
+        "step_outcome": "completed",
+        "success": true,
+        "tool": "shell(cat > file)",
+        "turn": 1
+      },
+      {
+        "action": "Generate executable state trace CSV",
+        "actor": "worker",
+        "causal_note": "CSV required output for execution trace and auditability.",
+        "causal_type": "artifact_write",
+        "caused_by": "agent_trace.step=3",
+        "error_message": null,
+        "error_type": null,
+        "input": "CSV schema for row-level traceability and +/-5% perturbation columns",
+        "metadata_json": {
+          "format": "csv",
+          "rows": 4
+        },
+        "observation": "Created state trace with raw/normalized metrics, base scores, sensitivity scores, and class-change flags.",
+        "operation": "write",
+        "output": "[EXCLUDED_GENERATED_ARTIFACT]",
+        "reasoning": "Provides reproducible machine-readable logic and sensitivity outputs.",
+        "state_change": "New CSV state trace artifact created.",
+        "step": 5,
+        "step_outcome": "completed",
+        "success": true,
+        "tool": "shell(cat > file)",
+        "turn": 1
+      },
+      {
+        "action": "Emit structured outputs summary JSON",
+        "actor": "worker",
+        "artifact_refs": [
+          "actual_outputs.json"
+        ],
+        "causal_note": "actual_outputs.json is part of submission contract.",
+        "causal_type": "artifact_write",
+        "caused_by": "agent_trace.step=5",
+        "error_message": null,
+        "error_type": null,
+        "input": "actual_outputs schema with artifact paths and decision metadata",
+        "metadata_json": {
+          "format": "json",
+          "schema": "task-output"
+        },
+        "observation": "Serialized machine-readable results, sensitivities, remediation checks, and final decision.",
+        "operation": "write",
+        "output": "actual_outputs.json",
+        "reasoning": "Evaluator expects exact machine-readable output contract in attempt directory.",
+        "state_change": "Created structured machine-readable result artifact at attempt root.",
+        "step": 6,
+        "step_outcome": "completed",
+        "success": true,
+        "tool": "shell(cat > file)",
+        "turn": 1
+      },
+      {
+        "action": "Record workflow trace using canonical step schema",
+        "actor": "worker",
+        "artifact_refs": [
+          "agent_trace.json"
+        ],
+        "causal_note": "Trace must be complete for grader auditing and evidence retrieval.",
+        "causal_type": "meta_record",
+        "caused_by": "agent_trace.step=6",
+        "error_message": null,
+        "error_type": null,
+        "input": "stepwise JSON array with step, turn, actor, action, operation, tool, observation, input, output, state_change, reasoning, caused_by, causal_type, causal_note, success, step_outcome, error_type, error_message, artifact_refs, metadata_json",
+        "metadata_json": {
+          "entries": 7
+        },
+        "observation": "Serialized this execution trace with required canonical keys and causality.",
+        "operation": "write",
+        "output": "agent_trace.json",
+        "reasoning": "Required by task instructions to preserve actionable evidence and causality.",
+        "state_change": "Created canonical workflow trace artifact in attempt root.",
+        "step": 7,
+        "step_outcome": "completed",
+        "success": true,
+        "tool": "shell(cat > file)",
+        "turn": 1
+      }
+    ],
+    "raw_trace_preserved": true,
+    "raw_trace_shape": "list",
+    "raw_trace_step_source": "steps",
+    "schema_valid": true,
+    "trace_normalization_status": "normalized",
+    "trace_valid": true
+  },
+  "preferred_attempt_id": null,
+  "previous_attempt_id": null,
+  "prior_trace_id": null,
+  "revision_attempt_ids": [],
+  "revision_group_id": null,
+  "schema_version": "aa-trace-v0.1",
+  "skills": null,
+  "started_at": null,
+  "steps": [
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "artifact_refs": [
+        "input/task.json",
+        "input/task_brief.md"
+      ],
+      "causal_note": "All subsequent calculations require packet-grounded inputs.",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "cat input/task.json && cat input/task_brief.md",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "inputs_read": 2,
+        "original_action": "Read task inputs and extract packet constraints",
+        "original_causal_type": "initialize",
+        "raw_step": {
+          "action": "Read task inputs and extract packet constraints",
+          "actor": "worker",
+          "artifact_refs": [
+            "input/task.json",
+            "input/task_brief.md"
+          ],
+          "causal_note": "All subsequent calculations require packet-grounded inputs.",
+          "causal_type": "initialize",
+          "caused_by": "user_task_start",
+          "error_message": null,
+          "error_type": null,
+          "input": "cat input/task.json && cat input/task_brief.md",
+          "metadata_json": {
+            "inputs_read": 2
+          },
+          "observation": "Embedded packet and instruction successfully loaded from provided files.",
+          "operation": "read",
+          "output": "Collected records R1..R4, normalized_threshold_score=60.0, remediation_budget=165000, score formula and classification constraints.",
+          "reasoning": "Need authoritative packet-grounded values before any computations.",
+          "state_change": "Context captured from source files only; no filesystem state mutated.",
+          "step": 1,
+          "step_outcome": "completed",
+          "success": true,
+          "tool": "exec_command",
+          "turn": 1
+        }
+      },
+      "observation": "Embedded packet and instruction successfully loaded from provided files.",
+      "operation": "read",
+      "output": "Collected records R1..R4, normalized_threshold_score=60.0, remediation_budget=165000, score formula and classification constraints.",
+      "parallel_group": null,
+      "reasoning": "Need authoritative packet-grounded values before any computations.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Context captured from source files only; no filesystem state mutated.",
+      "step": 1,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "Bash",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "causal_note": "Normalization is required before applying score formula.",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "score = first + 0.6*second - 0.25*third with packet normalization and threshold rules",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "ambiguity_flag": "sharer_count_not_in_formula",
+        "formula_defined": true,
+        "original_action": "Rebuild decision logic and normalization model",
+        "original_causal_type": "logic_derivation",
+        "raw_step": {
+          "action": "Rebuild decision logic and normalization model",
+          "actor": "worker",
+          "causal_note": "Normalization is required before applying score formula.",
+          "causal_type": "logic_derivation",
+          "caused_by": "agent_trace.step=1",
+          "error_message": null,
+          "error_type": null,
+          "input": "score = first + 0.6*second - 0.25*third with packet normalization and threshold rules",
+          "metadata_json": {
+            "ambiguity_flag": "sharer_count_not_in_formula",
+            "formula_defined": true
+          },
+          "observation": "Derived executable logic from packet-provided formula and constraints.",
+          "operation": "execute",
+          "output": "Chosen min-max normalization to 0..100 for step/owner/invariant_breach; explicit ambiguity noted for sharer_count.",
+          "reasoning": "Directly mirrors provided formula and prevents threshold misuse with unscaled raw metrics.",
+          "state_change": "Established formal score/classification pipeline in memory.",
+          "step": 2,
+          "step_outcome": "completed",
+          "success": true,
+          "tool": "local_reasoning",
+          "turn": 1
+        }
+      },
+      "observation": "Derived executable logic from packet-provided formula and constraints.",
+      "operation": "execute",
+      "output": "Chosen min-max normalization to 0..100 for step/owner/invariant_breach; explicit ambiguity noted for sharer_count.",
+      "parallel_group": null,
+      "reasoning": "Directly mirrors provided formula and prevents threshold misuse with unscaled raw metrics.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Established formal score/classification pipeline in memory.",
+      "step": 2,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "local_reasoning",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "causal_note": "Score computation precedes sensitivity and remediation checks.",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "R1..R4 normalized values and score equation",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "original_action": "Compute row scores and base classes",
+        "original_causal_type": "compute",
+        "raw_step": {
+          "action": "Compute row scores and base classes",
+          "actor": "worker",
+          "causal_note": "Score computation precedes sensitivity and remediation checks.",
+          "causal_type": "compute",
+          "caused_by": "agent_trace.step=2",
+          "error_message": null,
+          "error_type": null,
+          "input": "R1..R4 normalized values and score equation",
+          "metadata_json": {
+            "record_count": 4
+          },
+          "observation": "Calculated normalized metrics and scores for each record.",
+          "operation": "execute",
+          "output": "Base classes: R1 pass(25), R2 fail(160), R3 pass(35), R4 fail(160).",
+          "reasoning": "Apply formula and threshold boundaries exactly as packet defines: fail>60, warn 54-60, pass<54.",
+          "state_change": "Class assignment for all records established in memory.",
+          "step": 3,
+          "step_outcome": "completed",
+          "success": true,
+          "tool": "local_reasoning",
+          "turn": 1
+        },
+        "record_count": 4
+      },
+      "observation": "Calculated normalized metrics and scores for each record.",
+      "operation": "execute",
+      "output": "Base classes: R1 pass(25), R2 fail(160), R3 pass(35), R4 fail(160).",
+      "parallel_group": null,
+      "reasoning": "Apply formula and threshold boundaries exactly as packet defines: fail>60, warn 54-60, pass<54.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Class assignment for all records established in memory.",
+      "step": 3,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "local_reasoning",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "causal_note": "Required deliverable includes this markdown artifact.",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "hermetic markdown composition with scoring tables and remediation analysis",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "format": "md",
+        "original_action": "Generate review document with formulas, intermediate values, sensitivity, and decision logic",
+        "original_causal_type": "artifact_write",
+        "raw_step": {
+          "action": "Generate review document with formulas, intermediate values, sensitivity, and decision logic",
+          "actor": "worker",
+          "causal_note": "Required deliverable includes this markdown artifact.",
+          "causal_type": "artifact_write",
+          "caused_by": "agent_trace.step=3",
+          "error_message": null,
+          "error_type": null,
+          "input": "hermetic markdown composition with scoring tables and remediation analysis",
+          "metadata_json": {
+            "format": "md",
+            "rows": 4
+          },
+          "observation": "Created markdown with citations to packet, calculations, assumption notes, and final recommendation.",
+          "operation": "write",
+          "output": "[EXCLUDED_GENERATED_ARTIFACT]",
+          "reasoning": "User requested review-ready markdown and explicit assumptions/validation.",
+          "state_change": "New file created under artifacts directory with full review artifact.",
+          "step": 4,
+          "step_outcome": "completed",
+          "success": true,
+          "tool": "shell(cat > file)",
+          "turn": 1
+        },
+        "rows": 4
+      },
+      "observation": "Created markdown with citations to packet, calculations, assumption notes, and final recommendation.",
+      "operation": "write",
+      "output": "[EXCLUDED_GENERATED_ARTIFACT]",
+      "parallel_group": null,
+      "reasoning": "User requested review-ready markdown and explicit assumptions/validation.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "New file created under artifacts directory with full review artifact.",
+      "step": 4,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "file_write",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "causal_note": "CSV required output for execution trace and auditability.",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "CSV schema for row-level traceability and +/-5% perturbation columns",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "format": "csv",
+        "original_action": "Generate executable state trace CSV",
+        "original_causal_type": "artifact_write",
+        "raw_step": {
+          "action": "Generate executable state trace CSV",
+          "actor": "worker",
+          "causal_note": "CSV required output for execution trace and auditability.",
+          "causal_type": "artifact_write",
+          "caused_by": "agent_trace.step=3",
+          "error_message": null,
+          "error_type": null,
+          "input": "CSV schema for row-level traceability and +/-5% perturbation columns",
+          "metadata_json": {
+            "format": "csv",
+            "rows": 4
+          },
+          "observation": "Created state trace with raw/normalized metrics, base scores, sensitivity scores, and class-change flags.",
+          "operation": "write",
+          "output": "[EXCLUDED_GENERATED_ARTIFACT]",
+          "reasoning": "Provides reproducible machine-readable logic and sensitivity outputs.",
+          "state_change": "New CSV state trace artifact created.",
+          "step": 5,
+          "step_outcome": "completed",
+          "success": true,
+          "tool": "shell(cat > file)",
+          "turn": 1
+        },
+        "rows": 4
+      },
+      "observation": "Created state trace with raw/normalized metrics, base scores, sensitivity scores, and class-change flags.",
+      "operation": "write",
+      "output": "[EXCLUDED_GENERATED_ARTIFACT]",
+      "parallel_group": null,
+      "reasoning": "Provides reproducible machine-readable logic and sensitivity outputs.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "New CSV state trace artifact created.",
+      "step": 5,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "file_write",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "artifact_refs": [
+        "actual_outputs.json"
+      ],
+      "causal_note": "actual_outputs.json is part of submission contract.",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "actual_outputs schema with artifact paths and decision metadata",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "format": "json",
+        "original_action": "Emit structured outputs summary JSON",
+        "original_causal_type": "artifact_write",
+        "raw_step": {
+          "action": "Emit structured outputs summary JSON",
+          "actor": "worker",
+          "artifact_refs": [
+            "actual_outputs.json"
+          ],
+          "causal_note": "actual_outputs.json is part of submission contract.",
+          "causal_type": "artifact_write",
+          "caused_by": "agent_trace.step=5",
+          "error_message": null,
+          "error_type": null,
+          "input": "actual_outputs schema with artifact paths and decision metadata",
+          "metadata_json": {
+            "format": "json",
+            "schema": "task-output"
+          },
+          "observation": "Serialized machine-readable results, sensitivities, remediation checks, and final decision.",
+          "operation": "write",
+          "output": "actual_outputs.json",
+          "reasoning": "Evaluator expects exact machine-readable output contract in attempt directory.",
+          "state_change": "Created structured machine-readable result artifact at attempt root.",
+          "step": 6,
+          "step_outcome": "completed",
+          "success": true,
+          "tool": "shell(cat > file)",
+          "turn": 1
+        },
+        "schema": "task-output"
+      },
+      "observation": "Serialized machine-readable results, sensitivities, remediation checks, and final decision.",
+      "operation": "write",
+      "output": "actual_outputs.json",
+      "parallel_group": null,
+      "reasoning": "Evaluator expects exact machine-readable output contract in attempt directory.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Created structured machine-readable result artifact at attempt root.",
+      "step": 6,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "file_write",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "artifact_refs": [
+        "agent_trace.json"
+      ],
+      "causal_note": "Trace must be complete for grader auditing and evidence retrieval.",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "stepwise JSON array with step, turn, actor, action, operation, tool, observation, input, output, state_change, reasoning, caused_by, causal_type, causal_note, success, step_outcome, error_type, error_message, artifact_refs, metadata_json",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "entries": 7,
+        "original_action": "Record workflow trace using canonical step schema",
+        "original_causal_type": "meta_record",
+        "raw_step": {
+          "action": "Record workflow trace using canonical step schema",
+          "actor": "worker",
+          "artifact_refs": [
+            "agent_trace.json"
+          ],
+          "causal_note": "Trace must be complete for grader auditing and evidence retrieval.",
+          "causal_type": "meta_record",
+          "caused_by": "agent_trace.step=6",
+          "error_message": null,
+          "error_type": null,
+          "input": "stepwise JSON array with step, turn, actor, action, operation, tool, observation, input, output, state_change, reasoning, caused_by, causal_type, causal_note, success, step_outcome, error_type, error_message, artifact_refs, metadata_json",
+          "metadata_json": {
+            "entries": 7
+          },
+          "observation": "Serialized this execution trace with required canonical keys and causality.",
+          "operation": "write",
+          "output": "agent_trace.json",
+          "reasoning": "Required by task instructions to preserve actionable evidence and causality.",
+          "state_change": "Created canonical workflow trace artifact in attempt root.",
+          "step": 7,
+          "step_outcome": "completed",
+          "success": true,
+          "tool": "shell(cat > file)",
+          "turn": 1
+        }
+      },
+      "observation": "Serialized this execution trace with required canonical keys and causality.",
+      "operation": "write",
+      "output": "agent_trace.json",
+      "parallel_group": null,
+      "reasoning": "Required by task instructions to preserve actionable evidence and causality.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Created canonical workflow trace artifact in attempt root.",
+      "step": 7,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "Bash",
+      "turn": 1
+    }
+  ],
+  "system_prompt": null,
+  "system_prompt_hash": null,
+  "task": "Using only the supplied embedded packet, rebuild the decision logic for MESI directory coherency counterexample minimization; compute the score per record using the provided formula after unit normalization; identify threshold crossings (fail / warn / pass), test sensitivity to +/-5% per-metric shifts and note any classification changes, and produce a review-ready decision table and state trace. Deliver: coherency_counterexample_min.md and state_trace.csv containing formulas or executable logic, intermediate calculations, row-level citations to the embedded packet, explicit assumptions, validation checks, sensitivity analysis notes (including any records that change classification after a 5% sensitivity shift), and a final decision table recommending one of: hold, release, retest, redesign, or targeted mitigation. Do not invent inputs or use external data; mark any unresolved ambiguity as needs_review. Trigger expert-review flag when any record changes classification after a 5% sensitivity shift.",
+  "task_family_id": null,
+  "original_internal_task_id": "aa_task_0628",
+  "task_id": "328",
+  "termination_reason": "task_complete",
+  "trace_id": "trace_328-baseline_normalized",
+  "trace_mode": "live"
+}

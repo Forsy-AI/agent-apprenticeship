@@ -1,0 +1,81 @@
+{
+  "schema_version": "aa-seed-task-v0.1",
+  "task_id": "418",
+  "title": "Calcium Imaging Event Deconvolution QC",
+  "domain": "neuroimaging_analysis",
+  "subdomain": "calcium_deconvolution_qc",
+  "domains": [
+    "neuroimaging_analysis"
+  ],
+  "subdomains": [
+    "calcium_deconvolution_qc"
+  ],
+  "agent_apprentice_role": "neuroinformatics analyst",
+  "task_family": "algorithm_qc",
+  "difficulty_tier": "expert",
+  "expected_economic_value": "$30,000-$75,000 integration-analysis package",
+  "expected_economic_value_for_agent_apprentice": "$100-$250",
+  "expected_deliverable": "calcium_deconvolution_qc.csv + methods_note.md",
+  "deliverables": [
+    "calcium_deconvolution_qc.csv",
+    "methods_note.md"
+  ],
+  "normalized_title": "Calcium Imaging Event Deconvolution QC",
+  "instruction": "Context: a two-photon experiment has sparse behavior-triggered activity. Task packet: records: R1 snr=74.23 event_rate_min=14 neuropil_corr=99.44 false_event_risk=1.1; R2 snr=65.86 event_rate_min=62 neuropil_corr=38.59 false_event_risk=0.84; R3 snr=32.22 event_rate_min=189 neuropil_corr=84.33 false_event_risk=3.31; R4 snr=32.05 event_rate_min=94 neuropil_corr=22.55 false_event_risk=9.65; limit_snr=75.14; limit_event_rate_min=9; limit_neuropil_corr=60.08; decision_budget_usd=115000; sensitivity_shift_pct=5; hard_threshold_record_count=1;. Rules and constraints: Compute margin = false_event_risk - (0.35*snr + 0.25*event_rate_min + 0.15*neuropil_corr); negative margin is fail and margin below 8% of the largest driver is warn. Recommendations cannot use external measurements, specialized licensed software, or hidden assumptions; all calculations must use only the task packet, and any contradictory or under-supported record must be marked needs_review. Required work: validate event calls and exclude unreliable cells; build a reproducible workbook or script, preserve intermediate calculations, and produce an expert-review memo. Deliver calcium_deconvolution_qc.CSV + methods_note.md with formulas or executable logic, record-level citations, validation checks, sensitivity notes, and a final recommendation table suitable for expert review. This task is self-contained: use the task packet as the factual record, do not add source references or external datasets, and preserve a high-fidelity audit trail for every calculation, classification, and recommendation. State assumptions and unresolved evidence gaps explicitly. When executed locally, place final deliverables under the artifacts/ directory.",
+  "task_status": "ready_to_run",
+  "run_status": "not_run",
+  "seed_rank": 123,
+  "display_order": 123,
+  "allowed_tools": [
+    "Local text editor or Markdown editor",
+    "Local spreadsheet, CSV, JSON, YAML, or scripting tools for deterministic calculations",
+    "Local validation or linting commands",
+    "Local plotting or diagramming tools when useful"
+  ],
+  "disallowed_tools": [
+    "External fact lookup or live data pulls",
+    "Live production systems, cloud accounts, trading systems, clinical systems, or industrial controls",
+    "Secret discovery, credential testing, or any action outside the prepared task workspace"
+  ],
+  "privacy_classification": "synthetic",
+  "needs_expert_review": true,
+  "input_requirements": [
+    "Use the task packet as the sole factual input.",
+    "Cite row IDs, record IDs, thresholds, formulas, and option IDs from the packet wherever they control a conclusion.",
+    "Mark missing, contradictory, or under-supported values as needs_review instead of inventing them."
+  ],
+  "inputs": [
+    "All factual inputs are embedded in the task packet.",
+    "Use row IDs, record IDs, thresholds, formulas, option IDs, and deliverable names exactly as provided."
+  ],
+  "output_requirements": [
+    "Produce the required deliverable files with the specified filenames when filenames are provided.",
+    "Include intermediate calculations or executable logic sufficient for another reviewer to reproduce the result.",
+    "Include validation checks, sensitivity notes around controlling thresholds, and a final decision or recommendation table."
+  ],
+  "constraints": [
+    "Use the task packet as the factual record.",
+    "Do not browse, call live services, import external datasets, or invent missing values.",
+    "Treat regulated or safety-critical outputs as review packets, not authorization to act."
+  ],
+  "quality_bar": [
+    "Treat the task as realistic professional work with domain-appropriate rigor.",
+    "Preserve the packet's domain detail, identifiers, thresholds, and edge cases in the final deliverables.",
+    "Make every recommendation traceable to explicit task-packet evidence or mark it as needs_review."
+  ],
+  "validation_expectations": [
+    "Check required fields, row counts, totals, thresholds, and classifications before finalizing.",
+    "Show enough formulas, script logic, or tables for an independent reviewer to reproduce the result.",
+    "Flag any contradiction, missing input, or threshold-sensitive conclusion."
+  ],
+  "edge_cases": [
+    "If packet evidence is incomplete, do not infer missing values; label the item needs_review.",
+    "If multiple options satisfy hard constraints, rank them using the packet's stated priorities and explain ties.",
+    "If a regulated or safety-critical conclusion appears, frame the output as a review packet rather than authorization to act."
+  ],
+  "privacy_safety_expectations": [
+    "Do not use live systems, private accounts, credentials, or external datasets.",
+    "Do not include raw secrets or operational instructions that would execute real-world changes.",
+    "Keep synthetic identifiers from the packet only when needed for verification."
+  ]
+}

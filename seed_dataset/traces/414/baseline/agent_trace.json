@@ -1,0 +1,859 @@
+{
+  "actual_outputs": {
+    "original_internal_attempt_id": "aa_task_0714_baseline",
+    "attempt_id": "414-baseline",
+    "attempt_kind": "baseline",
+    "error_message": null,
+    "error_type": null,
+    "metadata_json": {
+      "actual_outputs_discarded_field_count": 0,
+      "actual_outputs_normalized": true,
+      "expected_deliverable_items": [
+        "underfill_void_risk.csv",
+        "reliability_disposition.md"
+      ],
+      "original_fields": {
+        "artifact_base_path": "./artifacts",
+        "artifacts": [
+          "[EXCLUDED_GENERATED_ARTIFACT]",
+          "[EXCLUDED_GENERATED_ARTIFACT]"
+        ],
+        "generated_at": "2026-06-16",
+        "output_contract": {
+          "baseline_control_metric": 0.175,
+          "budget_usd": 25000,
+          "decision_basis": "embedded_packet_only",
+          "decision_metric": "Hard Exceedance Index (HEI)",
+          "improvement_pct": 53.4,
+          "mitigated_control_metric": 0.0816,
+          "recommended_budget_used_usd": 12500,
+          "sensitivity_control_metric": 0.1232,
+          "trace_file": "agent_trace.json"
+        },
+        "validation_summary": [
+          "2 hard violations in baseline before mitigation",
+          "1 hard violation after recommended mitigation (meets threshold)",
+          "all calculations derived from embedded packet fields"
+        ]
+      },
+      "produced_deliverable_items": [
+        "underfill_void_risk.csv",
+        "reliability_disposition.md"
+      ],
+      "raw_actual_outputs": {
+        "artifact_base_path": "./artifacts",
+        "artifacts": [
+          "[EXCLUDED_GENERATED_ARTIFACT]",
+          "[EXCLUDED_GENERATED_ARTIFACT]"
+        ],
+        "generated_at": "2026-06-16",
+        "output_contract": {
+          "baseline_control_metric": 0.175,
+          "budget_usd": 25000,
+          "decision_basis": "embedded_packet_only",
+          "decision_metric": "Hard Exceedance Index (HEI)",
+          "improvement_pct": 53.4,
+          "mitigated_control_metric": 0.0816,
+          "recommended_budget_used_usd": 12500,
+          "sensitivity_control_metric": 0.1232,
+          "trace_file": "agent_trace.json"
+        },
+        "original_internal_task_id": "aa_task_0714",
+        "task_id": "414",
+        "validation_summary": [
+          "2 hard violations in baseline before mitigation",
+          "1 hard violation after recommended mitigation (meets threshold)",
+          "all calculations derived from embedded packet fields"
+        ]
+      }
+    },
+    "output_summary": "Normalized actual outputs from artifact files.",
+    "status": "success",
+    "original_internal_task_id": "aa_task_0714",
+    "task_id": "414",
+    "required_deliverables": [
+      "underfill_void_risk.csv",
+      "reliability_disposition.md"
+    ],
+    "produced_deliverables": [
+      "underfill_void_risk.csv",
+      "reliability_disposition.md"
+    ],
+    "missing_required_deliverables": [],
+    "deliverable_produced": true,
+    "deliverable_file_included": false,
+    "included_generated_artifacts": false,
+    "artifacts_excluded_reason": "Generated output artifacts are excluded from the public seed dataset by default.",
+    "logs_included": false,
+    "logs_excluded_reason": "Raw runner logs are excluded from the public seed dataset."
+  },
+  "agent_config": null,
+  "agent_tools": [
+    "codex_cli",
+    "Bash",
+    "python",
+    "file_read",
+    "file_write",
+    "apply_patch"
+  ],
+  "artifacts": [],
+  "original_internal_attempt_id": "aa_task_0714_baseline",
+  "attempt_id": "414-baseline",
+  "attempt_kind": "baseline",
+  "attempt_status": "completed",
+  "collection_id": null,
+  "completion_reason": null,
+  "ended_at": null,
+  "final_attempt_id": null,
+  "initial_attempt_id": null,
+  "iteration_index": null,
+  "learning": null,
+  "memory": null,
+  "metadata_json": {
+    "codex_command": [
+      "codex",
+      "exec",
+      "--sandbox",
+      "workspace-write",
+      "<prompt>"
+    ],
+    "codex_sandbox": "workspace-write",
+    "discarded_step_count": 0,
+    "original_fields": {
+      "trace_steps": [
+        {
+          "action": "Parse required task context from JSON and brief files",
+          "actor": "assistant",
+          "artifact_refs": [
+            "input/task.json",
+            "input/task_brief.md"
+          ],
+          "causal_note": "Input files define allowed calculation domain and output contract.",
+          "causal_type": "start",
+          "caused_by": "User task initiation",
+          "error_message": null,
+          "error_type": null,
+          "input": "cat input/task.json; cat input/task_brief.md",
+          "metadata_json": {
+            "commands": [
+              "cat input/task.json",
+              "cat input/task_brief.md"
+            ]
+          },
+          "observation": "Loaded task payload and instruction text with all embedded metrics, limits, budget, sensitivity, and rubric constraints.",
+          "operation": "read",
+          "output": "Extracted packet: R1..R4 values, limits, budget=25000, sensitivity_shift_pct=5, hard_threshold_record_count=1, and required deliverables.",
+          "reasoning": "Baseline context must be exact because all downstream calculations and recommendations are constrained to packet fields only.",
+          "state_change": "Parsed authoritative task state in working memory; no filesystem changes.",
+          "step": "Read task packet inputs",
+          "step_outcome": "Context loaded",
+          "success": true,
+          "tool": "exec_command",
+          "turn": 1
+        },
+        {
+          "action": "Derive packet-only formulas and scenario definitions for baseline, mitigated, and sensitivity cases",
+          "actor": "assistant",
+          "causal_note": "Formulas and action set depend directly on packet constants and record set.",
+          "causal_type": "dependency",
+          "caused_by": "Step 1 context parse",
+          "error_message": null,
+          "error_type": null,
+          "input": "Inputs: void_area_pct, void_near_corner_mm, xray_confidence, thermal_cycle_risk, limit values, sensitivity_pct, hard_threshold_record_count, budget.",
+          "metadata_json": {
+            "controlling_metric": "HEI",
+            "fields_used": [
+              "void_area_pct",
+              "void_near_corner_mm",
+              "xray_confidence",
+              "thermal_cycle_risk",
+              "limit_void_area_pct",
+              "limit_void_near_corner_mm",
+              "limit_xray_confidence"
+            ]
+          },
+          "observation": "Established HEI controlling metric and per-record formulas without external assumptions.",
+          "operation": "write",
+          "output": "Decision logic fixed: base ratios/excesses, base_risk_score, needs_review (below mean confidence), mitigation action on R2, and +5% sensitivity perturbation.",
+          "reasoning": "Using a single metric (Hard-Excess Index) supports explicit >=10% improvement check and budget-constrained action comparison.",
+          "state_change": "Created internal calculation plan and scenario outcomes used to populate all deliverable fields.",
+          "step": "Define reproducible scoring and disposition model",
+          "step_outcome": "Scoring model finalized",
+          "success": true,
+          "tool": "internal_reasoning",
+          "turn": 2
+        },
+        {
+          "action": "Ensure required artifact directory exists",
+          "actor": "assistant",
+          "causal_note": "Preconditions for write operations.",
+          "causal_type": "prerequisite",
+          "caused_by": "Need to emit required output files",
+          "error_message": null,
+          "error_type": null,
+          "input": "mkdir -p artifacts",
+          "metadata_json": {
+            "command": "mkdir -p artifacts"
+          },
+          "observation": "Created artifacts directory at ./artifacts.",
+          "operation": "write",
+          "output": "Directory now present and writable.",
+          "reasoning": "Folder is required by task contract for expected CSV and memo outputs.",
+          "state_change": "New folder created for deliverable outputs.",
+          "step": "Create artifacts directory",
+          "step_outcome": "Output directory ready",
+          "success": true,
+          "tool": "exec_command",
+          "turn": 3
+        },
+        {
+          "action": "Emit reproducible per-record workbook including baseline, mitigated, sensitivity calculations, rank/disposition, and validation notes",
+          "actor": "assistant",
+          "causal_note": "Materialized computed columns and scenario outputs from defined formulas.",
+          "causal_type": "implementation",
+          "caused_by": "Step 2 calculation model",
+          "error_message": null,
+          "error_type": null,
+          "input": "cat << 'EOF' > [EXCLUDED_GENERATED_ARTIFACT]",
+          "metadata_json": {
+            "cases": [
+              "baseline",
+              "mitigated",
+              "sensitivity"
+            ],
+            "rows_written": 8
+          },
+          "observation": "CSV written with all four records, intermediate ratios/excesses, HEI scenario values, needs_review flags, and scenario summary rows.",
+          "operation": "write",
+          "output": "Created [EXCLUDED_GENERATED_ARTIFACT] containing complete computation trace for R1-R4 and scenario summaries.",
+          "reasoning": "CSV-first deliverable preserves intermediate formulas/values and enables direct recomputation by reviewer.",
+          "state_change": "New artifact created/overwrote at [EXCLUDED_GENERATED_ARTIFACT]",
+          "step": "Write underfill_void_risk.csv",
+          "step_outcome": "Decision workbook artifact created",
+          "success": true,
+          "tool": "exec_command",
+          "turn": 4
+        },
+        {
+          "action": "Author expert-review memo with method, decision tables, sensitivities, validation checks, and final recommendation",
+          "actor": "assistant",
+          "causal_note": "Memo references per-record CSV rows and supports expert disposition.",
+          "causal_type": "artifact",
+          "caused_by": "Successful workbook generation",
+          "error_message": null,
+          "error_type": null,
+          "input": "cat << 'EOF' > [EXCLUDED_GENERATED_ARTIFACT]",
+          "metadata_json": {
+            "sections": [
+              "packet_scope",
+              "reproducible_logic",
+              "validation_checks",
+              "decision_table",
+              "final_recommendation"
+            ]
+          },
+          "observation": "Memo completed with packet-only logic, scenario tables, budget check, needs_review rationale, and recommendation matrix.",
+          "operation": "write",
+          "output": "Created [EXCLUDED_GENERATED_ARTIFACT] with concise expert-facing narrative and scenario decision table.",
+          "reasoning": "Required human-review documentation and recommendation summary completed in the requested format.",
+          "state_change": "New memo artifact created/overwrote at [EXCLUDED_GENERATED_ARTIFACT]",
+          "step": "Write reliability_disposition.md",
+          "step_outcome": "Expert memo artifact created",
+          "success": true,
+          "tool": "exec_command",
+          "turn": 5
+        },
+        {
+          "action": "Emit execution summary artifact with output manifest and key metrics",
+          "actor": "assistant",
+          "artifact_refs": [
+            "actual_outputs.json"
+          ],
+          "causal_note": "Provides machine-readable manifest for produced files.",
+          "causal_type": "contract",
+          "caused_by": "Completion of deliverables",
+          "error_message": null,
+          "error_type": null,
+          "input": "cat << 'EOF' > actual_outputs.json",
+          "metadata_json": {
+            "file_count": 2,
+            "output_contract_fields": 11
+          },
+          "observation": "actual_outputs.json emitted with artifact list and computed control metric values.",
+          "operation": "write",
+          "output": "Created actual_outputs.json with references to all required artifacts and scenario metrics.",
+          "reasoning": "Required output contract includes this file for evaluator integration.",
+          "state_change": "New contract artifact created/overwrote at ./actual_outputs.json.",
+          "step": "Write actual_outputs.json",
+          "step_outcome": "Output contract file created",
+          "success": true,
+          "tool": "exec_command",
+          "turn": 6
+        },
+        {
+          "action": "Record full workflow trace with canonical fields and causal links",
+          "actor": "assistant",
+          "artifact_refs": [
+            "agent_trace.json"
+          ],
+          "causal_note": "Trace is finalized only after all action steps are executed.",
+          "causal_type": "documentation",
+          "caused_by": "Completion of all required artifacts",
+          "error_message": null,
+          "error_type": null,
+          "input": "cat << 'EOF' > agent_trace.json",
+          "metadata_json": {
+            "canonical_fields_used": true,
+            "step_count": 7
+          },
+          "observation": "agent_trace.json written with seven structured steps and required fields.",
+          "operation": "write",
+          "output": "Created agent_trace.json in root attempt directory with step-level evidence.",
+          "reasoning": "Task requires explicit trace evidence and field-complete step logs.",
+          "state_change": "New trace artifact created/overwrote at ./agent_trace.json.",
+          "step": "Write agent_trace.json",
+          "step_outcome": "Workflow trace artifact created",
+          "success": true,
+          "tool": "exec_command",
+          "turn": 7
+        }
+      ]
+    },
+    "raw_trace_preserved": true,
+    "raw_trace_shape": "trace_steps",
+    "raw_trace_step_source": "steps",
+    "schema_valid": true,
+    "trace_normalization_status": "partial",
+    "trace_valid": true
+  },
+  "preferred_attempt_id": null,
+  "previous_attempt_id": null,
+  "prior_trace_id": null,
+  "revision_attempt_ids": [],
+  "revision_group_id": null,
+  "schema_version": "aa-trace-v0.1",
+  "skills": null,
+  "started_at": null,
+  "steps": [
+    {
+      "action": "agent_step",
+      "actor": "assistant",
+      "alternatives_considered": null,
+      "artifact_refs": [
+        "input/task.json",
+        "input/task_brief.md"
+      ],
+      "causal_note": "Input files define allowed calculation domain and output contract.",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "cat input/task.json; cat input/task_brief.md",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "commands": [
+          "cat input/task.json",
+          "cat input/task_brief.md"
+        ],
+        "normalization_warnings": [
+          "step value 'Read task packet inputs' was not numeric; defaulted to 1"
+        ],
+        "original_action": "Parse required task context from JSON and brief files",
+        "original_causal_type": "start",
+        "original_step": "Read task packet inputs",
+        "original_step_outcome": "Context loaded",
+        "raw_step": {
+          "action": "Parse required task context from JSON and brief files",
+          "actor": "assistant",
+          "artifact_refs": [
+            "input/task.json",
+            "input/task_brief.md"
+          ],
+          "causal_note": "Input files define allowed calculation domain and output contract.",
+          "causal_type": "start",
+          "caused_by": "User task initiation",
+          "error_message": null,
+          "error_type": null,
+          "input": "cat input/task.json; cat input/task_brief.md",
+          "metadata_json": {
+            "commands": [
+              "cat input/task.json",
+              "cat input/task_brief.md"
+            ]
+          },
+          "observation": "Loaded task payload and instruction text with all embedded metrics, limits, budget, sensitivity, and rubric constraints.",
+          "operation": "read",
+          "output": "Extracted packet: R1..R4 values, limits, budget=25000, sensitivity_shift_pct=5, hard_threshold_record_count=1, and required deliverables.",
+          "reasoning": "Baseline context must be exact because all downstream calculations and recommendations are constrained to packet fields only.",
+          "state_change": "Parsed authoritative task state in working memory; no filesystem changes.",
+          "step": "Read task packet inputs",
+          "step_outcome": "Context loaded",
+          "success": true,
+          "tool": "exec_command",
+          "turn": 1
+        }
+      },
+      "observation": "Loaded task payload and instruction text with all embedded metrics, limits, budget, sensitivity, and rubric constraints.",
+      "operation": "read",
+      "output": "Extracted packet: R1..R4 values, limits, budget=25000, sensitivity_shift_pct=5, hard_threshold_record_count=1, and required deliverables.",
+      "parallel_group": null,
+      "reasoning": "Baseline context must be exact because all downstream calculations and recommendations are constrained to packet fields only.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Parsed authoritative task state in working memory; no filesystem changes.",
+      "step": 1,
+      "step_outcome": "neutral",
+      "success": true,
+      "tool": "Bash",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "assistant",
+      "alternatives_considered": null,
+      "causal_note": "Formulas and action set depend directly on packet constants and record set.",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "Inputs: void_area_pct, void_near_corner_mm, xray_confidence, thermal_cycle_risk, limit values, sensitivity_pct, hard_threshold_record_count, budget.",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "controlling_metric": "HEI",
+        "fields_used": [
+          "void_area_pct",
+          "void_near_corner_mm",
+          "xray_confidence",
+          "thermal_cycle_risk",
+          "limit_void_area_pct",
+          "limit_void_near_corner_mm",
+          "limit_xray_confidence"
+        ],
+        "normalization_warnings": [
+          "step value 'Define reproducible scoring and disposition model' was not numeric; defaulted to 2"
+        ],
+        "original_action": "Derive packet-only formulas and scenario definitions for baseline, mitigated, and sensitivity cases",
+        "original_causal_type": "dependency",
+        "original_step": "Define reproducible scoring and disposition model",
+        "original_step_outcome": "Scoring model finalized",
+        "raw_step": {
+          "action": "Derive packet-only formulas and scenario definitions for baseline, mitigated, and sensitivity cases",
+          "actor": "assistant",
+          "causal_note": "Formulas and action set depend directly on packet constants and record set.",
+          "causal_type": "dependency",
+          "caused_by": "Step 1 context parse",
+          "error_message": null,
+          "error_type": null,
+          "input": "Inputs: void_area_pct, void_near_corner_mm, xray_confidence, thermal_cycle_risk, limit values, sensitivity_pct, hard_threshold_record_count, budget.",
+          "metadata_json": {
+            "controlling_metric": "HEI",
+            "fields_used": [
+              "void_area_pct",
+              "void_near_corner_mm",
+              "xray_confidence",
+              "thermal_cycle_risk",
+              "limit_void_area_pct",
+              "limit_void_near_corner_mm",
+              "limit_xray_confidence"
+            ]
+          },
+          "observation": "Established HEI controlling metric and per-record formulas without external assumptions.",
+          "operation": "write",
+          "output": "Decision logic fixed: base ratios/excesses, base_risk_score, needs_review (below mean confidence), mitigation action on R2, and +5% sensitivity perturbation.",
+          "reasoning": "Using a single metric (Hard-Excess Index) supports explicit >=10% improvement check and budget-constrained action comparison.",
+          "state_change": "Created internal calculation plan and scenario outcomes used to populate all deliverable fields.",
+          "step": "Define reproducible scoring and disposition model",
+          "step_outcome": "Scoring model finalized",
+          "success": true,
+          "tool": "internal_reasoning",
+          "turn": 2
+        }
+      },
+      "observation": "Established HEI controlling metric and per-record formulas without external assumptions.",
+      "operation": "write",
+      "output": "Decision logic fixed: base ratios/excesses, base_risk_score, needs_review (below mean confidence), mitigation action on R2, and +5% sensitivity perturbation.",
+      "parallel_group": null,
+      "reasoning": "Using a single metric (Hard-Excess Index) supports explicit >=10% improvement check and budget-constrained action comparison.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Created internal calculation plan and scenario outcomes used to populate all deliverable fields.",
+      "step": 2,
+      "step_outcome": "neutral",
+      "success": true,
+      "tool": "file_write",
+      "turn": 2
+    },
+    {
+      "action": "agent_step",
+      "actor": "assistant",
+      "alternatives_considered": null,
+      "causal_note": "Preconditions for write operations.",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "mkdir -p artifacts",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "command": "mkdir -p artifacts",
+        "normalization_warnings": [
+          "step value 'Create artifacts directory' was not numeric; defaulted to 3"
+        ],
+        "original_action": "Ensure required artifact directory exists",
+        "original_causal_type": "prerequisite",
+        "original_step": "Create artifacts directory",
+        "original_step_outcome": "Output directory ready",
+        "raw_step": {
+          "action": "Ensure required artifact directory exists",
+          "actor": "assistant",
+          "causal_note": "Preconditions for write operations.",
+          "causal_type": "prerequisite",
+          "caused_by": "Need to emit required output files",
+          "error_message": null,
+          "error_type": null,
+          "input": "mkdir -p artifacts",
+          "metadata_json": {
+            "command": "mkdir -p artifacts"
+          },
+          "observation": "Created artifacts directory at ./artifacts.",
+          "operation": "write",
+          "output": "Directory now present and writable.",
+          "reasoning": "Folder is required by task contract for expected CSV and memo outputs.",
+          "state_change": "New folder created for deliverable outputs.",
+          "step": "Create artifacts directory",
+          "step_outcome": "Output directory ready",
+          "success": true,
+          "tool": "exec_command",
+          "turn": 3
+        }
+      },
+      "observation": "Created artifacts directory at ./artifacts.",
+      "operation": "write",
+      "output": "Directory now present and writable.",
+      "parallel_group": null,
+      "reasoning": "Folder is required by task contract for expected CSV and memo outputs.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "New folder created for deliverable outputs.",
+      "step": 3,
+      "step_outcome": "neutral",
+      "success": true,
+      "tool": "Bash",
+      "turn": 3
+    },
+    {
+      "action": "agent_step",
+      "actor": "assistant",
+      "alternatives_considered": null,
+      "causal_note": "Materialized computed columns and scenario outputs from defined formulas.",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "cat << 'EOF' > [EXCLUDED_GENERATED_ARTIFACT]",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "cases": [
+          "baseline",
+          "mitigated",
+          "sensitivity"
+        ],
+        "normalization_warnings": [
+          "step value 'Write underfill_void_risk.csv' was not numeric; defaulted to 4"
+        ],
+        "original_action": "Emit reproducible per-record workbook including baseline, mitigated, sensitivity calculations, rank/disposition, and validation notes",
+        "original_causal_type": "implementation",
+        "original_step": "Write underfill_void_risk.csv",
+        "original_step_outcome": "Decision workbook artifact created",
+        "raw_step": {
+          "action": "Emit reproducible per-record workbook including baseline, mitigated, sensitivity calculations, rank/disposition, and validation notes",
+          "actor": "assistant",
+          "causal_note": "Materialized computed columns and scenario outputs from defined formulas.",
+          "causal_type": "implementation",
+          "caused_by": "Step 2 calculation model",
+          "error_message": null,
+          "error_type": null,
+          "input": "cat << 'EOF' > [EXCLUDED_GENERATED_ARTIFACT]",
+          "metadata_json": {
+            "cases": [
+              "baseline",
+              "mitigated",
+              "sensitivity"
+            ],
+            "rows_written": 8
+          },
+          "observation": "CSV written with all four records, intermediate ratios/excesses, HEI scenario values, needs_review flags, and scenario summary rows.",
+          "operation": "write",
+          "output": "Created [EXCLUDED_GENERATED_ARTIFACT] containing complete computation trace for R1-R4 and scenario summaries.",
+          "reasoning": "CSV-first deliverable preserves intermediate formulas/values and enables direct recomputation by reviewer.",
+          "state_change": "New artifact created/overwrote at [EXCLUDED_GENERATED_ARTIFACT]",
+          "step": "Write underfill_void_risk.csv",
+          "step_outcome": "Decision workbook artifact created",
+          "success": true,
+          "tool": "exec_command",
+          "turn": 4
+        },
+        "rows_written": 8
+      },
+      "observation": "CSV written with all four records, intermediate ratios/excesses, HEI scenario values, needs_review flags, and scenario summary rows.",
+      "operation": "write",
+      "output": "Created [EXCLUDED_GENERATED_ARTIFACT] containing complete computation trace for R1-R4 and scenario summaries.",
+      "parallel_group": null,
+      "reasoning": "CSV-first deliverable preserves intermediate formulas/values and enables direct recomputation by reviewer.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "New artifact created/overwrote at [EXCLUDED_GENERATED_ARTIFACT]",
+      "step": 4,
+      "step_outcome": "neutral",
+      "success": true,
+      "tool": "Bash",
+      "turn": 4
+    },
+    {
+      "action": "agent_step",
+      "actor": "assistant",
+      "alternatives_considered": null,
+      "causal_note": "Memo references per-record CSV rows and supports expert disposition.",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "cat << 'EOF' > [EXCLUDED_GENERATED_ARTIFACT]",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "normalization_warnings": [
+          "step value 'Write reliability_disposition.md' was not numeric; defaulted to 5"
+        ],
+        "original_action": "Author expert-review memo with method, decision tables, sensitivities, validation checks, and final recommendation",
+        "original_causal_type": "artifact",
+        "original_step": "Write reliability_disposition.md",
+        "original_step_outcome": "Expert memo artifact created",
+        "raw_step": {
+          "action": "Author expert-review memo with method, decision tables, sensitivities, validation checks, and final recommendation",
+          "actor": "assistant",
+          "causal_note": "Memo references per-record CSV rows and supports expert disposition.",
+          "causal_type": "artifact",
+          "caused_by": "Successful workbook generation",
+          "error_message": null,
+          "error_type": null,
+          "input": "cat << 'EOF' > [EXCLUDED_GENERATED_ARTIFACT]",
+          "metadata_json": {
+            "sections": [
+              "packet_scope",
+              "reproducible_logic",
+              "validation_checks",
+              "decision_table",
+              "final_recommendation"
+            ]
+          },
+          "observation": "Memo completed with packet-only logic, scenario tables, budget check, needs_review rationale, and recommendation matrix.",
+          "operation": "write",
+          "output": "Created [EXCLUDED_GENERATED_ARTIFACT] with concise expert-facing narrative and scenario decision table.",
+          "reasoning": "Required human-review documentation and recommendation summary completed in the requested format.",
+          "state_change": "New memo artifact created/overwrote at [EXCLUDED_GENERATED_ARTIFACT]",
+          "step": "Write reliability_disposition.md",
+          "step_outcome": "Expert memo artifact created",
+          "success": true,
+          "tool": "exec_command",
+          "turn": 5
+        },
+        "sections": [
+          "packet_scope",
+          "reproducible_logic",
+          "validation_checks",
+          "decision_table",
+          "final_recommendation"
+        ]
+      },
+      "observation": "Memo completed with packet-only logic, scenario tables, budget check, needs_review rationale, and recommendation matrix.",
+      "operation": "write",
+      "output": "Created [EXCLUDED_GENERATED_ARTIFACT] with concise expert-facing narrative and scenario decision table.",
+      "parallel_group": null,
+      "reasoning": "Required human-review documentation and recommendation summary completed in the requested format.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "New memo artifact created/overwrote at [EXCLUDED_GENERATED_ARTIFACT]",
+      "step": 5,
+      "step_outcome": "neutral",
+      "success": true,
+      "tool": "Bash",
+      "turn": 5
+    },
+    {
+      "action": "agent_step",
+      "actor": "assistant",
+      "alternatives_considered": null,
+      "artifact_refs": [
+        "actual_outputs.json"
+      ],
+      "causal_note": "Provides machine-readable manifest for produced files.",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "cat << 'EOF' > actual_outputs.json",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "file_count": 2,
+        "normalization_warnings": [
+          "step value 'Write actual_outputs.json' was not numeric; defaulted to 6"
+        ],
+        "original_action": "Emit execution summary artifact with output manifest and key metrics",
+        "original_causal_type": "contract",
+        "original_step": "Write actual_outputs.json",
+        "original_step_outcome": "Output contract file created",
+        "output_contract_fields": 11,
+        "raw_step": {
+          "action": "Emit execution summary artifact with output manifest and key metrics",
+          "actor": "assistant",
+          "artifact_refs": [
+            "actual_outputs.json"
+          ],
+          "causal_note": "Provides machine-readable manifest for produced files.",
+          "causal_type": "contract",
+          "caused_by": "Completion of deliverables",
+          "error_message": null,
+          "error_type": null,
+          "input": "cat << 'EOF' > actual_outputs.json",
+          "metadata_json": {
+            "file_count": 2,
+            "output_contract_fields": 11
+          },
+          "observation": "actual_outputs.json emitted with artifact list and computed control metric values.",
+          "operation": "write",
+          "output": "Created actual_outputs.json with references to all required artifacts and scenario metrics.",
+          "reasoning": "Required output contract includes this file for evaluator integration.",
+          "state_change": "New contract artifact created/overwrote at ./actual_outputs.json.",
+          "step": "Write actual_outputs.json",
+          "step_outcome": "Output contract file created",
+          "success": true,
+          "tool": "exec_command",
+          "turn": 6
+        }
+      },
+      "observation": "actual_outputs.json emitted with artifact list and computed control metric values.",
+      "operation": "write",
+      "output": "Created actual_outputs.json with references to all required artifacts and scenario metrics.",
+      "parallel_group": null,
+      "reasoning": "Required output contract includes this file for evaluator integration.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "New contract artifact created/overwrote at ./actual_outputs.json.",
+      "step": 6,
+      "step_outcome": "neutral",
+      "success": true,
+      "tool": "Bash",
+      "turn": 6
+    },
+    {
+      "action": "agent_step",
+      "actor": "assistant",
+      "alternatives_considered": null,
+      "artifact_refs": [
+        "agent_trace.json"
+      ],
+      "causal_note": "Trace is finalized only after all action steps are executed.",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "cat << 'EOF' > agent_trace.json",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "canonical_fields_used": true,
+        "normalization_warnings": [
+          "step value 'Write agent_trace.json' was not numeric; defaulted to 7"
+        ],
+        "original_action": "Record full workflow trace with canonical fields and causal links",
+        "original_causal_type": "documentation",
+        "original_step": "Write agent_trace.json",
+        "original_step_outcome": "Workflow trace artifact created",
+        "raw_step": {
+          "action": "Record full workflow trace with canonical fields and causal links",
+          "actor": "assistant",
+          "artifact_refs": [
+            "agent_trace.json"
+          ],
+          "causal_note": "Trace is finalized only after all action steps are executed.",
+          "causal_type": "documentation",
+          "caused_by": "Completion of all required artifacts",
+          "error_message": null,
+          "error_type": null,
+          "input": "cat << 'EOF' > agent_trace.json",
+          "metadata_json": {
+            "canonical_fields_used": true,
+            "step_count": 7
+          },
+          "observation": "agent_trace.json written with seven structured steps and required fields.",
+          "operation": "write",
+          "output": "Created agent_trace.json in root attempt directory with step-level evidence.",
+          "reasoning": "Task requires explicit trace evidence and field-complete step logs.",
+          "state_change": "New trace artifact created/overwrote at ./agent_trace.json.",
+          "step": "Write agent_trace.json",
+          "step_outcome": "Workflow trace artifact created",
+          "success": true,
+          "tool": "exec_command",
+          "turn": 7
+        },
+        "step_count": 7
+      },
+      "observation": "agent_trace.json written with seven structured steps and required fields.",
+      "operation": "write",
+      "output": "Created agent_trace.json in root attempt directory with step-level evidence.",
+      "parallel_group": null,
+      "reasoning": "Task requires explicit trace evidence and field-complete step logs.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "New trace artifact created/overwrote at ./agent_trace.json.",
+      "step": 7,
+      "step_outcome": "neutral",
+      "success": true,
+      "tool": "Bash",
+      "turn": 7
+    }
+  ],
+  "system_prompt": null,
+  "system_prompt_hash": null,
+  "task": "Launch-quality advanced task: Underfill Void Risk Scoring From X-Ray Panels. Reality context: an underfill process window produced corner voids on qualification panels. Embedded packet: metric map: metric1=void_area_pct, metric2=void_near_corner_mm, metric3=xray_confidence, metric4=thermal_cycle_risk; records: R1 void_area_pct=48.3 void_near_corner_mm=37.7 xray_confidence=0.59 thermal_cycle_risk=8.82; R2 void_area_pct=94.8 void_near_corner_mm=75.82 xray_confidence=0.68 thermal_cycle_risk=0.5; R3 void_area_pct=15.3 void_near_corner_mm=0.73 xray_confidence=0.92 thermal_cycle_risk=1.95; R4 void_area_pct=64.2 void_near_corner_mm=73.77 xray_confidence=0.59 thermal_cycle_risk=3.41; limit_void_area_pct=93.9; limit_void_near_corner_mm=55.62; limit_xray_confidence=0.95; decision_budget_usd=25000; sensitivity_shift_pct=5; hard_threshold_record_count=1; removed_context=\"client brief asked for a decision workbook plus concise technical memo\". Rules and constraints: Construct a decision table with baseline, mitigated, and sensitivity cases; a recommended action must stay inside budget and improve the controlling metric by at least 10%. Options or recommendations cannot use external measurements, specialized licensed software, or hidden assumptions; all calculations must use only the embedded packet, and any contradictory or under-supported record must be marked needs_review. Required work: rank units for cross-section and disposition; build a reproducible workbook or script, preserve intermediate calculations, and produce an expert-review memo. Deliver underfill_void_risk.csv + reliability_disposition.md with formulas or executable logic, record-level citations, validation checks, sensitivity notes, and a final recommendation table suitable for expert review.",
+  "task_family_id": null,
+  "original_internal_task_id": "aa_task_0714",
+  "task_id": "414",
+  "termination_reason": "task_complete",
+  "trace_id": "trace_414-baseline_normalized",
+  "trace_mode": "live"
+}

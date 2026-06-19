@@ -1,0 +1,722 @@
+{
+  "actual_outputs": {
+    "original_internal_attempt_id": "aa_task_0563_baseline",
+    "attempt_id": "263-baseline",
+    "attempt_kind": "baseline",
+    "error_message": null,
+    "error_type": null,
+    "metadata_json": {
+      "actual_outputs_discarded_field_count": 0,
+      "actual_outputs_normalized": true,
+      "expected_deliverable_items": [
+        "SLO_burn_3.xlsx",
+        "expert_memo.md"
+      ],
+      "original_fields": {
+        "attempt": "baseline",
+        "generated_artifacts": [
+          {
+            "description": "SLO burn-rate calculations with formulas, remediation evaluation, and recommendation sheet."
+          },
+          {
+            "description": "Working memo with assumptions, derived metrics, ambiguity notes, sensitivity checks, and recommendation rationale."
+          }
+        ]
+      },
+      "produced_deliverable_items": [
+        "SLO_burn_3.xlsx",
+        "expert_memo.md"
+      ],
+      "raw_actual_outputs": {
+        "attempt": "baseline",
+        "generated_artifacts": [
+          {
+            "description": "SLO burn-rate calculations with formulas, remediation evaluation, and recommendation sheet."
+          },
+          {
+            "description": "Working memo with assumptions, derived metrics, ambiguity notes, sensitivity checks, and recommendation rationale."
+          }
+        ],
+        "original_internal_task_id": "aa_task_0563",
+        "task_id": "263"
+      }
+    },
+    "output_summary": "Normalized actual outputs from artifact files.",
+    "status": "success",
+    "original_internal_task_id": "aa_task_0563",
+    "task_id": "263",
+    "required_deliverables": [
+      "SLO_burn_3.xlsx",
+      "expert_memo.md"
+    ],
+    "produced_deliverables": [
+      "SLO_burn_3.xlsx",
+      "expert_memo.md"
+    ],
+    "missing_required_deliverables": [],
+    "deliverable_produced": true,
+    "deliverable_file_included": false,
+    "included_generated_artifacts": false,
+    "artifacts_excluded_reason": "Generated output artifacts are excluded from the public seed dataset by default.",
+    "logs_included": false,
+    "logs_excluded_reason": "Raw runner logs are excluded from the public seed dataset."
+  },
+  "agent_config": null,
+  "agent_tools": [
+    "codex_cli",
+    "Bash",
+    "python",
+    "file_read",
+    "file_write",
+    "apply_patch"
+  ],
+  "artifacts": [],
+  "original_internal_attempt_id": "aa_task_0563_baseline",
+  "attempt_id": "263-baseline",
+  "attempt_kind": "baseline",
+  "attempt_status": "completed",
+  "collection_id": null,
+  "completion_reason": null,
+  "ended_at": null,
+  "final_attempt_id": null,
+  "initial_attempt_id": null,
+  "iteration_index": null,
+  "learning": null,
+  "memory": null,
+  "metadata_json": {
+    "codex_command": [
+      "codex",
+      "exec",
+      "--sandbox",
+      "workspace-write",
+      "<prompt>"
+    ],
+    "codex_sandbox": "workspace-write",
+    "discarded_step_count": 0,
+    "raw_trace_list": [
+      {
+        "action": "read_input",
+        "actor": "worker",
+        "causal_note": "Input reading is prerequisite for all downstream computations.",
+        "causal_type": "initiation",
+        "caused_by": "task_start",
+        "error_message": null,
+        "error_type": null,
+        "input": "cat ./input/task.json; cat ./input/task_brief.md",
+        "metadata_json": {
+          "source_files": [
+            "./input/task.json",
+            "./input/task_brief.md"
+          ]
+        },
+        "observation": "Loaded embedded packet and task brief from ./input/task.json and ./input/task_brief.md.",
+        "operation": "read_files",
+        "output": "Parsed task id, records, options, budget, constraints, and explicit requirement to mark ambiguous items as needs_review.",
+        "reasoning": "Must establish scope and exact rule set before any derivation.",
+        "state_change": "No filesystem writes; analysis context established.",
+        "step": 1,
+        "step_outcome": "ok",
+        "success": true,
+        "tool": "functions.exec_command",
+        "turn": "baseline"
+      },
+      {
+        "action": "analysis_plan",
+        "actor": "worker",
+        "causal_note": "Missing values affect only policy-dependent logic, not deterministic rates.",
+        "causal_type": "analysis",
+        "caused_by": 1,
+        "error_message": null,
+        "error_type": null,
+        "input": "packet values, remediation rules, constraints",
+        "metadata_json": {
+          "decision": "use needs_review markers for missing policy/SLO values"
+        },
+        "observation": "Identified missing SLO and policy thresholds as blockers for definitive page/no-page status.",
+        "operation": "reasoning",
+        "output": "Decided to keep all formulas explicit and tag policy-dependent outputs as needs_review until missing packet fields are provided.",
+        "reasoning": "Avoid invented inputs and preserve traceability by encoding uncertainty explicitly.",
+        "state_change": "No filesystem changes; workflow design completed.",
+        "step": 2,
+        "step_outcome": "ok",
+        "success": true,
+        "tool": "n/a",
+        "turn": "baseline"
+      },
+      {
+        "action": "create_xlsx",
+        "actor": "worker",
+        "causal_note": "Dependency failure triggered retry path and fallback method.",
+        "causal_type": "implementation",
+        "caused_by": 2,
+        "error_message": "openpyxl not installed in environment; used dependency-free fallback.",
+        "error_type": "ModuleNotFoundError",
+        "input": "derive formulas for Inputs, Derived_Metrics, Remediation, Remediation_Sequences, Sensitivity, Final_Recommendation",
+        "metadata_json": {
+          "workbook_sheets": [
+            "Inputs",
+            "Derived_Metrics",
+            "Remediation",
+            "Remediation_Sequences",
+            "Sensitivity",
+            "Final_Recommendation"
+          ]
+        },
+        "observation": "Initial write attempt failed because openpyxl was unavailable; switched to stdlib zip/xml writer.",
+        "operation": "python_stdlib_xlsx_write",
+        "output": "Created [EXCLUDED_GENERATED_ARTIFACT] with deterministic formulas and missing-input safeguards.",
+        "reasoning": "Dependency gap required minimal OOXML creation to complete deliverable in allowed environment.",
+        "state_change": "Added file [EXCLUDED_GENERATED_ARTIFACT]",
+        "step": 3,
+        "step_outcome": "retry_ok",
+        "success": true,
+        "tool": "functions.exec_command",
+        "turn": "baseline"
+      },
+      {
+        "action": "create_memo",
+        "actor": "worker",
+        "causal_note": "Memo bridges spreadsheet formulas and decision rationale.",
+        "causal_type": "artifact",
+        "caused_by": 3,
+        "error_message": null,
+        "error_type": null,
+        "input": "computed packet metrics and mitigation math",
+        "metadata_json": {
+          "contains": [
+            "formulas",
+            "intermediate_values",
+            "explicit_assumptions",
+            "sensitivity_checks",
+            "recommendation"
+          ]
+        },
+        "observation": "Captured formula trail and ambiguity notes in prose and tables.",
+        "operation": "write_markdown",
+        "output": "Created [EXCLUDED_GENERATED_ARTIFACT] with assumptions, sensitivity checks, and recommendation rationale.",
+        "reasoning": "Workstream requires explainable, row-level documented reasoning aligned to rubric.",
+        "state_change": "Added file [EXCLUDED_GENERATED_ARTIFACT]",
+        "step": 4,
+        "step_outcome": "ok",
+        "success": true,
+        "tool": "functions.exec_command",
+        "turn": "baseline"
+      },
+      {
+        "action": "write_manifest",
+        "actor": "worker",
+        "artifact_refs": [
+          "./actual_outputs.json"
+        ],
+        "causal_note": "Manifest supports evaluator artifact discovery.",
+        "causal_type": "delivery_requirement",
+        "caused_by": 4,
+        "error_message": null,
+        "error_type": null,
+        "input": "artifact paths for workbook and memo",
+        "metadata_json": {
+          "artifact_count": 2
+        },
+        "observation": "Wrote artifact manifest for required output contract.",
+        "operation": "json_write",
+        "output": "Created ./actual_outputs.json with generated artifact metadata.",
+        "reasoning": "Task contract explicitly requires this file at root attempt directory.",
+        "state_change": "Added file ./actual_outputs.json.",
+        "step": 5,
+        "step_outcome": "ok",
+        "success": true,
+        "tool": "functions.exec_command",
+        "turn": "baseline"
+      },
+      {
+        "action": "write_trace",
+        "actor": "worker",
+        "artifact_refs": [
+          "./agent_trace.json"
+        ],
+        "causal_note": "Trace file finalizes auditable evidence capture.",
+        "causal_type": "compliance",
+        "caused_by": 5,
+        "error_message": null,
+        "error_type": null,
+        "input": "all prior actions and outputs",
+        "metadata_json": {
+          "schema": "canonical"
+        },
+        "observation": "Finalized step-by-step trace with cause/effect links and explicit errors/retries.",
+        "operation": "json_write",
+        "output": "Created ./agent_trace.json with canonical required schema fields.",
+        "reasoning": "Completed workflow trace required by apprenticeship format.",
+        "state_change": "Added file ./agent_trace.json.",
+        "step": 6,
+        "step_outcome": "ok",
+        "success": true,
+        "tool": "functions.exec_command",
+        "turn": "baseline"
+      }
+    ],
+    "raw_trace_preserved": true,
+    "raw_trace_shape": "list",
+    "raw_trace_step_source": "steps",
+    "schema_valid": true,
+    "trace_normalization_status": "partial",
+    "trace_valid": true
+  },
+  "preferred_attempt_id": null,
+  "previous_attempt_id": null,
+  "prior_trace_id": null,
+  "revision_attempt_ids": [],
+  "revision_group_id": null,
+  "schema_version": "aa-trace-v0.1",
+  "skills": null,
+  "started_at": null,
+  "steps": [
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "causal_note": "Input reading is prerequisite for all downstream computations.",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "cat ./input/task.json; cat ./input/task_brief.md",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "normalization_warnings": [
+          "turn value 'baseline' was not numeric; defaulted to 1"
+        ],
+        "original_action": "read_input",
+        "original_causal_type": "initiation",
+        "original_operation": "read_files",
+        "original_step_outcome": "ok",
+        "original_turn": "baseline",
+        "raw_step": {
+          "action": "read_input",
+          "actor": "worker",
+          "causal_note": "Input reading is prerequisite for all downstream computations.",
+          "causal_type": "initiation",
+          "caused_by": "task_start",
+          "error_message": null,
+          "error_type": null,
+          "input": "cat ./input/task.json; cat ./input/task_brief.md",
+          "metadata_json": {
+            "source_files": [
+              "./input/task.json",
+              "./input/task_brief.md"
+            ]
+          },
+          "observation": "Loaded embedded packet and task brief from ./input/task.json and ./input/task_brief.md.",
+          "operation": "read_files",
+          "output": "Parsed task id, records, options, budget, constraints, and explicit requirement to mark ambiguous items as needs_review.",
+          "reasoning": "Must establish scope and exact rule set before any derivation.",
+          "state_change": "No filesystem writes; analysis context established.",
+          "step": 1,
+          "step_outcome": "ok",
+          "success": true,
+          "tool": "functions.exec_command",
+          "turn": "baseline"
+        },
+        "source_files": [
+          "./input/task.json",
+          "./input/task_brief.md"
+        ]
+      },
+      "observation": "Loaded embedded packet and task brief from ./input/task.json and ./input/task_brief.md.",
+      "operation": "read",
+      "output": "Parsed task id, records, options, budget, constraints, and explicit requirement to mark ambiguous items as needs_review.",
+      "parallel_group": null,
+      "reasoning": "Must establish scope and exact rule set before any derivation.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "No filesystem writes; analysis context established.",
+      "step": 1,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "Bash",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "causal_note": "Missing values affect only policy-dependent logic, not deterministic rates.",
+      "causal_type": "other",
+      "caused_by": [
+        1
+      ],
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "packet values, remediation rules, constraints",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "decision": "use needs_review markers for missing policy/SLO values",
+        "normalization_warnings": [
+          "turn value 'baseline' was not numeric; defaulted to 1"
+        ],
+        "original_action": "analysis_plan",
+        "original_causal_type": "analysis",
+        "original_operation": "reasoning",
+        "original_step_outcome": "ok",
+        "original_turn": "baseline",
+        "raw_step": {
+          "action": "analysis_plan",
+          "actor": "worker",
+          "causal_note": "Missing values affect only policy-dependent logic, not deterministic rates.",
+          "causal_type": "analysis",
+          "caused_by": 1,
+          "error_message": null,
+          "error_type": null,
+          "input": "packet values, remediation rules, constraints",
+          "metadata_json": {
+            "decision": "use needs_review markers for missing policy/SLO values"
+          },
+          "observation": "Identified missing SLO and policy thresholds as blockers for definitive page/no-page status.",
+          "operation": "reasoning",
+          "output": "Decided to keep all formulas explicit and tag policy-dependent outputs as needs_review until missing packet fields are provided.",
+          "reasoning": "Avoid invented inputs and preserve traceability by encoding uncertainty explicitly.",
+          "state_change": "No filesystem changes; workflow design completed.",
+          "step": 2,
+          "step_outcome": "ok",
+          "success": true,
+          "tool": "n/a",
+          "turn": "baseline"
+        }
+      },
+      "observation": "Identified missing SLO and policy thresholds as blockers for definitive page/no-page status.",
+      "operation": "other",
+      "output": "Decided to keep all formulas explicit and tag policy-dependent outputs as needs_review until missing packet fields are provided.",
+      "parallel_group": null,
+      "reasoning": "Avoid invented inputs and preserve traceability by encoding uncertainty explicitly.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "No filesystem changes; workflow design completed.",
+      "step": 2,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "n/a",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "causal_note": "Dependency failure triggered retry path and fallback method.",
+      "causal_type": "other",
+      "caused_by": [
+        2
+      ],
+      "ended_at": null,
+      "error_message": "openpyxl not installed in environment; used dependency-free fallback.",
+      "error_type": "ModuleNotFoundError",
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "derive formulas for Inputs, Derived_Metrics, Remediation, Remediation_Sequences, Sensitivity, Final_Recommendation",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "normalization_warnings": [
+          "turn value 'baseline' was not numeric; defaulted to 1"
+        ],
+        "original_action": "create_xlsx",
+        "original_causal_type": "implementation",
+        "original_operation": "python_stdlib_xlsx_write",
+        "original_step_outcome": "retry_ok",
+        "original_turn": "baseline",
+        "raw_step": {
+          "action": "create_xlsx",
+          "actor": "worker",
+          "causal_note": "Dependency failure triggered retry path and fallback method.",
+          "causal_type": "implementation",
+          "caused_by": 2,
+          "error_message": "openpyxl not installed in environment; used dependency-free fallback.",
+          "error_type": "ModuleNotFoundError",
+          "input": "derive formulas for Inputs, Derived_Metrics, Remediation, Remediation_Sequences, Sensitivity, Final_Recommendation",
+          "metadata_json": {
+            "workbook_sheets": [
+              "Inputs",
+              "Derived_Metrics",
+              "Remediation",
+              "Remediation_Sequences",
+              "Sensitivity",
+              "Final_Recommendation"
+            ]
+          },
+          "observation": "Initial write attempt failed because openpyxl was unavailable; switched to stdlib zip/xml writer.",
+          "operation": "python_stdlib_xlsx_write",
+          "output": "Created [EXCLUDED_GENERATED_ARTIFACT] with deterministic formulas and missing-input safeguards.",
+          "reasoning": "Dependency gap required minimal OOXML creation to complete deliverable in allowed environment.",
+          "state_change": "Added file [EXCLUDED_GENERATED_ARTIFACT]",
+          "step": 3,
+          "step_outcome": "retry_ok",
+          "success": true,
+          "tool": "functions.exec_command",
+          "turn": "baseline"
+        },
+        "workbook_sheets": [
+          "Inputs",
+          "Derived_Metrics",
+          "Remediation",
+          "Remediation_Sequences",
+          "Sensitivity",
+          "Final_Recommendation"
+        ]
+      },
+      "observation": "Initial write attempt failed because openpyxl was unavailable; switched to stdlib zip/xml writer.",
+      "operation": "write",
+      "output": "Created [EXCLUDED_GENERATED_ARTIFACT] with deterministic formulas and missing-input safeguards.",
+      "parallel_group": null,
+      "reasoning": "Dependency gap required minimal OOXML creation to complete deliverable in allowed environment.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Added file [EXCLUDED_GENERATED_ARTIFACT]",
+      "step": 3,
+      "step_outcome": "neutral",
+      "success": true,
+      "tool": "file_write",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "causal_note": "Memo bridges spreadsheet formulas and decision rationale.",
+      "causal_type": "other",
+      "caused_by": [
+        3
+      ],
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "computed packet metrics and mitigation math",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "contains": [
+          "formulas",
+          "intermediate_values",
+          "explicit_assumptions",
+          "sensitivity_checks",
+          "recommendation"
+        ],
+        "normalization_warnings": [
+          "turn value 'baseline' was not numeric; defaulted to 1"
+        ],
+        "original_action": "create_memo",
+        "original_causal_type": "artifact",
+        "original_operation": "write_markdown",
+        "original_step_outcome": "ok",
+        "original_turn": "baseline",
+        "raw_step": {
+          "action": "create_memo",
+          "actor": "worker",
+          "causal_note": "Memo bridges spreadsheet formulas and decision rationale.",
+          "causal_type": "artifact",
+          "caused_by": 3,
+          "error_message": null,
+          "error_type": null,
+          "input": "computed packet metrics and mitigation math",
+          "metadata_json": {
+            "contains": [
+              "formulas",
+              "intermediate_values",
+              "explicit_assumptions",
+              "sensitivity_checks",
+              "recommendation"
+            ]
+          },
+          "observation": "Captured formula trail and ambiguity notes in prose and tables.",
+          "operation": "write_markdown",
+          "output": "Created [EXCLUDED_GENERATED_ARTIFACT] with assumptions, sensitivity checks, and recommendation rationale.",
+          "reasoning": "Workstream requires explainable, row-level documented reasoning aligned to rubric.",
+          "state_change": "Added file [EXCLUDED_GENERATED_ARTIFACT]",
+          "step": 4,
+          "step_outcome": "ok",
+          "success": true,
+          "tool": "functions.exec_command",
+          "turn": "baseline"
+        }
+      },
+      "observation": "Captured formula trail and ambiguity notes in prose and tables.",
+      "operation": "write",
+      "output": "Created [EXCLUDED_GENERATED_ARTIFACT] with assumptions, sensitivity checks, and recommendation rationale.",
+      "parallel_group": null,
+      "reasoning": "Workstream requires explainable, row-level documented reasoning aligned to rubric.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Added file [EXCLUDED_GENERATED_ARTIFACT]",
+      "step": 4,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "file_write",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "artifact_refs": [
+        "./actual_outputs.json"
+      ],
+      "causal_note": "Manifest supports evaluator artifact discovery.",
+      "causal_type": "other",
+      "caused_by": [
+        4
+      ],
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "artifact paths for workbook and memo",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "artifact_count": 2,
+        "normalization_warnings": [
+          "turn value 'baseline' was not numeric; defaulted to 1"
+        ],
+        "original_action": "write_manifest",
+        "original_causal_type": "delivery_requirement",
+        "original_operation": "json_write",
+        "original_step_outcome": "ok",
+        "original_turn": "baseline",
+        "raw_step": {
+          "action": "write_manifest",
+          "actor": "worker",
+          "artifact_refs": [
+            "./actual_outputs.json"
+          ],
+          "causal_note": "Manifest supports evaluator artifact discovery.",
+          "causal_type": "delivery_requirement",
+          "caused_by": 4,
+          "error_message": null,
+          "error_type": null,
+          "input": "artifact paths for workbook and memo",
+          "metadata_json": {
+            "artifact_count": 2
+          },
+          "observation": "Wrote artifact manifest for required output contract.",
+          "operation": "json_write",
+          "output": "Created ./actual_outputs.json with generated artifact metadata.",
+          "reasoning": "Task contract explicitly requires this file at root attempt directory.",
+          "state_change": "Added file ./actual_outputs.json.",
+          "step": 5,
+          "step_outcome": "ok",
+          "success": true,
+          "tool": "functions.exec_command",
+          "turn": "baseline"
+        }
+      },
+      "observation": "Wrote artifact manifest for required output contract.",
+      "operation": "write",
+      "output": "Created ./actual_outputs.json with generated artifact metadata.",
+      "parallel_group": null,
+      "reasoning": "Task contract explicitly requires this file at root attempt directory.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Added file ./actual_outputs.json.",
+      "step": 5,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "file_write",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "artifact_refs": [
+        "./agent_trace.json"
+      ],
+      "causal_note": "Trace file finalizes auditable evidence capture.",
+      "causal_type": "other",
+      "caused_by": [
+        5
+      ],
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "all prior actions and outputs",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "normalization_warnings": [
+          "turn value 'baseline' was not numeric; defaulted to 1"
+        ],
+        "original_action": "write_trace",
+        "original_causal_type": "compliance",
+        "original_operation": "json_write",
+        "original_step_outcome": "ok",
+        "original_turn": "baseline",
+        "raw_step": {
+          "action": "write_trace",
+          "actor": "worker",
+          "artifact_refs": [
+            "./agent_trace.json"
+          ],
+          "causal_note": "Trace file finalizes auditable evidence capture.",
+          "causal_type": "compliance",
+          "caused_by": 5,
+          "error_message": null,
+          "error_type": null,
+          "input": "all prior actions and outputs",
+          "metadata_json": {
+            "schema": "canonical"
+          },
+          "observation": "Finalized step-by-step trace with cause/effect links and explicit errors/retries.",
+          "operation": "json_write",
+          "output": "Created ./agent_trace.json with canonical required schema fields.",
+          "reasoning": "Completed workflow trace required by apprenticeship format.",
+          "state_change": "Added file ./agent_trace.json.",
+          "step": 6,
+          "step_outcome": "ok",
+          "success": true,
+          "tool": "functions.exec_command",
+          "turn": "baseline"
+        },
+        "schema": "canonical"
+      },
+      "observation": "Finalized step-by-step trace with cause/effect links and explicit errors/retries.",
+      "operation": "write",
+      "output": "Created ./agent_trace.json with canonical required schema fields.",
+      "parallel_group": null,
+      "reasoning": "Completed workflow trace required by apprenticeship format.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Added file ./agent_trace.json.",
+      "step": 6,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "file_write",
+      "turn": 1
+    }
+  ],
+  "system_prompt": null,
+  "system_prompt_hash": null,
+  "task": "Advanced high-value task: Slo Burn-Rate Window Remediation Sequencing Note. Scenario: an expert team is preparing a launch or release decision and needs a calculation-backed recommendation for slo burn-rate window. Embedded packet: Records: R1 error_count=48 request_count=78 window_minutes=7; R2 error_count=57 request_count=74 window_minutes=10; R3 error_count=43 request_count=89 window_minutes=6. Remediation options: O1 changes error_count by -12% cost=80000; O2 changes request_count by -18% cost=97200; O3 changes window_minutes by -25% cost=56800; max_budget=122400. Rules and constraints: burn_rate=(error_rate)/(1-SLO); page when short and long windows exceed policy; missing values cannot be imputed and all calculations must use only the embedded packet. Required work: calculate all derived metrics, classify each record, and explain the smallest set of values that determines the recommendation. Deliver SLO_burn_3.xlsx + expert_memo.md with formulas, intermediate values, row-level citations, explicit assumptions, sensitivity checks, and a final recommendation table. Do not invent inputs; mark ambiguous items as needs_review.",
+  "task_family_id": null,
+  "original_internal_task_id": "aa_task_0563",
+  "task_id": "263",
+  "termination_reason": "task_complete",
+  "trace_id": "trace_263-baseline_normalized",
+  "trace_mode": "live"
+}

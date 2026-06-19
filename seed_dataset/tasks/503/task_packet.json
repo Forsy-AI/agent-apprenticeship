@@ -1,0 +1,81 @@
+{
+  "schema_version": "aa-seed-task-v0.1",
+  "task_id": "503",
+  "title": "GPU Cluster Capacity Economics and Training-SLA Rightsizing Board Pack",
+  "domain": "ai_infrastructure_gpu_cluster_capacity_economics",
+  "subdomain": "gpu_training_capacity_commitment_and_sla_optimization",
+  "domains": [
+    "ai_infrastructure_gpu_cluster_capacity_economics"
+  ],
+  "subdomains": [
+    "gpu_training_capacity_commitment_and_sla_optimization"
+  ],
+  "agent_apprentice_role": "ai infrastructure capacity economics lead",
+  "task_family": "capacity_planning_and_financial_optimization",
+  "difficulty_tier": "expert",
+  "expected_economic_value": "$220k-$420k AI infrastructure capacity planning / GPU economics leadership compensation",
+  "expected_economic_value_for_agent_apprentice": "$250+",
+  "expected_deliverable": "gpu_capacity_economics_optimizer.ipynb + capacity_board_memo.md",
+  "deliverables": [
+    "gpu_capacity_economics_optimizer.ipynb",
+    "capacity_board_memo.md"
+  ],
+  "normalized_title": "GPU Cluster Capacity Economics and Training-SLA Rightsizing Board Pack",
+  "instruction": "A private AI platform team has a 14-day commit window to decide whether to rent burst H100 capacity, sign a reservation, or delay internal model runs. The board cares about training-SLA misses, inference headroom, power draw, and stranded spend, not generic cloud-cost advice. Embedded operating packet: current cluster has 96 nodes, 8 H100-SXM GPUs per node, 80 GB per GPU, 42 TFLOP-normalized training units per GPU-hour, usable training pool after inference reservation=528 GPUs, maintenance outage=64 GPUs during days 5-6, network rule requires jobs over 256 GPUs to run in contiguous 8-GPU nodes with no more than 2 racks, power cap=640 kW, measured rack power=10.8 kW per 8-GPU node at training load, PUE=1.28, energy price=$0.118/kWh. Job backlog: J1 tokenizer-ablation 64 GPUs 18 hours value=$70,000 deadline day 3 preemptible=yes, J2 policy-model-SFT 128 GPUs 36 hours value=$240,000 deadline day 4 preemptible=no, J3 multimodal-pretrain 384 GPUs 92 hours value=$1,350,000 deadline day 10 preemptible=no, J4 eval-sweep 48 GPUs 20 hours value=$55,000 deadline day 7 preemptible=yes, J5 safety-redteam-generation 96 GPUs 44 hours value=$180,000 deadline day 9 preemptible=yes, J6 customer-finetune-batch 192 GPUs 54 hours value=$620,000 deadline day 12 preemptible=no, J7 embedding-refresh 32 GPUs 16 hours value=$40,000 deadline day 5 preemptible=yes. Capacity options: O1 on-demand H100=$4.85/GPU-hour available max 256 GPUs any day lead_time=4 hours, O2 30-day committed block=$3.28/GPU-hour for 256 GPUs with 80% take-or-pay and lead_time=24 hours, O3 colocated short lease 32 nodes=$2.45/GPU-hour plus $42,000 setup and 72-hour lead_time, O4 defer job penalty equals 35% of job value if missed by <=48 hours and 100% if later. Rules and constraints: compute feasible schedules in 6-hour buckets; nonpreemptible jobs must run continuously; preemptible jobs may split into at most 3 chunks with 2-hour restart overhead per split; training_pool plus rented GPUs cannot exceed power cap after PUE unless rented cloud capacity is offsite; objective=maximize delivered_job_value minus GPU rental/commit cost minus energy cost minus deadline penalties; reservation take-or-pay is charged even if unused; report utilization by owned, on-demand, committed, and colocated pools. Required work: deliver gpu_capacity_economics_optimizer.ipynb + capacity_board_memo.md with a schedule, option comparison, sensitivity to 20% throughput shortfall, stranded-commit exposure, power-cap evidence, and a board recommendation that can be audited from the embedded numbers only. This task is self-contained: use the task packet as the factual record, do not add source references or external datasets, and preserve a high-fidelity audit trail for every calculation, classification, and recommendation. State assumptions and unresolved evidence gaps explicitly. When executed locally, place final deliverables under the artifacts/ directory.",
+  "task_status": "ready_to_run",
+  "run_status": "not_run",
+  "seed_rank": 3,
+  "display_order": 3,
+  "allowed_tools": [
+    "Local text editor or Markdown editor",
+    "Local spreadsheet, CSV, JSON, YAML, or scripting tools for deterministic calculations",
+    "Local validation or linting commands",
+    "Local plotting or diagramming tools when useful"
+  ],
+  "disallowed_tools": [
+    "External fact lookup or live data pulls",
+    "Live production systems, cloud accounts, trading systems, clinical systems, or industrial controls",
+    "Secret discovery, credential testing, or any action outside the prepared task workspace"
+  ],
+  "privacy_classification": "synthetic",
+  "needs_expert_review": true,
+  "input_requirements": [
+    "Use the task packet as the sole factual input.",
+    "Cite row IDs, record IDs, thresholds, formulas, and option IDs from the packet wherever they control a conclusion.",
+    "Mark missing, contradictory, or under-supported values as needs_review instead of inventing them."
+  ],
+  "inputs": [
+    "All factual inputs are embedded in the task packet.",
+    "Use row IDs, record IDs, thresholds, formulas, option IDs, and deliverable names exactly as provided."
+  ],
+  "output_requirements": [
+    "Produce the required deliverable files with the specified filenames when filenames are provided.",
+    "Include intermediate calculations or executable logic sufficient for another reviewer to reproduce the result.",
+    "Include validation checks, sensitivity notes around controlling thresholds, and a final decision or recommendation table."
+  ],
+  "constraints": [
+    "Use the task packet as the factual record.",
+    "Do not browse, call live services, import external datasets, or invent missing values.",
+    "Treat regulated or safety-critical outputs as review packets, not authorization to act."
+  ],
+  "quality_bar": [
+    "Treat the task as realistic professional work with domain-appropriate rigor.",
+    "Preserve the packet's domain detail, identifiers, thresholds, and edge cases in the final deliverables.",
+    "Make every recommendation traceable to explicit task-packet evidence or mark it as needs_review."
+  ],
+  "validation_expectations": [
+    "Check required fields, row counts, totals, thresholds, and classifications before finalizing.",
+    "Show enough formulas, script logic, or tables for an independent reviewer to reproduce the result.",
+    "Flag any contradiction, missing input, or threshold-sensitive conclusion."
+  ],
+  "edge_cases": [
+    "If packet evidence is incomplete, do not infer missing values; label the item needs_review.",
+    "If multiple options satisfy hard constraints, rank them using the packet's stated priorities and explain ties.",
+    "If a regulated or safety-critical conclusion appears, frame the output as a review packet rather than authorization to act."
+  ],
+  "privacy_safety_expectations": [
+    "Do not use live systems, private accounts, credentials, or external datasets.",
+    "Do not include raw secrets or operational instructions that would execute real-world changes.",
+    "Keep synthetic identifiers from the packet only when needed for verification."
+  ]
+}

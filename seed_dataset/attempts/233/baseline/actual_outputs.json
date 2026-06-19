@@ -1,0 +1,36 @@
+{
+  "original_internal_attempt_id": "aa_task_0533_baseline",
+  "attempt_id": "233-baseline",
+  "attempt_kind": "baseline",
+  "error_message": "Command '['codex', 'exec', '--sandbox', 'workspace-write', '# Agent Apprenticeship Workflow Task\\n\\nAttempt: baseline\\n\\nYou are the worker/reviser agent for an agent apprenticeship data-generation run.\\nProduce high-quality work artifacts for the task and preserve useful execution evidence while you work.\\nWrite agent_trace.json as a structured workflow trace following the AgentTrace schema.\\nEach step should represent one meaningful action: reading context, using a tool, creating or editing an artifact, validating output, handling an error, or delivering the final result.\\nCapture exact commands, inputs, outputs, state changes, errors, retries, artifact references, and causality whenever available.\\nUse concise visible decision summaries in reasoning fields. Do not include private hidden chain-of-thought.\\nRecord success, step_outcome, error_type, and error_message where applicable.\\nDo not grade your own work in the trace. Model-based grader, verifier, and evaluator roles will assess the attempt later.\\nInput files are available under ./input/.\\nWrite final deliverables under [EXCLUDED_GENERATED_ARTIFACT] ./agent_trace.json and ./actual_outputs.json in the current attempt directory.\\nDo not write final outputs to the package root or any parent directory.\\n\\nUse exactly these field names in every trace step:\\nstep, turn, actor, action, operation, tool, observation, input, output, state_change, reasoning, caused_by, causal_type, causal_note, success, step_outcome, error_type, error_message, artifact_refs, metadata_json.\\nDo not use these noncanonical top-level step fields: step_number, command, inputs, outputs, state_changes, decision_summary, eval, eval_reason, directive.\\nYour raw trace will be preserved exactly. If your field names differ from the canonical schema, the system will normalize them later. Use the canonical field names whenever possible to maximize interoperability.\\n\\n\\n## Input files\\n- ./input/task.json\\n- ./input/task_brief.md\\n\\n## Required output contract\\n- ./agent_trace.json\\n- ./actual_outputs.json\\n- [EXCLUDED_GENERATED_ARTIFACT] [EXCLUDED_GENERATED_ARTIFACT] Task\\nAdvanced high-value task: Single-Cell Doublet Detection Sample Validation Dataset Contract. Scenario: a review committee needs a row-level exception analysis with no inferred or fabricated inputs for single-cell doublet detection sample. Embedded packet: Records: R1 expected_doublet_pct=32 detected_doublet_pct=55 median_genes=1; R2 expected_doublet_pct=41 detected_doublet_pct=51 median_genes=4; R3 expected_doublet_pct=27 detected_doublet_pct=66 median_genes=0. Remediation options: O1 changes expected_doublet_pct by -12% cost=72500; O2 changes detected_doublet_pct by -18% cost=91700; O3 changes median_genes by -25% cost=52300; max_budget=116400. Rules and constraints: detected>1.8x expected suggests overcall; detected<0.6x expected suggests undercall; missing values cannot be imputed and all calculations must use only the embedded packet. Required work: create a validation checklist and fill it using the supplied records, citing the exact values behind each pass or failure. Deliver single_cell_doublet_2.xlsx + expert_memo.md with formulas, intermediate values, row-level citations, explicit assumptions, sensitivity checks, and a final recommendation table. Do not invent inputs; mark ambiguous items as needs_review.\\n\\n## Worker-visible evaluation rubric\\n# Worker-visible rubric for 233\\n\\n- **Completeness, correctness, and auditability of deliverables (spreadsheet + memo)** (1.0): Evaluate whether the provided artifacts (single_cell_doublet_2.xlsx and expert_memo.md) fully implement the task requirements: use only the embedded packet values, apply the provided ratio decision rules for each row, include visible formulas and intermediate values, provide row-level citations to the embedded packet values, perform sensitivity checks of remediation options vs. budget, and produce a final recommendation table that respects the max_budget constraint.\\n\\n']' timed out after 900 seconds",
+  "error_type": "TimeoutExpired",
+  "metadata_json": {
+    "codex_sandbox": "workspace-write",
+    "fallback_actual_outputs_created": true,
+    "trace_valid": false,
+    "expected_deliverable_items": [
+      "single_cell_doublet_2.xlsx",
+      "expert_memo.md"
+    ],
+    "produced_deliverable_items": []
+  },
+  "output_summary": "Attempt failed or did not produce a valid agent trace; raw logs were preserved.",
+  "status": "failed",
+  "original_internal_task_id": "aa_task_0533",
+  "task_id": "233",
+  "required_deliverables": [
+    "single_cell_doublet_2.xlsx",
+    "expert_memo.md"
+  ],
+  "produced_deliverables": [],
+  "missing_required_deliverables": [
+    "single_cell_doublet_2.xlsx",
+    "expert_memo.md"
+  ],
+  "deliverable_produced": false,
+  "deliverable_file_included": false,
+  "included_generated_artifacts": false,
+  "artifacts_excluded_reason": "Generated output artifacts are excluded from the public seed dataset by default.",
+  "logs_included": false,
+  "logs_excluded_reason": "Raw runner logs are excluded from the public seed dataset."
+}

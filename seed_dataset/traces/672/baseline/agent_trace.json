@@ -1,0 +1,866 @@
+{
+  "actual_outputs": {
+    "original_internal_attempt_id": "aa_task_0072_baseline",
+    "attempt_id": "672-baseline",
+    "attempt_kind": "baseline",
+    "error_message": null,
+    "error_type": null,
+    "metadata_json": {
+      "actual_outputs_discarded_field_count": 0,
+      "actual_outputs_normalized": true,
+      "expected_deliverable_items": [
+        "api_rate_limit_tuning.xlsx",
+        "abuse_response_memo.md"
+      ],
+      "original_fields": {
+        "artifacts": [
+          {
+            "status": "created",
+            "type": "spreadsheet"
+          },
+          {
+            "status": "created",
+            "type": "markdown"
+          }
+        ],
+        "attempt": "baseline",
+        "created_at": "2026-06-18T12:41:58.656226Z",
+        "notes": [
+          "Used only embedded packet data from input/task.json and input/task_brief.md.",
+          "Excel outputs contain inline formulas and references to packet lookup and citations.",
+          "Low-risk abuse cost is explicitly set to 0 because packet omitted a low-risk abuse cost value.",
+          "Decision thresholds set in sheet inputs: pass_threshold=9000, fail_threshold=15000."
+        ]
+      },
+      "produced_deliverable_items": [
+        "abuse_response_memo.md",
+        "api_rate_limit_tuning.xlsx"
+      ],
+      "raw_actual_outputs": {
+        "artifacts": [
+          {
+            "status": "created",
+            "type": "spreadsheet"
+          },
+          {
+            "status": "created",
+            "type": "markdown"
+          }
+        ],
+        "attempt": "baseline",
+        "created_at": "2026-06-18T12:41:58.656226Z",
+        "notes": [
+          "Used only embedded packet data from input/task.json and input/task_brief.md.",
+          "Excel outputs contain inline formulas and references to packet lookup and citations.",
+          "Low-risk abuse cost is explicitly set to 0 because packet omitted a low-risk abuse cost value.",
+          "Decision thresholds set in sheet inputs: pass_threshold=9000, fail_threshold=15000."
+        ],
+        "original_internal_task_id": "aa_task_0072",
+        "task_id": "672"
+      }
+    },
+    "output_summary": "Normalized actual outputs from artifact files.",
+    "status": "success",
+    "original_internal_task_id": "aa_task_0072",
+    "task_id": "672",
+    "required_deliverables": [
+      "api_rate_limit_tuning.xlsx",
+      "abuse_response_memo.md"
+    ],
+    "produced_deliverables": [
+      "abuse_response_memo.md",
+      "api_rate_limit_tuning.xlsx"
+    ],
+    "missing_required_deliverables": [],
+    "deliverable_produced": true,
+    "deliverable_file_included": false,
+    "included_generated_artifacts": false,
+    "artifacts_excluded_reason": "Generated output artifacts are excluded from the public seed dataset by default.",
+    "logs_included": false,
+    "logs_excluded_reason": "Raw runner logs are excluded from the public seed dataset."
+  },
+  "agent_config": null,
+  "agent_tools": [
+    "codex_cli",
+    "Bash",
+    "python",
+    "file_read",
+    "file_write",
+    "apply_patch"
+  ],
+  "artifacts": [],
+  "original_internal_attempt_id": "aa_task_0072_baseline",
+  "attempt_id": "672-baseline",
+  "attempt_kind": "baseline",
+  "attempt_status": "completed",
+  "collection_id": null,
+  "completion_reason": null,
+  "ended_at": null,
+  "final_attempt_id": null,
+  "initial_attempt_id": null,
+  "iteration_index": null,
+  "learning": null,
+  "memory": null,
+  "metadata_json": {
+    "codex_command": [
+      "codex",
+      "exec",
+      "--sandbox",
+      "workspace-write",
+      "<prompt>"
+    ],
+    "codex_sandbox": "workspace-write",
+    "discarded_step_count": 0,
+    "raw_trace_list": [
+      {
+        "action": "Read embedded packet files",
+        "actor": "agent",
+        "artifact_refs": [
+          "input/task.json",
+          "input/task_brief.md"
+        ],
+        "causal_note": "Step required for all downstream computation and assumptions.",
+        "causal_type": "task_input",
+        "caused_by": "task_start",
+        "error_message": null,
+        "error_type": null,
+        "input": "cat input/task.json && cat input/task_brief.md",
+        "metadata_json": {
+          "sources": [
+            "embedded packet"
+          ]
+        },
+        "observation": "Loaded task definition and brief from input artifacts before any edits.",
+        "operation": "read",
+        "output": "Parsed clients C1-C4 parameters, limits, costs, and constraint requirements from embedded packet.",
+        "reasoning": "Need authoritative source values and constraints before modelling.",
+        "state_change": "No file changes.",
+        "step": 1,
+        "step_outcome": "success",
+        "success": true,
+        "tool": "functions.exec_command",
+        "turn": 1
+      },
+      {
+        "action": "Attempt spreadsheet generation with openpyxl",
+        "actor": "agent",
+        "causal_note": "Environment had no spreadsheet library; need alternate emitter.",
+        "causal_type": "dependency_constraint",
+        "caused_by": "step_1",
+        "error_message": "No module named 'openpyxl' and formula-quote issue in first draft.",
+        "error_type": "ModuleNotFoundError",
+        "input": "python script using openpyxl to create api_rate_limit_tuning.xlsx",
+        "metadata_json": {
+          "attempted_library": "openpyxl"
+        },
+        "observation": "Script generation failed because python dependency was missing.",
+        "operation": "execute",
+        "output": "SyntaxError due quoting in formula string, then ModuleNotFoundError for openpyxl.",
+        "reasoning": "Fallback plan required to avoid blocked generation path in this environment.",
+        "state_change": "No output artifact was created in this attempt.",
+        "step": 2,
+        "step_outcome": "failure",
+        "success": false,
+        "tool": "functions.exec_command",
+        "turn": 1
+      },
+      {
+        "action": "Checked spreadsheet-related tool availability",
+        "actor": "agent",
+        "causal_note": "Validated tool unavailability to select supported approach.",
+        "causal_type": "environment_check",
+        "caused_by": "step_2",
+        "error_message": null,
+        "error_type": null,
+        "input": "which libreoffice; which soffice; which ssconvert; which xlsxwriter",
+        "metadata_json": {
+          "checked_tools": [
+            "libreoffice",
+            "soffice",
+            "ssconvert",
+            "xlsxwriter"
+          ]
+        },
+        "observation": "No LibreOffice/ssconvert/xlsxwriter available in runtime.",
+        "operation": "read",
+        "output": "All conversion utilities returned not found; only python3 present.",
+        "reasoning": "Confirmed only custom OOXML generation could run offline in this environment.",
+        "state_change": "No file changes.",
+        "step": 3,
+        "step_outcome": "success",
+        "success": true,
+        "tool": "functions.exec_command",
+        "turn": 1
+      },
+      {
+        "action": "Generate .xlsx via manual OOXML package",
+        "actor": "agent",
+        "causal_note": "Used direct OOXML emit as substitute for unavailable openpyxl/xlsxwriter.",
+        "causal_type": "dependency_fallback",
+        "caused_by": "step_3",
+        "error_message": null,
+        "error_type": null,
+        "input": "custom Python zip/xml OOXML builder to emit [EXCLUDED_GENERATED_ARTIFACT]",
+        "metadata_json": {
+          "decision_scale": "pass/warn/fail/needs_review",
+          "decision_thresholds": {
+            "fail": 15000,
+            "pass": 9000
+          },
+          "sheets": [
+            "Packet Inputs",
+            "Evaluation",
+            "Sensitivity",
+            "Validation"
+          ]
+        },
+        "observation": "Created 4-sheet workbook with formulas, citations, and validation logic.",
+        "operation": "write",
+        "output": "[EXCLUDED_GENERATED_ARTIFACT]",
+        "reasoning": "Required deliverable must be created despite missing high-level spreadsheet dependencies.",
+        "state_change": "Created workbook with Packet Inputs, Evaluation, Sensitivity, Validation sheets using embedded packet values and executable formulas.",
+        "step": 4,
+        "step_outcome": "success",
+        "success": true,
+        "tool": "functions.exec_command",
+        "turn": 1
+      },
+      {
+        "action": "Create abuse response memo",
+        "actor": "agent",
+        "causal_note": "Provides provenance and human-readable recommendations.",
+        "causal_type": "deliverable_completion",
+        "caused_by": "step_4",
+        "error_message": null,
+        "error_type": null,
+        "input": "cat > [EXCLUDED_GENERATED_ARTIFACT]",
+        "metadata_json": {
+          "row_level_citations": true,
+          "sensitivity_checks": true
+        },
+        "observation": "Documented model, formulas, validation checks, sensitivity and final decision matrix with assumptions.",
+        "operation": "write",
+        "output": "[EXCLUDED_GENERATED_ARTIFACT]",
+        "reasoning": "Required narrative artifact and explicit uncertainty/validation notes were missing from spreadsheet-only output.",
+        "state_change": "Created memo with full decision table and risk/recommendation narrative.",
+        "step": 5,
+        "step_outcome": "success",
+        "success": true,
+        "tool": "functions.exec_command",
+        "turn": 1
+      },
+      {
+        "action": "Write actual_outputs.json",
+        "actor": "agent",
+        "artifact_refs": [
+          "actual_outputs.json"
+        ],
+        "causal_note": "Required output manifest for evaluator.",
+        "causal_type": "contract_requirement",
+        "caused_by": "step_5",
+        "error_message": null,
+        "error_type": null,
+        "input": "python write JSON file",
+        "metadata_json": {
+          "contract_file": "actual_outputs.json"
+        },
+        "observation": "Recorded generated artifact list and run assumptions.",
+        "operation": "write",
+        "output": "actual_outputs.json",
+        "reasoning": "Required by task contract.",
+        "state_change": "Added top-level actual_outputs contract metadata.",
+        "step": 6,
+        "step_outcome": "success",
+        "success": true,
+        "tool": "functions.exec_command",
+        "turn": 1
+      },
+      {
+        "action": "Write agent_trace.json",
+        "actor": "agent",
+        "artifact_refs": [
+          "agent_trace.json",
+          "actual_outputs.json"
+        ],
+        "causal_note": "Final structured evidence artifact.",
+        "causal_type": "traceability_requirement",
+        "caused_by": "step_6",
+        "error_message": null,
+        "error_type": null,
+        "input": "json.dumps(trace_schema)",
+        "metadata_json": {
+          "schema_fields": [
+            "step",
+            "turn",
+            "actor",
+            "action",
+            "operation",
+            "tool",
+            "observation",
+            "input",
+            "output",
+            "state_change",
+            "reasoning",
+            "caused_by",
+            "causal_type",
+            "causal_note",
+            "success",
+            "step_outcome",
+            "error_type",
+            "error_message",
+            "artifact_refs",
+            "metadata_json"
+          ]
+        },
+        "observation": "Captured every meaningful action with operation, input, output, errors, state change, and causality.",
+        "operation": "write",
+        "output": "agent_trace.json",
+        "reasoning": "Task explicitly requires trace with required field set and causality details.",
+        "state_change": "Persisted workflow trace for audit and grading pipeline.",
+        "step": 7,
+        "step_outcome": "success",
+        "success": true,
+        "tool": "functions.exec_command",
+        "turn": 1
+      }
+    ],
+    "raw_trace_preserved": true,
+    "raw_trace_shape": "list",
+    "raw_trace_step_source": "steps",
+    "schema_valid": true,
+    "trace_normalization_status": "normalized",
+    "trace_valid": true
+  },
+  "preferred_attempt_id": null,
+  "previous_attempt_id": null,
+  "prior_trace_id": null,
+  "revision_attempt_ids": [],
+  "revision_group_id": null,
+  "schema_version": "aa-trace-v0.1",
+  "skills": null,
+  "started_at": null,
+  "steps": [
+    {
+      "action": "agent_step",
+      "actor": "agent",
+      "alternatives_considered": null,
+      "artifact_refs": [
+        "input/task.json",
+        "input/task_brief.md"
+      ],
+      "causal_note": "Step required for all downstream computation and assumptions.",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "cat input/task.json && cat input/task_brief.md",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "original_action": "Read embedded packet files",
+        "original_causal_type": "task_input",
+        "original_step_outcome": "success",
+        "raw_step": {
+          "action": "Read embedded packet files",
+          "actor": "agent",
+          "artifact_refs": [
+            "input/task.json",
+            "input/task_brief.md"
+          ],
+          "causal_note": "Step required for all downstream computation and assumptions.",
+          "causal_type": "task_input",
+          "caused_by": "task_start",
+          "error_message": null,
+          "error_type": null,
+          "input": "cat input/task.json && cat input/task_brief.md",
+          "metadata_json": {
+            "sources": [
+              "embedded packet"
+            ]
+          },
+          "observation": "Loaded task definition and brief from input artifacts before any edits.",
+          "operation": "read",
+          "output": "Parsed clients C1-C4 parameters, limits, costs, and constraint requirements from embedded packet.",
+          "reasoning": "Need authoritative source values and constraints before modelling.",
+          "state_change": "No file changes.",
+          "step": 1,
+          "step_outcome": "success",
+          "success": true,
+          "tool": "functions.exec_command",
+          "turn": 1
+        },
+        "sources": [
+          "embedded packet"
+        ]
+      },
+      "observation": "Loaded task definition and brief from input artifacts before any edits.",
+      "operation": "read",
+      "output": "Parsed clients C1-C4 parameters, limits, costs, and constraint requirements from embedded packet.",
+      "parallel_group": null,
+      "reasoning": "Need authoritative source values and constraints before modelling.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "No file changes.",
+      "step": 1,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "Bash",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "agent",
+      "alternatives_considered": null,
+      "causal_note": "Environment had no spreadsheet library; need alternate emitter.",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": "No module named 'openpyxl' and formula-quote issue in first draft.",
+      "error_type": "ModuleNotFoundError",
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "python script using openpyxl to create api_rate_limit_tuning.xlsx",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "attempted_library": "openpyxl",
+        "original_action": "Attempt spreadsheet generation with openpyxl",
+        "original_causal_type": "dependency_constraint",
+        "original_step_outcome": "failure",
+        "raw_step": {
+          "action": "Attempt spreadsheet generation with openpyxl",
+          "actor": "agent",
+          "causal_note": "Environment had no spreadsheet library; need alternate emitter.",
+          "causal_type": "dependency_constraint",
+          "caused_by": "step_1",
+          "error_message": "No module named 'openpyxl' and formula-quote issue in first draft.",
+          "error_type": "ModuleNotFoundError",
+          "input": "python script using openpyxl to create api_rate_limit_tuning.xlsx",
+          "metadata_json": {
+            "attempted_library": "openpyxl"
+          },
+          "observation": "Script generation failed because python dependency was missing.",
+          "operation": "execute",
+          "output": "SyntaxError due quoting in formula string, then ModuleNotFoundError for openpyxl.",
+          "reasoning": "Fallback plan required to avoid blocked generation path in this environment.",
+          "state_change": "No output artifact was created in this attempt.",
+          "step": 2,
+          "step_outcome": "failure",
+          "success": false,
+          "tool": "functions.exec_command",
+          "turn": 1
+        }
+      },
+      "observation": "Script generation failed because python dependency was missing.",
+      "operation": "execute",
+      "output": "SyntaxError due quoting in formula string, then ModuleNotFoundError for openpyxl.",
+      "parallel_group": null,
+      "reasoning": "Fallback plan required to avoid blocked generation path in this environment.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "No output artifact was created in this attempt.",
+      "step": 2,
+      "step_outcome": "failed",
+      "success": false,
+      "tool": "python",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "agent",
+      "alternatives_considered": null,
+      "causal_note": "Validated tool unavailability to select supported approach.",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "which libreoffice; which soffice; which ssconvert; which xlsxwriter",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "checked_tools": [
+          "libreoffice",
+          "soffice",
+          "ssconvert",
+          "xlsxwriter"
+        ],
+        "original_action": "Checked spreadsheet-related tool availability",
+        "original_causal_type": "environment_check",
+        "original_step_outcome": "success",
+        "raw_step": {
+          "action": "Checked spreadsheet-related tool availability",
+          "actor": "agent",
+          "causal_note": "Validated tool unavailability to select supported approach.",
+          "causal_type": "environment_check",
+          "caused_by": "step_2",
+          "error_message": null,
+          "error_type": null,
+          "input": "which libreoffice; which soffice; which ssconvert; which xlsxwriter",
+          "metadata_json": {
+            "checked_tools": [
+              "libreoffice",
+              "soffice",
+              "ssconvert",
+              "xlsxwriter"
+            ]
+          },
+          "observation": "No LibreOffice/ssconvert/xlsxwriter available in runtime.",
+          "operation": "read",
+          "output": "All conversion utilities returned not found; only python3 present.",
+          "reasoning": "Confirmed only custom OOXML generation could run offline in this environment.",
+          "state_change": "No file changes.",
+          "step": 3,
+          "step_outcome": "success",
+          "success": true,
+          "tool": "functions.exec_command",
+          "turn": 1
+        }
+      },
+      "observation": "No LibreOffice/ssconvert/xlsxwriter available in runtime.",
+      "operation": "read",
+      "output": "All conversion utilities returned not found; only python3 present.",
+      "parallel_group": null,
+      "reasoning": "Confirmed only custom OOXML generation could run offline in this environment.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "No file changes.",
+      "step": 3,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "Bash",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "agent",
+      "alternatives_considered": null,
+      "causal_note": "Used direct OOXML emit as substitute for unavailable openpyxl/xlsxwriter.",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "custom Python zip/xml OOXML builder to emit [EXCLUDED_GENERATED_ARTIFACT]",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "decision_scale": "pass/warn/fail/needs_review",
+        "decision_thresholds": {
+          "fail": 15000,
+          "pass": 9000
+        },
+        "original_action": "Generate .xlsx via manual OOXML package",
+        "original_causal_type": "dependency_fallback",
+        "original_step_outcome": "success",
+        "raw_step": {
+          "action": "Generate .xlsx via manual OOXML package",
+          "actor": "agent",
+          "causal_note": "Used direct OOXML emit as substitute for unavailable openpyxl/xlsxwriter.",
+          "causal_type": "dependency_fallback",
+          "caused_by": "step_3",
+          "error_message": null,
+          "error_type": null,
+          "input": "custom Python zip/xml OOXML builder to emit [EXCLUDED_GENERATED_ARTIFACT]",
+          "metadata_json": {
+            "decision_scale": "pass/warn/fail/needs_review",
+            "decision_thresholds": {
+              "fail": 15000,
+              "pass": 9000
+            },
+            "sheets": [
+              "Packet Inputs",
+              "Evaluation",
+              "Sensitivity",
+              "Validation"
+            ]
+          },
+          "observation": "Created 4-sheet workbook with formulas, citations, and validation logic.",
+          "operation": "write",
+          "output": "[EXCLUDED_GENERATED_ARTIFACT]",
+          "reasoning": "Required deliverable must be created despite missing high-level spreadsheet dependencies.",
+          "state_change": "Created workbook with Packet Inputs, Evaluation, Sensitivity, Validation sheets using embedded packet values and executable formulas.",
+          "step": 4,
+          "step_outcome": "success",
+          "success": true,
+          "tool": "functions.exec_command",
+          "turn": 1
+        },
+        "sheets": [
+          "Packet Inputs",
+          "Evaluation",
+          "Sensitivity",
+          "Validation"
+        ]
+      },
+      "observation": "Created 4-sheet workbook with formulas, citations, and validation logic.",
+      "operation": "write",
+      "output": "[EXCLUDED_GENERATED_ARTIFACT]",
+      "parallel_group": null,
+      "reasoning": "Required deliverable must be created despite missing high-level spreadsheet dependencies.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Created workbook with Packet Inputs, Evaluation, Sensitivity, Validation sheets using embedded packet values and executable formulas.",
+      "step": 4,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "Bash",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "agent",
+      "alternatives_considered": null,
+      "causal_note": "Provides provenance and human-readable recommendations.",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "cat > [EXCLUDED_GENERATED_ARTIFACT]",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "original_action": "Create abuse response memo",
+        "original_causal_type": "deliverable_completion",
+        "original_step_outcome": "success",
+        "raw_step": {
+          "action": "Create abuse response memo",
+          "actor": "agent",
+          "causal_note": "Provides provenance and human-readable recommendations.",
+          "causal_type": "deliverable_completion",
+          "caused_by": "step_4",
+          "error_message": null,
+          "error_type": null,
+          "input": "cat > [EXCLUDED_GENERATED_ARTIFACT]",
+          "metadata_json": {
+            "row_level_citations": true,
+            "sensitivity_checks": true
+          },
+          "observation": "Documented model, formulas, validation checks, sensitivity and final decision matrix with assumptions.",
+          "operation": "write",
+          "output": "[EXCLUDED_GENERATED_ARTIFACT]",
+          "reasoning": "Required narrative artifact and explicit uncertainty/validation notes were missing from spreadsheet-only output.",
+          "state_change": "Created memo with full decision table and risk/recommendation narrative.",
+          "step": 5,
+          "step_outcome": "success",
+          "success": true,
+          "tool": "functions.exec_command",
+          "turn": 1
+        },
+        "row_level_citations": true,
+        "sensitivity_checks": true
+      },
+      "observation": "Documented model, formulas, validation checks, sensitivity and final decision matrix with assumptions.",
+      "operation": "write",
+      "output": "[EXCLUDED_GENERATED_ARTIFACT]",
+      "parallel_group": null,
+      "reasoning": "Required narrative artifact and explicit uncertainty/validation notes were missing from spreadsheet-only output.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Created memo with full decision table and risk/recommendation narrative.",
+      "step": 5,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "Bash",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "agent",
+      "alternatives_considered": null,
+      "artifact_refs": [
+        "actual_outputs.json"
+      ],
+      "causal_note": "Required output manifest for evaluator.",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "python write JSON file",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "contract_file": "actual_outputs.json",
+        "original_action": "Write actual_outputs.json",
+        "original_causal_type": "contract_requirement",
+        "original_step_outcome": "success",
+        "raw_step": {
+          "action": "Write actual_outputs.json",
+          "actor": "agent",
+          "artifact_refs": [
+            "actual_outputs.json"
+          ],
+          "causal_note": "Required output manifest for evaluator.",
+          "causal_type": "contract_requirement",
+          "caused_by": "step_5",
+          "error_message": null,
+          "error_type": null,
+          "input": "python write JSON file",
+          "metadata_json": {
+            "contract_file": "actual_outputs.json"
+          },
+          "observation": "Recorded generated artifact list and run assumptions.",
+          "operation": "write",
+          "output": "actual_outputs.json",
+          "reasoning": "Required by task contract.",
+          "state_change": "Added top-level actual_outputs contract metadata.",
+          "step": 6,
+          "step_outcome": "success",
+          "success": true,
+          "tool": "functions.exec_command",
+          "turn": 1
+        }
+      },
+      "observation": "Recorded generated artifact list and run assumptions.",
+      "operation": "write",
+      "output": "actual_outputs.json",
+      "parallel_group": null,
+      "reasoning": "Required by task contract.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Added top-level actual_outputs contract metadata.",
+      "step": 6,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "python",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "agent",
+      "alternatives_considered": null,
+      "artifact_refs": [
+        "agent_trace.json",
+        "actual_outputs.json"
+      ],
+      "causal_note": "Final structured evidence artifact.",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "json.dumps(trace_schema)",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "original_action": "Write agent_trace.json",
+        "original_causal_type": "traceability_requirement",
+        "original_step_outcome": "success",
+        "raw_step": {
+          "action": "Write agent_trace.json",
+          "actor": "agent",
+          "artifact_refs": [
+            "agent_trace.json",
+            "actual_outputs.json"
+          ],
+          "causal_note": "Final structured evidence artifact.",
+          "causal_type": "traceability_requirement",
+          "caused_by": "step_6",
+          "error_message": null,
+          "error_type": null,
+          "input": "json.dumps(trace_schema)",
+          "metadata_json": {
+            "schema_fields": [
+              "step",
+              "turn",
+              "actor",
+              "action",
+              "operation",
+              "tool",
+              "observation",
+              "input",
+              "output",
+              "state_change",
+              "reasoning",
+              "caused_by",
+              "causal_type",
+              "causal_note",
+              "success",
+              "step_outcome",
+              "error_type",
+              "error_message",
+              "artifact_refs",
+              "metadata_json"
+            ]
+          },
+          "observation": "Captured every meaningful action with operation, input, output, errors, state change, and causality.",
+          "operation": "write",
+          "output": "agent_trace.json",
+          "reasoning": "Task explicitly requires trace with required field set and causality details.",
+          "state_change": "Persisted workflow trace for audit and grading pipeline.",
+          "step": 7,
+          "step_outcome": "success",
+          "success": true,
+          "tool": "functions.exec_command",
+          "turn": 1
+        },
+        "schema_fields": [
+          "step",
+          "turn",
+          "actor",
+          "action",
+          "operation",
+          "tool",
+          "observation",
+          "input",
+          "output",
+          "state_change",
+          "reasoning",
+          "caused_by",
+          "causal_type",
+          "causal_note",
+          "success",
+          "step_outcome",
+          "error_type",
+          "error_message",
+          "artifact_refs",
+          "metadata_json"
+        ]
+      },
+      "observation": "Captured every meaningful action with operation, input, output, errors, state change, and causality.",
+      "operation": "write",
+      "output": "agent_trace.json",
+      "parallel_group": null,
+      "reasoning": "Task explicitly requires trace with required field set and causality details.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Persisted workflow trace for audit and grading pipeline.",
+      "step": 7,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "file_write",
+      "turn": 1
+    }
+  ],
+  "system_prompt": null,
+  "system_prompt_hash": null,
+  "task": "Using only the embedded packet, evaluate proposed API rate limits and recommend a rate-limit policy that balances abuse vs false positives. Classify clients C1-C4, compute expected abuse and false-positive costs, validate and show intermediate calculations, include formulas or executable logic in the spreadsheet, provide row-level citations to the embedded packet, perform sensitivity checks around controlling thresholds, document uncertainty and validation checks, and produce a final decision table labeling each client/policy as pass/warn/fail/needs_review. Deliverables: api_rate_limit_tuning.xlsx and abuse_response_memo.md. Do not import external data or invent missing values; explicitly note unresolved assumptions.",
+  "task_family_id": null,
+  "original_internal_task_id": "aa_task_0072",
+  "task_id": "672",
+  "termination_reason": "task_complete",
+  "trace_id": "trace_672-baseline_normalized",
+  "trace_mode": "live"
+}

@@ -1,0 +1,237 @@
+{
+  "original_internal_attempt_id": "aa_task_0617_revised",
+  "attempt_id": "317-revised",
+  "attempt_kind": "revised",
+  "error_message": null,
+  "error_type": null,
+  "metadata_json": {
+    "actual_outputs_discarded_field_count": 0,
+    "actual_outputs_normalized": true,
+    "codex_sandbox": "workspace-write",
+    "expected_deliverable_items": [
+      "use_error_synthesis.xlsx",
+      "hf_validation_memo.md"
+    ],
+    "original_fields": {
+      "artifacts": {
+        "hf_validation_memo": "[REDACTED_LOCAL_PATH]",
+        "use_error_synthesis_xlsx": "[REDACTED_LOCAL_PATH]"
+      },
+      "assumptions": {
+        "classification": {
+          "fail": "score > 80.0",
+          "pass": "score < 72.0",
+          "warn": "72.0 <= score <= 80.0"
+        },
+        "formula": "score = metric1 + 0.6*metric2 - 0.25*metric3",
+        "metric1": "participants",
+        "metric2": "use_errors",
+        "metric3": "task_pass_margin = 1 - task_pass",
+        "normalization": "minmax to 0..100 by metric",
+        "rounding": "ROUND(..., 6)"
+      },
+      "generated_at": "2026-06-15T00:00:00Z",
+      "governing_risk_rank": [
+        "R3",
+        "R4",
+        "R2",
+        "R1"
+      ],
+      "needs_expert_review": true,
+      "records": [
+        {
+          "classification": "pass",
+          "metric1_norm": 0.0,
+          "metric2_norm": 100.0,
+          "metric3_norm": 64.727273,
+          "record_id": "R1",
+          "score": 43.818182
+        },
+        {
+          "classification": "pass",
+          "metric1_norm": 75.125628,
+          "metric2_norm": 0.0,
+          "metric3_norm": 100.0,
+          "record_id": "R2",
+          "score": 50.125628
+        },
+        {
+          "classification": "fail",
+          "metric1_norm": 100.0,
+          "metric2_norm": 100.0,
+          "metric3_norm": 0.0,
+          "record_id": "R3",
+          "score": 160.0
+        },
+        {
+          "classification": "fail",
+          "metric1_norm": 92.462312,
+          "metric2_norm": 100.0,
+          "metric3_norm": 20.545455,
+          "record_id": "R4",
+          "score": 147.325948
+        }
+      ],
+      "remediation": {
+        "budget_usd": 130000,
+        "notes": "No feasible combo lowers all records below fail threshold. O1+O2 gives max feasible score reduction but fails remain for R3 and R4.",
+        "options": {
+          "O1": {
+            "cost": 40300,
+            "effect": "participants contribution x (1 - 0.12)",
+            "targets": "participants"
+          },
+          "O2": {
+            "cost": 61100,
+            "effect": "use_errors contribution x (1 - 0.18)",
+            "targets": "use_errors"
+          },
+          "O3": {
+            "cost": 70200,
+            "effect": "margin contribution x (1 + 0.09)",
+            "targets": "task_pass margin"
+          }
+        },
+        "recommended_combo": [
+          "O1",
+          "O2"
+        ],
+        "recommended_cost": 101400,
+        "recommended_within_budget": true
+      },
+      "sensitivity_5pct": {
+        "expert_review_required": false,
+        "records_stable": [
+          "R1",
+          "R2",
+          "R3",
+          "R4"
+        ],
+        "triggered_classification_change": false
+      }
+    },
+    "produced_deliverable_items": [
+      "hf_validation_memo.md",
+      "use_error_synthesis.xlsx"
+    ],
+    "raw_actual_outputs": {
+      "artifacts": {
+        "hf_validation_memo": "[REDACTED_LOCAL_PATH]",
+        "use_error_synthesis_xlsx": "[REDACTED_LOCAL_PATH]"
+      },
+      "assumptions": {
+        "classification": {
+          "fail": "score > 80.0",
+          "pass": "score < 72.0",
+          "warn": "72.0 <= score <= 80.0"
+        },
+        "formula": "score = metric1 + 0.6*metric2 - 0.25*metric3",
+        "metric1": "participants",
+        "metric2": "use_errors",
+        "metric3": "task_pass_margin = 1 - task_pass",
+        "normalization": "minmax to 0..100 by metric",
+        "rounding": "ROUND(..., 6)"
+      },
+      "generated_at": "2026-06-15T00:00:00Z",
+      "governing_risk_rank": [
+        "R3",
+        "R4",
+        "R2",
+        "R1"
+      ],
+      "needs_expert_review": true,
+      "records": [
+        {
+          "classification": "pass",
+          "metric1_norm": 0.0,
+          "metric2_norm": 100.0,
+          "metric3_norm": 64.727273,
+          "record_id": "R1",
+          "score": 43.818182
+        },
+        {
+          "classification": "pass",
+          "metric1_norm": 75.125628,
+          "metric2_norm": 0.0,
+          "metric3_norm": 100.0,
+          "record_id": "R2",
+          "score": 50.125628
+        },
+        {
+          "classification": "fail",
+          "metric1_norm": 100.0,
+          "metric2_norm": 100.0,
+          "metric3_norm": 0.0,
+          "record_id": "R3",
+          "score": 160.0
+        },
+        {
+          "classification": "fail",
+          "metric1_norm": 92.462312,
+          "metric2_norm": 100.0,
+          "metric3_norm": 20.545455,
+          "record_id": "R4",
+          "score": 147.325948
+        }
+      ],
+      "remediation": {
+        "budget_usd": 130000,
+        "notes": "No feasible combo lowers all records below fail threshold. O1+O2 gives max feasible score reduction but fails remain for R3 and R4.",
+        "options": {
+          "O1": {
+            "cost": 40300,
+            "effect": "participants contribution x (1 - 0.12)",
+            "targets": "participants"
+          },
+          "O2": {
+            "cost": 61100,
+            "effect": "use_errors contribution x (1 - 0.18)",
+            "targets": "use_errors"
+          },
+          "O3": {
+            "cost": 70200,
+            "effect": "margin contribution x (1 + 0.09)",
+            "targets": "task_pass margin"
+          }
+        },
+        "recommended_combo": [
+          "O1",
+          "O2"
+        ],
+        "recommended_cost": 101400,
+        "recommended_within_budget": true
+      },
+      "sensitivity_5pct": {
+        "expert_review_required": false,
+        "records_stable": [
+          "R1",
+          "R2",
+          "R3",
+          "R4"
+        ],
+        "triggered_classification_change": false
+      },
+      "original_internal_task_id": "aa_task_0617",
+      "task_id": "317"
+    }
+  },
+  "output_summary": "Normalized actual outputs from artifact files.",
+  "status": "success",
+  "original_internal_task_id": "aa_task_0617",
+  "task_id": "317",
+  "required_deliverables": [
+    "use_error_synthesis.xlsx",
+    "hf_validation_memo.md"
+  ],
+  "produced_deliverables": [
+    "hf_validation_memo.md",
+    "use_error_synthesis.xlsx"
+  ],
+  "missing_required_deliverables": [],
+  "deliverable_produced": true,
+  "deliverable_file_included": false,
+  "included_generated_artifacts": false,
+  "artifacts_excluded_reason": "Generated output artifacts are excluded from the public seed dataset by default.",
+  "logs_included": false,
+  "logs_excluded_reason": "Raw runner logs are excluded from the public seed dataset."
+}

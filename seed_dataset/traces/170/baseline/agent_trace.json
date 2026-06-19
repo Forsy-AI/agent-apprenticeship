@@ -1,0 +1,611 @@
+{
+  "actual_outputs": {
+    "original_internal_attempt_id": "aa_task_0370_baseline",
+    "attempt_id": "170-baseline",
+    "attempt_kind": "baseline",
+    "error_message": null,
+    "error_type": null,
+    "metadata_json": {
+      "actual_outputs_discarded_field_count": 0,
+      "actual_outputs_normalized": true,
+      "expected_deliverable_items": [
+        "shelter_accessibility_table.csv"
+      ],
+      "original_fields": {
+        "attempt": "baseline",
+        "deliverables": [
+          {
+            "role": "required_deliverable",
+            "rows": 3,
+            "sha256": "9573c282c9224fbe5e6da7b3746b726d39568b349814604d0269e829b7ce3a69"
+          },
+          {
+            "path": "agent_trace.json",
+            "role": "workflow_trace"
+          }
+        ],
+        "result_summary": "Packet-only emergency shelter accessibility analysis completed. No cell is recommendable because A fails both thresholds, B fails both thresholds, and C fails the slope threshold.",
+        "validation": {
+          "csv_parseable": true,
+          "data_rows": 3,
+          "decision": "needs_review",
+          "decision_basis": "all supplied cells fail at least one hard exclusion rule",
+          "eligible_rows": 0,
+          "excluded_rows": 3,
+          "header_rows": 1,
+          "missing_inputs_detected": 0
+        }
+      },
+      "produced_deliverable_items": [
+        "shelter_accessibility_table.csv"
+      ],
+      "raw_actual_outputs": {
+        "attempt": "baseline",
+        "deliverables": [
+          {
+            "role": "required_deliverable",
+            "rows": 3,
+            "sha256": "9573c282c9224fbe5e6da7b3746b726d39568b349814604d0269e829b7ce3a69"
+          },
+          {
+            "path": "agent_trace.json",
+            "role": "workflow_trace"
+          }
+        ],
+        "result_summary": "Packet-only emergency shelter accessibility analysis completed. No cell is recommendable because A fails both thresholds, B fails both thresholds, and C fails the slope threshold.",
+        "status": "success",
+        "original_internal_task_id": "aa_task_0370",
+        "task_id": "170",
+        "validation": {
+          "csv_parseable": true,
+          "data_rows": 3,
+          "decision": "needs_review",
+          "decision_basis": "all supplied cells fail at least one hard exclusion rule",
+          "eligible_rows": 0,
+          "excluded_rows": 3,
+          "header_rows": 1,
+          "missing_inputs_detected": 0
+        }
+      }
+    },
+    "output_summary": "Normalized actual outputs from artifact files.",
+    "status": "success",
+    "original_internal_task_id": "aa_task_0370",
+    "task_id": "170",
+    "required_deliverables": [
+      "shelter_accessibility_table.csv"
+    ],
+    "produced_deliverables": [
+      "shelter_accessibility_table.csv"
+    ],
+    "missing_required_deliverables": [],
+    "deliverable_produced": true,
+    "deliverable_file_included": false,
+    "included_generated_artifacts": false,
+    "artifacts_excluded_reason": "Generated output artifacts are excluded from the public seed dataset by default.",
+    "logs_included": false,
+    "logs_excluded_reason": "Raw runner logs are excluded from the public seed dataset."
+  },
+  "agent_config": null,
+  "agent_tools": [
+    "codex_cli",
+    "Bash",
+    "python",
+    "file_read",
+    "file_write",
+    "apply_patch"
+  ],
+  "artifacts": [],
+  "original_internal_attempt_id": "aa_task_0370_baseline",
+  "attempt_id": "170-baseline",
+  "attempt_kind": "baseline",
+  "collection_id": null,
+  "completion_reason": null,
+  "ended_at": null,
+  "final_attempt_id": null,
+  "initial_attempt_id": null,
+  "iteration_index": null,
+  "learning": null,
+  "memory": null,
+  "metadata_json": {
+    "codex_command": [
+      "codex",
+      "exec",
+      "--sandbox",
+      "workspace-write",
+      "<prompt>"
+    ],
+    "codex_sandbox": "workspace-write",
+    "discarded_step_count": 0,
+    "original_fields": {
+      "schema": "AgentTrace",
+      "version": "1.0"
+    },
+    "raw_trace_preserved": true,
+    "raw_trace_step_source": "steps",
+    "schema_valid": true,
+    "trace_normalization_status": "normalized",
+    "trace_valid": true
+  },
+  "preferred_attempt_id": null,
+  "previous_attempt_id": null,
+  "prior_trace_id": null,
+  "revision_attempt_ids": [],
+  "revision_group_id": null,
+  "schema_version": "aa-trace-v0.1",
+  "skills": null,
+  "started_at": null,
+  "steps": [
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "causal_note": "This step establishes the source values and the hard-rule logic that drive every later decision.",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "{\"command\": \"sed -n '1,220p' ./input/task.json && printf '\\\\n---TASK_BRIEF---\\\\n' && sed -n '1,220p' ./input/task_brief.md\"}",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "files_read": [
+          "input/task.json",
+          "input/task_brief.md"
+        ],
+        "inputs": {
+          "command": "sed -n '1,220p' ./input/task.json && printf '\\n---TASK_BRIEF---\\n' && sed -n '1,220p' ./input/task_brief.md"
+        },
+        "original_action": "read_context",
+        "original_causal_type": "requirement",
+        "original_operation": "inspect_input_files",
+        "outputs": {
+          "summary": "Task metadata confirms the deliverable is shelter_accessibility_table.csv and the workflow must stay packet-only."
+        },
+        "raw_step": {
+          "action": "read_context",
+          "actor": "worker",
+          "causal_note": "This step establishes the source values and the hard-rule logic that drive every later decision.",
+          "causal_type": "requirement",
+          "caused_by": "user_instruction",
+          "error_message": null,
+          "error_type": null,
+          "input": {
+            "command": "sed -n '1,220p' ./input/task.json && printf '\\n---TASK_BRIEF---\\n' && sed -n '1,220p' ./input/task_brief.md"
+          },
+          "metadata_json": {
+            "files_read": [
+              "input/task.json",
+              "input/task_brief.md"
+            ]
+          },
+          "observation": "Loaded task.json and task_brief.md; the packet contains cells A-C, hard exclusion rules, and a required CSV deliverable.",
+          "operation": "inspect_input_files",
+          "output": {
+            "summary": "Task metadata confirms the deliverable is shelter_accessibility_table.csv and the workflow must stay packet-only."
+          },
+          "reasoning": "I needed the exact packet values and the deliverable contract before designing the output table.",
+          "state_change": "Requirement set: produce a three-row CSV with calculations, citations, and validation notes; no external data lookup is needed.",
+          "step": "1",
+          "step_outcome": "completed",
+          "success": true,
+          "tool": "functions.exec_command",
+          "turn": 1
+        }
+      },
+      "observation": "Loaded task.json and task_brief.md; the packet contains cells A-C, hard exclusion rules, and a required CSV deliverable.",
+      "operation": "other",
+      "output": "{\"summary\": \"Task metadata confirms the deliverable is shelter_accessibility_table.csv and the workflow must stay packet-only.\"}",
+      "parallel_group": null,
+      "reasoning": "I needed the exact packet values and the deliverable contract before designing the output table.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Requirement set: produce a three-row CSV with calculations, citations, and validation notes; no external data lookup is needed.",
+      "step": 1,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "Bash",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "causal_note": "The packet values and rules from step 1 determine the output shape and the no-recommendation outcome.",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "{\"design_choice\": \"Use road distance as the score proxy because the instruction only specifies that lower road distance is better.\"}",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "decision_rule": "exclude if flood_depth > 1m or slope > 10%",
+        "inputs": {
+          "design_choice": "Use road distance as the score proxy because the instruction only specifies that lower road distance is better."
+        },
+        "original_action": "design_output",
+        "original_causal_type": "dependency",
+        "original_operation": "define_csv_structure_and_scoring_interpretation",
+        "outputs": {
+          "summary": "Planned a one-row-per-cell CSV with columns for raw inputs, threshold excess, exclusion status, road-distance proxy, citations, sensitivity notes, and validation checks."
+        },
+        "raw_step": {
+          "action": "design_output",
+          "actor": "worker",
+          "causal_note": "The packet values and rules from step 1 determine the output shape and the no-recommendation outcome.",
+          "causal_type": "dependency",
+          "caused_by": "step_1",
+          "error_message": null,
+          "error_type": null,
+          "input": {
+            "design_choice": "Use road distance as the score proxy because the instruction only specifies that lower road distance is better."
+          },
+          "metadata_json": {
+            "decision_rule": "exclude if flood_depth > 1m or slope > 10%",
+            "score_proxy": "road_distance_m"
+          },
+          "observation": "All three cells fail at least one hard rule, so the CSV must preserve per-cell calculations and mark the outcome as needs_review instead of inventing a recommended shelter cell.",
+          "operation": "define_csv_structure_and_scoring_interpretation",
+          "output": {
+            "summary": "Planned a one-row-per-cell CSV with columns for raw inputs, threshold excess, exclusion status, road-distance proxy, citations, sensitivity notes, and validation checks."
+          },
+          "reasoning": "A reproducible score is still useful for transparency, but it cannot override the binary exclusion rules.",
+          "state_change": "Defined the final decision semantics: exclusion takes precedence over road-distance comparison; no eligible cell remains after screening.",
+          "step": "2",
+          "step_outcome": "completed",
+          "success": true,
+          "tool": "none",
+          "turn": 1
+        },
+        "score_proxy": "road_distance_m"
+      },
+      "observation": "All three cells fail at least one hard rule, so the CSV must preserve per-cell calculations and mark the outcome as needs_review instead of inventing a recommended shelter cell.",
+      "operation": "other",
+      "output": "{\"summary\": \"Planned a one-row-per-cell CSV with columns for raw inputs, threshold excess, exclusion status, road-distance proxy, citations, sensitivity notes, and validation checks.\"}",
+      "parallel_group": null,
+      "reasoning": "A reproducible score is still useful for transparency, but it cannot override the binary exclusion rules.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Defined the final decision semantics: exclusion takes precedence over road-distance comparison; no eligible cell remains after screening.",
+      "step": 2,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "none",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "causal_note": "The table layout chosen in step 2 was materialized here.",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "{\"method\": \"apply_patch\", \"path\": \"[EXCLUDED_GENERATED_ARTIFACT]\"}",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "header_count": 1,
+        "inputs": {
+          "method": "apply_patch"
+        },
+        "original_action": "create_artifact",
+        "original_causal_type": "dependency",
+        "original_operation": "write_csv_deliverable",
+        "outputs": {
+          "status": "created"
+        },
+        "raw_step": {
+          "action": "create_artifact",
+          "actor": "worker",
+          "causal_note": "The table layout chosen in step 2 was materialized here.",
+          "causal_type": "dependency",
+          "caused_by": "step_2",
+          "error_message": null,
+          "error_type": null,
+          "input": {
+            "method": "apply_patch"
+          },
+          "metadata_json": {
+            "header_count": 1,
+            "row_count": 3
+          },
+          "observation": "Created [EXCLUDED_GENERATED_ARTIFACT] with three data rows and one header row.",
+          "operation": "write_csv_deliverable",
+          "output": {
+            "status": "created"
+          },
+          "reasoning": "The deliverable needed to exist before validation could confirm the row count and the applied rules.",
+          "state_change": "Primary deliverable written with calculations, exact row/value citations, exceptions, assumptions, and decision status for each supplied cell.",
+          "step": "3",
+          "step_outcome": "completed",
+          "success": true,
+          "tool": "functions.apply_patch",
+          "turn": 1
+        },
+        "row_count": 3
+      },
+      "observation": "Created [EXCLUDED_GENERATED_ARTIFACT] with three data rows and one header row.",
+      "operation": "other",
+      "output": "{\"status\": \"created\"}",
+      "parallel_group": null,
+      "reasoning": "The deliverable needed to exist before validation could confirm the row count and the applied rules.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Primary deliverable written with calculations, exact row/value citations, exceptions, assumptions, and decision status for each supplied cell.",
+      "step": 3,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "functions.apply_patch",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "causal_note": "The written CSV had to be checked before finalizing the output manifest and trace.",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "{\"commands\": [\"sed -n '1,20p' [EXCLUDED_GENERATED_ARTIFACT]\", \"wc -l [EXCLUDED_GENERATED_ARTIFACT]\", \"ruby -rcsv -e 'rows=CSV.read(\\\"[EXCLUDED_GENERATED_ARTIFACT]\", headers:true); puts \\\"rows=#{rows.size}\\\"; puts \\\"excluded=#{rows.count { |r| r[\\\"hard_rule_exclusion\\\"] == \\\"TRUE\\\" }}\\\"; puts \\\"statuses=#{rows.map { |r| r[\\\"decision_status\\\"] }.join(\\\",\\\")}\\\"'\", \"shasum -a 256 [EXCLUDED_GENERATED_ARTIFACT]\"]}",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "exclusion_rule": "flood_depth > 1m OR slope > 10%",
+        "inputs": {
+          "commands": [
+            "sed -n '1,20p' [EXCLUDED_GENERATED_ARTIFACT]",
+            "wc -l [EXCLUDED_GENERATED_ARTIFACT]",
+            "ruby -rcsv -e 'rows=CSV.read(\"[EXCLUDED_GENERATED_ARTIFACT]\", headers:true); puts \"rows=#{rows.size}\"; puts \"excluded=#{rows.count { |r| r[\"hard_rule_exclusion\"] == \"TRUE\" }}\"; puts \"statuses=#{rows.map { |r| r[\"decision_status\"] }.join(\",\")}\"'",
+            "shasum -a 256 [EXCLUDED_GENERATED_ARTIFACT]"
+          ]
+        },
+        "original_action": "validate_artifact",
+        "original_causal_type": "verification",
+        "original_operation": "parse_csv_and_compute_hash",
+        "outputs": {
+          "excluded_rows": 3,
+          "line_count": 4,
+          "rows": 3,
+          "sha256": "9573c282c9224fbe5e6da7b3746b726d39568b349814604d0269e829b7ce3a69",
+          "statuses": "excluded_needs_review,excluded_needs_review,excluded_needs_review"
+        },
+        "parse_check": true,
+        "raw_step": {
+          "action": "validate_artifact",
+          "actor": "worker",
+          "causal_note": "The written CSV had to be checked before finalizing the output manifest and trace.",
+          "causal_type": "verification",
+          "caused_by": "step_3",
+          "error_message": null,
+          "error_type": null,
+          "input": {
+            "commands": [
+              "sed -n '1,20p' [EXCLUDED_GENERATED_ARTIFACT]",
+              "wc -l [EXCLUDED_GENERATED_ARTIFACT]",
+              "ruby -rcsv -e 'rows=CSV.read(\"[EXCLUDED_GENERATED_ARTIFACT]\", headers:true); puts \"rows=#{rows.size}\"; puts \"excluded=#{rows.count { |r| r[\"hard_rule_exclusion\"] == \"TRUE\" }}\"; puts \"statuses=#{rows.map { |r| r[\"decision_status\"] }.join(\",\")}\"'",
+              "shasum -a 256 [EXCLUDED_GENERATED_ARTIFACT]"
+            ]
+          },
+          "metadata_json": {
+            "exclusion_rule": "flood_depth > 1m OR slope > 10%",
+            "parse_check": true
+          },
+          "observation": "CSV parsed successfully; all three rows are excluded; the file hash is stable.",
+          "operation": "parse_csv_and_compute_hash",
+          "output": {
+            "excluded_rows": 3,
+            "line_count": 4,
+            "rows": 3,
+            "sha256": "9573c282c9224fbe5e6da7b3746b726d39568b349814604d0269e829b7ce3a69",
+            "statuses": "excluded_needs_review,excluded_needs_review,excluded_needs_review"
+          },
+          "reasoning": "A parse check and an exclusion count are the fastest evidence that the artifact implements the hard rules correctly.",
+          "state_change": "Validated that the CSV is parseable, contains only the supplied three records, and yields a no-eligible-cells result.",
+          "step": "4",
+          "step_outcome": "completed",
+          "success": true,
+          "tool": "functions.exec_command",
+          "turn": 1
+        }
+      },
+      "observation": "CSV parsed successfully; all three rows are excluded; the file hash is stable.",
+      "operation": "verify",
+      "output": "{\"excluded_rows\": 3, \"line_count\": 4, \"rows\": 3, \"sha256\": \"9573c282c9224fbe5e6da7b3746b726d39568b349814604d0269e829b7ce3a69\", \"statuses\": \"excluded_needs_review,excluded_needs_review,excluded_needs_review\"}",
+      "parallel_group": null,
+      "reasoning": "A parse check and an exclusion count are the fastest evidence that the artifact implements the hard rules correctly.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Validated that the CSV is parseable, contains only the supplied three records, and yields a no-eligible-cells result.",
+      "step": 4,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "Bash",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "artifact_refs": [
+        "actual_outputs.json"
+      ],
+      "causal_note": "The validation results and hash from step 4 are recorded here.",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "{\"method\": \"apply_patch\", \"path\": \"actual_outputs.json\"}",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "inputs": {
+          "method": "apply_patch",
+          "path": "actual_outputs.json"
+        },
+        "original_action": "create_artifact",
+        "original_causal_type": "dependency",
+        "original_operation": "write_output_manifest",
+        "outputs": {
+          "status": "created"
+        },
+        "raw_step": {
+          "action": "create_artifact",
+          "actor": "worker",
+          "artifact_refs": [
+            "actual_outputs.json"
+          ],
+          "causal_note": "The validation results and hash from step 4 are recorded here.",
+          "causal_type": "dependency",
+          "caused_by": "step_4",
+          "error_message": null,
+          "error_type": null,
+          "input": {
+            "method": "apply_patch",
+            "path": "actual_outputs.json"
+          },
+          "metadata_json": {
+            "status": "success"
+          },
+          "observation": "Created actual_outputs.json to summarize the deliverable, validation counts, and the needs_review outcome.",
+          "operation": "write_output_manifest",
+          "output": {
+            "status": "created"
+          },
+          "reasoning": "The manifest provides a compact contract for downstream evaluation and auditing.",
+          "state_change": "Captured the run result, artifact hash, and validation summary in a machine-readable manifest.",
+          "step": "5",
+          "step_outcome": "completed",
+          "success": true,
+          "tool": "functions.apply_patch",
+          "turn": 1
+        },
+        "status": "success"
+      },
+      "observation": "Created actual_outputs.json to summarize the deliverable, validation counts, and the needs_review outcome.",
+      "operation": "other",
+      "output": "{\"status\": \"created\"}",
+      "parallel_group": null,
+      "reasoning": "The manifest provides a compact contract for downstream evaluation and auditing.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Captured the run result, artifact hash, and validation summary in a machine-readable manifest.",
+      "step": 5,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "functions.apply_patch",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "artifact_refs": [
+        "agent_trace.json",
+        "actual_outputs.json"
+      ],
+      "causal_note": "The manifest and validation results were complete before the trace was finalized.",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "{\"method\": \"apply_patch\", \"path\": \"agent_trace.json\"}",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "inputs": {
+          "method": "apply_patch",
+          "path": "agent_trace.json"
+        },
+        "original_action": "create_artifact",
+        "original_causal_type": "dependency",
+        "original_operation": "write_workflow_trace",
+        "outputs": {
+          "status": "created"
+        },
+        "raw_step": {
+          "action": "create_artifact",
+          "actor": "worker",
+          "artifact_refs": [
+            "agent_trace.json",
+            "actual_outputs.json"
+          ],
+          "causal_note": "The manifest and validation results were complete before the trace was finalized.",
+          "causal_type": "dependency",
+          "caused_by": "step_5",
+          "error_message": null,
+          "error_type": null,
+          "input": {
+            "method": "apply_patch",
+            "path": "agent_trace.json"
+          },
+          "metadata_json": {
+            "trace_complete": true
+          },
+          "observation": "Serialized the workflow trace itself to agent_trace.json.",
+          "operation": "write_workflow_trace",
+          "output": {
+            "status": "created"
+          },
+          "reasoning": "The trace must be saved last so it can include the full workflow history up to finalization.",
+          "state_change": "Preserved the action sequence, command evidence, calculations, and validation outcomes in the required trace artifact.",
+          "step": "6",
+          "step_outcome": "completed",
+          "success": true,
+          "tool": "functions.apply_patch",
+          "turn": 1
+        },
+        "trace_complete": true
+      },
+      "observation": "Serialized the workflow trace itself to agent_trace.json.",
+      "operation": "other",
+      "output": "{\"status\": \"created\"}",
+      "parallel_group": null,
+      "reasoning": "The trace must be saved last so it can include the full workflow history up to finalization.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Preserved the action sequence, command evidence, calculations, and validation outcomes in the required trace artifact.",
+      "step": 6,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "functions.apply_patch",
+      "turn": 1
+    }
+  ],
+  "system_prompt": null,
+  "system_prompt_hash": null,
+  "task": "Advanced task: Emergency shelter accessibility analysis. Geospatial packet: cell A elevation=13m slope=11% flood_depth=1.2m distance_road=300m; cell B elevation=10m slope=15% flood_depth=2.1m road=170m; cell C elevation=17m slope=21% flood_depth=0 road=420m. Rules: exclude flood_depth>1m or slope>10%; score lower road distance better. Produce the stated deliverable with calculations, assumptions, exceptions, and exact row/value citations. Do not invent additional records; mark missing inputs as needs_review. Include intermediate calculations, uncertainty or sensitivity notes, validation checks, and a final decision table that ties every recommendation back to the supplied values. The response should be executable from the embedded packet alone, with no external data lookup required beyond understanding the cited public removed context.",
+  "task_family_id": null,
+  "original_internal_task_id": "aa_task_0370",
+  "task_id": "170",
+  "termination_reason": "task_complete",
+  "trace_id": "trace_170-baseline_normalized",
+  "trace_mode": "live"
+}

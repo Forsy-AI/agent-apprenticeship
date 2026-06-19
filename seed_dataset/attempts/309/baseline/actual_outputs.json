@@ -1,0 +1,639 @@
+{
+  "original_internal_attempt_id": "aa_task_0609_baseline",
+  "attempt_id": "309-baseline",
+  "attempt_kind": "baseline",
+  "error_message": null,
+  "error_type": null,
+  "metadata_json": {
+    "actual_outputs_discarded_field_count": 0,
+    "actual_outputs_normalized": true,
+    "codex_sandbox": "workspace-write",
+    "expected_deliverable_items": [
+      "ddpcr_copy_number.xlsx",
+      "assay_call.md"
+    ],
+    "original_fields": {
+      "artifacts": {
+        "memo": "[EXCLUDED_GENERATED_ARTIFACT]",
+        "workbook": "[EXCLUDED_GENERATED_ARTIFACT]"
+      },
+      "classifications": [
+        {
+          "call": "fail",
+          "citation": "input/task.json normalized_instruction embedded packet: R1 target_pos=1417 ref_pos=1277 droplets=19274 copy_ratio=1.42",
+          "governing_driver": "target_pos",
+          "record_id": "R1",
+          "score": 133.37656124969558
+        },
+        {
+          "call": "warn",
+          "citation": "input/task.json normalized_instruction embedded packet: R2 target_pos=629 ref_pos=758 droplets=17689 copy_ratio=1.51",
+          "governing_driver": "target_pos",
+          "record_id": "R2",
+          "score": 54.089002699128464
+        },
+        {
+          "call": "fail",
+          "citation": "input/task.json normalized_instruction embedded packet: R3 target_pos=601 ref_pos=1040 droplets=18716 copy_ratio=1.56",
+          "governing_driver": "ref_pos",
+          "record_id": "R3",
+          "score": 64.63793193213826
+        },
+        {
+          "call": "fail",
+          "citation": "input/task.json normalized_instruction embedded packet: R4 target_pos=1474 ref_pos=893 droplets=18028 copy_ratio=0.92",
+          "governing_driver": "target_pos",
+          "record_id": "R4",
+          "score": 127.21412364716983
+        }
+      ],
+      "decision": "do_not_approve_release",
+      "expert_review_required": true,
+      "needs_review_items": [
+        "unit_normalization_denominator_not_specified; selected embedded maximum by field as denominator",
+        "absolute_droplet_qc_threshold_not_specified; droplets reported as relative QC only",
+        "copy_ratio margin improvement cap not specified; remediation model applies 9% multiplier without capping at 100"
+      ],
+      "normalization_basis": "embedded field maximum to 100 scale",
+      "remediation": {
+        "budget_usd": 147500,
+        "combos": [
+          {
+            "all_non_fail": false,
+            "combo_id": "None",
+            "fail_count": 3,
+            "max_score": 133.37656124969558,
+            "pass_count": 0,
+            "total_cost": 0,
+            "warn_count": 1,
+            "within_budget": true
+          },
+          {
+            "all_non_fail": false,
+            "combo_id": "O1",
+            "fail_count": 2,
+            "max_score": 121.84060466896287,
+            "pass_count": 1,
+            "total_cost": 45725,
+            "warn_count": 1,
+            "within_budget": true
+          },
+          {
+            "all_non_fail": false,
+            "combo_id": "O2",
+            "fail_count": 2,
+            "max_score": 122.57656124969557,
+            "pass_count": 1,
+            "total_cost": 69325,
+            "warn_count": 1,
+            "within_budget": true
+          },
+          {
+            "all_non_fail": false,
+            "combo_id": "O3",
+            "fail_count": 3,
+            "max_score": 131.32848432661865,
+            "pass_count": 1,
+            "total_cost": 79650,
+            "warn_count": 0,
+            "within_budget": true
+          },
+          {
+            "all_non_fail": false,
+            "combo_id": "O1+O2",
+            "fail_count": 2,
+            "max_score": 111.04060466896289,
+            "pass_count": 2,
+            "total_cost": 115050,
+            "warn_count": 0,
+            "within_budget": true
+          },
+          {
+            "all_non_fail": false,
+            "combo_id": "O1+O3",
+            "fail_count": 2,
+            "max_score": 119.79252774588593,
+            "pass_count": 1,
+            "total_cost": 125375,
+            "warn_count": 1,
+            "within_budget": true
+          },
+          {
+            "all_non_fail": false,
+            "combo_id": "O2+O3",
+            "fail_count": 2,
+            "max_score": 120.52848432661864,
+            "pass_count": 2,
+            "total_cost": 148975,
+            "warn_count": 0,
+            "within_budget": false
+          },
+          {
+            "all_non_fail": false,
+            "combo_id": "O1+O2+O3",
+            "fail_count": 2,
+            "max_score": 108.99252774588595,
+            "pass_count": 2,
+            "total_cost": 194700,
+            "warn_count": 0,
+            "within_budget": false
+          }
+        ],
+        "recommendation": "No listed remediation combination is sufficient to clear all fail calls under the budget; do not approve release. Best in-budget partial risk reduction is O1+O2 at $115,050, but it still leaves 2 fail records.",
+        "recommended_combo": "O1+O2",
+        "recommended_combo_cost_usd": 115050,
+        "sufficient_combo_available": false
+      },
+      "risk_rank": [
+        {
+          "aggregate_contribution": 279.57937584803256,
+          "driver": "target_pos",
+          "rank": 1,
+          "share_of_positive_risk": 0.5999347090742736
+        },
+        {
+          "aggregate_contribution": 186.43696162881753,
+          "driver": "ref_pos weighted by 0.6",
+          "rank": 2,
+          "share_of_positive_risk": 0.4000652909257264
+        },
+        {
+          "aggregate_contribution": -86.69871794871796,
+          "driver": "copy_ratio margin credit",
+          "rank": 3,
+          "share_of_positive_risk": null
+        }
+      ],
+      "sensitivity": {
+        "alternative_normalization": [
+          {
+            "call": "fail",
+            "changes_selected_call": false,
+            "record_id": "R1",
+            "score": 133.93954037800688
+          },
+          {
+            "call": "pass",
+            "changes_selected_call": true,
+            "record_id": "R2",
+            "score": -19.83954395761741
+          },
+          {
+            "call": "pass",
+            "changes_selected_call": true,
+            "record_id": "R3",
+            "score": 7.601156069364158
+          },
+          {
+            "call": "fail",
+            "changes_selected_call": false,
+            "record_id": "R4",
+            "score": 115.60693641618496
+          }
+        ],
+        "changed_records": [
+          "R2",
+          "R3"
+        ],
+        "rows": [
+          {
+            "adverse_5pct_call": "fail",
+            "adverse_5pct_score": 142.3210303378214,
+            "adverse_changed": false,
+            "base_call": "fail",
+            "base_score": 133.37656124969558,
+            "expert_review_flag": false,
+            "favorable_5pct_call": "fail",
+            "favorable_5pct_score": 124.43209216156976,
+            "favorable_changed": false,
+            "record_id": "R1"
+          },
+          {
+            "adverse_5pct_call": "warn",
+            "adverse_5pct_score": 59.21332462895668,
+            "adverse_changed": false,
+            "base_call": "warn",
+            "base_score": 54.089002699128464,
+            "expert_review_flag": true,
+            "favorable_5pct_call": "pass",
+            "favorable_5pct_score": 48.96468076930024,
+            "favorable_changed": true,
+            "record_id": "R2"
+          },
+          {
+            "adverse_5pct_call": "fail",
+            "adverse_5pct_score": 70.36982852874519,
+            "adverse_changed": false,
+            "base_call": "fail",
+            "base_score": 64.63793193213826,
+            "expert_review_flag": true,
+            "favorable_5pct_call": "warn",
+            "favorable_5pct_score": 58.90603533553136,
+            "favorable_changed": true,
+            "record_id": "R3"
+          },
+          {
+            "adverse_5pct_call": "fail",
+            "adverse_5pct_score": 135.04918880388732,
+            "adverse_changed": false,
+            "base_call": "fail",
+            "base_score": 127.21412364716983,
+            "expert_review_flag": false,
+            "favorable_5pct_call": "fail",
+            "favorable_5pct_score": 119.3790584904524,
+            "favorable_changed": false,
+            "record_id": "R4"
+          }
+        ]
+      },
+      "threshold": 60.0,
+      "validation_checks": [
+        {
+          "check": "record_count",
+          "expected": 4,
+          "observed": 4,
+          "passed": true
+        },
+        {
+          "check": "option_count",
+          "expected": 3,
+          "observed": 3,
+          "passed": true
+        },
+        {
+          "check": "threshold_and_warn_floor",
+          "expected": "threshold=60.0; warn_floor=54.0",
+          "observed": "threshold=60.0; warn_floor=54.0",
+          "passed": true
+        },
+        {
+          "check": "budget_feasible_combos",
+          "expected": "None, O1, O2, O3, O1+O2, O1+O3",
+          "observed": "None, O1, O2, O3, O1+O2, O1+O3",
+          "passed": true
+        },
+        {
+          "check": "no_feasible_combo_clears_all_failures",
+          "expected": true,
+          "observed": true,
+          "passed": true
+        },
+        {
+          "check": "five_percent_sensitivity_review_trigger",
+          "expected": true,
+          "observed": true,
+          "passed": true
+        }
+      ],
+      "warn_floor": 54.0,
+      "xlsx_validation": {
+        "formula_reference_issues": [],
+        "sheet_names": [
+          "Executive_Call",
+          "Source_Packet",
+          "Calculations",
+          "Remediation",
+          "Sensitivity_QC"
+        ],
+        "xlsx_entries": [
+          "[Content_Types].xml",
+          "_rels/.rels",
+          "docProps/core.xml",
+          "docProps/app.xml",
+          "xl/workbook.xml",
+          "xl/_rels/workbook.xml.rels",
+          "xl/styles.xml",
+          "xl/worksheets/sheet1.xml",
+          "xl/worksheets/sheet2.xml",
+          "xl/worksheets/sheet3.xml",
+          "xl/worksheets/sheet4.xml",
+          "xl/worksheets/sheet5.xml"
+        ],
+        "xlsx_testzip": null
+      }
+    },
+    "produced_deliverable_items": [
+      "assay_call.md",
+      "ddpcr_copy_number.xlsx"
+    ],
+    "raw_actual_outputs": {
+      "artifacts": {
+        "memo": "[EXCLUDED_GENERATED_ARTIFACT]",
+        "workbook": "[EXCLUDED_GENERATED_ARTIFACT]"
+      },
+      "classifications": [
+        {
+          "call": "fail",
+          "citation": "input/task.json normalized_instruction embedded packet: R1 target_pos=1417 ref_pos=1277 droplets=19274 copy_ratio=1.42",
+          "governing_driver": "target_pos",
+          "record_id": "R1",
+          "score": 133.37656124969558
+        },
+        {
+          "call": "warn",
+          "citation": "input/task.json normalized_instruction embedded packet: R2 target_pos=629 ref_pos=758 droplets=17689 copy_ratio=1.51",
+          "governing_driver": "target_pos",
+          "record_id": "R2",
+          "score": 54.089002699128464
+        },
+        {
+          "call": "fail",
+          "citation": "input/task.json normalized_instruction embedded packet: R3 target_pos=601 ref_pos=1040 droplets=18716 copy_ratio=1.56",
+          "governing_driver": "ref_pos",
+          "record_id": "R3",
+          "score": 64.63793193213826
+        },
+        {
+          "call": "fail",
+          "citation": "input/task.json normalized_instruction embedded packet: R4 target_pos=1474 ref_pos=893 droplets=18028 copy_ratio=0.92",
+          "governing_driver": "target_pos",
+          "record_id": "R4",
+          "score": 127.21412364716983
+        }
+      ],
+      "decision": "do_not_approve_release",
+      "expert_review_required": true,
+      "needs_review_items": [
+        "unit_normalization_denominator_not_specified; selected embedded maximum by field as denominator",
+        "absolute_droplet_qc_threshold_not_specified; droplets reported as relative QC only",
+        "copy_ratio margin improvement cap not specified; remediation model applies 9% multiplier without capping at 100"
+      ],
+      "normalization_basis": "embedded field maximum to 100 scale",
+      "remediation": {
+        "budget_usd": 147500,
+        "combos": [
+          {
+            "all_non_fail": false,
+            "combo_id": "None",
+            "fail_count": 3,
+            "max_score": 133.37656124969558,
+            "pass_count": 0,
+            "total_cost": 0,
+            "warn_count": 1,
+            "within_budget": true
+          },
+          {
+            "all_non_fail": false,
+            "combo_id": "O1",
+            "fail_count": 2,
+            "max_score": 121.84060466896287,
+            "pass_count": 1,
+            "total_cost": 45725,
+            "warn_count": 1,
+            "within_budget": true
+          },
+          {
+            "all_non_fail": false,
+            "combo_id": "O2",
+            "fail_count": 2,
+            "max_score": 122.57656124969557,
+            "pass_count": 1,
+            "total_cost": 69325,
+            "warn_count": 1,
+            "within_budget": true
+          },
+          {
+            "all_non_fail": false,
+            "combo_id": "O3",
+            "fail_count": 3,
+            "max_score": 131.32848432661865,
+            "pass_count": 1,
+            "total_cost": 79650,
+            "warn_count": 0,
+            "within_budget": true
+          },
+          {
+            "all_non_fail": false,
+            "combo_id": "O1+O2",
+            "fail_count": 2,
+            "max_score": 111.04060466896289,
+            "pass_count": 2,
+            "total_cost": 115050,
+            "warn_count": 0,
+            "within_budget": true
+          },
+          {
+            "all_non_fail": false,
+            "combo_id": "O1+O3",
+            "fail_count": 2,
+            "max_score": 119.79252774588593,
+            "pass_count": 1,
+            "total_cost": 125375,
+            "warn_count": 1,
+            "within_budget": true
+          },
+          {
+            "all_non_fail": false,
+            "combo_id": "O2+O3",
+            "fail_count": 2,
+            "max_score": 120.52848432661864,
+            "pass_count": 2,
+            "total_cost": 148975,
+            "warn_count": 0,
+            "within_budget": false
+          },
+          {
+            "all_non_fail": false,
+            "combo_id": "O1+O2+O3",
+            "fail_count": 2,
+            "max_score": 108.99252774588595,
+            "pass_count": 2,
+            "total_cost": 194700,
+            "warn_count": 0,
+            "within_budget": false
+          }
+        ],
+        "recommendation": "No listed remediation combination is sufficient to clear all fail calls under the budget; do not approve release. Best in-budget partial risk reduction is O1+O2 at $115,050, but it still leaves 2 fail records.",
+        "recommended_combo": "O1+O2",
+        "recommended_combo_cost_usd": 115050,
+        "sufficient_combo_available": false
+      },
+      "risk_rank": [
+        {
+          "aggregate_contribution": 279.57937584803256,
+          "driver": "target_pos",
+          "rank": 1,
+          "share_of_positive_risk": 0.5999347090742736
+        },
+        {
+          "aggregate_contribution": 186.43696162881753,
+          "driver": "ref_pos weighted by 0.6",
+          "rank": 2,
+          "share_of_positive_risk": 0.4000652909257264
+        },
+        {
+          "aggregate_contribution": -86.69871794871796,
+          "driver": "copy_ratio margin credit",
+          "rank": 3,
+          "share_of_positive_risk": null
+        }
+      ],
+      "sensitivity": {
+        "alternative_normalization": [
+          {
+            "call": "fail",
+            "changes_selected_call": false,
+            "record_id": "R1",
+            "score": 133.93954037800688
+          },
+          {
+            "call": "pass",
+            "changes_selected_call": true,
+            "record_id": "R2",
+            "score": -19.83954395761741
+          },
+          {
+            "call": "pass",
+            "changes_selected_call": true,
+            "record_id": "R3",
+            "score": 7.601156069364158
+          },
+          {
+            "call": "fail",
+            "changes_selected_call": false,
+            "record_id": "R4",
+            "score": 115.60693641618496
+          }
+        ],
+        "changed_records": [
+          "R2",
+          "R3"
+        ],
+        "rows": [
+          {
+            "adverse_5pct_call": "fail",
+            "adverse_5pct_score": 142.3210303378214,
+            "adverse_changed": false,
+            "base_call": "fail",
+            "base_score": 133.37656124969558,
+            "expert_review_flag": false,
+            "favorable_5pct_call": "fail",
+            "favorable_5pct_score": 124.43209216156976,
+            "favorable_changed": false,
+            "record_id": "R1"
+          },
+          {
+            "adverse_5pct_call": "warn",
+            "adverse_5pct_score": 59.21332462895668,
+            "adverse_changed": false,
+            "base_call": "warn",
+            "base_score": 54.089002699128464,
+            "expert_review_flag": true,
+            "favorable_5pct_call": "pass",
+            "favorable_5pct_score": 48.96468076930024,
+            "favorable_changed": true,
+            "record_id": "R2"
+          },
+          {
+            "adverse_5pct_call": "fail",
+            "adverse_5pct_score": 70.36982852874519,
+            "adverse_changed": false,
+            "base_call": "fail",
+            "base_score": 64.63793193213826,
+            "expert_review_flag": true,
+            "favorable_5pct_call": "warn",
+            "favorable_5pct_score": 58.90603533553136,
+            "favorable_changed": true,
+            "record_id": "R3"
+          },
+          {
+            "adverse_5pct_call": "fail",
+            "adverse_5pct_score": 135.04918880388732,
+            "adverse_changed": false,
+            "base_call": "fail",
+            "base_score": 127.21412364716983,
+            "expert_review_flag": false,
+            "favorable_5pct_call": "fail",
+            "favorable_5pct_score": 119.3790584904524,
+            "favorable_changed": false,
+            "record_id": "R4"
+          }
+        ]
+      },
+      "threshold": 60.0,
+      "validation_checks": [
+        {
+          "check": "record_count",
+          "expected": 4,
+          "observed": 4,
+          "passed": true
+        },
+        {
+          "check": "option_count",
+          "expected": 3,
+          "observed": 3,
+          "passed": true
+        },
+        {
+          "check": "threshold_and_warn_floor",
+          "expected": "threshold=60.0; warn_floor=54.0",
+          "observed": "threshold=60.0; warn_floor=54.0",
+          "passed": true
+        },
+        {
+          "check": "budget_feasible_combos",
+          "expected": "None, O1, O2, O3, O1+O2, O1+O3",
+          "observed": "None, O1, O2, O3, O1+O2, O1+O3",
+          "passed": true
+        },
+        {
+          "check": "no_feasible_combo_clears_all_failures",
+          "expected": true,
+          "observed": true,
+          "passed": true
+        },
+        {
+          "check": "five_percent_sensitivity_review_trigger",
+          "expected": true,
+          "observed": true,
+          "passed": true
+        }
+      ],
+      "warn_floor": 54.0,
+      "xlsx_validation": {
+        "formula_reference_issues": [],
+        "sheet_names": [
+          "Executive_Call",
+          "Source_Packet",
+          "Calculations",
+          "Remediation",
+          "Sensitivity_QC"
+        ],
+        "xlsx_entries": [
+          "[Content_Types].xml",
+          "_rels/.rels",
+          "docProps/core.xml",
+          "docProps/app.xml",
+          "xl/workbook.xml",
+          "xl/_rels/workbook.xml.rels",
+          "xl/styles.xml",
+          "xl/worksheets/sheet1.xml",
+          "xl/worksheets/sheet2.xml",
+          "xl/worksheets/sheet3.xml",
+          "xl/worksheets/sheet4.xml",
+          "xl/worksheets/sheet5.xml"
+        ],
+        "xlsx_testzip": null
+      }
+    }
+  },
+  "output_summary": "Normalized actual outputs from artifact files.",
+  "status": "success",
+  "original_internal_task_id": "aa_task_0609",
+  "task_id": "309",
+  "required_deliverables": [
+    "ddpcr_copy_number.xlsx",
+    "assay_call.md"
+  ],
+  "produced_deliverables": [
+    "assay_call.md",
+    "ddpcr_copy_number.xlsx"
+  ],
+  "missing_required_deliverables": [],
+  "deliverable_produced": true,
+  "deliverable_file_included": false,
+  "included_generated_artifacts": false,
+  "artifacts_excluded_reason": "Generated output artifacts are excluded from the public seed dataset by default.",
+  "logs_included": false,
+  "logs_excluded_reason": "Raw runner logs are excluded from the public seed dataset."
+}

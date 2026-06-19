@@ -1,0 +1,624 @@
+{
+  "actual_outputs": {
+    "original_internal_attempt_id": "aa_task_0654_baseline",
+    "attempt_id": "354-baseline",
+    "attempt_kind": "baseline",
+    "error_message": null,
+    "error_type": null,
+    "metadata_json": {
+      "actual_outputs_discarded_field_count": 0,
+      "actual_outputs_normalized": true,
+      "expected_deliverable_items": [
+        "waf_diff_test_plan.md",
+        "payload_matrix.csv"
+      ],
+      "original_fields": {
+        "artifacts": {
+          "payload_matrix": "[EXCLUDED_GENERATED_ARTIFACT]",
+          "waf_diff_test_plan": "[EXCLUDED_GENERATED_ARTIFACT]"
+        },
+        "attempt": "baseline",
+        "expert_review_required": true,
+        "inputs_used": [
+          "./input/task.json",
+          "./input/task_brief.md"
+        ]
+      },
+      "produced_deliverable_items": [
+        "waf_diff_test_plan.md",
+        "payload_matrix.csv"
+      ],
+      "raw_actual_outputs": {
+        "artifacts": {
+          "payload_matrix": "[EXCLUDED_GENERATED_ARTIFACT]",
+          "waf_diff_test_plan": "[EXCLUDED_GENERATED_ARTIFACT]"
+        },
+        "attempt": "baseline",
+        "expert_review_required": true,
+        "inputs_used": [
+          "./input/task.json",
+          "./input/task_brief.md"
+        ],
+        "status": "completed",
+        "original_internal_task_id": "aa_task_0654",
+        "task_id": "354"
+      }
+    },
+    "output_summary": "Normalized actual outputs from artifact files.",
+    "status": "success",
+    "original_internal_task_id": "aa_task_0654",
+    "task_id": "354",
+    "required_deliverables": [
+      "waf_diff_test_plan.md",
+      "payload_matrix.csv"
+    ],
+    "produced_deliverables": [
+      "waf_diff_test_plan.md",
+      "payload_matrix.csv"
+    ],
+    "missing_required_deliverables": [],
+    "deliverable_produced": true,
+    "deliverable_file_included": false,
+    "included_generated_artifacts": false,
+    "artifacts_excluded_reason": "Generated output artifacts are excluded from the public seed dataset by default.",
+    "logs_included": false,
+    "logs_excluded_reason": "Raw runner logs are excluded from the public seed dataset."
+  },
+  "agent_config": null,
+  "agent_tools": [
+    "codex_cli",
+    "Bash",
+    "python",
+    "file_read",
+    "file_write",
+    "apply_patch"
+  ],
+  "artifacts": [],
+  "original_internal_attempt_id": "aa_task_0654_baseline",
+  "attempt_id": "354-baseline",
+  "attempt_kind": "baseline",
+  "attempt_status": "completed",
+  "collection_id": null,
+  "completion_reason": null,
+  "ended_at": null,
+  "final_attempt_id": null,
+  "initial_attempt_id": null,
+  "iteration_index": null,
+  "learning": null,
+  "memory": null,
+  "metadata_json": {
+    "codex_command": [
+      "codex",
+      "exec",
+      "--sandbox",
+      "workspace-write",
+      "<prompt>"
+    ],
+    "codex_sandbox": "workspace-write",
+    "discarded_step_count": 0,
+    "raw_trace_list": [
+      {
+        "action": "Load JSON packet and extract numeric controls",
+        "actor": "worker",
+        "artifact_refs": [
+          "./input/task.json"
+        ],
+        "causal_note": "Needed to identify governing fields and constraints.",
+        "causal_type": "required_input_acquisition",
+        "caused_by": "Task start",
+        "error_message": null,
+        "error_type": null,
+        "input": "cat ./input/task.json",
+        "metadata_json": {
+          "file_type": "json",
+          "parsed_keys": 30
+        },
+        "observation": "Found packet payload including 4 records, threshold 77.5, budget 147500, and three remediation options with costs and percentage effect sizes.",
+        "operation": "read",
+        "output": "Extracted fields: normalized_threshold_score=77.5, remediation_budget_usd=147500, records R1..R4 with decode_passes/edge_allowed/origin_traversal/bypass_flag, options O1/O2/O3.",
+        "reasoning": "All required computations must be derived from embedded packet only.",
+        "state_change": "No state mutation; task context loaded for computation.",
+        "step": "Read embedded task packet",
+        "step_outcome": "completed",
+        "success": true,
+        "tool": "functions.exec_command",
+        "turn": 1
+      },
+      {
+        "action": "Confirm required deliverables, constraints, and validation language",
+        "actor": "worker",
+        "artifact_refs": [
+          "./input/task_brief.md"
+        ],
+        "causal_note": "Step 1 values alone insufficient; instructions drive artifact format and review flags.",
+        "causal_type": "constraints_binding",
+        "caused_by": "Step 1 output",
+        "error_message": null,
+        "error_type": null,
+        "input": "cat ./input/task_brief.md",
+        "metadata_json": {
+          "format": "markdown",
+          "output_contract_confirmed": true
+        },
+        "observation": "Brief matches strict requirement set including sensitivity review and needs_review marking.",
+        "operation": "read",
+        "output": "Confirmed output contract: write waf_diff_test_plan.md, payload_matrix.csv, and include formulas, assumptions, validation checks, 5% sensitivity notes, final decision table, no outside data.",
+        "reasoning": "Needed before derivation to avoid violating output contract.",
+        "state_change": "No state mutation; constraints finalized.",
+        "step": "Read task brief instructions",
+        "step_outcome": "completed",
+        "success": true,
+        "tool": "functions.exec_command",
+        "turn": 2
+      },
+      {
+        "action": "Apply explicit canonicalization risk formula and classify records against threshold",
+        "actor": "worker",
+        "artifact_refs": [
+          "./input/task.json"
+        ],
+        "causal_note": "Needed to populate row-level logic and ranking.",
+        "causal_type": "derivation",
+        "caused_by": "Steps 1 and 2",
+        "error_message": null,
+        "error_type": null,
+        "input": "decode_norm=decode_passes/3*50; edge_norm=edge_allowed*100; baseline_score=decode_norm+edge_norm+origin_norm; classify >=77.5 as High",
+        "metadata_json": {
+          "assumptions": [
+            "decode normalization to 0..50 using max decode_passes=3",
+            "edge normalization to 0..100",
+            "origin component is 0 in this packet"
+          ]
+        },
+        "observation": "Derived scores computed from packet fields only; all records are High at baseline, with R1 closest to threshold.",
+        "operation": "execute",
+        "output": "R1=78.833 High, R2=89.667 High, R3=100.4 High, R4=132.3 High. Rank: R4>R3>R2>R1. O1/O2 simulation computed and recorded per record.",
+        "reasoning": "Assumption is explicitly documented because source packet does not provide exact score formula; derivation is deterministic and based only on embedded fields.",
+        "state_change": "Computed internal matrix values for use in final artifacts.",
+        "step": "Compute derived fields and classifications",
+        "step_outcome": "completed",
+        "success": true,
+        "tool": "reasoning_internal",
+        "turn": 3
+      },
+      {
+        "action": "Write required artifacts with formulas, citations, validation checks, sensitivity, and remediation ranking",
+        "actor": "worker",
+        "causal_note": "Derived calculations required direct materialization for evaluator consumption.",
+        "causal_type": "artifact_production",
+        "caused_by": "Step 3",
+        "error_message": null,
+        "error_type": null,
+        "input": "cat > [EXCLUDED_GENERATED_ARTIFACT] and cat > [EXCLUDED_GENERATED_ARTIFACT]",
+        "metadata_json": {
+          "num_files_written": 2,
+          "output_formats": [
+            "md",
+            "csv"
+          ]
+        },
+        "observation": "Artifacts written with explicit formulas and row-level citations to packet records.",
+        "operation": "write",
+        "output": "Created [EXCLUDED_GENERATED_ARTIFACT] and [EXCLUDED_GENERATED_ARTIFACT]",
+        "reasoning": "Single-pass generation avoids tool churn and preserves reproducible row-level derivation trail.",
+        "state_change": "Added two deliverable files in [EXCLUDED_GENERATED_ARTIFACT]",
+        "step": "Generate plan and matrix artifacts",
+        "step_outcome": "completed",
+        "success": true,
+        "tool": "functions.exec_command",
+        "turn": 4
+      },
+      {
+        "action": "Emit agent_trace.json and actual_outputs.json with required fields",
+        "actor": "worker",
+        "artifact_refs": [
+          "./agent_trace.json",
+          "./actual_outputs.json"
+        ],
+        "causal_note": "Task contract explicitly requires both files in attempt directory.",
+        "causal_type": "workflow_completion",
+        "caused_by": "Step 4",
+        "error_message": null,
+        "error_type": null,
+        "input": "cat > agent_trace.json and cat > actual_outputs.json",
+        "metadata_json": {
+          "attempt_root": "[REDACTED_LOCAL_PATH]",
+          "trace_step_count": 5
+        },
+        "observation": "Trace and manifest created in attempt root; includes required fields and causal chain.",
+        "operation": "write",
+        "output": "Created ./agent_trace.json and ./actual_outputs.json.",
+        "reasoning": "Required by task contract for execution evidence and artifact indexing.",
+        "state_change": "Added trace and manifest for this run in attempt directory.",
+        "step": "Write execution trace and output manifest",
+        "step_outcome": "completed",
+        "success": true,
+        "tool": "functions.exec_command",
+        "turn": 5
+      }
+    ],
+    "raw_trace_preserved": true,
+    "raw_trace_shape": "list",
+    "raw_trace_step_source": "steps",
+    "schema_valid": true,
+    "trace_normalization_status": "partial",
+    "trace_valid": true
+  },
+  "preferred_attempt_id": null,
+  "previous_attempt_id": null,
+  "prior_trace_id": null,
+  "revision_attempt_ids": [],
+  "revision_group_id": null,
+  "schema_version": "aa-trace-v0.1",
+  "skills": null,
+  "started_at": null,
+  "steps": [
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "artifact_refs": [
+        "./input/task.json"
+      ],
+      "causal_note": "Needed to identify governing fields and constraints.",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "cat ./input/task.json",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "file_type": "json",
+        "normalization_warnings": [
+          "step value 'Read embedded task packet' was not numeric; defaulted to 1"
+        ],
+        "original_action": "Load JSON packet and extract numeric controls",
+        "original_causal_type": "required_input_acquisition",
+        "original_step": "Read embedded task packet",
+        "parsed_keys": 30,
+        "raw_step": {
+          "action": "Load JSON packet and extract numeric controls",
+          "actor": "worker",
+          "artifact_refs": [
+            "./input/task.json"
+          ],
+          "causal_note": "Needed to identify governing fields and constraints.",
+          "causal_type": "required_input_acquisition",
+          "caused_by": "Task start",
+          "error_message": null,
+          "error_type": null,
+          "input": "cat ./input/task.json",
+          "metadata_json": {
+            "file_type": "json",
+            "parsed_keys": 30
+          },
+          "observation": "Found packet payload including 4 records, threshold 77.5, budget 147500, and three remediation options with costs and percentage effect sizes.",
+          "operation": "read",
+          "output": "Extracted fields: normalized_threshold_score=77.5, remediation_budget_usd=147500, records R1..R4 with decode_passes/edge_allowed/origin_traversal/bypass_flag, options O1/O2/O3.",
+          "reasoning": "All required computations must be derived from embedded packet only.",
+          "state_change": "No state mutation; task context loaded for computation.",
+          "step": "Read embedded task packet",
+          "step_outcome": "completed",
+          "success": true,
+          "tool": "functions.exec_command",
+          "turn": 1
+        }
+      },
+      "observation": "Found packet payload including 4 records, threshold 77.5, budget 147500, and three remediation options with costs and percentage effect sizes.",
+      "operation": "read",
+      "output": "Extracted fields: normalized_threshold_score=77.5, remediation_budget_usd=147500, records R1..R4 with decode_passes/edge_allowed/origin_traversal/bypass_flag, options O1/O2/O3.",
+      "parallel_group": null,
+      "reasoning": "All required computations must be derived from embedded packet only.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "No state mutation; task context loaded for computation.",
+      "step": 1,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "Bash",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "artifact_refs": [
+        "./input/task_brief.md"
+      ],
+      "causal_note": "Step 1 values alone insufficient; instructions drive artifact format and review flags.",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "cat ./input/task_brief.md",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "format": "markdown",
+        "normalization_warnings": [
+          "step value 'Read task brief instructions' was not numeric; defaulted to 2"
+        ],
+        "original_action": "Confirm required deliverables, constraints, and validation language",
+        "original_causal_type": "constraints_binding",
+        "original_step": "Read task brief instructions",
+        "output_contract_confirmed": true,
+        "raw_step": {
+          "action": "Confirm required deliverables, constraints, and validation language",
+          "actor": "worker",
+          "artifact_refs": [
+            "./input/task_brief.md"
+          ],
+          "causal_note": "Step 1 values alone insufficient; instructions drive artifact format and review flags.",
+          "causal_type": "constraints_binding",
+          "caused_by": "Step 1 output",
+          "error_message": null,
+          "error_type": null,
+          "input": "cat ./input/task_brief.md",
+          "metadata_json": {
+            "format": "markdown",
+            "output_contract_confirmed": true
+          },
+          "observation": "Brief matches strict requirement set including sensitivity review and needs_review marking.",
+          "operation": "read",
+          "output": "Confirmed output contract: write waf_diff_test_plan.md, payload_matrix.csv, and include formulas, assumptions, validation checks, 5% sensitivity notes, final decision table, no outside data.",
+          "reasoning": "Needed before derivation to avoid violating output contract.",
+          "state_change": "No state mutation; constraints finalized.",
+          "step": "Read task brief instructions",
+          "step_outcome": "completed",
+          "success": true,
+          "tool": "functions.exec_command",
+          "turn": 2
+        }
+      },
+      "observation": "Brief matches strict requirement set including sensitivity review and needs_review marking.",
+      "operation": "read",
+      "output": "Confirmed output contract: write waf_diff_test_plan.md, payload_matrix.csv, and include formulas, assumptions, validation checks, 5% sensitivity notes, final decision table, no outside data.",
+      "parallel_group": null,
+      "reasoning": "Needed before derivation to avoid violating output contract.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "No state mutation; constraints finalized.",
+      "step": 2,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "Bash",
+      "turn": 2
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "artifact_refs": [
+        "./input/task.json"
+      ],
+      "causal_note": "Needed to populate row-level logic and ranking.",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "decode_norm=decode_passes/3*50; edge_norm=edge_allowed*100; baseline_score=decode_norm+edge_norm+origin_norm; classify >=77.5 as High",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "assumptions": [
+          "decode normalization to 0..50 using max decode_passes=3",
+          "edge normalization to 0..100",
+          "origin component is 0 in this packet"
+        ],
+        "normalization_warnings": [
+          "step value 'Compute derived fields and classifications' was not numeric; defaulted to 3"
+        ],
+        "original_action": "Apply explicit canonicalization risk formula and classify records against threshold",
+        "original_causal_type": "derivation",
+        "original_step": "Compute derived fields and classifications",
+        "raw_step": {
+          "action": "Apply explicit canonicalization risk formula and classify records against threshold",
+          "actor": "worker",
+          "artifact_refs": [
+            "./input/task.json"
+          ],
+          "causal_note": "Needed to populate row-level logic and ranking.",
+          "causal_type": "derivation",
+          "caused_by": "Steps 1 and 2",
+          "error_message": null,
+          "error_type": null,
+          "input": "decode_norm=decode_passes/3*50; edge_norm=edge_allowed*100; baseline_score=decode_norm+edge_norm+origin_norm; classify >=77.5 as High",
+          "metadata_json": {
+            "assumptions": [
+              "decode normalization to 0..50 using max decode_passes=3",
+              "edge normalization to 0..100",
+              "origin component is 0 in this packet"
+            ]
+          },
+          "observation": "Derived scores computed from packet fields only; all records are High at baseline, with R1 closest to threshold.",
+          "operation": "execute",
+          "output": "R1=78.833 High, R2=89.667 High, R3=100.4 High, R4=132.3 High. Rank: R4>R3>R2>R1. O1/O2 simulation computed and recorded per record.",
+          "reasoning": "Assumption is explicitly documented because source packet does not provide exact score formula; derivation is deterministic and based only on embedded fields.",
+          "state_change": "Computed internal matrix values for use in final artifacts.",
+          "step": "Compute derived fields and classifications",
+          "step_outcome": "completed",
+          "success": true,
+          "tool": "reasoning_internal",
+          "turn": 3
+        }
+      },
+      "observation": "Derived scores computed from packet fields only; all records are High at baseline, with R1 closest to threshold.",
+      "operation": "execute",
+      "output": "R1=78.833 High, R2=89.667 High, R3=100.4 High, R4=132.3 High. Rank: R4>R3>R2>R1. O1/O2 simulation computed and recorded per record.",
+      "parallel_group": null,
+      "reasoning": "Assumption is explicitly documented because source packet does not provide exact score formula; derivation is deterministic and based only on embedded fields.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Computed internal matrix values for use in final artifacts.",
+      "step": 3,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "reasoning_internal",
+      "turn": 3
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "causal_note": "Derived calculations required direct materialization for evaluator consumption.",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "cat > [EXCLUDED_GENERATED_ARTIFACT] and cat > [EXCLUDED_GENERATED_ARTIFACT]",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "normalization_warnings": [
+          "step value 'Generate plan and matrix artifacts' was not numeric; defaulted to 4"
+        ],
+        "num_files_written": 2,
+        "original_action": "Write required artifacts with formulas, citations, validation checks, sensitivity, and remediation ranking",
+        "original_causal_type": "artifact_production",
+        "original_step": "Generate plan and matrix artifacts",
+        "output_formats": [
+          "md",
+          "csv"
+        ],
+        "raw_step": {
+          "action": "Write required artifacts with formulas, citations, validation checks, sensitivity, and remediation ranking",
+          "actor": "worker",
+          "causal_note": "Derived calculations required direct materialization for evaluator consumption.",
+          "causal_type": "artifact_production",
+          "caused_by": "Step 3",
+          "error_message": null,
+          "error_type": null,
+          "input": "cat > [EXCLUDED_GENERATED_ARTIFACT] and cat > [EXCLUDED_GENERATED_ARTIFACT]",
+          "metadata_json": {
+            "num_files_written": 2,
+            "output_formats": [
+              "md",
+              "csv"
+            ]
+          },
+          "observation": "Artifacts written with explicit formulas and row-level citations to packet records.",
+          "operation": "write",
+          "output": "Created [EXCLUDED_GENERATED_ARTIFACT] and [EXCLUDED_GENERATED_ARTIFACT]",
+          "reasoning": "Single-pass generation avoids tool churn and preserves reproducible row-level derivation trail.",
+          "state_change": "Added two deliverable files in [EXCLUDED_GENERATED_ARTIFACT]",
+          "step": "Generate plan and matrix artifacts",
+          "step_outcome": "completed",
+          "success": true,
+          "tool": "functions.exec_command",
+          "turn": 4
+        }
+      },
+      "observation": "Artifacts written with explicit formulas and row-level citations to packet records.",
+      "operation": "write",
+      "output": "Created [EXCLUDED_GENERATED_ARTIFACT] and [EXCLUDED_GENERATED_ARTIFACT]",
+      "parallel_group": null,
+      "reasoning": "Single-pass generation avoids tool churn and preserves reproducible row-level derivation trail.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Added two deliverable files in [EXCLUDED_GENERATED_ARTIFACT]",
+      "step": 4,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "Bash",
+      "turn": 4
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "artifact_refs": [
+        "./agent_trace.json",
+        "./actual_outputs.json"
+      ],
+      "causal_note": "Task contract explicitly requires both files in attempt directory.",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "cat > agent_trace.json and cat > actual_outputs.json",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "attempt_root": "[REDACTED_LOCAL_PATH]",
+        "normalization_warnings": [
+          "step value 'Write execution trace and output manifest' was not numeric; defaulted to 5"
+        ],
+        "original_action": "Emit agent_trace.json and actual_outputs.json with required fields",
+        "original_causal_type": "workflow_completion",
+        "original_step": "Write execution trace and output manifest",
+        "raw_step": {
+          "action": "Emit agent_trace.json and actual_outputs.json with required fields",
+          "actor": "worker",
+          "artifact_refs": [
+            "./agent_trace.json",
+            "./actual_outputs.json"
+          ],
+          "causal_note": "Task contract explicitly requires both files in attempt directory.",
+          "causal_type": "workflow_completion",
+          "caused_by": "Step 4",
+          "error_message": null,
+          "error_type": null,
+          "input": "cat > agent_trace.json and cat > actual_outputs.json",
+          "metadata_json": {
+            "attempt_root": "[REDACTED_LOCAL_PATH]",
+            "trace_step_count": 5
+          },
+          "observation": "Trace and manifest created in attempt root; includes required fields and causal chain.",
+          "operation": "write",
+          "output": "Created ./agent_trace.json and ./actual_outputs.json.",
+          "reasoning": "Required by task contract for execution evidence and artifact indexing.",
+          "state_change": "Added trace and manifest for this run in attempt directory.",
+          "step": "Write execution trace and output manifest",
+          "step_outcome": "completed",
+          "success": true,
+          "tool": "functions.exec_command",
+          "turn": 5
+        },
+        "trace_step_count": 5
+      },
+      "observation": "Trace and manifest created in attempt root; includes required fields and causal chain.",
+      "operation": "write",
+      "output": "Created ./agent_trace.json and ./actual_outputs.json.",
+      "parallel_group": null,
+      "reasoning": "Required by task contract for execution evidence and artifact indexing.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Added trace and manifest for this run in attempt directory.",
+      "step": 5,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "Bash",
+      "turn": 5
+    }
+  ],
+  "system_prompt": null,
+  "system_prompt_hash": null,
+  "task": "Using only the provided embedded packet, calculate all derived fields, classify each record against the named thresholds exactly, rank governing risks, and recommend the smallest sufficient remediation action within the remediation budget. Produce two deliverables: waf_diff_test_plan.md (with formulas, executable logic or clearly-stated calculation steps, intermediate calculations, row-level citations to the embedded packet, explicit assumptions, validation checks, sensitivity notes, and a final decision table) and payload_matrix.csv (row-level data and formulas or reproducible logic). Do not invent or impute inputs, do not use outside data, and mark any unresolved ambiguity as needs_review. Trigger expert-review flag if any record changes classification after a 5% sensitivity shift.",
+  "task_family_id": null,
+  "original_internal_task_id": "aa_task_0654",
+  "task_id": "354",
+  "termination_reason": "task_complete",
+  "trace_id": "trace_354-baseline_normalized",
+  "trace_mode": "live"
+}

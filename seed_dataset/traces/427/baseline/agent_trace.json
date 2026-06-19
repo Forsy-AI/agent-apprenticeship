@@ -1,0 +1,531 @@
+{
+  "actual_outputs": {
+    "original_internal_attempt_id": "aa_task_0727_baseline",
+    "attempt_id": "427-baseline",
+    "attempt_kind": "baseline",
+    "error_message": null,
+    "error_type": null,
+    "metadata_json": {
+      "actual_outputs_discarded_field_count": 0,
+      "actual_outputs_normalized": true,
+      "expected_deliverable_items": [
+        "landslide_trigger_review.csv",
+        "field_inspection_plan.md"
+      ],
+      "original_fields": {
+        "artifact_notes": {
+          "field_inspection_plan.md": "Method, formulas, validation checks, sensitivity analysis, and budget-constrained recommendation table.",
+          "landslide_trigger_review.csv": "Computed priority_value, breach flags, hard-threshold escalation ranking, sensitivity range, and recommendation per record from embedded packet only."
+        },
+        "artifacts": [
+          "[EXCLUDED_GENERATED_ARTIFACT]",
+          "[EXCLUDED_GENERATED_ARTIFACT]"
+        ],
+        "attempt": "baseline",
+        "compliance": {
+          "hard_threshold_escalation_applied": true,
+          "needs_review_record_count": 1,
+          "no_external_measurements": true,
+          "options_used": [
+            "hold",
+            "release",
+            "retest",
+            "mitigation"
+          ]
+        },
+        "decision_budget_usd": 25000,
+        "total_estimated_action_cost_usd": 23800
+      },
+      "produced_deliverable_items": [
+        "landslide_trigger_review.csv",
+        "field_inspection_plan.md"
+      ],
+      "raw_actual_outputs": {
+        "artifact_notes": {
+          "field_inspection_plan.md": "Method, formulas, validation checks, sensitivity analysis, and budget-constrained recommendation table.",
+          "landslide_trigger_review.csv": "Computed priority_value, breach flags, hard-threshold escalation ranking, sensitivity range, and recommendation per record from embedded packet only."
+        },
+        "artifacts": [
+          "[EXCLUDED_GENERATED_ARTIFACT]",
+          "[EXCLUDED_GENERATED_ARTIFACT]"
+        ],
+        "attempt": "baseline",
+        "compliance": {
+          "hard_threshold_escalation_applied": true,
+          "needs_review_record_count": 1,
+          "no_external_measurements": true,
+          "options_used": [
+            "hold",
+            "release",
+            "retest",
+            "mitigation"
+          ]
+        },
+        "decision_budget_usd": 25000,
+        "original_internal_task_id": "aa_task_0727",
+        "task_id": "427",
+        "total_estimated_action_cost_usd": 23800
+      }
+    },
+    "output_summary": "Normalized actual outputs from artifact files.",
+    "status": "success",
+    "original_internal_task_id": "aa_task_0727",
+    "task_id": "427",
+    "required_deliverables": [
+      "landslide_trigger_review.csv",
+      "field_inspection_plan.md"
+    ],
+    "produced_deliverables": [
+      "landslide_trigger_review.csv",
+      "field_inspection_plan.md"
+    ],
+    "missing_required_deliverables": [],
+    "deliverable_produced": true,
+    "deliverable_file_included": false,
+    "included_generated_artifacts": false,
+    "artifacts_excluded_reason": "Generated output artifacts are excluded from the public seed dataset by default.",
+    "logs_included": false,
+    "logs_excluded_reason": "Raw runner logs are excluded from the public seed dataset."
+  },
+  "agent_config": null,
+  "agent_tools": [
+    "codex_cli",
+    "Bash",
+    "python",
+    "file_read",
+    "file_write",
+    "apply_patch"
+  ],
+  "artifacts": [],
+  "original_internal_attempt_id": "aa_task_0727_baseline",
+  "attempt_id": "427-baseline",
+  "attempt_kind": "baseline",
+  "attempt_status": "completed",
+  "collection_id": null,
+  "completion_reason": null,
+  "ended_at": null,
+  "final_attempt_id": null,
+  "initial_attempt_id": null,
+  "iteration_index": null,
+  "learning": null,
+  "memory": null,
+  "metadata_json": {
+    "codex_command": [
+      "codex",
+      "exec",
+      "--sandbox",
+      "workspace-write",
+      "<prompt>"
+    ],
+    "codex_sandbox": "workspace-write",
+    "discarded_step_count": 0,
+    "raw_trace_list": [
+      {
+        "action": "Read task context from provided input files",
+        "actor": "apprentice",
+        "artifact_refs": [
+          "./input/task.json",
+          "./input/task_brief.md"
+        ],
+        "causal_note": "All later computations reference values from this read.",
+        "causal_type": "initial_context_acquisition",
+        "caused_by": "user_task_request",
+        "error_message": null,
+        "error_type": null,
+        "input": "cat ./input/task.json && echo '---' && cat ./input/task_brief.md",
+        "metadata_json": {
+          "limits": {
+            "rain_72h_mm": 54.67,
+            "slope_deg": 7.2,
+            "soil_saturation_pct": 57.3
+          },
+          "primary_formula": "metric1*metric2 - 0.6*metric3 + metric4",
+          "sensitivity_shift_pct": 5
+        },
+        "observation": "Loaded task metadata and instruction packet from both task.json and task_brief.md to capture authoritative metrics and constraints.",
+        "operation": "read",
+        "output": "Read task schema and constraints including metric mapping, records R1-R4, thresholds, sensitivity setting (5%), budget, and required deliverables. Confirmed formula priority_value = metric1*metric2 - 0.6*metric3 + metric4 and hard-threshold escalation requirement.",
+        "reasoning": "Required to establish exact source of truth before any computation; avoids hidden assumptions and external data.",
+        "state_change": "No filesystem modifications. Parsed embedded packet as authoritative source for downstream calculations.",
+        "step": 1,
+        "step_outcome": "task_context_confirmed",
+        "success": true,
+        "tool": "functions.exec_command",
+        "turn": 1
+      },
+      {
+        "action": "Create output directory and write required artifacts (CSV + Markdown plan + actual_outputs)",
+        "actor": "apprentice",
+        "artifact_refs": [
+          "./actual_outputs.json"
+        ],
+        "causal_note": "All calculations and recommendations derive directly from computed rows from embedded packet.",
+        "causal_type": "derived_artifact_generation",
+        "caused_by": "step_1_task_context",
+        "error_message": null,
+        "error_type": null,
+        "input": "mkdir -p artifacts && cat > [EXCLUDED_GENERATED_ARTIFACT] ... && cat > [EXCLUDED_GENERATED_ARTIFACT] ... && cat > actual_outputs.json ...",
+        "metadata_json": {
+          "decision_budget_usd": 25000,
+          "recommendation_actions": [
+            "hold",
+            "release",
+            "retest",
+            "mitigation"
+          ],
+          "records_written": 4,
+          "total_estimated_action_cost_usd": 23800
+        },
+        "observation": "Computed record-level priority, breaches, sensitivity bands, and recommendations from packet-only values, then persisted deliverables under ./artifacts plus actual_outputs.json.",
+        "operation": "write",
+        "output": "Created [EXCLUDED_GENERATED_ARTIFACT] with 4 records including priority_value, breach flags, needs_review, rank, recommendations, +/-5% sensitivity, and cost estimates. Created [EXCLUDED_GENERATED_ARTIFACT] with formulas, validation checks, sensitivity analysis, and budget-aware recommendation table. Created actual_outputs.json with artifact paths, budget total (23800), and compliance flags.",
+        "reasoning": "Single write pass avoids repeated reads/revisits and enforces traceability with exact mandated schema values. Hard-threshold records were ranked first as required.",
+        "state_change": "Added files: [EXCLUDED_GENERATED_ARTIFACT] [EXCLUDED_GENERATED_ARTIFACT] ./actual_outputs.json.",
+        "step": 2,
+        "step_outcome": "artifacts_created",
+        "success": true,
+        "tool": "functions.exec_command",
+        "turn": 1
+      },
+      {
+        "action": "Construct and persist execution trace for this attempt",
+        "actor": "apprentice",
+        "artifact_refs": [
+          "./agent_trace.json"
+        ],
+        "causal_note": "Trace finalizes run provenance and supports independent audit.",
+        "causal_type": "documentation",
+        "caused_by": "completion_of_required_deliverables",
+        "error_message": null,
+        "error_type": null,
+        "input": "cat > agent_trace.json <<'EOF' ...",
+        "metadata_json": {
+          "schema_fields_used": [
+            "step",
+            "turn",
+            "actor",
+            "action",
+            "operation",
+            "tool",
+            "observation",
+            "input",
+            "output",
+            "state_change",
+            "reasoning",
+            "caused_by",
+            "causal_type",
+            "causal_note",
+            "success",
+            "step_outcome",
+            "error_type",
+            "error_message",
+            "artifact_refs",
+            "metadata_json"
+          ]
+        },
+        "observation": "Recorded canonical workflow trace with required field names and evidence for each action and decision, including commands, outcomes, state changes, and artifacts.",
+        "operation": "write",
+        "output": "agent_trace.json written with step list in canonical schema fields, including read/write/derive actions and structured causality/validation metadata.",
+        "reasoning": "Task explicitly requires preserving execution evidence and causal flow across meaningful actions.",
+        "state_change": "Added ./agent_trace.json at attempt root.",
+        "step": 3,
+        "step_outcome": "trace_written",
+        "success": true,
+        "tool": "functions.exec_command",
+        "turn": 1
+      }
+    ],
+    "raw_trace_preserved": true,
+    "raw_trace_shape": "list",
+    "raw_trace_step_source": "steps",
+    "schema_valid": true,
+    "trace_normalization_status": "normalized",
+    "trace_valid": true
+  },
+  "preferred_attempt_id": null,
+  "previous_attempt_id": null,
+  "prior_trace_id": null,
+  "revision_attempt_ids": [],
+  "revision_group_id": null,
+  "schema_version": "aa-trace-v0.1",
+  "skills": null,
+  "started_at": null,
+  "steps": [
+    {
+      "action": "agent_step",
+      "actor": "apprentice",
+      "alternatives_considered": null,
+      "artifact_refs": [
+        "./input/task.json",
+        "./input/task_brief.md"
+      ],
+      "causal_note": "All later computations reference values from this read.",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "cat ./input/task.json && echo '---' && cat ./input/task_brief.md",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "limits": {
+          "rain_72h_mm": 54.67,
+          "slope_deg": 7.2,
+          "soil_saturation_pct": 57.3
+        },
+        "original_action": "Read task context from provided input files",
+        "original_causal_type": "initial_context_acquisition",
+        "original_step_outcome": "task_context_confirmed",
+        "primary_formula": "metric1*metric2 - 0.6*metric3 + metric4",
+        "raw_step": {
+          "action": "Read task context from provided input files",
+          "actor": "apprentice",
+          "artifact_refs": [
+            "./input/task.json",
+            "./input/task_brief.md"
+          ],
+          "causal_note": "All later computations reference values from this read.",
+          "causal_type": "initial_context_acquisition",
+          "caused_by": "user_task_request",
+          "error_message": null,
+          "error_type": null,
+          "input": "cat ./input/task.json && echo '---' && cat ./input/task_brief.md",
+          "metadata_json": {
+            "limits": {
+              "rain_72h_mm": 54.67,
+              "slope_deg": 7.2,
+              "soil_saturation_pct": 57.3
+            },
+            "primary_formula": "metric1*metric2 - 0.6*metric3 + metric4",
+            "sensitivity_shift_pct": 5
+          },
+          "observation": "Loaded task metadata and instruction packet from both task.json and task_brief.md to capture authoritative metrics and constraints.",
+          "operation": "read",
+          "output": "Read task schema and constraints including metric mapping, records R1-R4, thresholds, sensitivity setting (5%), budget, and required deliverables. Confirmed formula priority_value = metric1*metric2 - 0.6*metric3 + metric4 and hard-threshold escalation requirement.",
+          "reasoning": "Required to establish exact source of truth before any computation; avoids hidden assumptions and external data.",
+          "state_change": "No filesystem modifications. Parsed embedded packet as authoritative source for downstream calculations.",
+          "step": 1,
+          "step_outcome": "task_context_confirmed",
+          "success": true,
+          "tool": "functions.exec_command",
+          "turn": 1
+        },
+        "sensitivity_shift_pct": 5
+      },
+      "observation": "Loaded task metadata and instruction packet from both task.json and task_brief.md to capture authoritative metrics and constraints.",
+      "operation": "read",
+      "output": "Read task schema and constraints including metric mapping, records R1-R4, thresholds, sensitivity setting (5%), budget, and required deliverables. Confirmed formula priority_value = metric1*metric2 - 0.6*metric3 + metric4 and hard-threshold escalation requirement.",
+      "parallel_group": null,
+      "reasoning": "Required to establish exact source of truth before any computation; avoids hidden assumptions and external data.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "No filesystem modifications. Parsed embedded packet as authoritative source for downstream calculations.",
+      "step": 1,
+      "step_outcome": "neutral",
+      "success": true,
+      "tool": "Bash",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "apprentice",
+      "alternatives_considered": null,
+      "artifact_refs": [
+        "./actual_outputs.json"
+      ],
+      "causal_note": "All calculations and recommendations derive directly from computed rows from embedded packet.",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "mkdir -p artifacts && cat > [EXCLUDED_GENERATED_ARTIFACT] ... && cat > [EXCLUDED_GENERATED_ARTIFACT] ... && cat > actual_outputs.json ...",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "decision_budget_usd": 25000,
+        "original_action": "Create output directory and write required artifacts (CSV + Markdown plan + actual_outputs)",
+        "original_causal_type": "derived_artifact_generation",
+        "original_step_outcome": "artifacts_created",
+        "raw_step": {
+          "action": "Create output directory and write required artifacts (CSV + Markdown plan + actual_outputs)",
+          "actor": "apprentice",
+          "artifact_refs": [
+            "./actual_outputs.json"
+          ],
+          "causal_note": "All calculations and recommendations derive directly from computed rows from embedded packet.",
+          "causal_type": "derived_artifact_generation",
+          "caused_by": "step_1_task_context",
+          "error_message": null,
+          "error_type": null,
+          "input": "mkdir -p artifacts && cat > [EXCLUDED_GENERATED_ARTIFACT] ... && cat > [EXCLUDED_GENERATED_ARTIFACT] ... && cat > actual_outputs.json ...",
+          "metadata_json": {
+            "decision_budget_usd": 25000,
+            "recommendation_actions": [
+              "hold",
+              "release",
+              "retest",
+              "mitigation"
+            ],
+            "records_written": 4,
+            "total_estimated_action_cost_usd": 23800
+          },
+          "observation": "Computed record-level priority, breaches, sensitivity bands, and recommendations from packet-only values, then persisted deliverables under ./artifacts plus actual_outputs.json.",
+          "operation": "write",
+          "output": "Created [EXCLUDED_GENERATED_ARTIFACT] with 4 records including priority_value, breach flags, needs_review, rank, recommendations, +/-5% sensitivity, and cost estimates. Created [EXCLUDED_GENERATED_ARTIFACT] with formulas, validation checks, sensitivity analysis, and budget-aware recommendation table. Created actual_outputs.json with artifact paths, budget total (23800), and compliance flags.",
+          "reasoning": "Single write pass avoids repeated reads/revisits and enforces traceability with exact mandated schema values. Hard-threshold records were ranked first as required.",
+          "state_change": "Added files: [EXCLUDED_GENERATED_ARTIFACT] [EXCLUDED_GENERATED_ARTIFACT] ./actual_outputs.json.",
+          "step": 2,
+          "step_outcome": "artifacts_created",
+          "success": true,
+          "tool": "functions.exec_command",
+          "turn": 1
+        },
+        "recommendation_actions": [
+          "hold",
+          "release",
+          "retest",
+          "mitigation"
+        ],
+        "records_written": 4,
+        "total_estimated_action_cost_usd": 23800
+      },
+      "observation": "Computed record-level priority, breaches, sensitivity bands, and recommendations from packet-only values, then persisted deliverables under ./artifacts plus actual_outputs.json.",
+      "operation": "write",
+      "output": "Created [EXCLUDED_GENERATED_ARTIFACT] with 4 records including priority_value, breach flags, needs_review, rank, recommendations, +/-5% sensitivity, and cost estimates. Created [EXCLUDED_GENERATED_ARTIFACT] with formulas, validation checks, sensitivity analysis, and budget-aware recommendation table. Created actual_outputs.json with artifact paths, budget total (23800), and compliance flags.",
+      "parallel_group": null,
+      "reasoning": "Single write pass avoids repeated reads/revisits and enforces traceability with exact mandated schema values. Hard-threshold records were ranked first as required.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Added files: [EXCLUDED_GENERATED_ARTIFACT] [EXCLUDED_GENERATED_ARTIFACT] ./actual_outputs.json.",
+      "step": 2,
+      "step_outcome": "neutral",
+      "success": true,
+      "tool": "Bash",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "apprentice",
+      "alternatives_considered": null,
+      "artifact_refs": [
+        "./agent_trace.json"
+      ],
+      "causal_note": "Trace finalizes run provenance and supports independent audit.",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "cat > agent_trace.json <<'EOF' ...",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "original_action": "Construct and persist execution trace for this attempt",
+        "original_causal_type": "documentation",
+        "original_step_outcome": "trace_written",
+        "raw_step": {
+          "action": "Construct and persist execution trace for this attempt",
+          "actor": "apprentice",
+          "artifact_refs": [
+            "./agent_trace.json"
+          ],
+          "causal_note": "Trace finalizes run provenance and supports independent audit.",
+          "causal_type": "documentation",
+          "caused_by": "completion_of_required_deliverables",
+          "error_message": null,
+          "error_type": null,
+          "input": "cat > agent_trace.json <<'EOF' ...",
+          "metadata_json": {
+            "schema_fields_used": [
+              "step",
+              "turn",
+              "actor",
+              "action",
+              "operation",
+              "tool",
+              "observation",
+              "input",
+              "output",
+              "state_change",
+              "reasoning",
+              "caused_by",
+              "causal_type",
+              "causal_note",
+              "success",
+              "step_outcome",
+              "error_type",
+              "error_message",
+              "artifact_refs",
+              "metadata_json"
+            ]
+          },
+          "observation": "Recorded canonical workflow trace with required field names and evidence for each action and decision, including commands, outcomes, state changes, and artifacts.",
+          "operation": "write",
+          "output": "agent_trace.json written with step list in canonical schema fields, including read/write/derive actions and structured causality/validation metadata.",
+          "reasoning": "Task explicitly requires preserving execution evidence and causal flow across meaningful actions.",
+          "state_change": "Added ./agent_trace.json at attempt root.",
+          "step": 3,
+          "step_outcome": "trace_written",
+          "success": true,
+          "tool": "functions.exec_command",
+          "turn": 1
+        },
+        "schema_fields_used": [
+          "step",
+          "turn",
+          "actor",
+          "action",
+          "operation",
+          "tool",
+          "observation",
+          "input",
+          "output",
+          "state_change",
+          "reasoning",
+          "caused_by",
+          "causal_type",
+          "causal_note",
+          "success",
+          "step_outcome",
+          "error_type",
+          "error_message",
+          "artifact_refs",
+          "metadata_json"
+        ]
+      },
+      "observation": "Recorded canonical workflow trace with required field names and evidence for each action and decision, including commands, outcomes, state changes, and artifacts.",
+      "operation": "write",
+      "output": "agent_trace.json written with step list in canonical schema fields, including read/write/derive actions and structured causality/validation metadata.",
+      "parallel_group": null,
+      "reasoning": "Task explicitly requires preserving execution evidence and causal flow across meaningful actions.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Added ./agent_trace.json at attempt root.",
+      "step": 3,
+      "step_outcome": "neutral",
+      "success": true,
+      "tool": "Bash",
+      "turn": 1
+    }
+  ],
+  "system_prompt": null,
+  "system_prompt_hash": null,
+  "task": "Launch-quality advanced task: Landslide Susceptibility Trigger Review. Reality context: a transportation agency needs inspection priorities after an atmospheric-river storm. Embedded packet: metric map: metric1=rain_72h_mm, metric2=slope_deg, metric3=soil_saturation_pct, metric4=road_exposure_score; records: R1 rain_72h_mm=57.9 slope_deg=35.4 soil_saturation_pct=44.5 road_exposure_score=0.97; R2 rain_72h_mm=53.6 slope_deg=7 soil_saturation_pct=23.8 road_exposure_score=8.74; R3 rain_72h_mm=9.72 slope_deg=1.4 soil_saturation_pct=75.6 road_exposure_score=7.06; R4 rain_72h_mm=16.59 slope_deg=10.7 soil_saturation_pct=67.2 road_exposure_score=3.39; limit_rain_72h_mm=54.67; limit_slope_deg=7.2; limit_soil_saturation_pct=57.3; decision_budget_usd=25000; sensitivity_shift_pct=5; hard_threshold_record_count=1; removed_context=\"SOW required acceptance criteria, traceability, and quantitative evidence\". Rules and constraints: Compute priority value = metric1*metric2 - 0.6*metric3 + metric4; rank descending, but any record breaching the hard threshold must be escalated first. Options or recommendations cannot use external measurements, specialized licensed software, or hidden assumptions; all calculations must use only the embedded packet, and any contradictory or under-supported record must be marked needs_review. Required work: classify slopes and inspection urgency; rank records by technical and economic impact, run the stated sensitivity check, and recommend hold, release, retest, or mitigation. Deliver landslide_trigger_review.csv + field_inspection_plan.md with formulas or executable logic, record-level citations, validation checks, sensitivity notes, and a final recommendation table suitable for expert review.",
+  "task_family_id": null,
+  "original_internal_task_id": "aa_task_0727",
+  "task_id": "427",
+  "termination_reason": "task_complete",
+  "trace_id": "trace_427-baseline_normalized",
+  "trace_mode": "live"
+}

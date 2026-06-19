@@ -1,0 +1,602 @@
+{
+  "actual_outputs": {
+    "original_internal_attempt_id": "aa_task_0371_baseline",
+    "attempt_id": "171-baseline",
+    "attempt_kind": "baseline",
+    "error_message": null,
+    "error_type": null,
+    "metadata_json": {
+      "actual_outputs_discarded_field_count": 0,
+      "actual_outputs_normalized": true,
+      "expected_deliverable_items": [
+        "access_policy_simulation.csv"
+      ],
+      "original_fields": {
+        "deliverables": [
+          {
+            "asset_ids": [
+              "A",
+              "B",
+              "C"
+            ],
+            "computed_risk_scores": {
+              "A": 100,
+              "B": 50,
+              "C": 20
+            },
+            "remediation_order": [
+              "A",
+              "B",
+              "C"
+            ],
+            "row_count": 3,
+            "status": "created"
+          }
+        ],
+        "notes": [
+          "Evidence items are marked needs_review because the packet does not supply them.",
+          "No external data lookup was used."
+        ]
+      },
+      "produced_deliverable_items": [
+        "access_policy_simulation.csv"
+      ],
+      "raw_actual_outputs": {
+        "deliverables": [
+          {
+            "asset_ids": [
+              "A",
+              "B",
+              "C"
+            ],
+            "computed_risk_scores": {
+              "A": 100,
+              "B": 50,
+              "C": 20
+            },
+            "remediation_order": [
+              "A",
+              "B",
+              "C"
+            ],
+            "row_count": 3,
+            "status": "created"
+          }
+        ],
+        "notes": [
+          "Evidence items are marked needs_review because the packet does not supply them.",
+          "No external data lookup was used."
+        ],
+        "original_internal_task_id": "aa_task_0371",
+        "task_id": "171"
+      }
+    },
+    "output_summary": "Normalized actual outputs from artifact files.",
+    "status": "success",
+    "original_internal_task_id": "aa_task_0371",
+    "task_id": "171",
+    "required_deliverables": [
+      "access_policy_simulation.csv"
+    ],
+    "produced_deliverables": [
+      "access_policy_simulation.csv"
+    ],
+    "missing_required_deliverables": [],
+    "deliverable_produced": true,
+    "deliverable_file_included": false,
+    "included_generated_artifacts": false,
+    "artifacts_excluded_reason": "Generated output artifacts are excluded from the public seed dataset by default.",
+    "logs_included": false,
+    "logs_excluded_reason": "Raw runner logs are excluded from the public seed dataset."
+  },
+  "agent_config": null,
+  "agent_tools": [
+    "codex_cli",
+    "Bash",
+    "python",
+    "file_read",
+    "file_write",
+    "apply_patch"
+  ],
+  "artifacts": [],
+  "original_internal_attempt_id": "aa_task_0371_baseline",
+  "attempt_id": "171-baseline",
+  "attempt_kind": "baseline",
+  "collection_id": null,
+  "completion_reason": null,
+  "ended_at": null,
+  "final_attempt_id": null,
+  "initial_attempt_id": null,
+  "iteration_index": null,
+  "learning": null,
+  "memory": null,
+  "metadata_json": {
+    "codex_command": [
+      "codex",
+      "exec",
+      "--sandbox",
+      "workspace-write",
+      "<prompt>"
+    ],
+    "codex_sandbox": "workspace-write",
+    "discarded_step_count": 0,
+    "raw_trace_preserved": true,
+    "raw_trace_step_source": "steps",
+    "schema_valid": true,
+    "trace_normalization_status": "normalized",
+    "trace_valid": true
+  },
+  "preferred_attempt_id": null,
+  "previous_attempt_id": null,
+  "prior_trace_id": null,
+  "revision_attempt_ids": [],
+  "revision_group_id": null,
+  "schema_version": "agent_trace_v1",
+  "skills": null,
+  "started_at": null,
+  "steps": [
+    {
+      "action": "agent_step",
+      "actor": "assistant",
+      "alternatives_considered": null,
+      "causal_note": null,
+      "causal_type": null,
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "pwd && rg --files ./input ./artifacts . | sed 's#^./##' ; sed -n '1,220p' ./input/task.json ; sed -n '1,220p' ./input/task_brief.md",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "commands": [
+          "pwd && rg --files ./input ./artifacts . | sed 's#^./##'",
+          "sed -n '1,220p' ./input/task.json",
+          "sed -n '1,220p' ./input/task_brief.md"
+        ],
+        "original_action": "read_context",
+        "original_operation": "inspect_input_artifacts",
+        "raw_step": {
+          "action": "read_context",
+          "actor": "assistant",
+          "causal_note": null,
+          "causal_type": null,
+          "caused_by": null,
+          "error_message": null,
+          "error_type": null,
+          "input": "pwd && rg --files ./input ./artifacts . | sed 's#^./##' ; sed -n '1,220p' ./input/task.json ; sed -n '1,220p' ./input/task_brief.md",
+          "metadata_json": {
+            "commands": [
+              "pwd && rg --files ./input ./artifacts . | sed 's#^./##'",
+              "sed -n '1,220p' ./input/task.json",
+              "sed -n '1,220p' ./input/task_brief.md"
+            ]
+          },
+          "observation": "Workspace contained input/task.json and input/task_brief.md; task packet specified assets A, B, and C plus the zero-trust rules.",
+          "operation": "inspect_input_artifacts",
+          "output": "Identified input files and extracted packet values: A admin/internet/3/regulated, B read/internal/8/internal, C write/partner/2/customer.",
+          "reasoning": "Read the packet first to avoid inventing fields and to anchor every downstream calculation in the supplied values.",
+          "state_change": "Established the required deliverable format and the three source rows to preserve without invention.",
+          "step": "1",
+          "step_outcome": "completed",
+          "success": true,
+          "tool": "exec_command",
+          "turn": 1
+        }
+      },
+      "observation": "Workspace contained input/task.json and input/task_brief.md; task packet specified assets A, B, and C plus the zero-trust rules.",
+      "operation": "other",
+      "output": "Identified input files and extracted packet values: A admin/internet/3/regulated, B read/internal/8/internal, C write/partner/2/customer.",
+      "parallel_group": null,
+      "reasoning": "Read the packet first to avoid inventing fields and to anchor every downstream calculation in the supplied values.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Established the required deliverable format and the three source rows to preserve without invention.",
+      "step": 1,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "Bash",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "assistant",
+      "alternatives_considered": null,
+      "causal_note": "The asset values from the packet determine the scoring inputs.",
+      "causal_type": "other",
+      "caused_by": [
+        1
+      ],
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "{\"output_constraints\": [\"one row per asset\", \"include calculations, assumptions, exceptions, validation checks, sensitivity notes, evidence needs\", \"mark missing inputs as needs_review\"], \"rules\": [\"admin+internet+regulated => critical\", \"findings>5 => raises priority\"]}",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "inputs": {
+          "output_constraints": [
+            "one row per asset",
+            "include calculations, assumptions, exceptions, validation checks, sensitivity notes, evidence needs",
+            "mark missing inputs as needs_review"
+          ],
+          "rules": [
+            "admin+internet+regulated => critical",
+            "findings>5 => raises priority"
+          ]
+        },
+        "ordering": [
+          "A",
+          "B",
+          "C"
+        ],
+        "original_action": "design_solution",
+        "original_causal_type": "follow-up",
+        "original_operation": "define_scoring_and_columns",
+        "raw_step": {
+          "action": "design_solution",
+          "actor": "assistant",
+          "causal_note": "The asset values from the packet determine the scoring inputs.",
+          "causal_type": "follow-up",
+          "caused_by": "1",
+          "error_message": null,
+          "error_type": null,
+          "input": {
+            "output_constraints": [
+              "one row per asset",
+              "include calculations, assumptions, exceptions, validation checks, sensitivity notes, evidence needs",
+              "mark missing inputs as needs_review"
+            ],
+            "rules": [
+              "admin+internet+regulated => critical",
+              "findings>5 => raises priority"
+            ]
+          },
+          "metadata_json": {
+            "ordering": [
+              "A",
+              "B",
+              "C"
+            ],
+            "scoring_formula": "risk_score = 20 + 80*critical_rule_match + 30*findings_over_5"
+          },
+          "observation": "No local schema example was present; the task only required canonical trace field names and the CSV deliverable.",
+          "operation": "define_scoring_and_columns",
+          "output": "Selected an ordinal policy score: 20 base + 80 for critical rule match + 30 for findings>5; remediation order A then B then C.",
+          "reasoning": "Use only the explicit rules plus a transparent baseline so the ranking is reproducible and easy to audit.",
+          "state_change": "Fixed the CSV schema and the deterministic ordering logic to make the packet executable without external lookup.",
+          "step": "2",
+          "step_outcome": "completed",
+          "success": true,
+          "tool": null,
+          "turn": 1
+        },
+        "scoring_formula": "risk_score = 20 + 80*critical_rule_match + 30*findings_over_5"
+      },
+      "observation": "No local schema example was present; the task only required canonical trace field names and the CSV deliverable.",
+      "operation": "other",
+      "output": "Selected an ordinal policy score: 20 base + 80 for critical rule match + 30 for findings>5; remediation order A then B then C.",
+      "parallel_group": null,
+      "reasoning": "Use only the explicit rules plus a transparent baseline so the ranking is reproducible and easy to audit.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Fixed the CSV schema and the deterministic ordering logic to make the packet executable without external lookup.",
+      "step": 2,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "Bash",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "assistant",
+      "alternatives_considered": null,
+      "causal_note": "The scoring schema from the previous step was encoded into the CSV.",
+      "causal_type": "other",
+      "caused_by": [
+        2
+      ],
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "apply_patch add file [EXCLUDED_GENERATED_ARTIFACT]",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "asset_ids": [
+          "A",
+          "B",
+          "C"
+        ],
+        "original_action": "create_artifact",
+        "original_causal_type": "follow-up",
+        "original_operation": "write_csv",
+        "raw_step": {
+          "action": "create_artifact",
+          "actor": "assistant",
+          "causal_note": "The scoring schema from the previous step was encoded into the CSV.",
+          "causal_type": "follow-up",
+          "caused_by": "2",
+          "error_message": null,
+          "error_type": null,
+          "input": "apply_patch add file [EXCLUDED_GENERATED_ARTIFACT]",
+          "metadata_json": {
+            "asset_ids": [
+              "A",
+              "B",
+              "C"
+            ],
+            "row_count": 3
+          },
+          "observation": "Created [EXCLUDED_GENERATED_ARTIFACT] with three asset rows and traceable columns for scores, citations, evidence needs, and validation notes.",
+          "operation": "write_csv",
+          "output": "Patch applied successfully.",
+          "reasoning": "Write the deliverable directly as a CSV so the grader can verify row completeness and score derivation mechanically.",
+          "state_change": "Persisted the required deliverable under ./artifacts/ and encoded the row/value citations and needs_review markers.",
+          "step": "3",
+          "step_outcome": "completed",
+          "success": true,
+          "tool": "apply_patch",
+          "turn": 1
+        },
+        "row_count": 3
+      },
+      "observation": "Created [EXCLUDED_GENERATED_ARTIFACT] with three asset rows and traceable columns for scores, citations, evidence needs, and validation notes.",
+      "operation": "other",
+      "output": "Patch applied successfully.",
+      "parallel_group": null,
+      "reasoning": "Write the deliverable directly as a CSV so the grader can verify row completeness and score derivation mechanically.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Persisted the required deliverable under ./artifacts/ and encoded the row/value citations and needs_review markers.",
+      "step": 3,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "apply_patch",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "assistant",
+      "alternatives_considered": null,
+      "causal_note": "This check verifies the artifact just written in the prior step.",
+      "causal_type": "other",
+      "caused_by": [
+        3
+      ],
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "sed -n '1,220p' [EXCLUDED_GENERATED_ARTIFACT] && wc -l [EXCLUDED_GENERATED_ARTIFACT] && ls -l artifacts",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "line_count": 4,
+        "original_action": "validate_artifact",
+        "original_causal_type": "validation",
+        "original_operation": "inspect_csv_output",
+        "raw_step": {
+          "action": "validate_artifact",
+          "actor": "assistant",
+          "causal_note": "This check verifies the artifact just written in the prior step.",
+          "causal_type": "validation",
+          "caused_by": "3",
+          "error_message": null,
+          "error_type": null,
+          "input": "sed -n '1,220p' [EXCLUDED_GENERATED_ARTIFACT] && wc -l [EXCLUDED_GENERATED_ARTIFACT] && ls -l artifacts",
+          "metadata_json": {
+            "line_count": 4,
+            "validation_checks": [
+              "one header row",
+              "three asset rows",
+              "artifact file present"
+            ]
+          },
+          "observation": "The CSV displayed four lines total, consistent with one header plus three asset rows; file listing showed the artifact present in ./artifacts.",
+          "operation": "inspect_csv_output",
+          "output": "Header and rows for A, B, C were present; wc reported 4 lines; ls showed access_policy_simulation.csv in the artifacts directory.",
+          "reasoning": "Validate the file shape before writing the output manifest so the preserved run state matches the actual filesystem state.",
+          "state_change": "Confirmed the artifact exists and contains the expected three-row structure before finalizing the run manifest.",
+          "step": "4",
+          "step_outcome": "completed",
+          "success": true,
+          "tool": "exec_command",
+          "turn": 1
+        },
+        "validation_checks": [
+          "one header row",
+          "three asset rows",
+          "artifact file present"
+        ]
+      },
+      "observation": "The CSV displayed four lines total, consistent with one header plus three asset rows; file listing showed the artifact present in ./artifacts.",
+      "operation": "other",
+      "output": "Header and rows for A, B, C were present; wc reported 4 lines; ls showed access_policy_simulation.csv in the artifacts directory.",
+      "parallel_group": null,
+      "reasoning": "Validate the file shape before writing the output manifest so the preserved run state matches the actual filesystem state.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Confirmed the artifact exists and contains the expected three-row structure before finalizing the run manifest.",
+      "step": 4,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "Bash",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "assistant",
+      "alternatives_considered": null,
+      "artifact_refs": [
+        "actual_outputs.json",
+        "agent_trace.json"
+      ],
+      "causal_note": "The validation result supported finalizing the output manifest and trace.",
+      "causal_type": "other",
+      "caused_by": [
+        4
+      ],
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "apply_patch add file actual_outputs.json and agent_trace.json",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "deliverable": "[EXCLUDED_GENERATED_ARTIFACT]",
+        "manifest": "actual_outputs.json",
+        "original_action": "deliver_results",
+        "original_causal_type": "follow-up",
+        "original_operation": "write_manifests",
+        "raw_step": {
+          "action": "deliver_results",
+          "actor": "assistant",
+          "artifact_refs": [
+            "actual_outputs.json",
+            "agent_trace.json"
+          ],
+          "causal_note": "The validation result supported finalizing the output manifest and trace.",
+          "causal_type": "follow-up",
+          "caused_by": "4",
+          "error_message": null,
+          "error_type": null,
+          "input": "apply_patch add file actual_outputs.json and agent_trace.json",
+          "metadata_json": {
+            "deliverable": "[EXCLUDED_GENERATED_ARTIFACT]",
+            "manifest": "actual_outputs.json",
+            "trace": "agent_trace.json"
+          },
+          "observation": "Wrote actual_outputs.json and agent_trace.json in the attempt directory to preserve the generated artifact and the workflow evidence.",
+          "operation": "write_manifests",
+          "output": "Patch applied successfully.",
+          "reasoning": "Finish by persisting the run metadata so the result is reproducible and auditable.",
+          "state_change": "Completed the required output contract with the deliverable, the manifest, and the trace file all stored in the current attempt directory.",
+          "step": "5",
+          "step_outcome": "completed",
+          "success": true,
+          "tool": "apply_patch",
+          "turn": 1
+        },
+        "trace": "agent_trace.json"
+      },
+      "observation": "Wrote actual_outputs.json and agent_trace.json in the attempt directory to preserve the generated artifact and the workflow evidence.",
+      "operation": "other",
+      "output": "Patch applied successfully.",
+      "parallel_group": null,
+      "reasoning": "Finish by persisting the run metadata so the result is reproducible and auditable.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Completed the required output contract with the deliverable, the manifest, and the trace file all stored in the current attempt directory.",
+      "step": 5,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "apply_patch",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "assistant",
+      "alternatives_considered": null,
+      "artifact_refs": [
+        "agent_trace.json",
+        "actual_outputs.json"
+      ],
+      "causal_note": "This check verified the output manifest and deliverable after they were written.",
+      "causal_type": "other",
+      "caused_by": [
+        5
+      ],
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "node -e \"const fs=require('fs'); for (const f of ['agent_trace.json','actual_outputs.json']) { JSON.parse(fs.readFileSync(f,'utf8')); console.log(f+': ok'); }\" ; python3 - <<'PY'\\nimport csv\\nfrom pathlib import Path\\np = Path('[EXCLUDED_GENERATED_ARTIFACT]')\\nwith p.open(newline='') as f:\\n    rows = list(csv.DictReader(f))\\nprint('rows', len(rows))\\nprint('asset_ids', [r['asset_id'] for r in rows])\\nprint('scores', [r['computed_risk_score'] for r in rows])\\nPY",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "original_action": "validate_outputs",
+        "original_causal_type": "validation",
+        "original_operation": "parse_json_and_csv",
+        "raw_step": {
+          "action": "validate_outputs",
+          "actor": "assistant",
+          "artifact_refs": [
+            "agent_trace.json",
+            "actual_outputs.json"
+          ],
+          "causal_note": "This check verified the output manifest and deliverable after they were written.",
+          "causal_type": "validation",
+          "caused_by": "5",
+          "error_message": null,
+          "error_type": null,
+          "input": "node -e \"const fs=require('fs'); for (const f of ['agent_trace.json','actual_outputs.json']) { JSON.parse(fs.readFileSync(f,'utf8')); console.log(f+': ok'); }\" ; python3 - <<'PY'\\nimport csv\\nfrom pathlib import Path\\np = Path('[EXCLUDED_GENERATED_ARTIFACT]')\\nwith p.open(newline='') as f:\\n    rows = list(csv.DictReader(f))\\nprint('rows', len(rows))\\nprint('asset_ids', [r['asset_id'] for r in rows])\\nprint('scores', [r['computed_risk_score'] for r in rows])\\nPY",
+          "metadata_json": {
+            "row_count": 3,
+            "scores": [
+              100,
+              50,
+              20
+            ],
+            "validation": "json-parse-plus-csv-parse"
+          },
+          "observation": "Both JSON files parsed successfully and the CSV parser found exactly three asset rows with scores 100, 50, and 20.",
+          "operation": "parse_json_and_csv",
+          "output": "agent_trace.json: ok; actual_outputs.json: ok; rows 3; asset_ids ['A', 'B', 'C']; scores ['100', '50', '20']",
+          "reasoning": "Record the parse check as evidence because it proves the files on disk are readable and internally consistent.",
+          "state_change": "Confirmed that the preserved artifacts are syntactically valid and that the CSV data matches the intended three-row remediation order.",
+          "step": "6",
+          "step_outcome": "completed",
+          "success": true,
+          "tool": "exec_command",
+          "turn": 1
+        },
+        "row_count": 3,
+        "scores": [
+          100,
+          50,
+          20
+        ],
+        "validation": "json-parse-plus-csv-parse"
+      },
+      "observation": "Both JSON files parsed successfully and the CSV parser found exactly three asset rows with scores 100, 50, and 20.",
+      "operation": "other",
+      "output": "agent_trace.json: ok; actual_outputs.json: ok; rows 3; asset_ids ['A', 'B', 'C']; scores ['100', '50', '20']",
+      "parallel_group": null,
+      "reasoning": "Record the parse check as evidence because it proves the files on disk are readable and internally consistent.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Confirmed that the preserved artifacts are syntactically valid and that the CSV data matches the intended three-row remediation order.",
+      "step": 6,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "Bash",
+      "turn": 1
+    }
+  ],
+  "system_prompt": null,
+  "system_prompt_hash": null,
+  "task": "Advanced task: Zero-trust access policy simulation. Security packet: asset A privilege=admin exposure=internet findings=3 data=regulated; asset B privilege=read exposure=internal findings=8 data=internal; asset C privilege=write exposure=partner findings=2 data=customer. Rules: admin+internet+regulated is critical; findings>5 raises priority; recommend remediation order and evidence needed. Produce the stated deliverable with calculations, assumptions, exceptions, and exact row/value citations. Do not invent additional records; mark missing inputs as needs_review. Include intermediate calculations, uncertainty or sensitivity notes, validation checks, and a final decision table that ties every recommendation back to the supplied values. The response should be executable from the embedded packet alone, with no external data lookup required beyond understanding the cited public removed context.",
+  "task_family_id": null,
+  "original_internal_task_id": "aa_task_0371",
+  "task_id": "171",
+  "termination_reason": "task_complete",
+  "trace_id": "trace_171-baseline_normalized",
+  "trace_mode": "live"
+}

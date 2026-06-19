@@ -1,0 +1,399 @@
+{
+  "actual_outputs": {
+    "original_internal_attempt_id": "aa_task_0012_baseline",
+    "attempt_id": "612-baseline",
+    "attempt_kind": "baseline",
+    "error_message": null,
+    "error_type": null,
+    "metadata_json": {
+      "actual_outputs_discarded_field_count": 0,
+      "actual_outputs_normalized": true,
+      "expected_deliverable_items": [
+        "radiopharma_release_workbook.xlsx",
+        "release_certificate_memo.md"
+      ],
+      "original_fields": {
+        "artifacts": {
+          "memo": "[EXCLUDED_GENERATED_ARTIFACT]",
+          "workbook": "[EXCLUDED_GENERATED_ARTIFACT]"
+        },
+        "attempt": "baseline"
+      },
+      "produced_deliverable_items": [
+        "radiopharma_release_workbook.xlsx",
+        "release_certificate_memo.md"
+      ],
+      "raw_actual_outputs": {
+        "artifacts": {
+          "memo": "[EXCLUDED_GENERATED_ARTIFACT]",
+          "workbook": "[EXCLUDED_GENERATED_ARTIFACT]"
+        },
+        "attempt": "baseline",
+        "status": "created",
+        "original_internal_task_id": "aa_task_0012",
+        "task_id": "612"
+      }
+    },
+    "output_summary": "Normalized actual outputs from artifact files.",
+    "status": "success",
+    "original_internal_task_id": "aa_task_0012",
+    "task_id": "612",
+    "required_deliverables": [
+      "radiopharma_release_workbook.xlsx",
+      "release_certificate_memo.md"
+    ],
+    "produced_deliverables": [
+      "radiopharma_release_workbook.xlsx",
+      "release_certificate_memo.md"
+    ],
+    "missing_required_deliverables": [],
+    "deliverable_produced": true,
+    "deliverable_file_included": false,
+    "included_generated_artifacts": false,
+    "artifacts_excluded_reason": "Generated output artifacts are excluded from the public seed dataset by default.",
+    "logs_included": false,
+    "logs_excluded_reason": "Raw runner logs are excluded from the public seed dataset."
+  },
+  "agent_config": null,
+  "agent_tools": [
+    "codex_cli",
+    "Bash",
+    "python",
+    "file_read",
+    "file_write",
+    "apply_patch"
+  ],
+  "artifacts": [],
+  "original_internal_attempt_id": "aa_task_0012_baseline",
+  "attempt_id": "612-baseline",
+  "attempt_kind": "baseline",
+  "attempt_status": "completed",
+  "collection_id": null,
+  "completion_reason": null,
+  "ended_at": null,
+  "final_attempt_id": null,
+  "initial_attempt_id": null,
+  "iteration_index": null,
+  "learning": null,
+  "memory": null,
+  "metadata_json": {
+    "codex_command": [
+      "codex",
+      "exec",
+      "--sandbox",
+      "workspace-write",
+      "<prompt>"
+    ],
+    "codex_sandbox": "workspace-write",
+    "discarded_step_count": 0,
+    "raw_trace_list": [
+      {
+        "action": "Read ./input/task.json and ./input/task_brief.md",
+        "actor": "worker",
+        "artifact_refs": [
+          "input/task.json",
+          "input/task_brief.md"
+        ],
+        "causal_note": "Anchors all downstream computations.",
+        "causal_type": "init",
+        "caused_by": "User-requested task",
+        "error_message": null,
+        "error_type": null,
+        "input": "cat input/task.json; cat input/task_brief.md",
+        "metadata_json": {
+          "fields_from_packet": 18
+        },
+        "observation": "Extracted all lot, activity, times, specs, and retest gating rules.",
+        "operation": "read",
+        "output": "Stored packet constants for reproducible workbook formulas.",
+        "reasoning": "The packet is sole admissible data source.",
+        "state_change": "No write state change.",
+        "step": "Read task and packet constraints",
+        "step_outcome": "packet_context_loaded",
+        "success": true,
+        "tool": "functions.exec_command",
+        "turn": 1
+      },
+      {
+        "action": "Build OOXML workbook including executable formulas and corrected row-linking",
+        "actor": "worker",
+        "causal_note": "Row references now align QC and decision rows correctly.",
+        "causal_type": "update",
+        "caused_by": "Read task and packet constraints",
+        "error_message": null,
+        "error_type": null,
+        "input": "XML workbook assembly script with corrected row formulas",
+        "metadata_json": {
+          "formula_cells": "18+ formulas"
+        },
+        "observation": "Recreated Release_Decision sheet with corrected decision formula dependencies.",
+        "operation": "write",
+        "output": "radiopharma_release_workbook.xlsx updated (single sheet).",
+        "reasoning": "Initial formula wiring had cross-row reference mismatches; regenerated to ensure consistency.",
+        "state_change": "File [EXCLUDED_GENERATED_ARTIFACT] overwritten with corrected logic.",
+        "step": "Regenerate workbook with corrected formula references",
+        "step_outcome": "workbook_refactored",
+        "success": true,
+        "tool": "functions.exec_command",
+        "turn": 2
+      },
+      {
+        "action": "Write release memo, actual_outputs.json, and agent_trace.json",
+        "actor": "worker",
+        "artifact_refs": [
+          "actual_outputs.json",
+          "agent_trace.json"
+        ],
+        "causal_note": "No external datasets used; all decisions tied to packet and formula outputs.",
+        "causal_type": "create",
+        "caused_by": "Regenerate workbook with corrected formula references",
+        "error_message": null,
+        "error_type": null,
+        "input": "Artifact generation commands for .md and .json files",
+        "metadata_json": {
+          "final_label": "WARN"
+        },
+        "observation": "Artifacts include row-level citations, uncertainty notes, and final decision label.",
+        "operation": "write",
+        "output": "Created/updated release memo and run descriptors.",
+        "reasoning": "Completes required output contract and traceability record.",
+        "state_change": "Added [EXCLUDED_GENERATED_ARTIFACT] actual_outputs.json, agent_trace.json.",
+        "step": "Write memo and run contract outputs",
+        "step_outcome": "contract_artifacts_written",
+        "success": true,
+        "tool": "functions.exec_command",
+        "turn": 3
+      }
+    ],
+    "raw_trace_preserved": true,
+    "raw_trace_shape": "list",
+    "raw_trace_step_source": "steps",
+    "schema_valid": true,
+    "trace_normalization_status": "partial",
+    "trace_valid": true
+  },
+  "preferred_attempt_id": null,
+  "previous_attempt_id": null,
+  "prior_trace_id": null,
+  "revision_attempt_ids": [],
+  "revision_group_id": null,
+  "schema_version": "aa-trace-v0.1",
+  "skills": null,
+  "started_at": null,
+  "steps": [
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "artifact_refs": [
+        "input/task.json",
+        "input/task_brief.md"
+      ],
+      "causal_note": "Anchors all downstream computations.",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "cat input/task.json; cat input/task_brief.md",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "fields_from_packet": 18,
+        "normalization_warnings": [
+          "step value 'Read task and packet constraints' was not numeric; defaulted to 1"
+        ],
+        "original_action": "Read ./input/task.json and ./input/task_brief.md",
+        "original_causal_type": "init",
+        "original_step": "Read task and packet constraints",
+        "original_step_outcome": "packet_context_loaded",
+        "raw_step": {
+          "action": "Read ./input/task.json and ./input/task_brief.md",
+          "actor": "worker",
+          "artifact_refs": [
+            "input/task.json",
+            "input/task_brief.md"
+          ],
+          "causal_note": "Anchors all downstream computations.",
+          "causal_type": "init",
+          "caused_by": "User-requested task",
+          "error_message": null,
+          "error_type": null,
+          "input": "cat input/task.json; cat input/task_brief.md",
+          "metadata_json": {
+            "fields_from_packet": 18
+          },
+          "observation": "Extracted all lot, activity, times, specs, and retest gating rules.",
+          "operation": "read",
+          "output": "Stored packet constants for reproducible workbook formulas.",
+          "reasoning": "The packet is sole admissible data source.",
+          "state_change": "No write state change.",
+          "step": "Read task and packet constraints",
+          "step_outcome": "packet_context_loaded",
+          "success": true,
+          "tool": "functions.exec_command",
+          "turn": 1
+        }
+      },
+      "observation": "Extracted all lot, activity, times, specs, and retest gating rules.",
+      "operation": "read",
+      "output": "Stored packet constants for reproducible workbook formulas.",
+      "parallel_group": null,
+      "reasoning": "The packet is sole admissible data source.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "No write state change.",
+      "step": 1,
+      "step_outcome": "neutral",
+      "success": true,
+      "tool": "Bash",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "causal_note": "Row references now align QC and decision rows correctly.",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "XML workbook assembly script with corrected row formulas",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "formula_cells": "18+ formulas",
+        "normalization_warnings": [
+          "step value 'Regenerate workbook with corrected formula references' was not numeric; defaulted to 2"
+        ],
+        "original_action": "Build OOXML workbook including executable formulas and corrected row-linking",
+        "original_causal_type": "update",
+        "original_step": "Regenerate workbook with corrected formula references",
+        "original_step_outcome": "workbook_refactored",
+        "raw_step": {
+          "action": "Build OOXML workbook including executable formulas and corrected row-linking",
+          "actor": "worker",
+          "causal_note": "Row references now align QC and decision rows correctly.",
+          "causal_type": "update",
+          "caused_by": "Read task and packet constraints",
+          "error_message": null,
+          "error_type": null,
+          "input": "XML workbook assembly script with corrected row formulas",
+          "metadata_json": {
+            "formula_cells": "18+ formulas"
+          },
+          "observation": "Recreated Release_Decision sheet with corrected decision formula dependencies.",
+          "operation": "write",
+          "output": "radiopharma_release_workbook.xlsx updated (single sheet).",
+          "reasoning": "Initial formula wiring had cross-row reference mismatches; regenerated to ensure consistency.",
+          "state_change": "File [EXCLUDED_GENERATED_ARTIFACT] overwritten with corrected logic.",
+          "step": "Regenerate workbook with corrected formula references",
+          "step_outcome": "workbook_refactored",
+          "success": true,
+          "tool": "functions.exec_command",
+          "turn": 2
+        }
+      },
+      "observation": "Recreated Release_Decision sheet with corrected decision formula dependencies.",
+      "operation": "write",
+      "output": "radiopharma_release_workbook.xlsx updated (single sheet).",
+      "parallel_group": null,
+      "reasoning": "Initial formula wiring had cross-row reference mismatches; regenerated to ensure consistency.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "File [EXCLUDED_GENERATED_ARTIFACT] overwritten with corrected logic.",
+      "step": 2,
+      "step_outcome": "neutral",
+      "success": true,
+      "tool": "file_write",
+      "turn": 2
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "artifact_refs": [
+        "actual_outputs.json",
+        "agent_trace.json"
+      ],
+      "causal_note": "No external datasets used; all decisions tied to packet and formula outputs.",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "Artifact generation commands for .md and .json files",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "final_label": "WARN",
+        "normalization_warnings": [
+          "step value 'Write memo and run contract outputs' was not numeric; defaulted to 3"
+        ],
+        "original_action": "Write release memo, actual_outputs.json, and agent_trace.json",
+        "original_causal_type": "create",
+        "original_step": "Write memo and run contract outputs",
+        "original_step_outcome": "contract_artifacts_written",
+        "raw_step": {
+          "action": "Write release memo, actual_outputs.json, and agent_trace.json",
+          "actor": "worker",
+          "artifact_refs": [
+            "actual_outputs.json",
+            "agent_trace.json"
+          ],
+          "causal_note": "No external datasets used; all decisions tied to packet and formula outputs.",
+          "causal_type": "create",
+          "caused_by": "Regenerate workbook with corrected formula references",
+          "error_message": null,
+          "error_type": null,
+          "input": "Artifact generation commands for .md and .json files",
+          "metadata_json": {
+            "final_label": "WARN"
+          },
+          "observation": "Artifacts include row-level citations, uncertainty notes, and final decision label.",
+          "operation": "write",
+          "output": "Created/updated release memo and run descriptors.",
+          "reasoning": "Completes required output contract and traceability record.",
+          "state_change": "Added [EXCLUDED_GENERATED_ARTIFACT] actual_outputs.json, agent_trace.json.",
+          "step": "Write memo and run contract outputs",
+          "step_outcome": "contract_artifacts_written",
+          "success": true,
+          "tool": "functions.exec_command",
+          "turn": 3
+        }
+      },
+      "observation": "Artifacts include row-level citations, uncertainty notes, and final decision label.",
+      "operation": "write",
+      "output": "Created/updated release memo and run descriptors.",
+      "parallel_group": null,
+      "reasoning": "Completes required output contract and traceability record.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Added [EXCLUDED_GENERATED_ARTIFACT] actual_outputs.json, agent_trace.json.",
+      "step": 3,
+      "step_outcome": "neutral",
+      "success": true,
+      "tool": "file_write",
+      "turn": 3
+    }
+  ],
+  "system_prompt": null,
+  "system_prompt_hash": null,
+  "task": "Flagship expert task: Radiopharmaceutical Batch Release Half-Life and Radionuclidic Purity Check. Reality context: a hospital radiopharmacy needs to release a short-lived tracer lot while activity is decaying and two QC results are borderline. Embedded packet: lot=F18-PSMA-0618; calibration_time=08:00; requested_injection_time=11:10; initial_activity_GBq=31.4; half_life_min=109.8; min_activity_GBq_at_dispatch=4.8; QC: radiochemical_purity_pct=94.1 spec>=95, radionuclidic_purity_pct=99.7 spec>=99.5, residual_solvent_ppm=410 spec<=500, pH=6.1 spec 4.5-8.5, endotoxin_EU_mL=8 spec<=17.5; repeat_RCP takes 18min and has historical repeat uplift +1.2pct. Rules and constraints: Calculate decayed activity at injection and after repeat QC, classify each QC metric, and recommend release/retest/reject. A failed RCP can be retested once only if activity remains sufficient after the delay. Required work: deliver radiopharma_release_workbook.xlsx + release_certificate_memo.md. The deliverables must include formulas or executable logic, intermediate calculations, row-level citations to the embedded packet, validation checks, uncertainty notes, sensitivity checks around the controlling thresholds, and a final decision table with pass/warn/fail/needs_review labels. Use only the embedded packet. Do not import external data, invent missing values, or hide unresolved assumptions.",
+  "task_family_id": null,
+  "original_internal_task_id": "aa_task_0012",
+  "task_id": "612",
+  "termination_reason": "task_complete",
+  "trace_id": "trace_612-baseline_normalized",
+  "trace_mode": "live"
+}

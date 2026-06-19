@@ -1,0 +1,965 @@
+{
+  "actual_outputs": {
+    "original_internal_attempt_id": "aa_task_0021_baseline",
+    "attempt_id": "621-baseline",
+    "attempt_kind": "baseline",
+    "error_message": null,
+    "error_type": null,
+    "metadata_json": {
+      "actual_outputs_discarded_field_count": 0,
+      "actual_outputs_normalized": true,
+      "expected_deliverable_items": [
+        "cart_cryo_excursion.xlsx",
+        "disposition_memo.md"
+      ],
+      "original_fields": {
+        "attempt": "baseline",
+        "created_at": "2026-06-18",
+        "outputs": [
+          {
+            "description": "Executable chain-of-custody excursion analysis with row-level formulas, validation checks, sensitivity checks, uncertainty notes, and final decision logic.",
+            "filename": "[EXCLUDED_GENERATED_ARTIFACT]",
+            "type": "excel"
+          },
+          {
+            "description": "Disposition memo with packet-only data usage, intermediate calculations, validation, sensitivity, uncertainty notes, and final pass/warn/fail/needs_review decision table.",
+            "filename": "[EXCLUDED_GENERATED_ARTIFACT]",
+            "type": "markdown"
+          }
+        ]
+      },
+      "produced_deliverable_items": [
+        "disposition_memo.md",
+        "cart_cryo_excursion.xlsx"
+      ],
+      "raw_actual_outputs": {
+        "attempt": "baseline",
+        "created_at": "2026-06-18",
+        "outputs": [
+          {
+            "description": "Executable chain-of-custody excursion analysis with row-level formulas, validation checks, sensitivity checks, uncertainty notes, and final decision logic.",
+            "filename": "[EXCLUDED_GENERATED_ARTIFACT]",
+            "type": "excel"
+          },
+          {
+            "description": "Disposition memo with packet-only data usage, intermediate calculations, validation, sensitivity, uncertainty notes, and final pass/warn/fail/needs_review decision table.",
+            "filename": "[EXCLUDED_GENERATED_ARTIFACT]",
+            "type": "markdown"
+          }
+        ],
+        "original_internal_task_id": "aa_task_0021",
+        "task_id": "621"
+      }
+    },
+    "output_summary": "Normalized actual outputs from artifact files.",
+    "status": "success",
+    "original_internal_task_id": "aa_task_0021",
+    "task_id": "621",
+    "required_deliverables": [
+      "cart_cryo_excursion.xlsx",
+      "disposition_memo.md"
+    ],
+    "produced_deliverables": [
+      "disposition_memo.md",
+      "cart_cryo_excursion.xlsx"
+    ],
+    "missing_required_deliverables": [],
+    "deliverable_produced": true,
+    "deliverable_file_included": false,
+    "included_generated_artifacts": false,
+    "artifacts_excluded_reason": "Generated output artifacts are excluded from the public seed dataset by default.",
+    "logs_included": false,
+    "logs_excluded_reason": "Raw runner logs are excluded from the public seed dataset."
+  },
+  "agent_config": null,
+  "agent_tools": [
+    "codex_cli",
+    "Bash",
+    "python",
+    "file_read",
+    "file_write",
+    "apply_patch"
+  ],
+  "artifacts": [],
+  "original_internal_attempt_id": "aa_task_0021_baseline",
+  "attempt_id": "621-baseline",
+  "attempt_kind": "baseline",
+  "attempt_status": "completed",
+  "collection_id": null,
+  "completion_reason": null,
+  "ended_at": null,
+  "final_attempt_id": null,
+  "initial_attempt_id": null,
+  "iteration_index": null,
+  "learning": null,
+  "memory": null,
+  "metadata_json": {
+    "codex_command": [
+      "codex",
+      "exec",
+      "--sandbox",
+      "workspace-write",
+      "<prompt>"
+    ],
+    "codex_sandbox": "workspace-write",
+    "discarded_step_count": 0,
+    "raw_trace_list": [
+      {
+        "action": "Inspect task directory and expected inputs before authoring outputs",
+        "actor": "worker",
+        "causal_note": "Verified required directories before reading task assets.",
+        "causal_type": "prerequisite_check",
+        "caused_by": "task startup",
+        "error_message": null,
+        "error_type": null,
+        "input": "pwd; ls -la; ls -la input; ls -la artifacts",
+        "metadata_json": {
+          "cwd": "[REDACTED_LOCAL_PATH]"
+        },
+        "observation": "Located task directory layout and confirmed input files exist at ./input plus required output directory ./artifacts.",
+        "operation": "read",
+        "output": "Current working directory is [REDACTED_LOCAL_PATH] input and artifacts directories present.",
+        "reasoning": "Needing to validate workspace paths to avoid writing outside writable roots.",
+        "state_change": "No artifacts modified; established baseline context for file writes.",
+        "step": "1",
+        "step_outcome": "passed",
+        "success": true,
+        "tool": "exec_command",
+        "turn": "baseline-001"
+      },
+      {
+        "action": "Read task packet in machine-readable form",
+        "actor": "worker",
+        "artifact_refs": [
+          "input/task.json"
+        ],
+        "causal_note": "Used JSON payload as primary task interpretation source.",
+        "causal_type": "dependency_resolution",
+        "caused_by": "step 1",
+        "error_message": null,
+        "error_type": null,
+        "input": "cat input/task.json",
+        "metadata_json": {
+          "source_fields_used": [
+            "shipment_id",
+            "temp_limit_C",
+            "logger rows",
+            "rule definitions",
+            "required deliverables"
+          ]
+        },
+        "observation": "Loaded full normalized task payload including segment rows, thresholds, rule definitions, and required outputs.",
+        "operation": "read",
+        "output": "Parsed shipment_id CT-881, temp_limit_C=-120, duration rules, backup dry_ice_hold_h=18, segment rows A-D with min/max/duration/scan values, and required output contract.",
+        "reasoning": "Canonical source of constraints and expected artifact names was the JSON payload.",
+        "state_change": "No file changes; extracted embedded packet values for calculations.",
+        "step": "2",
+        "step_outcome": "passed",
+        "success": true,
+        "tool": "exec_command",
+        "turn": "baseline-001"
+      },
+      {
+        "action": "Read task brief for explicit constraints and rubric phrasing",
+        "actor": "worker",
+        "artifact_refs": [
+          "input/task_brief.md"
+        ],
+        "causal_note": "Used human-readable instruction as constraints overlay on machine payload.",
+        "causal_type": "dependency_resolution",
+        "caused_by": "step 2",
+        "error_message": null,
+        "error_type": null,
+        "input": "cat input/task_brief.md",
+        "metadata_json": {
+          "constraints": [
+            "use only embedded packet",
+            "no hidden assumptions",
+            "include formulas and sensitivity checks"
+          ]
+        },
+        "observation": "Captured requirement wording including formula/executable logic, validation checks, uncertainty notes, sensitivity checks, and pass/warn/fail/needs_review final decision table.",
+        "operation": "read",
+        "output": "Confirmed required deliverables: cart_cryo_excursion.xlsx and disposition_memo.md; no external data allowed; no potency inference.",
+        "reasoning": "Need exact requirement language to avoid rubric mismatch.",
+        "state_change": "No file changes; locked deliverable acceptance criteria.",
+        "step": "3",
+        "step_outcome": "passed",
+        "success": true,
+        "tool": "exec_command",
+        "turn": "baseline-001"
+      },
+      {
+        "action": "Attempted first XLSX generation path with OpenXML library",
+        "actor": "worker",
+        "causal_note": "Dependency constraint required a no-dependency XLSX generation path.",
+        "causal_type": "recovery",
+        "caused_by": "step 3",
+        "error_message": "No module named 'openpyxl'",
+        "error_type": "ModuleNotFoundError",
+        "input": "python3 script using openpyxl to build cart_cryo_excursion.xlsx",
+        "metadata_json": {
+          "requested_library": "openpyxl"
+        },
+        "observation": "Attempt failed because dependency was missing in runtime environment.",
+        "operation": "execute",
+        "output": "ModuleNotFoundError: No module named 'openpyxl'.",
+        "reasoning": "Open-ended dependency missing; fallback required to continue without external package installs.",
+        "state_change": "No artifact created by this attempt; prepared switch to fallback writer path.",
+        "step": "4",
+        "step_outcome": "failed",
+        "success": false,
+        "tool": "exec_command",
+        "turn": "baseline-001"
+      },
+      {
+        "action": "Generated cart_cryo_excursion.xlsx with Python OOXML writer using embedded packet formulas",
+        "actor": "worker",
+        "causal_note": "Dependency workaround by writing raw workbook XML parts in zip archive.",
+        "causal_type": "remediation",
+        "caused_by": "step 4",
+        "error_message": null,
+        "error_type": null,
+        "input": "python3 OOXML zip generator writing Packet_and_rules, Decision_and_sensitivity, and Uncertainty_and_notes sheets",
+        "metadata_json": {
+          "sheets": [
+            "Packet_and_rules",
+            "Decision_and_sensitivity",
+            "Uncertainty_and_notes"
+          ]
+        },
+        "observation": "Workbook successfully created with three sheets and executable logic formulas in sheet cells.",
+        "operation": "write",
+        "output": "Created [EXCLUDED_GENERATED_ARTIFACT]",
+        "reasoning": "Used minimal standards-compliant OOXML packaging after dependency failure; preserved formula-based logic for auditability.",
+        "state_change": "Added new artifact: [EXCLUDED_GENERATED_ARTIFACT]",
+        "step": "5",
+        "step_outcome": "passed",
+        "success": true,
+        "tool": "exec_command",
+        "turn": "baseline-001"
+      },
+      {
+        "action": "Wrote disposition memo with packet-cited calculations and decision taxonomy",
+        "actor": "worker",
+        "causal_note": "Mapped formula outputs into human-readable disposition memo format.",
+        "causal_type": "artifact_creation",
+        "caused_by": "step 5",
+        "error_message": null,
+        "error_type": null,
+        "input": "cat > [EXCLUDED_GENERATED_ARTIFACT]",
+        "metadata_json": {
+          "decision_label": "fail",
+          "final_disposition": "reject"
+        },
+        "observation": "Memo includes row-level segment evaluation, validation checks, threshold sensitivity checks, uncertainty notes, and final pass/warn/fail/needs_review table.",
+        "operation": "write",
+        "output": "Created [EXCLUDED_GENERATED_ARTIFACT] with final recommendation reject for CT-881.",
+        "reasoning": "Required narrative output for audit and human review completed from packet-only calculations.",
+        "state_change": "Added new artifact: [EXCLUDED_GENERATED_ARTIFACT]",
+        "step": "6",
+        "step_outcome": "passed",
+        "success": true,
+        "tool": "exec_command",
+        "turn": "baseline-001"
+      },
+      {
+        "action": "Recorded machine-readable actual outputs manifest",
+        "actor": "worker",
+        "artifact_refs": [
+          "actual_outputs.json"
+        ],
+        "causal_note": "Materialized required output contract files before trace finalization.",
+        "causal_type": "contract_compliance",
+        "caused_by": "steps 5-6",
+        "error_message": null,
+        "error_type": null,
+        "input": "cat > actual_outputs.json",
+        "metadata_json": {
+          "artifact_count": 2
+        },
+        "observation": "Manifest enumerates generated files and type descriptors.",
+        "operation": "write",
+        "output": "Created actual_outputs.json with both required artifact entries and task metadata.",
+        "reasoning": "Required output contract asks explicit manifest file in attempt directory.",
+        "state_change": "Added new artifact: actual_outputs.json.",
+        "step": "7",
+        "step_outcome": "passed",
+        "success": true,
+        "tool": "exec_command",
+        "turn": "baseline-001"
+      },
+      {
+        "action": "Wrote structured agent workflow trace file",
+        "actor": "worker",
+        "artifact_refs": [
+          "agent_trace.json"
+        ],
+        "causal_note": "Final artifact includes error capture and artifact references for reviewability.",
+        "causal_type": "closing",
+        "caused_by": "step 7",
+        "error_message": null,
+        "error_type": null,
+        "input": "cat > agent_trace.json",
+        "metadata_json": {
+          "schema_fields_used": [
+            "step",
+            "turn",
+            "actor",
+            "action",
+            "operation",
+            "tool",
+            "observation",
+            "input",
+            "output",
+            "state_change",
+            "reasoning",
+            "caused_by",
+            "causal_type",
+            "causal_note",
+            "success",
+            "step_outcome",
+            "error_type",
+            "error_message",
+            "artifact_refs",
+            "metadata_json"
+          ]
+        },
+        "observation": "Trace file includes all meaningful actions with required canonical field names.",
+        "operation": "write",
+        "output": "Created agent_trace.json with 8 canonical steps spanning read/write/execute/validation activities.",
+        "reasoning": "Completed explicit workflow evidence capture requested by user instructions.",
+        "state_change": "Added new artifact: agent_trace.json.",
+        "step": "8",
+        "step_outcome": "passed",
+        "success": true,
+        "tool": "exec_command",
+        "turn": "baseline-001"
+      }
+    ],
+    "raw_trace_preserved": true,
+    "raw_trace_shape": "list",
+    "raw_trace_step_source": "steps",
+    "schema_valid": true,
+    "trace_normalization_status": "partial",
+    "trace_valid": true
+  },
+  "preferred_attempt_id": null,
+  "previous_attempt_id": null,
+  "prior_trace_id": null,
+  "revision_attempt_ids": [],
+  "revision_group_id": null,
+  "schema_version": "aa-trace-v0.1",
+  "skills": null,
+  "started_at": null,
+  "steps": [
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "causal_note": "Verified required directories before reading task assets.",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "pwd; ls -la; ls -la input; ls -la artifacts",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "cwd": "[REDACTED_LOCAL_PATH]",
+        "normalization_warnings": [
+          "turn value 'baseline-001' was not numeric; defaulted to 1"
+        ],
+        "original_action": "Inspect task directory and expected inputs before authoring outputs",
+        "original_causal_type": "prerequisite_check",
+        "original_step_outcome": "passed",
+        "original_turn": "baseline-001",
+        "raw_step": {
+          "action": "Inspect task directory and expected inputs before authoring outputs",
+          "actor": "worker",
+          "causal_note": "Verified required directories before reading task assets.",
+          "causal_type": "prerequisite_check",
+          "caused_by": "task startup",
+          "error_message": null,
+          "error_type": null,
+          "input": "pwd; ls -la; ls -la input; ls -la artifacts",
+          "metadata_json": {
+            "cwd": "[REDACTED_LOCAL_PATH]"
+          },
+          "observation": "Located task directory layout and confirmed input files exist at ./input plus required output directory ./artifacts.",
+          "operation": "read",
+          "output": "Current working directory is [REDACTED_LOCAL_PATH] input and artifacts directories present.",
+          "reasoning": "Needing to validate workspace paths to avoid writing outside writable roots.",
+          "state_change": "No artifacts modified; established baseline context for file writes.",
+          "step": "1",
+          "step_outcome": "passed",
+          "success": true,
+          "tool": "exec_command",
+          "turn": "baseline-001"
+        }
+      },
+      "observation": "Located task directory layout and confirmed input files exist at ./input plus required output directory ./artifacts.",
+      "operation": "read",
+      "output": "Current working directory is [REDACTED_LOCAL_PATH] input and artifacts directories present.",
+      "parallel_group": null,
+      "reasoning": "Needing to validate workspace paths to avoid writing outside writable roots.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "No artifacts modified; established baseline context for file writes.",
+      "step": 1,
+      "step_outcome": "neutral",
+      "success": true,
+      "tool": "Bash",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "artifact_refs": [
+        "input/task.json"
+      ],
+      "causal_note": "Used JSON payload as primary task interpretation source.",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "cat input/task.json",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "normalization_warnings": [
+          "turn value 'baseline-001' was not numeric; defaulted to 1"
+        ],
+        "original_action": "Read task packet in machine-readable form",
+        "original_causal_type": "dependency_resolution",
+        "original_step_outcome": "passed",
+        "original_turn": "baseline-001",
+        "raw_step": {
+          "action": "Read task packet in machine-readable form",
+          "actor": "worker",
+          "artifact_refs": [
+            "input/task.json"
+          ],
+          "causal_note": "Used JSON payload as primary task interpretation source.",
+          "causal_type": "dependency_resolution",
+          "caused_by": "step 1",
+          "error_message": null,
+          "error_type": null,
+          "input": "cat input/task.json",
+          "metadata_json": {
+            "source_fields_used": [
+              "shipment_id",
+              "temp_limit_C",
+              "logger rows",
+              "rule definitions",
+              "required deliverables"
+            ]
+          },
+          "observation": "Loaded full normalized task payload including segment rows, thresholds, rule definitions, and required outputs.",
+          "operation": "read",
+          "output": "Parsed shipment_id CT-881, temp_limit_C=-120, duration rules, backup dry_ice_hold_h=18, segment rows A-D with min/max/duration/scan values, and required output contract.",
+          "reasoning": "Canonical source of constraints and expected artifact names was the JSON payload.",
+          "state_change": "No file changes; extracted embedded packet values for calculations.",
+          "step": "2",
+          "step_outcome": "passed",
+          "success": true,
+          "tool": "exec_command",
+          "turn": "baseline-001"
+        },
+        "source_fields_used": [
+          "shipment_id",
+          "temp_limit_C",
+          "logger rows",
+          "rule definitions",
+          "required deliverables"
+        ]
+      },
+      "observation": "Loaded full normalized task payload including segment rows, thresholds, rule definitions, and required outputs.",
+      "operation": "read",
+      "output": "Parsed shipment_id CT-881, temp_limit_C=-120, duration rules, backup dry_ice_hold_h=18, segment rows A-D with min/max/duration/scan values, and required output contract.",
+      "parallel_group": null,
+      "reasoning": "Canonical source of constraints and expected artifact names was the JSON payload.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "No file changes; extracted embedded packet values for calculations.",
+      "step": 2,
+      "step_outcome": "neutral",
+      "success": true,
+      "tool": "Bash",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "artifact_refs": [
+        "input/task_brief.md"
+      ],
+      "causal_note": "Used human-readable instruction as constraints overlay on machine payload.",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "cat input/task_brief.md",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "constraints": [
+          "use only embedded packet",
+          "no hidden assumptions",
+          "include formulas and sensitivity checks"
+        ],
+        "normalization_warnings": [
+          "turn value 'baseline-001' was not numeric; defaulted to 1"
+        ],
+        "original_action": "Read task brief for explicit constraints and rubric phrasing",
+        "original_causal_type": "dependency_resolution",
+        "original_step_outcome": "passed",
+        "original_turn": "baseline-001",
+        "raw_step": {
+          "action": "Read task brief for explicit constraints and rubric phrasing",
+          "actor": "worker",
+          "artifact_refs": [
+            "input/task_brief.md"
+          ],
+          "causal_note": "Used human-readable instruction as constraints overlay on machine payload.",
+          "causal_type": "dependency_resolution",
+          "caused_by": "step 2",
+          "error_message": null,
+          "error_type": null,
+          "input": "cat input/task_brief.md",
+          "metadata_json": {
+            "constraints": [
+              "use only embedded packet",
+              "no hidden assumptions",
+              "include formulas and sensitivity checks"
+            ]
+          },
+          "observation": "Captured requirement wording including formula/executable logic, validation checks, uncertainty notes, sensitivity checks, and pass/warn/fail/needs_review final decision table.",
+          "operation": "read",
+          "output": "Confirmed required deliverables: cart_cryo_excursion.xlsx and disposition_memo.md; no external data allowed; no potency inference.",
+          "reasoning": "Need exact requirement language to avoid rubric mismatch.",
+          "state_change": "No file changes; locked deliverable acceptance criteria.",
+          "step": "3",
+          "step_outcome": "passed",
+          "success": true,
+          "tool": "exec_command",
+          "turn": "baseline-001"
+        }
+      },
+      "observation": "Captured requirement wording including formula/executable logic, validation checks, uncertainty notes, sensitivity checks, and pass/warn/fail/needs_review final decision table.",
+      "operation": "read",
+      "output": "Confirmed required deliverables: cart_cryo_excursion.xlsx and disposition_memo.md; no external data allowed; no potency inference.",
+      "parallel_group": null,
+      "reasoning": "Need exact requirement language to avoid rubric mismatch.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "No file changes; locked deliverable acceptance criteria.",
+      "step": 3,
+      "step_outcome": "neutral",
+      "success": true,
+      "tool": "Bash",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "causal_note": "Dependency constraint required a no-dependency XLSX generation path.",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": "No module named 'openpyxl'",
+      "error_type": "ModuleNotFoundError",
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "python3 script using openpyxl to build cart_cryo_excursion.xlsx",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "normalization_warnings": [
+          "turn value 'baseline-001' was not numeric; defaulted to 1"
+        ],
+        "original_action": "Attempted first XLSX generation path with OpenXML library",
+        "original_causal_type": "recovery",
+        "original_turn": "baseline-001",
+        "raw_step": {
+          "action": "Attempted first XLSX generation path with OpenXML library",
+          "actor": "worker",
+          "causal_note": "Dependency constraint required a no-dependency XLSX generation path.",
+          "causal_type": "recovery",
+          "caused_by": "step 3",
+          "error_message": "No module named 'openpyxl'",
+          "error_type": "ModuleNotFoundError",
+          "input": "python3 script using openpyxl to build cart_cryo_excursion.xlsx",
+          "metadata_json": {
+            "requested_library": "openpyxl"
+          },
+          "observation": "Attempt failed because dependency was missing in runtime environment.",
+          "operation": "execute",
+          "output": "ModuleNotFoundError: No module named 'openpyxl'.",
+          "reasoning": "Open-ended dependency missing; fallback required to continue without external package installs.",
+          "state_change": "No artifact created by this attempt; prepared switch to fallback writer path.",
+          "step": "4",
+          "step_outcome": "failed",
+          "success": false,
+          "tool": "exec_command",
+          "turn": "baseline-001"
+        },
+        "requested_library": "openpyxl"
+      },
+      "observation": "Attempt failed because dependency was missing in runtime environment.",
+      "operation": "execute",
+      "output": "ModuleNotFoundError: No module named 'openpyxl'.",
+      "parallel_group": null,
+      "reasoning": "Open-ended dependency missing; fallback required to continue without external package installs.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "No artifact created by this attempt; prepared switch to fallback writer path.",
+      "step": 4,
+      "step_outcome": "failed",
+      "success": false,
+      "tool": "python",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "causal_note": "Dependency workaround by writing raw workbook XML parts in zip archive.",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "python3 OOXML zip generator writing Packet_and_rules, Decision_and_sensitivity, and Uncertainty_and_notes sheets",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "normalization_warnings": [
+          "turn value 'baseline-001' was not numeric; defaulted to 1"
+        ],
+        "original_action": "Generated cart_cryo_excursion.xlsx with Python OOXML writer using embedded packet formulas",
+        "original_causal_type": "remediation",
+        "original_step_outcome": "passed",
+        "original_turn": "baseline-001",
+        "raw_step": {
+          "action": "Generated cart_cryo_excursion.xlsx with Python OOXML writer using embedded packet formulas",
+          "actor": "worker",
+          "causal_note": "Dependency workaround by writing raw workbook XML parts in zip archive.",
+          "causal_type": "remediation",
+          "caused_by": "step 4",
+          "error_message": null,
+          "error_type": null,
+          "input": "python3 OOXML zip generator writing Packet_and_rules, Decision_and_sensitivity, and Uncertainty_and_notes sheets",
+          "metadata_json": {
+            "sheets": [
+              "Packet_and_rules",
+              "Decision_and_sensitivity",
+              "Uncertainty_and_notes"
+            ]
+          },
+          "observation": "Workbook successfully created with three sheets and executable logic formulas in sheet cells.",
+          "operation": "write",
+          "output": "Created [EXCLUDED_GENERATED_ARTIFACT]",
+          "reasoning": "Used minimal standards-compliant OOXML packaging after dependency failure; preserved formula-based logic for auditability.",
+          "state_change": "Added new artifact: [EXCLUDED_GENERATED_ARTIFACT]",
+          "step": "5",
+          "step_outcome": "passed",
+          "success": true,
+          "tool": "exec_command",
+          "turn": "baseline-001"
+        },
+        "sheets": [
+          "Packet_and_rules",
+          "Decision_and_sensitivity",
+          "Uncertainty_and_notes"
+        ]
+      },
+      "observation": "Workbook successfully created with three sheets and executable logic formulas in sheet cells.",
+      "operation": "write",
+      "output": "Created [EXCLUDED_GENERATED_ARTIFACT]",
+      "parallel_group": null,
+      "reasoning": "Used minimal standards-compliant OOXML packaging after dependency failure; preserved formula-based logic for auditability.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Added new artifact: [EXCLUDED_GENERATED_ARTIFACT]",
+      "step": 5,
+      "step_outcome": "neutral",
+      "success": true,
+      "tool": "python",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "causal_note": "Mapped formula outputs into human-readable disposition memo format.",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "cat > [EXCLUDED_GENERATED_ARTIFACT]",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "decision_label": "fail",
+        "final_disposition": "reject",
+        "normalization_warnings": [
+          "turn value 'baseline-001' was not numeric; defaulted to 1"
+        ],
+        "original_action": "Wrote disposition memo with packet-cited calculations and decision taxonomy",
+        "original_causal_type": "artifact_creation",
+        "original_step_outcome": "passed",
+        "original_turn": "baseline-001",
+        "raw_step": {
+          "action": "Wrote disposition memo with packet-cited calculations and decision taxonomy",
+          "actor": "worker",
+          "causal_note": "Mapped formula outputs into human-readable disposition memo format.",
+          "causal_type": "artifact_creation",
+          "caused_by": "step 5",
+          "error_message": null,
+          "error_type": null,
+          "input": "cat > [EXCLUDED_GENERATED_ARTIFACT]",
+          "metadata_json": {
+            "decision_label": "fail",
+            "final_disposition": "reject"
+          },
+          "observation": "Memo includes row-level segment evaluation, validation checks, threshold sensitivity checks, uncertainty notes, and final pass/warn/fail/needs_review table.",
+          "operation": "write",
+          "output": "Created [EXCLUDED_GENERATED_ARTIFACT] with final recommendation reject for CT-881.",
+          "reasoning": "Required narrative output for audit and human review completed from packet-only calculations.",
+          "state_change": "Added new artifact: [EXCLUDED_GENERATED_ARTIFACT]",
+          "step": "6",
+          "step_outcome": "passed",
+          "success": true,
+          "tool": "exec_command",
+          "turn": "baseline-001"
+        }
+      },
+      "observation": "Memo includes row-level segment evaluation, validation checks, threshold sensitivity checks, uncertainty notes, and final pass/warn/fail/needs_review table.",
+      "operation": "write",
+      "output": "Created [EXCLUDED_GENERATED_ARTIFACT] with final recommendation reject for CT-881.",
+      "parallel_group": null,
+      "reasoning": "Required narrative output for audit and human review completed from packet-only calculations.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Added new artifact: [EXCLUDED_GENERATED_ARTIFACT]",
+      "step": 6,
+      "step_outcome": "neutral",
+      "success": true,
+      "tool": "Bash",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "artifact_refs": [
+        "actual_outputs.json"
+      ],
+      "causal_note": "Materialized required output contract files before trace finalization.",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "cat > actual_outputs.json",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "artifact_count": 2,
+        "normalization_warnings": [
+          "turn value 'baseline-001' was not numeric; defaulted to 1"
+        ],
+        "original_action": "Recorded machine-readable actual outputs manifest",
+        "original_causal_type": "contract_compliance",
+        "original_step_outcome": "passed",
+        "original_turn": "baseline-001",
+        "raw_step": {
+          "action": "Recorded machine-readable actual outputs manifest",
+          "actor": "worker",
+          "artifact_refs": [
+            "actual_outputs.json"
+          ],
+          "causal_note": "Materialized required output contract files before trace finalization.",
+          "causal_type": "contract_compliance",
+          "caused_by": "steps 5-6",
+          "error_message": null,
+          "error_type": null,
+          "input": "cat > actual_outputs.json",
+          "metadata_json": {
+            "artifact_count": 2
+          },
+          "observation": "Manifest enumerates generated files and type descriptors.",
+          "operation": "write",
+          "output": "Created actual_outputs.json with both required artifact entries and task metadata.",
+          "reasoning": "Required output contract asks explicit manifest file in attempt directory.",
+          "state_change": "Added new artifact: actual_outputs.json.",
+          "step": "7",
+          "step_outcome": "passed",
+          "success": true,
+          "tool": "exec_command",
+          "turn": "baseline-001"
+        }
+      },
+      "observation": "Manifest enumerates generated files and type descriptors.",
+      "operation": "write",
+      "output": "Created actual_outputs.json with both required artifact entries and task metadata.",
+      "parallel_group": null,
+      "reasoning": "Required output contract asks explicit manifest file in attempt directory.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Added new artifact: actual_outputs.json.",
+      "step": 7,
+      "step_outcome": "neutral",
+      "success": true,
+      "tool": "Bash",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "artifact_refs": [
+        "agent_trace.json"
+      ],
+      "causal_note": "Final artifact includes error capture and artifact references for reviewability.",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "cat > agent_trace.json",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "normalization_warnings": [
+          "turn value 'baseline-001' was not numeric; defaulted to 1"
+        ],
+        "original_action": "Wrote structured agent workflow trace file",
+        "original_causal_type": "closing",
+        "original_step_outcome": "passed",
+        "original_turn": "baseline-001",
+        "raw_step": {
+          "action": "Wrote structured agent workflow trace file",
+          "actor": "worker",
+          "artifact_refs": [
+            "agent_trace.json"
+          ],
+          "causal_note": "Final artifact includes error capture and artifact references for reviewability.",
+          "causal_type": "closing",
+          "caused_by": "step 7",
+          "error_message": null,
+          "error_type": null,
+          "input": "cat > agent_trace.json",
+          "metadata_json": {
+            "schema_fields_used": [
+              "step",
+              "turn",
+              "actor",
+              "action",
+              "operation",
+              "tool",
+              "observation",
+              "input",
+              "output",
+              "state_change",
+              "reasoning",
+              "caused_by",
+              "causal_type",
+              "causal_note",
+              "success",
+              "step_outcome",
+              "error_type",
+              "error_message",
+              "artifact_refs",
+              "metadata_json"
+            ]
+          },
+          "observation": "Trace file includes all meaningful actions with required canonical field names.",
+          "operation": "write",
+          "output": "Created agent_trace.json with 8 canonical steps spanning read/write/execute/validation activities.",
+          "reasoning": "Completed explicit workflow evidence capture requested by user instructions.",
+          "state_change": "Added new artifact: agent_trace.json.",
+          "step": "8",
+          "step_outcome": "passed",
+          "success": true,
+          "tool": "exec_command",
+          "turn": "baseline-001"
+        },
+        "schema_fields_used": [
+          "step",
+          "turn",
+          "actor",
+          "action",
+          "operation",
+          "tool",
+          "observation",
+          "input",
+          "output",
+          "state_change",
+          "reasoning",
+          "caused_by",
+          "causal_type",
+          "causal_note",
+          "success",
+          "step_outcome",
+          "error_type",
+          "error_message",
+          "artifact_refs",
+          "metadata_json"
+        ]
+      },
+      "observation": "Trace file includes all meaningful actions with required canonical field names.",
+      "operation": "write",
+      "output": "Created agent_trace.json with 8 canonical steps spanning read/write/execute/validation activities.",
+      "parallel_group": null,
+      "reasoning": "Completed explicit workflow evidence capture requested by user instructions.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Added new artifact: agent_trace.json.",
+      "step": 8,
+      "step_outcome": "neutral",
+      "success": true,
+      "tool": "Bash",
+      "turn": 1
+    }
+  ],
+  "system_prompt": null,
+  "system_prompt_hash": null,
+  "task": "Flagship expert task: CAR-T Cryogenic Chain-of-Custody Excursion Disposition. Reality context: a CAR-T logistics team found a temperature logger gap and must decide whether the product can proceed to infusion. Embedded packet: shipment_id=CT-881; temp_limit_C=-120; logger rows: segment A min=-154 max=-137 duration_h=9 custody_scan=pass, B min=-129 max=-118 duration=0.6 scan=pass, C min=-146 max=-130 duration=5 scan=missing, D min=-151 max=-140 duration=7 scan=pass; rules temp excursion if max>-120 for >0.25h, custody gap if scan missing, high risk if both occur; backup shipper dry_ice_hold_h=18. Rules and constraints: Compute excursion duration, custody gap status, and disposition. Recommend release with deviation, quarantine, or reject; do not infer biological potency beyond chain data. Required work: deliver cart_cryo_excursion.xlsx + disposition_memo.md. The deliverables must include formulas or executable logic, intermediate calculations, row-level citations to the embedded packet, validation checks, uncertainty notes, sensitivity checks around the controlling thresholds, and a final decision table with pass/warn/fail/needs_review labels. Use only the embedded packet. Do not import external data, invent missing values, or hide unresolved assumptions.",
+  "task_family_id": null,
+  "original_internal_task_id": "aa_task_0021",
+  "task_id": "621",
+  "termination_reason": "task_complete",
+  "trace_id": "trace_621-baseline_normalized",
+  "trace_mode": "live"
+}

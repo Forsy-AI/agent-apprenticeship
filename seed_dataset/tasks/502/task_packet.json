@@ -1,0 +1,81 @@
+{
+  "schema_version": "aa-seed-task-v0.1",
+  "task_id": "502",
+  "title": "SIMM-Style Simplified Margin Breach Governance Replay and Model-Override Evidence Pack",
+  "domain": "quant_finance_risk_governance",
+  "subdomain": "simm_margin_breach_and_model_override",
+  "domains": [
+    "quant_finance_risk_governance"
+  ],
+  "subdomains": [
+    "simm_margin_breach_and_model_override"
+  ],
+  "agent_apprentice_role": "quantitative margin risk governance lead",
+  "task_family": "risk_model_governance_replay",
+  "difficulty_tier": "expert",
+  "expected_economic_value": "$225k-$375k senior quant risk governance / margin model validation compensation",
+  "expected_economic_value_for_agent_apprentice": "$250+",
+  "expected_deliverable": "simm_governance_replay.ipynb + model_risk_committee_memo.md",
+  "deliverables": [
+    "simm_governance_replay.ipynb",
+    "model_risk_committee_memo.md"
+  ],
+  "normalized_title": "SIMM-Style Simplified Margin Breach Governance Replay and Model-Override Evidence Pack",
+  "instruction": "SIMM Margin Breach Governance Replay and Model-Override Evidence Pack. Context: a bank model-risk committee must decide whether an intraday non-cleared derivatives margin breach is a true portfolio-risk change, a sensitivity-feed defect, or a governance override candidate before issuing same-day collateral calls. Task packet: portfolio_id=CP-47; threshold_call_usd=5,000,000; independent_amount_usd=1,200,000; prior_approved_IM_usd=38,600,000; governance_limit same_day_IM_increase_pct=18 and unresolved_feed_break_usd=2,000,000; risk_weights: IR_USD=42, IR_EUR=39, CREDIT_IG=85, CREDIT_HY=280, EQ_DM=32, EQ_EM=45, FX=24, COMMODITY=65; concentration_thresholds_usd_delta: IR=210000000, CREDIT=38000000, EQ=110000000, FX=160000000, COMM=42000000; correlations within bucket=0.35 across risk_class=0.18; sensitivities_usd_delta: T0 IR_USD=184000000 IR_EUR=-62000000 CREDIT_IG=24000000 CREDIT_HY=-9000000 EQ_DM=-76000000 EQ_EM=28000000 FX=41000000 COMMODITY=-18000000; T1_front_office IR_USD=231000000 IR_EUR=-59000000 CREDIT_IG=25500000 CREDIT_HY=-11200000 EQ_DM=-91000000 EQ_EM=31000000 FX=107000000 COMMODITY=-19000000; T1_risk_feed IR_USD=231000000 IR_EUR=-59000000 CREDIT_IG=25500000 CREDIT_HY=-11200000 EQ_DM=-91000000 EQ_EM=31000000 FX=427000000 COMMODITY=-19000000; trade_events: E1 new_usd_receiver_swap delta_IR_USD=47000000 ticket=valid, E2 fx_option_barrier delta_FX=66000000 ticket=pending_confirmation, E3 stale_fx_delta_multiplier suspected_factor=10 source=risk_feed_only; backtest_10day_losses_usd newest_first=6100000,2800000,-900000,4100000,7600000,1200000,3300000,5400000,-1500000,2500000; model_pnl_explain_threshold_usd=4,800,000. Rules and constraints: bucket_margin = risk_weight*abs(sensitivity)/10000*concentration_factor where concentration_factor=max(1,sqrt(abs(sensitivity)/threshold)); aggregate_margin = sqrt(sum(bucket_margin^2)+2*0.18*sum_all_cross_pairs_abs(bucket_i*bucket_j)); margin_call=max(0,aggregate_margin+independent_amount-prior_approved_IM-threshold_call); feed_break_amount equals absolute difference between T1_risk_feed and T1_front_office aggregate margin; breach governance is red if IM increase_pct>18 and feed_break_amount>2,000,000, amber if either condition holds; backtest exception if loss>aggregate_margin*0.12. Required work: deliver simm_governance_replay.ipynb + model_risk_committee_memo.md with T0/T1 front-office/T1 risk-feed margins, call amounts, feed-break attribution, backtest exception count, governance color, recommended collateral action, and regression tests that would catch the suspected FX multiplier defect. Use only embedded numbers; do not import market data or use proprietary risk engines. This task is self-contained: use the task packet as the factual record, do not add source references or external datasets, and preserve a high-fidelity audit trail for every calculation, classification, and recommendation. State assumptions and unresolved evidence gaps explicitly. When executed locally, place final deliverables under the artifacts/ directory.",
+  "task_status": "ready_to_run",
+  "run_status": "not_run",
+  "seed_rank": 2,
+  "display_order": 2,
+  "allowed_tools": [
+    "Local text editor or Markdown editor",
+    "Local spreadsheet, CSV, JSON, YAML, or scripting tools for deterministic calculations",
+    "Local validation or linting commands",
+    "Local plotting or diagramming tools when useful"
+  ],
+  "disallowed_tools": [
+    "External fact lookup or live data pulls",
+    "Live production systems, cloud accounts, trading systems, clinical systems, or industrial controls",
+    "Secret discovery, credential testing, or any action outside the prepared task workspace"
+  ],
+  "privacy_classification": "synthetic",
+  "needs_expert_review": true,
+  "input_requirements": [
+    "Use the task packet as the sole factual input.",
+    "Cite row IDs, record IDs, thresholds, formulas, and option IDs from the packet wherever they control a conclusion.",
+    "Mark missing, contradictory, or under-supported values as needs_review instead of inventing them."
+  ],
+  "inputs": [
+    "All factual inputs are embedded in the task packet.",
+    "Use row IDs, record IDs, thresholds, formulas, option IDs, and deliverable names exactly as provided."
+  ],
+  "output_requirements": [
+    "Produce the required deliverable files with the specified filenames when filenames are provided.",
+    "Include intermediate calculations or executable logic sufficient for another reviewer to reproduce the result.",
+    "Include validation checks, sensitivity notes around controlling thresholds, and a final decision or recommendation table."
+  ],
+  "constraints": [
+    "Use the task packet as the factual record.",
+    "Do not browse, call live services, import external datasets, or invent missing values.",
+    "Treat regulated or safety-critical outputs as review packets, not authorization to act."
+  ],
+  "quality_bar": [
+    "Treat the task as realistic professional work with domain-appropriate rigor.",
+    "Preserve the packet's domain detail, identifiers, thresholds, and edge cases in the final deliverables.",
+    "Make every recommendation traceable to explicit task-packet evidence or mark it as needs_review."
+  ],
+  "validation_expectations": [
+    "Check required fields, row counts, totals, thresholds, and classifications before finalizing.",
+    "Show enough formulas, script logic, or tables for an independent reviewer to reproduce the result.",
+    "Flag any contradiction, missing input, or threshold-sensitive conclusion."
+  ],
+  "edge_cases": [
+    "If packet evidence is incomplete, do not infer missing values; label the item needs_review.",
+    "If multiple options satisfy hard constraints, rank them using the packet's stated priorities and explain ties.",
+    "If a regulated or safety-critical conclusion appears, frame the output as a review packet rather than authorization to act."
+  ],
+  "privacy_safety_expectations": [
+    "Do not use live systems, private accounts, credentials, or external datasets.",
+    "Do not include raw secrets or operational instructions that would execute real-world changes.",
+    "Keep synthetic identifiers from the packet only when needed for verification."
+  ]
+}

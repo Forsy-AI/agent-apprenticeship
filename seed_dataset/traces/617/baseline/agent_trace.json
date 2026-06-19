@@ -1,0 +1,599 @@
+{
+  "actual_outputs": {
+    "original_internal_attempt_id": "aa_task_0017_baseline",
+    "attempt_id": "617-baseline",
+    "attempt_kind": "baseline",
+    "error_message": null,
+    "error_type": null,
+    "metadata_json": {
+      "actual_outputs_discarded_field_count": 0,
+      "actual_outputs_normalized": true,
+      "expected_deliverable_items": [
+        "or_block_recovery.xlsx",
+        "perioperative_committee_memo.md"
+      ],
+      "original_fields": {
+        "artifacts": [
+          "[REDACTED_LOCAL_PATH]",
+          "[REDACTED_LOCAL_PATH]"
+        ],
+        "attempt": "baseline",
+        "notes": "Packet-only computation with auditable formulas and decision labels"
+      },
+      "produced_deliverable_items": [
+        "perioperative_committee_memo.md",
+        "or_block_recovery.xlsx"
+      ],
+      "raw_actual_outputs": {
+        "artifacts": [
+          "[REDACTED_LOCAL_PATH]",
+          "[REDACTED_LOCAL_PATH]"
+        ],
+        "attempt": "baseline",
+        "notes": "Packet-only computation with auditable formulas and decision labels",
+        "status": "complete",
+        "original_internal_task_id": "aa_task_0017",
+        "task_id": "617"
+      }
+    },
+    "output_summary": "Normalized actual outputs from artifact files.",
+    "status": "success",
+    "original_internal_task_id": "aa_task_0017",
+    "task_id": "617",
+    "required_deliverables": [
+      "or_block_recovery.xlsx",
+      "perioperative_committee_memo.md"
+    ],
+    "produced_deliverables": [
+      "perioperative_committee_memo.md",
+      "or_block_recovery.xlsx"
+    ],
+    "missing_required_deliverables": [],
+    "deliverable_produced": true,
+    "deliverable_file_included": false,
+    "included_generated_artifacts": false,
+    "artifacts_excluded_reason": "Generated output artifacts are excluded from the public seed dataset by default.",
+    "logs_included": false,
+    "logs_excluded_reason": "Raw runner logs are excluded from the public seed dataset."
+  },
+  "agent_config": null,
+  "agent_tools": [
+    "codex_cli",
+    "Bash",
+    "python",
+    "file_read",
+    "file_write",
+    "apply_patch"
+  ],
+  "artifacts": [],
+  "original_internal_attempt_id": "aa_task_0017_baseline",
+  "attempt_id": "617-baseline",
+  "attempt_kind": "baseline",
+  "attempt_status": "completed",
+  "collection_id": null,
+  "completion_reason": null,
+  "ended_at": null,
+  "final_attempt_id": null,
+  "initial_attempt_id": null,
+  "iteration_index": null,
+  "learning": null,
+  "memory": null,
+  "metadata_json": {
+    "codex_command": [
+      "codex",
+      "exec",
+      "--sandbox",
+      "workspace-write",
+      "<prompt>"
+    ],
+    "codex_sandbox": "workspace-write",
+    "discarded_step_count": 0,
+    "raw_trace_list": [
+      {
+        "action": "Read task JSON and briefing",
+        "actor": "worker",
+        "artifact_refs": [
+          "./input/task.json",
+          "./input/task_brief.md"
+        ],
+        "causal_note": "No external data allowed",
+        "causal_type": "initiated",
+        "caused_by": "user_task",
+        "error_message": "",
+        "error_type": "",
+        "input": [
+          "./input/task.json",
+          "./input/task_brief.md"
+        ],
+        "metadata_json": {
+          "source": "embedded_packet"
+        },
+        "observation": "Extracted OR blocks, delayed cases, penalties, and overtime limits from ./input/task.json and ./input/task_brief.md",
+        "operation": "read",
+        "output": "Packet values loaded into working calculations",
+        "reasoning": "Needed hard constraints before any artifact generation",
+        "state_change": "No changes yet",
+        "step": "Parsed task packet and constraints",
+        "step_outcome": "success",
+        "success": true,
+        "tool": "functions.exec_command",
+        "turn": 1
+      },
+      {
+        "action": "Built OOXML workbook using Python standard library",
+        "actor": "worker",
+        "causal_note": "Generated formula-based recovery candidates and scenarios",
+        "causal_type": "derived",
+        "caused_by": "parse_task_context",
+        "error_message": "",
+        "error_type": "",
+        "input": "Computed schedules, penalties, and headroom formulas",
+        "metadata_json": {
+          "sheets": [
+            "Input_Packet",
+            "Scenario_Evaluation",
+            "Sensitivity",
+            "Validation_and_Decision"
+          ]
+        },
+        "observation": "Created [EXCLUDED_GENERATED_ARTIFACT] with 4 sheets and formula-based feasibility/overhead/decision logic.",
+        "operation": "write",
+        "output": "Spreadsheet artifact created",
+        "reasoning": "Used packet-only inputs and embedded formulas for auditable logic",
+        "state_change": "Added file: [EXCLUDED_GENERATED_ARTIFACT]",
+        "step": "Generated XLSX recovery model",
+        "step_outcome": "success",
+        "success": true,
+        "tool": "Python (zipfile + XML)",
+        "turn": 2
+      },
+      {
+        "action": "Created perioperative memo with calculations, validation checks, uncertainty and recommendations",
+        "actor": "worker",
+        "causal_note": "Included uncertainty and sensitivity sections",
+        "causal_type": "artifact_generated",
+        "caused_by": "generate_xlsx",
+        "error_message": "",
+        "error_type": "",
+        "input": "Model results from scenario table",
+        "metadata_json": {
+          "decision": "S1_C1_OR1_C2_OR3_CancelC3"
+        },
+        "observation": "Added perioperative_committee_memo.md with pass/warn/fail/needs_review labels and threshold sensitivity commentary.",
+        "operation": "write",
+        "output": "Memo artifact created",
+        "reasoning": "Required narrative artifact must present audit trail and governance decision framing",
+        "state_change": "Added file: [EXCLUDED_GENERATED_ARTIFACT]",
+        "step": "Wrote committee memo",
+        "step_outcome": "success",
+        "success": true,
+        "tool": "Python",
+        "turn": 3
+      },
+      {
+        "action": "Wrote actual_outputs.json",
+        "actor": "worker",
+        "artifact_refs": [
+          "actual_outputs.json"
+        ],
+        "causal_note": "Completes required evidence set",
+        "causal_type": "deliverable",
+        "caused_by": "write_memo",
+        "error_message": "",
+        "error_type": "",
+        "input": "artifact paths and status",
+        "metadata_json": {},
+        "observation": "Recorded artifact list and delivery metadata",
+        "operation": "write",
+        "output": "actual_outputs.json written",
+        "reasoning": "Required by task contract",
+        "state_change": "Added file: actual_outputs.json",
+        "step": "Wrote output control JSON",
+        "step_outcome": "success",
+        "success": true,
+        "tool": "Python",
+        "turn": 4
+      },
+      {
+        "action": "Wrote agent_trace.json with required schema fields",
+        "actor": "worker",
+        "artifact_refs": [
+          "agent_trace.json"
+        ],
+        "causal_note": "Used canonical key names requested by user",
+        "causal_type": "deliverable",
+        "caused_by": "write_outputs",
+        "error_message": "",
+        "error_type": "",
+        "input": "Completed trace records",
+        "metadata_json": {
+          "fields_compliance": "canonical_schema"
+        },
+        "observation": "Persisted five canonical steps with tool/input/output/state_change and outcome metadata.",
+        "operation": "write",
+        "output": "agent_trace.json written",
+        "reasoning": "Trace required for apprenticeship workflow evidence",
+        "state_change": "Added file: agent_trace.json",
+        "step": "Wrote structured execution trace",
+        "step_outcome": "success",
+        "success": true,
+        "tool": "Python",
+        "turn": 5
+      }
+    ],
+    "raw_trace_preserved": true,
+    "raw_trace_shape": "list",
+    "raw_trace_step_source": "steps",
+    "schema_valid": true,
+    "trace_normalization_status": "partial",
+    "trace_valid": true
+  },
+  "preferred_attempt_id": null,
+  "previous_attempt_id": null,
+  "prior_trace_id": null,
+  "revision_attempt_ids": [],
+  "revision_group_id": null,
+  "schema_version": "aa-trace-v0.1",
+  "skills": null,
+  "started_at": null,
+  "steps": [
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "artifact_refs": [
+        "./input/task.json",
+        "./input/task_brief.md"
+      ],
+      "causal_note": "No external data allowed",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": "",
+      "error_type": "",
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "[\"./input/task.json\", \"./input/task_brief.md\"]",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "input": [
+          "./input/task.json",
+          "./input/task_brief.md"
+        ],
+        "normalization_warnings": [
+          "step value 'Parsed task packet and constraints' was not numeric; defaulted to 1"
+        ],
+        "original_action": "Read task JSON and briefing",
+        "original_causal_type": "initiated",
+        "original_step": "Parsed task packet and constraints",
+        "original_step_outcome": "success",
+        "raw_step": {
+          "action": "Read task JSON and briefing",
+          "actor": "worker",
+          "artifact_refs": [
+            "./input/task.json",
+            "./input/task_brief.md"
+          ],
+          "causal_note": "No external data allowed",
+          "causal_type": "initiated",
+          "caused_by": "user_task",
+          "error_message": "",
+          "error_type": "",
+          "input": [
+            "./input/task.json",
+            "./input/task_brief.md"
+          ],
+          "metadata_json": {
+            "source": "embedded_packet"
+          },
+          "observation": "Extracted OR blocks, delayed cases, penalties, and overtime limits from ./input/task.json and ./input/task_brief.md",
+          "operation": "read",
+          "output": "Packet values loaded into working calculations",
+          "reasoning": "Needed hard constraints before any artifact generation",
+          "state_change": "No changes yet",
+          "step": "Parsed task packet and constraints",
+          "step_outcome": "success",
+          "success": true,
+          "tool": "functions.exec_command",
+          "turn": 1
+        },
+        "source": "embedded_packet"
+      },
+      "observation": "Extracted OR blocks, delayed cases, penalties, and overtime limits from ./input/task.json and ./input/task_brief.md",
+      "operation": "read",
+      "output": "Packet values loaded into working calculations",
+      "parallel_group": null,
+      "reasoning": "Needed hard constraints before any artifact generation",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "No changes yet",
+      "step": 1,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "file_read",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "causal_note": "Generated formula-based recovery candidates and scenarios",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": "",
+      "error_type": "",
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "Computed schedules, penalties, and headroom formulas",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "normalization_warnings": [
+          "step value 'Generated XLSX recovery model' was not numeric; defaulted to 2"
+        ],
+        "original_action": "Built OOXML workbook using Python standard library",
+        "original_causal_type": "derived",
+        "original_step": "Generated XLSX recovery model",
+        "original_step_outcome": "success",
+        "raw_step": {
+          "action": "Built OOXML workbook using Python standard library",
+          "actor": "worker",
+          "causal_note": "Generated formula-based recovery candidates and scenarios",
+          "causal_type": "derived",
+          "caused_by": "parse_task_context",
+          "error_message": "",
+          "error_type": "",
+          "input": "Computed schedules, penalties, and headroom formulas",
+          "metadata_json": {
+            "sheets": [
+              "Input_Packet",
+              "Scenario_Evaluation",
+              "Sensitivity",
+              "Validation_and_Decision"
+            ]
+          },
+          "observation": "Created [EXCLUDED_GENERATED_ARTIFACT] with 4 sheets and formula-based feasibility/overhead/decision logic.",
+          "operation": "write",
+          "output": "Spreadsheet artifact created",
+          "reasoning": "Used packet-only inputs and embedded formulas for auditable logic",
+          "state_change": "Added file: [EXCLUDED_GENERATED_ARTIFACT]",
+          "step": "Generated XLSX recovery model",
+          "step_outcome": "success",
+          "success": true,
+          "tool": "Python (zipfile + XML)",
+          "turn": 2
+        },
+        "sheets": [
+          "Input_Packet",
+          "Scenario_Evaluation",
+          "Sensitivity",
+          "Validation_and_Decision"
+        ]
+      },
+      "observation": "Created [EXCLUDED_GENERATED_ARTIFACT] with 4 sheets and formula-based feasibility/overhead/decision logic.",
+      "operation": "write",
+      "output": "Spreadsheet artifact created",
+      "parallel_group": null,
+      "reasoning": "Used packet-only inputs and embedded formulas for auditable logic",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Added file: [EXCLUDED_GENERATED_ARTIFACT]",
+      "step": 2,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "file_write",
+      "turn": 2
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "causal_note": "Included uncertainty and sensitivity sections",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": "",
+      "error_type": "",
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "Model results from scenario table",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "decision": "S1_C1_OR1_C2_OR3_CancelC3",
+        "normalization_warnings": [
+          "step value 'Wrote committee memo' was not numeric; defaulted to 3"
+        ],
+        "original_action": "Created perioperative memo with calculations, validation checks, uncertainty and recommendations",
+        "original_causal_type": "artifact_generated",
+        "original_step": "Wrote committee memo",
+        "original_step_outcome": "success",
+        "raw_step": {
+          "action": "Created perioperative memo with calculations, validation checks, uncertainty and recommendations",
+          "actor": "worker",
+          "causal_note": "Included uncertainty and sensitivity sections",
+          "causal_type": "artifact_generated",
+          "caused_by": "generate_xlsx",
+          "error_message": "",
+          "error_type": "",
+          "input": "Model results from scenario table",
+          "metadata_json": {
+            "decision": "S1_C1_OR1_C2_OR3_CancelC3"
+          },
+          "observation": "Added perioperative_committee_memo.md with pass/warn/fail/needs_review labels and threshold sensitivity commentary.",
+          "operation": "write",
+          "output": "Memo artifact created",
+          "reasoning": "Required narrative artifact must present audit trail and governance decision framing",
+          "state_change": "Added file: [EXCLUDED_GENERATED_ARTIFACT]",
+          "step": "Wrote committee memo",
+          "step_outcome": "success",
+          "success": true,
+          "tool": "Python",
+          "turn": 3
+        }
+      },
+      "observation": "Added perioperative_committee_memo.md with pass/warn/fail/needs_review labels and threshold sensitivity commentary.",
+      "operation": "write",
+      "output": "Memo artifact created",
+      "parallel_group": null,
+      "reasoning": "Required narrative artifact must present audit trail and governance decision framing",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Added file: [EXCLUDED_GENERATED_ARTIFACT]",
+      "step": 3,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "file_write",
+      "turn": 3
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "artifact_refs": [
+        "actual_outputs.json"
+      ],
+      "causal_note": "Completes required evidence set",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": "",
+      "error_type": "",
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "artifact paths and status",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "normalization_warnings": [
+          "step value 'Wrote output control JSON' was not numeric; defaulted to 4"
+        ],
+        "original_action": "Wrote actual_outputs.json",
+        "original_causal_type": "deliverable",
+        "original_step": "Wrote output control JSON",
+        "original_step_outcome": "success",
+        "raw_step": {
+          "action": "Wrote actual_outputs.json",
+          "actor": "worker",
+          "artifact_refs": [
+            "actual_outputs.json"
+          ],
+          "causal_note": "Completes required evidence set",
+          "causal_type": "deliverable",
+          "caused_by": "write_memo",
+          "error_message": "",
+          "error_type": "",
+          "input": "artifact paths and status",
+          "metadata_json": {},
+          "observation": "Recorded artifact list and delivery metadata",
+          "operation": "write",
+          "output": "actual_outputs.json written",
+          "reasoning": "Required by task contract",
+          "state_change": "Added file: actual_outputs.json",
+          "step": "Wrote output control JSON",
+          "step_outcome": "success",
+          "success": true,
+          "tool": "Python",
+          "turn": 4
+        }
+      },
+      "observation": "Recorded artifact list and delivery metadata",
+      "operation": "write",
+      "output": "actual_outputs.json written",
+      "parallel_group": null,
+      "reasoning": "Required by task contract",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Added file: actual_outputs.json",
+      "step": 4,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "file_write",
+      "turn": 4
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "artifact_refs": [
+        "agent_trace.json"
+      ],
+      "causal_note": "Used canonical key names requested by user",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": "",
+      "error_type": "",
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "Completed trace records",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "fields_compliance": "canonical_schema",
+        "normalization_warnings": [
+          "step value 'Wrote structured execution trace' was not numeric; defaulted to 5"
+        ],
+        "original_action": "Wrote agent_trace.json with required schema fields",
+        "original_causal_type": "deliverable",
+        "original_step": "Wrote structured execution trace",
+        "original_step_outcome": "success",
+        "raw_step": {
+          "action": "Wrote agent_trace.json with required schema fields",
+          "actor": "worker",
+          "artifact_refs": [
+            "agent_trace.json"
+          ],
+          "causal_note": "Used canonical key names requested by user",
+          "causal_type": "deliverable",
+          "caused_by": "write_outputs",
+          "error_message": "",
+          "error_type": "",
+          "input": "Completed trace records",
+          "metadata_json": {
+            "fields_compliance": "canonical_schema"
+          },
+          "observation": "Persisted five canonical steps with tool/input/output/state_change and outcome metadata.",
+          "operation": "write",
+          "output": "agent_trace.json written",
+          "reasoning": "Trace required for apprenticeship workflow evidence",
+          "state_change": "Added file: agent_trace.json",
+          "step": "Wrote structured execution trace",
+          "step_outcome": "success",
+          "success": true,
+          "tool": "Python",
+          "turn": 5
+        }
+      },
+      "observation": "Persisted five canonical steps with tool/input/output/state_change and outcome metadata.",
+      "operation": "write",
+      "output": "agent_trace.json written",
+      "parallel_group": null,
+      "reasoning": "Trace required for apprenticeship workflow evidence",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Added file: agent_trace.json",
+      "step": 5,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "file_write",
+      "turn": 5
+    }
+  ],
+  "system_prompt": null,
+  "system_prompt_hash": null,
+  "task": "Flagship expert task: Operating-Room Block Utilization and Robotic Case Recovery Plan. Reality context: a hospital must recover delayed robotic surgery cases after one robot arm failed midday, without increasing overtime beyond contract limits. Embedded packet: blocks: OR1 robot_available=Y block_h=10 scheduled_h=9.2 turnover_h=1.1, OR2 robot=N block=10 scheduled=8.8 turnover=1.4, OR3 robot=Y block=8 scheduled=7.6 turnover=0.9; delayed_cases: C1 duration=2.4 priority=cancer latest_day=1, C2 duration=1.6 priority=benign latest=3, C3 duration=3.1 priority=cancer latest=2; overtime_limit_h=2.0/day; cancellation_penalty cancer=75 benign=20; setup_move_penalty_h=0.35. Rules and constraints: Calculate feasible insertion schedules, overtime, and priority penalty. Recommend case moves/cancellations with explicit utilization and overtime proof. Required work: deliver or_block_recovery.xlsx + perioperative_committee_memo.md. The deliverables must include formulas or executable logic, intermediate calculations, row-level citations to the embedded packet, validation checks, uncertainty notes, sensitivity checks around the controlling thresholds, and a final decision table with pass/warn/fail/needs_review labels. Use only the embedded packet. Do not import external data, invent missing values, or hide unresolved assumptions.",
+  "task_family_id": null,
+  "original_internal_task_id": "aa_task_0017",
+  "task_id": "617",
+  "termination_reason": "task_complete",
+  "trace_id": "trace_617-baseline_normalized",
+  "trace_mode": "live"
+}

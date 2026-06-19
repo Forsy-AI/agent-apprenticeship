@@ -1,0 +1,81 @@
+{
+  "schema_version": "aa-seed-task-v0.1",
+  "task_id": "423",
+  "title": "Solvation Free-Energy Outlier Diagnosis",
+  "domain": "physical_chemistry_modeling",
+  "subdomain": "solvation_free_energy_qc",
+  "domains": [
+    "physical_chemistry_modeling"
+  ],
+  "subdomains": [
+    "solvation_free_energy_qc"
+  ],
+  "agent_apprentice_role": "computational chemistry analyst",
+  "task_family": "outlier_diagnosis",
+  "difficulty_tier": "hard",
+  "expected_economic_value": "$20,000-$90,000 data-quality and modeling package",
+  "expected_economic_value_for_agent_apprentice": "$100-$250",
+  "expected_deliverable": "solvation_outlier_diagnosis.csv + qc_report.md",
+  "deliverables": [
+    "solvation_outlier_diagnosis.csv",
+    "qc_report.md"
+  ],
+  "normalized_title": "Solvation Free-Energy Outlier Diagnosis",
+  "instruction": "Context: a free-energy benchmark has several large errors before model comparison. Task packet: records: R1 calc_dG_kcal=37.43 exp_dG_kcal=54.44 tautomer_risk=0.56 charge_state_confidence=0.59; R2 calc_dG_kcal=44.69 exp_dG_kcal=81.83 tautomer_risk=4.55 charge_state_confidence=0.9; R3 calc_dG_kcal=99.55 exp_dG_kcal=1.11 tautomer_risk=1.69 charge_state_confidence=0.79; R4 calc_dG_kcal=44.45 exp_dG_kcal=79.46 tautomer_risk=5.36 charge_state_confidence=0.83; limit_calc_dG_kcal=47; limit_exp_dG_kcal=80.91; limit_tautomer_risk=2.92; decision_budget_usd=227500; sensitivity_shift_pct=5; hard_threshold_record_count=1;. Rules and constraints: Separate safety/compliance blockers from economic optimizations; blockers override ROI, while nonblockers are ranked by expected value per unit cost. Recommendations cannot use external measurements, specialized licensed software, or hidden assumptions; all calculations must use only the task packet, and any contradictory or under-supported record must be marked needs_review. Required work: explain outliers and exclusion policy; rank records by technical and economic impact, run the stated sensitivity check, and recommend hold, release, retest, or mitigation. Deliver solvation_outlier_diagnosis.CSV + qc_report.md with formulas or executable logic, record-level citations, validation checks, sensitivity notes, and a final recommendation table suitable for expert review. This task is self-contained: use the task packet as the factual record, do not add source references or external datasets, and preserve a high-fidelity audit trail for every calculation, classification, and recommendation. State assumptions and unresolved evidence gaps explicitly. When executed locally, place final deliverables under the artifacts/ directory.",
+  "task_status": "ready_to_run",
+  "run_status": "not_run",
+  "seed_rank": 128,
+  "display_order": 128,
+  "allowed_tools": [
+    "Local text editor or Markdown editor",
+    "Local spreadsheet, CSV, JSON, YAML, or scripting tools for deterministic calculations",
+    "Local validation or linting commands",
+    "Local plotting or diagramming tools when useful"
+  ],
+  "disallowed_tools": [
+    "External fact lookup or live data pulls",
+    "Live production systems, cloud accounts, trading systems, clinical systems, or industrial controls",
+    "Secret discovery, credential testing, or any action outside the prepared task workspace"
+  ],
+  "privacy_classification": "synthetic",
+  "needs_expert_review": true,
+  "input_requirements": [
+    "Use the task packet as the sole factual input.",
+    "Cite row IDs, record IDs, thresholds, formulas, and option IDs from the packet wherever they control a conclusion.",
+    "Mark missing, contradictory, or under-supported values as needs_review instead of inventing them."
+  ],
+  "inputs": [
+    "All factual inputs are embedded in the task packet.",
+    "Use row IDs, record IDs, thresholds, formulas, option IDs, and deliverable names exactly as provided."
+  ],
+  "output_requirements": [
+    "Produce the required deliverable files with the specified filenames when filenames are provided.",
+    "Include intermediate calculations or executable logic sufficient for another reviewer to reproduce the result.",
+    "Include validation checks, sensitivity notes around controlling thresholds, and a final decision or recommendation table."
+  ],
+  "constraints": [
+    "Use the task packet as the factual record.",
+    "Do not browse, call live services, import external datasets, or invent missing values.",
+    "Treat regulated or safety-critical outputs as review packets, not authorization to act."
+  ],
+  "quality_bar": [
+    "Treat the task as realistic professional work with domain-appropriate rigor.",
+    "Preserve the packet's domain detail, identifiers, thresholds, and edge cases in the final deliverables.",
+    "Make every recommendation traceable to explicit task-packet evidence or mark it as needs_review."
+  ],
+  "validation_expectations": [
+    "Check required fields, row counts, totals, thresholds, and classifications before finalizing.",
+    "Show enough formulas, script logic, or tables for an independent reviewer to reproduce the result.",
+    "Flag any contradiction, missing input, or threshold-sensitive conclusion."
+  ],
+  "edge_cases": [
+    "If packet evidence is incomplete, do not infer missing values; label the item needs_review.",
+    "If multiple options satisfy hard constraints, rank them using the packet's stated priorities and explain ties.",
+    "If a regulated or safety-critical conclusion appears, frame the output as a review packet rather than authorization to act."
+  ],
+  "privacy_safety_expectations": [
+    "Do not use live systems, private accounts, credentials, or external datasets.",
+    "Do not include raw secrets or operational instructions that would execute real-world changes.",
+    "Keep synthetic identifiers from the packet only when needed for verification."
+  ]
+}

@@ -1,0 +1,223 @@
+{
+  "original_internal_attempt_id": "aa_task_0610_baseline",
+  "attempt_id": "310-baseline",
+  "attempt_kind": "baseline",
+  "error_message": null,
+  "error_type": null,
+  "metadata_json": {
+    "actual_outputs_discarded_field_count": 0,
+    "actual_outputs_normalized": true,
+    "codex_sandbox": "workspace-write",
+    "expected_deliverable_items": [
+      "endpoint_adjudication_audit.xlsx",
+      "query_memo.md"
+    ],
+    "original_fields": {
+      "confirmed_failures": [
+        "R3"
+      ],
+      "deliverables": [
+        {
+          "bytes": 15793,
+          "description": "Executable endpoint adjudication audit workbook with packet inputs, formulas, remediation scenarios, sensitivity flags, validation checks, and summary decision table.",
+          "sha256": "ff5d68cb1bc045f4680609d58d8971628712de59f368a83019f835590eab4c9c",
+          "type": "xlsx"
+        },
+        {
+          "bytes": 7834,
+          "description": "Query memo documenting packet-only formulas, assumptions, citations, validation checks, sensitivity notes, budget-compliant remediation analysis, and final decision table.",
+          "sha256": "ba3c47d3c9ed87504fec73dad49afe43d9dc42bd62d912d3b32695ce0efffb68",
+          "type": "markdown"
+        }
+      ],
+      "excluded_over_budget_combinations": [
+        {
+          "amount_over_budget_usd": 1650,
+          "combination": "O2+O3",
+          "note": "Excluded despite clearing R3 under assumptions because it exceeds remediation_budget_usd.",
+          "total_cost_usd": 166650
+        },
+        {
+          "amount_over_budget_usd": 52800,
+          "combination": "O1+O2+O3",
+          "note": "Excluded because it exceeds remediation_budget_usd.",
+          "total_cost_usd": 217800
+        }
+      ],
+      "explicit_assumptions_needing_review": [
+        "The packet did not define observed_risk_score weights, so the workbook uses equal-weight normalized drivers.",
+        "event_day is normalized by MAX(event_day) from packet records because no trial duration or external horizon is provided.",
+        "endpoint_status=1 is treated as endpoint-status risk contribution; packet does not define directionality.",
+        "O3 margin improvement is modeled as threshold * 9% added to margin; packet does not define the denominator for the 9% effect.",
+        "The 5% sensitivity test uses paired adverse/favorable shifts to observed_risk_score and normalized_threshold_score."
+      ],
+      "final_decision_table": [
+        {
+          "classification": "pass",
+          "decision_bucket": "pass; sensitivity-sensitive",
+          "expert_review_required": "required",
+          "margin": 3.975,
+          "observed_risk_score": 58.525,
+          "record_id": "R1"
+        },
+        {
+          "classification": "pass",
+          "decision_bucket": "stable pass",
+          "expert_review_required": "not_required",
+          "margin": 46.9125,
+          "observed_risk_score": 15.5875,
+          "record_id": "R2"
+        },
+        {
+          "classification": "fail",
+          "decision_bucket": "confirmed failure",
+          "expert_review_required": "not_required_by_sensitivity_rule",
+          "margin": -6.725,
+          "observed_risk_score": 69.225,
+          "record_id": "R3"
+        },
+        {
+          "classification": "warn",
+          "decision_bucket": "warning",
+          "expert_review_required": "required",
+          "margin": 2.1516,
+          "observed_risk_score": 60.3484,
+          "record_id": "R4"
+        }
+      ],
+      "recommended_budget_compliant_remediation": {
+        "budget_status": "within_budget",
+        "budget_usd": 165000,
+        "combination": "O1+O3",
+        "rationale": "Best feasible average margin lift under the explicit packet-only assumptions; clears R4 warning to pass but leaves R3 slightly negative.",
+        "total_cost_usd": 140250
+      },
+      "validation_summary": {
+        "formula_cell_count": 261,
+        "formula_error_tokens_found": [],
+        "renderer_available": false,
+        "renderer_limitation": "No @oai/artifact-tool, LibreOffice, or equivalent spreadsheet renderer was available in the sandbox; validation used zip/XML/formula inspection.",
+        "xlsx_zip_integrity": "passed",
+        "xml_parse_check": "passed"
+      },
+      "warnings": [
+        "R4"
+      ]
+    },
+    "produced_deliverable_items": [
+      "query_memo.md",
+      "endpoint_adjudication_audit.xlsx"
+    ],
+    "raw_actual_outputs": {
+      "confirmed_failures": [
+        "R3"
+      ],
+      "deliverables": [
+        {
+          "bytes": 15793,
+          "description": "Executable endpoint adjudication audit workbook with packet inputs, formulas, remediation scenarios, sensitivity flags, validation checks, and summary decision table.",
+          "sha256": "ff5d68cb1bc045f4680609d58d8971628712de59f368a83019f835590eab4c9c",
+          "type": "xlsx"
+        },
+        {
+          "bytes": 7834,
+          "description": "Query memo documenting packet-only formulas, assumptions, citations, validation checks, sensitivity notes, budget-compliant remediation analysis, and final decision table.",
+          "sha256": "ba3c47d3c9ed87504fec73dad49afe43d9dc42bd62d912d3b32695ce0efffb68",
+          "type": "markdown"
+        }
+      ],
+      "excluded_over_budget_combinations": [
+        {
+          "amount_over_budget_usd": 1650,
+          "combination": "O2+O3",
+          "note": "Excluded despite clearing R3 under assumptions because it exceeds remediation_budget_usd.",
+          "total_cost_usd": 166650
+        },
+        {
+          "amount_over_budget_usd": 52800,
+          "combination": "O1+O2+O3",
+          "note": "Excluded because it exceeds remediation_budget_usd.",
+          "total_cost_usd": 217800
+        }
+      ],
+      "explicit_assumptions_needing_review": [
+        "The packet did not define observed_risk_score weights, so the workbook uses equal-weight normalized drivers.",
+        "event_day is normalized by MAX(event_day) from packet records because no trial duration or external horizon is provided.",
+        "endpoint_status=1 is treated as endpoint-status risk contribution; packet does not define directionality.",
+        "O3 margin improvement is modeled as threshold * 9% added to margin; packet does not define the denominator for the 9% effect.",
+        "The 5% sensitivity test uses paired adverse/favorable shifts to observed_risk_score and normalized_threshold_score."
+      ],
+      "final_decision_table": [
+        {
+          "classification": "pass",
+          "decision_bucket": "pass; sensitivity-sensitive",
+          "expert_review_required": "required",
+          "margin": 3.975,
+          "observed_risk_score": 58.525,
+          "record_id": "R1"
+        },
+        {
+          "classification": "pass",
+          "decision_bucket": "stable pass",
+          "expert_review_required": "not_required",
+          "margin": 46.9125,
+          "observed_risk_score": 15.5875,
+          "record_id": "R2"
+        },
+        {
+          "classification": "fail",
+          "decision_bucket": "confirmed failure",
+          "expert_review_required": "not_required_by_sensitivity_rule",
+          "margin": -6.725,
+          "observed_risk_score": 69.225,
+          "record_id": "R3"
+        },
+        {
+          "classification": "warn",
+          "decision_bucket": "warning",
+          "expert_review_required": "required",
+          "margin": 2.1516,
+          "observed_risk_score": 60.3484,
+          "record_id": "R4"
+        }
+      ],
+      "recommended_budget_compliant_remediation": {
+        "budget_status": "within_budget",
+        "budget_usd": 165000,
+        "combination": "O1+O3",
+        "rationale": "Best feasible average margin lift under the explicit packet-only assumptions; clears R4 warning to pass but leaves R3 slightly negative.",
+        "total_cost_usd": 140250
+      },
+      "validation_summary": {
+        "formula_cell_count": 261,
+        "formula_error_tokens_found": [],
+        "renderer_available": false,
+        "renderer_limitation": "No @oai/artifact-tool, LibreOffice, or equivalent spreadsheet renderer was available in the sandbox; validation used zip/XML/formula inspection.",
+        "xlsx_zip_integrity": "passed",
+        "xml_parse_check": "passed"
+      },
+      "warnings": [
+        "R4"
+      ]
+    }
+  },
+  "output_summary": "Normalized actual outputs from artifact files.",
+  "status": "success",
+  "original_internal_task_id": "aa_task_0610",
+  "task_id": "310",
+  "required_deliverables": [
+    "endpoint_adjudication_audit.xlsx",
+    "query_memo.md"
+  ],
+  "produced_deliverables": [
+    "query_memo.md",
+    "endpoint_adjudication_audit.xlsx"
+  ],
+  "missing_required_deliverables": [],
+  "deliverable_produced": true,
+  "deliverable_file_included": false,
+  "included_generated_artifacts": false,
+  "artifacts_excluded_reason": "Generated output artifacts are excluded from the public seed dataset by default.",
+  "logs_included": false,
+  "logs_excluded_reason": "Raw runner logs are excluded from the public seed dataset."
+}

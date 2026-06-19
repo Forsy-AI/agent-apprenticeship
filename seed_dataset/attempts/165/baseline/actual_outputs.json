@@ -1,0 +1,128 @@
+{
+  "original_internal_attempt_id": "aa_task_0365_baseline",
+  "attempt_id": "165-baseline",
+  "attempt_kind": "baseline",
+  "error_message": null,
+  "error_type": null,
+  "metadata_json": {
+    "actual_outputs_discarded_field_count": 0,
+    "actual_outputs_normalized": true,
+    "codex_sandbox": "workspace-write",
+    "expected_deliverable_items": [
+      "methane_candidate_table.csv"
+    ],
+    "original_fields": {
+      "assumptions_used": [
+        "Treat 'road' and 'distance_road' as the same semantic field for road-distance scoring.",
+        "Apply strict > comparisons exactly as instructed; slope=10% does not exclude."
+      ],
+      "attempt": "baseline",
+      "decision_counts": {
+        "accept_for_followup": 1,
+        "exclude": 2,
+        "needs_review": 0
+      },
+      "formula": "normalized_road_score=(max_road_m-distance_road_m)/(max_road_m-min_road_m); penalty_count=(flood_depth_m>1?1:0)+(slope_pct>10?1:0); raw_score=normalized_road_score-penalty_count",
+      "human_readable_summary": "Cell A is the only accept_for_followup candidate. Cell B is excluded by flood_depth=1.6m > 1m, and Cell C is excluded by slope=16% > 10%. Road distances were normalized across the three supplied values 120m, 200m, and 320m, then penalized with 0/1 exclusion flags.",
+      "rows": [
+        {
+          "candidate_id": "Cell A",
+          "decision": "accept_for_followup",
+          "exclusion_reason": null,
+          "normalized_road_score": 0.6,
+          "penalty_count": 0,
+          "raw_score": 0.6
+        },
+        {
+          "candidate_id": "Cell B",
+          "decision": "exclude",
+          "exclusion_reason": "exclude because flood_depth=1.6m > 1m",
+          "normalized_road_score": 1.0,
+          "penalty_count": 1,
+          "raw_score": 0.0
+        },
+        {
+          "candidate_id": "Cell C",
+          "decision": "exclude",
+          "exclusion_reason": "exclude because slope=16% > 10%",
+          "normalized_road_score": 0.0,
+          "penalty_count": 1,
+          "raw_score": -1.0
+        }
+      ],
+      "uncertainty_notes": [
+        "No missing inputs in the packet.",
+        "No external data was needed; calculations use only the supplied values."
+      ],
+      "validation_checks_passed": true
+    },
+    "produced_deliverable_items": [
+      "methane_candidate_table.csv"
+    ],
+    "raw_actual_outputs": {
+      "assumptions_used": [
+        "Treat 'road' and 'distance_road' as the same semantic field for road-distance scoring.",
+        "Apply strict > comparisons exactly as instructed; slope=10% does not exclude."
+      ],
+      "attempt": "baseline",
+      "decision_counts": {
+        "accept_for_followup": 1,
+        "exclude": 2,
+        "needs_review": 0
+      },
+      "formula": "normalized_road_score=(max_road_m-distance_road_m)/(max_road_m-min_road_m); penalty_count=(flood_depth_m>1?1:0)+(slope_pct>10?1:0); raw_score=normalized_road_score-penalty_count",
+      "human_readable_summary": "Cell A is the only accept_for_followup candidate. Cell B is excluded by flood_depth=1.6m > 1m, and Cell C is excluded by slope=16% > 10%. Road distances were normalized across the three supplied values 120m, 200m, and 320m, then penalized with 0/1 exclusion flags.",
+      "rows": [
+        {
+          "candidate_id": "Cell A",
+          "decision": "accept_for_followup",
+          "exclusion_reason": null,
+          "normalized_road_score": 0.6,
+          "penalty_count": 0,
+          "raw_score": 0.6
+        },
+        {
+          "candidate_id": "Cell B",
+          "decision": "exclude",
+          "exclusion_reason": "exclude because flood_depth=1.6m > 1m",
+          "normalized_road_score": 1.0,
+          "penalty_count": 1,
+          "raw_score": 0.0
+        },
+        {
+          "candidate_id": "Cell C",
+          "decision": "exclude",
+          "exclusion_reason": "exclude because slope=16% > 10%",
+          "normalized_road_score": 0.0,
+          "penalty_count": 1,
+          "raw_score": -1.0
+        }
+      ],
+      "status": "complete",
+      "original_internal_task_id": "aa_task_0365",
+      "task_id": "165",
+      "uncertainty_notes": [
+        "No missing inputs in the packet.",
+        "No external data was needed; calculations use only the supplied values."
+      ],
+      "validation_checks_passed": true
+    }
+  },
+  "output_summary": "Normalized actual outputs from artifact files.",
+  "status": "success",
+  "original_internal_task_id": "aa_task_0365",
+  "task_id": "165",
+  "required_deliverables": [
+    "methane_candidate_table.csv"
+  ],
+  "produced_deliverables": [
+    "methane_candidate_table.csv"
+  ],
+  "missing_required_deliverables": [],
+  "deliverable_produced": true,
+  "deliverable_file_included": false,
+  "included_generated_artifacts": false,
+  "artifacts_excluded_reason": "Generated output artifacts are excluded from the public seed dataset by default.",
+  "logs_included": false,
+  "logs_excluded_reason": "Raw runner logs are excluded from the public seed dataset."
+}

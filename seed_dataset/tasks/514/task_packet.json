@@ -1,0 +1,81 @@
+{
+  "schema_version": "aa-seed-task-v0.1",
+  "task_id": "514",
+  "title": "AML Sanctions Evasion Network Investigation and SAR Decision Pack",
+  "domain": "financial_crime_compliance_aml_sanctions",
+  "subdomain": "trade_based_money_laundering_and_sanctions_evasion_triage",
+  "domains": [
+    "financial_crime_compliance_aml_sanctions"
+  ],
+  "subdomains": [
+    "trade_based_money_laundering_and_sanctions_evasion_triage"
+  ],
+  "agent_apprentice_role": "financial intelligence investigations lead",
+  "task_family": "aml_network_scoring_and_sar_decision",
+  "difficulty_tier": "expert",
+  "expected_economic_value": "$150k-$275k senior AML sanctions investigation / financial crime compliance role",
+  "expected_economic_value_for_agent_apprentice": "$250+",
+  "expected_deliverable": "aml_sanctions_investigation.xlsx + sar_decision_narrative.md",
+  "deliverables": [
+    "aml_sanctions_investigation.xlsx",
+    "sar_decision_narrative.md"
+  ],
+  "normalized_title": "AML Sanctions Evasion Network Investigation and SAR Decision Pack",
+  "instruction": "A bank financial-intelligence unit must decide whether to file a SAR, reject pending wires, and exit a customer relationship after a synthetic trade-finance customer shows sanctions-evasion typologies across shell-company payments and crypto off-ramps. Case packet uses fully synthetic names. Customer C-771 Atlas Meridian Import LLC, onboarded 2024-11-02, expected activity=$1.2M/month electronics imports from Singapore and Germany, stated beneficial owners: Mira Chen 55%, Daniel Rios 45%, risk rating at onboarding=medium. Transactions last 45 days: T1 $486,200 to North Caspian Components FZE, UAE, invoice INV-441 servers, goods weight=18 kg, expected comparable customs value=$92,000; T2 $512,900 to Baltic Relay OU, Estonia, invoice chips, beneficiary bank changed 2 hours before wire; T3 $79,500 incoming from Clearwell Robotics Ltd, UK, no invoice; T4 $244,000 to Volga Transit DMCC, UAE, payment note freight equalization, vessel field blank; T5 $98,600 to crypto_exchange deposit wallet W-9A with memo consulting; T6 $501,100 to North Caspian Components FZE split into 5 wires under $105,000 over 2 days; T7 $38,800 incoming from private-wallet OTC broker, originator address missing. Screening excerpt: sanctions_entry S1 North Caspian Machinery LLC jurisdiction=RU program=EO14024 aliases=[North Caspian Mach, N Caspian Machinery] match_score_to_beneficiary=86; S2 Volga Freight JSC jurisdiction=RU aliases=[Volga Transit Logistics] match_score_to_beneficiary=72; PEP_entry P1 Daniil Riosov state procurement deputy DOB_year=1978 match_to_Daniel_Rios=64. KYC anomalies: beneficial-owner passport for Rios expired 2025-12-01; website domain age=38 days; shipping documents reuse container_id MSKU-773102 across T1 and T4; customer explanation says urgent GPU shortage, but HS code listed=8542.31 microcontrollers. Rules and constraints: risk score = sanctions_near_match>=85 add 35, match 70-84 add 18, trade_overvaluation_ratio>3 add 25, split_payments add 16, crypto_offramp add 14, expired_BO_document add 10, impossible_or_reused_shipping add 18, inconsistent_HS_goods add 12, PEP_match>=60 add 8; SAR recommended if score>=70 or any sanctions_near_match>=85 with suspicious trade rationale; reject pending wires if OFAC escalation required or beneficiary match>=85 until sanctions officer clears; do not call any synthetic party a true sanctioned person, classify as potential match requiring escalation. Required work: deliver aml_sanctions_investigation.xlsx + sar_decision_narrative.md with transaction graph, red-flag scoring, sanctions-escalation queue, evidence table, filing/reject/exit recommendation, and a concise SAR-style chronology grounded only in the case packet. This task is self-contained: use the task packet as the factual record, do not add source references or external datasets, and preserve a high-fidelity audit trail for every calculation, classification, and recommendation. State assumptions and unresolved evidence gaps explicitly. When executed locally, place final deliverables under the artifacts/ directory.",
+  "task_status": "ready_to_run",
+  "run_status": "not_run",
+  "seed_rank": 14,
+  "display_order": 14,
+  "allowed_tools": [
+    "Local text editor or Markdown editor",
+    "Local spreadsheet, CSV, JSON, YAML, or scripting tools for deterministic calculations",
+    "Local validation or linting commands",
+    "Local plotting or diagramming tools when useful"
+  ],
+  "disallowed_tools": [
+    "External fact lookup or live data pulls",
+    "Live production systems, cloud accounts, trading systems, clinical systems, or industrial controls",
+    "Secret discovery, credential testing, or any action outside the prepared task workspace"
+  ],
+  "privacy_classification": "synthetic",
+  "needs_expert_review": true,
+  "input_requirements": [
+    "Use the task packet as the sole factual input.",
+    "Cite row IDs, record IDs, thresholds, formulas, and option IDs from the packet wherever they control a conclusion.",
+    "Mark missing, contradictory, or under-supported values as needs_review instead of inventing them."
+  ],
+  "inputs": [
+    "All factual inputs are embedded in the task packet.",
+    "Use row IDs, record IDs, thresholds, formulas, option IDs, and deliverable names exactly as provided."
+  ],
+  "output_requirements": [
+    "Produce the required deliverable files with the specified filenames when filenames are provided.",
+    "Include intermediate calculations or executable logic sufficient for another reviewer to reproduce the result.",
+    "Include validation checks, sensitivity notes around controlling thresholds, and a final decision or recommendation table."
+  ],
+  "constraints": [
+    "Use the task packet as the factual record.",
+    "Do not browse, call live services, import external datasets, or invent missing values.",
+    "Treat regulated or safety-critical outputs as review packets, not authorization to act."
+  ],
+  "quality_bar": [
+    "Treat the task as realistic professional work with domain-appropriate rigor.",
+    "Preserve the packet's domain detail, identifiers, thresholds, and edge cases in the final deliverables.",
+    "Make every recommendation traceable to explicit task-packet evidence or mark it as needs_review."
+  ],
+  "validation_expectations": [
+    "Check required fields, row counts, totals, thresholds, and classifications before finalizing.",
+    "Show enough formulas, script logic, or tables for an independent reviewer to reproduce the result.",
+    "Flag any contradiction, missing input, or threshold-sensitive conclusion."
+  ],
+  "edge_cases": [
+    "If packet evidence is incomplete, do not infer missing values; label the item needs_review.",
+    "If multiple options satisfy hard constraints, rank them using the packet's stated priorities and explain ties.",
+    "If a regulated or safety-critical conclusion appears, frame the output as a review packet rather than authorization to act."
+  ],
+  "privacy_safety_expectations": [
+    "Do not use live systems, private accounts, credentials, or external datasets.",
+    "Do not include raw secrets or operational instructions that would execute real-world changes.",
+    "Keep synthetic identifiers from the packet only when needed for verification."
+  ]
+}

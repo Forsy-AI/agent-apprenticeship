@@ -1,0 +1,893 @@
+{
+  "actual_outputs": {
+    "original_internal_attempt_id": "aa_task_0727_revised",
+    "attempt_id": "427-revised",
+    "attempt_kind": "revised",
+    "error_message": null,
+    "error_type": null,
+    "metadata_json": {
+      "actual_outputs_discarded_field_count": 0,
+      "actual_outputs_normalized": true,
+      "expected_deliverable_items": [
+        "landslide_trigger_review.csv",
+        "field_inspection_plan.md"
+      ],
+      "original_fields": {
+        "attempt": "revised",
+        "checks_performed": [
+          "priority_formula_applied",
+          "breach_flags_computed",
+          "hard_threshold_escalation_applied",
+          "sensitivity_plus_minus_5pct_evaluated",
+          "recommendation_enumeration_validated"
+        ],
+        "decision_budget_usd": 25000,
+        "generated_files": [
+          "[EXCLUDED_GENERATED_ARTIFACT]",
+          "[EXCLUDED_GENERATED_ARTIFACT]"
+        ],
+        "hard_threshold_record_count": 1,
+        "record_count": 4,
+        "sensitivity_shift_pct": 5
+      },
+      "produced_deliverable_items": [
+        "field_inspection_plan.md",
+        "landslide_trigger_review.csv"
+      ],
+      "raw_actual_outputs": {
+        "attempt": "revised",
+        "checks_performed": [
+          "priority_formula_applied",
+          "breach_flags_computed",
+          "hard_threshold_escalation_applied",
+          "sensitivity_plus_minus_5pct_evaluated",
+          "recommendation_enumeration_validated"
+        ],
+        "decision_budget_usd": 25000,
+        "generated_files": [
+          "[EXCLUDED_GENERATED_ARTIFACT]",
+          "[EXCLUDED_GENERATED_ARTIFACT]"
+        ],
+        "hard_threshold_record_count": 1,
+        "record_count": 4,
+        "sensitivity_shift_pct": 5,
+        "original_internal_task_id": "aa_task_0727",
+        "task_id": "427"
+      }
+    },
+    "output_summary": "Normalized actual outputs from artifact files.",
+    "status": "success",
+    "original_internal_task_id": "aa_task_0727",
+    "task_id": "427",
+    "required_deliverables": [
+      "landslide_trigger_review.csv",
+      "field_inspection_plan.md"
+    ],
+    "produced_deliverables": [
+      "field_inspection_plan.md",
+      "landslide_trigger_review.csv"
+    ],
+    "missing_required_deliverables": [],
+    "deliverable_produced": true,
+    "deliverable_file_included": false,
+    "included_generated_artifacts": false,
+    "artifacts_excluded_reason": "Generated output artifacts are excluded from the public seed dataset by default.",
+    "logs_included": false,
+    "logs_excluded_reason": "Raw runner logs are excluded from the public seed dataset."
+  },
+  "agent_config": null,
+  "agent_tools": [
+    "codex_cli",
+    "Bash",
+    "python",
+    "file_read",
+    "file_write",
+    "apply_patch"
+  ],
+  "artifacts": [],
+  "original_internal_attempt_id": "aa_task_0727_revised",
+  "attempt_id": "427-revised",
+  "attempt_kind": "revised",
+  "attempt_status": "completed",
+  "collection_id": null,
+  "completion_reason": null,
+  "ended_at": null,
+  "final_attempt_id": null,
+  "initial_attempt_id": null,
+  "iteration_index": null,
+  "learning": null,
+  "memory": null,
+  "metadata_json": {
+    "codex_command": [
+      "codex",
+      "exec",
+      "--sandbox",
+      "workspace-write",
+      "<prompt>"
+    ],
+    "codex_sandbox": "workspace-write",
+    "discarded_step_count": 0,
+    "raw_trace_list": [
+      {
+        "action": "Read input/task.json and input/task_brief.md",
+        "actor": "reviser",
+        "artifact_refs": [
+          "input/task.json",
+          "input/task_brief.md"
+        ],
+        "causal_note": "Provides authoritative source for all downstream calculations.",
+        "causal_type": "precondition",
+        "caused_by": "Task execution start",
+        "error_message": null,
+        "error_type": null,
+        "input": "cat input/task.json && cat input/task_brief.md",
+        "metadata_json": {
+          "formula_expected": "metric1*metric2 - 0.6*metric3 + metric4",
+          "parsed_records": 4
+        },
+        "observation": "Loaded task packet details including metric mapping, limits, sensitivity settings, and rubric requirements.",
+        "operation": "read",
+        "output": "Parsed all embedded records R1..R4, limits, budgets, formula, and required deliverables.",
+        "reasoning": "Baseline constraints must come from the task assets to avoid hidden assumptions and ensure traceability.",
+        "state_change": "No filesystem state changed; task context fully captured for computation.",
+        "step": "Read task specification from structured and narrative inputs",
+        "step_outcome": "Task schema and packet interpreted successfully.",
+        "success": true,
+        "tool": "exec_command",
+        "turn": 1
+      },
+      {
+        "action": "Derive priority_value, breach flags, escalation order, sensitivity outputs",
+        "actor": "reviser",
+        "artifact_refs": [
+          "R1",
+          "R2",
+          "R3",
+          "R4"
+        ],
+        "causal_note": "Numeric outputs directly depend on packet values; no external sources used.",
+        "causal_type": "analysis",
+        "caused_by": "Step 1: task context loaded",
+        "error_message": null,
+        "error_type": null,
+        "input": "records R1..R4 with limits rain=54.67, slope=7.2, soil=57.3 and sensitivity 5%",
+        "metadata_json": {
+          "final_ranks": {
+            "R1": 1,
+            "R2": 3,
+            "R3": 4,
+            "R4": 2
+          },
+          "hard_threshold_record_count_used": 1,
+          "sensitivity_checked": true
+        },
+        "observation": "Executed arithmetic and rule-based ranking from packet only.",
+        "operation": "write",
+        "output": "Computed priority_value set: R1=2023.93, R2=369.66, R3=-24.69, R4=140.58; breach flags and sensitivity rank shifts identified (R2 shifts under +5%).",
+        "reasoning": "Hard-threshold escalation applied by assigning highest final rank to breach-first ordering while preserving numeric priority ordering within bands.",
+        "state_change": "Prepared structured result set for CSV serialization with one row per record.",
+        "step": "Compute technical metrics and ranking inputs",
+        "step_outcome": "Computation ready for artifact emission.",
+        "success": true,
+        "tool": "local_analysis",
+        "turn": 2
+      },
+      {
+        "action": "Write CSV with required metrics, flags, ranks, and recommendations",
+        "actor": "reviser",
+        "causal_note": "CSV rows use only embedded packet metrics and stated limits.",
+        "causal_type": "derivation",
+        "caused_by": "Step 2: computed record-level values",
+        "error_message": null,
+        "error_type": null,
+        "input": "cat <<'EOF' > [EXCLUDED_GENERATED_ARTIFACT] ...",
+        "metadata_json": {
+          "file_type": "csv",
+          "rows": 4
+        },
+        "observation": "CSV file emitted with one row per record and all required fields.",
+        "operation": "write",
+        "output": "Created [EXCLUDED_GENERATED_ARTIFACT] containing computed priority_value, breach flags, needs_review, hard-escalated ranking, sensitivity flags, and recommendation.",
+        "reasoning": "Single artifact provides machine-readable evidence for audit and downstream tooling.",
+        "state_change": "New file created: [EXCLUDED_GENERATED_ARTIFACT]",
+        "step": "Create landslide_trigger_review.csv",
+        "step_outcome": "CSV output complete and written.",
+        "success": true,
+        "tool": "exec_command",
+        "turn": 3
+      },
+      {
+        "action": "Write inspection methodology, formulas, validation checks, sensitivity notes, budget allocation, and recommendations",
+        "actor": "reviser",
+        "causal_note": "Recommendations constrained to hold/release/retest/mitigation and packet-derived evidence.",
+        "causal_type": "documentation",
+        "caused_by": "Step 2: computed record-level values",
+        "error_message": null,
+        "error_type": null,
+        "input": "cat <<'EOF' > [EXCLUDED_GENERATED_ARTIFACT] ...",
+        "metadata_json": {
+          "recommendation_set": [
+            "hold",
+            "release",
+            "retest",
+            "mitigation"
+          ]
+        },
+        "observation": "Plan file created with traceable formulas and expert-review-ready recommendation table.",
+        "operation": "write",
+        "output": "Created [EXCLUDED_GENERATED_ARTIFACT] including pseudocode, validations, sensitivity summary, and budget allocation table with final recommendations.",
+        "reasoning": "Markdown plan captures traceability and rationale required by SOW constraints.",
+        "state_change": "New file created: [EXCLUDED_GENERATED_ARTIFACT]",
+        "step": "Create field_inspection_plan.md",
+        "step_outcome": "Plan artifact complete.",
+        "success": true,
+        "tool": "exec_command",
+        "turn": 4
+      },
+      {
+        "action": "Write output manifest and run flags",
+        "actor": "reviser",
+        "artifact_refs": [
+          "actual_outputs.json"
+        ],
+        "causal_note": "Used only generated artifacts and task settings.",
+        "causal_type": "artifact",
+        "caused_by": "Step 2: finalized required outputs",
+        "error_message": null,
+        "error_type": null,
+        "input": "cat <<'EOF' > actual_outputs.json ...",
+        "metadata_json": {
+          "checks": [
+            "priority_formula_applied",
+            "breach_flags_computed",
+            "sensitivity_checked",
+            "hard_threshold_escalation"
+          ],
+          "file_count": 2
+        },
+        "observation": "Manifest recorded with produced artifacts and validation checklist items.",
+        "operation": "write",
+        "output": "Created actual_outputs.json with output file list, task metadata, and completed check names.",
+        "reasoning": "Manifest provides explicit artifact references and completed processing steps for grader ingestion.",
+        "state_change": "New file created: actual_outputs.json",
+        "step": "Create actual_outputs.json",
+        "step_outcome": "Output manifest written.",
+        "success": true,
+        "tool": "exec_command",
+        "turn": 5
+      },
+      {
+        "action": "Write structured step-by-step workflow trace with mandated fields",
+        "actor": "reviser",
+        "artifact_refs": [
+          "agent_trace.json"
+        ],
+        "causal_note": "Trace includes both computational and write operations.",
+        "causal_type": "deliverable",
+        "caused_by": "Completion of all output artifacts",
+        "error_message": null,
+        "error_type": null,
+        "input": "cat <<'EOF' > agent_trace.json ...",
+        "metadata_json": {
+          "operation_types": [
+            "read",
+            "write",
+            "write",
+            "write",
+            "write",
+            "write"
+          ],
+          "trace_steps": 6
+        },
+        "observation": "Trace file serialized with all required schema field names and causal context for each action.",
+        "operation": "write",
+        "output": "Created agent_trace.json containing 6 trace steps, each capturing action, input/output, state change, and causality.",
+        "reasoning": "Required by task contract for workflow traceability and auditor review.",
+        "state_change": "New file created: agent_trace.json",
+        "step": "Create agent_trace.json workflow trace",
+        "step_outcome": "Agent trace completed.",
+        "success": true,
+        "tool": "exec_command",
+        "turn": 6
+      },
+      {
+        "action": "Patch field_inspection_plan.md to align budget-share values with explicit proportional formula",
+        "actor": "reviser",
+        "artifact_refs": [
+          "agent_trace.json"
+        ],
+        "causal_note": "Correction is traceability-relevant and affects expert-review confidence.",
+        "causal_type": "revision",
+        "caused_by": "Step 3 artifact production + internal consistency review",
+        "error_message": null,
+        "error_type": null,
+        "input": "apply_patch on [EXCLUDED_GENERATED_ARTIFACT] budget_usd rows and explanatory note",
+        "metadata_json": {
+          "trace_steps": 7,
+          "updated_fields": [
+            "budget allocation rows",
+            "total budget note"
+          ]
+        },
+        "observation": "Adjusted budget table from rounded approximations to explicit proportional values and added note that formula preserves total budget before rounding.",
+        "operation": "write",
+        "output": "Updated budget rows for R1/R4/R2 and clarified total-budget handling.",
+        "reasoning": "Need direct consistency with decision_budget_usd without implied budget breach from display rounding.",
+        "state_change": "field_inspection_plan.md rewritten for budget-line consistency.",
+        "step": "Correct budget allocation presentation in inspection plan",
+        "step_outcome": "Plan budget section now reflects exact proportional formula usage.",
+        "success": true,
+        "tool": "apply_patch",
+        "turn": 7
+      }
+    ],
+    "raw_trace_preserved": true,
+    "raw_trace_shape": "list",
+    "raw_trace_step_source": "steps",
+    "schema_valid": true,
+    "trace_normalization_status": "partial",
+    "trace_valid": true
+  },
+  "preferred_attempt_id": null,
+  "previous_attempt_id": null,
+  "prior_trace_id": null,
+  "revision_attempt_ids": [],
+  "revision_group_id": null,
+  "schema_version": "aa-trace-v0.1",
+  "skills": null,
+  "started_at": null,
+  "steps": [
+    {
+      "action": "agent_step",
+      "actor": "reviser",
+      "alternatives_considered": null,
+      "artifact_refs": [
+        "input/task.json",
+        "input/task_brief.md"
+      ],
+      "causal_note": "Provides authoritative source for all downstream calculations.",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "cat input/task.json && cat input/task_brief.md",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "formula_expected": "metric1*metric2 - 0.6*metric3 + metric4",
+        "normalization_warnings": [
+          "step value 'Read task specification from structured and narrative inputs' was not numeric; defaulted to 1"
+        ],
+        "original_action": "Read input/task.json and input/task_brief.md",
+        "original_causal_type": "precondition",
+        "original_step": "Read task specification from structured and narrative inputs",
+        "original_step_outcome": "Task schema and packet interpreted successfully.",
+        "parsed_records": 4,
+        "raw_step": {
+          "action": "Read input/task.json and input/task_brief.md",
+          "actor": "reviser",
+          "artifact_refs": [
+            "input/task.json",
+            "input/task_brief.md"
+          ],
+          "causal_note": "Provides authoritative source for all downstream calculations.",
+          "causal_type": "precondition",
+          "caused_by": "Task execution start",
+          "error_message": null,
+          "error_type": null,
+          "input": "cat input/task.json && cat input/task_brief.md",
+          "metadata_json": {
+            "formula_expected": "metric1*metric2 - 0.6*metric3 + metric4",
+            "parsed_records": 4
+          },
+          "observation": "Loaded task packet details including metric mapping, limits, sensitivity settings, and rubric requirements.",
+          "operation": "read",
+          "output": "Parsed all embedded records R1..R4, limits, budgets, formula, and required deliverables.",
+          "reasoning": "Baseline constraints must come from the task assets to avoid hidden assumptions and ensure traceability.",
+          "state_change": "No filesystem state changed; task context fully captured for computation.",
+          "step": "Read task specification from structured and narrative inputs",
+          "step_outcome": "Task schema and packet interpreted successfully.",
+          "success": true,
+          "tool": "exec_command",
+          "turn": 1
+        }
+      },
+      "observation": "Loaded task packet details including metric mapping, limits, sensitivity settings, and rubric requirements.",
+      "operation": "read",
+      "output": "Parsed all embedded records R1..R4, limits, budgets, formula, and required deliverables.",
+      "parallel_group": null,
+      "reasoning": "Baseline constraints must come from the task assets to avoid hidden assumptions and ensure traceability.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "No filesystem state changed; task context fully captured for computation.",
+      "step": 1,
+      "step_outcome": "neutral",
+      "success": true,
+      "tool": "Bash",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "reviser",
+      "alternatives_considered": null,
+      "artifact_refs": [
+        "R1",
+        "R2",
+        "R3",
+        "R4"
+      ],
+      "causal_note": "Numeric outputs directly depend on packet values; no external sources used.",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "records R1..R4 with limits rain=54.67, slope=7.2, soil=57.3 and sensitivity 5%",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "final_ranks": {
+          "R1": 1,
+          "R2": 3,
+          "R3": 4,
+          "R4": 2
+        },
+        "hard_threshold_record_count_used": 1,
+        "normalization_warnings": [
+          "step value 'Compute technical metrics and ranking inputs' was not numeric; defaulted to 2"
+        ],
+        "original_action": "Derive priority_value, breach flags, escalation order, sensitivity outputs",
+        "original_causal_type": "analysis",
+        "original_step": "Compute technical metrics and ranking inputs",
+        "original_step_outcome": "Computation ready for artifact emission.",
+        "raw_step": {
+          "action": "Derive priority_value, breach flags, escalation order, sensitivity outputs",
+          "actor": "reviser",
+          "artifact_refs": [
+            "R1",
+            "R2",
+            "R3",
+            "R4"
+          ],
+          "causal_note": "Numeric outputs directly depend on packet values; no external sources used.",
+          "causal_type": "analysis",
+          "caused_by": "Step 1: task context loaded",
+          "error_message": null,
+          "error_type": null,
+          "input": "records R1..R4 with limits rain=54.67, slope=7.2, soil=57.3 and sensitivity 5%",
+          "metadata_json": {
+            "final_ranks": {
+              "R1": 1,
+              "R2": 3,
+              "R3": 4,
+              "R4": 2
+            },
+            "hard_threshold_record_count_used": 1,
+            "sensitivity_checked": true
+          },
+          "observation": "Executed arithmetic and rule-based ranking from packet only.",
+          "operation": "write",
+          "output": "Computed priority_value set: R1=2023.93, R2=369.66, R3=-24.69, R4=140.58; breach flags and sensitivity rank shifts identified (R2 shifts under +5%).",
+          "reasoning": "Hard-threshold escalation applied by assigning highest final rank to breach-first ordering while preserving numeric priority ordering within bands.",
+          "state_change": "Prepared structured result set for CSV serialization with one row per record.",
+          "step": "Compute technical metrics and ranking inputs",
+          "step_outcome": "Computation ready for artifact emission.",
+          "success": true,
+          "tool": "local_analysis",
+          "turn": 2
+        },
+        "sensitivity_checked": true
+      },
+      "observation": "Executed arithmetic and rule-based ranking from packet only.",
+      "operation": "write",
+      "output": "Computed priority_value set: R1=2023.93, R2=369.66, R3=-24.69, R4=140.58; breach flags and sensitivity rank shifts identified (R2 shifts under +5%).",
+      "parallel_group": null,
+      "reasoning": "Hard-threshold escalation applied by assigning highest final rank to breach-first ordering while preserving numeric priority ordering within bands.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Prepared structured result set for CSV serialization with one row per record.",
+      "step": 2,
+      "step_outcome": "neutral",
+      "success": true,
+      "tool": "file_write",
+      "turn": 2
+    },
+    {
+      "action": "agent_step",
+      "actor": "reviser",
+      "alternatives_considered": null,
+      "causal_note": "CSV rows use only embedded packet metrics and stated limits.",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "cat <<'EOF' > [EXCLUDED_GENERATED_ARTIFACT] ...",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "file_type": "csv",
+        "normalization_warnings": [
+          "step value 'Create landslide_trigger_review.csv' was not numeric; defaulted to 3"
+        ],
+        "original_action": "Write CSV with required metrics, flags, ranks, and recommendations",
+        "original_causal_type": "derivation",
+        "original_step": "Create landslide_trigger_review.csv",
+        "original_step_outcome": "CSV output complete and written.",
+        "raw_step": {
+          "action": "Write CSV with required metrics, flags, ranks, and recommendations",
+          "actor": "reviser",
+          "causal_note": "CSV rows use only embedded packet metrics and stated limits.",
+          "causal_type": "derivation",
+          "caused_by": "Step 2: computed record-level values",
+          "error_message": null,
+          "error_type": null,
+          "input": "cat <<'EOF' > [EXCLUDED_GENERATED_ARTIFACT] ...",
+          "metadata_json": {
+            "file_type": "csv",
+            "rows": 4
+          },
+          "observation": "CSV file emitted with one row per record and all required fields.",
+          "operation": "write",
+          "output": "Created [EXCLUDED_GENERATED_ARTIFACT] containing computed priority_value, breach flags, needs_review, hard-escalated ranking, sensitivity flags, and recommendation.",
+          "reasoning": "Single artifact provides machine-readable evidence for audit and downstream tooling.",
+          "state_change": "New file created: [EXCLUDED_GENERATED_ARTIFACT]",
+          "step": "Create landslide_trigger_review.csv",
+          "step_outcome": "CSV output complete and written.",
+          "success": true,
+          "tool": "exec_command",
+          "turn": 3
+        },
+        "rows": 4
+      },
+      "observation": "CSV file emitted with one row per record and all required fields.",
+      "operation": "write",
+      "output": "Created [EXCLUDED_GENERATED_ARTIFACT] containing computed priority_value, breach flags, needs_review, hard-escalated ranking, sensitivity flags, and recommendation.",
+      "parallel_group": null,
+      "reasoning": "Single artifact provides machine-readable evidence for audit and downstream tooling.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "New file created: [EXCLUDED_GENERATED_ARTIFACT]",
+      "step": 3,
+      "step_outcome": "neutral",
+      "success": true,
+      "tool": "Bash",
+      "turn": 3
+    },
+    {
+      "action": "agent_step",
+      "actor": "reviser",
+      "alternatives_considered": null,
+      "causal_note": "Recommendations constrained to hold/release/retest/mitigation and packet-derived evidence.",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "cat <<'EOF' > [EXCLUDED_GENERATED_ARTIFACT] ...",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "normalization_warnings": [
+          "step value 'Create field_inspection_plan.md' was not numeric; defaulted to 4"
+        ],
+        "original_action": "Write inspection methodology, formulas, validation checks, sensitivity notes, budget allocation, and recommendations",
+        "original_causal_type": "documentation",
+        "original_step": "Create field_inspection_plan.md",
+        "original_step_outcome": "Plan artifact complete.",
+        "raw_step": {
+          "action": "Write inspection methodology, formulas, validation checks, sensitivity notes, budget allocation, and recommendations",
+          "actor": "reviser",
+          "causal_note": "Recommendations constrained to hold/release/retest/mitigation and packet-derived evidence.",
+          "causal_type": "documentation",
+          "caused_by": "Step 2: computed record-level values",
+          "error_message": null,
+          "error_type": null,
+          "input": "cat <<'EOF' > [EXCLUDED_GENERATED_ARTIFACT] ...",
+          "metadata_json": {
+            "recommendation_set": [
+              "hold",
+              "release",
+              "retest",
+              "mitigation"
+            ]
+          },
+          "observation": "Plan file created with traceable formulas and expert-review-ready recommendation table.",
+          "operation": "write",
+          "output": "Created [EXCLUDED_GENERATED_ARTIFACT] including pseudocode, validations, sensitivity summary, and budget allocation table with final recommendations.",
+          "reasoning": "Markdown plan captures traceability and rationale required by SOW constraints.",
+          "state_change": "New file created: [EXCLUDED_GENERATED_ARTIFACT]",
+          "step": "Create field_inspection_plan.md",
+          "step_outcome": "Plan artifact complete.",
+          "success": true,
+          "tool": "exec_command",
+          "turn": 4
+        },
+        "recommendation_set": [
+          "hold",
+          "release",
+          "retest",
+          "mitigation"
+        ]
+      },
+      "observation": "Plan file created with traceable formulas and expert-review-ready recommendation table.",
+      "operation": "write",
+      "output": "Created [EXCLUDED_GENERATED_ARTIFACT] including pseudocode, validations, sensitivity summary, and budget allocation table with final recommendations.",
+      "parallel_group": null,
+      "reasoning": "Markdown plan captures traceability and rationale required by SOW constraints.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "New file created: [EXCLUDED_GENERATED_ARTIFACT]",
+      "step": 4,
+      "step_outcome": "neutral",
+      "success": true,
+      "tool": "Bash",
+      "turn": 4
+    },
+    {
+      "action": "agent_step",
+      "actor": "reviser",
+      "alternatives_considered": null,
+      "artifact_refs": [
+        "actual_outputs.json"
+      ],
+      "causal_note": "Used only generated artifacts and task settings.",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "cat <<'EOF' > actual_outputs.json ...",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "checks": [
+          "priority_formula_applied",
+          "breach_flags_computed",
+          "sensitivity_checked",
+          "hard_threshold_escalation"
+        ],
+        "file_count": 2,
+        "normalization_warnings": [
+          "step value 'Create actual_outputs.json' was not numeric; defaulted to 5"
+        ],
+        "original_action": "Write output manifest and run flags",
+        "original_causal_type": "artifact",
+        "original_step": "Create actual_outputs.json",
+        "original_step_outcome": "Output manifest written.",
+        "raw_step": {
+          "action": "Write output manifest and run flags",
+          "actor": "reviser",
+          "artifact_refs": [
+            "actual_outputs.json"
+          ],
+          "causal_note": "Used only generated artifacts and task settings.",
+          "causal_type": "artifact",
+          "caused_by": "Step 2: finalized required outputs",
+          "error_message": null,
+          "error_type": null,
+          "input": "cat <<'EOF' > actual_outputs.json ...",
+          "metadata_json": {
+            "checks": [
+              "priority_formula_applied",
+              "breach_flags_computed",
+              "sensitivity_checked",
+              "hard_threshold_escalation"
+            ],
+            "file_count": 2
+          },
+          "observation": "Manifest recorded with produced artifacts and validation checklist items.",
+          "operation": "write",
+          "output": "Created actual_outputs.json with output file list, task metadata, and completed check names.",
+          "reasoning": "Manifest provides explicit artifact references and completed processing steps for grader ingestion.",
+          "state_change": "New file created: actual_outputs.json",
+          "step": "Create actual_outputs.json",
+          "step_outcome": "Output manifest written.",
+          "success": true,
+          "tool": "exec_command",
+          "turn": 5
+        }
+      },
+      "observation": "Manifest recorded with produced artifacts and validation checklist items.",
+      "operation": "write",
+      "output": "Created actual_outputs.json with output file list, task metadata, and completed check names.",
+      "parallel_group": null,
+      "reasoning": "Manifest provides explicit artifact references and completed processing steps for grader ingestion.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "New file created: actual_outputs.json",
+      "step": 5,
+      "step_outcome": "neutral",
+      "success": true,
+      "tool": "Bash",
+      "turn": 5
+    },
+    {
+      "action": "agent_step",
+      "actor": "reviser",
+      "alternatives_considered": null,
+      "artifact_refs": [
+        "agent_trace.json"
+      ],
+      "causal_note": "Trace includes both computational and write operations.",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "cat <<'EOF' > agent_trace.json ...",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "normalization_warnings": [
+          "step value 'Create agent_trace.json workflow trace' was not numeric; defaulted to 6"
+        ],
+        "operation_types": [
+          "read",
+          "write",
+          "write",
+          "write",
+          "write",
+          "write"
+        ],
+        "original_action": "Write structured step-by-step workflow trace with mandated fields",
+        "original_causal_type": "deliverable",
+        "original_step": "Create agent_trace.json workflow trace",
+        "original_step_outcome": "Agent trace completed.",
+        "raw_step": {
+          "action": "Write structured step-by-step workflow trace with mandated fields",
+          "actor": "reviser",
+          "artifact_refs": [
+            "agent_trace.json"
+          ],
+          "causal_note": "Trace includes both computational and write operations.",
+          "causal_type": "deliverable",
+          "caused_by": "Completion of all output artifacts",
+          "error_message": null,
+          "error_type": null,
+          "input": "cat <<'EOF' > agent_trace.json ...",
+          "metadata_json": {
+            "operation_types": [
+              "read",
+              "write",
+              "write",
+              "write",
+              "write",
+              "write"
+            ],
+            "trace_steps": 6
+          },
+          "observation": "Trace file serialized with all required schema field names and causal context for each action.",
+          "operation": "write",
+          "output": "Created agent_trace.json containing 6 trace steps, each capturing action, input/output, state change, and causality.",
+          "reasoning": "Required by task contract for workflow traceability and auditor review.",
+          "state_change": "New file created: agent_trace.json",
+          "step": "Create agent_trace.json workflow trace",
+          "step_outcome": "Agent trace completed.",
+          "success": true,
+          "tool": "exec_command",
+          "turn": 6
+        },
+        "trace_steps": 6
+      },
+      "observation": "Trace file serialized with all required schema field names and causal context for each action.",
+      "operation": "write",
+      "output": "Created agent_trace.json containing 6 trace steps, each capturing action, input/output, state change, and causality.",
+      "parallel_group": null,
+      "reasoning": "Required by task contract for workflow traceability and auditor review.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "New file created: agent_trace.json",
+      "step": 6,
+      "step_outcome": "neutral",
+      "success": true,
+      "tool": "Bash",
+      "turn": 6
+    },
+    {
+      "action": "agent_step",
+      "actor": "reviser",
+      "alternatives_considered": null,
+      "artifact_refs": [
+        "agent_trace.json"
+      ],
+      "causal_note": "Correction is traceability-relevant and affects expert-review confidence.",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "apply_patch on [EXCLUDED_GENERATED_ARTIFACT] budget_usd rows and explanatory note",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "normalization_warnings": [
+          "step value 'Correct budget allocation presentation in inspection plan' was not numeric; defaulted to 7"
+        ],
+        "original_action": "Patch field_inspection_plan.md to align budget-share values with explicit proportional formula",
+        "original_causal_type": "revision",
+        "original_step": "Correct budget allocation presentation in inspection plan",
+        "original_step_outcome": "Plan budget section now reflects exact proportional formula usage.",
+        "raw_step": {
+          "action": "Patch field_inspection_plan.md to align budget-share values with explicit proportional formula",
+          "actor": "reviser",
+          "artifact_refs": [
+            "agent_trace.json"
+          ],
+          "causal_note": "Correction is traceability-relevant and affects expert-review confidence.",
+          "causal_type": "revision",
+          "caused_by": "Step 3 artifact production + internal consistency review",
+          "error_message": null,
+          "error_type": null,
+          "input": "apply_patch on [EXCLUDED_GENERATED_ARTIFACT] budget_usd rows and explanatory note",
+          "metadata_json": {
+            "trace_steps": 7,
+            "updated_fields": [
+              "budget allocation rows",
+              "total budget note"
+            ]
+          },
+          "observation": "Adjusted budget table from rounded approximations to explicit proportional values and added note that formula preserves total budget before rounding.",
+          "operation": "write",
+          "output": "Updated budget rows for R1/R4/R2 and clarified total-budget handling.",
+          "reasoning": "Need direct consistency with decision_budget_usd without implied budget breach from display rounding.",
+          "state_change": "field_inspection_plan.md rewritten for budget-line consistency.",
+          "step": "Correct budget allocation presentation in inspection plan",
+          "step_outcome": "Plan budget section now reflects exact proportional formula usage.",
+          "success": true,
+          "tool": "apply_patch",
+          "turn": 7
+        },
+        "trace_steps": 7,
+        "updated_fields": [
+          "budget allocation rows",
+          "total budget note"
+        ]
+      },
+      "observation": "Adjusted budget table from rounded approximations to explicit proportional values and added note that formula preserves total budget before rounding.",
+      "operation": "write",
+      "output": "Updated budget rows for R1/R4/R2 and clarified total-budget handling.",
+      "parallel_group": null,
+      "reasoning": "Need direct consistency with decision_budget_usd without implied budget breach from display rounding.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "field_inspection_plan.md rewritten for budget-line consistency.",
+      "step": 7,
+      "step_outcome": "neutral",
+      "success": true,
+      "tool": "apply_patch",
+      "turn": 7
+    }
+  ],
+  "system_prompt": null,
+  "system_prompt_hash": null,
+  "task": "Launch-quality advanced task: Landslide Susceptibility Trigger Review. Reality context: a transportation agency needs inspection priorities after an atmospheric-river storm. Embedded packet: metric map: metric1=rain_72h_mm, metric2=slope_deg, metric3=soil_saturation_pct, metric4=road_exposure_score; records: R1 rain_72h_mm=57.9 slope_deg=35.4 soil_saturation_pct=44.5 road_exposure_score=0.97; R2 rain_72h_mm=53.6 slope_deg=7 soil_saturation_pct=23.8 road_exposure_score=8.74; R3 rain_72h_mm=9.72 slope_deg=1.4 soil_saturation_pct=75.6 road_exposure_score=7.06; R4 rain_72h_mm=16.59 slope_deg=10.7 soil_saturation_pct=67.2 road_exposure_score=3.39; limit_rain_72h_mm=54.67; limit_slope_deg=7.2; limit_soil_saturation_pct=57.3; decision_budget_usd=25000; sensitivity_shift_pct=5; hard_threshold_record_count=1; removed_context=\"SOW required acceptance criteria, traceability, and quantitative evidence\". Rules and constraints: Compute priority value = metric1*metric2 - 0.6*metric3 + metric4; rank descending, but any record breaching the hard threshold must be escalated first. Options or recommendations cannot use external measurements, specialized licensed software, or hidden assumptions; all calculations must use only the embedded packet, and any contradictory or under-supported record must be marked needs_review. Required work: classify slopes and inspection urgency; rank records by technical and economic impact, run the stated sensitivity check, and recommend hold, release, retest, or mitigation. Deliver landslide_trigger_review.csv + field_inspection_plan.md with formulas or executable logic, record-level citations, validation checks, sensitivity notes, and a final recommendation table suitable for expert review.",
+  "task_family_id": null,
+  "original_internal_task_id": "aa_task_0727",
+  "task_id": "427",
+  "termination_reason": "task_complete",
+  "trace_id": "trace_427-revised_normalized",
+  "trace_mode": "live"
+}

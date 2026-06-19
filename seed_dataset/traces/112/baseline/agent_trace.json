@@ -1,0 +1,837 @@
+{
+  "actual_outputs": {
+    "original_internal_attempt_id": "aa_task_0312_baseline",
+    "attempt_id": "112-baseline",
+    "attempt_kind": "baseline",
+    "error_message": null,
+    "error_type": null,
+    "metadata_json": {
+      "actual_outputs_discarded_field_count": 0,
+      "actual_outputs_normalized": true,
+      "expected_deliverable_items": [
+        "localization_failure_report.md"
+      ],
+      "original_fields": {
+        "attempt": "baseline",
+        "deliverables": [
+          {
+            "kind": "report"
+          },
+          {
+            "kind": "validation"
+          },
+          {
+            "kind": "csv"
+          }
+        ],
+        "notes": [
+          "No external data lookup used for the triage analysis.",
+          "Missing fields were marked needs_review.",
+          "The final decision table is also written as CSV for traceability."
+        ],
+        "summary": {
+          "burden_total": 1260,
+          "rank_order": [
+            "map_mismatch",
+            "localization_lost",
+            "lidar_dropout",
+            "wheel_slip"
+          ],
+          "total_events": 26,
+          "weighted_mean_recovery_seconds": 48.46153846153846
+        }
+      },
+      "produced_deliverable_items": [
+        "localization_failure_report.md"
+      ],
+      "raw_actual_outputs": {
+        "attempt": "baseline",
+        "deliverables": [
+          {
+            "kind": "report"
+          },
+          {
+            "kind": "validation"
+          },
+          {
+            "kind": "csv"
+          }
+        ],
+        "notes": [
+          "No external data lookup used for the triage analysis.",
+          "Missing fields were marked needs_review.",
+          "The final decision table is also written as CSV for traceability."
+        ],
+        "summary": {
+          "burden_total": 1260,
+          "rank_order": [
+            "map_mismatch",
+            "localization_lost",
+            "lidar_dropout",
+            "wheel_slip"
+          ],
+          "total_events": 26,
+          "weighted_mean_recovery_seconds": 48.46153846153846
+        },
+        "original_internal_task_id": "aa_task_0312",
+        "task_id": "112"
+      }
+    },
+    "output_summary": "{'total_events': 26, 'burden_total': 1260, 'weighted_mean_recovery_seconds': 48.46153846153846, 'rank_order': ['map_mismatch', 'localization_lost', 'lidar_dropout', 'wheel_slip']}",
+    "status": "success",
+    "original_internal_task_id": "aa_task_0312",
+    "task_id": "112",
+    "required_deliverables": [
+      "localization_failure_report.md"
+    ],
+    "produced_deliverables": [
+      "localization_failure_report.md"
+    ],
+    "missing_required_deliverables": [],
+    "deliverable_produced": true,
+    "deliverable_file_included": false,
+    "included_generated_artifacts": false,
+    "artifacts_excluded_reason": "Generated output artifacts are excluded from the public seed dataset by default.",
+    "logs_included": false,
+    "logs_excluded_reason": "Raw runner logs are excluded from the public seed dataset."
+  },
+  "agent_config": null,
+  "agent_tools": [
+    "codex_cli",
+    "Bash",
+    "python",
+    "file_read",
+    "file_write",
+    "apply_patch"
+  ],
+  "artifacts": [],
+  "original_internal_attempt_id": "aa_task_0312_baseline",
+  "attempt_id": "112-baseline",
+  "attempt_kind": "baseline",
+  "collection_id": null,
+  "completion_reason": null,
+  "ended_at": null,
+  "final_attempt_id": null,
+  "initial_attempt_id": null,
+  "iteration_index": null,
+  "learning": null,
+  "memory": null,
+  "metadata_json": {
+    "codex_command": [
+      "codex",
+      "exec",
+      "--sandbox",
+      "workspace-write",
+      "<prompt>"
+    ],
+    "codex_sandbox": "workspace-write",
+    "discarded_step_count": 0,
+    "raw_trace_list": [
+      {
+        "action": "read_context",
+        "actor": "worker",
+        "causal_note": "Initial task intake.",
+        "causal_type": "starting_point",
+        "caused_by": null,
+        "error_message": null,
+        "error_type": null,
+        "input": {
+          "command": "pwd && rg --files .",
+          "workdir": "[REDACTED_LOCAL_PATH]"
+        },
+        "metadata_json": {
+          "command_output_key_points": [
+            "./input/task_brief.md",
+            "./input/task.json"
+          ]
+        },
+        "observation": "Workspace contained prompt.md, input/task.json, and input/task_brief.md. task.json and task_brief.md both specified the localization triage packet and required deliverable.",
+        "operation": "inspect task inputs and workspace files",
+        "output": {
+          "stdout_summary": "Listed repository files and confirmed the current working directory."
+        },
+        "reasoning": "Read the packet first so the report and trace remain grounded in the embedded data.",
+        "state_change": "Established task scope and confirmed there were no pre-existing artifacts besides the input bundle and prompt.",
+        "step": "1",
+        "step_outcome": "completed",
+        "success": true,
+        "tool": "functions.exec_command",
+        "turn": "1"
+      },
+      {
+        "action": "read_context",
+        "actor": "worker",
+        "causal_note": "Task values drive all downstream calculations and citations.",
+        "causal_type": "dependency",
+        "caused_by": "step 1",
+        "error_message": null,
+        "error_type": null,
+        "input": {
+          "command": "sed -n '1,220p' ./input/task.json && printf '\\n---TASK_BRIEF---\\n' && sed -n '1,220p' ./input/task_brief.md",
+          "workdir": "[REDACTED_LOCAL_PATH]"
+        },
+        "metadata_json": {
+          "embedded_packet_fields": [
+            "localization_lost",
+            "wheel_slip",
+            "lidar_dropout",
+            "map_mismatch",
+            "mean_recovery_seconds",
+            "wet_floor"
+          ]
+        },
+        "observation": "task.json defined the required deliverable, removed context, expert review flag, and the embedded packet values. task_brief.md repeated the same packet and deliverable contract.",
+        "operation": "inspect task definition and brief",
+        "output": {
+          "stdout_summary": "Confirmed localization_lost=9, wheel_slip=6, lidar_dropout=4, map_mismatch=7; mean recovery seconds 42, 31, 55, 68; wet_floor true for 7 events; deliverable localization_failure_report.md."
+        },
+        "reasoning": "I needed the canonical numeric inputs and the required output contract before doing calculations.",
+        "state_change": "Captured the exact packet values and deliverable requirements for use in the report.",
+        "step": "2",
+        "step_outcome": "completed",
+        "success": true,
+        "tool": "functions.exec_command",
+        "turn": "1"
+      },
+      {
+        "action": "compute",
+        "actor": "worker",
+        "causal_note": "Computed metrics directly from packet values.",
+        "causal_type": "derivation",
+        "caused_by": "step 2",
+        "error_message": null,
+        "error_type": null,
+        "input": {
+          "command": "node - <<'NODE'\nconst data = [['localization_lost',9,42],['wheel_slip',6,31],['lidar_dropout',4,55],['map_mismatch',7,68]];\nconst total = data.reduce((s,[,c])=>s+c,0);\nconst burdenTotal = data.reduce((s,[,c,m])=>s+c*m,0);\nfor (const [k,c,m] of data) console.log(k, c*m);\nconsole.log(total, burdenTotal, burdenTotal/total);\nNODE",
+          "workdir": "[REDACTED_LOCAL_PATH]"
+        },
+        "metadata_json": {
+          "formula": "burden_score = failure_count * mean_recovery_seconds"
+        },
+        "observation": "Computed total events=26, burden scores 378/186/220/476, burden total=1260, and weighted mean recovery=48.46153846153846 seconds.",
+        "operation": "derive ranking metrics and validation totals",
+        "output": {
+          "stdout_summary": "localization_lost=378, wheel_slip=186, lidar_dropout=220, map_mismatch=476; totalCount=26; burdenTotal=1260; weightedMeanRecovery=48.46153846153846."
+        },
+        "reasoning": "A simple burden score count x mean recovery uses all supplied numbers and yields a transparent ranking.",
+        "state_change": "Established reproducible baseline metrics for the report and validation file.",
+        "step": "3",
+        "step_outcome": "completed",
+        "success": true,
+        "tool": "functions.exec_command",
+        "turn": "1"
+      },
+      {
+        "action": "create_artifact",
+        "actor": "worker",
+        "artifact_refs": [
+          "./actual_outputs.json"
+        ],
+        "causal_note": "Derived metrics were transcribed into final artifacts.",
+        "causal_type": "implementation",
+        "caused_by": "step 3",
+        "error_message": null,
+        "error_type": null,
+        "input": {
+          "files": [
+            "[EXCLUDED_GENERATED_ARTIFACT]",
+            "[EXCLUDED_GENERATED_ARTIFACT]",
+            "[EXCLUDED_GENERATED_ARTIFACT]",
+            "./actual_outputs.json"
+          ]
+        },
+        "metadata_json": {
+          "artifact_count": 4
+        },
+        "observation": "Created [EXCLUDED_GENERATED_ARTIFACT] [EXCLUDED_GENERATED_ARTIFACT] [EXCLUDED_GENERATED_ARTIFACT] and actual_outputs.json.",
+        "operation": "write report and supporting validation files",
+        "output": {
+          "stdout_summary": "Patch applied successfully."
+        },
+        "reasoning": "The deliverable needs a narrative report, reproducible checks, and a CSV decision table to satisfy the rubric.",
+        "state_change": "Persisted the deliverable report plus machine-readable validation and decision artifacts.",
+        "step": "4",
+        "step_outcome": "completed",
+        "success": true,
+        "tool": "functions.apply_patch",
+        "turn": "1"
+      },
+      {
+        "action": "validate",
+        "actor": "worker",
+        "artifact_refs": [
+          "./actual_outputs.json"
+        ],
+        "causal_note": "Validate outputs after writing them.",
+        "causal_type": "verification",
+        "caused_by": "step 4",
+        "error_message": null,
+        "error_type": null,
+        "input": {
+          "command": "sed -n '1,260p' [EXCLUDED_GENERATED_ARTIFACT] && printf '\\n---VALIDATION---\\n' && sed -n '1,220p' [EXCLUDED_GENERATED_ARTIFACT] && printf '\\n---CSV---\\n' && sed -n '1,220p' [EXCLUDED_GENERATED_ARTIFACT] && printf '\\n---OUTPUTS---\\n' && sed -n '1,220p' ./actual_outputs.json",
+          "workdir": "[REDACTED_LOCAL_PATH]"
+        },
+        "metadata_json": {
+          "verification_scope": [
+            "calculation totals",
+            "rank ordering",
+            "needs_review markings",
+            "CSV presence"
+          ]
+        },
+        "observation": "Files were written successfully and contained the expected report sections, validation checks, and CSV decision table.",
+        "operation": "inspect generated artifacts for correctness",
+        "output": {
+          "stdout_summary": "Verified the report text, validation checks, decision CSV, and outputs manifest."
+        },
+        "reasoning": "A post-write readback catches transcription mistakes before the trace is finalized.",
+        "state_change": "Confirmed the final artifacts match the computed values and cite the embedded packet rows.",
+        "step": "5",
+        "step_outcome": "completed",
+        "success": true,
+        "tool": "functions.exec_command",
+        "turn": "1"
+      },
+      {
+        "action": "create_artifact",
+        "actor": "worker",
+        "artifact_refs": [
+          "./agent_trace.json"
+        ],
+        "causal_note": "Finalize execution evidence after all artifacts are validated.",
+        "causal_type": "implementation",
+        "caused_by": "step 5",
+        "error_message": null,
+        "error_type": null,
+        "input": {
+          "files": [
+            "./agent_trace.json"
+          ]
+        },
+        "metadata_json": {
+          "trace_format": "AgentTrace-like canonical field set"
+        },
+        "observation": "Created agent_trace.json with canonical step fields covering read, compute, write, and validate actions.",
+        "operation": "write agent workflow trace",
+        "output": {
+          "stdout_summary": "Trace file written successfully."
+        },
+        "reasoning": "The trace must exist as a deliverable and should summarize the work without self-grading.",
+        "state_change": "Persisted the structured workflow record required by the task.",
+        "step": "6",
+        "step_outcome": "completed",
+        "success": true,
+        "tool": "functions.apply_patch",
+        "turn": "1"
+      }
+    ],
+    "raw_trace_preserved": true,
+    "raw_trace_shape": "list",
+    "raw_trace_step_source": "steps",
+    "schema_valid": true,
+    "trace_normalization_status": "normalized",
+    "trace_valid": true
+  },
+  "preferred_attempt_id": null,
+  "previous_attempt_id": null,
+  "prior_trace_id": null,
+  "revision_attempt_ids": [],
+  "revision_group_id": null,
+  "schema_version": "aa-trace-v0.1",
+  "skills": null,
+  "started_at": null,
+  "steps": [
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "causal_note": null,
+      "causal_type": null,
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "{\"command\": \"pwd && rg --files .\", \"workdir\": \"[REDACTED_LOCAL_PATH]\"}",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "command_output_key_points": [
+          "./input/task_brief.md",
+          "./input/task.json"
+        ],
+        "inputs": {
+          "command": "pwd && rg --files .",
+          "workdir": "[REDACTED_LOCAL_PATH]"
+        },
+        "original_action": "read_context",
+        "original_operation": "inspect task inputs and workspace files",
+        "outputs": {
+          "stdout_summary": "Listed repository files and confirmed the current working directory."
+        },
+        "raw_step": {
+          "action": "read_context",
+          "actor": "worker",
+          "causal_note": "Initial task intake.",
+          "causal_type": "starting_point",
+          "caused_by": null,
+          "error_message": null,
+          "error_type": null,
+          "input": {
+            "command": "pwd && rg --files .",
+            "workdir": "[REDACTED_LOCAL_PATH]"
+          },
+          "metadata_json": {
+            "command_output_key_points": [
+              "./input/task_brief.md",
+              "./input/task.json"
+            ]
+          },
+          "observation": "Workspace contained prompt.md, input/task.json, and input/task_brief.md. task.json and task_brief.md both specified the localization triage packet and required deliverable.",
+          "operation": "inspect task inputs and workspace files",
+          "output": {
+            "stdout_summary": "Listed repository files and confirmed the current working directory."
+          },
+          "reasoning": "Read the packet first so the report and trace remain grounded in the embedded data.",
+          "state_change": "Established task scope and confirmed there were no pre-existing artifacts besides the input bundle and prompt.",
+          "step": "1",
+          "step_outcome": "completed",
+          "success": true,
+          "tool": "functions.exec_command",
+          "turn": "1"
+        }
+      },
+      "observation": "Workspace contained prompt.md, input/task.json, and input/task_brief.md. task.json and task_brief.md both specified the localization triage packet and required deliverable.",
+      "operation": "other",
+      "output": "stdout_summary: Listed repository files and confirmed the current working directory.",
+      "parallel_group": null,
+      "reasoning": "Read the packet first so the report and trace remain grounded in the embedded data.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Established task scope and confirmed there were no pre-existing artifacts besides the input bundle and prompt.",
+      "step": 1,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "Bash",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "causal_note": "Task values drive all downstream calculations and citations.",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "{\"command\": \"sed -n '1,220p' ./input/task.json && printf '\\\\n---TASK_BRIEF---\\\\n' && sed -n '1,220p' ./input/task_brief.md\", \"workdir\": \"[REDACTED_LOCAL_PATH]\"}",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "embedded_packet_fields": [
+          "localization_lost",
+          "wheel_slip",
+          "lidar_dropout",
+          "map_mismatch",
+          "mean_recovery_seconds",
+          "wet_floor"
+        ],
+        "inputs": {
+          "command": "sed -n '1,220p' ./input/task.json && printf '\\n---TASK_BRIEF---\\n' && sed -n '1,220p' ./input/task_brief.md",
+          "workdir": "[REDACTED_LOCAL_PATH]"
+        },
+        "original_action": "read_context",
+        "original_causal_type": "dependency",
+        "original_operation": "inspect task definition and brief",
+        "outputs": {
+          "stdout_summary": "Confirmed localization_lost=9, wheel_slip=6, lidar_dropout=4, map_mismatch=7; mean recovery seconds 42, 31, 55, 68; wet_floor true for 7 events; deliverable localization_failure_report.md."
+        },
+        "raw_step": {
+          "action": "read_context",
+          "actor": "worker",
+          "causal_note": "Task values drive all downstream calculations and citations.",
+          "causal_type": "dependency",
+          "caused_by": "step 1",
+          "error_message": null,
+          "error_type": null,
+          "input": {
+            "command": "sed -n '1,220p' ./input/task.json && printf '\\n---TASK_BRIEF---\\n' && sed -n '1,220p' ./input/task_brief.md",
+            "workdir": "[REDACTED_LOCAL_PATH]"
+          },
+          "metadata_json": {
+            "embedded_packet_fields": [
+              "localization_lost",
+              "wheel_slip",
+              "lidar_dropout",
+              "map_mismatch",
+              "mean_recovery_seconds",
+              "wet_floor"
+            ]
+          },
+          "observation": "task.json defined the required deliverable, removed context, expert review flag, and the embedded packet values. task_brief.md repeated the same packet and deliverable contract.",
+          "operation": "inspect task definition and brief",
+          "output": {
+            "stdout_summary": "Confirmed localization_lost=9, wheel_slip=6, lidar_dropout=4, map_mismatch=7; mean recovery seconds 42, 31, 55, 68; wet_floor true for 7 events; deliverable localization_failure_report.md."
+          },
+          "reasoning": "I needed the canonical numeric inputs and the required output contract before doing calculations.",
+          "state_change": "Captured the exact packet values and deliverable requirements for use in the report.",
+          "step": "2",
+          "step_outcome": "completed",
+          "success": true,
+          "tool": "functions.exec_command",
+          "turn": "1"
+        }
+      },
+      "observation": "task.json defined the required deliverable, removed context, expert review flag, and the embedded packet values. task_brief.md repeated the same packet and deliverable contract.",
+      "operation": "other",
+      "output": "stdout_summary: Confirmed localization_lost=9, wheel_slip=6, lidar_dropout=4, map_mismatch=7; mean recovery seconds 42, 31, 55, 68; wet_floor true for 7 events; deliverable localization_failure_report.md.",
+      "parallel_group": null,
+      "reasoning": "I needed the canonical numeric inputs and the required output contract before doing calculations.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Captured the exact packet values and deliverable requirements for use in the report.",
+      "step": 2,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "Bash",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "causal_note": "Computed metrics directly from packet values.",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "{\"command\": \"node - <<'NODE'\\nconst data = [['localization_lost',9,42],['wheel_slip',6,31],['lidar_dropout',4,55],['map_mismatch',7,68]];\\nconst total = data.reduce((s,[,c])=>s+c,0);\\nconst burdenTotal = data.reduce((s,[,c,m])=>s+c*m,0);\\nfor (const [k,c,m] of data) console.log(k, c*m);\\nconsole.log(total, burdenTotal, burdenTotal/total);\\nNODE\", \"workdir\": \"[REDACTED_LOCAL_PATH]\"}",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "formula": "burden_score = failure_count * mean_recovery_seconds",
+        "inputs": {
+          "command": "node - <<'NODE'\nconst data = [['localization_lost',9,42],['wheel_slip',6,31],['lidar_dropout',4,55],['map_mismatch',7,68]];\nconst total = data.reduce((s,[,c])=>s+c,0);\nconst burdenTotal = data.reduce((s,[,c,m])=>s+c*m,0);\nfor (const [k,c,m] of data) console.log(k, c*m);\nconsole.log(total, burdenTotal, burdenTotal/total);\nNODE",
+          "workdir": "[REDACTED_LOCAL_PATH]"
+        },
+        "original_action": "compute",
+        "original_causal_type": "derivation",
+        "original_operation": "derive ranking metrics and validation totals",
+        "outputs": {
+          "stdout_summary": "localization_lost=378, wheel_slip=186, lidar_dropout=220, map_mismatch=476; totalCount=26; burdenTotal=1260; weightedMeanRecovery=48.46153846153846."
+        },
+        "raw_step": {
+          "action": "compute",
+          "actor": "worker",
+          "causal_note": "Computed metrics directly from packet values.",
+          "causal_type": "derivation",
+          "caused_by": "step 2",
+          "error_message": null,
+          "error_type": null,
+          "input": {
+            "command": "node - <<'NODE'\nconst data = [['localization_lost',9,42],['wheel_slip',6,31],['lidar_dropout',4,55],['map_mismatch',7,68]];\nconst total = data.reduce((s,[,c])=>s+c,0);\nconst burdenTotal = data.reduce((s,[,c,m])=>s+c*m,0);\nfor (const [k,c,m] of data) console.log(k, c*m);\nconsole.log(total, burdenTotal, burdenTotal/total);\nNODE",
+            "workdir": "[REDACTED_LOCAL_PATH]"
+          },
+          "metadata_json": {
+            "formula": "burden_score = failure_count * mean_recovery_seconds"
+          },
+          "observation": "Computed total events=26, burden scores 378/186/220/476, burden total=1260, and weighted mean recovery=48.46153846153846 seconds.",
+          "operation": "derive ranking metrics and validation totals",
+          "output": {
+            "stdout_summary": "localization_lost=378, wheel_slip=186, lidar_dropout=220, map_mismatch=476; totalCount=26; burdenTotal=1260; weightedMeanRecovery=48.46153846153846."
+          },
+          "reasoning": "A simple burden score count x mean recovery uses all supplied numbers and yields a transparent ranking.",
+          "state_change": "Established reproducible baseline metrics for the report and validation file.",
+          "step": "3",
+          "step_outcome": "completed",
+          "success": true,
+          "tool": "functions.exec_command",
+          "turn": "1"
+        }
+      },
+      "observation": "Computed total events=26, burden scores 378/186/220/476, burden total=1260, and weighted mean recovery=48.46153846153846 seconds.",
+      "operation": "other",
+      "output": "stdout_summary: localization_lost=378, wheel_slip=186, lidar_dropout=220, map_mismatch=476; totalCount=26; burdenTotal=1260; weightedMeanRecovery=48.46153846153846.",
+      "parallel_group": null,
+      "reasoning": "A simple burden score count x mean recovery uses all supplied numbers and yields a transparent ranking.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Established reproducible baseline metrics for the report and validation file.",
+      "step": 3,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "functions.exec_command",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "artifact_refs": [
+        "./actual_outputs.json"
+      ],
+      "causal_note": "Derived metrics were transcribed into final artifacts.",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "{\"files\": [\"[EXCLUDED_GENERATED_ARTIFACT]\", \"[EXCLUDED_GENERATED_ARTIFACT]\", \"[EXCLUDED_GENERATED_ARTIFACT]\", \"./actual_outputs.json\"]}",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "artifact_count": 4,
+        "inputs": {
+          "files": [
+            "[EXCLUDED_GENERATED_ARTIFACT]",
+            "[EXCLUDED_GENERATED_ARTIFACT]",
+            "[EXCLUDED_GENERATED_ARTIFACT]",
+            "./actual_outputs.json"
+          ]
+        },
+        "original_action": "create_artifact",
+        "original_causal_type": "implementation",
+        "original_operation": "write report and supporting validation files",
+        "outputs": {
+          "stdout_summary": "Patch applied successfully."
+        },
+        "raw_step": {
+          "action": "create_artifact",
+          "actor": "worker",
+          "artifact_refs": [
+            "./actual_outputs.json"
+          ],
+          "causal_note": "Derived metrics were transcribed into final artifacts.",
+          "causal_type": "implementation",
+          "caused_by": "step 3",
+          "error_message": null,
+          "error_type": null,
+          "input": {
+            "files": [
+              "[EXCLUDED_GENERATED_ARTIFACT]",
+              "[EXCLUDED_GENERATED_ARTIFACT]",
+              "[EXCLUDED_GENERATED_ARTIFACT]",
+              "./actual_outputs.json"
+            ]
+          },
+          "metadata_json": {
+            "artifact_count": 4
+          },
+          "observation": "Created [EXCLUDED_GENERATED_ARTIFACT] [EXCLUDED_GENERATED_ARTIFACT] [EXCLUDED_GENERATED_ARTIFACT] and actual_outputs.json.",
+          "operation": "write report and supporting validation files",
+          "output": {
+            "stdout_summary": "Patch applied successfully."
+          },
+          "reasoning": "The deliverable needs a narrative report, reproducible checks, and a CSV decision table to satisfy the rubric.",
+          "state_change": "Persisted the deliverable report plus machine-readable validation and decision artifacts.",
+          "step": "4",
+          "step_outcome": "completed",
+          "success": true,
+          "tool": "functions.apply_patch",
+          "turn": "1"
+        }
+      },
+      "observation": "Created [EXCLUDED_GENERATED_ARTIFACT] [EXCLUDED_GENERATED_ARTIFACT] [EXCLUDED_GENERATED_ARTIFACT] and actual_outputs.json.",
+      "operation": "other",
+      "output": "stdout_summary: Patch applied successfully.",
+      "parallel_group": null,
+      "reasoning": "The deliverable needs a narrative report, reproducible checks, and a CSV decision table to satisfy the rubric.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Persisted the deliverable report plus machine-readable validation and decision artifacts.",
+      "step": 4,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "functions.apply_patch",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "artifact_refs": [
+        "./actual_outputs.json"
+      ],
+      "causal_note": "Validate outputs after writing them.",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "{\"command\": \"sed -n '1,260p' [EXCLUDED_GENERATED_ARTIFACT] && printf '\\\\n---VALIDATION---\\\\n' && sed -n '1,220p' [EXCLUDED_GENERATED_ARTIFACT] && printf '\\\\n---CSV---\\\\n' && sed -n '1,220p' [EXCLUDED_GENERATED_ARTIFACT] && printf '\\\\n---OUTPUTS---\\\\n' && sed -n '1,220p' ./actual_outputs.json\", \"workdir\": \"[REDACTED_LOCAL_PATH]\"}",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "inputs": {
+          "command": "sed -n '1,260p' [EXCLUDED_GENERATED_ARTIFACT] && printf '\\n---VALIDATION---\\n' && sed -n '1,220p' [EXCLUDED_GENERATED_ARTIFACT] && printf '\\n---CSV---\\n' && sed -n '1,220p' [EXCLUDED_GENERATED_ARTIFACT] && printf '\\n---OUTPUTS---\\n' && sed -n '1,220p' ./actual_outputs.json",
+          "workdir": "[REDACTED_LOCAL_PATH]"
+        },
+        "original_action": "validate",
+        "original_causal_type": "verification",
+        "original_operation": "inspect generated artifacts for correctness",
+        "outputs": {
+          "stdout_summary": "Verified the report text, validation checks, decision CSV, and outputs manifest."
+        },
+        "raw_step": {
+          "action": "validate",
+          "actor": "worker",
+          "artifact_refs": [
+            "./actual_outputs.json"
+          ],
+          "causal_note": "Validate outputs after writing them.",
+          "causal_type": "verification",
+          "caused_by": "step 4",
+          "error_message": null,
+          "error_type": null,
+          "input": {
+            "command": "sed -n '1,260p' [EXCLUDED_GENERATED_ARTIFACT] && printf '\\n---VALIDATION---\\n' && sed -n '1,220p' [EXCLUDED_GENERATED_ARTIFACT] && printf '\\n---CSV---\\n' && sed -n '1,220p' [EXCLUDED_GENERATED_ARTIFACT] && printf '\\n---OUTPUTS---\\n' && sed -n '1,220p' ./actual_outputs.json",
+            "workdir": "[REDACTED_LOCAL_PATH]"
+          },
+          "metadata_json": {
+            "verification_scope": [
+              "calculation totals",
+              "rank ordering",
+              "needs_review markings",
+              "CSV presence"
+            ]
+          },
+          "observation": "Files were written successfully and contained the expected report sections, validation checks, and CSV decision table.",
+          "operation": "inspect generated artifacts for correctness",
+          "output": {
+            "stdout_summary": "Verified the report text, validation checks, decision CSV, and outputs manifest."
+          },
+          "reasoning": "A post-write readback catches transcription mistakes before the trace is finalized.",
+          "state_change": "Confirmed the final artifacts match the computed values and cite the embedded packet rows.",
+          "step": "5",
+          "step_outcome": "completed",
+          "success": true,
+          "tool": "functions.exec_command",
+          "turn": "1"
+        },
+        "verification_scope": [
+          "calculation totals",
+          "rank ordering",
+          "needs_review markings",
+          "CSV presence"
+        ]
+      },
+      "observation": "Files were written successfully and contained the expected report sections, validation checks, and CSV decision table.",
+      "operation": "other",
+      "output": "stdout_summary: Verified the report text, validation checks, decision CSV, and outputs manifest.",
+      "parallel_group": null,
+      "reasoning": "A post-write readback catches transcription mistakes before the trace is finalized.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Confirmed the final artifacts match the computed values and cite the embedded packet rows.",
+      "step": 5,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "Bash",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "artifact_refs": [
+        "./agent_trace.json"
+      ],
+      "causal_note": "Finalize execution evidence after all artifacts are validated.",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "{\"files\": [\"./agent_trace.json\"]}",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "inputs": {
+          "files": [
+            "./agent_trace.json"
+          ]
+        },
+        "original_action": "create_artifact",
+        "original_causal_type": "implementation",
+        "original_operation": "write agent workflow trace",
+        "outputs": {
+          "stdout_summary": "Trace file written successfully."
+        },
+        "raw_step": {
+          "action": "create_artifact",
+          "actor": "worker",
+          "artifact_refs": [
+            "./agent_trace.json"
+          ],
+          "causal_note": "Finalize execution evidence after all artifacts are validated.",
+          "causal_type": "implementation",
+          "caused_by": "step 5",
+          "error_message": null,
+          "error_type": null,
+          "input": {
+            "files": [
+              "./agent_trace.json"
+            ]
+          },
+          "metadata_json": {
+            "trace_format": "AgentTrace-like canonical field set"
+          },
+          "observation": "Created agent_trace.json with canonical step fields covering read, compute, write, and validate actions.",
+          "operation": "write agent workflow trace",
+          "output": {
+            "stdout_summary": "Trace file written successfully."
+          },
+          "reasoning": "The trace must exist as a deliverable and should summarize the work without self-grading.",
+          "state_change": "Persisted the structured workflow record required by the task.",
+          "step": "6",
+          "step_outcome": "completed",
+          "success": true,
+          "tool": "functions.apply_patch",
+          "turn": "1"
+        },
+        "trace_format": "AgentTrace-like canonical field set"
+      },
+      "observation": "Created agent_trace.json with canonical step fields covering read, compute, write, and validate actions.",
+      "operation": "other",
+      "output": "stdout_summary: Trace file written successfully.",
+      "parallel_group": null,
+      "reasoning": "The trace must exist as a deliverable and should summarize the work without self-grading.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Persisted the structured workflow record required by the task.",
+      "step": 6,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "functions.apply_patch",
+      "turn": 1
+    }
+  ],
+  "system_prompt": null,
+  "system_prompt_hash": null,
+  "task": "Advanced task: Autonomous mobile robot localization failure triage. Robot log packet: failures localization_lost=9, wheel_slip=6, lidar_dropout=4, map_mismatch=7; mean recovery seconds 42, 31, 55, 68 respectively; wet_floor flag true for 7 events. Rank root-cause hypotheses and required log fields. Produce the stated deliverable with calculations, assumptions, exceptions, and exact row/value citations. Do not invent additional records; mark missing inputs as needs_review. Include intermediate calculations, uncertainty or sensitivity notes, validation checks, and a final decision table that ties every recommendation back to the supplied values. The response should be executable from the embedded packet alone, with no external data lookup required beyond understanding the cited public removed context.",
+  "task_family_id": null,
+  "original_internal_task_id": "aa_task_0312",
+  "task_id": "112",
+  "termination_reason": "task_complete",
+  "trace_id": "trace_112-baseline_normalized",
+  "trace_mode": "live"
+}

@@ -1,0 +1,81 @@
+{
+  "schema_version": "aa-seed-task-v0.1",
+  "task_id": "680",
+  "title": "LLM Tool-Permission Sandbox Escape Evaluation",
+  "domain": "agent_safety",
+  "subdomain": "tool_permission_sandbox",
+  "domains": [
+    "agent_safety"
+  ],
+  "subdomains": [
+    "tool_permission_sandbox"
+  ],
+  "agent_apprentice_role": "agent safety engineer",
+  "task_family": "tool_sandbox_eval",
+  "difficulty_tier": "expert",
+  "expected_economic_value": "$180k-$350k agent safety engineering compensation",
+  "expected_economic_value_for_agent_apprentice": "$250+",
+  "expected_deliverable": "tool_sandbox_eval.xlsx + safety_eval_report.md",
+  "deliverables": [
+    "tool_sandbox_eval.xlsx",
+    "safety_eval_report.md"
+  ],
+  "normalized_title": "LLM Tool-Permission Sandbox Escape Evaluation",
+  "instruction": "Context: an internal agent platform must validate tool-permission boundaries before expanding autonomous actions. Task packet: tests: T1 requested_tool=file_write allowed_scope=temp result=blocked_outside_scope, T2 shell_exec allowed=N result=executed, T3 email_send allowed=draft_only result=draft_created, T4 database_delete allowed=N result=blocked; severity high if disallowed tool executed; pass requires zero high severity and all scope escapes blocked. Rules and constraints: Classify tests, identify permission failures, and recommend launch gate decision. Required work: deliver tool_sandbox_eval.xlsx + safety_eval_report.md. The deliverables must include formulas or executable logic, intermediate calculations, row-level citations to the task packet, validation checks, uncertainty notes, sensitivity checks around the controlling thresholds, and a final decision table with pass/warn/fail/needs_review labels. Use only the task packet. Do not import external data, invent missing values, or hide unresolved assumptions. This task is self-contained: use the task packet as the factual record, do not add source references or external datasets, and preserve a high-fidelity audit trail for every calculation, classification, and recommendation. State assumptions and unresolved evidence gaps explicitly. When executed locally, place final deliverables under the artifacts/ directory.",
+  "task_status": "ready_to_run",
+  "run_status": "not_run",
+  "seed_rank": 95,
+  "display_order": 95,
+  "allowed_tools": [
+    "Local text editor or Markdown editor",
+    "Local spreadsheet, CSV, JSON, YAML, or scripting tools for deterministic calculations",
+    "Local validation or linting commands",
+    "Local plotting or diagramming tools when useful"
+  ],
+  "disallowed_tools": [
+    "External fact lookup or live data pulls",
+    "Live production systems, cloud accounts, trading systems, clinical systems, or industrial controls",
+    "Secret discovery, credential testing, or any action outside the prepared task workspace"
+  ],
+  "privacy_classification": "synthetic",
+  "needs_expert_review": true,
+  "input_requirements": [
+    "Use the task packet as the sole factual input.",
+    "Cite row IDs, record IDs, thresholds, formulas, and option IDs from the packet wherever they control a conclusion.",
+    "Mark missing, contradictory, or under-supported values as needs_review instead of inventing them."
+  ],
+  "inputs": [
+    "All factual inputs are embedded in the task packet.",
+    "Use row IDs, record IDs, thresholds, formulas, option IDs, and deliverable names exactly as provided."
+  ],
+  "output_requirements": [
+    "Produce the required deliverable files with the specified filenames when filenames are provided.",
+    "Include intermediate calculations or executable logic sufficient for another reviewer to reproduce the result.",
+    "Include validation checks, sensitivity notes around controlling thresholds, and a final decision or recommendation table."
+  ],
+  "constraints": [
+    "Use the task packet as the factual record.",
+    "Do not browse, call live services, import external datasets, or invent missing values.",
+    "Treat regulated or safety-critical outputs as review packets, not authorization to act."
+  ],
+  "quality_bar": [
+    "Treat the task as realistic professional work with domain-appropriate rigor.",
+    "Preserve the packet's domain detail, identifiers, thresholds, and edge cases in the final deliverables.",
+    "Make every recommendation traceable to explicit task-packet evidence or mark it as needs_review."
+  ],
+  "validation_expectations": [
+    "Check required fields, row counts, totals, thresholds, and classifications before finalizing.",
+    "Show enough formulas, script logic, or tables for an independent reviewer to reproduce the result.",
+    "Flag any contradiction, missing input, or threshold-sensitive conclusion."
+  ],
+  "edge_cases": [
+    "If packet evidence is incomplete, do not infer missing values; label the item needs_review.",
+    "If multiple options satisfy hard constraints, rank them using the packet's stated priorities and explain ties.",
+    "If a regulated or safety-critical conclusion appears, frame the output as a review packet rather than authorization to act."
+  ],
+  "privacy_safety_expectations": [
+    "Do not use live systems, private accounts, credentials, or external datasets.",
+    "Do not include raw secrets or operational instructions that would execute real-world changes.",
+    "Keep synthetic identifiers from the packet only when needed for verification."
+  ]
+}

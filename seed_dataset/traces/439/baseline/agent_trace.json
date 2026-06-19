@@ -1,0 +1,1010 @@
+{
+  "actual_outputs": {
+    "original_internal_attempt_id": "aa_task_0739_baseline",
+    "attempt_id": "439-baseline",
+    "attempt_kind": "baseline",
+    "error_message": null,
+    "error_type": null,
+    "metadata_json": {
+      "actual_outputs_discarded_field_count": 0,
+      "actual_outputs_normalized": true,
+      "expected_deliverable_items": [
+        "ai_act_crosswalk.xlsx",
+        "compliance_gap.md"
+      ],
+      "original_fields": {
+        "artifacts": [
+          {
+            "description": "AI Act control crosswalk with raw packet data, executable formulas, validation checks, sensitivity analysis, and final recommendation table",
+            "type": "xlsx"
+          },
+          {
+            "description": "Narrative control mapping, ranking and economics methodology, sensitivity analysis, unresolved gaps, and executive recommendation",
+            "type": "markdown"
+          },
+          {
+            "description": "Canonical workflow trace of actions, tool usage, outputs, and state changes",
+            "path": "agent_trace.json",
+            "type": "json"
+          },
+          {
+            "description": "Structured output manifest for task delivery",
+            "path": "actual_outputs.json",
+            "type": "json"
+          }
+        ],
+        "attempt": "baseline",
+        "notes": "All deliverables were produced from the embedded packet only. Recommendations separate blocker vs non-blocker classes, with blockers overriding economic logic."
+      },
+      "produced_deliverable_items": [
+        "ai_act_crosswalk.xlsx",
+        "compliance_gap.md"
+      ],
+      "raw_actual_outputs": {
+        "artifacts": [
+          {
+            "description": "AI Act control crosswalk with raw packet data, executable formulas, validation checks, sensitivity analysis, and final recommendation table",
+            "type": "xlsx"
+          },
+          {
+            "description": "Narrative control mapping, ranking and economics methodology, sensitivity analysis, unresolved gaps, and executive recommendation",
+            "type": "markdown"
+          },
+          {
+            "description": "Canonical workflow trace of actions, tool usage, outputs, and state changes",
+            "path": "agent_trace.json",
+            "type": "json"
+          },
+          {
+            "description": "Structured output manifest for task delivery",
+            "path": "actual_outputs.json",
+            "type": "json"
+          }
+        ],
+        "attempt": "baseline",
+        "notes": "All deliverables were produced from the embedded packet only. Recommendations separate blocker vs non-blocker classes, with blockers overriding economic logic.",
+        "status": "completed",
+        "original_internal_task_id": "aa_task_0739",
+        "task_id": "439"
+      }
+    },
+    "output_summary": "Normalized actual outputs from artifact files.",
+    "status": "success",
+    "original_internal_task_id": "aa_task_0739",
+    "task_id": "439",
+    "required_deliverables": [
+      "ai_act_crosswalk.xlsx",
+      "compliance_gap.md"
+    ],
+    "produced_deliverables": [
+      "ai_act_crosswalk.xlsx",
+      "compliance_gap.md"
+    ],
+    "missing_required_deliverables": [],
+    "deliverable_produced": true,
+    "deliverable_file_included": false,
+    "included_generated_artifacts": false,
+    "artifacts_excluded_reason": "Generated output artifacts are excluded from the public seed dataset by default.",
+    "logs_included": false,
+    "logs_excluded_reason": "Raw runner logs are excluded from the public seed dataset."
+  },
+  "agent_config": null,
+  "agent_tools": [
+    "codex_cli",
+    "Bash",
+    "python",
+    "file_read",
+    "file_write",
+    "apply_patch"
+  ],
+  "artifacts": [],
+  "original_internal_attempt_id": "aa_task_0739_baseline",
+  "attempt_id": "439-baseline",
+  "attempt_kind": "baseline",
+  "attempt_status": "completed",
+  "collection_id": null,
+  "completion_reason": null,
+  "ended_at": null,
+  "final_attempt_id": null,
+  "initial_attempt_id": null,
+  "iteration_index": null,
+  "learning": null,
+  "memory": null,
+  "metadata_json": {
+    "codex_command": [
+      "codex",
+      "exec",
+      "--sandbox",
+      "workspace-write",
+      "<prompt>"
+    ],
+    "codex_sandbox": "workspace-write",
+    "discarded_step_count": 0,
+    "raw_trace_list": [
+      {
+        "action": "Read task inputs from input/task.json and input/task_brief.md",
+        "actor": "worker",
+        "artifact_refs": [
+          "input/task.json",
+          "input/task_brief.md"
+        ],
+        "causal_note": "Source fields needed for all downstream formulas and rankings.",
+        "causal_type": "explicit",
+        "caused_by": "task start",
+        "error_message": null,
+        "error_type": null,
+        "input": "cat input/task.json ; cat input/task_brief.md",
+        "metadata_json": {
+          "record_count": 4,
+          "sensitivity_pct": 0.05
+        },
+        "observation": "Task packet and instructions located in workspace input files.",
+        "operation": "read",
+        "output": "Extracted embedded packet: metric map, R1-R4 record values, limits, decision_budget_usd=295000, sensitivity_shift_pct=5, hard_threshold_record_count=1, removed_context.",
+        "reasoning": "Packet extraction was mandatory because all calculations had to be derived only from embedded data.",
+        "state_change": "No file content changes.",
+        "step": 1,
+        "step_outcome": "Captured governing inputs and constraints.",
+        "success": true,
+        "tool": "exec_command",
+        "turn": 1
+      },
+      {
+        "action": "Attempted scripted xlsx generation with openpyxl",
+        "actor": "worker",
+        "causal_note": "Quoting issue in generated formula text prevents execution.",
+        "causal_type": "caused_by_error",
+        "caused_by": 1,
+        "error_message": "unterminated string literal",
+        "error_type": "SyntaxError",
+        "input": "python script using openpyxl with computed formulas and sheets",
+        "metadata_json": {
+          "attempted_tool": "openpyxl"
+        },
+        "observation": "Initial script used formula-heavy workbook construction but failed on Python quoting.",
+        "operation": "execute",
+        "output": "SyntaxError: unterminated string literal.",
+        "reasoning": "Need formula-heavy spreadsheet; script needed repair before reuse.",
+        "state_change": "No persistent artifacts created.",
+        "step": 2,
+        "step_outcome": "Captured error context for fallback planning.",
+        "success": false,
+        "tool": "exec_command",
+        "turn": 2
+      },
+      {
+        "action": "Retried formula script with simplified quote handling",
+        "actor": "worker",
+        "causal_note": "Repeated syntax failures indicate dependency/templating path is brittle.",
+        "causal_type": "caused_by_error",
+        "caused_by": 2,
+        "error_message": "unexpected character / unterminated string fragment",
+        "error_type": "SyntaxError",
+        "input": "Revised openpyxl script with simplified string concat for formula literals",
+        "metadata_json": {
+          "attempt_count": 2
+        },
+        "observation": "Second implementation still failed, reinforcing library-dependent path instability.",
+        "operation": "execute",
+        "output": "SyntaxError during formula assembly.",
+        "reasoning": "Observed repeated quoting failures; shifted to environment-capability audit.",
+        "state_change": "No file content changes.",
+        "step": 3,
+        "step_outcome": "Decided to test available library set before further edits.",
+        "success": false,
+        "tool": "exec_command",
+        "turn": 3
+      },
+      {
+        "action": "Checked available Python modules for spreadsheet generation",
+        "actor": "worker",
+        "causal_note": "No external/installable write libraries were available.",
+        "causal_type": "environmental_constraint",
+        "caused_by": 3,
+        "error_message": null,
+        "error_type": null,
+        "input": "python importlib.util.find_spec('openpyxl'/'xlsxwriter'/'pandas'/'zipfile')",
+        "metadata_json": {
+          "library_check": {
+            "openpyxl": false,
+            "pandas": false,
+            "xlsxwriter": false,
+            "zipfile": true
+          }
+        },
+        "observation": "Checked modules: openpyxl/xlsxwriter/pandas unavailable; zipfile available.",
+        "operation": "verify",
+        "output": "openpyxl=False, xlsxwriter=False, pandas=False, zipfile=True.",
+        "reasoning": "Dependency constraints required a package-free write path for `.xlsx` creation.",
+        "state_change": "No file changes; selected zipfile-based OOXML writer fallback.",
+        "step": 4,
+        "step_outcome": "Selected fallback implementation strategy.",
+        "success": true,
+        "tool": "exec_command",
+        "turn": 4
+      },
+      {
+        "action": "Generated ai_act_crosswalk.xlsx using OpenXML zip assembly",
+        "actor": "worker",
+        "causal_note": "Fallback used only standard library and packet fields.",
+        "causal_type": "dependency_fallback",
+        "caused_by": 4,
+        "error_message": null,
+        "error_type": null,
+        "input": "python zipfile-based OOXML generator with inlineStr/formula cells for all logical sheets",
+        "metadata_json": {
+          "sheets_created": [
+            "packet",
+            "records_raw",
+            "control_calculations",
+            "validation_checks",
+            "final_recommendation_table"
+          ]
+        },
+        "observation": "Built workbook package with packet, records, formula-driven calculations, validation checks, sensitivity rows, and final recommendations.",
+        "operation": "write",
+        "output": "Created [EXCLUDED_GENERATED_ARTIFACT]",
+        "reasoning": "Ensured deliverable is in `.xlsx` format with reproducible formulas despite missing libraries.",
+        "state_change": "Primary artifact created in required directory.",
+        "step": 5,
+        "step_outcome": "Spreadsheet artifact created with required logic and tables.",
+        "success": true,
+        "tool": "exec_command",
+        "turn": 5
+      },
+      {
+        "action": "Authored compliance_gap.md narrative in temporary path",
+        "actor": "worker",
+        "artifact_refs": [
+          "compliance_gap.md"
+        ],
+        "causal_note": "Next step ensured required location compliance.",
+        "causal_type": "normal_flow",
+        "caused_by": 5,
+        "error_message": null,
+        "error_type": null,
+        "input": "cat <<EOF > compliance_gap.md",
+        "metadata_json": {
+          "recommendation_map": {
+            "R1": "HOLD",
+            "R2": "HOLD",
+            "R3": "HOLD",
+            "R4": "MITIGATION"
+          }
+        },
+        "observation": "Narrative includes control mapping, gaps, methodology, validation, sensitivity, ranking, and recommendations.",
+        "operation": "write",
+        "output": "File written: compliance_gap.md (attempt root).",
+        "reasoning": "Narrative had to be created once computations and recommendations were finalized.",
+        "state_change": "Created root narrative artifact, requiring relocation to required path.",
+        "step": 6,
+        "step_outcome": "Narrative exists and is ready for relocation.",
+        "success": true,
+        "tool": "exec_command",
+        "turn": 6
+      },
+      {
+        "action": "Moved compliance_gap.md into artifacts/ path",
+        "actor": "worker",
+        "artifact_refs": [
+          "compliance_gap.md"
+        ],
+        "causal_note": "Contract compliance correction.",
+        "causal_type": "normal_flow",
+        "caused_by": 6,
+        "error_message": null,
+        "error_type": null,
+        "input": "mv compliance_gap.md [EXCLUDED_GENERATED_ARTIFACT]",
+        "metadata_json": {
+          "artifact_path_final": "[EXCLUDED_GENERATED_ARTIFACT]"
+        },
+        "observation": "Adjusted artifact location to satisfy required output contract.",
+        "operation": "write",
+        "output": "Moved file to [EXCLUDED_GENERATED_ARTIFACT]",
+        "reasoning": "Output contract requires compliance_gap.md under [EXCLUDED_GENERATED_ARTIFACT]",
+        "state_change": "Updated required output location for narrative artifact.",
+        "step": 7,
+        "step_outcome": "Narrative artifact now in correct location.",
+        "success": true,
+        "tool": "exec_command",
+        "turn": 7
+      },
+      {
+        "action": "Wrote actual_outputs.json manifest",
+        "actor": "worker",
+        "artifact_refs": [
+          "actual_outputs.json"
+        ],
+        "causal_note": "Ensures machine-readable handoff.",
+        "causal_type": "normal_flow",
+        "caused_by": 7,
+        "error_message": null,
+        "error_type": null,
+        "input": "cat <<EOF > actual_outputs.json",
+        "metadata_json": {
+          "status": "completed"
+        },
+        "observation": "Manifest references required artifacts and includes completion metadata.",
+        "operation": "write",
+        "output": "Created actual_outputs.json with artifact references and status.",
+        "reasoning": "Top-level manifest required by the task contract.",
+        "state_change": "Added required execution manifest file at attempt root.",
+        "step": 8,
+        "step_outcome": "actual_outputs.json now available and references required paths.",
+        "success": true,
+        "tool": "exec_command",
+        "turn": 8
+      },
+      {
+        "action": "Recorded final workflow trace",
+        "actor": "worker",
+        "artifact_refs": [
+          "agent_trace.json",
+          "actual_outputs.json"
+        ],
+        "causal_note": "Completion-step after all required deliverables were written.",
+        "causal_type": "normal_flow",
+        "caused_by": 8,
+        "error_message": null,
+        "error_type": null,
+        "input": "cat <<EOF > agent_trace.json",
+        "metadata_json": {
+          "final_file_count": 4,
+          "output_contract": "satisfied"
+        },
+        "observation": "Captured all reads, failed attempts, fallbacks, artifact writes, and causality in canonical field set.",
+        "operation": "write",
+        "output": "Written agent_trace.json containing all trace steps with required fields.",
+        "reasoning": "Final trace preserves evidence, errors, and rationale for auditability.",
+        "state_change": "Trace artifact created in attempt root per output contract.",
+        "step": 9,
+        "step_outcome": "All required outputs are present in expected locations.",
+        "success": true,
+        "tool": "exec_command",
+        "turn": 9
+      }
+    ],
+    "raw_trace_preserved": true,
+    "raw_trace_shape": "list",
+    "raw_trace_step_source": "steps",
+    "schema_valid": true,
+    "trace_normalization_status": "normalized",
+    "trace_valid": true
+  },
+  "preferred_attempt_id": null,
+  "previous_attempt_id": null,
+  "prior_trace_id": null,
+  "revision_attempt_ids": [],
+  "revision_group_id": null,
+  "schema_version": "aa-trace-v0.1",
+  "skills": null,
+  "started_at": null,
+  "steps": [
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "artifact_refs": [
+        "input/task.json",
+        "input/task_brief.md"
+      ],
+      "causal_note": "Source fields needed for all downstream formulas and rankings.",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "cat input/task.json ; cat input/task_brief.md",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "original_action": "Read task inputs from input/task.json and input/task_brief.md",
+        "original_causal_type": "explicit",
+        "original_step_outcome": "Captured governing inputs and constraints.",
+        "raw_step": {
+          "action": "Read task inputs from input/task.json and input/task_brief.md",
+          "actor": "worker",
+          "artifact_refs": [
+            "input/task.json",
+            "input/task_brief.md"
+          ],
+          "causal_note": "Source fields needed for all downstream formulas and rankings.",
+          "causal_type": "explicit",
+          "caused_by": "task start",
+          "error_message": null,
+          "error_type": null,
+          "input": "cat input/task.json ; cat input/task_brief.md",
+          "metadata_json": {
+            "record_count": 4,
+            "sensitivity_pct": 0.05
+          },
+          "observation": "Task packet and instructions located in workspace input files.",
+          "operation": "read",
+          "output": "Extracted embedded packet: metric map, R1-R4 record values, limits, decision_budget_usd=295000, sensitivity_shift_pct=5, hard_threshold_record_count=1, removed_context.",
+          "reasoning": "Packet extraction was mandatory because all calculations had to be derived only from embedded data.",
+          "state_change": "No file content changes.",
+          "step": 1,
+          "step_outcome": "Captured governing inputs and constraints.",
+          "success": true,
+          "tool": "exec_command",
+          "turn": 1
+        },
+        "record_count": 4,
+        "sensitivity_pct": 0.05
+      },
+      "observation": "Task packet and instructions located in workspace input files.",
+      "operation": "read",
+      "output": "Extracted embedded packet: metric map, R1-R4 record values, limits, decision_budget_usd=295000, sensitivity_shift_pct=5, hard_threshold_record_count=1, removed_context.",
+      "parallel_group": null,
+      "reasoning": "Packet extraction was mandatory because all calculations had to be derived only from embedded data.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "No file content changes.",
+      "step": 1,
+      "step_outcome": "neutral",
+      "success": true,
+      "tool": "Bash",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "causal_note": "Quoting issue in generated formula text prevents execution.",
+      "causal_type": "other",
+      "caused_by": [
+        1
+      ],
+      "ended_at": null,
+      "error_message": "unterminated string literal",
+      "error_type": "SyntaxError",
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "python script using openpyxl with computed formulas and sheets",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "attempted_tool": "openpyxl",
+        "original_action": "Attempted scripted xlsx generation with openpyxl",
+        "original_causal_type": "caused_by_error",
+        "original_step_outcome": "Captured error context for fallback planning.",
+        "raw_step": {
+          "action": "Attempted scripted xlsx generation with openpyxl",
+          "actor": "worker",
+          "causal_note": "Quoting issue in generated formula text prevents execution.",
+          "causal_type": "caused_by_error",
+          "caused_by": 1,
+          "error_message": "unterminated string literal",
+          "error_type": "SyntaxError",
+          "input": "python script using openpyxl with computed formulas and sheets",
+          "metadata_json": {
+            "attempted_tool": "openpyxl"
+          },
+          "observation": "Initial script used formula-heavy workbook construction but failed on Python quoting.",
+          "operation": "execute",
+          "output": "SyntaxError: unterminated string literal.",
+          "reasoning": "Need formula-heavy spreadsheet; script needed repair before reuse.",
+          "state_change": "No persistent artifacts created.",
+          "step": 2,
+          "step_outcome": "Captured error context for fallback planning.",
+          "success": false,
+          "tool": "exec_command",
+          "turn": 2
+        }
+      },
+      "observation": "Initial script used formula-heavy workbook construction but failed on Python quoting.",
+      "operation": "execute",
+      "output": "SyntaxError: unterminated string literal.",
+      "parallel_group": null,
+      "reasoning": "Need formula-heavy spreadsheet; script needed repair before reuse.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "No persistent artifacts created.",
+      "step": 2,
+      "step_outcome": "neutral",
+      "success": false,
+      "tool": "python",
+      "turn": 2
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "causal_note": "Repeated syntax failures indicate dependency/templating path is brittle.",
+      "causal_type": "other",
+      "caused_by": [
+        2
+      ],
+      "ended_at": null,
+      "error_message": "unexpected character / unterminated string fragment",
+      "error_type": "SyntaxError",
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "Revised openpyxl script with simplified string concat for formula literals",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "attempt_count": 2,
+        "original_action": "Retried formula script with simplified quote handling",
+        "original_causal_type": "caused_by_error",
+        "original_step_outcome": "Decided to test available library set before further edits.",
+        "raw_step": {
+          "action": "Retried formula script with simplified quote handling",
+          "actor": "worker",
+          "causal_note": "Repeated syntax failures indicate dependency/templating path is brittle.",
+          "causal_type": "caused_by_error",
+          "caused_by": 2,
+          "error_message": "unexpected character / unterminated string fragment",
+          "error_type": "SyntaxError",
+          "input": "Revised openpyxl script with simplified string concat for formula literals",
+          "metadata_json": {
+            "attempt_count": 2
+          },
+          "observation": "Second implementation still failed, reinforcing library-dependent path instability.",
+          "operation": "execute",
+          "output": "SyntaxError during formula assembly.",
+          "reasoning": "Observed repeated quoting failures; shifted to environment-capability audit.",
+          "state_change": "No file content changes.",
+          "step": 3,
+          "step_outcome": "Decided to test available library set before further edits.",
+          "success": false,
+          "tool": "exec_command",
+          "turn": 3
+        }
+      },
+      "observation": "Second implementation still failed, reinforcing library-dependent path instability.",
+      "operation": "execute",
+      "output": "SyntaxError during formula assembly.",
+      "parallel_group": null,
+      "reasoning": "Observed repeated quoting failures; shifted to environment-capability audit.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "No file content changes.",
+      "step": 3,
+      "step_outcome": "neutral",
+      "success": false,
+      "tool": "Bash",
+      "turn": 3
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "causal_note": "No external/installable write libraries were available.",
+      "causal_type": "other",
+      "caused_by": [
+        3
+      ],
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "python importlib.util.find_spec('openpyxl'/'xlsxwriter'/'pandas'/'zipfile')",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "library_check": {
+          "openpyxl": false,
+          "pandas": false,
+          "xlsxwriter": false,
+          "zipfile": true
+        },
+        "original_action": "Checked available Python modules for spreadsheet generation",
+        "original_causal_type": "environmental_constraint",
+        "original_step_outcome": "Selected fallback implementation strategy.",
+        "raw_step": {
+          "action": "Checked available Python modules for spreadsheet generation",
+          "actor": "worker",
+          "causal_note": "No external/installable write libraries were available.",
+          "causal_type": "environmental_constraint",
+          "caused_by": 3,
+          "error_message": null,
+          "error_type": null,
+          "input": "python importlib.util.find_spec('openpyxl'/'xlsxwriter'/'pandas'/'zipfile')",
+          "metadata_json": {
+            "library_check": {
+              "openpyxl": false,
+              "pandas": false,
+              "xlsxwriter": false,
+              "zipfile": true
+            }
+          },
+          "observation": "Checked modules: openpyxl/xlsxwriter/pandas unavailable; zipfile available.",
+          "operation": "verify",
+          "output": "openpyxl=False, xlsxwriter=False, pandas=False, zipfile=True.",
+          "reasoning": "Dependency constraints required a package-free write path for `.xlsx` creation.",
+          "state_change": "No file changes; selected zipfile-based OOXML writer fallback.",
+          "step": 4,
+          "step_outcome": "Selected fallback implementation strategy.",
+          "success": true,
+          "tool": "exec_command",
+          "turn": 4
+        }
+      },
+      "observation": "Checked modules: openpyxl/xlsxwriter/pandas unavailable; zipfile available.",
+      "operation": "verify",
+      "output": "openpyxl=False, xlsxwriter=False, pandas=False, zipfile=True.",
+      "parallel_group": null,
+      "reasoning": "Dependency constraints required a package-free write path for `.xlsx` creation.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "No file changes; selected zipfile-based OOXML writer fallback.",
+      "step": 4,
+      "step_outcome": "neutral",
+      "success": true,
+      "tool": "python",
+      "turn": 4
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "causal_note": "Fallback used only standard library and packet fields.",
+      "causal_type": "other",
+      "caused_by": [
+        4
+      ],
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "python zipfile-based OOXML generator with inlineStr/formula cells for all logical sheets",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "original_action": "Generated ai_act_crosswalk.xlsx using OpenXML zip assembly",
+        "original_causal_type": "dependency_fallback",
+        "original_step_outcome": "Spreadsheet artifact created with required logic and tables.",
+        "raw_step": {
+          "action": "Generated ai_act_crosswalk.xlsx using OpenXML zip assembly",
+          "actor": "worker",
+          "causal_note": "Fallback used only standard library and packet fields.",
+          "causal_type": "dependency_fallback",
+          "caused_by": 4,
+          "error_message": null,
+          "error_type": null,
+          "input": "python zipfile-based OOXML generator with inlineStr/formula cells for all logical sheets",
+          "metadata_json": {
+            "sheets_created": [
+              "packet",
+              "records_raw",
+              "control_calculations",
+              "validation_checks",
+              "final_recommendation_table"
+            ]
+          },
+          "observation": "Built workbook package with packet, records, formula-driven calculations, validation checks, sensitivity rows, and final recommendations.",
+          "operation": "write",
+          "output": "Created [EXCLUDED_GENERATED_ARTIFACT]",
+          "reasoning": "Ensured deliverable is in `.xlsx` format with reproducible formulas despite missing libraries.",
+          "state_change": "Primary artifact created in required directory.",
+          "step": 5,
+          "step_outcome": "Spreadsheet artifact created with required logic and tables.",
+          "success": true,
+          "tool": "exec_command",
+          "turn": 5
+        },
+        "sheets_created": [
+          "packet",
+          "records_raw",
+          "control_calculations",
+          "validation_checks",
+          "final_recommendation_table"
+        ]
+      },
+      "observation": "Built workbook package with packet, records, formula-driven calculations, validation checks, sensitivity rows, and final recommendations.",
+      "operation": "write",
+      "output": "Created [EXCLUDED_GENERATED_ARTIFACT]",
+      "parallel_group": null,
+      "reasoning": "Ensured deliverable is in `.xlsx` format with reproducible formulas despite missing libraries.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Primary artifact created in required directory.",
+      "step": 5,
+      "step_outcome": "neutral",
+      "success": true,
+      "tool": "python",
+      "turn": 5
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "artifact_refs": [
+        "compliance_gap.md"
+      ],
+      "causal_note": "Next step ensured required location compliance.",
+      "causal_type": "other",
+      "caused_by": [
+        5
+      ],
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "cat <<EOF > compliance_gap.md",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "original_action": "Authored compliance_gap.md narrative in temporary path",
+        "original_causal_type": "normal_flow",
+        "original_step_outcome": "Narrative exists and is ready for relocation.",
+        "raw_step": {
+          "action": "Authored compliance_gap.md narrative in temporary path",
+          "actor": "worker",
+          "artifact_refs": [
+            "compliance_gap.md"
+          ],
+          "causal_note": "Next step ensured required location compliance.",
+          "causal_type": "normal_flow",
+          "caused_by": 5,
+          "error_message": null,
+          "error_type": null,
+          "input": "cat <<EOF > compliance_gap.md",
+          "metadata_json": {
+            "recommendation_map": {
+              "R1": "HOLD",
+              "R2": "HOLD",
+              "R3": "HOLD",
+              "R4": "MITIGATION"
+            }
+          },
+          "observation": "Narrative includes control mapping, gaps, methodology, validation, sensitivity, ranking, and recommendations.",
+          "operation": "write",
+          "output": "File written: compliance_gap.md (attempt root).",
+          "reasoning": "Narrative had to be created once computations and recommendations were finalized.",
+          "state_change": "Created root narrative artifact, requiring relocation to required path.",
+          "step": 6,
+          "step_outcome": "Narrative exists and is ready for relocation.",
+          "success": true,
+          "tool": "exec_command",
+          "turn": 6
+        },
+        "recommendation_map": {
+          "R1": "HOLD",
+          "R2": "HOLD",
+          "R3": "HOLD",
+          "R4": "MITIGATION"
+        }
+      },
+      "observation": "Narrative includes control mapping, gaps, methodology, validation, sensitivity, ranking, and recommendations.",
+      "operation": "write",
+      "output": "File written: compliance_gap.md (attempt root).",
+      "parallel_group": null,
+      "reasoning": "Narrative had to be created once computations and recommendations were finalized.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Created root narrative artifact, requiring relocation to required path.",
+      "step": 6,
+      "step_outcome": "neutral",
+      "success": true,
+      "tool": "Bash",
+      "turn": 6
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "artifact_refs": [
+        "compliance_gap.md"
+      ],
+      "causal_note": "Contract compliance correction.",
+      "causal_type": "other",
+      "caused_by": [
+        6
+      ],
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "mv compliance_gap.md [EXCLUDED_GENERATED_ARTIFACT]",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "artifact_path_final": "[EXCLUDED_GENERATED_ARTIFACT]",
+        "original_action": "Moved compliance_gap.md into artifacts/ path",
+        "original_causal_type": "normal_flow",
+        "original_step_outcome": "Narrative artifact now in correct location.",
+        "raw_step": {
+          "action": "Moved compliance_gap.md into artifacts/ path",
+          "actor": "worker",
+          "artifact_refs": [
+            "compliance_gap.md"
+          ],
+          "causal_note": "Contract compliance correction.",
+          "causal_type": "normal_flow",
+          "caused_by": 6,
+          "error_message": null,
+          "error_type": null,
+          "input": "mv compliance_gap.md [EXCLUDED_GENERATED_ARTIFACT]",
+          "metadata_json": {
+            "artifact_path_final": "[EXCLUDED_GENERATED_ARTIFACT]"
+          },
+          "observation": "Adjusted artifact location to satisfy required output contract.",
+          "operation": "write",
+          "output": "Moved file to [EXCLUDED_GENERATED_ARTIFACT]",
+          "reasoning": "Output contract requires compliance_gap.md under [EXCLUDED_GENERATED_ARTIFACT]",
+          "state_change": "Updated required output location for narrative artifact.",
+          "step": 7,
+          "step_outcome": "Narrative artifact now in correct location.",
+          "success": true,
+          "tool": "exec_command",
+          "turn": 7
+        }
+      },
+      "observation": "Adjusted artifact location to satisfy required output contract.",
+      "operation": "write",
+      "output": "Moved file to [EXCLUDED_GENERATED_ARTIFACT]",
+      "parallel_group": null,
+      "reasoning": "Output contract requires compliance_gap.md under [EXCLUDED_GENERATED_ARTIFACT]",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Updated required output location for narrative artifact.",
+      "step": 7,
+      "step_outcome": "neutral",
+      "success": true,
+      "tool": "Bash",
+      "turn": 7
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "artifact_refs": [
+        "actual_outputs.json"
+      ],
+      "causal_note": "Ensures machine-readable handoff.",
+      "causal_type": "other",
+      "caused_by": [
+        7
+      ],
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "cat <<EOF > actual_outputs.json",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "original_action": "Wrote actual_outputs.json manifest",
+        "original_causal_type": "normal_flow",
+        "original_step_outcome": "actual_outputs.json now available and references required paths.",
+        "raw_step": {
+          "action": "Wrote actual_outputs.json manifest",
+          "actor": "worker",
+          "artifact_refs": [
+            "actual_outputs.json"
+          ],
+          "causal_note": "Ensures machine-readable handoff.",
+          "causal_type": "normal_flow",
+          "caused_by": 7,
+          "error_message": null,
+          "error_type": null,
+          "input": "cat <<EOF > actual_outputs.json",
+          "metadata_json": {
+            "status": "completed"
+          },
+          "observation": "Manifest references required artifacts and includes completion metadata.",
+          "operation": "write",
+          "output": "Created actual_outputs.json with artifact references and status.",
+          "reasoning": "Top-level manifest required by the task contract.",
+          "state_change": "Added required execution manifest file at attempt root.",
+          "step": 8,
+          "step_outcome": "actual_outputs.json now available and references required paths.",
+          "success": true,
+          "tool": "exec_command",
+          "turn": 8
+        },
+        "status": "completed"
+      },
+      "observation": "Manifest references required artifacts and includes completion metadata.",
+      "operation": "write",
+      "output": "Created actual_outputs.json with artifact references and status.",
+      "parallel_group": null,
+      "reasoning": "Top-level manifest required by the task contract.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Added required execution manifest file at attempt root.",
+      "step": 8,
+      "step_outcome": "neutral",
+      "success": true,
+      "tool": "Bash",
+      "turn": 8
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "artifact_refs": [
+        "agent_trace.json",
+        "actual_outputs.json"
+      ],
+      "causal_note": "Completion-step after all required deliverables were written.",
+      "causal_type": "other",
+      "caused_by": [
+        8
+      ],
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "cat <<EOF > agent_trace.json",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "final_file_count": 4,
+        "original_action": "Recorded final workflow trace",
+        "original_causal_type": "normal_flow",
+        "original_step_outcome": "All required outputs are present in expected locations.",
+        "output_contract": "satisfied",
+        "raw_step": {
+          "action": "Recorded final workflow trace",
+          "actor": "worker",
+          "artifact_refs": [
+            "agent_trace.json",
+            "actual_outputs.json"
+          ],
+          "causal_note": "Completion-step after all required deliverables were written.",
+          "causal_type": "normal_flow",
+          "caused_by": 8,
+          "error_message": null,
+          "error_type": null,
+          "input": "cat <<EOF > agent_trace.json",
+          "metadata_json": {
+            "final_file_count": 4,
+            "output_contract": "satisfied"
+          },
+          "observation": "Captured all reads, failed attempts, fallbacks, artifact writes, and causality in canonical field set.",
+          "operation": "write",
+          "output": "Written agent_trace.json containing all trace steps with required fields.",
+          "reasoning": "Final trace preserves evidence, errors, and rationale for auditability.",
+          "state_change": "Trace artifact created in attempt root per output contract.",
+          "step": 9,
+          "step_outcome": "All required outputs are present in expected locations.",
+          "success": true,
+          "tool": "exec_command",
+          "turn": 9
+        }
+      },
+      "observation": "Captured all reads, failed attempts, fallbacks, artifact writes, and causality in canonical field set.",
+      "operation": "write",
+      "output": "Written agent_trace.json containing all trace steps with required fields.",
+      "parallel_group": null,
+      "reasoning": "Final trace preserves evidence, errors, and rationale for auditability.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Trace artifact created in attempt root per output contract.",
+      "step": 9,
+      "step_outcome": "neutral",
+      "success": true,
+      "tool": "Bash",
+      "turn": 9
+    }
+  ],
+  "system_prompt": null,
+  "system_prompt_hash": null,
+  "task": "Produce a launch-quality AI Act high-risk system control crosswalk. Using only the provided embedded packet, map controls against unresolved high-risk gaps, rank records by technical and economic impact, perform the stated sensitivity check, and recommend one of: hold, release, retest, or mitigation for each record. Deliver two artifacts: (1) ai_act_crosswalk.xlsx - a spreadsheet containing all formulas or executable logic, record-level citations, validation checks, sensitivity notes, scoring computations, and a final recommendation table; (2) compliance_gap.md - a narrative that documents control mappings, unresolved gaps, justification for rankings and recommendations, validation of calculations, and items marked needs_review. Strict constraints: separate safety/compliance blockers from economic optimizations (blockers override ROI); do not use external measurements, specialized licensed software, or hidden assumptions; mark any contradictory or under-supported records as needs_review. Use the embedded packet (metric map, records, limits, budget, sensitivity_shift_pct, hard_threshold_record_count, and removed_context) for all calculations.",
+  "task_family_id": null,
+  "original_internal_task_id": "aa_task_0739",
+  "task_id": "439",
+  "termination_reason": "task_complete",
+  "trace_id": "trace_439-baseline_normalized",
+  "trace_mode": "live"
+}

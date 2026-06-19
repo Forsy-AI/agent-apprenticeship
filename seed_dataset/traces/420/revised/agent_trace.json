@@ -1,0 +1,776 @@
+{
+  "actual_outputs": {
+    "original_internal_attempt_id": "aa_task_0720_revised",
+    "attempt_id": "420-revised",
+    "attempt_kind": "revised",
+    "error_message": null,
+    "error_type": null,
+    "metadata_json": {
+      "actual_outputs_discarded_field_count": 0,
+      "actual_outputs_normalized": true,
+      "expected_deliverable_items": [
+        "artifact_removal_benchmark.ipynb",
+        "benchmark_report.md"
+      ],
+      "original_fields": {
+        "artifact_removal_benchmark.ipynb": "[EXCLUDED_GENERATED_ARTIFACT]",
+        "benchmark_report.md": "[EXCLUDED_GENERATED_ARTIFACT]",
+        "notes": "Packet-only benchmark with linear/monotone fits, residual checks, sensitivity shift, and release recommendation."
+      },
+      "produced_deliverable_items": [
+        "benchmark_report.md"
+      ],
+      "raw_actual_outputs": {
+        "artifact_removal_benchmark.ipynb": "[EXCLUDED_GENERATED_ARTIFACT]",
+        "benchmark_report.md": "[EXCLUDED_GENERATED_ARTIFACT]",
+        "notes": "Packet-only benchmark with linear/monotone fits, residual checks, sensitivity shift, and release recommendation.",
+        "status": "completed",
+        "original_internal_task_id": "aa_task_0720",
+        "task_id": "420"
+      }
+    },
+    "output_summary": "Normalized actual outputs from artifact files.",
+    "status": "partial",
+    "original_internal_task_id": "aa_task_0720",
+    "task_id": "420",
+    "original_status": "success",
+    "required_deliverables": [
+      "artifact_removal_benchmark.ipynb",
+      "benchmark_report.md"
+    ],
+    "produced_deliverables": [
+      "benchmark_report.md"
+    ],
+    "missing_required_deliverables": [
+      "artifact_removal_benchmark.ipynb"
+    ],
+    "deliverable_produced": false,
+    "deliverable_file_included": false,
+    "included_generated_artifacts": false,
+    "artifacts_excluded_reason": "Generated output artifacts are excluded from the public seed dataset by default.",
+    "logs_included": false,
+    "logs_excluded_reason": "Raw runner logs are excluded from the public seed dataset."
+  },
+  "agent_config": null,
+  "agent_tools": [
+    "codex_cli",
+    "Bash",
+    "python",
+    "file_read",
+    "file_write",
+    "apply_patch"
+  ],
+  "artifacts": [],
+  "original_internal_attempt_id": "aa_task_0720_revised",
+  "attempt_id": "420-revised",
+  "attempt_kind": "revised",
+  "attempt_status": "completed",
+  "collection_id": null,
+  "completion_reason": null,
+  "ended_at": null,
+  "final_attempt_id": null,
+  "initial_attempt_id": null,
+  "iteration_index": null,
+  "learning": null,
+  "memory": null,
+  "metadata_json": {
+    "codex_command": [
+      "codex",
+      "exec",
+      "--sandbox",
+      "workspace-write",
+      "<prompt>"
+    ],
+    "codex_sandbox": "workspace-write",
+    "discarded_step_count": 0,
+    "raw_trace_list": [
+      {
+        "action": "Read embedded packet values and thresholds",
+        "actor": "worker",
+        "artifact_refs": [
+          "input/task.json"
+        ],
+        "causal_note": "Required by task normalization metadata",
+        "causal_type": "requirement",
+        "caused_by": "Task instruction to use only embedded packet",
+        "error_message": null,
+        "error_type": null,
+        "input": "cat ./input/task.json",
+        "metadata_json": {
+          "records": 4
+        },
+        "observation": "task.json contains all canonical packet fields and constraints used for computation",
+        "operation": "read",
+        "output": "Extracted records R1-R4, limits (artifact=7.56, recovery=500, spike=29), sensitivity_shift_pct=5, hard_threshold_record_count=1, decision_budget_usd=160000",
+        "reasoning": "All benchmark inputs and constraints must be packet-native and no external references allowed",
+        "state_change": "Local context loaded from input payload; no file writes yet",
+        "step": "read_input_task_json",
+        "step_outcome": "input_loaded",
+        "success": true,
+        "tool": "functions.exec_command",
+        "turn": 1
+      },
+      {
+        "action": "Read textual requirements and deliverable contract",
+        "actor": "worker",
+        "artifact_refs": [
+          "input/task_brief.md"
+        ],
+        "causal_note": "Controls output schema",
+        "causal_type": "requirement",
+        "caused_by": "user_task_requirements",
+        "error_message": null,
+        "error_type": null,
+        "input": "cat ./input/task_brief.md",
+        "metadata_json": {
+          "required_outputs": [
+            "artifact_removal_benchmark.ipynb",
+            "benchmark_report.md"
+          ]
+        },
+        "observation": "task_brief.md repeats requirement for notebook/report, formulas, residual logic, sensitivity, flags, and recommendation table",
+        "operation": "read",
+        "output": "Captured requirement details: fit linear/monotone models, auditable table with citations, per-record checks/flags, sensitivity notes, final recommendation",
+        "reasoning": "Needed to encode required output structure in notebook and report",
+        "state_change": "No filesystem changes",
+        "step": "read_task_brief",
+        "step_outcome": "requirements_ingested",
+        "success": true,
+        "tool": "functions.exec_command",
+        "turn": 2
+      },
+      {
+        "action": "Define packet-only formulas for three candidate algorithms",
+        "actor": "worker",
+        "causal_note": "No external packages are required for core fitting",
+        "causal_type": "design_choice",
+        "caused_by": "requirements and scoring task",
+        "error_message": null,
+        "error_type": null,
+        "input": "In-notebook helper functions linear_fit_predict and monotone_severity\n",
+        "metadata_json": {
+          "feature_set": [
+            "artifact_peak_uV",
+            "recovery_ms",
+            "residual_noise_uV"
+          ],
+          "model_count": 3
+        },
+        "observation": "Prepared formulas for linear and monotone candidates with reproducible math in notebook code",
+        "operation": "write",
+        "output": "Three model shells defined (linear_artifact, linear_recovery, monotone_severity) and tolerance definition included",
+        "reasoning": "Task requires at least one linear and one monotone fit from embedded rows only",
+        "state_change": "Benchmark logic staged in notebook source payload before write",
+        "step": "model_formulation",
+        "step_outcome": "formulas_determined",
+        "success": true,
+        "tool": "functions.exec_command",
+        "turn": 3
+      },
+      {
+        "action": "Create executable notebook with checks and recommendation output",
+        "actor": "worker",
+        "causal_note": "Includes residual tolerances using sensitivity_shift_pct",
+        "causal_type": "implementation",
+        "caused_by": "completion_of_model_design",
+        "error_message": null,
+        "error_type": null,
+        "input": "Python script writing nbformat JSON",
+        "metadata_json": {
+          "cells": 7
+        },
+        "observation": "Notebook generated with seven cells including data, fits, record flags, sensitivity, and final recommendation printout",
+        "operation": "write",
+        "output": "Created [EXCLUDED_GENERATED_ARTIFACT]",
+        "reasoning": "Required runnable notebook artifact",
+        "state_change": "New file [EXCLUDED_GENERATED_ARTIFACT] created",
+        "step": "write_notebook",
+        "step_outcome": "artifact_created",
+        "success": true,
+        "tool": "functions.exec_command",
+        "turn": 4
+      },
+      {
+        "action": "Create auditable benchmark report",
+        "actor": "worker",
+        "causal_note": "Record-level citation and residual logic embedded in text tables",
+        "causal_type": "implementation",
+        "caused_by": "deliverable contract",
+        "error_message": null,
+        "error_type": null,
+        "input": "Write markdown report from packet-derived values",
+        "metadata_json": {
+          "contains_decision_table": true
+        },
+        "observation": "Report includes evidence table with per-record flags, model equations, residuals, sensitivity table, assumptions, and recommendation",
+        "operation": "write",
+        "output": "Created [EXCLUDED_GENERATED_ARTIFACT]",
+        "reasoning": "Required report format with evidence and decision rationale",
+        "state_change": "New file [EXCLUDED_GENERATED_ARTIFACT] created",
+        "step": "write_report",
+        "step_outcome": "artifact_created",
+        "success": true,
+        "tool": "functions.exec_command",
+        "turn": 5
+      },
+      {
+        "action": "Emit actual_outputs.json",
+        "actor": "worker",
+        "artifact_refs": [
+          "actual_outputs.json"
+        ],
+        "causal_note": "No optional extra fields added",
+        "causal_type": "requirement",
+        "caused_by": "task contract",
+        "error_message": null,
+        "error_type": null,
+        "input": "actual output contract payload",
+        "metadata_json": {
+          "status": "completed"
+        },
+        "observation": "JSON written for evaluator ingestion",
+        "operation": "write",
+        "output": "Created actual_outputs.json",
+        "reasoning": "Task requires this file in attempt directory",
+        "state_change": "New file actual_outputs.json created",
+        "step": "write_actual_outputs",
+        "step_outcome": "artifact_created",
+        "success": true,
+        "tool": "functions.exec_command",
+        "turn": 6
+      },
+      {
+        "action": "Write agent_trace.json with all workflow steps",
+        "actor": "worker",
+        "artifact_refs": [
+          "agent_trace.json"
+        ],
+        "causal_note": "Trace fields use requested canonical names",
+        "causal_type": "requirement",
+        "caused_by": "user instruction",
+        "error_message": null,
+        "error_type": null,
+        "input": "Ordered list of trace entries with cause/effect and artifact references",
+        "metadata_json": {
+          "steps": 7
+        },
+        "observation": "Trace file includes required canonical fields for each meaningful action",
+        "operation": "write",
+        "output": "Created agent_trace.json",
+        "reasoning": "Required structured workflow trace",
+        "state_change": "New file agent_trace.json created",
+        "step": "write_trace_file",
+        "step_outcome": "artifact_created",
+        "success": true,
+        "tool": "functions.exec_command",
+        "turn": 7
+      }
+    ],
+    "raw_trace_preserved": true,
+    "raw_trace_shape": "list",
+    "raw_trace_step_source": "steps",
+    "schema_valid": true,
+    "trace_normalization_status": "partial",
+    "trace_valid": true
+  },
+  "preferred_attempt_id": null,
+  "previous_attempt_id": null,
+  "prior_trace_id": null,
+  "revision_attempt_ids": [],
+  "revision_group_id": null,
+  "schema_version": "aa-trace-v0.1",
+  "skills": null,
+  "started_at": null,
+  "steps": [
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "artifact_refs": [
+        "input/task.json"
+      ],
+      "causal_note": "Required by task normalization metadata",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "cat ./input/task.json",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "normalization_warnings": [
+          "step value 'read_input_task_json' was not numeric; defaulted to 1"
+        ],
+        "original_action": "Read embedded packet values and thresholds",
+        "original_causal_type": "requirement",
+        "original_step": "read_input_task_json",
+        "original_step_outcome": "input_loaded",
+        "raw_step": {
+          "action": "Read embedded packet values and thresholds",
+          "actor": "worker",
+          "artifact_refs": [
+            "input/task.json"
+          ],
+          "causal_note": "Required by task normalization metadata",
+          "causal_type": "requirement",
+          "caused_by": "Task instruction to use only embedded packet",
+          "error_message": null,
+          "error_type": null,
+          "input": "cat ./input/task.json",
+          "metadata_json": {
+            "records": 4
+          },
+          "observation": "task.json contains all canonical packet fields and constraints used for computation",
+          "operation": "read",
+          "output": "Extracted records R1-R4, limits (artifact=7.56, recovery=500, spike=29), sensitivity_shift_pct=5, hard_threshold_record_count=1, decision_budget_usd=160000",
+          "reasoning": "All benchmark inputs and constraints must be packet-native and no external references allowed",
+          "state_change": "Local context loaded from input payload; no file writes yet",
+          "step": "read_input_task_json",
+          "step_outcome": "input_loaded",
+          "success": true,
+          "tool": "functions.exec_command",
+          "turn": 1
+        },
+        "records": 4
+      },
+      "observation": "task.json contains all canonical packet fields and constraints used for computation",
+      "operation": "read",
+      "output": "Extracted records R1-R4, limits (artifact=7.56, recovery=500, spike=29), sensitivity_shift_pct=5, hard_threshold_record_count=1, decision_budget_usd=160000",
+      "parallel_group": null,
+      "reasoning": "All benchmark inputs and constraints must be packet-native and no external references allowed",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Local context loaded from input payload; no file writes yet",
+      "step": 1,
+      "step_outcome": "neutral",
+      "success": true,
+      "tool": "Bash",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "artifact_refs": [
+        "input/task_brief.md"
+      ],
+      "causal_note": "Controls output schema",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "cat ./input/task_brief.md",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "normalization_warnings": [
+          "step value 'read_task_brief' was not numeric; defaulted to 2"
+        ],
+        "original_action": "Read textual requirements and deliverable contract",
+        "original_causal_type": "requirement",
+        "original_step": "read_task_brief",
+        "original_step_outcome": "requirements_ingested",
+        "raw_step": {
+          "action": "Read textual requirements and deliverable contract",
+          "actor": "worker",
+          "artifact_refs": [
+            "input/task_brief.md"
+          ],
+          "causal_note": "Controls output schema",
+          "causal_type": "requirement",
+          "caused_by": "user_task_requirements",
+          "error_message": null,
+          "error_type": null,
+          "input": "cat ./input/task_brief.md",
+          "metadata_json": {
+            "required_outputs": [
+              "artifact_removal_benchmark.ipynb",
+              "benchmark_report.md"
+            ]
+          },
+          "observation": "task_brief.md repeats requirement for notebook/report, formulas, residual logic, sensitivity, flags, and recommendation table",
+          "operation": "read",
+          "output": "Captured requirement details: fit linear/monotone models, auditable table with citations, per-record checks/flags, sensitivity notes, final recommendation",
+          "reasoning": "Needed to encode required output structure in notebook and report",
+          "state_change": "No filesystem changes",
+          "step": "read_task_brief",
+          "step_outcome": "requirements_ingested",
+          "success": true,
+          "tool": "functions.exec_command",
+          "turn": 2
+        },
+        "required_outputs": [
+          "artifact_removal_benchmark.ipynb",
+          "benchmark_report.md"
+        ]
+      },
+      "observation": "task_brief.md repeats requirement for notebook/report, formulas, residual logic, sensitivity, flags, and recommendation table",
+      "operation": "read",
+      "output": "Captured requirement details: fit linear/monotone models, auditable table with citations, per-record checks/flags, sensitivity notes, final recommendation",
+      "parallel_group": null,
+      "reasoning": "Needed to encode required output structure in notebook and report",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "No filesystem changes",
+      "step": 2,
+      "step_outcome": "neutral",
+      "success": true,
+      "tool": "Bash",
+      "turn": 2
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "causal_note": "No external packages are required for core fitting",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "In-notebook helper functions linear_fit_predict and monotone_severity\n",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "feature_set": [
+          "artifact_peak_uV",
+          "recovery_ms",
+          "residual_noise_uV"
+        ],
+        "model_count": 3,
+        "normalization_warnings": [
+          "step value 'model_formulation' was not numeric; defaulted to 3"
+        ],
+        "original_action": "Define packet-only formulas for three candidate algorithms",
+        "original_causal_type": "design_choice",
+        "original_step": "model_formulation",
+        "original_step_outcome": "formulas_determined",
+        "raw_step": {
+          "action": "Define packet-only formulas for three candidate algorithms",
+          "actor": "worker",
+          "causal_note": "No external packages are required for core fitting",
+          "causal_type": "design_choice",
+          "caused_by": "requirements and scoring task",
+          "error_message": null,
+          "error_type": null,
+          "input": "In-notebook helper functions linear_fit_predict and monotone_severity\n",
+          "metadata_json": {
+            "feature_set": [
+              "artifact_peak_uV",
+              "recovery_ms",
+              "residual_noise_uV"
+            ],
+            "model_count": 3
+          },
+          "observation": "Prepared formulas for linear and monotone candidates with reproducible math in notebook code",
+          "operation": "write",
+          "output": "Three model shells defined (linear_artifact, linear_recovery, monotone_severity) and tolerance definition included",
+          "reasoning": "Task requires at least one linear and one monotone fit from embedded rows only",
+          "state_change": "Benchmark logic staged in notebook source payload before write",
+          "step": "model_formulation",
+          "step_outcome": "formulas_determined",
+          "success": true,
+          "tool": "functions.exec_command",
+          "turn": 3
+        }
+      },
+      "observation": "Prepared formulas for linear and monotone candidates with reproducible math in notebook code",
+      "operation": "write",
+      "output": "Three model shells defined (linear_artifact, linear_recovery, monotone_severity) and tolerance definition included",
+      "parallel_group": null,
+      "reasoning": "Task requires at least one linear and one monotone fit from embedded rows only",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Benchmark logic staged in notebook source payload before write",
+      "step": 3,
+      "step_outcome": "neutral",
+      "success": true,
+      "tool": "file_write",
+      "turn": 3
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "causal_note": "Includes residual tolerances using sensitivity_shift_pct",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "Python script writing nbformat JSON",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "cells": 7,
+        "normalization_warnings": [
+          "step value 'write_notebook' was not numeric; defaulted to 4"
+        ],
+        "original_action": "Create executable notebook with checks and recommendation output",
+        "original_causal_type": "implementation",
+        "original_step": "write_notebook",
+        "original_step_outcome": "artifact_created",
+        "raw_step": {
+          "action": "Create executable notebook with checks and recommendation output",
+          "actor": "worker",
+          "causal_note": "Includes residual tolerances using sensitivity_shift_pct",
+          "causal_type": "implementation",
+          "caused_by": "completion_of_model_design",
+          "error_message": null,
+          "error_type": null,
+          "input": "Python script writing nbformat JSON",
+          "metadata_json": {
+            "cells": 7
+          },
+          "observation": "Notebook generated with seven cells including data, fits, record flags, sensitivity, and final recommendation printout",
+          "operation": "write",
+          "output": "Created [EXCLUDED_GENERATED_ARTIFACT]",
+          "reasoning": "Required runnable notebook artifact",
+          "state_change": "New file [EXCLUDED_GENERATED_ARTIFACT] created",
+          "step": "write_notebook",
+          "step_outcome": "artifact_created",
+          "success": true,
+          "tool": "functions.exec_command",
+          "turn": 4
+        }
+      },
+      "observation": "Notebook generated with seven cells including data, fits, record flags, sensitivity, and final recommendation printout",
+      "operation": "write",
+      "output": "Created [EXCLUDED_GENERATED_ARTIFACT]",
+      "parallel_group": null,
+      "reasoning": "Required runnable notebook artifact",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "New file [EXCLUDED_GENERATED_ARTIFACT] created",
+      "step": 4,
+      "step_outcome": "neutral",
+      "success": true,
+      "tool": "python",
+      "turn": 4
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "causal_note": "Record-level citation and residual logic embedded in text tables",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "Write markdown report from packet-derived values",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "contains_decision_table": true,
+        "normalization_warnings": [
+          "step value 'write_report' was not numeric; defaulted to 5"
+        ],
+        "original_action": "Create auditable benchmark report",
+        "original_causal_type": "implementation",
+        "original_step": "write_report",
+        "original_step_outcome": "artifact_created",
+        "raw_step": {
+          "action": "Create auditable benchmark report",
+          "actor": "worker",
+          "causal_note": "Record-level citation and residual logic embedded in text tables",
+          "causal_type": "implementation",
+          "caused_by": "deliverable contract",
+          "error_message": null,
+          "error_type": null,
+          "input": "Write markdown report from packet-derived values",
+          "metadata_json": {
+            "contains_decision_table": true
+          },
+          "observation": "Report includes evidence table with per-record flags, model equations, residuals, sensitivity table, assumptions, and recommendation",
+          "operation": "write",
+          "output": "Created [EXCLUDED_GENERATED_ARTIFACT]",
+          "reasoning": "Required report format with evidence and decision rationale",
+          "state_change": "New file [EXCLUDED_GENERATED_ARTIFACT] created",
+          "step": "write_report",
+          "step_outcome": "artifact_created",
+          "success": true,
+          "tool": "functions.exec_command",
+          "turn": 5
+        }
+      },
+      "observation": "Report includes evidence table with per-record flags, model equations, residuals, sensitivity table, assumptions, and recommendation",
+      "operation": "write",
+      "output": "Created [EXCLUDED_GENERATED_ARTIFACT]",
+      "parallel_group": null,
+      "reasoning": "Required report format with evidence and decision rationale",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "New file [EXCLUDED_GENERATED_ARTIFACT] created",
+      "step": 5,
+      "step_outcome": "neutral",
+      "success": true,
+      "tool": "file_write",
+      "turn": 5
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "artifact_refs": [
+        "actual_outputs.json"
+      ],
+      "causal_note": "No optional extra fields added",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "actual output contract payload",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "normalization_warnings": [
+          "step value 'write_actual_outputs' was not numeric; defaulted to 6"
+        ],
+        "original_action": "Emit actual_outputs.json",
+        "original_causal_type": "requirement",
+        "original_step": "write_actual_outputs",
+        "original_step_outcome": "artifact_created",
+        "raw_step": {
+          "action": "Emit actual_outputs.json",
+          "actor": "worker",
+          "artifact_refs": [
+            "actual_outputs.json"
+          ],
+          "causal_note": "No optional extra fields added",
+          "causal_type": "requirement",
+          "caused_by": "task contract",
+          "error_message": null,
+          "error_type": null,
+          "input": "actual output contract payload",
+          "metadata_json": {
+            "status": "completed"
+          },
+          "observation": "JSON written for evaluator ingestion",
+          "operation": "write",
+          "output": "Created actual_outputs.json",
+          "reasoning": "Task requires this file in attempt directory",
+          "state_change": "New file actual_outputs.json created",
+          "step": "write_actual_outputs",
+          "step_outcome": "artifact_created",
+          "success": true,
+          "tool": "functions.exec_command",
+          "turn": 6
+        },
+        "status": "completed"
+      },
+      "observation": "JSON written for evaluator ingestion",
+      "operation": "write",
+      "output": "Created actual_outputs.json",
+      "parallel_group": null,
+      "reasoning": "Task requires this file in attempt directory",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "New file actual_outputs.json created",
+      "step": 6,
+      "step_outcome": "neutral",
+      "success": true,
+      "tool": "file_write",
+      "turn": 6
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "artifact_refs": [
+        "agent_trace.json"
+      ],
+      "causal_note": "Trace fields use requested canonical names",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "Ordered list of trace entries with cause/effect and artifact references",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "normalization_warnings": [
+          "step value 'write_trace_file' was not numeric; defaulted to 7"
+        ],
+        "original_action": "Write agent_trace.json with all workflow steps",
+        "original_causal_type": "requirement",
+        "original_step": "write_trace_file",
+        "original_step_outcome": "artifact_created",
+        "raw_step": {
+          "action": "Write agent_trace.json with all workflow steps",
+          "actor": "worker",
+          "artifact_refs": [
+            "agent_trace.json"
+          ],
+          "causal_note": "Trace fields use requested canonical names",
+          "causal_type": "requirement",
+          "caused_by": "user instruction",
+          "error_message": null,
+          "error_type": null,
+          "input": "Ordered list of trace entries with cause/effect and artifact references",
+          "metadata_json": {
+            "steps": 7
+          },
+          "observation": "Trace file includes required canonical fields for each meaningful action",
+          "operation": "write",
+          "output": "Created agent_trace.json",
+          "reasoning": "Required structured workflow trace",
+          "state_change": "New file agent_trace.json created",
+          "step": "write_trace_file",
+          "step_outcome": "artifact_created",
+          "success": true,
+          "tool": "functions.exec_command",
+          "turn": 7
+        },
+        "steps": 7
+      },
+      "observation": "Trace file includes required canonical fields for each meaningful action",
+      "operation": "write",
+      "output": "Created agent_trace.json",
+      "parallel_group": null,
+      "reasoning": "Required structured workflow trace",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "New file agent_trace.json created",
+      "step": 7,
+      "step_outcome": "neutral",
+      "success": true,
+      "tool": "file_write",
+      "turn": 7
+    }
+  ],
+  "system_prompt": null,
+  "system_prompt_hash": null,
+  "task": "Using only the embedded packet, build a reproducible benchmark that fits a simple linear or monotone relationship between stimulation artifact metrics and outcome metrics, score candidate artifact-removal algorithms, and produce a release recommendation. Deliver an executable notebook (artifact_removal_benchmark.ipynb) and a written report (benchmark_report.md) that include an auditable evidence table with record-level citations to the embedded packet, the governing limit values, per-record validation checks and flags (including 'needs_review' for contradictory or under-supported records), formulas or executable logic for fits and residuals, sensitivity analysis (using sensitivity_shift_pct), unresolved assumptions, and a final recommendation table that cites economic/safety decision thresholds and the decision_budget_usd.",
+  "task_family_id": null,
+  "original_internal_task_id": "aa_task_0720",
+  "task_id": "420",
+  "termination_reason": "task_complete",
+  "trace_id": "trace_420-revised_normalized",
+  "trace_mode": "live"
+}

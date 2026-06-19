@@ -1,0 +1,612 @@
+{
+  "actual_outputs": {
+    "original_internal_attempt_id": "aa_task_0575_revised",
+    "attempt_id": "275-revised",
+    "attempt_kind": "revised",
+    "error_message": null,
+    "error_type": null,
+    "metadata_json": {
+      "actual_outputs_discarded_field_count": 0,
+      "actual_outputs_normalized": true,
+      "expected_deliverable_items": [
+        "crash_cluster_3.xlsx",
+        "expert_memo.md"
+      ],
+      "original_fields": {
+        "artifacts": {
+          "crash_cluster_3": "[EXCLUDED_GENERATED_ARTIFACT]",
+          "expert_memo": "[EXCLUDED_GENERATED_ARTIFACT]"
+        },
+        "attempt": "revised",
+        "created_at": "2026-06-15T15:08:54.242153",
+        "metadata": {
+          "constraints": [
+            "same_top_frames_cluster",
+            "no_imputation",
+            "embedded_packet_only"
+          ],
+          "governing_threshold": {
+            "metric": "affected_OS_count",
+            "value": 3
+          },
+          "max_budget": 136800,
+          "records_processed": 3,
+          "sensitivity": {
+            "high": 0.2,
+            "low": -0.2,
+            "step": 0.05
+          }
+        }
+      },
+      "produced_deliverable_items": [
+        "crash_cluster_3.xlsx",
+        "expert_memo.md"
+      ],
+      "raw_actual_outputs": {
+        "artifacts": {
+          "crash_cluster_3": "[EXCLUDED_GENERATED_ARTIFACT]",
+          "expert_memo": "[EXCLUDED_GENERATED_ARTIFACT]"
+        },
+        "attempt": "revised",
+        "created_at": "2026-06-15T15:08:54.242153",
+        "metadata": {
+          "constraints": [
+            "same_top_frames_cluster",
+            "no_imputation",
+            "embedded_packet_only"
+          ],
+          "governing_threshold": {
+            "metric": "affected_OS_count",
+            "value": 3
+          },
+          "max_budget": 136800,
+          "records_processed": 3,
+          "sensitivity": {
+            "high": 0.2,
+            "low": -0.2,
+            "step": 0.05
+          }
+        },
+        "original_internal_task_id": "aa_task_0575",
+        "task_id": "275"
+      }
+    },
+    "output_summary": "Normalized actual outputs from artifact files.",
+    "status": "success",
+    "original_internal_task_id": "aa_task_0575",
+    "task_id": "275",
+    "required_deliverables": [
+      "crash_cluster_3.xlsx",
+      "expert_memo.md"
+    ],
+    "produced_deliverables": [
+      "crash_cluster_3.xlsx",
+      "expert_memo.md"
+    ],
+    "missing_required_deliverables": [],
+    "deliverable_produced": true,
+    "deliverable_file_included": false,
+    "included_generated_artifacts": false,
+    "artifacts_excluded_reason": "Generated output artifacts are excluded from the public seed dataset by default.",
+    "logs_included": false,
+    "logs_excluded_reason": "Raw runner logs are excluded from the public seed dataset."
+  },
+  "agent_config": null,
+  "agent_tools": [
+    "codex_cli",
+    "Bash",
+    "python",
+    "file_read",
+    "file_write",
+    "apply_patch"
+  ],
+  "artifacts": [],
+  "original_internal_attempt_id": "aa_task_0575_revised",
+  "attempt_id": "275-revised",
+  "attempt_kind": "revised",
+  "attempt_status": "completed",
+  "collection_id": null,
+  "completion_reason": null,
+  "ended_at": null,
+  "final_attempt_id": null,
+  "initial_attempt_id": null,
+  "iteration_index": null,
+  "learning": null,
+  "memory": null,
+  "metadata_json": {
+    "codex_command": [
+      "codex",
+      "exec",
+      "--sandbox",
+      "workspace-write",
+      "<prompt>"
+    ],
+    "codex_sandbox": "workspace-write",
+    "discarded_step_count": 0,
+    "raw_trace_list": [
+      {
+        "action": "read_input_artifacts",
+        "actor": "worker",
+        "causal_note": "Start with embedded packet only",
+        "causal_type": "initialization",
+        "caused_by": null,
+        "error_message": null,
+        "error_type": null,
+        "input": "cat input/task.json; cat input/task_brief.md",
+        "metadata_json": {
+          "files_used": [
+            "input/task.json",
+            "input/task_brief.md"
+          ]
+        },
+        "observation": "Parsed task contract and inputs from ./input/task.json and ./input/task_brief.md.",
+        "operation": "read_file",
+        "output": "Loaded R1-R3 record values, remediation options O1/O2/O3, max budget, and threshold rule.",
+        "reasoning": "Establishes the only authoritative source for all calculations.",
+        "state_change": "No filesystem changes made in this initialization step.",
+        "step": 1,
+        "step_outcome": "Context captured.",
+        "success": true,
+        "tool": "exec_command",
+        "turn": 1
+      },
+      {
+        "action": "attempt_openpyxl_generation",
+        "actor": "worker",
+        "causal_note": "Dependency availability constraint encountered.",
+        "causal_type": "failure",
+        "caused_by": 1,
+        "error_message": "No module named openpyxl",
+        "error_type": "ModuleNotFoundError",
+        "input": "python import openpyxl and build workbook with formulas",
+        "metadata_json": {
+          "dependency": "openpyxl"
+        },
+        "observation": "Attempted standard library-based spreadsheet generation path.",
+        "operation": "python_execute",
+        "output": "Failed: ModuleNotFoundError for openpyxl",
+        "reasoning": "Need a dependency-free path for deterministic output creation.",
+        "state_change": "No artifact written due missing dependency.",
+        "step": 2,
+        "step_outcome": "Fallback path required.",
+        "success": false,
+        "tool": "exec_command",
+        "turn": 1
+      },
+      {
+        "action": "generate_xlsx_manual_ooxml",
+        "actor": "worker",
+        "causal_note": "Artifact produced after dependency failure.",
+        "causal_type": "recovery",
+        "caused_by": 2,
+        "error_message": null,
+        "error_type": null,
+        "input": "python script writing [EXCLUDED_GENERATED_ARTIFACT] with two sheets and formulas",
+        "metadata_json": {
+          "contains_formulas": true,
+          "sheet_count": 2
+        },
+        "observation": "Built XLSX package directly from OOXML XML parts and zip assembly.",
+        "operation": "python_execute",
+        "output": "Created [EXCLUDED_GENERATED_ARTIFACT]",
+        "reasoning": "Manual writer preserves formulas and settings without external libraries.",
+        "state_change": "Workbook artifact successfully created.",
+        "step": 3,
+        "step_outcome": "Formula-enabled spreadsheet artifact written.",
+        "success": true,
+        "tool": "exec_command",
+        "turn": 1
+      },
+      {
+        "action": "write_expert_memo",
+        "actor": "worker",
+        "causal_note": "Delivering narrative in required format.",
+        "causal_type": "completion",
+        "caused_by": 3,
+        "error_message": null,
+        "error_type": null,
+        "input": "Create [EXCLUDED_GENERATED_ARTIFACT]",
+        "metadata_json": {
+          "sections": [
+            "assumptions",
+            "sensitivity",
+            "recommendation"
+          ]
+        },
+        "observation": "Wrote expert memo with assumptions, formulas, sensitivity rationale, and final recommendation table.",
+        "operation": "file_write",
+        "output": "Created [EXCLUDED_GENERATED_ARTIFACT]",
+        "reasoning": "Narrative output required to explain computations and ambiguous item handling.",
+        "state_change": "Documentation artifact added.",
+        "step": 4,
+        "step_outcome": "expert_memo.md created.",
+        "success": true,
+        "tool": "exec_command",
+        "turn": 1
+      },
+      {
+        "action": "write_output_manifests",
+        "actor": "worker",
+        "artifact_refs": [
+          "actual_outputs.json",
+          "agent_trace.json"
+        ],
+        "causal_note": "Completes required run output set.",
+        "causal_type": "finalization",
+        "caused_by": 4,
+        "error_message": null,
+        "error_type": null,
+        "input": "Create actual_outputs.json and agent_trace.json",
+        "metadata_json": {
+          "required_outputs_written": true
+        },
+        "observation": "Wrote machine-readable output summary and agent trace ledger.",
+        "operation": "file_write",
+        "output": "Created actual_outputs.json and agent_trace.json",
+        "reasoning": "Final trace and output manifests are required by the task contract.",
+        "state_change": "Traceability and output map artifacts added.",
+        "step": 5,
+        "step_outcome": "All required artifacts and trace finalized.",
+        "success": true,
+        "tool": "exec_command",
+        "turn": 1
+      }
+    ],
+    "raw_trace_preserved": true,
+    "raw_trace_shape": "list",
+    "raw_trace_step_source": "steps",
+    "schema_valid": true,
+    "trace_normalization_status": "normalized",
+    "trace_valid": true
+  },
+  "preferred_attempt_id": null,
+  "previous_attempt_id": null,
+  "prior_trace_id": null,
+  "revision_attempt_ids": [],
+  "revision_group_id": null,
+  "schema_version": "aa-trace-v0.1",
+  "skills": null,
+  "started_at": null,
+  "steps": [
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "causal_note": null,
+      "causal_type": null,
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "cat input/task.json; cat input/task_brief.md",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "files_used": [
+          "input/task.json",
+          "input/task_brief.md"
+        ],
+        "original_action": "read_input_artifacts",
+        "original_operation": "read_file",
+        "original_step_outcome": "Context captured.",
+        "raw_step": {
+          "action": "read_input_artifacts",
+          "actor": "worker",
+          "causal_note": "Start with embedded packet only",
+          "causal_type": "initialization",
+          "caused_by": null,
+          "error_message": null,
+          "error_type": null,
+          "input": "cat input/task.json; cat input/task_brief.md",
+          "metadata_json": {
+            "files_used": [
+              "input/task.json",
+              "input/task_brief.md"
+            ]
+          },
+          "observation": "Parsed task contract and inputs from ./input/task.json and ./input/task_brief.md.",
+          "operation": "read_file",
+          "output": "Loaded R1-R3 record values, remediation options O1/O2/O3, max budget, and threshold rule.",
+          "reasoning": "Establishes the only authoritative source for all calculations.",
+          "state_change": "No filesystem changes made in this initialization step.",
+          "step": 1,
+          "step_outcome": "Context captured.",
+          "success": true,
+          "tool": "exec_command",
+          "turn": 1
+        }
+      },
+      "observation": "Parsed task contract and inputs from ./input/task.json and ./input/task_brief.md.",
+      "operation": "read",
+      "output": "Loaded R1-R3 record values, remediation options O1/O2/O3, max budget, and threshold rule.",
+      "parallel_group": null,
+      "reasoning": "Establishes the only authoritative source for all calculations.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "No filesystem changes made in this initialization step.",
+      "step": 1,
+      "step_outcome": "neutral",
+      "success": true,
+      "tool": "Bash",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "causal_note": "Dependency availability constraint encountered.",
+      "causal_type": "other",
+      "caused_by": [
+        1
+      ],
+      "ended_at": null,
+      "error_message": "No module named openpyxl",
+      "error_type": "ModuleNotFoundError",
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "python import openpyxl and build workbook with formulas",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "dependency": "openpyxl",
+        "original_action": "attempt_openpyxl_generation",
+        "original_causal_type": "failure",
+        "original_operation": "python_execute",
+        "original_step_outcome": "Fallback path required.",
+        "raw_step": {
+          "action": "attempt_openpyxl_generation",
+          "actor": "worker",
+          "causal_note": "Dependency availability constraint encountered.",
+          "causal_type": "failure",
+          "caused_by": 1,
+          "error_message": "No module named openpyxl",
+          "error_type": "ModuleNotFoundError",
+          "input": "python import openpyxl and build workbook with formulas",
+          "metadata_json": {
+            "dependency": "openpyxl"
+          },
+          "observation": "Attempted standard library-based spreadsheet generation path.",
+          "operation": "python_execute",
+          "output": "Failed: ModuleNotFoundError for openpyxl",
+          "reasoning": "Need a dependency-free path for deterministic output creation.",
+          "state_change": "No artifact written due missing dependency.",
+          "step": 2,
+          "step_outcome": "Fallback path required.",
+          "success": false,
+          "tool": "exec_command",
+          "turn": 1
+        }
+      },
+      "observation": "Attempted standard library-based spreadsheet generation path.",
+      "operation": "verify",
+      "output": "Failed: ModuleNotFoundError for openpyxl",
+      "parallel_group": null,
+      "reasoning": "Need a dependency-free path for deterministic output creation.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "No artifact written due missing dependency.",
+      "step": 2,
+      "step_outcome": "neutral",
+      "success": false,
+      "tool": "python",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "causal_note": "Artifact produced after dependency failure.",
+      "causal_type": "other",
+      "caused_by": [
+        2
+      ],
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "python script writing [EXCLUDED_GENERATED_ARTIFACT] with two sheets and formulas",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "contains_formulas": true,
+        "original_action": "generate_xlsx_manual_ooxml",
+        "original_causal_type": "recovery",
+        "original_operation": "python_execute",
+        "original_step_outcome": "Formula-enabled spreadsheet artifact written.",
+        "raw_step": {
+          "action": "generate_xlsx_manual_ooxml",
+          "actor": "worker",
+          "causal_note": "Artifact produced after dependency failure.",
+          "causal_type": "recovery",
+          "caused_by": 2,
+          "error_message": null,
+          "error_type": null,
+          "input": "python script writing [EXCLUDED_GENERATED_ARTIFACT] with two sheets and formulas",
+          "metadata_json": {
+            "contains_formulas": true,
+            "sheet_count": 2
+          },
+          "observation": "Built XLSX package directly from OOXML XML parts and zip assembly.",
+          "operation": "python_execute",
+          "output": "Created [EXCLUDED_GENERATED_ARTIFACT]",
+          "reasoning": "Manual writer preserves formulas and settings without external libraries.",
+          "state_change": "Workbook artifact successfully created.",
+          "step": 3,
+          "step_outcome": "Formula-enabled spreadsheet artifact written.",
+          "success": true,
+          "tool": "exec_command",
+          "turn": 1
+        },
+        "sheet_count": 2
+      },
+      "observation": "Built XLSX package directly from OOXML XML parts and zip assembly.",
+      "operation": "execute",
+      "output": "Created [EXCLUDED_GENERATED_ARTIFACT]",
+      "parallel_group": null,
+      "reasoning": "Manual writer preserves formulas and settings without external libraries.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Workbook artifact successfully created.",
+      "step": 3,
+      "step_outcome": "neutral",
+      "success": true,
+      "tool": "python",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "causal_note": "Delivering narrative in required format.",
+      "causal_type": "other",
+      "caused_by": [
+        3
+      ],
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "Create [EXCLUDED_GENERATED_ARTIFACT]",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "original_action": "write_expert_memo",
+        "original_causal_type": "completion",
+        "original_operation": "file_write",
+        "original_step_outcome": "expert_memo.md created.",
+        "raw_step": {
+          "action": "write_expert_memo",
+          "actor": "worker",
+          "causal_note": "Delivering narrative in required format.",
+          "causal_type": "completion",
+          "caused_by": 3,
+          "error_message": null,
+          "error_type": null,
+          "input": "Create [EXCLUDED_GENERATED_ARTIFACT]",
+          "metadata_json": {
+            "sections": [
+              "assumptions",
+              "sensitivity",
+              "recommendation"
+            ]
+          },
+          "observation": "Wrote expert memo with assumptions, formulas, sensitivity rationale, and final recommendation table.",
+          "operation": "file_write",
+          "output": "Created [EXCLUDED_GENERATED_ARTIFACT]",
+          "reasoning": "Narrative output required to explain computations and ambiguous item handling.",
+          "state_change": "Documentation artifact added.",
+          "step": 4,
+          "step_outcome": "expert_memo.md created.",
+          "success": true,
+          "tool": "exec_command",
+          "turn": 1
+        },
+        "sections": [
+          "assumptions",
+          "sensitivity",
+          "recommendation"
+        ]
+      },
+      "observation": "Wrote expert memo with assumptions, formulas, sensitivity rationale, and final recommendation table.",
+      "operation": "write",
+      "output": "Created [EXCLUDED_GENERATED_ARTIFACT]",
+      "parallel_group": null,
+      "reasoning": "Narrative output required to explain computations and ambiguous item handling.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Documentation artifact added.",
+      "step": 4,
+      "step_outcome": "neutral",
+      "success": true,
+      "tool": "file_write",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "artifact_refs": [
+        "actual_outputs.json",
+        "agent_trace.json"
+      ],
+      "causal_note": "Completes required run output set.",
+      "causal_type": "other",
+      "caused_by": [
+        4
+      ],
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "Create actual_outputs.json and agent_trace.json",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "original_action": "write_output_manifests",
+        "original_causal_type": "finalization",
+        "original_operation": "file_write",
+        "original_step_outcome": "All required artifacts and trace finalized.",
+        "raw_step": {
+          "action": "write_output_manifests",
+          "actor": "worker",
+          "artifact_refs": [
+            "actual_outputs.json",
+            "agent_trace.json"
+          ],
+          "causal_note": "Completes required run output set.",
+          "causal_type": "finalization",
+          "caused_by": 4,
+          "error_message": null,
+          "error_type": null,
+          "input": "Create actual_outputs.json and agent_trace.json",
+          "metadata_json": {
+            "required_outputs_written": true
+          },
+          "observation": "Wrote machine-readable output summary and agent trace ledger.",
+          "operation": "file_write",
+          "output": "Created actual_outputs.json and agent_trace.json",
+          "reasoning": "Final trace and output manifests are required by the task contract.",
+          "state_change": "Traceability and output map artifacts added.",
+          "step": 5,
+          "step_outcome": "All required artifacts and trace finalized.",
+          "success": true,
+          "tool": "exec_command",
+          "turn": 1
+        },
+        "required_outputs_written": true
+      },
+      "observation": "Wrote machine-readable output summary and agent trace ledger.",
+      "operation": "write",
+      "output": "Created actual_outputs.json and agent_trace.json",
+      "parallel_group": null,
+      "reasoning": "Final trace and output manifests are required by the task contract.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Traceability and output map artifacts added.",
+      "step": 5,
+      "step_outcome": "neutral",
+      "success": true,
+      "tool": "file_write",
+      "turn": 1
+    }
+  ],
+  "system_prompt": null,
+  "system_prompt_hash": null,
+  "task": "Advanced high-value task: Compiler Crash Signature Computational Handoff Spec. Scenario: a platform owner wants to convert ambiguous measurements into deterministic review actions for compiler crash signature. Embedded packet: Records: R1 frame_match_count=84 affected_OS_count=126 crash_count=3; R2 frame_match_count=93 affected_OS_count=122 crash_count=6; R3 frame_match_count=79 affected_OS_count=137 crash_count=2. Remediation options: O1 changes frame_match_count by -12% cost=98000; O2 changes affected_OS_count by -18% cost=110400; O3 changes crash_count by -25% cost=67600; max_budget=136800. Rules and constraints: same top frames cluster; affected_OS>=3 is cross-platform priority; missing values cannot be imputed and all calculations must use only the embedded packet. Required work: perform a sensitivity check around the governing threshold and identify records whose classification is unstable. Deliver crash_cluster_3.xlsx + expert_memo.md with formulas, intermediate values, row-level citations, explicit assumptions, sensitivity checks, and a final recommendation table. Do not invent inputs; mark ambiguous items as needs_review.",
+  "task_family_id": null,
+  "original_internal_task_id": "aa_task_0575",
+  "task_id": "275",
+  "termination_reason": "task_complete",
+  "trace_id": "trace_275-revised_normalized",
+  "trace_mode": "live"
+}

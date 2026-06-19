@@ -1,0 +1,81 @@
+{
+  "schema_version": "aa-seed-task-v0.1",
+  "task_id": "434",
+  "title": "Operating Room Block Utilization Recovery Plan",
+  "domain": "surgical_operations",
+  "subdomain": "or_block_utilization",
+  "domains": [
+    "surgical_operations"
+  ],
+  "subdomains": [
+    "or_block_utilization"
+  ],
+  "agent_apprentice_role": "perioperative analytics lead",
+  "task_family": "capacity_recovery",
+  "difficulty_tier": "expert",
+  "expected_economic_value": "$7,500-$85,000 challenge/prize",
+  "expected_economic_value_for_agent_apprentice": "$250+",
+  "expected_deliverable": "or_block_recovery.xlsx + service_line_memo.md",
+  "deliverables": [
+    "or_block_recovery.xlsx",
+    "service_line_memo.md"
+  ],
+  "normalized_title": "Operating Room Block Utilization Recovery Plan",
+  "instruction": "Context: a surgery center must recover high-value capacity after cancellations. Task packet: records: R1 scheduled_minutes=65 actual_minutes=123 turnover_minutes=101 case_margin_usd=721005; R2 scheduled_minutes=184 actual_minutes=82 turnover_minutes=30 case_margin_usd=301742; R3 scheduled_minutes=129 actual_minutes=67 turnover_minutes=135 case_margin_usd=829456; R4 scheduled_minutes=153 actual_minutes=163 turnover_minutes=78 case_margin_usd=50097; limit_scheduled_minutes=42; limit_actual_minutes=6; limit_turnover_minutes=62; decision_budget_usd=182500; sensitivity_shift_pct=5; hard_threshold_record_count=1;. Rules and constraints: Compute margin = case_margin_usd - (0.35*scheduled_minutes + 0.25*actual_minutes + 0.15*turnover_minutes); negative margin is fail and margin below 8% of the largest driver is warn. Recommendations cannot use external measurements, specialized licensed software, or hidden assumptions; all calculations must use only the task packet, and any contradictory or under-supported record must be marked needs_review. Required work: recommend block swaps and utilization actions; build a reproducible workbook or script, preserve intermediate calculations, and produce an expert-review memo. Deliver or_block_recovery.xlsx + service_line_memo.md with formulas or executable logic, record-level citations, validation checks, sensitivity notes, and a final recommendation table suitable for expert review. This task is self-contained: use the task packet as the factual record, do not add source references or external datasets, and preserve a high-fidelity audit trail for every calculation, classification, and recommendation. State assumptions and unresolved evidence gaps explicitly. When executed locally, place final deliverables under the artifacts/ directory.",
+  "task_status": "ready_to_run",
+  "run_status": "not_run",
+  "seed_rank": 139,
+  "display_order": 139,
+  "allowed_tools": [
+    "Local text editor or Markdown editor",
+    "Local spreadsheet, CSV, JSON, YAML, or scripting tools for deterministic calculations",
+    "Local validation or linting commands",
+    "Local plotting or diagramming tools when useful"
+  ],
+  "disallowed_tools": [
+    "External fact lookup or live data pulls",
+    "Live production systems, cloud accounts, trading systems, clinical systems, or industrial controls",
+    "Secret discovery, credential testing, or any action outside the prepared task workspace"
+  ],
+  "privacy_classification": "synthetic",
+  "needs_expert_review": true,
+  "input_requirements": [
+    "Use the task packet as the sole factual input.",
+    "Cite row IDs, record IDs, thresholds, formulas, and option IDs from the packet wherever they control a conclusion.",
+    "Mark missing, contradictory, or under-supported values as needs_review instead of inventing them."
+  ],
+  "inputs": [
+    "All factual inputs are embedded in the task packet.",
+    "Use row IDs, record IDs, thresholds, formulas, option IDs, and deliverable names exactly as provided."
+  ],
+  "output_requirements": [
+    "Produce the required deliverable files with the specified filenames when filenames are provided.",
+    "Include intermediate calculations or executable logic sufficient for another reviewer to reproduce the result.",
+    "Include validation checks, sensitivity notes around controlling thresholds, and a final decision or recommendation table."
+  ],
+  "constraints": [
+    "Use the task packet as the factual record.",
+    "Do not browse, call live services, import external datasets, or invent missing values.",
+    "Treat regulated or safety-critical outputs as review packets, not authorization to act."
+  ],
+  "quality_bar": [
+    "Treat the task as realistic professional work with domain-appropriate rigor.",
+    "Preserve the packet's domain detail, identifiers, thresholds, and edge cases in the final deliverables.",
+    "Make every recommendation traceable to explicit task-packet evidence or mark it as needs_review."
+  ],
+  "validation_expectations": [
+    "Check required fields, row counts, totals, thresholds, and classifications before finalizing.",
+    "Show enough formulas, script logic, or tables for an independent reviewer to reproduce the result.",
+    "Flag any contradiction, missing input, or threshold-sensitive conclusion."
+  ],
+  "edge_cases": [
+    "If packet evidence is incomplete, do not infer missing values; label the item needs_review.",
+    "If multiple options satisfy hard constraints, rank them using the packet's stated priorities and explain ties.",
+    "If a regulated or safety-critical conclusion appears, frame the output as a review packet rather than authorization to act."
+  ],
+  "privacy_safety_expectations": [
+    "Do not use live systems, private accounts, credentials, or external datasets.",
+    "Do not include raw secrets or operational instructions that would execute real-world changes.",
+    "Keep synthetic identifiers from the packet only when needed for verification."
+  ]
+}

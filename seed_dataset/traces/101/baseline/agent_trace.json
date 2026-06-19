@@ -1,0 +1,649 @@
+{
+  "actual_outputs": {
+    "original_internal_attempt_id": "aa_task_0301_baseline",
+    "attempt_id": "101-baseline",
+    "attempt_kind": "baseline",
+    "error_message": null,
+    "error_type": null,
+    "metadata_json": {
+      "actual_outputs_discarded_field_count": 0,
+      "actual_outputs_normalized": true,
+      "expected_deliverable_items": [
+        "battery_feature_table.csv",
+        "degradation_memo.md"
+      ],
+      "original_fields": {
+        "attempt": "baseline",
+        "deliverables": [
+          {
+            "description": "Battery cell feature table with retention calculations, threshold flags, missing-input markers, row citations, and recommendation.",
+            "type": "csv"
+          },
+          {
+            "description": "Degradation memo covering formulas, assumptions, exceptions, intermediate calculations, validation checks, sensitivity notes, and decision table.",
+            "type": "markdown"
+          }
+        ],
+        "notes": [
+          "Retention calculated with fixed 4.90 Ah denominator per packet rule.",
+          "Missing capacity_0 on C2 and C3 marked needs_review."
+        ]
+      },
+      "produced_deliverable_items": [
+        "battery_feature_table.csv",
+        "degradation_memo.md"
+      ],
+      "raw_actual_outputs": {
+        "attempt": "baseline",
+        "deliverables": [
+          {
+            "description": "Battery cell feature table with retention calculations, threshold flags, missing-input markers, row citations, and recommendation.",
+            "type": "csv"
+          },
+          {
+            "description": "Degradation memo covering formulas, assumptions, exceptions, intermediate calculations, validation checks, sensitivity notes, and decision table.",
+            "type": "markdown"
+          }
+        ],
+        "notes": [
+          "Retention calculated with fixed 4.90 Ah denominator per packet rule.",
+          "Missing capacity_0 on C2 and C3 marked needs_review."
+        ],
+        "status": "completed",
+        "original_internal_task_id": "aa_task_0301",
+        "task_id": "101"
+      }
+    },
+    "output_summary": "Normalized actual outputs from artifact files.",
+    "status": "success",
+    "original_internal_task_id": "aa_task_0301",
+    "task_id": "101",
+    "required_deliverables": [
+      "battery_feature_table.csv",
+      "degradation_memo.md"
+    ],
+    "produced_deliverables": [
+      "battery_feature_table.csv",
+      "degradation_memo.md"
+    ],
+    "missing_required_deliverables": [],
+    "deliverable_produced": true,
+    "deliverable_file_included": false,
+    "included_generated_artifacts": false,
+    "artifacts_excluded_reason": "Generated output artifacts are excluded from the public seed dataset by default.",
+    "logs_included": false,
+    "logs_excluded_reason": "Raw runner logs are excluded from the public seed dataset."
+  },
+  "agent_config": null,
+  "agent_tools": [
+    "codex_cli",
+    "Bash",
+    "python",
+    "file_read",
+    "file_write",
+    "apply_patch"
+  ],
+  "artifacts": [],
+  "original_internal_attempt_id": "aa_task_0301_baseline",
+  "attempt_id": "101-baseline",
+  "attempt_kind": "baseline",
+  "collection_id": null,
+  "completion_reason": null,
+  "ended_at": null,
+  "final_attempt_id": null,
+  "initial_attempt_id": null,
+  "iteration_index": null,
+  "learning": null,
+  "memory": null,
+  "metadata_json": {
+    "codex_command": [
+      "codex",
+      "exec",
+      "--sandbox",
+      "workspace-write",
+      "<prompt>"
+    ],
+    "codex_sandbox": "workspace-write",
+    "discarded_step_count": 0,
+    "raw_trace_preserved": true,
+    "raw_trace_step_source": "steps",
+    "schema_name": "AgentTrace",
+    "schema_valid": true,
+    "trace_normalization_status": "normalized",
+    "trace_valid": true
+  },
+  "preferred_attempt_id": null,
+  "previous_attempt_id": null,
+  "prior_trace_id": null,
+  "revision_attempt_ids": [],
+  "revision_group_id": null,
+  "schema_version": "aa-trace-v0.1",
+  "skills": null,
+  "started_at": null,
+  "steps": [
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "causal_note": null,
+      "causal_type": null,
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "{\"commands\": [\"pwd && rg --files .\", \"sed -n '1,220p' ./input/task.json && printf '\\\\n---TASK_BRIEF---\\\\n' && sed -n '1,220p' ./input/task_brief.md\"]}",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "inputs": {
+          "commands": [
+            "pwd && rg --files .",
+            "sed -n '1,220p' ./input/task.json && printf '\\n---TASK_BRIEF---\\n' && sed -n '1,220p' ./input/task_brief.md"
+          ]
+        },
+        "original_action": "inspect",
+        "original_operation": "read input packet and workspace layout",
+        "original_step_outcome": "context_captured",
+        "outputs": {
+          "deliverables": [
+            "[EXCLUDED_GENERATED_ARTIFACT]",
+            "[EXCLUDED_GENERATED_ARTIFACT]"
+          ],
+          "source_rows": [
+            "C1",
+            "C2",
+            "C3"
+          ],
+          "original_internal_task_id": "aa_task_0301",
+          "task_id": "101"
+        },
+        "raw_step": {
+          "action": "inspect",
+          "actor": "worker",
+          "causal_note": "Initial context gathering.",
+          "causal_type": "start",
+          "caused_by": null,
+          "error_message": null,
+          "error_type": null,
+          "input": {
+            "commands": [
+              "pwd && rg --files .",
+              "sed -n '1,220p' ./input/task.json && printf '\\n---TASK_BRIEF---\\n' && sed -n '1,220p' ./input/task_brief.md"
+            ]
+          },
+          "metadata_json": {
+            "workspace_files": [
+              "input/task.json",
+              "input/task_brief.md"
+            ]
+          },
+          "observation": "Read task.json and task_brief.md; confirmed required deliverables and packet values for C1-C3.",
+          "operation": "read input packet and workspace layout",
+          "output": {
+            "deliverables": [
+              "[EXCLUDED_GENERATED_ARTIFACT]",
+              "[EXCLUDED_GENERATED_ARTIFACT]"
+            ],
+            "source_rows": [
+              "C1",
+              "C2",
+              "C3"
+            ],
+            "original_internal_task_id": "aa_task_0301",
+            "task_id": "101"
+          },
+          "reasoning": "Need a traceable feature table and memo using only packet values and exact row/value citations.",
+          "state_change": "Extracted the source data, required rules, and exact output contract from the packet.",
+          "step": "1",
+          "step_outcome": "context_captured",
+          "success": true,
+          "tool": "exec_command",
+          "turn": 1
+        },
+        "workspace_files": [
+          "input/task.json",
+          "input/task_brief.md"
+        ]
+      },
+      "observation": "Read task.json and task_brief.md; confirmed required deliverables and packet values for C1-C3.",
+      "operation": "read",
+      "output": "{\"deliverables\": [\"[EXCLUDED_GENERATED_ARTIFACT]\", \"[EXCLUDED_GENERATED_ARTIFACT]\"], \"source_rows\": [\"C1\", \"C2\", \"C3\"], \"task_id\": \"101\"}",
+      "parallel_group": null,
+      "reasoning": "Need a traceable feature table and memo using only packet values and exact row/value citations.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Extracted the source data, required rules, and exact output contract from the packet.",
+      "step": 1,
+      "step_outcome": "neutral",
+      "success": true,
+      "tool": "Bash",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "causal_note": "Requires packet values extracted in step 1.",
+      "causal_type": "other",
+      "caused_by": [
+        1
+      ],
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "{\"command\": \"node -e \\\"const vals=[['C1',4.10],['C2',4.35],['C3',3.88]]; for (const [id,c] of vals) { const r=c/4.9; console.log(id, r, (r*100).toFixed(2)); }\\\"\"}",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "formula": "retention = capacity_now / 4.90",
+        "inputs": {
+          "command": "node -e \"const vals=[['C1',4.10],['C2',4.35],['C3',3.88]]; for (const [id,c] of vals) { const r=c/4.9; console.log(id, r, (r*100).toFixed(2)); }\""
+        },
+        "original_action": "calculate",
+        "original_causal_type": "dependency",
+        "original_operation": "verify retention arithmetic and thresholds",
+        "original_step_outcome": "features_computed",
+        "outputs": {
+          "rows": [
+            {
+              "cell_id": "C1",
+              "retention_pct": 83.67,
+              "retention_ratio": 0.8367346938775508
+            },
+            {
+              "cell_id": "C2",
+              "retention_pct": 88.78,
+              "retention_ratio": 0.8877551020408162
+            },
+            {
+              "cell_id": "C3",
+              "retention_pct": 79.18,
+              "retention_ratio": 0.7918367346938775
+            }
+          ]
+        },
+        "raw_step": {
+          "action": "calculate",
+          "actor": "worker",
+          "causal_note": "Requires packet values extracted in step 1.",
+          "causal_type": "dependency",
+          "caused_by": "1",
+          "error_message": null,
+          "error_type": null,
+          "input": {
+            "command": "node -e \"const vals=[['C1',4.10],['C2',4.35],['C3',3.88]]; for (const [id,c] of vals) { const r=c/4.9; console.log(id, r, (r*100).toFixed(2)); }\""
+          },
+          "metadata_json": {
+            "formula": "retention = capacity_now / 4.90",
+            "thresholds": {
+              "dcir_mohm_gt": 50,
+              "retention_pct_lt": 85,
+              "temp_c_gt": 35
+            }
+          },
+          "observation": "Node check returned retention ratios 0.8367346938775508, 0.8877551020408162, and 0.7918367346938775 with percentages 83.67, 88.78, and 79.18.",
+          "operation": "verify retention arithmetic and thresholds",
+          "output": {
+            "rows": [
+              {
+                "cell_id": "C1",
+                "retention_pct": 83.67,
+                "retention_ratio": 0.8367346938775508
+              },
+              {
+                "cell_id": "C2",
+                "retention_pct": 88.78,
+                "retention_ratio": 0.8877551020408162
+              },
+              {
+                "cell_id": "C3",
+                "retention_pct": 79.18,
+                "retention_ratio": 0.7918367346938775
+              }
+            ]
+          },
+          "reasoning": "Retention must use the fixed 4.90 Ah baseline; then compare against 85%, 50 mOhm, and 35C.",
+          "state_change": "Computed the derived features needed for the deliverables and checked them against the rule thresholds.",
+          "step": "2",
+          "step_outcome": "features_computed",
+          "success": true,
+          "tool": "exec_command",
+          "turn": 1
+        },
+        "thresholds": {
+          "dcir_mohm_gt": 50,
+          "retention_pct_lt": 85,
+          "temp_c_gt": 35
+        }
+      },
+      "observation": "Node check returned retention ratios 0.8367346938775508, 0.8877551020408162, and 0.7918367346938775 with percentages 83.67, 88.78, and 79.18.",
+      "operation": "other",
+      "output": "{\"rows\": [{\"cell_id\": \"C1\", \"retention_pct\": 83.67, \"retention_ratio\": 0.8367346938775508}, {\"cell_id\": \"C2\", \"retention_pct\": 88.78, \"retention_ratio\": 0.8877551020408162}, {\"cell_id\": \"C3\", \"retention_pct\": 79.18, \"retention_ratio\": 0.7918367346938775}]}",
+      "parallel_group": null,
+      "reasoning": "Retention must use the fixed 4.90 Ah baseline; then compare against 85%, 50 mOhm, and 35C.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Computed the derived features needed for the deliverables and checked them against the rule thresholds.",
+      "step": 2,
+      "step_outcome": "neutral",
+      "success": true,
+      "tool": "Bash",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "causal_note": "Uses derived values from step 2 to populate the deliverables.",
+      "causal_type": "other",
+      "caused_by": [
+        2
+      ],
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "{\"files\": [\"[EXCLUDED_GENERATED_ARTIFACT]\", \"[EXCLUDED_GENERATED_ARTIFACT]\"]}",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "inputs": {
+          "files": [
+            "[EXCLUDED_GENERATED_ARTIFACT]",
+            "[EXCLUDED_GENERATED_ARTIFACT]"
+          ]
+        },
+        "notes": [
+          "C1 uses provided capacity_0=4.90Ah",
+          "C2 and C3 mark missing capacity_0 as needs_review"
+        ],
+        "original_action": "create",
+        "original_causal_type": "dependency",
+        "original_operation": "write CSV and markdown deliverables",
+        "original_step_outcome": "artifacts_created",
+        "outputs": {
+          "created_files": [
+            "[EXCLUDED_GENERATED_ARTIFACT]",
+            "[EXCLUDED_GENERATED_ARTIFACT]"
+          ]
+        },
+        "raw_step": {
+          "action": "create",
+          "actor": "worker",
+          "causal_note": "Uses derived values from step 2 to populate the deliverables.",
+          "causal_type": "dependency",
+          "caused_by": "2",
+          "error_message": null,
+          "error_type": null,
+          "input": {
+            "files": [
+              "[EXCLUDED_GENERATED_ARTIFACT]",
+              "[EXCLUDED_GENERATED_ARTIFACT]"
+            ]
+          },
+          "metadata_json": {
+            "notes": [
+              "C1 uses provided capacity_0=4.90Ah",
+              "C2 and C3 mark missing capacity_0 as needs_review"
+            ],
+            "rows": 3
+          },
+          "observation": "Created [EXCLUDED_GENERATED_ARTIFACT] and [EXCLUDED_GENERATED_ARTIFACT] with row citations, missing-input markers, calculations, and recommendations.",
+          "operation": "write CSV and markdown deliverables",
+          "output": {
+            "created_files": [
+              "[EXCLUDED_GENERATED_ARTIFACT]",
+              "[EXCLUDED_GENERATED_ARTIFACT]"
+            ]
+          },
+          "reasoning": "The artifacts must be self-contained, explicit about assumptions, and tied back to the packet values.",
+          "state_change": "Materialized the required deliverables under [EXCLUDED_GENERATED_ARTIFACT]",
+          "step": "3",
+          "step_outcome": "artifacts_created",
+          "success": true,
+          "tool": "apply_patch",
+          "turn": 1
+        },
+        "rows": 3
+      },
+      "observation": "Created [EXCLUDED_GENERATED_ARTIFACT] and [EXCLUDED_GENERATED_ARTIFACT] with row citations, missing-input markers, calculations, and recommendations.",
+      "operation": "other",
+      "output": "{\"created_files\": [\"[EXCLUDED_GENERATED_ARTIFACT]\", \"[EXCLUDED_GENERATED_ARTIFACT]\"]}",
+      "parallel_group": null,
+      "reasoning": "The artifacts must be self-contained, explicit about assumptions, and tied back to the packet values.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Materialized the required deliverables under [EXCLUDED_GENERATED_ARTIFACT]",
+      "step": 3,
+      "step_outcome": "neutral",
+      "success": true,
+      "tool": "apply_patch",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "artifact_refs": [
+        "actual_outputs.json"
+      ],
+      "causal_note": "The manifest enumerates the files created in step 3.",
+      "causal_type": "other",
+      "caused_by": [
+        3
+      ],
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "{\"file\": \"actual_outputs.json\"}",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "inputs": {
+          "file": "actual_outputs.json"
+        },
+        "manifest_paths": [
+          "[EXCLUDED_GENERATED_ARTIFACT]",
+          "[EXCLUDED_GENERATED_ARTIFACT]"
+        ],
+        "original_action": "write",
+        "original_causal_type": "dependency",
+        "original_operation": "create actual_outputs manifest",
+        "original_step_outcome": "manifest_written",
+        "outputs": {
+          "deliverable_count": 2,
+          "status": "completed"
+        },
+        "raw_step": {
+          "action": "write",
+          "actor": "worker",
+          "artifact_refs": [
+            "actual_outputs.json"
+          ],
+          "causal_note": "The manifest enumerates the files created in step 3.",
+          "causal_type": "dependency",
+          "caused_by": "3",
+          "error_message": null,
+          "error_type": null,
+          "input": {
+            "file": "actual_outputs.json"
+          },
+          "metadata_json": {
+            "manifest_paths": [
+              "[EXCLUDED_GENERATED_ARTIFACT]",
+              "[EXCLUDED_GENERATED_ARTIFACT]"
+            ]
+          },
+          "observation": "Wrote actual_outputs.json enumerating the two deliverables and summarizing the retention baseline and missing-input handling.",
+          "operation": "create actual_outputs manifest",
+          "output": {
+            "deliverable_count": 2,
+            "status": "completed"
+          },
+          "reasoning": "A machine-readable manifest makes the output contract explicit and easy to validate.",
+          "state_change": "Recorded the final artifact manifest for downstream consumption.",
+          "step": "4",
+          "step_outcome": "manifest_written",
+          "success": true,
+          "tool": "apply_patch",
+          "turn": 1
+        }
+      },
+      "observation": "Wrote actual_outputs.json enumerating the two deliverables and summarizing the retention baseline and missing-input handling.",
+      "operation": "other",
+      "output": "{\"deliverable_count\": 2, \"status\": \"completed\"}",
+      "parallel_group": null,
+      "reasoning": "A machine-readable manifest makes the output contract explicit and easy to validate.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Recorded the final artifact manifest for downstream consumption.",
+      "step": 4,
+      "step_outcome": "neutral",
+      "success": true,
+      "tool": "apply_patch",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "artifact_refs": [
+        "actual_outputs.json"
+      ],
+      "causal_note": "Confirms the manifest and artifacts written in earlier steps.",
+      "causal_type": "other",
+      "caused_by": [
+        4
+      ],
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "{\"commands\": [\"node -e \\\"const fs=require('fs'); const a=JSON.parse(fs.readFileSync('actual_outputs.json','utf8')); const t=JSON.parse(fs.readFileSync('input/task.json','utf8')); console.log(a.status, a.deliverables.length, t.task_id);\\\"\", \"node -e \\\"const fs=require('fs'); const csv=fs.readFileSync('[EXCLUDED_GENERATED_ARTIFACT]','utf8').trim().split(/\\\\n/); console.log('csv_rows',csv.length-1,'header_cols',csv[0].split(',').length);\\\"\", \"rg -n \\\"needs_review|83.673469|88.775510|79.183673|monitor|escalate|continue_monitor\\\" [EXCLUDED_GENERATED_ARTIFACT] [EXCLUDED_GENERATED_ARTIFACT]\"]}",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "inputs": {
+          "commands": [
+            "node -e \"const fs=require('fs'); const a=JSON.parse(fs.readFileSync('actual_outputs.json','utf8')); const t=JSON.parse(fs.readFileSync('input/task.json','utf8')); console.log(a.status, a.deliverables.length, t.task_id);\"",
+            "node -e \"const fs=require('fs'); const csv=fs.readFileSync('[EXCLUDED_GENERATED_ARTIFACT]','utf8').trim().split(/\\n/); console.log('csv_rows',csv.length-1,'header_cols',csv[0].split(',').length);\"",
+            "rg -n \"needs_review|83.673469|88.775510|79.183673|monitor|escalate|continue_monitor\" [EXCLUDED_GENERATED_ARTIFACT] [EXCLUDED_GENERATED_ARTIFACT]"
+          ]
+        },
+        "original_action": "validate",
+        "original_causal_type": "verification",
+        "original_operation": "parse JSON and inspect artifact contents",
+        "original_step_outcome": "validated",
+        "outputs": {
+          "content_checks": [
+            "needs_review present",
+            "retention values present",
+            "recommendations present"
+          ],
+          "csv_shape": {
+            "data_rows": 3,
+            "header_cols": 15
+          },
+          "json_parse": {
+            "deliverable_count": 2,
+            "status": "completed",
+            "original_internal_task_id": "aa_task_0301",
+            "task_id": "101"
+          }
+        },
+        "raw_step": {
+          "action": "validate",
+          "actor": "worker",
+          "artifact_refs": [
+            "actual_outputs.json"
+          ],
+          "causal_note": "Confirms the manifest and artifacts written in earlier steps.",
+          "causal_type": "verification",
+          "caused_by": "4",
+          "error_message": null,
+          "error_type": null,
+          "input": {
+            "commands": [
+              "node -e \"const fs=require('fs'); const a=JSON.parse(fs.readFileSync('actual_outputs.json','utf8')); const t=JSON.parse(fs.readFileSync('input/task.json','utf8')); console.log(a.status, a.deliverables.length, t.task_id);\"",
+              "node -e \"const fs=require('fs'); const csv=fs.readFileSync('[EXCLUDED_GENERATED_ARTIFACT]','utf8').trim().split(/\\n/); console.log('csv_rows',csv.length-1,'header_cols',csv[0].split(',').length);\"",
+              "rg -n \"needs_review|83.673469|88.775510|79.183673|monitor|escalate|continue_monitor\" [EXCLUDED_GENERATED_ARTIFACT] [EXCLUDED_GENERATED_ARTIFACT]"
+            ]
+          },
+          "metadata_json": {
+            "validation_summary": {
+              "csv_header_cols": 15,
+              "csv_rows": 3,
+              "json_parse_ok": true
+            }
+          },
+          "observation": "JSON parse succeeded for actual_outputs.json; CSV had 3 data rows and 15 columns; grep confirmed citations, needs_review markers, and expected recommendation terms.",
+          "operation": "parse JSON and inspect artifact contents",
+          "output": {
+            "content_checks": [
+              "needs_review present",
+              "retention values present",
+              "recommendations present"
+            ],
+            "csv_shape": {
+              "data_rows": 3,
+              "header_cols": 15
+            },
+            "json_parse": {
+              "deliverable_count": 2,
+              "status": "completed",
+              "original_internal_task_id": "aa_task_0301",
+              "task_id": "101"
+            }
+          },
+          "reasoning": "Check the written artifacts before closing the attempt so the package is internally consistent.",
+          "state_change": "Validated that the manifest and deliverables are structurally correct and contain the expected values.",
+          "step": "5",
+          "step_outcome": "validated",
+          "success": true,
+          "tool": "exec_command",
+          "turn": 1
+        },
+        "validation_summary": {
+          "csv_header_cols": 15,
+          "csv_rows": 3,
+          "json_parse_ok": true
+        }
+      },
+      "observation": "JSON parse succeeded for actual_outputs.json; CSV had 3 data rows and 15 columns; grep confirmed citations, needs_review markers, and expected recommendation terms.",
+      "operation": "other",
+      "output": "{\"content_checks\": [\"needs_review present\", \"retention values present\", \"recommendations present\"], \"csv_shape\": {\"data_rows\": 3, \"header_cols\": 15}, \"json_parse\": {\"deliverable_count\": 2, \"status\": \"completed\", \"task_id\": \"101\"}}",
+      "parallel_group": null,
+      "reasoning": "Check the written artifacts before closing the attempt so the package is internally consistent.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Validated that the manifest and deliverables are structurally correct and contain the expected values.",
+      "step": 5,
+      "step_outcome": "neutral",
+      "success": true,
+      "tool": "Bash",
+      "turn": 1
+    }
+  ],
+  "system_prompt": null,
+  "system_prompt_hash": null,
+  "task": "Advanced task: Battery cell degradation feature engineering. Use cell data: C1 cycles=420 capacity_0=4.90Ah capacity_now=4.10Ah temp_mean=31C DCIR_mohm=42; C2 cycles=380 capacity_now=4.35 temp=28 DCIR=37; C3 cycles=510 capacity_now=3.88 temp=36 DCIR=55. Rules: retention=capacity_now/4.90; flag retention<85%, DCIR>50, temp>35C. Produce the stated deliverable with calculations, assumptions, exceptions, and exact row/value citations. Do not invent additional records; mark missing inputs as needs_review. Include intermediate calculations, uncertainty or sensitivity notes, validation checks, and a final decision table that ties every recommendation back to the supplied values. The response should be executable from the embedded packet alone, with no external data lookup required beyond understanding the cited public removed context.",
+  "task_family_id": null,
+  "original_internal_task_id": "aa_task_0301",
+  "task_id": "101",
+  "termination_reason": "task_complete",
+  "trace_id": "trace_101-baseline_normalized",
+  "trace_mode": "live"
+}

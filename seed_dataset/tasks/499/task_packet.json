@@ -1,0 +1,81 @@
+{
+  "schema_version": "aa-seed-task-v0.1",
+  "task_id": "499",
+  "title": "Virtual Production Camera Tracking Drift Reconstruction",
+  "domain": "virtual_production_analytics",
+  "subdomain": "camera_tracking_drift",
+  "domains": [
+    "virtual_production_analytics"
+  ],
+  "subdomains": [
+    "camera_tracking_drift"
+  ],
+  "agent_apprentice_role": "virtual production engineer",
+  "task_family": "tracking_qc",
+  "difficulty_tier": "hard",
+  "expected_economic_value": "$110,000-$260,000 technical work-package",
+  "expected_economic_value_for_agent_apprentice": "$100-$250",
+  "expected_deliverable": "camera_tracking_drift.csv + stage_note.md",
+  "deliverables": [
+    "camera_tracking_drift.csv",
+    "stage_note.md"
+  ],
+  "normalized_title": "Virtual Production Camera Tracking Drift Reconstruction",
+  "instruction": "Context: an LED-volume shoot has camera-tracking drift reported in selected takes. Task packet: records: R1 tracking_error_mm=17.85 lens_encoder_error_pct=61.4 timecode_offset_ms=885 shot_risk=788; R2 tracking_error_mm=40.28 lens_encoder_error_pct=53.7 timecode_offset_ms=526 shot_risk=77; R3 tracking_error_mm=11.49 lens_encoder_error_pct=84.7 timecode_offset_ms=168 shot_risk=429; R4 tracking_error_mm=27.72 lens_encoder_error_pct=33.7 timecode_offset_ms=14 shot_risk=29; limit_tracking_error_mm=67.25; limit_lens_encoder_error_pct=29.9; limit_timecode_offset_ms=438; decision_budget_usd=182500; sensitivity_shift_pct=5; hard_threshold_record_count=1;. Rules and constraints: Compute priority value = tracking_error_mm*lens_encoder_error_pct - 0.6*timecode_offset_ms + shot_risk; rank descending, but any record breaching the hard threshold must be escalated first. Recommendations cannot use external measurements, specialized licensed software, or hidden assumptions; all calculations must use only the task packet, and any contradictory or under-supported record must be marked needs_review. Required work: reconstruct drift and retake priority; rank records by technical and economic impact, run the stated sensitivity check, and recommend hold, release, retest, or mitigation. Deliver camera_tracking_drift.CSV + stage_note.md with formulas or executable logic, record-level citations, validation checks, sensitivity notes, and a final recommendation table suitable for expert review. This task is self-contained: use the task packet as the factual record, do not add source references or external datasets, and preserve a high-fidelity audit trail for every calculation, classification, and recommendation. State assumptions and unresolved evidence gaps explicitly. When executed locally, place final deliverables under the artifacts/ directory.",
+  "task_status": "ready_to_run",
+  "run_status": "not_run",
+  "seed_rank": 204,
+  "display_order": 204,
+  "allowed_tools": [
+    "Local text editor or Markdown editor",
+    "Local spreadsheet, CSV, JSON, YAML, or scripting tools for deterministic calculations",
+    "Local validation or linting commands",
+    "Local plotting or diagramming tools when useful"
+  ],
+  "disallowed_tools": [
+    "External fact lookup or live data pulls",
+    "Live production systems, cloud accounts, trading systems, clinical systems, or industrial controls",
+    "Secret discovery, credential testing, or any action outside the prepared task workspace"
+  ],
+  "privacy_classification": "synthetic",
+  "needs_expert_review": true,
+  "input_requirements": [
+    "Use the task packet as the sole factual input.",
+    "Cite row IDs, record IDs, thresholds, formulas, and option IDs from the packet wherever they control a conclusion.",
+    "Mark missing, contradictory, or under-supported values as needs_review instead of inventing them."
+  ],
+  "inputs": [
+    "All factual inputs are embedded in the task packet.",
+    "Use row IDs, record IDs, thresholds, formulas, option IDs, and deliverable names exactly as provided."
+  ],
+  "output_requirements": [
+    "Produce the required deliverable files with the specified filenames when filenames are provided.",
+    "Include intermediate calculations or executable logic sufficient for another reviewer to reproduce the result.",
+    "Include validation checks, sensitivity notes around controlling thresholds, and a final decision or recommendation table."
+  ],
+  "constraints": [
+    "Use the task packet as the factual record.",
+    "Do not browse, call live services, import external datasets, or invent missing values.",
+    "Treat regulated or safety-critical outputs as review packets, not authorization to act."
+  ],
+  "quality_bar": [
+    "Treat the task as realistic professional work with domain-appropriate rigor.",
+    "Preserve the packet's domain detail, identifiers, thresholds, and edge cases in the final deliverables.",
+    "Make every recommendation traceable to explicit task-packet evidence or mark it as needs_review."
+  ],
+  "validation_expectations": [
+    "Check required fields, row counts, totals, thresholds, and classifications before finalizing.",
+    "Show enough formulas, script logic, or tables for an independent reviewer to reproduce the result.",
+    "Flag any contradiction, missing input, or threshold-sensitive conclusion."
+  ],
+  "edge_cases": [
+    "If packet evidence is incomplete, do not infer missing values; label the item needs_review.",
+    "If multiple options satisfy hard constraints, rank them using the packet's stated priorities and explain ties.",
+    "If a regulated or safety-critical conclusion appears, frame the output as a review packet rather than authorization to act."
+  ],
+  "privacy_safety_expectations": [
+    "Do not use live systems, private accounts, credentials, or external datasets.",
+    "Do not include raw secrets or operational instructions that would execute real-world changes.",
+    "Keep synthetic identifiers from the packet only when needed for verification."
+  ]
+}

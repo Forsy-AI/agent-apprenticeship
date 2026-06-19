@@ -1,0 +1,213 @@
+{
+  "original_internal_attempt_id": "aa_task_0005_baseline",
+  "attempt_id": "605-baseline",
+  "attempt_kind": "baseline",
+  "error_message": null,
+  "error_type": null,
+  "metadata_json": {
+    "actual_outputs_discarded_field_count": 0,
+    "actual_outputs_normalized": true,
+    "codex_sandbox": "workspace-write",
+    "expected_deliverable_items": [
+      "brine_scaling_model.xlsx",
+      "reinjection_decision_memo.md"
+    ],
+    "original_fields": {
+      "artifact_trace": "agent_trace.json",
+      "artifacts": [
+        {
+          "description": "Executable scenario model with formulas, input traceability, validation checks, and sensitivity checks",
+          "type": "spreadsheet"
+        },
+        {
+          "description": "Decision rationale, intermediate calculations, assumptions, validation, sensitivity, and final ranked decision",
+          "type": "memo"
+        }
+      ],
+      "evaluation_inputs_used": {
+        "constraints": [
+          "scale_index = silica/700 + calcite + max(0, pressure/limit - 0.9) * 3",
+          "fail if pressure > limit or scale_index > 2.3",
+          "warn if pressure within 5 bar of limit",
+          "7-day horizon",
+          "max_daily_loss cap = 42,000"
+        ],
+        "mitigation_options": [
+          "I1_silica_inhibitor",
+          "I2_acid_wash",
+          "I3_reduce_flow_15pct"
+        ],
+        "wells": [
+          "W1",
+          "W2",
+          "W3"
+        ]
+      },
+      "generated_at": "2026-06-18",
+      "package_results": {
+        "I1": {
+          "notes": "no fail; W2/W3 within 5 bar warning band",
+          "seven_day_loss_capusd": 51800,
+          "status": "NEEDS_REVIEW"
+        },
+        "I1+I2": {
+          "notes": "safety improves, higher cost than I2",
+          "seven_day_loss_capusd": 121300,
+          "status": "PASS"
+        },
+        "I1+I2+I3": {
+          "notes": "capped at max_daily_loss*7",
+          "seven_day_loss_capusd": 291000,
+          "status": "PASS"
+        },
+        "I1+I3": {
+          "notes": "no warn/fail",
+          "seven_day_loss_capusd": 268800,
+          "status": "PASS"
+        },
+        "I2": {
+          "notes": "pressure relief eliminates fail and warn",
+          "seven_day_loss_capusd": 69500,
+          "status": "PASS"
+        },
+        "I2+I3": {
+          "notes": "no warn/fail",
+          "seven_day_loss_capusd": 286500,
+          "status": "PASS"
+        },
+        "I3": {
+          "notes": "no fail and no warn",
+          "seven_day_loss_capusd": 217000,
+          "status": "PASS"
+        },
+        "None": {
+          "notes": "fails on W2 scale index",
+          "seven_day_loss_capusd": 0,
+          "status": "FAIL"
+        }
+      },
+      "recommendation": {
+        "operational_if_no_warning_preferred": {
+          "package": "I2",
+          "rationale": "next-best with no warn status"
+        },
+        "primary": {
+          "package": "I1",
+          "rationale": "minimum raw/capped 7-day loss among non-fail scenarios; still within warning band"
+        }
+      },
+      "run_id": "baseline"
+    },
+    "produced_deliverable_items": [
+      "brine_scaling_model.xlsx",
+      "reinjection_decision_memo.md"
+    ],
+    "raw_actual_outputs": {
+      "artifact_trace": "agent_trace.json",
+      "artifacts": [
+        {
+          "description": "Executable scenario model with formulas, input traceability, validation checks, and sensitivity checks",
+          "type": "spreadsheet"
+        },
+        {
+          "description": "Decision rationale, intermediate calculations, assumptions, validation, sensitivity, and final ranked decision",
+          "type": "memo"
+        }
+      ],
+      "evaluation_inputs_used": {
+        "constraints": [
+          "scale_index = silica/700 + calcite + max(0, pressure/limit - 0.9) * 3",
+          "fail if pressure > limit or scale_index > 2.3",
+          "warn if pressure within 5 bar of limit",
+          "7-day horizon",
+          "max_daily_loss cap = 42,000"
+        ],
+        "mitigation_options": [
+          "I1_silica_inhibitor",
+          "I2_acid_wash",
+          "I3_reduce_flow_15pct"
+        ],
+        "wells": [
+          "W1",
+          "W2",
+          "W3"
+        ]
+      },
+      "generated_at": "2026-06-18",
+      "package_results": {
+        "I1": {
+          "notes": "no fail; W2/W3 within 5 bar warning band",
+          "seven_day_loss_capusd": 51800,
+          "status": "NEEDS_REVIEW"
+        },
+        "I1+I2": {
+          "notes": "safety improves, higher cost than I2",
+          "seven_day_loss_capusd": 121300,
+          "status": "PASS"
+        },
+        "I1+I2+I3": {
+          "notes": "capped at max_daily_loss*7",
+          "seven_day_loss_capusd": 291000,
+          "status": "PASS"
+        },
+        "I1+I3": {
+          "notes": "no warn/fail",
+          "seven_day_loss_capusd": 268800,
+          "status": "PASS"
+        },
+        "I2": {
+          "notes": "pressure relief eliminates fail and warn",
+          "seven_day_loss_capusd": 69500,
+          "status": "PASS"
+        },
+        "I2+I3": {
+          "notes": "no warn/fail",
+          "seven_day_loss_capusd": 286500,
+          "status": "PASS"
+        },
+        "I3": {
+          "notes": "no fail and no warn",
+          "seven_day_loss_capusd": 217000,
+          "status": "PASS"
+        },
+        "None": {
+          "notes": "fails on W2 scale index",
+          "seven_day_loss_capusd": 0,
+          "status": "FAIL"
+        }
+      },
+      "recommendation": {
+        "operational_if_no_warning_preferred": {
+          "package": "I2",
+          "rationale": "next-best with no warn status"
+        },
+        "primary": {
+          "package": "I1",
+          "rationale": "minimum raw/capped 7-day loss among non-fail scenarios; still within warning band"
+        }
+      },
+      "run_id": "baseline",
+      "original_internal_task_id": "aa_task_0005",
+      "task_id": "605"
+    }
+  },
+  "output_summary": "Normalized actual outputs from artifact files.",
+  "status": "success",
+  "original_internal_task_id": "aa_task_0005",
+  "task_id": "605",
+  "required_deliverables": [
+    "brine_scaling_model.xlsx",
+    "reinjection_decision_memo.md"
+  ],
+  "produced_deliverables": [
+    "brine_scaling_model.xlsx",
+    "reinjection_decision_memo.md"
+  ],
+  "missing_required_deliverables": [],
+  "deliverable_produced": true,
+  "deliverable_file_included": false,
+  "included_generated_artifacts": false,
+  "artifacts_excluded_reason": "Generated output artifacts are excluded from the public seed dataset by default.",
+  "logs_included": false,
+  "logs_excluded_reason": "Raw runner logs are excluded from the public seed dataset."
+}

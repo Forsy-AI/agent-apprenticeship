@@ -1,0 +1,567 @@
+{
+  "actual_outputs": {
+    "original_internal_attempt_id": "aa_task_0786_baseline",
+    "attempt_id": "486-baseline",
+    "attempt_kind": "baseline",
+    "error_message": null,
+    "error_type": null,
+    "metadata_json": {
+      "actual_outputs_discarded_field_count": 0,
+      "actual_outputs_normalized": true,
+      "expected_deliverable_items": [
+        "essay_rubric_drift.csv",
+        "calibration_note.md"
+      ],
+      "original_fields": {
+        "generated_artifacts": [
+          "[EXCLUDED_GENERATED_ARTIFACT]",
+          "[EXCLUDED_GENERATED_ARTIFACT]"
+        ],
+        "summary": {
+          "baseline_metric": 28.325,
+          "improvement_pct": 83.72462488967344,
+          "mitigated_metric": 4.61,
+          "needs_review_count": 3
+        },
+        "supporting_artifact": "[EXCLUDED_GENERATED_ARTIFACT]"
+      },
+      "produced_deliverable_items": [
+        "calibration_note.md",
+        "essay_rubric_drift.csv"
+      ],
+      "raw_actual_outputs": {
+        "generated_artifacts": [
+          "[EXCLUDED_GENERATED_ARTIFACT]",
+          "[EXCLUDED_GENERATED_ARTIFACT]"
+        ],
+        "summary": {
+          "baseline_metric": 28.325,
+          "improvement_pct": 83.72462488967344,
+          "mitigated_metric": 4.61,
+          "needs_review_count": 3
+        },
+        "supporting_artifact": "[EXCLUDED_GENERATED_ARTIFACT]"
+      }
+    },
+    "output_summary": "{'baseline_metric': 28.325, 'mitigated_metric': 4.61, 'improvement_pct': 83.72462488967344, 'needs_review_count': 3}",
+    "status": "success",
+    "original_internal_task_id": "aa_task_0786",
+    "task_id": "486",
+    "required_deliverables": [
+      "essay_rubric_drift.csv",
+      "calibration_note.md"
+    ],
+    "produced_deliverables": [
+      "calibration_note.md",
+      "essay_rubric_drift.csv"
+    ],
+    "missing_required_deliverables": [],
+    "deliverable_produced": true,
+    "deliverable_file_included": false,
+    "included_generated_artifacts": false,
+    "artifacts_excluded_reason": "Generated output artifacts are excluded from the public seed dataset by default.",
+    "logs_included": false,
+    "logs_excluded_reason": "Raw runner logs are excluded from the public seed dataset."
+  },
+  "agent_config": null,
+  "agent_tools": [
+    "codex_cli",
+    "Bash",
+    "python",
+    "file_read",
+    "file_write",
+    "apply_patch"
+  ],
+  "artifacts": [],
+  "original_internal_attempt_id": "aa_task_0786_baseline",
+  "attempt_id": "486-baseline",
+  "attempt_kind": "baseline",
+  "attempt_status": "completed",
+  "collection_id": null,
+  "completion_reason": null,
+  "ended_at": null,
+  "final_attempt_id": null,
+  "initial_attempt_id": null,
+  "iteration_index": null,
+  "learning": null,
+  "memory": null,
+  "metadata_json": {
+    "codex_command": [
+      "codex",
+      "exec",
+      "--sandbox",
+      "workspace-write",
+      "<prompt>"
+    ],
+    "codex_sandbox": "workspace-write",
+    "discarded_step_count": 0,
+    "original_fields": {
+      "workflow": "486"
+    },
+    "raw_trace_preserved": true,
+    "raw_trace_step_source": "steps",
+    "schema_valid": true,
+    "trace_normalization_status": "normalized",
+    "trace_valid": true
+  },
+  "preferred_attempt_id": null,
+  "previous_attempt_id": null,
+  "prior_trace_id": null,
+  "revision_attempt_ids": [],
+  "revision_group_id": null,
+  "schema_version": "aa-trace-v0.1",
+  "skills": null,
+  "started_at": null,
+  "steps": [
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "artifact_refs": [
+        "./input/task.json",
+        "./input/task_brief.md"
+      ],
+      "causal_note": null,
+      "causal_type": null,
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "pwd && rg --files ./input && sed -n '1,240p' ./input/task.json && sed -n '1,260p' ./input/task_brief.md",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "original_action": "read_context",
+        "original_step_outcome": "success",
+        "packet_limits": [
+          "limit_human_score=245",
+          "limit_model_score=5.32",
+          "limit_prompt_cluster=43.08"
+        ],
+        "packet_records": 4,
+        "raw_step": {
+          "action": "read_context",
+          "actor": "worker",
+          "artifact_refs": [
+            "./input/task.json",
+            "./input/task_brief.md"
+          ],
+          "causal_note": null,
+          "causal_type": null,
+          "caused_by": null,
+          "error_message": null,
+          "error_type": null,
+          "input": "pwd && rg --files ./input && sed -n '1,240p' ./input/task.json && sed -n '1,260p' ./input/task_brief.md",
+          "metadata_json": {
+            "packet_limits": [
+              "limit_human_score=245",
+              "limit_model_score=5.32",
+              "limit_prompt_cluster=43.08"
+            ],
+            "packet_records": 4
+          },
+          "observation": "Located the embedded packet and task brief in ./input; task requires a reproducible audit plus essay_rubric_drift.csv and calibration_note.md, using only the packet data.",
+          "operation": "read",
+          "output": "task.json described the embedded packet, limits, budget, sensitivity_shift_pct=5, and hard_threshold_record_count=1; task_brief.md confirmed the deliverables and single-source constraint.",
+          "reasoning": "Start from the source packet so all downstream calculations remain single-source and reproducible.",
+          "state_change": "Context was loaded from the packet; no files were modified.",
+          "step": "1",
+          "step_outcome": "success",
+          "success": true,
+          "tool": "functions.exec_command",
+          "turn": 1
+        }
+      },
+      "observation": "Located the embedded packet and task brief in ./input; task requires a reproducible audit plus essay_rubric_drift.csv and calibration_note.md, using only the packet data.",
+      "operation": "read",
+      "output": "task.json described the embedded packet, limits, budget, sensitivity_shift_pct=5, and hard_threshold_record_count=1; task_brief.md confirmed the deliverables and single-source constraint.",
+      "parallel_group": null,
+      "reasoning": "Start from the source packet so all downstream calculations remain single-source and reproducible.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Context was loaded from the packet; no files were modified.",
+      "step": 1,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "Bash",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "artifact_refs": [
+        "./input/task.json"
+      ],
+      "causal_note": "The packet data had to be parsed before the review rules and decision table could be defined.",
+      "causal_type": "other",
+      "caused_by": [
+        1
+      ],
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "python3 - <<'PY' ... compute mean residual, median residual, and per-record breach flags ... PY",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "baseline_mean_residual": 28.325,
+        "median_residual": 16.375,
+        "original_action": "derive_metrics",
+        "original_causal_type": "derived_from",
+        "original_step_outcome": "success",
+        "raw_step": {
+          "action": "derive_metrics",
+          "actor": "worker",
+          "artifact_refs": [
+            "./input/task.json"
+          ],
+          "causal_note": "The packet data had to be parsed before the review rules and decision table could be defined.",
+          "causal_type": "derived_from",
+          "caused_by": "1",
+          "error_message": null,
+          "error_type": null,
+          "input": "python3 - <<'PY' ... compute mean residual, median residual, and per-record breach flags ... PY",
+          "metadata_json": {
+            "baseline_mean_residual": 28.325,
+            "median_residual": 16.375,
+            "record_breach_counts": {
+              "R1": 2,
+              "R2": 0,
+              "R3": 3,
+              "R4": 2
+            }
+          },
+          "observation": "Computed the packet-level residual mean and record-level breach counts; R1, R3, and R4 exceed at least one limit, and R3 has the unusual pattern of three breaches with a low drift residual.",
+          "operation": "execute",
+          "output": "mean residual = 28.325; median residual = 16.375; R1 breaches = 2; R2 breaches = 0; R3 breaches = 3; R4 breaches = 2.",
+          "reasoning": "These summary statistics define the baseline controlling metric and expose the contradictory vs under-supported record pattern needed for needs_review flags.",
+          "state_change": "Derived the validation and calibration logic from packet values only.",
+          "step": "2",
+          "step_outcome": "success",
+          "success": true,
+          "tool": "functions.exec_command",
+          "turn": 1
+        },
+        "record_breach_counts": {
+          "R1": 2,
+          "R2": 0,
+          "R3": 3,
+          "R4": 2
+        }
+      },
+      "observation": "Computed the packet-level residual mean and record-level breach counts; R1, R3, and R4 exceed at least one limit, and R3 has the unusual pattern of three breaches with a low drift residual.",
+      "operation": "execute",
+      "output": "mean residual = 28.325; median residual = 16.375; R1 breaches = 2; R2 breaches = 0; R3 breaches = 3; R4 breaches = 2.",
+      "parallel_group": null,
+      "reasoning": "These summary statistics define the baseline controlling metric and expose the contradictory vs under-supported record pattern needed for needs_review flags.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Derived the validation and calibration logic from packet values only.",
+      "step": 2,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "python",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "causal_note": "The script encodes the metrics and validation rules derived from the packet.",
+      "causal_type": "other",
+      "caused_by": [
+        2
+      ],
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "Create [EXCLUDED_GENERATED_ARTIFACT] with packet-only calculations, row generation, and memo rendering.",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "original_action": "create_artifact",
+        "original_causal_type": "depends_on",
+        "original_step_outcome": "success",
+        "outputs_written_by_script": [
+          "[EXCLUDED_GENERATED_ARTIFACT]",
+          "[EXCLUDED_GENERATED_ARTIFACT]",
+          "./actual_outputs.json"
+        ],
+        "raw_step": {
+          "action": "create_artifact",
+          "actor": "worker",
+          "causal_note": "The script encodes the metrics and validation rules derived from the packet.",
+          "causal_type": "depends_on",
+          "caused_by": "2",
+          "error_message": null,
+          "error_type": null,
+          "input": "Create [EXCLUDED_GENERATED_ARTIFACT] with packet-only calculations, row generation, and memo rendering.",
+          "metadata_json": {
+            "outputs_written_by_script": [
+              "[EXCLUDED_GENERATED_ARTIFACT]",
+              "[EXCLUDED_GENERATED_ARTIFACT]",
+              "./actual_outputs.json"
+            ]
+          },
+          "observation": "Added a reproducible Python generator that hardcodes the embedded packet, computes validations and scenarios, and writes the CSV, memo, and summary JSON from the same logic.",
+          "operation": "write",
+          "output": "Added [EXCLUDED_GENERATED_ARTIFACT]",
+          "reasoning": "The script preserves intermediate calculations and lets the deliverables be regenerated without external data or package dependencies.",
+          "state_change": "A reproducible generator script now exists under ./artifacts.",
+          "step": "3",
+          "step_outcome": "success",
+          "success": true,
+          "tool": "functions.apply_patch",
+          "turn": 1
+        }
+      },
+      "observation": "Added a reproducible Python generator that hardcodes the embedded packet, computes validations and scenarios, and writes the CSV, memo, and summary JSON from the same logic.",
+      "operation": "write",
+      "output": "Added [EXCLUDED_GENERATED_ARTIFACT]",
+      "parallel_group": null,
+      "reasoning": "The script preserves intermediate calculations and lets the deliverables be regenerated without external data or package dependencies.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "A reproducible generator script now exists under ./artifacts.",
+      "step": 3,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "file_write",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "artifact_refs": [
+        "./actual_outputs.json"
+      ],
+      "causal_note": "The generator script is the source of the deliverable artifacts.",
+      "causal_type": "other",
+      "caused_by": [
+        3
+      ],
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "python3 [EXCLUDED_GENERATED_ARTIFACT] && sed -n '1,220p' [EXCLUDED_GENERATED_ARTIFACT] && sed -n '1,260p' [EXCLUDED_GENERATED_ARTIFACT] && sed -n '1,200p' actual_outputs.json",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "mitigated_improvement_pct": 83.72462488967344,
+        "needs_review_records": [
+          "R1",
+          "R3",
+          "R4"
+        ],
+        "original_action": "generate_outputs",
+        "original_causal_type": "executes",
+        "original_step_outcome": "success",
+        "raw_step": {
+          "action": "generate_outputs",
+          "actor": "worker",
+          "artifact_refs": [
+            "./actual_outputs.json"
+          ],
+          "causal_note": "The generator script is the source of the deliverable artifacts.",
+          "causal_type": "executes",
+          "caused_by": "3",
+          "error_message": null,
+          "error_type": null,
+          "input": "python3 [EXCLUDED_GENERATED_ARTIFACT] && sed -n '1,220p' [EXCLUDED_GENERATED_ARTIFACT] && sed -n '1,260p' [EXCLUDED_GENERATED_ARTIFACT] && sed -n '1,200p' actual_outputs.json",
+          "metadata_json": {
+            "mitigated_improvement_pct": 83.72462488967344,
+            "needs_review_records": [
+              "R1",
+              "R3",
+              "R4"
+            ]
+          },
+          "observation": "Ran the generator and inspected the emitted CSV, memo, and actual_outputs summary; the mitigated case showed an 83.7% reduction in mean drift residual versus baseline.",
+          "operation": "execute",
+          "output": "CSV contained 4 record rows and 4 scenario rows; memo included formulas, validation checks, recommendation table, holdout risk, and sensitivity notes; actual_outputs.json listed the generated artifacts and summary metrics.",
+          "reasoning": "This step materializes the deliverables and confirms the content is aligned with the packet-derived logic before finalizing.",
+          "state_change": "Created [EXCLUDED_GENERATED_ARTIFACT] [EXCLUDED_GENERATED_ARTIFACT] and ./actual_outputs.json.",
+          "step": "4",
+          "step_outcome": "success",
+          "success": true,
+          "tool": "functions.exec_command",
+          "turn": 1
+        }
+      },
+      "observation": "Ran the generator and inspected the emitted CSV, memo, and actual_outputs summary; the mitigated case showed an 83.7% reduction in mean drift residual versus baseline.",
+      "operation": "execute",
+      "output": "CSV contained 4 record rows and 4 scenario rows; memo included formulas, validation checks, recommendation table, holdout risk, and sensitivity notes; actual_outputs.json listed the generated artifacts and summary metrics.",
+      "parallel_group": null,
+      "reasoning": "This step materializes the deliverables and confirms the content is aligned with the packet-derived logic before finalizing.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Created [EXCLUDED_GENERATED_ARTIFACT] [EXCLUDED_GENERATED_ARTIFACT] and ./actual_outputs.json.",
+      "step": 4,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "python",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "artifact_refs": [
+        "./actual_outputs.json"
+      ],
+      "causal_note": "Validation follows the generated outputs and confirms their key decision properties.",
+      "causal_type": "other",
+      "caused_by": [
+        4
+      ],
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "python3 - <<'PY' ... assert 4 record rows, 4 scenario rows, mitigated improvement > 10, and cost <= budget ... PY",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "budget_usd": 182500.0,
+        "original_action": "validate_output",
+        "original_causal_type": "verifies",
+        "original_step_outcome": "success",
+        "raw_step": {
+          "action": "validate_output",
+          "actor": "worker",
+          "artifact_refs": [
+            "./actual_outputs.json"
+          ],
+          "causal_note": "Validation follows the generated outputs and confirms their key decision properties.",
+          "causal_type": "verifies",
+          "caused_by": "4",
+          "error_message": null,
+          "error_type": null,
+          "input": "python3 - <<'PY' ... assert 4 record rows, 4 scenario rows, mitigated improvement > 10, and cost <= budget ... PY",
+          "metadata_json": {
+            "budget_usd": 182500.0,
+            "sensitivity_shift_pct": 5.0
+          },
+          "observation": "Checked the CSV structure and the main acceptance criteria; the mitigated case stayed within budget and cleared the 10% improvement bar.",
+          "operation": "verify",
+          "output": "Validation summary: records=4; scenarios=4; mitigated_improvement_pct=83.72462488967344; budget_ok=true; needs_review_records=['R1','R3','R4'].",
+          "reasoning": "A final machine check reduces the risk of malformed output or an accidental budget/improvement miss.",
+          "state_change": "Confirmed the generated deliverables satisfy the worker-visible rubric's core numeric requirements.",
+          "step": "5",
+          "step_outcome": "success",
+          "success": true,
+          "tool": "functions.exec_command",
+          "turn": 1
+        },
+        "sensitivity_shift_pct": 5.0
+      },
+      "observation": "Checked the CSV structure and the main acceptance criteria; the mitigated case stayed within budget and cleared the 10% improvement bar.",
+      "operation": "verify",
+      "output": "Validation summary: records=4; scenarios=4; mitigated_improvement_pct=83.72462488967344; budget_ok=true; needs_review_records=['R1','R3','R4'].",
+      "parallel_group": null,
+      "reasoning": "A final machine check reduces the risk of malformed output or an accidental budget/improvement miss.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Confirmed the generated deliverables satisfy the worker-visible rubric's core numeric requirements.",
+      "step": 5,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "python",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "artifact_refs": [
+        "./agent_trace.json",
+        "./actual_outputs.json"
+      ],
+      "causal_note": "This is the final bookkeeping step after validation passed.",
+      "causal_type": "other",
+      "caused_by": [
+        5
+      ],
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "Create agent_trace.json with canonical per-step fields and references to the generated artifacts.",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "final_status": "deliverables_written",
+        "original_action": "finalize_trace",
+        "original_causal_type": "finalizes",
+        "original_step_outcome": "success",
+        "raw_step": {
+          "action": "finalize_trace",
+          "actor": "worker",
+          "artifact_refs": [
+            "./agent_trace.json",
+            "./actual_outputs.json"
+          ],
+          "causal_note": "This is the final bookkeeping step after validation passed.",
+          "causal_type": "finalizes",
+          "caused_by": "5",
+          "error_message": null,
+          "error_type": null,
+          "input": "Create agent_trace.json with canonical per-step fields and references to the generated artifacts.",
+          "metadata_json": {
+            "final_status": "deliverables_written"
+          },
+          "observation": "Wrote the workflow trace so the execution evidence, causality, and artifact references are preserved in the attempt directory.",
+          "operation": "write",
+          "output": "Added agent_trace.json.",
+          "reasoning": "The trace must be preserved as a first-class artifact for downstream evaluation and auditability.",
+          "state_change": "The attempt directory now contains the required trace file alongside the generated artifacts and summary JSON.",
+          "step": "6",
+          "step_outcome": "success",
+          "success": true,
+          "tool": "functions.apply_patch",
+          "turn": 1
+        }
+      },
+      "observation": "Wrote the workflow trace so the execution evidence, causality, and artifact references are preserved in the attempt directory.",
+      "operation": "write",
+      "output": "Added agent_trace.json.",
+      "parallel_group": null,
+      "reasoning": "The trace must be preserved as a first-class artifact for downstream evaluation and auditability.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "The attempt directory now contains the required trace file alongside the generated artifacts and summary JSON.",
+      "step": 6,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "file_write",
+      "turn": 1
+    }
+  ],
+  "system_prompt": null,
+  "system_prompt_hash": null,
+  "task": "Using only the embedded packet, perform a launch-quality audit of rubric calibration drift for an automated essay scoring engine after a rubric update. Build a reproducible workbook or script that preserves all intermediate calculations and validation checks. Construct a decision table with baseline, mitigated, and sensitivity cases; produce a recommended action that (a) stays inside the provided budget and (b) improves the controlling metric by at least 10%. Mark any contradictory or under-supported record-level evidence as needs_review. Deliver: (1) essay_rubric_drift.csv containing the reproducible workbook/script outputs and record-level citations/validation, and (2) calibration_note.md: a concise expert-review memo containing formulas or executable logic, sensitivity notes, validation checks, a final recommendation table, and a summary of calibration fixes and holdout risk. All calculations must use only the embedded packet. Do not use external measurements, specialized licensed software, or hidden assumptions.",
+  "task_family_id": null,
+  "original_internal_task_id": "aa_task_0786",
+  "task_id": "486",
+  "termination_reason": "task_complete",
+  "trace_id": "trace_486-baseline_normalized",
+  "trace_mode": "live"
+}

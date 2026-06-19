@@ -1,0 +1,81 @@
+{
+  "schema_version": "aa-seed-task-v0.1",
+  "task_id": "601",
+  "title": "Reactor Startup Rod-Worth and Shutdown-Margin Acceptance Review",
+  "domain": "nuclear_engineering",
+  "subdomain": "startup_physics_shutdown_margin",
+  "domains": [
+    "nuclear_engineering"
+  ],
+  "subdomains": [
+    "startup_physics_shutdown_margin"
+  ],
+  "agent_apprentice_role": "reactor physics engineer",
+  "task_family": "safety_margin_release_review",
+  "difficulty_tier": "expert",
+  "expected_economic_value": "$190k-$330k nuclear safety and reactor physics specialist compensation",
+  "expected_economic_value_for_agent_apprentice": "$250+",
+  "expected_deliverable": "rod_worth_review.xlsx + startup_authorization_memo.md",
+  "deliverables": [
+    "rod_worth_review.xlsx",
+    "startup_authorization_memo.md"
+  ],
+  "normalized_title": "Reactor Startup Rod-Worth and Shutdown-Margin Acceptance Review",
+  "instruction": "Context: a research reactor team is preparing a low-power startup after control-rod maintenance, and the shift supervisor needs a defensible go/no-go packet before withdrawing rods. Task packet: core_state=beginning_cycle; required_shutdown_margin_pcm=1350; bank data: B1 measured_worth_pcm=920 uncertainty_pcm=55 stuck_worth_pcm=0, B2 measured=780 uncertainty=60 stuck=120, B3 measured=610 uncertainty=50 stuck=0; excess_reactivity_pcm=820; temp_defect_pcm=145; xenon_pcm=0; admin_limit_single_bank_withdrawal_pcm=500; validation standard requires 95pct conservative margin using measured_worth-2*uncertainty. Rules and constraints: conservative_available_shutdown_margin=sum(conservative_bank_worth-stuck_worth)-excess_reactivity-temp_defect-xenon. Fail if margin<required, warn if margin is within 10% of required, and block startup if any single planned withdrawal exceeds admin limit. Compare baseline and a contingency case where B2 is unavailable. Required work: deliver rod_worth_review.xlsx + startup_authorization_memo.md. The deliverables must include formulas or executable logic, intermediate calculations, row-level citations to the task packet, validation checks, uncertainty notes, sensitivity checks around the controlling thresholds, and a final decision table with pass/warn/fail/needs_review labels. Use only the task packet. Do not import external data, invent missing values, or hide unresolved assumptions. This task is self-contained: use the task packet as the factual record, do not add source references or external datasets, and preserve a high-fidelity audit trail for every calculation, classification, and recommendation. State assumptions and unresolved evidence gaps explicitly. When executed locally, place final deliverables under the artifacts/ directory.",
+  "task_status": "ready_to_run",
+  "run_status": "not_run",
+  "seed_rank": 16,
+  "display_order": 16,
+  "allowed_tools": [
+    "Local text editor or Markdown editor",
+    "Local spreadsheet, CSV, JSON, YAML, or scripting tools for deterministic calculations",
+    "Local validation or linting commands",
+    "Local plotting or diagramming tools when useful"
+  ],
+  "disallowed_tools": [
+    "External fact lookup or live data pulls",
+    "Live production systems, cloud accounts, trading systems, clinical systems, or industrial controls",
+    "Secret discovery, credential testing, or any action outside the prepared task workspace"
+  ],
+  "privacy_classification": "synthetic",
+  "needs_expert_review": true,
+  "input_requirements": [
+    "Use the task packet as the sole factual input.",
+    "Cite row IDs, record IDs, thresholds, formulas, and option IDs from the packet wherever they control a conclusion.",
+    "Mark missing, contradictory, or under-supported values as needs_review instead of inventing them."
+  ],
+  "inputs": [
+    "All factual inputs are embedded in the task packet.",
+    "Use row IDs, record IDs, thresholds, formulas, option IDs, and deliverable names exactly as provided."
+  ],
+  "output_requirements": [
+    "Produce the required deliverable files with the specified filenames when filenames are provided.",
+    "Include intermediate calculations or executable logic sufficient for another reviewer to reproduce the result.",
+    "Include validation checks, sensitivity notes around controlling thresholds, and a final decision or recommendation table."
+  ],
+  "constraints": [
+    "Use the task packet as the factual record.",
+    "Do not browse, call live services, import external datasets, or invent missing values.",
+    "Treat regulated or safety-critical outputs as review packets, not authorization to act."
+  ],
+  "quality_bar": [
+    "Treat the task as realistic professional work with domain-appropriate rigor.",
+    "Preserve the packet's domain detail, identifiers, thresholds, and edge cases in the final deliverables.",
+    "Make every recommendation traceable to explicit task-packet evidence or mark it as needs_review."
+  ],
+  "validation_expectations": [
+    "Check required fields, row counts, totals, thresholds, and classifications before finalizing.",
+    "Show enough formulas, script logic, or tables for an independent reviewer to reproduce the result.",
+    "Flag any contradiction, missing input, or threshold-sensitive conclusion."
+  ],
+  "edge_cases": [
+    "If packet evidence is incomplete, do not infer missing values; label the item needs_review.",
+    "If multiple options satisfy hard constraints, rank them using the packet's stated priorities and explain ties.",
+    "If a regulated or safety-critical conclusion appears, frame the output as a review packet rather than authorization to act."
+  ],
+  "privacy_safety_expectations": [
+    "Do not use live systems, private accounts, credentials, or external datasets.",
+    "Do not include raw secrets or operational instructions that would execute real-world changes.",
+    "Keep synthetic identifiers from the packet only when needed for verification."
+  ]
+}

@@ -1,0 +1,548 @@
+{
+  "actual_outputs": {
+    "original_internal_attempt_id": "aa_task_0050_baseline",
+    "attempt_id": "650-baseline",
+    "attempt_kind": "baseline",
+    "error_message": null,
+    "error_type": null,
+    "metadata_json": {
+      "actual_outputs_discarded_field_count": 0,
+      "actual_outputs_normalized": true,
+      "expected_deliverable_items": [
+        "pit_slope_radar.xlsx",
+        "geotech_action_memo.md"
+      ],
+      "original_fields": {
+        "artifacts": [
+          "[EXCLUDED_GENERATED_ARTIFACT]",
+          "[EXCLUDED_GENERATED_ARTIFACT]"
+        ],
+        "evidence": {
+          "decisions": [
+            {
+              "decision": "PASS",
+              "zone": "Z1"
+            },
+            {
+              "decision": "FAIL",
+              "zone": "Z2"
+            },
+            {
+              "decision": "WARN",
+              "zone": "Z3"
+            }
+          ],
+          "inputs_read": [
+            "input/task.json",
+            "input/task_brief.md"
+          ],
+          "logic_rules": [
+            "velocity > 6",
+            "accel > 1.2",
+            "prism_loss == 'Y' and velocity > 4"
+          ],
+          "tool": "python"
+        }
+      },
+      "produced_deliverable_items": [
+        "pit_slope_radar.xlsx",
+        "geotech_action_memo.md"
+      ],
+      "raw_actual_outputs": {
+        "artifacts": [
+          "[EXCLUDED_GENERATED_ARTIFACT]",
+          "[EXCLUDED_GENERATED_ARTIFACT]"
+        ],
+        "evidence": {
+          "decisions": [
+            {
+              "decision": "PASS",
+              "zone": "Z1"
+            },
+            {
+              "decision": "FAIL",
+              "zone": "Z2"
+            },
+            {
+              "decision": "WARN",
+              "zone": "Z3"
+            }
+          ],
+          "inputs_read": [
+            "input/task.json",
+            "input/task_brief.md"
+          ],
+          "logic_rules": [
+            "velocity > 6",
+            "accel > 1.2",
+            "prism_loss == 'Y' and velocity > 4"
+          ],
+          "tool": "python"
+        }
+      }
+    },
+    "output_summary": "Normalized actual outputs from artifact files.",
+    "status": "success",
+    "original_internal_task_id": "aa_task_0050",
+    "task_id": "650",
+    "required_deliverables": [
+      "pit_slope_radar.xlsx",
+      "geotech_action_memo.md"
+    ],
+    "produced_deliverables": [
+      "pit_slope_radar.xlsx",
+      "geotech_action_memo.md"
+    ],
+    "missing_required_deliverables": [],
+    "deliverable_produced": true,
+    "deliverable_file_included": false,
+    "included_generated_artifacts": false,
+    "artifacts_excluded_reason": "Generated output artifacts are excluded from the public seed dataset by default.",
+    "logs_included": false,
+    "logs_excluded_reason": "Raw runner logs are excluded from the public seed dataset."
+  },
+  "agent_config": null,
+  "agent_tools": [
+    "codex_cli",
+    "Bash",
+    "python",
+    "file_read",
+    "file_write",
+    "apply_patch"
+  ],
+  "artifacts": [],
+  "original_internal_attempt_id": "aa_task_0050_baseline",
+  "attempt_id": "650-baseline",
+  "attempt_kind": "baseline",
+  "attempt_status": "completed",
+  "collection_id": null,
+  "completion_reason": null,
+  "ended_at": null,
+  "final_attempt_id": null,
+  "initial_attempt_id": null,
+  "iteration_index": null,
+  "learning": null,
+  "memory": null,
+  "metadata_json": {
+    "codex_command": [
+      "codex",
+      "exec",
+      "--sandbox",
+      "workspace-write",
+      "<prompt>"
+    ],
+    "codex_sandbox": "workspace-write",
+    "discarded_step_count": 0,
+    "raw_trace_preserved": true,
+    "raw_trace_step_source": "steps",
+    "schema_valid": true,
+    "trace_normalization_status": "partial",
+    "trace_valid": true
+  },
+  "preferred_attempt_id": null,
+  "previous_attempt_id": null,
+  "prior_trace_id": null,
+  "revision_attempt_ids": [],
+  "revision_group_id": null,
+  "schema_version": "aa-trace-v0.1",
+  "skills": null,
+  "started_at": null,
+  "steps": [
+    {
+      "action": "agent_step",
+      "actor": "apprentice",
+      "alternatives_considered": null,
+      "causal_note": "Defines required logic, formula outputs, and conservative exclusion/monitoring constraints",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "cat input/task.json; cat input/task_brief.md",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "files_read": [
+          "input/task.json",
+          "input/task_brief.md"
+        ],
+        "normalization_warnings": [
+          "step value 'read_task_inputs' was not numeric; defaulted to 1"
+        ],
+        "original_action": "Read task payload and task brief from ./input to extract embedded packet, trigger rules, and output contract",
+        "original_causal_type": "instruction",
+        "original_step": "read_task_inputs",
+        "original_step_outcome": "Inputs interpreted and constraints finalized",
+        "raw_step": {
+          "action": "Read task payload and task brief from ./input to extract embedded packet, trigger rules, and output contract",
+          "actor": "apprentice",
+          "causal_note": "Defines required logic, formula outputs, and conservative exclusion/monitoring constraints",
+          "causal_type": "instruction",
+          "caused_by": "user_request",
+          "error_message": null,
+          "error_type": null,
+          "input": "cat input/task.json; cat input/task_brief.md",
+          "metadata_json": {
+            "files_read": [
+              "input/task.json",
+              "input/task_brief.md"
+            ]
+          },
+          "observation": "Task inputs include only embedded packet with three zones and explicit trigger rules; required outputs are pit_slope_radar.xlsx and geotech_action_memo.md plus agent_trace/actual_outputs",
+          "operation": "read",
+          "output": "Embedded packet loaded: Z1(3.2,0.4,N,upper,No haul exposure), Z2(8.7,1.8,Y,middle,haul exposure), Z3(5.1,0.9,N,lower,haul exposure); triggers velocity>6, accel>1.2, prism_loss+velocity>4 red, and haul-road exposure zones Z2/Z3",
+          "reasoning": "Captured authoritative inputs before any artifact generation to avoid inventing values",
+          "state_change": "No filesystem state change; task context captured in working memory",
+          "step": "read_task_inputs",
+          "step_outcome": "Inputs interpreted and constraints finalized",
+          "success": true,
+          "tool": "functions.exec_command",
+          "turn": 1
+        }
+      },
+      "observation": "Task inputs include only embedded packet with three zones and explicit trigger rules; required outputs are pit_slope_radar.xlsx and geotech_action_memo.md plus agent_trace/actual_outputs",
+      "operation": "read",
+      "output": "Embedded packet loaded: Z1(3.2,0.4,N,upper,No haul exposure), Z2(8.7,1.8,Y,middle,haul exposure), Z3(5.1,0.9,N,lower,haul exposure); triggers velocity>6, accel>1.2, prism_loss+velocity>4 red, and haul-road exposure zones Z2/Z3",
+      "parallel_group": null,
+      "reasoning": "Captured authoritative inputs before any artifact generation to avoid inventing values",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "No filesystem state change; task context captured in working memory",
+      "step": 1,
+      "step_outcome": "neutral",
+      "success": true,
+      "tool": "Bash",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "apprentice",
+      "alternatives_considered": null,
+      "causal_note": "Policy restriction in execution environment",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": "Rejected by policy",
+      "error_type": "policy_restriction",
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "rm -f [EXCLUDED_GENERATED_ARTIFACT] [EXCLUDED_GENERATED_ARTIFACT] agent_trace.json actual_outputs.json",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "normalization_warnings": [
+          "step value 'attempted_preexisting_cleanup' was not numeric; defaulted to 2"
+        ],
+        "original_action": "Attempted to remove stale output artifacts before regeneration",
+        "original_causal_type": "failure",
+        "original_step": "attempted_preexisting_cleanup",
+        "original_step_outcome": "cleanup skipped",
+        "policy": "sandbox restriction on rm invocation in this command form",
+        "raw_step": {
+          "action": "Attempted to remove stale output artifacts before regeneration",
+          "actor": "apprentice",
+          "causal_note": "Policy restriction in execution environment",
+          "causal_type": "failure",
+          "caused_by": "read_task_inputs",
+          "error_message": "Rejected by policy",
+          "error_type": "policy_restriction",
+          "input": "rm -f [EXCLUDED_GENERATED_ARTIFACT] [EXCLUDED_GENERATED_ARTIFACT] agent_trace.json actual_outputs.json",
+          "metadata_json": {
+            "policy": "sandbox restriction on rm invocation in this command form"
+          },
+          "observation": "Tool policy rejected command containing combined delete action",
+          "operation": "execute",
+          "output": "Command rejected by environment policy, no files deleted",
+          "reasoning": "Command was nonessential cleanup; skipped and moved to safe overwrite behavior",
+          "state_change": "No filesystem changes occurred",
+          "step": "attempted_preexisting_cleanup",
+          "step_outcome": "cleanup skipped",
+          "success": false,
+          "tool": "functions.exec_command",
+          "turn": 1
+        }
+      },
+      "observation": "Tool policy rejected command containing combined delete action",
+      "operation": "execute",
+      "output": "Command rejected by environment policy, no files deleted",
+      "parallel_group": null,
+      "reasoning": "Command was nonessential cleanup; skipped and moved to safe overwrite behavior",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "No filesystem changes occurred",
+      "step": 2,
+      "step_outcome": "neutral",
+      "success": false,
+      "tool": "Bash",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "apprentice",
+      "alternatives_considered": null,
+      "causal_note": "Recovery after command rejection; direct overwrite avoided dependency on package availability",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "Python OOXML zip write script using Packet_Input, Logic_Engine, Sensitivity, Validation_Checks, Decision_Summary worksheets",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "logic_rules": [
+          "Trig_Velocity_gt_6",
+          "Trig_Accel_gt_1.2",
+          "Trig_PrismLoss_And_Vel_gt_4",
+          "Decision labels PASS/WARN/FAIL/NEEDS_REVIEW"
+        ],
+        "normalization_warnings": [
+          "step value 'generate_xlsx_with_embedded_logic' was not numeric; defaulted to 3"
+        ],
+        "original_action": "Generated a self-contained OOXML workbook with packet input, trigger logic, exclusion recommendations, sensitivity checks, and validation formulas",
+        "original_causal_type": "retry_after_error",
+        "original_step": "generate_xlsx_with_embedded_logic",
+        "original_step_outcome": "Workbook created",
+        "raw_step": {
+          "action": "Generated a self-contained OOXML workbook with packet input, trigger logic, exclusion recommendations, sensitivity checks, and validation formulas",
+          "actor": "apprentice",
+          "causal_note": "Recovery after command rejection; direct overwrite avoided dependency on package availability",
+          "causal_type": "retry_after_error",
+          "caused_by": "attempted_preexisting_cleanup",
+          "error_message": null,
+          "error_type": null,
+          "input": "Python OOXML zip write script using Packet_Input, Logic_Engine, Sensitivity, Validation_Checks, Decision_Summary worksheets",
+          "metadata_json": {
+            "logic_rules": [
+              "Trig_Velocity_gt_6",
+              "Trig_Accel_gt_1.2",
+              "Trig_PrismLoss_And_Vel_gt_4",
+              "Decision labels PASS/WARN/FAIL/NEEDS_REVIEW"
+            ],
+            "sheets": [
+              "Packet_Input",
+              "Logic_Engine",
+              "Sensitivity",
+              "Validation_Checks",
+              "Decision_Summary"
+            ]
+          },
+          "observation": "Created `pit_slope_radar.xlsx` from packet-derived rows with formulas for red-trigger, decision labels, exclusion boundaries, monitoring actions, and sensitivity checks",
+          "operation": "write",
+          "output": "pit_slope_radar.xlsx written to ./artifacts with formulas and citations embedded per zone",
+          "reasoning": "Used native OOXML writing to avoid external package dependencies and keep artifact reproducible from only embedded packet",
+          "state_change": "New file `[EXCLUDED_GENERATED_ARTIFACT] added",
+          "step": "generate_xlsx_with_embedded_logic",
+          "step_outcome": "Workbook created",
+          "success": true,
+          "tool": "functions.exec_command",
+          "turn": 2
+        },
+        "sheets": [
+          "Packet_Input",
+          "Logic_Engine",
+          "Sensitivity",
+          "Validation_Checks",
+          "Decision_Summary"
+        ]
+      },
+      "observation": "Created `pit_slope_radar.xlsx` from packet-derived rows with formulas for red-trigger, decision labels, exclusion boundaries, monitoring actions, and sensitivity checks",
+      "operation": "write",
+      "output": "pit_slope_radar.xlsx written to ./artifacts with formulas and citations embedded per zone",
+      "parallel_group": null,
+      "reasoning": "Used native OOXML writing to avoid external package dependencies and keep artifact reproducible from only embedded packet",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "New file `[EXCLUDED_GENERATED_ARTIFACT] added",
+      "step": 3,
+      "step_outcome": "neutral",
+      "success": true,
+      "tool": "python",
+      "turn": 2
+    },
+    {
+      "action": "agent_step",
+      "actor": "apprentice",
+      "alternatives_considered": null,
+      "causal_note": "Memo references zone outputs and final actions for immediate use",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "Static markdown template populated from packet values and workbook decision outputs",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "decision_table_entries": [
+          {
+            "label": "PASS",
+            "zone": "Z1"
+          },
+          {
+            "label": "FAIL",
+            "zone": "Z2"
+          },
+          {
+            "label": "WARN",
+            "zone": "Z3"
+          }
+        ],
+        "normalization_warnings": [
+          "step value 'create_markdown_memo' was not numeric; defaulted to 4"
+        ],
+        "original_action": "Created geotechnical action memo with row-level packet citations, decision table, validation summary, sensitivity tests, uncertainty notes, and immediate operational recommendations",
+        "original_causal_type": "artifact_generated",
+        "original_step": "create_markdown_memo",
+        "original_step_outcome": "Memo created",
+        "raw_step": {
+          "action": "Created geotechnical action memo with row-level packet citations, decision table, validation summary, sensitivity tests, uncertainty notes, and immediate operational recommendations",
+          "actor": "apprentice",
+          "causal_note": "Memo references zone outputs and final actions for immediate use",
+          "causal_type": "artifact_generated",
+          "caused_by": "generate_xlsx_with_embedded_logic",
+          "error_message": null,
+          "error_type": null,
+          "input": "Static markdown template populated from packet values and workbook decision outputs",
+          "metadata_json": {
+            "decision_table_entries": [
+              {
+                "label": "PASS",
+                "zone": "Z1"
+              },
+              {
+                "label": "FAIL",
+                "zone": "Z2"
+              },
+              {
+                "label": "WARN",
+                "zone": "Z3"
+              }
+            ]
+          },
+          "observation": "Added concise operational memo text only sourced from embedded packet values",
+          "operation": "write",
+          "output": "[EXCLUDED_GENERATED_ARTIFACT] written",
+          "reasoning": "Separates machine-checkable logic (xlsx) and operational narrative while preserving strict source-only citation",
+          "state_change": "New file `[EXCLUDED_GENERATED_ARTIFACT] added",
+          "step": "create_markdown_memo",
+          "step_outcome": "Memo created",
+          "success": true,
+          "tool": "functions.exec_command",
+          "turn": 2
+        }
+      },
+      "observation": "Added concise operational memo text only sourced from embedded packet values",
+      "operation": "write",
+      "output": "[EXCLUDED_GENERATED_ARTIFACT] written",
+      "parallel_group": null,
+      "reasoning": "Separates machine-checkable logic (xlsx) and operational narrative while preserving strict source-only citation",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "New file `[EXCLUDED_GENERATED_ARTIFACT] added",
+      "step": 4,
+      "step_outcome": "neutral",
+      "success": true,
+      "tool": "file_write",
+      "turn": 2
+    },
+    {
+      "action": "agent_step",
+      "actor": "apprentice",
+      "alternatives_considered": null,
+      "artifact_refs": [
+        "actual_outputs.json"
+      ],
+      "causal_note": "Manifest references generated deliverables and their provenance",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "JSON serialization of artifact paths and rule outcomes",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "normalization_warnings": [
+          "step value 'write_actual_outputs_manifest' was not numeric; defaulted to 5"
+        ],
+        "original_action": "Wrote actual_outputs.json with output artifact references and decision evidence",
+        "original_causal_type": "dependency",
+        "original_step": "write_actual_outputs_manifest",
+        "original_step_outcome": "Manifest recorded",
+        "payload": {
+          "artifacts": [
+            "[EXCLUDED_GENERATED_ARTIFACT]",
+            "[EXCLUDED_GENERATED_ARTIFACT]"
+          ]
+        },
+        "raw_step": {
+          "action": "Wrote actual_outputs.json with output artifact references and decision evidence",
+          "actor": "apprentice",
+          "artifact_refs": [
+            "actual_outputs.json"
+          ],
+          "causal_note": "Manifest references generated deliverables and their provenance",
+          "causal_type": "dependency",
+          "caused_by": "create_markdown_memo",
+          "error_message": null,
+          "error_type": null,
+          "input": "JSON serialization of artifact paths and rule outcomes",
+          "metadata_json": {
+            "payload": {
+              "artifacts": [
+                "[EXCLUDED_GENERATED_ARTIFACT]",
+                "[EXCLUDED_GENERATED_ARTIFACT]"
+              ]
+            }
+          },
+          "observation": "Manifest includes both required deliverables and packet-derived decisions",
+          "operation": "write",
+          "output": "actual_outputs.json written",
+          "reasoning": "Required run contract asks for an explicit machine-readable artifact manifest",
+          "state_change": "New file `actual_outputs.json` added",
+          "step": "write_actual_outputs_manifest",
+          "step_outcome": "Manifest recorded",
+          "success": true,
+          "tool": "functions.exec_command",
+          "turn": 3
+        }
+      },
+      "observation": "Manifest includes both required deliverables and packet-derived decisions",
+      "operation": "write",
+      "output": "actual_outputs.json written",
+      "parallel_group": null,
+      "reasoning": "Required run contract asks for an explicit machine-readable artifact manifest",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "New file `actual_outputs.json` added",
+      "step": 5,
+      "step_outcome": "neutral",
+      "success": true,
+      "tool": "file_write",
+      "turn": 3
+    }
+  ],
+  "system_prompt": null,
+  "system_prompt_hash": null,
+  "task": "Flagship expert task: Open-Pit Slope Radar Movement Trigger Review. Reality context: an open-pit mine sees accelerating wall movement and must decide evacuation limits before night shift. Embedded packet: zones: Z1 velocity_mm_day=3.2 accel=0.4 prism_loss=N bench=upper, Z2 velocity=8.7 accel=1.8 loss=Y bench=middle, Z3 velocity=5.1 accel=0.9 loss=N bench=lower; triggers velocity>6 or accel>1.2 red; prism_loss with velocity>4 red; haul_road_exposure zones Z2,Z3. Rules and constraints: Classify zones, recommend exclusion boundaries and monitoring actions. Required work: deliver pit_slope_radar.xlsx + geotech_action_memo.md. The deliverables must include formulas or executable logic, intermediate calculations, row-level citations to the embedded packet, validation checks, uncertainty notes, sensitivity checks around the controlling thresholds, and a final decision table with pass/warn/fail/needs_review labels. Use only the embedded packet. Do not import external data, invent missing values, or hide unresolved assumptions.",
+  "task_family_id": null,
+  "original_internal_task_id": "aa_task_0050",
+  "task_id": "650",
+  "termination_reason": "task_complete",
+  "trace_id": "trace_650-baseline_normalized",
+  "trace_mode": "live"
+}

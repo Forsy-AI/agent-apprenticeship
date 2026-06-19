@@ -1,0 +1,81 @@
+{
+  "schema_version": "aa-seed-task-v0.1",
+  "task_id": "506",
+  "title": "Battery Fleet Reliability-Constrained Dispatch and Degradation Economics Study",
+  "domain": "energy_storage_grid_reliability_economics",
+  "subdomain": "battery_dispatch_reliability_cooptimization",
+  "domains": [
+    "energy_storage_grid_reliability_economics"
+  ],
+  "subdomains": [
+    "battery_dispatch_reliability_cooptimization"
+  ],
+  "agent_apprentice_role": "battery-grid dispatch and reliability analyst",
+  "task_family": "techno_economic_dispatch_optimization",
+  "difficulty_tier": "expert",
+  "expected_economic_value": "$180k-$310k energy storage optimization / grid reliability consulting",
+  "expected_economic_value_for_agent_apprentice": "$250+",
+  "expected_deliverable": "battery_reliability_dispatch_optimizer.ipynb + grid_revenue_committee_memo.md",
+  "deliverables": [
+    "battery_reliability_dispatch_optimizer.ipynb",
+    "grid_revenue_committee_memo.md"
+  ],
+  "normalized_title": "Battery Fleet Reliability-Constrained Dispatch and Degradation Economics Study",
+  "instruction": "Context: a grid-storage operator must submit a day-ahead dispatch and reserve plan for a four-hour BESS fleet in a weak-grid pocket where inverter ride-through, reserve deliverability, degradation, and merchant revenue all matter. Task packet: fleet nameplate_power_MW=120 energy_capacity_MWh=480 initial_soc_MWh=260 min_soc_MWh=72 max_soc_MWh=456 roundtrip_discharge_eff=0.92 charge_eff=0.94 max_ramp_MW_per_5min=80 degradation_cost_usd_per_MWh_throughput=18; reliability_requirements: contingency_reserve_MW>=35 in intervals with grid_strength_scr<2.5, post_contingency_soc_MWh>=120, frequency_response_headroom_MW>=25 when price_regulation_usd_MW_h>=18, no interval may export more than interconnection_limit_MW=105; intervals hourly H1-H8: price_energy_usd_MWh=[42,35,28,55,96,138,121,64], price_regulation_usd_MW_h=[12,14,19,21,28,34,26,16], solar_curtailment_available_MWh=[0,18,44,36,4,0,0,0], grid_strength_scr=[3.1,2.8,2.3,2.1,2.0,2.4,2.7,3.0], forced_outage_probability=[0.01,0.01,0.02,0.03,0.04,0.05,0.03,0.02]; candidate_dispatch variables per interval charge_MW, discharge_MW, regulation_MW, reserve_MW; market_rule revenue=discharge*energy_price - charge*energy_price + regulation*reg_price + reserve*9; curtailment charging uses energy_price=0 up to curtailment_available; reliability_penalty_usd=250000 for any interval violating reserve/headroom/SOC/interconnection; outage_risk_cost=forced_outage_probability*max(0,discharge_MW+regulation_MW+reserve_MW-90)*4000; cycle_limit total_throughput_MWh<=520; must_end_soc_MWh between 220 and 300. Rules and constraints: SOC_t+1=SOC_t + charge*0.94 - discharge/0.92; headroom=nameplate_power-discharge-regulation-reserve; reserve and regulation consume headroom but not energy unless outage scenario; objective=maximize market revenue - degradation_cost*throughput - outage_risk_cost - reliability_penalties; produce at least one feasible schedule and compare to a naive price-arbitrage schedule that ignores reliability. Required work: deliver battery_reliability_dispatch_optimizer.ipynb + grid_revenue_committee_memo.md with interval dispatch table, SOC trace, reliability checks, economics, degradation cost, outage-risk adjustment, comparison to naive dispatch, and final bid recommendation. Use only embedded data; no proprietary power-system simulator is needed. This task is self-contained: use the task packet as the factual record, do not add source references or external datasets, and preserve a high-fidelity audit trail for every calculation, classification, and recommendation. State assumptions and unresolved evidence gaps explicitly. When executed locally, place final deliverables under the artifacts/ directory.",
+  "task_status": "ready_to_run",
+  "run_status": "not_run",
+  "seed_rank": 6,
+  "display_order": 6,
+  "allowed_tools": [
+    "Local text editor or Markdown editor",
+    "Local spreadsheet, CSV, JSON, YAML, or scripting tools for deterministic calculations",
+    "Local validation or linting commands",
+    "Local plotting or diagramming tools when useful"
+  ],
+  "disallowed_tools": [
+    "External fact lookup or live data pulls",
+    "Live production systems, cloud accounts, trading systems, clinical systems, or industrial controls",
+    "Secret discovery, credential testing, or any action outside the prepared task workspace"
+  ],
+  "privacy_classification": "synthetic",
+  "needs_expert_review": true,
+  "input_requirements": [
+    "Use the task packet as the sole factual input.",
+    "Cite row IDs, record IDs, thresholds, formulas, and option IDs from the packet wherever they control a conclusion.",
+    "Mark missing, contradictory, or under-supported values as needs_review instead of inventing them."
+  ],
+  "inputs": [
+    "All factual inputs are embedded in the task packet.",
+    "Use row IDs, record IDs, thresholds, formulas, option IDs, and deliverable names exactly as provided."
+  ],
+  "output_requirements": [
+    "Produce the required deliverable files with the specified filenames when filenames are provided.",
+    "Include intermediate calculations or executable logic sufficient for another reviewer to reproduce the result.",
+    "Include validation checks, sensitivity notes around controlling thresholds, and a final decision or recommendation table."
+  ],
+  "constraints": [
+    "Use the task packet as the factual record.",
+    "Do not browse, call live services, import external datasets, or invent missing values.",
+    "Treat regulated or safety-critical outputs as review packets, not authorization to act."
+  ],
+  "quality_bar": [
+    "Treat the task as realistic professional work with domain-appropriate rigor.",
+    "Preserve the packet's domain detail, identifiers, thresholds, and edge cases in the final deliverables.",
+    "Make every recommendation traceable to explicit task-packet evidence or mark it as needs_review."
+  ],
+  "validation_expectations": [
+    "Check required fields, row counts, totals, thresholds, and classifications before finalizing.",
+    "Show enough formulas, script logic, or tables for an independent reviewer to reproduce the result.",
+    "Flag any contradiction, missing input, or threshold-sensitive conclusion."
+  ],
+  "edge_cases": [
+    "If packet evidence is incomplete, do not infer missing values; label the item needs_review.",
+    "If multiple options satisfy hard constraints, rank them using the packet's stated priorities and explain ties.",
+    "If a regulated or safety-critical conclusion appears, frame the output as a review packet rather than authorization to act."
+  ],
+  "privacy_safety_expectations": [
+    "Do not use live systems, private accounts, credentials, or external datasets.",
+    "Do not include raw secrets or operational instructions that would execute real-world changes.",
+    "Keep synthetic identifiers from the packet only when needed for verification."
+  ]
+}

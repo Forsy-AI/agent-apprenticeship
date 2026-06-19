@@ -1,0 +1,928 @@
+{
+  "actual_outputs": {
+    "original_internal_attempt_id": "aa_task_0613_baseline",
+    "attempt_id": "313-baseline",
+    "attempt_kind": "baseline",
+    "error_message": null,
+    "error_type": null,
+    "metadata_json": {
+      "actual_outputs_discarded_field_count": 0,
+      "actual_outputs_normalized": true,
+      "expected_deliverable_items": [
+        "mtls_coverage_audit.csv",
+        "remediation_plan.md"
+      ],
+      "original_fields": {
+        "artifacts": [
+          {
+            "description": "Auditable row-level mTLS coverage drift calculations with raw packet values, normalized fields, weighted contributions, classifications, citations, and 5% sensitivity results.",
+            "type": "csv"
+          },
+          {
+            "description": "Remediation decision packet with assumptions, executable scoring logic, validation checks, risk rankings, sensitivity notes, option evaluation, and final launch-gate decision table.",
+            "type": "markdown"
+          }
+        ],
+        "summary": {
+          "artifact_level_needs_review": true,
+          "classification_counts": {
+            "fail": 2,
+            "pass": 2,
+            "warn": 0
+          },
+          "final_recommendation": "No in-budget option set is sufficient to clear all failing records. Keep the launch gate blocked; O1+O3 is the smallest allowed interim combination that reduces the failing-record count, but it remains insufficient because R1 still fails.",
+          "records_audited": 4,
+          "sensitivity_classification_changes": 0,
+          "sensitivity_specific_expert_review_flag": false
+        },
+        "validation": {
+          "budget_validation": "passed",
+          "csv_parse_validation": "passed",
+          "input_source_constraint": "used only embedded packet from input/task.json and input/task_brief.md",
+          "score_recalculation_validation": "passed"
+        }
+      },
+      "produced_deliverable_items": [
+        "remediation_plan.md",
+        "mtls_coverage_audit.csv"
+      ],
+      "raw_actual_outputs": {
+        "artifacts": [
+          {
+            "description": "Auditable row-level mTLS coverage drift calculations with raw packet values, normalized fields, weighted contributions, classifications, citations, and 5% sensitivity results.",
+            "type": "csv"
+          },
+          {
+            "description": "Remediation decision packet with assumptions, executable scoring logic, validation checks, risk rankings, sensitivity notes, option evaluation, and final launch-gate decision table.",
+            "type": "markdown"
+          }
+        ],
+        "summary": {
+          "artifact_level_needs_review": true,
+          "classification_counts": {
+            "fail": 2,
+            "pass": 2,
+            "warn": 0
+          },
+          "final_recommendation": "No in-budget option set is sufficient to clear all failing records. Keep the launch gate blocked; O1+O3 is the smallest allowed interim combination that reduces the failing-record count, but it remains insufficient because R1 still fails.",
+          "records_audited": 4,
+          "sensitivity_classification_changes": 0,
+          "sensitivity_specific_expert_review_flag": false
+        },
+        "validation": {
+          "budget_validation": "passed",
+          "csv_parse_validation": "passed",
+          "input_source_constraint": "used only embedded packet from input/task.json and input/task_brief.md",
+          "score_recalculation_validation": "passed"
+        }
+      }
+    },
+    "output_summary": "{'records_audited': 4, 'classification_counts': {'fail': 2, 'warn': 0, 'pass': 2}, 'sensitivity_classification_changes': 0, 'sensitivity_specific_expert_review_flag': False, 'artifact_level_needs_review': True, 'final_recommendation': 'No in-budget option set is sufficient to clear all failing records. Keep the launch gate blocked; O1+O3 is the smallest allowed interim combination that reduces the failing-record count, but it remains insufficient because R1 still fails.'}",
+    "status": "success",
+    "original_internal_task_id": "aa_task_0613",
+    "task_id": "313",
+    "required_deliverables": [
+      "mtls_coverage_audit.csv",
+      "remediation_plan.md"
+    ],
+    "produced_deliverables": [
+      "remediation_plan.md",
+      "mtls_coverage_audit.csv"
+    ],
+    "missing_required_deliverables": [],
+    "deliverable_produced": true,
+    "deliverable_file_included": false,
+    "included_generated_artifacts": false,
+    "artifacts_excluded_reason": "Generated output artifacts are excluded from the public seed dataset by default.",
+    "logs_included": false,
+    "logs_excluded_reason": "Raw runner logs are excluded from the public seed dataset."
+  },
+  "agent_config": null,
+  "agent_tools": [
+    "codex_cli",
+    "Bash",
+    "python",
+    "file_read",
+    "file_write",
+    "apply_patch"
+  ],
+  "artifacts": [],
+  "original_internal_attempt_id": "aa_task_0613_baseline",
+  "attempt_id": "313-baseline",
+  "attempt_kind": "baseline",
+  "attempt_status": "completed",
+  "collection_id": null,
+  "completion_reason": null,
+  "ended_at": null,
+  "final_attempt_id": null,
+  "initial_attempt_id": null,
+  "iteration_index": null,
+  "learning": null,
+  "memory": null,
+  "metadata_json": {
+    "codex_command": [
+      "codex",
+      "exec",
+      "--sandbox",
+      "workspace-write",
+      "<prompt>"
+    ],
+    "codex_sandbox": "workspace-write",
+    "discarded_step_count": 0,
+    "raw_trace_preserved": true,
+    "raw_trace_step_source": "steps",
+    "schema_valid": true,
+    "trace_normalization_status": "normalized",
+    "trace_valid": true
+  },
+  "preferred_attempt_id": null,
+  "previous_attempt_id": null,
+  "prior_trace_id": null,
+  "revision_attempt_ids": [],
+  "revision_group_id": null,
+  "schema_version": "aa-trace-v0.1",
+  "skills": null,
+  "started_at": null,
+  "steps": [
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "artifact_refs": [
+        "input/task.json",
+        "input/task_brief.md"
+      ],
+      "causal_note": null,
+      "causal_type": null,
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "{\"commands\": [\"pwd && rg --files input artifacts . | sed 's#^#/#'\", \"sed -n '1,220p' input/task_brief.md\", \"sed -n '1,260p' input/task.json\"]}",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "attempt": "baseline",
+        "inputs": {
+          "commands": [
+            "pwd && rg --files input artifacts . | sed 's#^#/#'",
+            "sed -n '1,220p' input/task_brief.md",
+            "sed -n '1,260p' input/task.json"
+          ]
+        },
+        "original_action": "read_context",
+        "original_operation": "Inspect attempt directory and required input files.",
+        "original_step_outcome": "context_loaded",
+        "outputs": {
+          "cwd": "[REDACTED_LOCAL_PATH]",
+          "embedded_packet_summary": "Records R1-R4 with sidecar_present, peer_auth_strict, mtls_pct, compliance_flag; normalized_threshold_score=70.0; remediation_budget_usd=60000; options O1/O2/O3; scoring rule score = first metric + 0.6*second metric - 0.25*third metric after unit normalization.",
+          "files": [
+            "./input/task_brief.md",
+            "./input/task.json"
+          ],
+          "task_brief_summary": "Deliver [EXCLUDED_GENERATED_ARTIFACT] and [EXCLUDED_GENERATED_ARTIFACT] with traceable calculations, row-level citations, assumptions, validation, sensitivity notes, and final decision table."
+        },
+        "raw_step": {
+          "action": "read_context",
+          "actor": "worker",
+          "artifact_refs": [
+            "input/task.json",
+            "input/task_brief.md"
+          ],
+          "causal_note": "User requested the workflow task.",
+          "causal_type": "root",
+          "caused_by": null,
+          "error_message": null,
+          "error_type": null,
+          "input": {
+            "commands": [
+              "pwd && rg --files input artifacts . | sed 's#^#/#'",
+              "sed -n '1,220p' input/task_brief.md",
+              "sed -n '1,260p' input/task.json"
+            ]
+          },
+          "metadata_json": {
+            "attempt": "baseline"
+          },
+          "observation": "Confirmed current directory, discovered input/task.json and input/task_brief.md, and read the task brief plus embedded packet.",
+          "operation": "Inspect attempt directory and required input files.",
+          "output": {
+            "cwd": "[REDACTED_LOCAL_PATH]",
+            "embedded_packet_summary": "Records R1-R4 with sidecar_present, peer_auth_strict, mtls_pct, compliance_flag; normalized_threshold_score=70.0; remediation_budget_usd=60000; options O1/O2/O3; scoring rule score = first metric + 0.6*second metric - 0.25*third metric after unit normalization.",
+            "files": [
+              "./input/task_brief.md",
+              "./input/task.json"
+            ],
+            "task_brief_summary": "Deliver [EXCLUDED_GENERATED_ARTIFACT] and [EXCLUDED_GENERATED_ARTIFACT] with traceable calculations, row-level citations, assumptions, validation, sensitivity notes, and final decision table."
+          },
+          "reasoning": "The audit must be computed only from the embedded packet, so the first step was to identify every allowed input and constraint.",
+          "state_change": "Established source packet and required output contract.",
+          "step": 1,
+          "step_outcome": "context_loaded",
+          "success": true,
+          "tool": "multi_tool_use.parallel(functions.exec_command)",
+          "turn": 1
+        }
+      },
+      "observation": "Confirmed current directory, discovered input/task.json and input/task_brief.md, and read the task brief plus embedded packet.",
+      "operation": "read",
+      "output": "{\"cwd\": \"[REDACTED_LOCAL_PATH]\", \"embedded_packet_summary\": \"Records R1-R4 with sidecar_present, peer_auth_strict, mtls_pct, compliance_flag; normalized_threshold_score=70.0; remediation_budget_usd=60000; options O1/O2/O3; scoring rule score = first metric + 0.6*second metric - 0.25*third metric after unit normalization.\", \"files\": [\"./prompt.md\", \"./input/task_brief.md\", \"./input/task.json\"], \"task_brief_summary\": \"Deliver [EXCLUDED_GENERATED_ARTIFACT] and [EXCLUDED_GENERATED_ARTIFACT] with traceable calculations, row-level citations, assumptions, validation, sensitivity notes, and final decision table.\"}",
+      "parallel_group": null,
+      "reasoning": "The audit must be computed only from the embedded packet, so the first step was to identify every allowed input and constraint.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Established source packet and required output contract.",
+      "step": 1,
+      "step_outcome": "neutral",
+      "success": true,
+      "tool": "Bash",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "causal_note": "Prompt context was needed after identifying input files.",
+      "causal_type": "other",
+      "caused_by": [
+        1
+      ],
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "{\"commands\": [\"sed -n '1,260p' prompt.md\", \"find . -maxdepth 3 -type f -print\", \"git status --short\"]}",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "inputs": {
+          "commands": [
+            "sed -n '1,260p' prompt.md",
+            "find . -maxdepth 3 -type f -print",
+            "git status --short"
+          ]
+        },
+        "original_action": "read_context",
+        "original_causal_type": "dependency",
+        "original_operation": "Read prompt and inspect worktree state.",
+        "original_step_outcome": "workspace_checked",
+        "outputs": {
+          "attempt_files": [
+            "./input/task.json",
+            "./input/task_brief.md"
+          ],
+          "git_status_note": "Output listed unrelated untracked ../../../../../../../data/real_tasks/*.jsonl files; these were not modified.",
+          "prompt_contract": "Required outputs: ./agent_trace.json, ./actual_outputs.json, [EXCLUDED_GENERATED_ARTIFACT] [EXCLUDED_GENERATED_ARTIFACT]"
+        },
+        "raw_step": {
+          "action": "read_context",
+          "actor": "worker",
+          "causal_note": "Prompt context was needed after identifying input files.",
+          "causal_type": "dependency",
+          "caused_by": 1,
+          "error_message": null,
+          "error_type": null,
+          "input": {
+            "commands": [
+              "sed -n '1,260p' prompt.md",
+              "find . -maxdepth 3 -type f -print",
+              "git status --short"
+            ]
+          },
+          "metadata_json": {
+            "unrelated_worktree_changes": true
+          },
+          "observation": "Read the full prompt and confirmed no pre-existing artifacts in the attempt directory. git status showed many unrelated untracked files outside the attempt path.",
+          "operation": "Read prompt and inspect worktree state.",
+          "output": {
+            "attempt_files": [
+              "./input/task.json",
+              "./input/task_brief.md"
+            ],
+            "git_status_note": "Output listed unrelated untracked ../../../../../../../data/real_tasks/*.jsonl files; these were not modified.",
+            "prompt_contract": "Required outputs: ./agent_trace.json, ./actual_outputs.json, [EXCLUDED_GENERATED_ARTIFACT] [EXCLUDED_GENERATED_ARTIFACT]"
+          },
+          "reasoning": "Checking the prompt and local files prevents writing to the wrong path and avoids disturbing unrelated worktree changes.",
+          "state_change": "Confirmed deliverables needed to be created from scratch under the current attempt directory.",
+          "step": 2,
+          "step_outcome": "workspace_checked",
+          "success": true,
+          "tool": "multi_tool_use.parallel(functions.exec_command)",
+          "turn": 1
+        },
+        "unrelated_worktree_changes": true
+      },
+      "observation": "Read the full prompt and confirmed no pre-existing artifacts in the attempt directory. git status showed many unrelated untracked files outside the attempt path.",
+      "operation": "read",
+      "output": "{\"attempt_files\": [\"./input/task.json\", \"./input/task_brief.md\", \"./prompt.md\"], \"git_status_note\": \"Output listed unrelated untracked ../../../../../../../data/real_tasks/*.jsonl files; these were not modified.\", \"prompt_contract\": \"Required outputs: ./agent_trace.json, ./actual_outputs.json, [EXCLUDED_GENERATED_ARTIFACT] [EXCLUDED_GENERATED_ARTIFACT]\"}",
+      "parallel_group": null,
+      "reasoning": "Checking the prompt and local files prevents writing to the wrong path and avoids disturbing unrelated worktree changes.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Confirmed deliverables needed to be created from scratch under the current attempt directory.",
+      "step": 2,
+      "step_outcome": "neutral",
+      "success": true,
+      "tool": "Bash",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "causal_note": "Needed executable arithmetic before authoring artifacts.",
+      "causal_type": "other",
+      "caused_by": [
+        1
+      ],
+      "ended_at": null,
+      "error_message": "argument of type 'int' is not iterable",
+      "error_type": "TypeError",
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "{\"command\": \"python3 - <<'PY'\\nfrom itertools import combinations\\nrecords = [\\n    ('R1',0,0.16,42.14,0),\\n    ('R2',0,0.943,83.03,0),\\n    ('R3',1,0.472,56.07,0),\\n    ('R4',1,0.503,42.82,0),\\n]\\nthreshold=70.0\\nwarn_floor=threshold*0.9\\n...\\nfor rec in records:\\n    rid,*vals=rec\\n    print(rid, [round(x,4) if isinstance(x,float) else x for x in calc(*vals)])\\nPY\"}",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "exit_code": 1,
+        "inputs": {
+          "command": "python3 - <<'PY'\nfrom itertools import combinations\nrecords = [\n    ('R1',0,0.16,42.14,0),\n    ('R2',0,0.943,83.03,0),\n    ('R3',1,0.472,56.07,0),\n    ('R4',1,0.503,42.82,0),\n]\nthreshold=70.0\nwarn_floor=threshold*0.9\n...\nfor rec in records:\n    rid,*vals=rec\n    print(rid, [round(x,4) if isinstance(x,float) else x for x in calc(*vals)])\nPY"
+        },
+        "original_action": "calculate",
+        "original_causal_type": "calculation_attempt",
+        "original_operation": "Initial Python calculation attempt for base rows, sensitivity, and remediation combinations.",
+        "original_step_outcome": "retry_required",
+        "raw_step": {
+          "action": "calculate",
+          "actor": "worker",
+          "causal_note": "Needed executable arithmetic before authoring artifacts.",
+          "causal_type": "calculation_attempt",
+          "caused_by": 1,
+          "error_message": "argument of type 'int' is not iterable",
+          "error_type": "TypeError",
+          "input": {
+            "command": "python3 - <<'PY'\nfrom itertools import combinations\nrecords = [\n    ('R1',0,0.16,42.14,0),\n    ('R2',0,0.943,83.03,0),\n    ('R3',1,0.472,56.07,0),\n    ('R4',1,0.503,42.82,0),\n]\nthreshold=70.0\nwarn_floor=threshold*0.9\n...\nfor rec in records:\n    rid,*vals=rec\n    print(rid, [round(x,4) if isinstance(x,float) else x for x in calc(*vals)])\nPY"
+          },
+          "metadata_json": {
+            "exit_code": 1
+          },
+          "observation": "The first calculation run failed because the helper function expected three scored metrics but the raw record tuple also included compliance_flag.",
+          "operation": "Initial Python calculation attempt for base rows, sensitivity, and remediation combinations.",
+          "output": "Base rows\nTraceback (most recent call last):\n  File \"<stdin>\", line 41, in <module>\n  File \"<stdin>\", line 26, in calc\nTypeError: argument of type 'int' is not iterable",
+          "reasoning": "The error confirmed the fourth raw field required separate handling because the scoring rule uses only three metrics.",
+          "state_change": "No artifacts changed; calculation script needed correction to keep compliance_flag outside the three-metric score helper.",
+          "step": 3,
+          "step_outcome": "retry_required",
+          "success": false,
+          "tool": "functions.exec_command",
+          "turn": 1
+        }
+      },
+      "observation": "The first calculation run failed because the helper function expected three scored metrics but the raw record tuple also included compliance_flag.",
+      "operation": "execute",
+      "output": "Base rows\nTraceback (most recent call last):\n  File \"<stdin>\", line 41, in <module>\n  File \"<stdin>\", line 26, in calc\nTypeError: argument of type 'int' is not iterable",
+      "parallel_group": null,
+      "reasoning": "The error confirmed the fourth raw field required separate handling because the scoring rule uses only three metrics.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "No artifacts changed; calculation script needed correction to keep compliance_flag outside the three-metric score helper.",
+      "step": 3,
+      "step_outcome": "neutral",
+      "success": false,
+      "tool": "Bash",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "causal_note": "Fixed the argument mismatch from the failed calculation attempt.",
+      "causal_type": "other",
+      "caused_by": [
+        3
+      ],
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "{\"command\": \"python3 - <<'PY'\\nfrom itertools import combinations\\nrecords = [('R1',0,0.16,42.14,0),('R2',0,0.943,83.03,0),('R3',1,0.472,56.07,0),('R4',1,0.503,42.82,0)]\\nthreshold=70.0\\nwarn_floor=threshold*0.9\\n...\\nPY\"}",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "budget_usd": 60000,
+        "inputs": {
+          "command": "python3 - <<'PY'\nfrom itertools import combinations\nrecords = [('R1',0,0.16,42.14,0),('R2',0,0.943,83.03,0),('R3',1,0.472,56.07,0),('R4',1,0.503,42.82,0)]\nthreshold=70.0\nwarn_floor=threshold*0.9\n...\nPY"
+        },
+        "original_action": "calculate",
+        "original_causal_type": "retry",
+        "original_operation": "Rerun corrected calculation for base rows, directional sensitivity, and remediation combinations.",
+        "original_step_outcome": "calculations_completed",
+        "raw_step": {
+          "action": "calculate",
+          "actor": "worker",
+          "causal_note": "Fixed the argument mismatch from the failed calculation attempt.",
+          "causal_type": "retry",
+          "caused_by": 3,
+          "error_message": null,
+          "error_type": null,
+          "input": {
+            "command": "python3 - <<'PY'\nfrom itertools import combinations\nrecords = [('R1',0,0.16,42.14,0),('R2',0,0.943,83.03,0),('R3',1,0.472,56.07,0),('R4',1,0.503,42.82,0)]\nthreshold=70.0\nwarn_floor=threshold*0.9\n...\nPY"
+          },
+          "metadata_json": {
+            "budget_usd": 60000,
+            "threshold": 70.0,
+            "warn_floor": 63.0
+          },
+          "observation": "Corrected script separated compliance_flag from the scored metrics and produced base scores, classifications, sensitivity results, and allowed option-set outcomes.",
+          "operation": "Rerun corrected calculation for base rows, directional sensitivity, and remediation combinations.",
+          "output": "Base rows\nR1 [100, 84.0, 42.14, 100, 50.4, -10.535, 139.865, 'fail']\nR2 [100, 5.7, 83.03, 100, 3.42, -20.7575, 82.6625, 'fail']\nR3 [0, 52.8, 56.07, 0, 31.68, -14.0175, 17.6625, 'pass']\nR4 [0, 49.7, 42.82, 0, 29.82, -10.705, 19.115, 'pass']\n\nAllowed remediation combinations\nnone 0 [('R1', 139.865, 'fail'), ('R2', 82.6625, 'fail'), ('R3', 17.6625, 'pass'), ('R4', 19.115, 'pass')] fail_count 2 max_score 139.865\nO1 18600 [('R1', 127.865, 'fail'), ('R2', 70.6625, 'fail'), ('R3', 17.6625, 'pass'), ('R4', 19.115, 'pass')] fail_count 2 max_score 127.865\nO2 28200 [('R1', 130.793, 'fail'), ('R2', 82.0469, 'fail'), ('R3', 11.9601, 'pass'), ('R4', 13.7474, 'pass')] fail_count 2 max_score 130.793\nO3 32400 [('R1', 138.9169, 'fail'), ('R2', 80.7943, 'fail'), ('R3', 16.4009, 'pass'), ('R4', 18.1516, 'pass')] fail_count 2 max_score 138.9169\nO1+O2 46800 [('R1', 118.793, 'fail'), ('R2', 70.0469, 'fail'), ('R3', 11.9601, 'pass'), ('R4', 13.7474, 'pass')] fail_count 2 max_score 118.793\nO1+O3 51000 [('R1', 126.9169, 'fail'), ('R2', 68.7943, 'warn'), ('R3', 16.4009, 'pass'), ('R4', 18.1516, 'pass')] fail_count 1 max_score 126.9169\nO2+O3 60600 not_allowed\nO1+O2+O3 79200 not_allowed",
+          "reasoning": "The corrected results showed two baseline failures and no fully sufficient in-budget remediation set.",
+          "state_change": "Derived base classifications and option-set evaluation for artifacts.",
+          "step": 4,
+          "step_outcome": "calculations_completed",
+          "success": true,
+          "tool": "functions.exec_command",
+          "turn": 1
+        },
+        "threshold": 70.0,
+        "warn_floor": 63.0
+      },
+      "observation": "Corrected script separated compliance_flag from the scored metrics and produced base scores, classifications, sensitivity results, and allowed option-set outcomes.",
+      "operation": "execute",
+      "output": "Base rows\nR1 [100, 84.0, 42.14, 100, 50.4, -10.535, 139.865, 'fail']\nR2 [100, 5.7, 83.03, 100, 3.42, -20.7575, 82.6625, 'fail']\nR3 [0, 52.8, 56.07, 0, 31.68, -14.0175, 17.6625, 'pass']\nR4 [0, 49.7, 42.82, 0, 29.82, -10.705, 19.115, 'pass']\n\nAllowed remediation combinations\nnone 0 [('R1', 139.865, 'fail'), ('R2', 82.6625, 'fail'), ('R3', 17.6625, 'pass'), ('R4', 19.115, 'pass')] fail_count 2 max_score 139.865\nO1 18600 [('R1', 127.865, 'fail'), ('R2', 70.6625, 'fail'), ('R3', 17.6625, 'pass'), ('R4', 19.115, 'pass')] fail_count 2 max_score 127.865\nO2 28200 [('R1', 130.793, 'fail'), ('R2', 82.0469, 'fail'), ('R3', 11.9601, 'pass'), ('R4', 13.7474, 'pass')] fail_count 2 max_score 130.793\nO3 32400 [('R1', 138.9169, 'fail'), ('R2', 80.7943, 'fail'), ('R3', 16.4009, 'pass'), ('R4', 18.1516, 'pass')] fail_count 2 max_score 138.9169\nO1+O2 46800 [('R1', 118.793, 'fail'), ('R2', 70.0469, 'fail'), ('R3', 11.9601, 'pass'), ('R4', 13.7474, 'pass')] fail_count 2 max_score 118.793\nO1+O3 51000 [('R1', 126.9169, 'fail'), ('R2', 68.7943, 'warn'), ('R3', 16.4009, 'pass'), ('R4', 18.1516, 'pass')] fail_count 1 max_score 126.9169\nO2+O3 60600 not_allowed\nO1+O2+O3 79200 not_allowed",
+      "parallel_group": null,
+      "reasoning": "The corrected results showed two baseline failures and no fully sufficient in-budget remediation set.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Derived base classifications and option-set evaluation for artifacts.",
+      "step": 4,
+      "step_outcome": "neutral",
+      "success": true,
+      "tool": "Bash",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "causal_note": "Sensitivity results are required by the task.",
+      "causal_type": "other",
+      "caused_by": [
+        4
+      ],
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "{\"command\": \"python3 - <<'PY'\\nrecords = [('R1',0,0.16,42.14,0),('R2',0,0.943,83.03,0),('R3',1,0.472,56.07,0),('R4',1,0.503,42.82,0)]\\nthreshold=70.0\\nwarn_floor=63.0\\n...\\nPY\"}",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "classification_changes": 0,
+        "inputs": {
+          "command": "python3 - <<'PY'\nrecords = [('R1',0,0.16,42.14,0),('R2',0,0.943,83.03,0),('R3',1,0.472,56.07,0),('R4',1,0.503,42.82,0)]\nthreshold=70.0\nwarn_floor=63.0\n...\nPY"
+        },
+        "original_action": "calculate",
+        "original_causal_type": "refinement",
+        "original_operation": "Run capped 5% sensitivity check within normalized 0-100 bounds.",
+        "original_step_outcome": "sensitivity_completed",
+        "raw_step": {
+          "action": "calculate",
+          "actor": "worker",
+          "causal_note": "Sensitivity results are required by the task.",
+          "causal_type": "refinement",
+          "caused_by": 4,
+          "error_message": null,
+          "error_type": null,
+          "input": {
+            "command": "python3 - <<'PY'\nrecords = [('R1',0,0.16,42.14,0),('R2',0,0.943,83.03,0),('R3',1,0.472,56.07,0),('R4',1,0.503,42.82,0)]\nthreshold=70.0\nwarn_floor=63.0\n...\nPY"
+          },
+          "metadata_json": {
+            "classification_changes": 0,
+            "sensitivity_specific_expert_review_flag": false
+          },
+          "observation": "No record changed classification under capped worse or better 5% sensitivity shifts.",
+          "operation": "Run capped 5% sensitivity check within normalized 0-100 bounds.",
+          "output": "capped sensitivity +/-5%\nR1 139.865 fail 142.9118 fail 131.8183 fail False\nR2 82.6625 fail 83.8714 fail 76.4536 fail False\nR3 17.6625 pass 19.9474 pass 15.3776 pass False\nR4 19.115 pass 21.1412 pass 17.0887 pass False",
+          "reasoning": "Keeping normalized stresses within 0-100 avoids impossible normalized values while still testing the requested 5% shift.",
+          "state_change": "Selected capped sensitivity values for final CSV and plan.",
+          "step": 5,
+          "step_outcome": "sensitivity_completed",
+          "success": true,
+          "tool": "functions.exec_command",
+          "turn": 1
+        },
+        "sensitivity_specific_expert_review_flag": false
+      },
+      "observation": "No record changed classification under capped worse or better 5% sensitivity shifts.",
+      "operation": "verify",
+      "output": "capped sensitivity +/-5%\nR1 139.865 fail 142.9118 fail 131.8183 fail False\nR2 82.6625 fail 83.8714 fail 76.4536 fail False\nR3 17.6625 pass 19.9474 pass 15.3776 pass False\nR4 19.115 pass 21.1412 pass 17.0887 pass False",
+      "parallel_group": null,
+      "reasoning": "Keeping normalized stresses within 0-100 avoids impossible normalized values while still testing the requested 5% shift.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Selected capped sensitivity values for final CSV and plan.",
+      "step": 5,
+      "step_outcome": "neutral",
+      "success": true,
+      "tool": "Bash",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "causal_note": "The output contract requires artifacts in this directory.",
+      "causal_type": "other",
+      "caused_by": [
+        1
+      ],
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "{\"command\": \"mkdir -p artifacts\"}",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "inputs": {
+          "command": "mkdir -p artifacts"
+        },
+        "original_action": "prepare_artifact_directory",
+        "original_causal_type": "precondition",
+        "original_operation": "Create artifacts directory.",
+        "original_step_outcome": "directory_ready",
+        "raw_step": {
+          "action": "prepare_artifact_directory",
+          "actor": "worker",
+          "causal_note": "The output contract requires artifacts in this directory.",
+          "causal_type": "precondition",
+          "caused_by": 1,
+          "error_message": null,
+          "error_type": null,
+          "input": {
+            "command": "mkdir -p artifacts"
+          },
+          "metadata_json": {},
+          "observation": "mkdir completed with no output.",
+          "operation": "Create artifacts directory.",
+          "output": "",
+          "reasoning": "Required deliverables must be written under [EXCLUDED_GENERATED_ARTIFACT]",
+          "state_change": "Created or confirmed ./artifacts/ directory.",
+          "step": 6,
+          "step_outcome": "directory_ready",
+          "success": true,
+          "tool": "functions.exec_command",
+          "turn": 1
+        }
+      },
+      "observation": "mkdir completed with no output.",
+      "operation": "write",
+      "output": "",
+      "parallel_group": null,
+      "reasoning": "Required deliverables must be written under [EXCLUDED_GENERATED_ARTIFACT]",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Created or confirmed ./artifacts/ directory.",
+      "step": 6,
+      "step_outcome": "neutral",
+      "success": true,
+      "tool": "Bash",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "causal_note": "Calculations and sensitivity results were needed before writing final artifacts.",
+      "causal_type": "other",
+      "caused_by": [
+        4
+      ],
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "{\"patch_summary\": \"Add [EXCLUDED_GENERATED_ARTIFACT] and [EXCLUDED_GENERATED_ARTIFACT]\"}",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "inputs": {
+          "patch_summary": "Add [EXCLUDED_GENERATED_ARTIFACT] and [EXCLUDED_GENERATED_ARTIFACT]"
+        },
+        "needs_review": true,
+        "original_action": "create_artifacts",
+        "original_causal_type": "artifact_creation",
+        "original_operation": "Write audit CSV and remediation plan.",
+        "original_step_outcome": "artifacts_created",
+        "raw_step": {
+          "action": "create_artifacts",
+          "actor": "worker",
+          "causal_note": "Calculations and sensitivity results were needed before writing final artifacts.",
+          "causal_type": "artifact_creation",
+          "caused_by": 4,
+          "error_message": null,
+          "error_type": null,
+          "input": {
+            "patch_summary": "Add [EXCLUDED_GENERATED_ARTIFACT] and [EXCLUDED_GENERATED_ARTIFACT]"
+          },
+          "metadata_json": {
+            "needs_review": true
+          },
+          "observation": "Created [EXCLUDED_GENERATED_ARTIFACT] and [EXCLUDED_GENERATED_ARTIFACT] with calculations, citations, assumptions, validation checks, sensitivity notes, option evaluation, and final decision table.",
+          "operation": "Write audit CSV and remediation plan.",
+          "output": "Success. Updated the following files:\nA [EXCLUDED_GENERATED_ARTIFACT]\nA [EXCLUDED_GENERATED_ARTIFACT]",
+          "reasoning": "The CSV provides row-level auditability; the markdown plan explains assumptions, ambiguity, remediation sufficiency, and launch decision.",
+          "state_change": "Added the two required task artifacts.",
+          "step": 7,
+          "step_outcome": "artifacts_created",
+          "success": true,
+          "tool": "functions.apply_patch",
+          "turn": 1
+        }
+      },
+      "observation": "Created [EXCLUDED_GENERATED_ARTIFACT] and [EXCLUDED_GENERATED_ARTIFACT] with calculations, citations, assumptions, validation checks, sensitivity notes, option evaluation, and final decision table.",
+      "operation": "write",
+      "output": "Success. Updated the following files:\nA [EXCLUDED_GENERATED_ARTIFACT]\nA [EXCLUDED_GENERATED_ARTIFACT]",
+      "parallel_group": null,
+      "reasoning": "The CSV provides row-level auditability; the markdown plan explains assumptions, ambiguity, remediation sufficiency, and launch decision.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Added the two required task artifacts.",
+      "step": 7,
+      "step_outcome": "neutral",
+      "success": true,
+      "tool": "Bash",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "causal_note": "Artifacts needed verification after creation.",
+      "causal_type": "other",
+      "caused_by": [
+        7
+      ],
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "{\"commands\": [\"python3 - <<'PY'\\nimport csv, math\\nwith open('[EXCLUDED_GENERATED_ARTIFACT]', newline='') as f:\\n    rows=list(csv.DictReader(f))\\n...\\nPY\", \"sed -n '1,220p' [EXCLUDED_GENERATED_ARTIFACT]\", \"sed -n '1,12p' [EXCLUDED_GENERATED_ARTIFACT]\"]}",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "inputs": {
+          "commands": [
+            "python3 - <<'PY'\nimport csv, math\nwith open('[EXCLUDED_GENERATED_ARTIFACT]', newline='') as f:\n    rows=list(csv.DictReader(f))\n...\nPY",
+            "sed -n '1,220p' [EXCLUDED_GENERATED_ARTIFACT]",
+            "sed -n '1,12p' [EXCLUDED_GENERATED_ARTIFACT]"
+          ]
+        },
+        "original_action": "validate_artifacts",
+        "original_causal_type": "validation",
+        "original_operation": "Parse CSV, recompute scores and classifications, and inspect generated files.",
+        "original_step_outcome": "validation_passed",
+        "outputs": {
+          "artifact_preview_result": "remediation_plan.md and mtls_coverage_audit.csv contained the expected sections and rows.",
+          "validation_stdout": "rows 4\ncsv validation passed"
+        },
+        "raw_step": {
+          "action": "validate_artifacts",
+          "actor": "worker",
+          "causal_note": "Artifacts needed verification after creation.",
+          "causal_type": "validation",
+          "caused_by": 7,
+          "error_message": null,
+          "error_type": null,
+          "input": {
+            "commands": [
+              "python3 - <<'PY'\nimport csv, math\nwith open('[EXCLUDED_GENERATED_ARTIFACT]', newline='') as f:\n    rows=list(csv.DictReader(f))\n...\nPY",
+              "sed -n '1,220p' [EXCLUDED_GENERATED_ARTIFACT]",
+              "sed -n '1,12p' [EXCLUDED_GENERATED_ARTIFACT]"
+            ]
+          },
+          "metadata_json": {
+            "validated_row_count": 4
+          },
+          "observation": "CSV parsed successfully; recalculated scores and classifications matched the stored values. Artifact previews were inspected.",
+          "operation": "Parse CSV, recompute scores and classifications, and inspect generated files.",
+          "output": {
+            "artifact_preview_result": "remediation_plan.md and mtls_coverage_audit.csv contained the expected sections and rows.",
+            "validation_stdout": "rows 4\ncsv validation passed"
+          },
+          "reasoning": "Validation checks reduce the chance of formula transcription errors in the final deliverables.",
+          "state_change": "Confirmed artifacts are parseable and internally consistent.",
+          "step": 8,
+          "step_outcome": "validation_passed",
+          "success": true,
+          "tool": "multi_tool_use.parallel(functions.exec_command)",
+          "turn": 1
+        },
+        "validated_row_count": 4
+      },
+      "observation": "CSV parsed successfully; recalculated scores and classifications matched the stored values. Artifact previews were inspected.",
+      "operation": "read",
+      "output": "{\"artifact_preview_result\": \"remediation_plan.md and mtls_coverage_audit.csv contained the expected sections and rows.\", \"validation_stdout\": \"rows 4\\ncsv validation passed\"}",
+      "parallel_group": null,
+      "reasoning": "Validation checks reduce the chance of formula transcription errors in the final deliverables.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Confirmed artifacts are parseable and internally consistent.",
+      "step": 8,
+      "step_outcome": "neutral",
+      "success": true,
+      "tool": "Bash",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "artifact_refs": [
+        "actual_outputs.json",
+        "agent_trace.json"
+      ],
+      "causal_note": "The trace records the completed workflow after artifact validation.",
+      "causal_type": "other",
+      "caused_by": [
+        8
+      ],
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "{\"patch_summary\": \"Add actual_outputs.json and agent_trace.json.\"}",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "inputs": {
+          "patch_summary": "Add actual_outputs.json and agent_trace.json."
+        },
+        "original_action": "write_metadata",
+        "original_causal_type": "reporting",
+        "original_operation": "Create output manifest and workflow trace.",
+        "original_step_outcome": "metadata_written",
+        "raw_step": {
+          "action": "write_metadata",
+          "actor": "worker",
+          "artifact_refs": [
+            "actual_outputs.json",
+            "agent_trace.json"
+          ],
+          "causal_note": "The trace records the completed workflow after artifact validation.",
+          "causal_type": "reporting",
+          "caused_by": 8,
+          "error_message": null,
+          "error_type": null,
+          "input": {
+            "patch_summary": "Add actual_outputs.json and agent_trace.json."
+          },
+          "metadata_json": {},
+          "observation": "Created actual_outputs.json and agent_trace.json in the current attempt directory.",
+          "operation": "Create output manifest and workflow trace.",
+          "output": "Success. Updated the following files:\nA actual_outputs.json\nA agent_trace.json",
+          "reasoning": "The workflow task requires both files at the attempt root in addition to the two artifacts.",
+          "state_change": "Added required trace and output manifest files.",
+          "step": 9,
+          "step_outcome": "metadata_written",
+          "success": true,
+          "tool": "functions.apply_patch",
+          "turn": 1
+        }
+      },
+      "observation": "Created actual_outputs.json and agent_trace.json in the current attempt directory.",
+      "operation": "write",
+      "output": "Success. Updated the following files:\nA actual_outputs.json\nA agent_trace.json",
+      "parallel_group": null,
+      "reasoning": "The workflow task requires both files at the attempt root in addition to the two artifacts.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Added required trace and output manifest files.",
+      "step": 9,
+      "step_outcome": "neutral",
+      "success": true,
+      "tool": "file_write",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "artifact_refs": [
+        "actual_outputs.json",
+        "agent_trace.json"
+      ],
+      "causal_note": "Metadata files needed validation after creation.",
+      "causal_type": "other",
+      "caused_by": [
+        9
+      ],
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "{\"commands\": [\"python3 -m json.tool actual_outputs.json >[REDACTED_LOCAL_PATH] && python3 -m json.tool agent_trace.json >[REDACTED_LOCAL_PATH] && echo 'json validation passed'\", \"ls -l agent_trace.json actual_outputs.json [EXCLUDED_GENERATED_ARTIFACT] [EXCLUDED_GENERATED_ARTIFACT]\", \"python3 - <<'PY'\\nimport json\\nwith open('agent_trace.json') as f:\\n    data=json.load(f)\\nrequired={'step','turn','actor','action','operation','tool','observation','input','output','state_change','reasoning','caused_by','causal_type','causal_note','success','step_outcome','error_type','error_message','artifact_refs','metadata_json'}\\n...\\nPY\"]}",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "inputs": {
+          "commands": [
+            "python3 -m json.tool actual_outputs.json >[REDACTED_LOCAL_PATH] && python3 -m json.tool agent_trace.json >[REDACTED_LOCAL_PATH] && echo 'json validation passed'",
+            "ls -l agent_trace.json actual_outputs.json [EXCLUDED_GENERATED_ARTIFACT] [EXCLUDED_GENERATED_ARTIFACT]",
+            "python3 - <<'PY'\nimport json\nwith open('agent_trace.json') as f:\n    data=json.load(f)\nrequired={'step','turn','actor','action','operation','tool','observation','input','output','state_change','reasoning','caused_by','causal_type','causal_note','success','step_outcome','error_type','error_message','artifact_refs','metadata_json'}\n...\nPY"
+          ]
+        },
+        "original_action": "validate_metadata",
+        "original_causal_type": "validation",
+        "original_operation": "Validate JSON syntax, required file presence, and canonical trace step fields.",
+        "original_step_outcome": "final_validation_passed",
+        "outputs": {
+          "file_listing": "-rw-r--r-- actual_outputs.json\n-rw-r--r-- agent_trace.json\n-rw-r--r-- [EXCLUDED_GENERATED_ARTIFACT]\n-rw-r--r-- [EXCLUDED_GENERATED_ARTIFACT]",
+          "json_validation": "json validation passed",
+          "schema_validation": "steps 10\ntrace step schema validation passed"
+        },
+        "raw_step": {
+          "action": "validate_metadata",
+          "actor": "worker",
+          "artifact_refs": [
+            "actual_outputs.json",
+            "agent_trace.json"
+          ],
+          "causal_note": "Metadata files needed validation after creation.",
+          "causal_type": "validation",
+          "caused_by": 9,
+          "error_message": null,
+          "error_type": null,
+          "input": {
+            "commands": [
+              "python3 -m json.tool actual_outputs.json >[REDACTED_LOCAL_PATH] && python3 -m json.tool agent_trace.json >[REDACTED_LOCAL_PATH] && echo 'json validation passed'",
+              "ls -l agent_trace.json actual_outputs.json [EXCLUDED_GENERATED_ARTIFACT] [EXCLUDED_GENERATED_ARTIFACT]",
+              "python3 - <<'PY'\nimport json\nwith open('agent_trace.json') as f:\n    data=json.load(f)\nrequired={'step','turn','actor','action','operation','tool','observation','input','output','state_change','reasoning','caused_by','causal_type','causal_note','success','step_outcome','error_type','error_message','artifact_refs','metadata_json'}\n...\nPY"
+            ]
+          },
+          "metadata_json": {
+            "required_files_present": true
+          },
+          "observation": "JSON validation passed, all required files were present, and every trace step had exactly the canonical step fields.",
+          "operation": "Validate JSON syntax, required file presence, and canonical trace step fields.",
+          "output": {
+            "file_listing": "-rw-r--r-- actual_outputs.json\n-rw-r--r-- agent_trace.json\n-rw-r--r-- [EXCLUDED_GENERATED_ARTIFACT]\n-rw-r--r-- [EXCLUDED_GENERATED_ARTIFACT]",
+            "json_validation": "json validation passed",
+            "schema_validation": "steps 10\ntrace step schema validation passed"
+          },
+          "reasoning": "The output contract includes both deliverables and metadata files, so final machine-readable validation is part of the workflow evidence.",
+          "state_change": "Confirmed required root files and artifact files exist and are machine-readable.",
+          "step": 10,
+          "step_outcome": "final_validation_passed",
+          "success": true,
+          "tool": "multi_tool_use.parallel(functions.exec_command)",
+          "turn": 1
+        },
+        "required_files_present": true
+      },
+      "observation": "JSON validation passed, all required files were present, and every trace step had exactly the canonical step fields.",
+      "operation": "verify",
+      "output": "{\"file_listing\": \"-rw-r--r-- actual_outputs.json\\n-rw-r--r-- agent_trace.json\\n-rw-r--r-- [EXCLUDED_GENERATED_ARTIFACT] [EXCLUDED_GENERATED_ARTIFACT]\", \"json_validation\": \"json validation passed\", \"schema_validation\": \"steps 10\\ntrace step schema validation passed\"}",
+      "parallel_group": null,
+      "reasoning": "The output contract includes both deliverables and metadata files, so final machine-readable validation is part of the workflow evidence.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Confirmed required root files and artifact files exist and are machine-readable.",
+      "step": 10,
+      "step_outcome": "neutral",
+      "success": true,
+      "tool": "Bash",
+      "turn": 1
+    }
+  ],
+  "system_prompt": null,
+  "system_prompt_hash": null,
+  "task": "Perform a numerical, auditable mTLS coverage drift audit using only the embedded packet. Calculate all derived fields and row-level citations; apply the provided normalization and scoring rule (score = first metric + 0.6*second metric - 0.25*third metric after unit normalization). Classify each record (pass/warn/fail) using the normalized_threshold_score (fail if score > threshold; warn if within 10% below threshold). Rank governing risks, run 5% sensitivity checks, and flag for expert review if any record's classification changes after a 5% sensitivity shift. Recommend the smallest sufficient remediation action (options may be combined only if total cost <= remediation_budget_usd). Deliver two artifacts: mtls_coverage_audit.csv and remediation_plan.md. Include traceable calculations or executable logic, intermediate calculations, row-level citations to the embedded packet, explicit assumptions, validation checks, sensitivity notes, and a final decision table. Do not invent inputs or reference outside data; mark unresolved ambiguity as needs_review.",
+  "task_family_id": null,
+  "original_internal_task_id": "aa_task_0613",
+  "task_id": "313",
+  "termination_reason": "task_complete",
+  "trace_id": "trace_313-baseline_normalized",
+  "trace_mode": "live"
+}

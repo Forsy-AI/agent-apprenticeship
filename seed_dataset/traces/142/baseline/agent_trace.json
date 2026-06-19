@@ -1,0 +1,541 @@
+{
+  "actual_outputs": {
+    "original_internal_attempt_id": "aa_task_0342_baseline",
+    "attempt_id": "142-baseline",
+    "attempt_kind": "baseline",
+    "error_message": null,
+    "error_type": null,
+    "metadata_json": {
+      "actual_outputs_discarded_field_count": 0,
+      "actual_outputs_normalized": true,
+      "expected_deliverable_items": [
+        "guide_priority_table.csv"
+      ],
+      "original_fields": {
+        "artifacts": [
+          {
+            "status": "created"
+          }
+        ],
+        "expected_deliverable": "guide_priority_table.csv",
+        "notes": [
+          "All numeric claims are derived only from the embedded packet.",
+          "Off-target-specific score is marked needs_review because no guide-level off-target metrics were supplied."
+        ],
+        "summary": {
+          "missing_guide_level_off_target_inputs": true,
+          "qc_fail_count": 1,
+          "qc_pass_count": 2,
+          "record_count": 3
+        }
+      },
+      "produced_deliverable_items": [
+        "guide_priority_table.csv"
+      ],
+      "raw_actual_outputs": {
+        "artifacts": [
+          {
+            "status": "created"
+          }
+        ],
+        "expected_deliverable": "guide_priority_table.csv",
+        "notes": [
+          "All numeric claims are derived only from the embedded packet.",
+          "Off-target-specific score is marked needs_review because no guide-level off-target metrics were supplied."
+        ],
+        "summary": {
+          "missing_guide_level_off_target_inputs": true,
+          "qc_fail_count": 1,
+          "qc_pass_count": 2,
+          "record_count": 3
+        },
+        "original_internal_task_id": "aa_task_0342",
+        "task_id": "142"
+      }
+    },
+    "output_summary": "{'record_count': 3, 'qc_pass_count': 2, 'qc_fail_count': 1, 'missing_guide_level_off_target_inputs': True}",
+    "status": "success",
+    "original_internal_task_id": "aa_task_0342",
+    "task_id": "142",
+    "required_deliverables": [
+      "guide_priority_table.csv"
+    ],
+    "produced_deliverables": [
+      "guide_priority_table.csv"
+    ],
+    "missing_required_deliverables": [],
+    "deliverable_produced": true,
+    "deliverable_file_included": false,
+    "included_generated_artifacts": false,
+    "artifacts_excluded_reason": "Generated output artifacts are excluded from the public seed dataset by default.",
+    "logs_included": false,
+    "logs_excluded_reason": "Raw runner logs are excluded from the public seed dataset."
+  },
+  "agent_config": null,
+  "agent_tools": [
+    "codex_cli",
+    "Bash",
+    "python",
+    "file_read",
+    "file_write",
+    "apply_patch"
+  ],
+  "artifacts": [],
+  "original_internal_attempt_id": "aa_task_0342_baseline",
+  "attempt_id": "142-baseline",
+  "attempt_kind": "baseline",
+  "collection_id": null,
+  "completion_reason": null,
+  "ended_at": null,
+  "final_attempt_id": null,
+  "initial_attempt_id": null,
+  "iteration_index": null,
+  "learning": null,
+  "memory": null,
+  "metadata_json": {
+    "codex_command": [
+      "codex",
+      "exec",
+      "--sandbox",
+      "workspace-write",
+      "<prompt>"
+    ],
+    "codex_sandbox": "workspace-write",
+    "discarded_step_count": 0,
+    "raw_trace_preserved": true,
+    "raw_trace_step_source": "steps",
+    "schema_valid": true,
+    "trace_normalization_status": "partial",
+    "trace_valid": true
+  },
+  "preferred_attempt_id": null,
+  "previous_attempt_id": null,
+  "prior_trace_id": null,
+  "revision_attempt_ids": [],
+  "revision_group_id": null,
+  "schema_version": "aa-trace-v0.1",
+  "skills": null,
+  "started_at": null,
+  "steps": [
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "artifact_refs": [
+        "./input/task.json",
+        "./input/task_brief.md"
+      ],
+      "causal_note": null,
+      "causal_type": null,
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "sed -n '1,220p' ./input/task.json && printf '\\n---TASK_BRIEF---\\n' && sed -n '1,220p' ./input/task_brief.md",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "files_read": [
+          "./input/task.json",
+          "./input/task_brief.md"
+        ],
+        "normalization_warnings": [
+          "step value 'read_packet' was not numeric; defaulted to 1"
+        ],
+        "original_action": "read",
+        "original_operation": "Inspect task inputs and extract the embedded samples and QC rules.",
+        "original_step": "read_packet",
+        "original_step_outcome": "success",
+        "raw_step": {
+          "action": "read",
+          "actor": "worker",
+          "artifact_refs": [
+            "./input/task.json",
+            "./input/task_brief.md"
+          ],
+          "causal_note": "Initial context gathering.",
+          "causal_type": null,
+          "caused_by": null,
+          "error_message": null,
+          "error_type": null,
+          "input": "sed -n '1,220p' ./input/task.json && printf '\\n---TASK_BRIEF---\\n' && sed -n '1,220p' ./input/task_brief.md",
+          "metadata_json": {
+            "files_read": [
+              "./input/task.json",
+              "./input/task_brief.md"
+            ],
+            "record_count": 3
+          },
+          "observation": "Input packet provided S1, S2, S3 values and QC thresholds; no external data was required.",
+          "operation": "Inspect task inputs and extract the embedded samples and QC rules.",
+          "output": "Captured sample values: S1 reads=43000 mito_pct=9 detected_genes=3150; S2 reads=18800 mito=23 genes=1230; S3 reads=52200 mito=7 genes=3440; QC rules reads<25000 or mito>20 or genes<1500 fail.",
+          "reasoning": "The task is self-contained, so all derivations must come only from the packet values.",
+          "state_change": "Defined the three-record working set and the QC decision criteria.",
+          "step": "read_packet",
+          "step_outcome": "success",
+          "success": true,
+          "tool": "exec_command",
+          "turn": 1
+        },
+        "record_count": 3
+      },
+      "observation": "Input packet provided S1, S2, S3 values and QC thresholds; no external data was required.",
+      "operation": "other",
+      "output": "Captured sample values: S1 reads=43000 mito_pct=9 detected_genes=3150; S2 reads=18800 mito=23 genes=1230; S3 reads=52200 mito=7 genes=3440; QC rules reads<25000 or mito>20 or genes<1500 fail.",
+      "parallel_group": null,
+      "reasoning": "The task is self-contained, so all derivations must come only from the packet values.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Defined the three-record working set and the QC decision criteria.",
+      "step": 1,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "Bash",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "causal_note": "QC logic depends directly on the packet values.",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "node - <<'NODE'\nconst samples = [\n  {id:'S1', reads:43000, mito:9, genes:3150},\n  {id:'S2', reads:18800, mito:23, genes:1230},\n  {id:'S3', reads:52200, mito:7, genes:3440},\n];\nfor (const s of samples) {\n  const dReads = s.reads - 25000;\n  const dMito = s.mito - 20;\n  const dGenes = s.genes - 1500;\n  const failReads = s.reads < 25000;\n  const failMito = s.mito > 20;\n  const failGenes = s.genes < 1500;\n  const qc = !(failReads || failMito || failGenes) ? 'PASS' : 'FAIL';\n  console.log(JSON.stringify({id:s.id,dReads,dMito,dGenes,failReads,failMito,failGenes,qc}));\n}\nNODE",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "normalization_warnings": [
+          "step value 'compute_qc' was not numeric; defaulted to 2"
+        ],
+        "original_action": "analyze",
+        "original_causal_type": "derived_from",
+        "original_operation": "Compute threshold deltas and QC outcomes from the supplied packet values.",
+        "original_step": "compute_qc",
+        "original_step_outcome": "success",
+        "qc_results": [
+          {
+            "id": "S1",
+            "qc": "PASS"
+          },
+          {
+            "id": "S2",
+            "qc": "FAIL"
+          },
+          {
+            "id": "S3",
+            "qc": "PASS"
+          }
+        ],
+        "raw_step": {
+          "action": "analyze",
+          "actor": "worker",
+          "causal_note": "QC logic depends directly on the packet values.",
+          "causal_type": "derived_from",
+          "caused_by": "read_packet",
+          "error_message": null,
+          "error_type": null,
+          "input": "node - <<'NODE'\nconst samples = [\n  {id:'S1', reads:43000, mito:9, genes:3150},\n  {id:'S2', reads:18800, mito:23, genes:1230},\n  {id:'S3', reads:52200, mito:7, genes:3440},\n];\nfor (const s of samples) {\n  const dReads = s.reads - 25000;\n  const dMito = s.mito - 20;\n  const dGenes = s.genes - 1500;\n  const failReads = s.reads < 25000;\n  const failMito = s.mito > 20;\n  const failGenes = s.genes < 1500;\n  const qc = !(failReads || failMito || failGenes) ? 'PASS' : 'FAIL';\n  console.log(JSON.stringify({id:s.id,dReads,dMito,dGenes,failReads,failMito,failGenes,qc}));\n}\nNODE",
+          "metadata_json": {
+            "qc_results": [
+              {
+                "id": "S1",
+                "qc": "PASS"
+              },
+              {
+                "id": "S2",
+                "qc": "FAIL"
+              },
+              {
+                "id": "S3",
+                "qc": "PASS"
+              }
+            ],
+            "thresholds": {
+              "genes_fail_below": 1500,
+              "mito_fail_above": 20,
+              "reads_fail_below": 25000
+            }
+          },
+          "observation": "Machine-checked deltas showed S1 and S3 pass all rules; S2 fails all three rules.",
+          "operation": "Compute threshold deltas and QC outcomes from the supplied packet values.",
+          "output": "{\"id\":\"S1\",\"dReads\":18000,\"dMito\":-11,\"dGenes\":1650,\"failReads\":false,\"failMito\":false,\"failGenes\":false,\"qc\":\"PASS\"}\n{\"id\":\"S2\",\"dReads\":-6200,\"dMito\":3,\"dGenes\":-270,\"failReads\":true,\"failMito\":true,\"failGenes\":true,\"qc\":\"FAIL\"}\n{\"id\":\"S3\",\"dReads\":27200,\"dMito\":-13,\"dGenes\":1940,\"failReads\":false,\"failMito\":false,\"failGenes\":false,\"qc\":\"PASS\"}",
+          "reasoning": "S1 and S3 have non-failing values against all three rules; S2 violates all three rules.",
+          "state_change": "Established the QC pass/fail state and threshold margins for each sample.",
+          "step": "compute_qc",
+          "step_outcome": "success",
+          "success": true,
+          "tool": "exec_command",
+          "turn": 1
+        },
+        "thresholds": {
+          "genes_fail_below": 1500,
+          "mito_fail_above": 20,
+          "reads_fail_below": 25000
+        }
+      },
+      "observation": "Machine-checked deltas showed S1 and S3 pass all rules; S2 fails all three rules.",
+      "operation": "other",
+      "output": "{\"id\":\"S1\",\"dReads\":18000,\"dMito\":-11,\"dGenes\":1650,\"failReads\":false,\"failMito\":false,\"failGenes\":false,\"qc\":\"PASS\"}\n{\"id\":\"S2\",\"dReads\":-6200,\"dMito\":3,\"dGenes\":-270,\"failReads\":true,\"failMito\":true,\"failGenes\":true,\"qc\":\"FAIL\"}\n{\"id\":\"S3\",\"dReads\":27200,\"dMito\":-13,\"dGenes\":1940,\"failReads\":false,\"failMito\":false,\"failGenes\":false,\"qc\":\"PASS\"}",
+      "parallel_group": null,
+      "reasoning": "S1 and S3 have non-failing values against all three rules; S2 violates all three rules.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Established the QC pass/fail state and threshold margins for each sample.",
+      "step": 2,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "exec_command",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "artifact_refs": [
+        "./actual_outputs.json"
+      ],
+      "causal_note": "The CSV content depends on the QC analysis and the missing-guide-input assumption.",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "apply_patch adding [EXCLUDED_GENERATED_ARTIFACT] and actual_outputs.json",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "artifacts_created": [
+          "[EXCLUDED_GENERATED_ARTIFACT]",
+          "./actual_outputs.json"
+        ],
+        "normalization_warnings": [
+          "step value 'write_artifacts' was not numeric; defaulted to 3"
+        ],
+        "original_action": "create",
+        "original_causal_type": "implementation",
+        "original_operation": "Create the required CSV deliverable and the execution manifest.",
+        "original_step": "write_artifacts",
+        "original_step_outcome": "success",
+        "raw_step": {
+          "action": "create",
+          "actor": "worker",
+          "artifact_refs": [
+            "./actual_outputs.json"
+          ],
+          "causal_note": "The CSV content depends on the QC analysis and the missing-guide-input assumption.",
+          "causal_type": "implementation",
+          "caused_by": "compute_qc",
+          "error_message": null,
+          "error_type": null,
+          "input": "apply_patch adding [EXCLUDED_GENERATED_ARTIFACT] and actual_outputs.json",
+          "metadata_json": {
+            "artifacts_created": [
+              "[EXCLUDED_GENERATED_ARTIFACT]",
+              "./actual_outputs.json"
+            ],
+            "row_count": 3
+          },
+          "observation": "Created [EXCLUDED_GENERATED_ARTIFACT] and ./actual_outputs.json.",
+          "operation": "Create the required CSV deliverable and the execution manifest.",
+          "output": "Files written successfully with three data rows and a summary manifest.",
+          "reasoning": "The deliverable needs both the final table and a compact manifest of what was produced.",
+          "state_change": "Materialized the deliverable and captured the output summary for downstream checks.",
+          "step": "write_artifacts",
+          "step_outcome": "success",
+          "success": true,
+          "tool": "apply_patch",
+          "turn": 1
+        },
+        "row_count": 3
+      },
+      "observation": "Created [EXCLUDED_GENERATED_ARTIFACT] and ./actual_outputs.json.",
+      "operation": "other",
+      "output": "Files written successfully with three data rows and a summary manifest.",
+      "parallel_group": null,
+      "reasoning": "The deliverable needs both the final table and a compact manifest of what was produced.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Materialized the deliverable and captured the output summary for downstream checks.",
+      "step": 3,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "apply_patch",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "artifact_refs": [
+        "./actual_outputs.json"
+      ],
+      "causal_note": "Validation required a fallback because jq was unavailable.",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": "zsh:1: command not found: jq",
+      "error_type": "command_not_found",
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "sed -n '1,20p' [EXCLUDED_GENERATED_ARTIFACT] && awk -F, 'NR==2{if(!($2>=25000 && $3<=20 && $4>=1500)) exit 1} NR==3{if(!($2<25000 && $3>20 && $4<1500)) exit 2} NR==4{if(!($2>=25000 && $3<=20 && $4>=1500)) exit 3} END{print \"rows=\" NR-1 \", validation=ok\"}' [EXCLUDED_GENERATED_ARTIFACT] && jq -r '.summary' ./actual_outputs.json",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "failed_tool": "jq",
+        "normalization_warnings": [
+          "step value 'validate_artifacts' was not numeric; defaulted to 4"
+        ],
+        "original_action": "validate",
+        "original_causal_type": "retry_after_error",
+        "original_operation": "Validate the written outputs and encounter a missing jq dependency.",
+        "original_step": "validate_artifacts",
+        "original_step_outcome": "error",
+        "raw_step": {
+          "action": "validate",
+          "actor": "worker",
+          "artifact_refs": [
+            "./actual_outputs.json"
+          ],
+          "causal_note": "Validation required a fallback because jq was unavailable.",
+          "causal_type": "retry_after_error",
+          "caused_by": "write_artifacts",
+          "error_message": "zsh:1: command not found: jq",
+          "error_type": "command_not_found",
+          "input": "sed -n '1,20p' [EXCLUDED_GENERATED_ARTIFACT] && awk -F, 'NR==2{if(!($2>=25000 && $3<=20 && $4>=1500)) exit 1} NR==3{if(!($2<25000 && $3>20 && $4<1500)) exit 2} NR==4{if(!($2>=25000 && $3<=20 && $4>=1500)) exit 3} END{print \"rows=\" NR-1 \", validation=ok\"}' [EXCLUDED_GENERATED_ARTIFACT] && jq -r '.summary' ./actual_outputs.json",
+          "metadata_json": {
+            "failed_tool": "jq",
+            "validation_targets": [
+              "CSV row counts and thresholds",
+              "actual_outputs.json summary"
+            ]
+          },
+          "observation": "CSV row validation succeeded; JSON validation with jq failed because jq is not installed.",
+          "operation": "Validate the written outputs and encounter a missing jq dependency.",
+          "output": "CSV content previewed correctly; awk reported rows=3, validation=ok; jq returned zsh:1: command not found: jq.",
+          "reasoning": "The jq failure is environmental, not a data issue, so a different JSON parser can confirm the manifest without changing the artifacts.",
+          "state_change": "Confirmed the CSV structure while identifying a validation-tool gap for the JSON manifest.",
+          "step": "validate_artifacts",
+          "step_outcome": "error",
+          "success": false,
+          "tool": "exec_command",
+          "turn": 1
+        },
+        "validation_targets": [
+          "CSV row counts and thresholds",
+          "actual_outputs.json summary"
+        ]
+      },
+      "observation": "CSV row validation succeeded; JSON validation with jq failed because jq is not installed.",
+      "operation": "other",
+      "output": "CSV content previewed correctly; awk reported rows=3, validation=ok; jq returned zsh:1: command not found: jq.",
+      "parallel_group": null,
+      "reasoning": "The jq failure is environmental, not a data issue, so a different JSON parser can confirm the manifest without changing the artifacts.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Confirmed the CSV structure while identifying a validation-tool gap for the JSON manifest.",
+      "step": 4,
+      "step_outcome": "failed",
+      "success": false,
+      "tool": "Bash",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "artifact_refs": [
+        "./actual_outputs.json"
+      ],
+      "causal_note": "Node replaced the missing jq dependency for JSON inspection.",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "node -e \"const fs=require('fs'); const x=JSON.parse(fs.readFileSync('./actual_outputs.json','utf8')); console.log(JSON.stringify(x.summary)); console.log('artifact_count='+x.artifacts.length);\" && node -e \"const fs=require('fs'); const lines=fs.readFileSync('[EXCLUDED_GENERATED_ARTIFACT]','utf8').trim().split(/\\n/); console.log('data_rows='+ (lines.length-1)); const row1=lines[1].split(','); const row2=lines[2].split(','); const row3=lines[3].split(','); console.log('S1='+(row1[8]==='PASS' && row1[9]==='provisionally_prioritize')); console.log('S2='+(row2[8]==='FAIL' && row2[9]==='deprioritize_exclude')); console.log('S3='+(row3[8]==='PASS' && row3[9]==='provisionally_prioritize'));\"",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "normalization_warnings": [
+          "step value 'retry_validation' was not numeric; defaulted to 5"
+        ],
+        "original_action": "validate",
+        "original_causal_type": "retry",
+        "original_operation": "Retry JSON validation with node and verify the row-level QC decisions.",
+        "original_step": "retry_validation",
+        "original_step_outcome": "success",
+        "qc_fail_count": 1,
+        "qc_pass_count": 2,
+        "raw_step": {
+          "action": "validate",
+          "actor": "worker",
+          "artifact_refs": [
+            "./actual_outputs.json"
+          ],
+          "causal_note": "Node replaced the missing jq dependency for JSON inspection.",
+          "causal_type": "retry",
+          "caused_by": "validate_artifacts",
+          "error_message": null,
+          "error_type": null,
+          "input": "node -e \"const fs=require('fs'); const x=JSON.parse(fs.readFileSync('./actual_outputs.json','utf8')); console.log(JSON.stringify(x.summary)); console.log('artifact_count='+x.artifacts.length);\" && node -e \"const fs=require('fs'); const lines=fs.readFileSync('[EXCLUDED_GENERATED_ARTIFACT]','utf8').trim().split(/\\n/); console.log('data_rows='+ (lines.length-1)); const row1=lines[1].split(','); const row2=lines[2].split(','); const row3=lines[3].split(','); console.log('S1='+(row1[8]==='PASS' && row1[9]==='provisionally_prioritize')); console.log('S2='+(row2[8]==='FAIL' && row2[9]==='deprioritize_exclude')); console.log('S3='+(row3[8]==='PASS' && row3[9]==='provisionally_prioritize'));\"",
+          "metadata_json": {
+            "qc_fail_count": 1,
+            "qc_pass_count": 2,
+            "row_count": 3,
+            "validation_passed": true
+          },
+          "observation": "Node confirmed the manifest summary and the CSV decision columns for all three rows.",
+          "operation": "Retry JSON validation with node and verify the row-level QC decisions.",
+          "output": "{\"record_count\":3,\"qc_pass_count\":2,\"qc_fail_count\":1,\"missing_guide_level_off_target_inputs\":true}\nartifact_count=1\ndata_rows=3\nS1=true\nS2=true\nS3=true",
+          "reasoning": "Fallback validation preserves correctness without introducing new dependencies.",
+          "state_change": "Confirmed the manifest contents and the final QC-based recommendations.",
+          "step": "retry_validation",
+          "step_outcome": "success",
+          "success": true,
+          "tool": "exec_command",
+          "turn": 1
+        },
+        "row_count": 3,
+        "validation_passed": true
+      },
+      "observation": "Node confirmed the manifest summary and the CSV decision columns for all three rows.",
+      "operation": "other",
+      "output": "{\"record_count\":3,\"qc_pass_count\":2,\"qc_fail_count\":1,\"missing_guide_level_off_target_inputs\":true}\nartifact_count=1\ndata_rows=3\nS1=true\nS2=true\nS3=true",
+      "parallel_group": null,
+      "reasoning": "Fallback validation preserves correctness without introducing new dependencies.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Confirmed the manifest contents and the final QC-based recommendations.",
+      "step": 5,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "exec_command",
+      "turn": 1
+    }
+  ],
+  "system_prompt": null,
+  "system_prompt_hash": null,
+  "task": "Advanced task: CRISPR guide off-target prioritization. Omics packet: sample S1 reads=43000 mito_pct=9% detected_genes=3150; S2 reads=18800 mito=23% genes=1230; S3 reads=52200 mito=7% genes=3440. Rules: reads<25000, mito>20%, or genes<1500 fail QC. Produce the stated deliverable with calculations, assumptions, exceptions, and exact row/value citations. Do not invent additional records; mark missing inputs as needs_review. Include intermediate calculations, uncertainty or sensitivity notes, validation checks, and a final decision table that ties every recommendation back to the supplied values. The response should be executable from the embedded packet alone, with no external data lookup required beyond understanding the cited public removed context.",
+  "task_family_id": null,
+  "original_internal_task_id": "aa_task_0342",
+  "task_id": "142",
+  "termination_reason": "task_complete",
+  "trace_id": "trace_142-baseline_normalized",
+  "trace_mode": "live"
+}

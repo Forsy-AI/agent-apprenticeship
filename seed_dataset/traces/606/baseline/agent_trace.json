@@ -1,0 +1,918 @@
+{
+  "actual_outputs": {
+    "original_internal_attempt_id": "aa_task_0006_baseline",
+    "attempt_id": "606-baseline",
+    "attempt_kind": "baseline",
+    "error_message": null,
+    "error_type": null,
+    "metadata_json": {
+      "actual_outputs_discarded_field_count": 0,
+      "actual_outputs_normalized": true,
+      "expected_deliverable_items": [
+        "microseismic_traffic_light.xlsx",
+        "stimulation_hold_recommendation.md"
+      ],
+      "original_fields": {
+        "artifacts": [
+          {
+            "description": "Traffic-light assessment workbook with embedded formulas for stage status, event-density calculation, validation checks, uncertainty notes, sensitivity checks, and final decision labels.",
+            "source": "embedded_packet::stage_A/B/C",
+            "type": "spreadsheet/xlsx"
+          },
+          {
+            "description": "Structured recommendation memo with rule execution, row-level citations, controlling-variable diagnosis, uncertainty notes, and final action guidance.",
+            "source": "embedded_packet::stage_A/B/C",
+            "type": "text/markdown"
+          }
+        ],
+        "attempt_path": "[REDACTED_LOCAL_PATH]"
+      },
+      "produced_deliverable_items": [
+        "stimulation_hold_recommendation.md",
+        "microseismic_traffic_light.xlsx"
+      ],
+      "raw_actual_outputs": {
+        "artifacts": [
+          {
+            "description": "Traffic-light assessment workbook with embedded formulas for stage status, event-density calculation, validation checks, uncertainty notes, sensitivity checks, and final decision labels.",
+            "source": "embedded_packet::stage_A/B/C",
+            "type": "spreadsheet/xlsx"
+          },
+          {
+            "description": "Structured recommendation memo with rule execution, row-level citations, controlling-variable diagnosis, uncertainty notes, and final action guidance.",
+            "source": "embedded_packet::stage_A/B/C",
+            "type": "text/markdown"
+          }
+        ],
+        "attempt_path": "[REDACTED_LOCAL_PATH]",
+        "original_internal_task_id": "aa_task_0006",
+        "task_id": "606"
+      }
+    },
+    "output_summary": "Normalized actual outputs from artifact files.",
+    "status": "success",
+    "original_internal_task_id": "aa_task_0006",
+    "task_id": "606",
+    "required_deliverables": [
+      "microseismic_traffic_light.xlsx",
+      "stimulation_hold_recommendation.md"
+    ],
+    "produced_deliverables": [
+      "stimulation_hold_recommendation.md",
+      "microseismic_traffic_light.xlsx"
+    ],
+    "missing_required_deliverables": [],
+    "deliverable_produced": true,
+    "deliverable_file_included": false,
+    "included_generated_artifacts": false,
+    "artifacts_excluded_reason": "Generated output artifacts are excluded from the public seed dataset by default.",
+    "logs_included": false,
+    "logs_excluded_reason": "Raw runner logs are excluded from the public seed dataset."
+  },
+  "agent_config": null,
+  "agent_tools": [
+    "codex_cli",
+    "Bash",
+    "python",
+    "file_read",
+    "file_write",
+    "apply_patch"
+  ],
+  "artifacts": [],
+  "original_internal_attempt_id": "aa_task_0006_baseline",
+  "attempt_id": "606-baseline",
+  "attempt_kind": "baseline",
+  "attempt_status": "completed",
+  "collection_id": null,
+  "completion_reason": null,
+  "ended_at": null,
+  "final_attempt_id": null,
+  "initial_attempt_id": null,
+  "iteration_index": null,
+  "learning": null,
+  "memory": null,
+  "metadata_json": {
+    "codex_command": [
+      "codex",
+      "exec",
+      "--sandbox",
+      "workspace-write",
+      "<prompt>"
+    ],
+    "codex_sandbox": "workspace-write",
+    "discarded_step_count": 0,
+    "raw_trace_list": [
+      {
+        "action": "read_task_inputs",
+        "actor": "worker",
+        "artifact_refs": [
+          "input/task.json",
+          "input/task_brief.md"
+        ],
+        "causal_note": "Task context and source of truth captured.",
+        "causal_type": "root",
+        "caused_by": null,
+        "error_message": null,
+        "error_type": null,
+        "input": "cat input/task.json && cat input/task_brief.md",
+        "metadata_json": {
+          "source": "embedded_packet"
+        },
+        "observation": "Loaded task.json and task_brief.md for exact packet and constraints.",
+        "operation": "read",
+        "output": "Extracted stage packet A/B/C and exact rule/action definitions from embedded source.",
+        "reasoning": "Required baseline is the embedded packet only.",
+        "state_change": "In-memory understanding initialized; no files changed.",
+        "step": 1,
+        "step_outcome": "completed",
+        "success": true,
+        "tool": "functions.exec_command",
+        "turn": 1
+      },
+      {
+        "action": "prepare_artifacts_directory",
+        "actor": "worker",
+        "causal_note": "Prepares filesystem for deliverables.",
+        "causal_type": "direct",
+        "caused_by": 1,
+        "error_message": null,
+        "error_type": null,
+        "input": "mkdir -p artifacts && ls -la",
+        "metadata_json": {
+          "artifact_root": "artifacts"
+        },
+        "observation": "Created required artifacts directory.",
+        "operation": "write",
+        "output": "Workspace now includes artifacts/ root.",
+        "reasoning": "Required output files must be under ./artifacts.",
+        "state_change": "Created ./artifacts.",
+        "step": 2,
+        "step_outcome": "completed",
+        "success": true,
+        "tool": "functions.exec_command",
+        "turn": 2
+      },
+      {
+        "action": "attempt_xlsx_with_openpyxl_v1",
+        "actor": "worker",
+        "causal_note": "Error recovery step.",
+        "causal_type": "direct",
+        "caused_by": 2,
+        "error_message": "f-string unterminated string literal in Python script.",
+        "error_type": "SyntaxError",
+        "input": "python3 script using openpyxl to emit microseismic_traffic_light.xlsx",
+        "metadata_json": {
+          "attempt": 1,
+          "target_file": "[EXCLUDED_GENERATED_ARTIFACT]"
+        },
+        "observation": "Attempted programmatic spreadsheet build with formulas and sensitivity checks.",
+        "operation": "write",
+        "output": "Script aborted with unterminated string literal.",
+        "reasoning": "Retry needed after syntax issue.",
+        "state_change": "No artifact persisted.",
+        "step": 3,
+        "step_outcome": "failed",
+        "success": false,
+        "tool": "functions.exec_command",
+        "turn": 3
+      },
+      {
+        "action": "attempt_xlsx_with_openpyxl_v2",
+        "actor": "worker",
+        "causal_note": "Retry revealed missing library condition.",
+        "causal_type": "direct",
+        "caused_by": 3,
+        "error_message": "No module named 'openpyxl'",
+        "error_type": "ModuleNotFoundError",
+        "input": "python3 revised openpyxl script",
+        "metadata_json": {
+          "attempt": 2,
+          "target_file": "[EXCLUDED_GENERATED_ARTIFACT]"
+        },
+        "observation": "Retried with corrected script but dependency missing.",
+        "operation": "write",
+        "output": "Execution stopped because openpyxl is not installed.",
+        "reasoning": "Need fallback path that does not depend on non-present libs.",
+        "state_change": "No artifact persisted.",
+        "step": 4,
+        "step_outcome": "failed",
+        "success": false,
+        "tool": "functions.exec_command",
+        "turn": 4
+      },
+      {
+        "action": "verify_runtime_libraries_and_tools",
+        "actor": "worker",
+        "causal_note": "Determined feasible fallback implementation.",
+        "causal_type": "direct",
+        "caused_by": 4,
+        "error_message": null,
+        "error_type": null,
+        "input": "python module probes; which libreoffice/soffice/unoconv/ssconvert",
+        "metadata_json": {
+          "converters_available": false,
+          "libraries_available": false
+        },
+        "observation": "Checked for xlsxwriter/pandas and office converters; not available.",
+        "operation": "verify",
+        "output": "No supported spreadsheet library or converter available.",
+        "reasoning": "Confirmed need for library-free OOXML emission.",
+        "state_change": "No file changes.",
+        "step": 5,
+        "step_outcome": "completed",
+        "success": true,
+        "tool": "functions.exec_command",
+        "turn": 5
+      },
+      {
+        "action": "generate_xlsx_minimal_ooxml",
+        "actor": "worker",
+        "causal_note": "Fallback implementation successfully completed.",
+        "causal_type": "direct",
+        "caused_by": 5,
+        "error_message": null,
+        "error_type": null,
+        "input": "python3 OOXML writer creating workbook.xml, sheet xml, styles and content types",
+        "metadata_json": {
+          "sheet_count": 4,
+          "size_bytes": 6942
+        },
+        "observation": "Built XLSX via ZIP+XML with four sheets and embedded formulas.",
+        "operation": "write",
+        "output": "Created [EXCLUDED_GENERATED_ARTIFACT]",
+        "reasoning": "Library-free, reproducible output with executable formulas and required fields.",
+        "state_change": "Created [EXCLUDED_GENERATED_ARTIFACT] with Stage_Assessment, Validation_and_Thresholds, Sensitivity, Decision_Engine sheets.",
+        "step": 6,
+        "step_outcome": "completed",
+        "success": true,
+        "tool": "functions.exec_command",
+        "turn": 6
+      },
+      {
+        "action": "write_recommendation_markdown",
+        "actor": "worker",
+        "causal_note": "Aligns narrative output with workbook outputs.",
+        "causal_type": "direct",
+        "caused_by": 6,
+        "error_message": null,
+        "error_type": null,
+        "input": "cat > [EXCLUDED_GENERATED_ARTIFACT]",
+        "metadata_json": {
+          "line_count": 83
+        },
+        "observation": "Wrote recommendation memo with row-level citations and final decision table.",
+        "operation": "write",
+        "output": "Created 83-line recommendation document.",
+        "reasoning": "User-facing decision artifact required with sensitivity and control logic narrative.",
+        "state_change": "Created [EXCLUDED_GENERATED_ARTIFACT]",
+        "step": 7,
+        "step_outcome": "completed",
+        "success": true,
+        "tool": "functions.exec_command",
+        "turn": 7
+      },
+      {
+        "action": "write_actual_outputs_manifest",
+        "actor": "worker",
+        "artifact_refs": [
+          "actual_outputs.json"
+        ],
+        "causal_note": "Close traceable deliverable record.",
+        "causal_type": "direct",
+        "caused_by": 7,
+        "error_message": null,
+        "error_type": null,
+        "input": "cat > actual_outputs.json",
+        "metadata_json": {
+          "artifact_count": 2
+        },
+        "observation": "Wrote required output inventory file with required artifact paths.",
+        "operation": "write",
+        "output": "Created actual_outputs.json.",
+        "reasoning": "Output contract explicitly asks for actual_outputs.json.",
+        "state_change": "Created ./actual_outputs.json.",
+        "step": 8,
+        "step_outcome": "completed",
+        "success": true,
+        "tool": "functions.exec_command",
+        "turn": 8
+      },
+      {
+        "action": "write_agent_trace",
+        "actor": "worker",
+        "artifact_refs": [
+          "agent_trace.json"
+        ],
+        "causal_note": "Final bookkeeping deliverable step.",
+        "causal_type": "direct",
+        "caused_by": 8,
+        "error_message": null,
+        "error_type": null,
+        "input": "cat > agent_trace.json",
+        "metadata_json": {
+          "steps": 9
+        },
+        "observation": "Created canonical workflow trace with success and error causality.",
+        "operation": "write",
+        "output": "Created agent_trace.json containing ordered trace entries.",
+        "reasoning": "Required by task instructions as structured trace evidence.",
+        "state_change": "Created ./agent_trace.json.",
+        "step": 9,
+        "step_outcome": "completed",
+        "success": true,
+        "tool": "functions.exec_command",
+        "turn": 9
+      }
+    ],
+    "raw_trace_preserved": true,
+    "raw_trace_shape": "list",
+    "raw_trace_step_source": "steps",
+    "schema_valid": true,
+    "trace_normalization_status": "normalized",
+    "trace_valid": true
+  },
+  "preferred_attempt_id": null,
+  "previous_attempt_id": null,
+  "prior_trace_id": null,
+  "revision_attempt_ids": [],
+  "revision_group_id": null,
+  "schema_version": "aa-trace-v0.1",
+  "skills": null,
+  "started_at": null,
+  "steps": [
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "artifact_refs": [
+        "input/task.json",
+        "input/task_brief.md"
+      ],
+      "causal_note": null,
+      "causal_type": null,
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "cat input/task.json && cat input/task_brief.md",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "original_action": "read_task_inputs",
+        "raw_step": {
+          "action": "read_task_inputs",
+          "actor": "worker",
+          "artifact_refs": [
+            "input/task.json",
+            "input/task_brief.md"
+          ],
+          "causal_note": "Task context and source of truth captured.",
+          "causal_type": "root",
+          "caused_by": null,
+          "error_message": null,
+          "error_type": null,
+          "input": "cat input/task.json && cat input/task_brief.md",
+          "metadata_json": {
+            "source": "embedded_packet"
+          },
+          "observation": "Loaded task.json and task_brief.md for exact packet and constraints.",
+          "operation": "read",
+          "output": "Extracted stage packet A/B/C and exact rule/action definitions from embedded source.",
+          "reasoning": "Required baseline is the embedded packet only.",
+          "state_change": "In-memory understanding initialized; no files changed.",
+          "step": 1,
+          "step_outcome": "completed",
+          "success": true,
+          "tool": "functions.exec_command",
+          "turn": 1
+        },
+        "source": "embedded_packet"
+      },
+      "observation": "Loaded task.json and task_brief.md for exact packet and constraints.",
+      "operation": "read",
+      "output": "Extracted stage packet A/B/C and exact rule/action definitions from embedded source.",
+      "parallel_group": null,
+      "reasoning": "Required baseline is the embedded packet only.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "In-memory understanding initialized; no files changed.",
+      "step": 1,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "Bash",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "causal_note": "Prepares filesystem for deliverables.",
+      "causal_type": "other",
+      "caused_by": [
+        1
+      ],
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "mkdir -p artifacts && ls -la",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "artifact_root": "artifacts",
+        "original_action": "prepare_artifacts_directory",
+        "original_causal_type": "direct",
+        "raw_step": {
+          "action": "prepare_artifacts_directory",
+          "actor": "worker",
+          "causal_note": "Prepares filesystem for deliverables.",
+          "causal_type": "direct",
+          "caused_by": 1,
+          "error_message": null,
+          "error_type": null,
+          "input": "mkdir -p artifacts && ls -la",
+          "metadata_json": {
+            "artifact_root": "artifacts"
+          },
+          "observation": "Created required artifacts directory.",
+          "operation": "write",
+          "output": "Workspace now includes artifacts/ root.",
+          "reasoning": "Required output files must be under ./artifacts.",
+          "state_change": "Created ./artifacts.",
+          "step": 2,
+          "step_outcome": "completed",
+          "success": true,
+          "tool": "functions.exec_command",
+          "turn": 2
+        }
+      },
+      "observation": "Created required artifacts directory.",
+      "operation": "write",
+      "output": "Workspace now includes artifacts/ root.",
+      "parallel_group": null,
+      "reasoning": "Required output files must be under ./artifacts.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Created ./artifacts.",
+      "step": 2,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "Bash",
+      "turn": 2
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "causal_note": "Error recovery step.",
+      "causal_type": "other",
+      "caused_by": [
+        2
+      ],
+      "ended_at": null,
+      "error_message": "f-string unterminated string literal in Python script.",
+      "error_type": "SyntaxError",
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "python3 script using openpyxl to emit microseismic_traffic_light.xlsx",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "attempt": 1,
+        "original_action": "attempt_xlsx_with_openpyxl_v1",
+        "original_causal_type": "direct",
+        "raw_step": {
+          "action": "attempt_xlsx_with_openpyxl_v1",
+          "actor": "worker",
+          "causal_note": "Error recovery step.",
+          "causal_type": "direct",
+          "caused_by": 2,
+          "error_message": "f-string unterminated string literal in Python script.",
+          "error_type": "SyntaxError",
+          "input": "python3 script using openpyxl to emit microseismic_traffic_light.xlsx",
+          "metadata_json": {
+            "attempt": 1,
+            "target_file": "[EXCLUDED_GENERATED_ARTIFACT]"
+          },
+          "observation": "Attempted programmatic spreadsheet build with formulas and sensitivity checks.",
+          "operation": "write",
+          "output": "Script aborted with unterminated string literal.",
+          "reasoning": "Retry needed after syntax issue.",
+          "state_change": "No artifact persisted.",
+          "step": 3,
+          "step_outcome": "failed",
+          "success": false,
+          "tool": "functions.exec_command",
+          "turn": 3
+        },
+        "target_file": "[EXCLUDED_GENERATED_ARTIFACT]"
+      },
+      "observation": "Attempted programmatic spreadsheet build with formulas and sensitivity checks.",
+      "operation": "write",
+      "output": "Script aborted with unterminated string literal.",
+      "parallel_group": null,
+      "reasoning": "Retry needed after syntax issue.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "No artifact persisted.",
+      "step": 3,
+      "step_outcome": "failed",
+      "success": false,
+      "tool": "python",
+      "turn": 3
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "causal_note": "Retry revealed missing library condition.",
+      "causal_type": "other",
+      "caused_by": [
+        3
+      ],
+      "ended_at": null,
+      "error_message": "No module named 'openpyxl'",
+      "error_type": "ModuleNotFoundError",
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "python3 revised openpyxl script",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "attempt": 2,
+        "original_action": "attempt_xlsx_with_openpyxl_v2",
+        "original_causal_type": "direct",
+        "raw_step": {
+          "action": "attempt_xlsx_with_openpyxl_v2",
+          "actor": "worker",
+          "causal_note": "Retry revealed missing library condition.",
+          "causal_type": "direct",
+          "caused_by": 3,
+          "error_message": "No module named 'openpyxl'",
+          "error_type": "ModuleNotFoundError",
+          "input": "python3 revised openpyxl script",
+          "metadata_json": {
+            "attempt": 2,
+            "target_file": "[EXCLUDED_GENERATED_ARTIFACT]"
+          },
+          "observation": "Retried with corrected script but dependency missing.",
+          "operation": "write",
+          "output": "Execution stopped because openpyxl is not installed.",
+          "reasoning": "Need fallback path that does not depend on non-present libs.",
+          "state_change": "No artifact persisted.",
+          "step": 4,
+          "step_outcome": "failed",
+          "success": false,
+          "tool": "functions.exec_command",
+          "turn": 4
+        },
+        "target_file": "[EXCLUDED_GENERATED_ARTIFACT]"
+      },
+      "observation": "Retried with corrected script but dependency missing.",
+      "operation": "write",
+      "output": "Execution stopped because openpyxl is not installed.",
+      "parallel_group": null,
+      "reasoning": "Need fallback path that does not depend on non-present libs.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "No artifact persisted.",
+      "step": 4,
+      "step_outcome": "failed",
+      "success": false,
+      "tool": "python",
+      "turn": 4
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "causal_note": "Determined feasible fallback implementation.",
+      "causal_type": "other",
+      "caused_by": [
+        4
+      ],
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "python module probes; which libreoffice/soffice/unoconv/ssconvert",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "converters_available": false,
+        "libraries_available": false,
+        "original_action": "verify_runtime_libraries_and_tools",
+        "original_causal_type": "direct",
+        "raw_step": {
+          "action": "verify_runtime_libraries_and_tools",
+          "actor": "worker",
+          "causal_note": "Determined feasible fallback implementation.",
+          "causal_type": "direct",
+          "caused_by": 4,
+          "error_message": null,
+          "error_type": null,
+          "input": "python module probes; which libreoffice/soffice/unoconv/ssconvert",
+          "metadata_json": {
+            "converters_available": false,
+            "libraries_available": false
+          },
+          "observation": "Checked for xlsxwriter/pandas and office converters; not available.",
+          "operation": "verify",
+          "output": "No supported spreadsheet library or converter available.",
+          "reasoning": "Confirmed need for library-free OOXML emission.",
+          "state_change": "No file changes.",
+          "step": 5,
+          "step_outcome": "completed",
+          "success": true,
+          "tool": "functions.exec_command",
+          "turn": 5
+        }
+      },
+      "observation": "Checked for xlsxwriter/pandas and office converters; not available.",
+      "operation": "verify",
+      "output": "No supported spreadsheet library or converter available.",
+      "parallel_group": null,
+      "reasoning": "Confirmed need for library-free OOXML emission.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "No file changes.",
+      "step": 5,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "python",
+      "turn": 5
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "causal_note": "Fallback implementation successfully completed.",
+      "causal_type": "other",
+      "caused_by": [
+        5
+      ],
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "python3 OOXML writer creating workbook.xml, sheet xml, styles and content types",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "original_action": "generate_xlsx_minimal_ooxml",
+        "original_causal_type": "direct",
+        "raw_step": {
+          "action": "generate_xlsx_minimal_ooxml",
+          "actor": "worker",
+          "causal_note": "Fallback implementation successfully completed.",
+          "causal_type": "direct",
+          "caused_by": 5,
+          "error_message": null,
+          "error_type": null,
+          "input": "python3 OOXML writer creating workbook.xml, sheet xml, styles and content types",
+          "metadata_json": {
+            "sheet_count": 4,
+            "size_bytes": 6942
+          },
+          "observation": "Built XLSX via ZIP+XML with four sheets and embedded formulas.",
+          "operation": "write",
+          "output": "Created [EXCLUDED_GENERATED_ARTIFACT]",
+          "reasoning": "Library-free, reproducible output with executable formulas and required fields.",
+          "state_change": "Created [EXCLUDED_GENERATED_ARTIFACT] with Stage_Assessment, Validation_and_Thresholds, Sensitivity, Decision_Engine sheets.",
+          "step": 6,
+          "step_outcome": "completed",
+          "success": true,
+          "tool": "functions.exec_command",
+          "turn": 6
+        },
+        "sheet_count": 4,
+        "size_bytes": 6942
+      },
+      "observation": "Built XLSX via ZIP+XML with four sheets and embedded formulas.",
+      "operation": "write",
+      "output": "Created [EXCLUDED_GENERATED_ARTIFACT]",
+      "parallel_group": null,
+      "reasoning": "Library-free, reproducible output with executable formulas and required fields.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Created [EXCLUDED_GENERATED_ARTIFACT] with Stage_Assessment, Validation_and_Thresholds, Sensitivity, Decision_Engine sheets.",
+      "step": 6,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "python",
+      "turn": 6
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "causal_note": "Aligns narrative output with workbook outputs.",
+      "causal_type": "other",
+      "caused_by": [
+        6
+      ],
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "cat > [EXCLUDED_GENERATED_ARTIFACT]",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "line_count": 83,
+        "original_action": "write_recommendation_markdown",
+        "original_causal_type": "direct",
+        "raw_step": {
+          "action": "write_recommendation_markdown",
+          "actor": "worker",
+          "causal_note": "Aligns narrative output with workbook outputs.",
+          "causal_type": "direct",
+          "caused_by": 6,
+          "error_message": null,
+          "error_type": null,
+          "input": "cat > [EXCLUDED_GENERATED_ARTIFACT]",
+          "metadata_json": {
+            "line_count": 83
+          },
+          "observation": "Wrote recommendation memo with row-level citations and final decision table.",
+          "operation": "write",
+          "output": "Created 83-line recommendation document.",
+          "reasoning": "User-facing decision artifact required with sensitivity and control logic narrative.",
+          "state_change": "Created [EXCLUDED_GENERATED_ARTIFACT]",
+          "step": 7,
+          "step_outcome": "completed",
+          "success": true,
+          "tool": "functions.exec_command",
+          "turn": 7
+        }
+      },
+      "observation": "Wrote recommendation memo with row-level citations and final decision table.",
+      "operation": "write",
+      "output": "Created 83-line recommendation document.",
+      "parallel_group": null,
+      "reasoning": "User-facing decision artifact required with sensitivity and control logic narrative.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Created [EXCLUDED_GENERATED_ARTIFACT]",
+      "step": 7,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "Bash",
+      "turn": 7
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "artifact_refs": [
+        "actual_outputs.json"
+      ],
+      "causal_note": "Close traceable deliverable record.",
+      "causal_type": "other",
+      "caused_by": [
+        7
+      ],
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "cat > actual_outputs.json",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "artifact_count": 2,
+        "original_action": "write_actual_outputs_manifest",
+        "original_causal_type": "direct",
+        "raw_step": {
+          "action": "write_actual_outputs_manifest",
+          "actor": "worker",
+          "artifact_refs": [
+            "actual_outputs.json"
+          ],
+          "causal_note": "Close traceable deliverable record.",
+          "causal_type": "direct",
+          "caused_by": 7,
+          "error_message": null,
+          "error_type": null,
+          "input": "cat > actual_outputs.json",
+          "metadata_json": {
+            "artifact_count": 2
+          },
+          "observation": "Wrote required output inventory file with required artifact paths.",
+          "operation": "write",
+          "output": "Created actual_outputs.json.",
+          "reasoning": "Output contract explicitly asks for actual_outputs.json.",
+          "state_change": "Created ./actual_outputs.json.",
+          "step": 8,
+          "step_outcome": "completed",
+          "success": true,
+          "tool": "functions.exec_command",
+          "turn": 8
+        }
+      },
+      "observation": "Wrote required output inventory file with required artifact paths.",
+      "operation": "write",
+      "output": "Created actual_outputs.json.",
+      "parallel_group": null,
+      "reasoning": "Output contract explicitly asks for actual_outputs.json.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Created ./actual_outputs.json.",
+      "step": 8,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "Bash",
+      "turn": 8
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "artifact_refs": [
+        "agent_trace.json"
+      ],
+      "causal_note": "Final bookkeeping deliverable step.",
+      "causal_type": "other",
+      "caused_by": [
+        8
+      ],
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "cat > agent_trace.json",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "original_action": "write_agent_trace",
+        "original_causal_type": "direct",
+        "raw_step": {
+          "action": "write_agent_trace",
+          "actor": "worker",
+          "artifact_refs": [
+            "agent_trace.json"
+          ],
+          "causal_note": "Final bookkeeping deliverable step.",
+          "causal_type": "direct",
+          "caused_by": 8,
+          "error_message": null,
+          "error_type": null,
+          "input": "cat > agent_trace.json",
+          "metadata_json": {
+            "steps": 9
+          },
+          "observation": "Created canonical workflow trace with success and error causality.",
+          "operation": "write",
+          "output": "Created agent_trace.json containing ordered trace entries.",
+          "reasoning": "Required by task instructions as structured trace evidence.",
+          "state_change": "Created ./agent_trace.json.",
+          "step": 9,
+          "step_outcome": "completed",
+          "success": true,
+          "tool": "functions.exec_command",
+          "turn": 9
+        },
+        "steps": 9
+      },
+      "observation": "Created canonical workflow trace with success and error causality.",
+      "operation": "write",
+      "output": "Created agent_trace.json containing ordered trace entries.",
+      "parallel_group": null,
+      "reasoning": "Required by task instructions as structured trace evidence.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Created ./agent_trace.json.",
+      "step": 9,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "Bash",
+      "turn": 9
+    }
+  ],
+  "system_prompt": null,
+  "system_prompt_hash": null,
+  "task": "Flagship expert task: Enhanced Geothermal Stimulation Microseismic Traffic-Light Review. Reality context: an enhanced geothermal stimulation campaign has rising microseismicity, and the regulator requires a traffic-light decision before the next injection stage. Embedded packet: stages: A injected_m3=1800 max_Mw=1.2 event_count=34 nearest_fault_km=2.4 pressure_MPa=31, B injected=2400 max_Mw=2.1 events=88 fault=1.1 pressure=36, C injected=2100 max_Mw=1.8 events=57 fault=0.8 pressure=34; thresholds green max_Mw<1.5 and fault>1.5km, amber max_Mw 1.5-2.0 or event_count>60, red max_Mw>2.0 or fault<1.0km with pressure>33; actions: reduce_pressure_15pct, pause_24h, deploy_extra_array cost=120000 improves_location_uncertainty from 700m to 250m. Rules and constraints: Apply the traffic-light rules exactly, calculate event density per 1000m3, identify whether pressure or fault distance controls the status, and recommend continue/reduce/pause with monitoring upgrades. Any red condition overrides economic arguments. Required work: deliver microseismic_traffic_light.xlsx + stimulation_hold_recommendation.md. The deliverables must include formulas or executable logic, intermediate calculations, row-level citations to the embedded packet, validation checks, uncertainty notes, sensitivity checks around the controlling thresholds, and a final decision table with pass/warn/fail/needs_review labels. Use only the embedded packet. Do not import external data, invent missing values, or hide unresolved assumptions.",
+  "task_family_id": null,
+  "original_internal_task_id": "aa_task_0006",
+  "task_id": "606",
+  "termination_reason": "task_complete",
+  "trace_id": "trace_606-baseline_normalized",
+  "trace_mode": "live"
+}

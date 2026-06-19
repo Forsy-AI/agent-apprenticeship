@@ -1,0 +1,81 @@
+{
+  "schema_version": "aa-seed-task-v0.1",
+  "task_id": "489",
+  "title": "eCTD Deficiency Response Triage",
+  "domain": "pharma_regulatory",
+  "subdomain": "ectd_deficiency_triage",
+  "domains": [
+    "pharma_regulatory"
+  ],
+  "subdomains": [
+    "ectd_deficiency_triage"
+  ],
+  "agent_apprentice_role": "pharma regulatory operations analyst",
+  "task_family": "deficiency_triage",
+  "difficulty_tier": "expert",
+  "expected_economic_value": "$65,000-$165,000 specialist audit-package",
+  "expected_economic_value_for_agent_apprentice": "$100-$250",
+  "expected_deliverable": "ectd_deficiency_triage.xlsx + response_plan.md",
+  "deliverables": [
+    "ectd_deficiency_triage.xlsx",
+    "response_plan.md"
+  ],
+  "normalized_title": "eCTD Deficiency Response Triage",
+  "instruction": "Context: a regulatory submissions team receives multi-module deficiencies near a deadline. Task packet: records: R1 deficiency_severity=8.94 module_dependency_count=423 response_days=32 approval_risk=1.96; R2 deficiency_severity=8.6 module_dependency_count=850 response_days=23 approval_risk=1.2; R3 deficiency_severity=7.84 module_dependency_count=800 response_days=76 approval_risk=8.83; R4 deficiency_severity=7.09 module_dependency_count=306 response_days=68 approval_risk=4.87; limit_deficiency_severity=8.85; limit_module_dependency_count=481; limit_response_days=13; decision_budget_usd=250000; sensitivity_shift_pct=5; hard_threshold_record_count=1;. Rules and constraints: Compute normalized risk = deficiency_severity/limit_deficiency_severity + module_dependency_count/limit_module_dependency_count + 0.5*response_days/limit_response_days - 0.4*approval_risk/limit_approval_risk; fail if risk>1.15, warn if 0.95-1.15, pass otherwise. Recommendations cannot use external measurements, specialized licensed software, or hidden assumptions; all calculations must use only the task packet, and any contradictory or under-supported record must be marked needs_review. Required work: prioritize responses and evidence owners; calculate derived metrics, classify every record, identify the smallest defensible intervention, and write the decision rationale. Deliver ectd_deficiency_triage.xlsx + response_plan.md with formulas or executable logic, record-level citations, validation checks, sensitivity notes, and a final recommendation table suitable for expert review. This task is self-contained: use the task packet as the factual record, do not add source references or external datasets, and preserve a high-fidelity audit trail for every calculation, classification, and recommendation. State assumptions and unresolved evidence gaps explicitly. When executed locally, place final deliverables under the artifacts/ directory.",
+  "task_status": "ready_to_run",
+  "run_status": "not_run",
+  "seed_rank": 194,
+  "display_order": 194,
+  "allowed_tools": [
+    "Local text editor or Markdown editor",
+    "Local spreadsheet, CSV, JSON, YAML, or scripting tools for deterministic calculations",
+    "Local validation or linting commands",
+    "Local plotting or diagramming tools when useful"
+  ],
+  "disallowed_tools": [
+    "External fact lookup or live data pulls",
+    "Live production systems, cloud accounts, trading systems, clinical systems, or industrial controls",
+    "Secret discovery, credential testing, or any action outside the prepared task workspace"
+  ],
+  "privacy_classification": "synthetic",
+  "needs_expert_review": true,
+  "input_requirements": [
+    "Use the task packet as the sole factual input.",
+    "Cite row IDs, record IDs, thresholds, formulas, and option IDs from the packet wherever they control a conclusion.",
+    "Mark missing, contradictory, or under-supported values as needs_review instead of inventing them."
+  ],
+  "inputs": [
+    "All factual inputs are embedded in the task packet.",
+    "Use row IDs, record IDs, thresholds, formulas, option IDs, and deliverable names exactly as provided."
+  ],
+  "output_requirements": [
+    "Produce the required deliverable files with the specified filenames when filenames are provided.",
+    "Include intermediate calculations or executable logic sufficient for another reviewer to reproduce the result.",
+    "Include validation checks, sensitivity notes around controlling thresholds, and a final decision or recommendation table."
+  ],
+  "constraints": [
+    "Use the task packet as the factual record.",
+    "Do not browse, call live services, import external datasets, or invent missing values.",
+    "Treat regulated or safety-critical outputs as review packets, not authorization to act."
+  ],
+  "quality_bar": [
+    "Treat the task as realistic professional work with domain-appropriate rigor.",
+    "Preserve the packet's domain detail, identifiers, thresholds, and edge cases in the final deliverables.",
+    "Make every recommendation traceable to explicit task-packet evidence or mark it as needs_review."
+  ],
+  "validation_expectations": [
+    "Check required fields, row counts, totals, thresholds, and classifications before finalizing.",
+    "Show enough formulas, script logic, or tables for an independent reviewer to reproduce the result.",
+    "Flag any contradiction, missing input, or threshold-sensitive conclusion."
+  ],
+  "edge_cases": [
+    "If packet evidence is incomplete, do not infer missing values; label the item needs_review.",
+    "If multiple options satisfy hard constraints, rank them using the packet's stated priorities and explain ties.",
+    "If a regulated or safety-critical conclusion appears, frame the output as a review packet rather than authorization to act."
+  ],
+  "privacy_safety_expectations": [
+    "Do not use live systems, private accounts, credentials, or external datasets.",
+    "Do not include raw secrets or operational instructions that would execute real-world changes.",
+    "Keep synthetic identifiers from the packet only when needed for verification."
+  ]
+}

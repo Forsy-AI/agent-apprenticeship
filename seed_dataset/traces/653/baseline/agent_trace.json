@@ -1,0 +1,733 @@
+{
+  "actual_outputs": {
+    "original_internal_attempt_id": "aa_task_0053_baseline",
+    "attempt_id": "653-baseline",
+    "attempt_kind": "baseline",
+    "error_message": null,
+    "error_type": null,
+    "metadata_json": {
+      "actual_outputs_discarded_field_count": 0,
+      "actual_outputs_normalized": true,
+      "expected_deliverable_items": [
+        "greenhouse_control.xlsx",
+        "grower_action_memo.md"
+      ],
+      "original_fields": {
+        "created_at": "2026-06-18",
+        "outputs": [
+          {
+            "name": "greenhouse_control.xlsx",
+            "notes": "Spreadsheet with Zone_Analysis, input assumptions, formulas, intermediate calculations, validation checks, uncertainty notes, sensitivity checks, and final decision table labels.",
+            "status": "created",
+            "type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+          },
+          {
+            "name": "grower_action_memo.md",
+            "notes": "Operational memo with per-zone actions, setpoints, estimated incremental energy logic, uncertainty and sensitivity sections, and final decision table labels.",
+            "status": "created",
+            "type": "text/markdown"
+          }
+        ]
+      },
+      "produced_deliverable_items": [
+        "grower_action_memo.md",
+        "greenhouse_control.xlsx"
+      ],
+      "raw_actual_outputs": {
+        "created_at": "2026-06-18",
+        "outputs": [
+          {
+            "name": "greenhouse_control.xlsx",
+            "notes": "Spreadsheet with Zone_Analysis, input assumptions, formulas, intermediate calculations, validation checks, uncertainty notes, sensitivity checks, and final decision table labels.",
+            "status": "created",
+            "type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+          },
+          {
+            "name": "grower_action_memo.md",
+            "notes": "Operational memo with per-zone actions, setpoints, estimated incremental energy logic, uncertainty and sensitivity sections, and final decision table labels.",
+            "status": "created",
+            "type": "text/markdown"
+          }
+        ],
+        "original_internal_task_id": "aa_task_0053",
+        "task_id": "653"
+      }
+    },
+    "output_summary": "Normalized actual outputs from artifact files.",
+    "status": "success",
+    "original_internal_task_id": "aa_task_0053",
+    "task_id": "653",
+    "required_deliverables": [
+      "greenhouse_control.xlsx",
+      "grower_action_memo.md"
+    ],
+    "produced_deliverables": [
+      "grower_action_memo.md",
+      "greenhouse_control.xlsx"
+    ],
+    "missing_required_deliverables": [],
+    "deliverable_produced": true,
+    "deliverable_file_included": false,
+    "included_generated_artifacts": false,
+    "artifacts_excluded_reason": "Generated output artifacts are excluded from the public seed dataset by default.",
+    "logs_included": false,
+    "logs_excluded_reason": "Raw runner logs are excluded from the public seed dataset."
+  },
+  "agent_config": null,
+  "agent_tools": [
+    "codex_cli",
+    "Bash",
+    "python",
+    "file_read",
+    "file_write",
+    "apply_patch"
+  ],
+  "artifacts": [],
+  "original_internal_attempt_id": "aa_task_0053_baseline",
+  "attempt_id": "653-baseline",
+  "attempt_kind": "baseline",
+  "attempt_status": "completed",
+  "collection_id": null,
+  "completion_reason": null,
+  "ended_at": null,
+  "final_attempt_id": null,
+  "initial_attempt_id": null,
+  "iteration_index": null,
+  "learning": null,
+  "memory": null,
+  "metadata_json": {
+    "codex_command": [
+      "codex",
+      "exec",
+      "--sandbox",
+      "workspace-write",
+      "<prompt>"
+    ],
+    "codex_sandbox": "workspace-write",
+    "discarded_step_count": 0,
+    "raw_trace_list": [
+      {
+        "action": "Read task context files",
+        "actor": "worker",
+        "artifact_refs": [
+          "input/task.json",
+          "input/task_brief.md"
+        ],
+        "causal_note": "Required for source-of-truth extraction.",
+        "causal_type": "planned",
+        "caused_by": "User task request",
+        "error_message": null,
+        "error_type": null,
+        "input": "pwd; ls -la; cat input/task.json; echo '---'; cat input/task_brief.md",
+        "metadata_json": {
+          "rows_seen": 2,
+          "zones": [
+            "Z1",
+            "Z2",
+            "Z3"
+          ]
+        },
+        "observation": "Loaded task JSON and brief; extracted embedded packet values and required constraints and deliverables.",
+        "operation": "read",
+        "output": "Task packet contains zones Z1, Z2, Z3 with target ranges temp 19-22, RH<80, CO2>=800, stress<0.30 and required actions dehumidify, heat_setpoint_up, CO2_boost.",
+        "reasoning": "Needed to capture exact constraints and rubric requirements before building artifacts.",
+        "state_change": "No file changes",
+        "step": 1,
+        "step_outcome": "pass",
+        "success": true,
+        "tool": "functions.exec_command",
+        "turn": 1
+      },
+      {
+        "action": "Attempt to generate spreadsheet with openpyxl",
+        "actor": "worker",
+        "causal_note": "Dependency gap identified and handled by fallback to manual OOXML writer.",
+        "causal_type": "error_resolution",
+        "caused_by": "Step 1 output",
+        "error_message": "No module named 'openpyxl'",
+        "error_type": "ModuleNotFoundError",
+        "input": "python3 script using openpyxl with formulas and multiple sheets",
+        "metadata_json": {
+          "dependency_checked": "openpyxl",
+          "fallback_needed": true
+        },
+        "observation": "Python environment lacks openpyxl module.",
+        "operation": "execute",
+        "output": "Script failed before file write: ModuleNotFoundError: No module named 'openpyxl'.",
+        "reasoning": "Need alternative implementation method because required xlsx libraries unavailable.",
+        "state_change": "No file changes",
+        "step": 2,
+        "step_outcome": "retry",
+        "success": false,
+        "tool": "functions.exec_command",
+        "turn": 1
+      },
+      {
+        "action": "Check alternate python library availability",
+        "actor": "worker",
+        "causal_note": "Library check before changing implementation path.",
+        "causal_type": "planned",
+        "caused_by": "Retry from step 2",
+        "error_message": null,
+        "error_type": null,
+        "input": "python3 - <<'PY' ... importlib.util.find_spec('openpyxl') ... find_spec('xlsxwriter')",
+        "metadata_json": {
+          "checked_packages": [
+            "openpyxl",
+            "xlsxwriter",
+            "pandas",
+            "xlwt",
+            "xlsx",
+            "xlsx2csv",
+            "csvkit"
+          ]
+        },
+        "observation": "Neither openpyxl nor xlsxwriter are installed.",
+        "operation": "verify",
+        "output": "openpyxl=False, xlsxwriter=False",
+        "reasoning": "Confirmed manual OOXML assembly required in environment.",
+        "state_change": "No file changes",
+        "step": 3,
+        "step_outcome": "pass",
+        "success": true,
+        "tool": "functions.exec_command",
+        "turn": 1
+      },
+      {
+        "action": "Build greenhouse_control.xlsx using manual OOXML zip writer",
+        "actor": "worker",
+        "causal_note": "Fallback path to produce valid xlsx without external dependencies.",
+        "causal_type": "implementation_choice",
+        "caused_by": "Dependency gaps in steps 2-3",
+        "error_message": null,
+        "error_type": null,
+        "input": "python3 script writing [EXCLUDED_GENERATED_ARTIFACT] with inline formula XML (Inputs_Assumptions, Zone_Analysis, Validation_Checks, Final_Decision_Table, Sensitivity_Checks).",
+        "metadata_json": {
+          "formula_cells_count": 120,
+          "sections": [
+            "Inputs_and_Assumptions",
+            "Zone_Analysis",
+            "Validation_Checks",
+            "Final_Decision_Table",
+            "Sensitivity_Checks"
+          ]
+        },
+        "observation": "Created an xlsx ZIP container with worksheet XML, workbook XML, style XML, and content types/relationships. Includes formula-based zone analysis and decision artifacts.",
+        "operation": "write",
+        "output": "wrote [EXCLUDED_GENERATED_ARTIFACT]",
+        "reasoning": "Used pure Python XML assembly to satisfy requirement despite missing spreadsheet libraries.",
+        "state_change": "Created [EXCLUDED_GENERATED_ARTIFACT]",
+        "step": 4,
+        "step_outcome": "pass",
+        "success": true,
+        "tool": "functions.exec_command",
+        "turn": 1
+      },
+      {
+        "action": "Write grower_action_memo.md",
+        "actor": "worker",
+        "causal_note": "Deliverable contract requires explanatory memo.",
+        "causal_type": "planned",
+        "caused_by": "Successful workbook generation",
+        "error_message": null,
+        "error_type": null,
+        "input": "cat <<'EOF' > [EXCLUDED_GENERATED_ARTIFACT]",
+        "metadata_json": {
+          "sections": [
+            "Zone actions",
+            "Energy impact formulas",
+            "Uncertainty",
+            "Sensitivity",
+            "Final decision table"
+          ]
+        },
+        "observation": "Authored operational memo with per-zone actions, energy formulas, uncertainty, sensitivity checks, and decision labels.",
+        "operation": "write",
+        "output": "wrote [EXCLUDED_GENERATED_ARTIFACT]",
+        "reasoning": "Needed concise operational guidance directly tied to the embedded packet and spreadsheet logic.",
+        "state_change": "Created [EXCLUDED_GENERATED_ARTIFACT]",
+        "step": 5,
+        "step_outcome": "pass",
+        "success": true,
+        "tool": "functions.exec_command",
+        "turn": 1
+      },
+      {
+        "action": "Record final output manifest",
+        "actor": "worker",
+        "artifact_refs": [
+          "actual_outputs.json",
+          "agent_trace.json"
+        ],
+        "causal_note": "Closed task with required metadata artifacts.",
+        "causal_type": "planned",
+        "caused_by": "Completion of both user-requested deliverables",
+        "error_message": null,
+        "error_type": null,
+        "input": "cat > actual_outputs.json and cat > agent_trace.json",
+        "metadata_json": {
+          "output_files_written": 4
+        },
+        "observation": "Created actual_outputs.json and agent_trace.json with artifact and workflow details.",
+        "operation": "write",
+        "output": "wrote actual_outputs.json and agent_trace.json",
+        "reasoning": "Required by assignment to preserve execution evidence and final artifact metadata.",
+        "state_change": "Created required workflow trace files",
+        "step": 6,
+        "step_outcome": "pass",
+        "success": true,
+        "tool": "functions.exec_command",
+        "turn": 1
+      }
+    ],
+    "raw_trace_preserved": true,
+    "raw_trace_shape": "list",
+    "raw_trace_step_source": "steps",
+    "schema_valid": true,
+    "trace_normalization_status": "normalized",
+    "trace_valid": true
+  },
+  "preferred_attempt_id": null,
+  "previous_attempt_id": null,
+  "prior_trace_id": null,
+  "revision_attempt_ids": [],
+  "revision_group_id": null,
+  "schema_version": "aa-trace-v0.1",
+  "skills": null,
+  "started_at": null,
+  "steps": [
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "artifact_refs": [
+        "input/task.json",
+        "input/task_brief.md"
+      ],
+      "causal_note": "Required for source-of-truth extraction.",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "pwd; ls -la; cat input/task.json; echo '---'; cat input/task_brief.md",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "original_action": "Read task context files",
+        "original_causal_type": "planned",
+        "original_step_outcome": "pass",
+        "raw_step": {
+          "action": "Read task context files",
+          "actor": "worker",
+          "artifact_refs": [
+            "input/task.json",
+            "input/task_brief.md"
+          ],
+          "causal_note": "Required for source-of-truth extraction.",
+          "causal_type": "planned",
+          "caused_by": "User task request",
+          "error_message": null,
+          "error_type": null,
+          "input": "pwd; ls -la; cat input/task.json; echo '---'; cat input/task_brief.md",
+          "metadata_json": {
+            "rows_seen": 2,
+            "zones": [
+              "Z1",
+              "Z2",
+              "Z3"
+            ]
+          },
+          "observation": "Loaded task JSON and brief; extracted embedded packet values and required constraints and deliverables.",
+          "operation": "read",
+          "output": "Task packet contains zones Z1, Z2, Z3 with target ranges temp 19-22, RH<80, CO2>=800, stress<0.30 and required actions dehumidify, heat_setpoint_up, CO2_boost.",
+          "reasoning": "Needed to capture exact constraints and rubric requirements before building artifacts.",
+          "state_change": "No file changes",
+          "step": 1,
+          "step_outcome": "pass",
+          "success": true,
+          "tool": "functions.exec_command",
+          "turn": 1
+        },
+        "rows_seen": 2,
+        "zones": [
+          "Z1",
+          "Z2",
+          "Z3"
+        ]
+      },
+      "observation": "Loaded task JSON and brief; extracted embedded packet values and required constraints and deliverables.",
+      "operation": "read",
+      "output": "Task packet contains zones Z1, Z2, Z3 with target ranges temp 19-22, RH<80, CO2>=800, stress<0.30 and required actions dehumidify, heat_setpoint_up, CO2_boost.",
+      "parallel_group": null,
+      "reasoning": "Needed to capture exact constraints and rubric requirements before building artifacts.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "No file changes",
+      "step": 1,
+      "step_outcome": "neutral",
+      "success": true,
+      "tool": "Bash",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "causal_note": "Dependency gap identified and handled by fallback to manual OOXML writer.",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": "No module named 'openpyxl'",
+      "error_type": "ModuleNotFoundError",
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "python3 script using openpyxl with formulas and multiple sheets",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "dependency_checked": "openpyxl",
+        "fallback_needed": true,
+        "original_action": "Attempt to generate spreadsheet with openpyxl",
+        "original_causal_type": "error_resolution",
+        "original_step_outcome": "retry",
+        "raw_step": {
+          "action": "Attempt to generate spreadsheet with openpyxl",
+          "actor": "worker",
+          "causal_note": "Dependency gap identified and handled by fallback to manual OOXML writer.",
+          "causal_type": "error_resolution",
+          "caused_by": "Step 1 output",
+          "error_message": "No module named 'openpyxl'",
+          "error_type": "ModuleNotFoundError",
+          "input": "python3 script using openpyxl with formulas and multiple sheets",
+          "metadata_json": {
+            "dependency_checked": "openpyxl",
+            "fallback_needed": true
+          },
+          "observation": "Python environment lacks openpyxl module.",
+          "operation": "execute",
+          "output": "Script failed before file write: ModuleNotFoundError: No module named 'openpyxl'.",
+          "reasoning": "Need alternative implementation method because required xlsx libraries unavailable.",
+          "state_change": "No file changes",
+          "step": 2,
+          "step_outcome": "retry",
+          "success": false,
+          "tool": "functions.exec_command",
+          "turn": 1
+        }
+      },
+      "observation": "Python environment lacks openpyxl module.",
+      "operation": "execute",
+      "output": "Script failed before file write: ModuleNotFoundError: No module named 'openpyxl'.",
+      "parallel_group": null,
+      "reasoning": "Need alternative implementation method because required xlsx libraries unavailable.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "No file changes",
+      "step": 2,
+      "step_outcome": "neutral",
+      "success": false,
+      "tool": "python",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "causal_note": "Library check before changing implementation path.",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "python3 - <<'PY' ... importlib.util.find_spec('openpyxl') ... find_spec('xlsxwriter')",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "checked_packages": [
+          "openpyxl",
+          "xlsxwriter",
+          "pandas",
+          "xlwt",
+          "xlsx",
+          "xlsx2csv",
+          "csvkit"
+        ],
+        "original_action": "Check alternate python library availability",
+        "original_causal_type": "planned",
+        "original_step_outcome": "pass",
+        "raw_step": {
+          "action": "Check alternate python library availability",
+          "actor": "worker",
+          "causal_note": "Library check before changing implementation path.",
+          "causal_type": "planned",
+          "caused_by": "Retry from step 2",
+          "error_message": null,
+          "error_type": null,
+          "input": "python3 - <<'PY' ... importlib.util.find_spec('openpyxl') ... find_spec('xlsxwriter')",
+          "metadata_json": {
+            "checked_packages": [
+              "openpyxl",
+              "xlsxwriter",
+              "pandas",
+              "xlwt",
+              "xlsx",
+              "xlsx2csv",
+              "csvkit"
+            ]
+          },
+          "observation": "Neither openpyxl nor xlsxwriter are installed.",
+          "operation": "verify",
+          "output": "openpyxl=False, xlsxwriter=False",
+          "reasoning": "Confirmed manual OOXML assembly required in environment.",
+          "state_change": "No file changes",
+          "step": 3,
+          "step_outcome": "pass",
+          "success": true,
+          "tool": "functions.exec_command",
+          "turn": 1
+        }
+      },
+      "observation": "Neither openpyxl nor xlsxwriter are installed.",
+      "operation": "verify",
+      "output": "openpyxl=False, xlsxwriter=False",
+      "parallel_group": null,
+      "reasoning": "Confirmed manual OOXML assembly required in environment.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "No file changes",
+      "step": 3,
+      "step_outcome": "neutral",
+      "success": true,
+      "tool": "python",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "causal_note": "Fallback path to produce valid xlsx without external dependencies.",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "python3 script writing [EXCLUDED_GENERATED_ARTIFACT] with inline formula XML (Inputs_Assumptions, Zone_Analysis, Validation_Checks, Final_Decision_Table, Sensitivity_Checks).",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "formula_cells_count": 120,
+        "original_action": "Build greenhouse_control.xlsx using manual OOXML zip writer",
+        "original_causal_type": "implementation_choice",
+        "original_step_outcome": "pass",
+        "raw_step": {
+          "action": "Build greenhouse_control.xlsx using manual OOXML zip writer",
+          "actor": "worker",
+          "causal_note": "Fallback path to produce valid xlsx without external dependencies.",
+          "causal_type": "implementation_choice",
+          "caused_by": "Dependency gaps in steps 2-3",
+          "error_message": null,
+          "error_type": null,
+          "input": "python3 script writing [EXCLUDED_GENERATED_ARTIFACT] with inline formula XML (Inputs_Assumptions, Zone_Analysis, Validation_Checks, Final_Decision_Table, Sensitivity_Checks).",
+          "metadata_json": {
+            "formula_cells_count": 120,
+            "sections": [
+              "Inputs_and_Assumptions",
+              "Zone_Analysis",
+              "Validation_Checks",
+              "Final_Decision_Table",
+              "Sensitivity_Checks"
+            ]
+          },
+          "observation": "Created an xlsx ZIP container with worksheet XML, workbook XML, style XML, and content types/relationships. Includes formula-based zone analysis and decision artifacts.",
+          "operation": "write",
+          "output": "wrote [EXCLUDED_GENERATED_ARTIFACT]",
+          "reasoning": "Used pure Python XML assembly to satisfy requirement despite missing spreadsheet libraries.",
+          "state_change": "Created [EXCLUDED_GENERATED_ARTIFACT]",
+          "step": 4,
+          "step_outcome": "pass",
+          "success": true,
+          "tool": "functions.exec_command",
+          "turn": 1
+        },
+        "sections": [
+          "Inputs_and_Assumptions",
+          "Zone_Analysis",
+          "Validation_Checks",
+          "Final_Decision_Table",
+          "Sensitivity_Checks"
+        ]
+      },
+      "observation": "Created an xlsx ZIP container with worksheet XML, workbook XML, style XML, and content types/relationships. Includes formula-based zone analysis and decision artifacts.",
+      "operation": "write",
+      "output": "wrote [EXCLUDED_GENERATED_ARTIFACT]",
+      "parallel_group": null,
+      "reasoning": "Used pure Python XML assembly to satisfy requirement despite missing spreadsheet libraries.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Created [EXCLUDED_GENERATED_ARTIFACT]",
+      "step": 4,
+      "step_outcome": "neutral",
+      "success": true,
+      "tool": "python",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "causal_note": "Deliverable contract requires explanatory memo.",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "cat <<'EOF' > [EXCLUDED_GENERATED_ARTIFACT]",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "original_action": "Write grower_action_memo.md",
+        "original_causal_type": "planned",
+        "original_step_outcome": "pass",
+        "raw_step": {
+          "action": "Write grower_action_memo.md",
+          "actor": "worker",
+          "causal_note": "Deliverable contract requires explanatory memo.",
+          "causal_type": "planned",
+          "caused_by": "Successful workbook generation",
+          "error_message": null,
+          "error_type": null,
+          "input": "cat <<'EOF' > [EXCLUDED_GENERATED_ARTIFACT]",
+          "metadata_json": {
+            "sections": [
+              "Zone actions",
+              "Energy impact formulas",
+              "Uncertainty",
+              "Sensitivity",
+              "Final decision table"
+            ]
+          },
+          "observation": "Authored operational memo with per-zone actions, energy formulas, uncertainty, sensitivity checks, and decision labels.",
+          "operation": "write",
+          "output": "wrote [EXCLUDED_GENERATED_ARTIFACT]",
+          "reasoning": "Needed concise operational guidance directly tied to the embedded packet and spreadsheet logic.",
+          "state_change": "Created [EXCLUDED_GENERATED_ARTIFACT]",
+          "step": 5,
+          "step_outcome": "pass",
+          "success": true,
+          "tool": "functions.exec_command",
+          "turn": 1
+        },
+        "sections": [
+          "Zone actions",
+          "Energy impact formulas",
+          "Uncertainty",
+          "Sensitivity",
+          "Final decision table"
+        ]
+      },
+      "observation": "Authored operational memo with per-zone actions, energy formulas, uncertainty, sensitivity checks, and decision labels.",
+      "operation": "write",
+      "output": "wrote [EXCLUDED_GENERATED_ARTIFACT]",
+      "parallel_group": null,
+      "reasoning": "Needed concise operational guidance directly tied to the embedded packet and spreadsheet logic.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Created [EXCLUDED_GENERATED_ARTIFACT]",
+      "step": 5,
+      "step_outcome": "neutral",
+      "success": true,
+      "tool": "Bash",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "artifact_refs": [
+        "actual_outputs.json",
+        "agent_trace.json"
+      ],
+      "causal_note": "Closed task with required metadata artifacts.",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "cat > actual_outputs.json and cat > agent_trace.json",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "original_action": "Record final output manifest",
+        "original_causal_type": "planned",
+        "original_step_outcome": "pass",
+        "output_files_written": 4,
+        "raw_step": {
+          "action": "Record final output manifest",
+          "actor": "worker",
+          "artifact_refs": [
+            "actual_outputs.json",
+            "agent_trace.json"
+          ],
+          "causal_note": "Closed task with required metadata artifacts.",
+          "causal_type": "planned",
+          "caused_by": "Completion of both user-requested deliverables",
+          "error_message": null,
+          "error_type": null,
+          "input": "cat > actual_outputs.json and cat > agent_trace.json",
+          "metadata_json": {
+            "output_files_written": 4
+          },
+          "observation": "Created actual_outputs.json and agent_trace.json with artifact and workflow details.",
+          "operation": "write",
+          "output": "wrote actual_outputs.json and agent_trace.json",
+          "reasoning": "Required by assignment to preserve execution evidence and final artifact metadata.",
+          "state_change": "Created required workflow trace files",
+          "step": 6,
+          "step_outcome": "pass",
+          "success": true,
+          "tool": "functions.exec_command",
+          "turn": 1
+        }
+      },
+      "observation": "Created actual_outputs.json and agent_trace.json with artifact and workflow details.",
+      "operation": "write",
+      "output": "wrote actual_outputs.json and agent_trace.json",
+      "parallel_group": null,
+      "reasoning": "Required by assignment to preserve execution evidence and final artifact metadata.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Created required workflow trace files",
+      "step": 6,
+      "step_outcome": "neutral",
+      "success": true,
+      "tool": "Bash",
+      "turn": 1
+    }
+  ],
+  "system_prompt": null,
+  "system_prompt_hash": null,
+  "task": "Flagship expert task: Greenhouse Climate-Control Energy and Crop-Stress Optimization. Reality context: a greenhouse operator must reduce energy use without causing crop stress during a cold week. Embedded packet: zones: Z1 temp_C=20.5 RH=72 CO2_ppm=820 energy_kWh=420 stress_index=0.18, Z2 temp=17.8 RH=84 CO2=760 energy=390 stress=0.42, Z3 temp=21.2 RH=68 CO2=910 energy=470 stress=0.16; targets temp 19-22, RH<80, CO2>=800, stress<0.30; actions dehumidify, heat_setpoint_up, CO2_boost. Rules and constraints: Classify climate gaps, estimate incremental energy, and recommend setpoints. Required work: deliver greenhouse_control.xlsx + grower_action_memo.md. The deliverables must include formulas or executable logic, intermediate calculations, row-level citations to the embedded packet, validation checks, uncertainty notes, sensitivity checks around the controlling thresholds, and a final decision table with pass/warn/fail/needs_review labels. Use only the embedded packet. Do not import external data, invent missing values, or hide unresolved assumptions.",
+  "task_family_id": null,
+  "original_internal_task_id": "aa_task_0053",
+  "task_id": "653",
+  "termination_reason": "task_complete",
+  "trace_id": "trace_653-baseline_normalized",
+  "trace_mode": "live"
+}

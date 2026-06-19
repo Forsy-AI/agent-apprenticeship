@@ -1,0 +1,81 @@
+{
+  "schema_version": "aa-seed-task-v0.1",
+  "task_id": "466",
+  "title": "Options Margin Scenario Engine Backtest",
+  "domain": "derivatives_risk",
+  "subdomain": "options_margin_backtest",
+  "domains": [
+    "derivatives_risk"
+  ],
+  "subdomains": [
+    "options_margin_backtest"
+  ],
+  "agent_apprentice_role": "derivatives risk engineer",
+  "task_family": "margin_model_validation",
+  "difficulty_tier": "expert",
+  "expected_economic_value": "$30,000-$75,000 integration-analysis package",
+  "expected_economic_value_for_agent_apprentice": "$100-$250",
+  "expected_deliverable": "options_margin_backtest.ipynb + risk_note.md",
+  "deliverables": [
+    "options_margin_backtest.ipynb",
+    "risk_note.md"
+  ],
+  "normalized_title": "Options Margin Scenario Engine Backtest",
+  "instruction": "Context: a broker-dealer validates margin coverage after volatile sessions. Task packet: records: R1 underlying_move_pct=51 vol_shock_pts=63.85 model_margin_usd=180504 realized_loss_usd=292034; R2 underlying_move_pct=69.8 vol_shock_pts=65.82 model_margin_usd=442121 realized_loss_usd=796256; R3 underlying_move_pct=10.3 vol_shock_pts=44.26 model_margin_usd=362473 realized_loss_usd=831397; R4 underlying_move_pct=6 vol_shock_pts=60.24 model_margin_usd=359144 realized_loss_usd=209990; limit_underlying_move_pct=19.3; limit_vol_shock_pts=77.4; limit_model_margin_usd=661853; decision_budget_usd=25000; sensitivity_shift_pct=5; hard_threshold_record_count=1;. Rules and constraints: Compute margin = realized_loss_usd - (0.35*underlying_move_pct + 0.25*vol_shock_pts + 0.15*model_margin_usd); negative margin is fail and margin below 8% of the largest driver is warn. Recommendations cannot use external measurements, specialized licensed software, or hidden assumptions; all calculations must use only the task packet, and any contradictory or under-supported record must be marked needs_review. Required work: measure coverage and under-margin scenarios; build a reproducible workbook or script, preserve intermediate calculations, and produce an expert-review memo. Deliver options_margin_backtest.ipynb + risk_note.md with formulas or executable logic, record-level citations, validation checks, sensitivity notes, and a final recommendation table suitable for expert review. This task is self-contained: use the task packet as the factual record, do not add source references or external datasets, and preserve a high-fidelity audit trail for every calculation, classification, and recommendation. State assumptions and unresolved evidence gaps explicitly. When executed locally, place final deliverables under the artifacts/ directory.",
+  "task_status": "ready_to_run",
+  "run_status": "not_run",
+  "seed_rank": 171,
+  "display_order": 171,
+  "allowed_tools": [
+    "Local text editor or Markdown editor",
+    "Local spreadsheet, CSV, JSON, YAML, or scripting tools for deterministic calculations",
+    "Local validation or linting commands",
+    "Local plotting or diagramming tools when useful"
+  ],
+  "disallowed_tools": [
+    "External fact lookup or live data pulls",
+    "Live production systems, cloud accounts, trading systems, clinical systems, or industrial controls",
+    "Secret discovery, credential testing, or any action outside the prepared task workspace"
+  ],
+  "privacy_classification": "synthetic",
+  "needs_expert_review": true,
+  "input_requirements": [
+    "Use the task packet as the sole factual input.",
+    "Cite row IDs, record IDs, thresholds, formulas, and option IDs from the packet wherever they control a conclusion.",
+    "Mark missing, contradictory, or under-supported values as needs_review instead of inventing them."
+  ],
+  "inputs": [
+    "All factual inputs are embedded in the task packet.",
+    "Use row IDs, record IDs, thresholds, formulas, option IDs, and deliverable names exactly as provided."
+  ],
+  "output_requirements": [
+    "Produce the required deliverable files with the specified filenames when filenames are provided.",
+    "Include intermediate calculations or executable logic sufficient for another reviewer to reproduce the result.",
+    "Include validation checks, sensitivity notes around controlling thresholds, and a final decision or recommendation table."
+  ],
+  "constraints": [
+    "Use the task packet as the factual record.",
+    "Do not browse, call live services, import external datasets, or invent missing values.",
+    "Treat regulated or safety-critical outputs as review packets, not authorization to act."
+  ],
+  "quality_bar": [
+    "Treat the task as realistic professional work with domain-appropriate rigor.",
+    "Preserve the packet's domain detail, identifiers, thresholds, and edge cases in the final deliverables.",
+    "Make every recommendation traceable to explicit task-packet evidence or mark it as needs_review."
+  ],
+  "validation_expectations": [
+    "Check required fields, row counts, totals, thresholds, and classifications before finalizing.",
+    "Show enough formulas, script logic, or tables for an independent reviewer to reproduce the result.",
+    "Flag any contradiction, missing input, or threshold-sensitive conclusion."
+  ],
+  "edge_cases": [
+    "If packet evidence is incomplete, do not infer missing values; label the item needs_review.",
+    "If multiple options satisfy hard constraints, rank them using the packet's stated priorities and explain ties.",
+    "If a regulated or safety-critical conclusion appears, frame the output as a review packet rather than authorization to act."
+  ],
+  "privacy_safety_expectations": [
+    "Do not use live systems, private accounts, credentials, or external datasets.",
+    "Do not include raw secrets or operational instructions that would execute real-world changes.",
+    "Keep synthetic identifiers from the packet only when needed for verification."
+  ]
+}

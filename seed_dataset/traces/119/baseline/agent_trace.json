@@ -1,0 +1,647 @@
+{
+  "actual_outputs": {
+    "original_internal_attempt_id": "aa_task_0319_baseline",
+    "attempt_id": "119-baseline",
+    "attempt_kind": "baseline",
+    "error_message": null,
+    "error_type": null,
+    "metadata_json": {
+      "actual_outputs_discarded_field_count": 0,
+      "actual_outputs_normalized": true,
+      "expected_deliverable_items": [
+        "repair_disposition_table.md"
+      ],
+      "original_fields": {
+        "deliverables": [
+          {
+            "status": "created"
+          }
+        ],
+        "notes": [
+          "Manufacturability is marked needs_review because the packet does not supply a manufacturability record.",
+          "Quantified ranking from supplied values only: B > C > A."
+        ],
+        "support_files": [
+          {
+            "path": "agent_trace.json",
+            "status": "created"
+          }
+        ]
+      },
+      "produced_deliverable_items": [
+        "repair_disposition_table.md"
+      ],
+      "raw_actual_outputs": {
+        "deliverables": [
+          {
+            "status": "created"
+          }
+        ],
+        "notes": [
+          "Manufacturability is marked needs_review because the packet does not supply a manufacturability record.",
+          "Quantified ranking from supplied values only: B > C > A."
+        ],
+        "support_files": [
+          {
+            "path": "agent_trace.json",
+            "status": "created"
+          }
+        ]
+      }
+    },
+    "output_summary": "Normalized actual outputs from artifact files.",
+    "status": "success",
+    "original_internal_task_id": "aa_task_0319",
+    "task_id": "119",
+    "required_deliverables": [
+      "repair_disposition_table.md"
+    ],
+    "produced_deliverables": [
+      "repair_disposition_table.md"
+    ],
+    "missing_required_deliverables": [],
+    "deliverable_produced": true,
+    "deliverable_file_included": false,
+    "included_generated_artifacts": false,
+    "artifacts_excluded_reason": "Generated output artifacts are excluded from the public seed dataset by default.",
+    "logs_included": false,
+    "logs_excluded_reason": "Raw runner logs are excluded from the public seed dataset."
+  },
+  "agent_config": null,
+  "agent_tools": [
+    "codex_cli",
+    "Bash",
+    "python",
+    "file_read",
+    "file_write",
+    "apply_patch"
+  ],
+  "artifacts": [],
+  "original_internal_attempt_id": "aa_task_0319_baseline",
+  "attempt_id": "119-baseline",
+  "attempt_kind": "baseline",
+  "collection_id": null,
+  "completion_reason": null,
+  "ended_at": null,
+  "final_attempt_id": null,
+  "initial_attempt_id": null,
+  "iteration_index": null,
+  "learning": null,
+  "memory": null,
+  "metadata_json": {
+    "codex_command": [
+      "codex",
+      "exec",
+      "--sandbox",
+      "workspace-write",
+      "<prompt>"
+    ],
+    "codex_sandbox": "workspace-write",
+    "discarded_step_count": 0,
+    "raw_trace_preserved": true,
+    "raw_trace_step_source": "steps",
+    "schema_valid": true,
+    "trace_normalization_status": "partial",
+    "trace_valid": true
+  },
+  "preferred_attempt_id": null,
+  "previous_attempt_id": null,
+  "prior_trace_id": null,
+  "revision_attempt_ids": [],
+  "revision_group_id": null,
+  "schema_version": "agent_trace.v1",
+  "skills": null,
+  "started_at": null,
+  "steps": [
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "causal_note": null,
+      "causal_type": null,
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "{\"commands\": [\"pwd && rg --files .\", \"sed -n '1,220p' input/task.json && printf '\\\\n---TASK_BRIEF---\\\\n' && sed -n '1,220p' input/task_brief.md\"]}",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "inputs": {
+          "commands": [
+            "pwd && rg --files .",
+            "sed -n '1,220p' input/task.json && printf '\\n---TASK_BRIEF---\\n' && sed -n '1,220p' input/task_brief.md"
+          ]
+        },
+        "normalization_warnings": [
+          "step value 'read_input_context' was not numeric; defaulted to 1"
+        ],
+        "observed_files": [
+          "input/task.json",
+          "input/task_brief.md"
+        ],
+        "original_action": "read",
+        "original_operation": "inspect task files and repository layout",
+        "original_step": "read_input_context",
+        "original_step_outcome": "success",
+        "outputs": {
+          "extracted_packet_rows": [
+            {
+              "cost_per_kg": 16,
+              "density": 2.7,
+              "row": "A",
+              "strength_mpa": 500
+            },
+            {
+              "cost_per_kg": 26,
+              "density": 4.4,
+              "row": "B",
+              "strength_mpa": 900
+            },
+            {
+              "cost_per_kg": 40,
+              "density": 1.8,
+              "row": "C",
+              "strength_mpa": 716
+            }
+          ],
+          "scoring_weights": {
+            "cost": 0.2,
+            "manufacturability": 0.1,
+            "mass": 0.3,
+            "strength": 0.4
+          }
+        },
+        "raw_step": {
+          "action": "read",
+          "actor": "worker",
+          "causal_note": null,
+          "causal_type": null,
+          "caused_by": null,
+          "error_message": null,
+          "error_type": null,
+          "input": {
+            "commands": [
+              "pwd && rg --files .",
+              "sed -n '1,220p' input/task.json && printf '\\n---TASK_BRIEF---\\n' && sed -n '1,220p' input/task_brief.md"
+            ]
+          },
+          "metadata_json": {
+            "observed_files": [
+              "input/task.json",
+              "input/task_brief.md"
+            ]
+          },
+          "observation": "Workspace contained prompt.md, input/task.json, and input/task_brief.md. task.json and task_brief.md agreed on the composite repair disposition deliverable and the three packet rows.",
+          "operation": "inspect task files and repository layout",
+          "output": {
+            "extracted_packet_rows": [
+              {
+                "cost_per_kg": 16,
+                "density": 2.7,
+                "row": "A",
+                "strength_mpa": 500
+              },
+              {
+                "cost_per_kg": 26,
+                "density": 4.4,
+                "row": "B",
+                "strength_mpa": 900
+              },
+              {
+                "cost_per_kg": 40,
+                "density": 1.8,
+                "row": "C",
+                "strength_mpa": 716
+              }
+            ],
+            "scoring_weights": {
+              "cost": 0.2,
+              "manufacturability": 0.1,
+              "mass": 0.3,
+              "strength": 0.4
+            }
+          },
+          "reasoning": "Need exact supplied values before any calculation or drafting so the output stays packet-bound.",
+          "state_change": "Established the packet basis and the scoring dimensions to be used in the deliverable.",
+          "step": "read_input_context",
+          "step_outcome": "success",
+          "success": true,
+          "tool": "multi_tool_use.parallel",
+          "turn": 1
+        }
+      },
+      "observation": "Workspace contained prompt.md, input/task.json, and input/task_brief.md. task.json and task_brief.md agreed on the composite repair disposition deliverable and the three packet rows.",
+      "operation": "read",
+      "output": "{\"extracted_packet_rows\": [{\"cost_per_kg\": 16, \"density\": 2.7, \"row\": \"A\", \"strength_mpa\": 500}, {\"cost_per_kg\": 26, \"density\": 4.4, \"row\": \"B\", \"strength_mpa\": 900}, {\"cost_per_kg\": 40, \"density\": 1.8, \"row\": \"C\", \"strength_mpa\": 716}], \"scoring_weights\": {\"cost\": 0.2, \"manufacturability\": 0.1, \"mass\": 0.3, \"strength\": 0.4}}",
+      "parallel_group": null,
+      "reasoning": "Need exact supplied values before any calculation or drafting so the output stays packet-bound.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Established the packet basis and the scoring dimensions to be used in the deliverable.",
+      "step": 1,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "Bash",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "causal_note": "Arithmetic depended on the packet rows extracted in step 1.",
+      "causal_type": "other",
+      "caused_by": [
+        1
+      ],
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "{\"command\": \"node - <<'NODE'\\\\nconst options = {\\\\n  A: {strength:500, density:2.7, cost:16},\\\\n  B: {strength:900, density:4.4, cost:26},\\\\n  C: {strength:716, density:1.8, cost:40},\\\\n};\\\\nconst s = Object.values(options).map(o=>o.strength);\\\\nconst d = Object.values(options).map(o=>o.density);\\\\nconst c = Object.values(options).map(o=>o.cost);\\\\nconst min = a=>Math.min(...a), max=a=>Math.max(...a);\\\\nconst sr=[min(s),max(s)], dr=[min(d),max(d)], cr=[min(c),max(c)];\\\\nfor (const [k,o] of Object.entries(options)) {\\\\n  const strength=(o.strength-sr[0])/(sr[1]-sr[0]);\\\\n  const mass=(dr[1]-o.density)/(dr[1]-dr[0]);\\\\n  const cost=(cr[1]-o.cost)/(cr[1]-cr[0]);\\\\n  const total = strength*0.4 + mass*0.3 + cost*0.2;\\\\n  console.log(k, {strength, mass, cost, total});\\\\n}\\\\nNODE\"}",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "formula_basis": "min-max normalization with lower-is-better inversion for density and cost",
+        "inputs": {
+          "command": "node - <<'NODE'\\nconst options = {\\n  A: {strength:500, density:2.7, cost:16},\\n  B: {strength:900, density:4.4, cost:26},\\n  C: {strength:716, density:1.8, cost:40},\\n};\\nconst s = Object.values(options).map(o=>o.strength);\\nconst d = Object.values(options).map(o=>o.density);\\nconst c = Object.values(options).map(o=>o.cost);\\nconst min = a=>Math.min(...a), max=a=>Math.max(...a);\\nconst sr=[min(s),max(s)], dr=[min(d),max(d)], cr=[min(c),max(c)];\\nfor (const [k,o] of Object.entries(options)) {\\n  const strength=(o.strength-sr[0])/(sr[1]-sr[0]);\\n  const mass=(dr[1]-o.density)/(dr[1]-dr[0]);\\n  const cost=(cr[1]-o.cost)/(cr[1]-cr[0]);\\n  const total = strength*0.4 + mass*0.3 + cost*0.2;\\n  console.log(k, {strength, mass, cost, total});\\n}\\nNODE"
+        },
+        "normalization_warnings": [
+          "step value 'verify_arithmetic' was not numeric; defaulted to 2"
+        ],
+        "original_action": "calculate",
+        "original_causal_type": "verification",
+        "original_operation": "compute min-max normalized scores and weighted contributions",
+        "original_step": "verify_arithmetic",
+        "original_step_outcome": "success",
+        "outputs": {
+          "results": {
+            "A": {
+              "cost": 1,
+              "mass": 0.6538461538461537,
+              "strength": 0,
+              "total": 0.39615384615384613
+            },
+            "B": {
+              "cost": 0.5833333333333334,
+              "mass": 0,
+              "strength": 1,
+              "total": 0.5166666666666667
+            },
+            "C": {
+              "cost": 0,
+              "mass": 1,
+              "strength": 0.54,
+              "total": 0.516
+            }
+          }
+        },
+        "quantified_margin_b_minus_c": 0.0006666666666667043,
+        "raw_step": {
+          "action": "calculate",
+          "actor": "worker",
+          "causal_note": "Arithmetic depended on the packet rows extracted in step 1.",
+          "causal_type": "verification",
+          "caused_by": 1,
+          "error_message": null,
+          "error_type": null,
+          "input": {
+            "command": "node - <<'NODE'\\nconst options = {\\n  A: {strength:500, density:2.7, cost:16},\\n  B: {strength:900, density:4.4, cost:26},\\n  C: {strength:716, density:1.8, cost:40},\\n};\\nconst s = Object.values(options).map(o=>o.strength);\\nconst d = Object.values(options).map(o=>o.density);\\nconst c = Object.values(options).map(o=>o.cost);\\nconst min = a=>Math.min(...a), max=a=>Math.max(...a);\\nconst sr=[min(s),max(s)], dr=[min(d),max(d)], cr=[min(c),max(c)];\\nfor (const [k,o] of Object.entries(options)) {\\n  const strength=(o.strength-sr[0])/(sr[1]-sr[0]);\\n  const mass=(dr[1]-o.density)/(dr[1]-dr[0]);\\n  const cost=(cr[1]-o.cost)/(cr[1]-cr[0]);\\n  const total = strength*0.4 + mass*0.3 + cost*0.2;\\n  console.log(k, {strength, mass, cost, total});\\n}\\nNODE"
+          },
+          "metadata_json": {
+            "formula_basis": "min-max normalization with lower-is-better inversion for density and cost",
+            "quantified_margin_b_minus_c": 0.0006666666666667043
+          },
+          "observation": "Node calculations confirmed the quantified subtotal ranking B > C > A with B=0.5166666667, C=0.516, and A=0.3961538462 on the 90% quantified framework.",
+          "operation": "compute min-max normalized scores and weighted contributions",
+          "output": {
+            "results": {
+              "A": {
+                "cost": 1,
+                "mass": 0.6538461538461537,
+                "strength": 0,
+                "total": 0.39615384615384613
+              },
+              "B": {
+                "cost": 0.5833333333333334,
+                "mass": 0,
+                "strength": 1,
+                "total": 0.5166666666666667
+              },
+              "C": {
+                "cost": 0,
+                "mass": 1,
+                "strength": 0.54,
+                "total": 0.516
+              }
+            }
+          },
+          "reasoning": "I needed reproducible arithmetic before drafting the table and the decision note.",
+          "state_change": "Confirmed exact normalized scores, weighted contributions, and the small B-over-C margin needed for sensitivity notes.",
+          "step": "verify_arithmetic",
+          "step_outcome": "success",
+          "success": true,
+          "tool": "exec_command",
+          "turn": 2
+        }
+      },
+      "observation": "Node calculations confirmed the quantified subtotal ranking B > C > A with B=0.5166666667, C=0.516, and A=0.3961538462 on the 90% quantified framework.",
+      "operation": "other",
+      "output": "{\"results\": {\"A\": {\"cost\": 1, \"mass\": 0.6538461538461537, \"strength\": 0, \"total\": 0.39615384615384613}, \"B\": {\"cost\": 0.5833333333333334, \"mass\": 0, \"strength\": 1, \"total\": 0.5166666666666667}, \"C\": {\"cost\": 0, \"mass\": 1, \"strength\": 0.54, \"total\": 0.516}}}",
+      "parallel_group": null,
+      "reasoning": "I needed reproducible arithmetic before drafting the table and the decision note.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Confirmed exact normalized scores, weighted contributions, and the small B-over-C margin needed for sensitivity notes.",
+      "step": 2,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "exec_command",
+      "turn": 2
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "artifact_refs": [
+        "actual_outputs.json"
+      ],
+      "causal_note": "The calculations from step 2 drove the content written in this step.",
+      "causal_type": "other",
+      "caused_by": [
+        2
+      ],
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "{\"files_added\": [\"[EXCLUDED_GENERATED_ARTIFACT]\", \"actual_outputs.json\"]}",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "deliverable_name": "repair_disposition_table.md",
+        "inputs": {
+          "files_added": [
+            "[EXCLUDED_GENERATED_ARTIFACT]",
+            "actual_outputs.json"
+          ]
+        },
+        "manufacturability_handling": "needs_review",
+        "normalization_warnings": [
+          "step value 'create_deliverables' was not numeric; defaulted to 3"
+        ],
+        "original_action": "write",
+        "original_causal_type": "implementation",
+        "original_operation": "create repair disposition markdown and actual outputs manifest",
+        "original_step": "create_deliverables",
+        "original_step_outcome": "success",
+        "outputs": {
+          "status": "files_written"
+        },
+        "raw_step": {
+          "action": "write",
+          "actor": "worker",
+          "artifact_refs": [
+            "actual_outputs.json"
+          ],
+          "causal_note": "The calculations from step 2 drove the content written in this step.",
+          "causal_type": "implementation",
+          "caused_by": 2,
+          "error_message": null,
+          "error_type": null,
+          "input": {
+            "files_added": [
+              "[EXCLUDED_GENERATED_ARTIFACT]",
+              "actual_outputs.json"
+            ]
+          },
+          "metadata_json": {
+            "deliverable_name": "repair_disposition_table.md",
+            "manufacturability_handling": "needs_review"
+          },
+          "observation": "Created [EXCLUDED_GENERATED_ARTIFACT] and actual_outputs.json with explicit assumptions, missing-input flags, citations, calculations, sensitivity notes, and a provisional recommendation.",
+          "operation": "create repair disposition markdown and actual outputs manifest",
+          "output": {
+            "status": "files_written"
+          },
+          "reasoning": "The deliverable needed a complete packet-bound table and the manifest needed to enumerate what was produced.",
+          "state_change": "Materialized the required deliverable and the outputs manifest in the attempt directory.",
+          "step": "create_deliverables",
+          "step_outcome": "success",
+          "success": true,
+          "tool": "apply_patch",
+          "turn": 3
+        }
+      },
+      "observation": "Created [EXCLUDED_GENERATED_ARTIFACT] and actual_outputs.json with explicit assumptions, missing-input flags, citations, calculations, sensitivity notes, and a provisional recommendation.",
+      "operation": "other",
+      "output": "{\"status\": \"files_written\"}",
+      "parallel_group": null,
+      "reasoning": "The deliverable needed a complete packet-bound table and the manifest needed to enumerate what was produced.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Materialized the required deliverable and the outputs manifest in the attempt directory.",
+      "step": 3,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "apply_patch",
+      "turn": 3
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "artifact_refs": [
+        "actual_outputs.json"
+      ],
+      "causal_note": "Validation was only meaningful after the deliverables existed.",
+      "causal_type": "other",
+      "caused_by": [
+        3
+      ],
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "{\"commands\": [\"sed -n '1,260p' [EXCLUDED_GENERATED_ARTIFACT]\", \"node -e \\\"const fs=require('fs'); JSON.parse(fs.readFileSync('actual_outputs.json','utf8')); console.log('actual_outputs.json: ok');\\\"\"]}",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "inputs": {
+          "commands": [
+            "sed -n '1,260p' [EXCLUDED_GENERATED_ARTIFACT]",
+            "node -e \"const fs=require('fs'); JSON.parse(fs.readFileSync('actual_outputs.json','utf8')); console.log('actual_outputs.json: ok');\""
+          ]
+        },
+        "normalization_warnings": [
+          "step value 'validate_outputs' was not numeric; defaulted to 4"
+        ],
+        "original_action": "verify",
+        "original_causal_type": "quality_check",
+        "original_operation": "inspect artifact text and parse output manifest as JSON",
+        "original_step": "validate_outputs",
+        "original_step_outcome": "success",
+        "outputs": {
+          "artifact_review": "markdown content matched the intended structure and cited packet rows A/B/C explicitly",
+          "json_validation": "actual_outputs.json: ok"
+        },
+        "raw_step": {
+          "action": "verify",
+          "actor": "worker",
+          "artifact_refs": [
+            "actual_outputs.json"
+          ],
+          "causal_note": "Validation was only meaningful after the deliverables existed.",
+          "causal_type": "quality_check",
+          "caused_by": 3,
+          "error_message": null,
+          "error_type": null,
+          "input": {
+            "commands": [
+              "sed -n '1,260p' [EXCLUDED_GENERATED_ARTIFACT]",
+              "node -e \"const fs=require('fs'); JSON.parse(fs.readFileSync('actual_outputs.json','utf8')); console.log('actual_outputs.json: ok');\""
+            ]
+          },
+          "metadata_json": {
+            "validated_files": [
+              "[EXCLUDED_GENERATED_ARTIFACT]",
+              "actual_outputs.json"
+            ]
+          },
+          "observation": "Artifact text showed the expected calculation tables and disposition notes. actual_outputs.json parsed successfully.",
+          "operation": "inspect artifact text and parse output manifest as JSON",
+          "output": {
+            "artifact_review": "markdown content matched the intended structure and cited packet rows A/B/C explicitly",
+            "json_validation": "actual_outputs.json: ok"
+          },
+          "reasoning": "A final check reduces the risk of malformed JSON or a missing required section in the markdown.",
+          "state_change": "Verified the written deliverable and supporting manifest before finalizing the trace.",
+          "step": "validate_outputs",
+          "step_outcome": "success",
+          "success": true,
+          "tool": "multi_tool_use.parallel",
+          "turn": 4
+        },
+        "validated_files": [
+          "[EXCLUDED_GENERATED_ARTIFACT]",
+          "actual_outputs.json"
+        ]
+      },
+      "observation": "Artifact text showed the expected calculation tables and disposition notes. actual_outputs.json parsed successfully.",
+      "operation": "read",
+      "output": "{\"artifact_review\": \"markdown content matched the intended structure and cited packet rows A/B/C explicitly\", \"json_validation\": \"actual_outputs.json: ok\"}",
+      "parallel_group": null,
+      "reasoning": "A final check reduces the risk of malformed JSON or a missing required section in the markdown.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Verified the written deliverable and supporting manifest before finalizing the trace.",
+      "step": 4,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "Bash",
+      "turn": 4
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "artifact_refs": [
+        "agent_trace.json"
+      ],
+      "causal_note": "This step closes the workflow after validation succeeded.",
+      "causal_type": "other",
+      "caused_by": [
+        4
+      ],
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "{\"file\": \"agent_trace.json\"}",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "deliverable_file": "[EXCLUDED_GENERATED_ARTIFACT]",
+        "inputs": {
+          "file": "agent_trace.json"
+        },
+        "normalization_warnings": [
+          "step value 'write_trace' was not numeric; defaulted to 5"
+        ],
+        "original_action": "write",
+        "original_causal_type": "finalization",
+        "original_operation": "persist structured workflow trace",
+        "original_step": "write_trace",
+        "original_step_outcome": "success",
+        "outputs": {
+          "status": "trace_written"
+        },
+        "raw_step": {
+          "action": "write",
+          "actor": "worker",
+          "artifact_refs": [
+            "agent_trace.json"
+          ],
+          "causal_note": "This step closes the workflow after validation succeeded.",
+          "causal_type": "finalization",
+          "caused_by": 4,
+          "error_message": null,
+          "error_type": null,
+          "input": {
+            "file": "agent_trace.json"
+          },
+          "metadata_json": {
+            "deliverable_file": "[EXCLUDED_GENERATED_ARTIFACT]",
+            "trace_file": "agent_trace.json"
+          },
+          "observation": "agent_trace.json was written with the required canonical step fields and the evidence trail from read, compute, write, and validate actions.",
+          "operation": "persist structured workflow trace",
+          "output": {
+            "status": "trace_written"
+          },
+          "reasoning": "The trace should be written only after the deliverables and validation evidence are known.",
+          "state_change": "Finalized the attempt record in the current directory.",
+          "step": "write_trace",
+          "step_outcome": "success",
+          "success": true,
+          "tool": "apply_patch",
+          "turn": 5
+        },
+        "trace_file": "agent_trace.json"
+      },
+      "observation": "agent_trace.json was written with the required canonical step fields and the evidence trail from read, compute, write, and validate actions.",
+      "operation": "other",
+      "output": "{\"status\": \"trace_written\"}",
+      "parallel_group": null,
+      "reasoning": "The trace should be written only after the deliverables and validation evidence are known.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Finalized the attempt record in the current directory.",
+      "step": 5,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "apply_patch",
+      "turn": 5
+    }
+  ],
+  "system_prompt": null,
+  "system_prompt_hash": null,
+  "task": "Advanced task: Aircraft composite repair disposition aid. Materials packet: option A strength=500MPa density=2.7 cost=16/kg; option B strength=900MPa density=4.4 cost=26/kg; option C strength=716MPa density=1.8 cost=40/kg. Score strength 40%, mass 30%, cost 20%, manufacturability 10%. Produce the stated deliverable with calculations, assumptions, exceptions, and exact row/value citations. Do not invent additional records; mark missing inputs as needs_review. Include intermediate calculations, uncertainty or sensitivity notes, validation checks, and a final decision table that ties every recommendation back to the supplied values. The response should be executable from the embedded packet alone, with no external data lookup required beyond understanding the cited public removed context.",
+  "task_family_id": null,
+  "original_internal_task_id": "aa_task_0319",
+  "task_id": "119",
+  "termination_reason": "task_complete",
+  "trace_id": "trace_119-baseline_normalized",
+  "trace_mode": "live"
+}

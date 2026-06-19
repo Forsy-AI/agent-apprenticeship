@@ -1,0 +1,967 @@
+{
+  "actual_outputs": {
+    "original_internal_attempt_id": "aa_task_0584_baseline",
+    "attempt_id": "284-baseline",
+    "attempt_kind": "baseline",
+    "error_message": null,
+    "error_type": null,
+    "metadata_json": {
+      "actual_outputs_discarded_field_count": 0,
+      "actual_outputs_normalized": true,
+      "expected_deliverable_items": [
+        "flow_gating_4.xlsx",
+        "expert_memo.md"
+      ],
+      "original_fields": {
+        "attempt_directory": ".",
+        "created_at": "2026-06-15",
+        "deliverables": [
+          {
+            "name": "flow_gating_4.xlsx",
+            "status": "created"
+          },
+          {
+            "name": "expert_memo.md",
+            "status": "created"
+          }
+        ],
+        "input_files": [
+          "./input/task.json",
+          "./input/task_brief.md"
+        ],
+        "notes": [
+          "All outputs derived from packet rows only",
+          "Missing and ambiguous values were explicitly marked needs_review"
+        ]
+      },
+      "produced_deliverable_items": [
+        "flow_gating_4.xlsx",
+        "expert_memo.md"
+      ],
+      "raw_actual_outputs": {
+        "attempt_directory": ".",
+        "created_at": "2026-06-15",
+        "deliverables": [
+          {
+            "name": "flow_gating_4.xlsx",
+            "status": "created"
+          },
+          {
+            "name": "expert_memo.md",
+            "status": "created"
+          }
+        ],
+        "input_files": [
+          "./input/task.json",
+          "./input/task_brief.md"
+        ],
+        "notes": [
+          "All outputs derived from packet rows only",
+          "Missing and ambiguous values were explicitly marked needs_review"
+        ],
+        "original_internal_task_id": "aa_task_0584",
+        "task_id": "284"
+      }
+    },
+    "output_summary": "Normalized actual outputs from artifact files.",
+    "status": "success",
+    "original_internal_task_id": "aa_task_0584",
+    "task_id": "284",
+    "required_deliverables": [
+      "flow_gating_4.xlsx",
+      "expert_memo.md"
+    ],
+    "produced_deliverables": [
+      "flow_gating_4.xlsx",
+      "expert_memo.md"
+    ],
+    "missing_required_deliverables": [],
+    "deliverable_produced": true,
+    "deliverable_file_included": false,
+    "included_generated_artifacts": false,
+    "artifacts_excluded_reason": "Generated output artifacts are excluded from the public seed dataset by default.",
+    "logs_included": false,
+    "logs_excluded_reason": "Raw runner logs are excluded from the public seed dataset."
+  },
+  "agent_config": null,
+  "agent_tools": [
+    "codex_cli",
+    "Bash",
+    "python",
+    "file_read",
+    "file_write",
+    "apply_patch"
+  ],
+  "artifacts": [],
+  "original_internal_attempt_id": "aa_task_0584_baseline",
+  "attempt_id": "284-baseline",
+  "attempt_kind": "baseline",
+  "attempt_status": "completed",
+  "collection_id": null,
+  "completion_reason": null,
+  "ended_at": null,
+  "final_attempt_id": null,
+  "initial_attempt_id": null,
+  "iteration_index": null,
+  "learning": null,
+  "memory": null,
+  "metadata_json": {
+    "codex_command": [
+      "codex",
+      "exec",
+      "--sandbox",
+      "workspace-write",
+      "<prompt>"
+    ],
+    "codex_sandbox": "workspace-write",
+    "discarded_step_count": 0,
+    "raw_trace_list": [
+      {
+        "action": "read_input",
+        "actor": "worker",
+        "artifact_refs": [
+          "./input/task.json",
+          "./input/task_brief.md"
+        ],
+        "causal_note": "Task execution foundation",
+        "causal_type": "root",
+        "caused_by": null,
+        "error_message": null,
+        "error_type": null,
+        "input": "cat input/task.json",
+        "metadata_json": {
+          "constraints": [
+            "max_budget=117600",
+            "harmonization_if_diff_>5",
+            "viability_flag_if_<80"
+          ],
+          "parsed": true,
+          "records": [
+            "R1",
+            "R2",
+            "R3"
+          ]
+        },
+        "observation": "Loaded task packet and brief to extract all numeric inputs and constraints.",
+        "operation": "read_file",
+        "output": "Parsed packet rows R1/R2/R3 and remediation options O1/O2/O3 including costs and constraints.",
+        "reasoning": "Need exact packet values before any computation; required for reproducible analysis.",
+        "state_change": "No files modified.",
+        "step": 1,
+        "step_outcome": "Task context loaded",
+        "success": true,
+        "tool": "exec_command",
+        "turn": 1
+      },
+      {
+        "action": "read_input",
+        "actor": "worker",
+        "artifact_refs": [
+          "./input/task_brief.md"
+        ],
+        "causal_note": "Validating task constraints before modeling",
+        "causal_type": "supporting",
+        "caused_by": 1,
+        "error_message": null,
+        "error_type": null,
+        "input": "cat input/task_brief.md",
+        "metadata_json": {
+          "must_use_packet_only": true,
+          "required": [
+            "flow_gating_4.xlsx",
+            "expert_memo.md",
+            "agent_trace.json",
+            "actual_outputs.json"
+          ]
+        },
+        "observation": "Reconfirmed brief language and deliverable contract for spreadsheet + memo.",
+        "operation": "read_file",
+        "output": "Confirmed required outputs and rubric requirements including formulas and sensitivity.",
+        "reasoning": "Reinforces required deliverable shape and documentation expectations.",
+        "state_change": "No files modified.",
+        "step": 2,
+        "step_outcome": "Instructional constraints captured",
+        "success": true,
+        "tool": "exec_command",
+        "turn": 1
+      },
+      {
+        "action": "run_python",
+        "actor": "worker",
+        "causal_note": "Blocker to preferred Python approach",
+        "causal_type": "dependency",
+        "caused_by": 2,
+        "error_message": "openpyxl missing in environment",
+        "error_type": "ModuleNotFoundError",
+        "input": "python - <<'PY' ... import openpyxl ... PY",
+        "metadata_json": {
+          "python_stack": "openpyxl"
+        },
+        "observation": "Attempted to build workbook with openpyxl, but dependency is not available.",
+        "operation": "attempt_excel_library_generation",
+        "output": "ModuleNotFoundError: No module named 'openpyxl'",
+        "reasoning": "Use fallback method because dependency missing; maintain reproducibility without external installs.",
+        "state_change": "No files modified.",
+        "step": 3,
+        "step_outcome": "Blocked by missing module",
+        "success": false,
+        "tool": "exec_command",
+        "turn": 1
+      },
+      {
+        "action": "dependency_check",
+        "actor": "worker",
+        "causal_note": "Confirmed no supported package alternatives in environment",
+        "causal_type": "fallback",
+        "caused_by": 3,
+        "error_message": null,
+        "error_type": null,
+        "input": "python - <<'PY' ... xlsxwriter/pandas find_spec ... && which soffice || which libreoffice || which node require('exceljs')...",
+        "metadata_json": {
+          "available": [
+            "openpyxl: missing",
+            "xlsxwriter: missing",
+            "pandas: missing",
+            "libreoffice: missing",
+            "exceljs/xlsx: missing"
+          ]
+        },
+        "observation": "Checked common writer packages/modules (xlsxwriter, pandas, libreoffice, node excel libraries).",
+        "operation": "probe_excel_support",
+        "output": "No local spreadsheet generation package/runtime was available for direct library-based export.",
+        "reasoning": "Needed fallback to a deterministic export path that does not rely on unavailable dependencies.",
+        "state_change": "No files modified.",
+        "step": 4,
+        "step_outcome": "Dependency scan completed",
+        "success": true,
+        "tool": "exec_command",
+        "turn": 1
+      },
+      {
+        "action": "build_spreadsheet",
+        "actor": "worker",
+        "causal_note": "Fallback implementation after dependency constraints",
+        "causal_type": "sequential",
+        "caused_by": 4,
+        "error_message": null,
+        "error_type": null,
+        "input": "python - <<'PY' ... zipfile + XML generation script ...",
+        "metadata_json": {
+          "formula_visibility": true,
+          "reproducibility_mode": "formula-driven",
+          "sheets": [
+            "Packet_Data",
+            "Gate_Exception_Matrix",
+            "Remediation_Analysis",
+            "Sensitivity_Checks",
+            "Row_Citations"
+          ]
+        },
+        "observation": "Created `flow_gating_4.xlsx` from hand-built OOXML package with formulas, raw rows, pairwise checks, remediation calculations, priority scoring, and sensitivity sheet.",
+        "operation": "manual_xml_xlsx_generation",
+        "output": "[EXCLUDED_GENERATED_ARTIFACT]",
+        "reasoning": "Maintains reproducibility under environment limits and preserves full formula auditability.",
+        "state_change": "Created [EXCLUDED_GENERATED_ARTIFACT] with multiple worksheets and visible formulas.",
+        "step": 5,
+        "step_outcome": "Spreadsheet artifact created",
+        "success": true,
+        "tool": "exec_command",
+        "turn": 1
+      },
+      {
+        "action": "author_memo",
+        "actor": "worker",
+        "causal_note": "Documentation requirement tied to workbook outputs",
+        "causal_type": "dependent",
+        "caused_by": 5,
+        "error_message": null,
+        "error_type": null,
+        "input": "cat > [EXCLUDED_GENERATED_ARTIFACT]",
+        "metadata_json": {
+          "includes_domain_expert_note": true,
+          "includes_needs_review": true
+        },
+        "observation": "Wrote expert memo with assumptions, formulas, citations, sensitivity checks, and recommendation table.",
+        "operation": "write_markdown",
+        "output": "[EXCLUDED_GENERATED_ARTIFACT]",
+        "reasoning": "Need governance-ready narrative tied to formula outputs and packet rows.",
+        "state_change": "Created [EXCLUDED_GENERATED_ARTIFACT] with reproducibility methods and rank table.",
+        "step": 6,
+        "step_outcome": "Memo artifact created",
+        "success": true,
+        "tool": "exec_command",
+        "turn": 1
+      },
+      {
+        "action": "emit_actual_outputs_manifest",
+        "actor": "worker",
+        "artifact_refs": [
+          "./actual_outputs.json"
+        ],
+        "causal_note": "Final contract artifact",
+        "causal_type": "compliance",
+        "caused_by": 6,
+        "error_message": null,
+        "error_type": null,
+        "input": "cat > actual_outputs.json",
+        "metadata_json": {
+          "contains_paths": [
+            "[EXCLUDED_GENERATED_ARTIFACT]",
+            "[EXCLUDED_GENERATED_ARTIFACT]"
+          ],
+          "contract_ok": true
+        },
+        "observation": "Recorded final artifact manifest and source paths.",
+        "operation": "write_json",
+        "output": "./actual_outputs.json",
+        "reasoning": "Required execution output contract for evaluator ingestion.",
+        "state_change": "Created ./actual_outputs.json.",
+        "step": 7,
+        "step_outcome": "actual_outputs.json created",
+        "success": true,
+        "tool": "exec_command",
+        "turn": 1
+      },
+      {
+        "action": "emit_trace",
+        "actor": "worker",
+        "artifact_refs": [
+          "./agent_trace.json"
+        ],
+        "causal_note": "Final trace artifact required by instruction",
+        "causal_type": "compliance",
+        "caused_by": 7,
+        "error_message": null,
+        "error_type": null,
+        "input": "cat > agent_trace.json",
+        "metadata_json": {
+          "total_steps": 8
+        },
+        "observation": "Serialized full execution trace with causal links and step outcomes.",
+        "operation": "write_json",
+        "output": "./agent_trace.json",
+        "reasoning": "Task explicitly requires structured workflow evidence file.",
+        "state_change": "Created ./agent_trace.json with canonical fields for each action.",
+        "step": 8,
+        "step_outcome": "Trace artifact created",
+        "success": true,
+        "tool": "exec_command",
+        "turn": 1
+      }
+    ],
+    "raw_trace_preserved": true,
+    "raw_trace_shape": "list",
+    "raw_trace_step_source": "steps",
+    "schema_valid": true,
+    "trace_normalization_status": "normalized",
+    "trace_valid": true
+  },
+  "preferred_attempt_id": null,
+  "previous_attempt_id": null,
+  "prior_trace_id": null,
+  "revision_attempt_ids": [],
+  "revision_group_id": null,
+  "schema_version": "aa-trace-v0.1",
+  "skills": null,
+  "started_at": null,
+  "steps": [
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "artifact_refs": [
+        "./input/task.json",
+        "./input/task_brief.md"
+      ],
+      "causal_note": null,
+      "causal_type": null,
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "cat input/task.json",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "constraints": [
+          "max_budget=117600",
+          "harmonization_if_diff_>5",
+          "viability_flag_if_<80"
+        ],
+        "original_action": "read_input",
+        "original_operation": "read_file",
+        "original_step_outcome": "Task context loaded",
+        "parsed": true,
+        "raw_step": {
+          "action": "read_input",
+          "actor": "worker",
+          "artifact_refs": [
+            "./input/task.json",
+            "./input/task_brief.md"
+          ],
+          "causal_note": "Task execution foundation",
+          "causal_type": "root",
+          "caused_by": null,
+          "error_message": null,
+          "error_type": null,
+          "input": "cat input/task.json",
+          "metadata_json": {
+            "constraints": [
+              "max_budget=117600",
+              "harmonization_if_diff_>5",
+              "viability_flag_if_<80"
+            ],
+            "parsed": true,
+            "records": [
+              "R1",
+              "R2",
+              "R3"
+            ]
+          },
+          "observation": "Loaded task packet and brief to extract all numeric inputs and constraints.",
+          "operation": "read_file",
+          "output": "Parsed packet rows R1/R2/R3 and remediation options O1/O2/O3 including costs and constraints.",
+          "reasoning": "Need exact packet values before any computation; required for reproducible analysis.",
+          "state_change": "No files modified.",
+          "step": 1,
+          "step_outcome": "Task context loaded",
+          "success": true,
+          "tool": "exec_command",
+          "turn": 1
+        },
+        "records": [
+          "R1",
+          "R2",
+          "R3"
+        ]
+      },
+      "observation": "Loaded task packet and brief to extract all numeric inputs and constraints.",
+      "operation": "read",
+      "output": "Parsed packet rows R1/R2/R3 and remediation options O1/O2/O3 including costs and constraints.",
+      "parallel_group": null,
+      "reasoning": "Need exact packet values before any computation; required for reproducible analysis.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "No files modified.",
+      "step": 1,
+      "step_outcome": "neutral",
+      "success": true,
+      "tool": "Bash",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "artifact_refs": [
+        "./input/task_brief.md"
+      ],
+      "causal_note": "Validating task constraints before modeling",
+      "causal_type": "other",
+      "caused_by": [
+        1
+      ],
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "cat input/task_brief.md",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "must_use_packet_only": true,
+        "original_action": "read_input",
+        "original_causal_type": "supporting",
+        "original_operation": "read_file",
+        "original_step_outcome": "Instructional constraints captured",
+        "raw_step": {
+          "action": "read_input",
+          "actor": "worker",
+          "artifact_refs": [
+            "./input/task_brief.md"
+          ],
+          "causal_note": "Validating task constraints before modeling",
+          "causal_type": "supporting",
+          "caused_by": 1,
+          "error_message": null,
+          "error_type": null,
+          "input": "cat input/task_brief.md",
+          "metadata_json": {
+            "must_use_packet_only": true,
+            "required": [
+              "flow_gating_4.xlsx",
+              "expert_memo.md",
+              "agent_trace.json",
+              "actual_outputs.json"
+            ]
+          },
+          "observation": "Reconfirmed brief language and deliverable contract for spreadsheet + memo.",
+          "operation": "read_file",
+          "output": "Confirmed required outputs and rubric requirements including formulas and sensitivity.",
+          "reasoning": "Reinforces required deliverable shape and documentation expectations.",
+          "state_change": "No files modified.",
+          "step": 2,
+          "step_outcome": "Instructional constraints captured",
+          "success": true,
+          "tool": "exec_command",
+          "turn": 1
+        },
+        "required": [
+          "flow_gating_4.xlsx",
+          "expert_memo.md",
+          "agent_trace.json",
+          "actual_outputs.json"
+        ]
+      },
+      "observation": "Reconfirmed brief language and deliverable contract for spreadsheet + memo.",
+      "operation": "read",
+      "output": "Confirmed required outputs and rubric requirements including formulas and sensitivity.",
+      "parallel_group": null,
+      "reasoning": "Reinforces required deliverable shape and documentation expectations.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "No files modified.",
+      "step": 2,
+      "step_outcome": "neutral",
+      "success": true,
+      "tool": "Bash",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "causal_note": "Blocker to preferred Python approach",
+      "causal_type": "other",
+      "caused_by": [
+        2
+      ],
+      "ended_at": null,
+      "error_message": "openpyxl missing in environment",
+      "error_type": "ModuleNotFoundError",
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "python - <<'PY' ... import openpyxl ... PY",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "original_action": "run_python",
+        "original_causal_type": "dependency",
+        "original_operation": "attempt_excel_library_generation",
+        "original_step_outcome": "Blocked by missing module",
+        "python_stack": "openpyxl",
+        "raw_step": {
+          "action": "run_python",
+          "actor": "worker",
+          "causal_note": "Blocker to preferred Python approach",
+          "causal_type": "dependency",
+          "caused_by": 2,
+          "error_message": "openpyxl missing in environment",
+          "error_type": "ModuleNotFoundError",
+          "input": "python - <<'PY' ... import openpyxl ... PY",
+          "metadata_json": {
+            "python_stack": "openpyxl"
+          },
+          "observation": "Attempted to build workbook with openpyxl, but dependency is not available.",
+          "operation": "attempt_excel_library_generation",
+          "output": "ModuleNotFoundError: No module named 'openpyxl'",
+          "reasoning": "Use fallback method because dependency missing; maintain reproducibility without external installs.",
+          "state_change": "No files modified.",
+          "step": 3,
+          "step_outcome": "Blocked by missing module",
+          "success": false,
+          "tool": "exec_command",
+          "turn": 1
+        }
+      },
+      "observation": "Attempted to build workbook with openpyxl, but dependency is not available.",
+      "operation": "verify",
+      "output": "ModuleNotFoundError: No module named 'openpyxl'",
+      "parallel_group": null,
+      "reasoning": "Use fallback method because dependency missing; maintain reproducibility without external installs.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "No files modified.",
+      "step": 3,
+      "step_outcome": "neutral",
+      "success": false,
+      "tool": "python",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "causal_note": "Confirmed no supported package alternatives in environment",
+      "causal_type": "other",
+      "caused_by": [
+        3
+      ],
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "python - <<'PY' ... xlsxwriter/pandas find_spec ... && which soffice || which libreoffice || which node require('exceljs')...",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "available": [
+          "openpyxl: missing",
+          "xlsxwriter: missing",
+          "pandas: missing",
+          "libreoffice: missing",
+          "exceljs/xlsx: missing"
+        ],
+        "original_action": "dependency_check",
+        "original_causal_type": "fallback",
+        "original_operation": "probe_excel_support",
+        "original_step_outcome": "Dependency scan completed",
+        "raw_step": {
+          "action": "dependency_check",
+          "actor": "worker",
+          "causal_note": "Confirmed no supported package alternatives in environment",
+          "causal_type": "fallback",
+          "caused_by": 3,
+          "error_message": null,
+          "error_type": null,
+          "input": "python - <<'PY' ... xlsxwriter/pandas find_spec ... && which soffice || which libreoffice || which node require('exceljs')...",
+          "metadata_json": {
+            "available": [
+              "openpyxl: missing",
+              "xlsxwriter: missing",
+              "pandas: missing",
+              "libreoffice: missing",
+              "exceljs/xlsx: missing"
+            ]
+          },
+          "observation": "Checked common writer packages/modules (xlsxwriter, pandas, libreoffice, node excel libraries).",
+          "operation": "probe_excel_support",
+          "output": "No local spreadsheet generation package/runtime was available for direct library-based export.",
+          "reasoning": "Needed fallback to a deterministic export path that does not rely on unavailable dependencies.",
+          "state_change": "No files modified.",
+          "step": 4,
+          "step_outcome": "Dependency scan completed",
+          "success": true,
+          "tool": "exec_command",
+          "turn": 1
+        }
+      },
+      "observation": "Checked common writer packages/modules (xlsxwriter, pandas, libreoffice, node excel libraries).",
+      "operation": "execute",
+      "output": "No local spreadsheet generation package/runtime was available for direct library-based export.",
+      "parallel_group": null,
+      "reasoning": "Needed fallback to a deterministic export path that does not rely on unavailable dependencies.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "No files modified.",
+      "step": 4,
+      "step_outcome": "neutral",
+      "success": true,
+      "tool": "python",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "causal_note": "Fallback implementation after dependency constraints",
+      "causal_type": "execution_of_plan",
+      "caused_by": [
+        4
+      ],
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "python - <<'PY' ... zipfile + XML generation script ...",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "formula_visibility": true,
+        "original_action": "build_spreadsheet",
+        "original_causal_type": "sequential",
+        "original_operation": "manual_xml_xlsx_generation",
+        "original_step_outcome": "Spreadsheet artifact created",
+        "raw_step": {
+          "action": "build_spreadsheet",
+          "actor": "worker",
+          "causal_note": "Fallback implementation after dependency constraints",
+          "causal_type": "sequential",
+          "caused_by": 4,
+          "error_message": null,
+          "error_type": null,
+          "input": "python - <<'PY' ... zipfile + XML generation script ...",
+          "metadata_json": {
+            "formula_visibility": true,
+            "reproducibility_mode": "formula-driven",
+            "sheets": [
+              "Packet_Data",
+              "Gate_Exception_Matrix",
+              "Remediation_Analysis",
+              "Sensitivity_Checks",
+              "Row_Citations"
+            ]
+          },
+          "observation": "Created `flow_gating_4.xlsx` from hand-built OOXML package with formulas, raw rows, pairwise checks, remediation calculations, priority scoring, and sensitivity sheet.",
+          "operation": "manual_xml_xlsx_generation",
+          "output": "[EXCLUDED_GENERATED_ARTIFACT]",
+          "reasoning": "Maintains reproducibility under environment limits and preserves full formula auditability.",
+          "state_change": "Created [EXCLUDED_GENERATED_ARTIFACT] with multiple worksheets and visible formulas.",
+          "step": 5,
+          "step_outcome": "Spreadsheet artifact created",
+          "success": true,
+          "tool": "exec_command",
+          "turn": 1
+        },
+        "reproducibility_mode": "formula-driven",
+        "sheets": [
+          "Packet_Data",
+          "Gate_Exception_Matrix",
+          "Remediation_Analysis",
+          "Sensitivity_Checks",
+          "Row_Citations"
+        ]
+      },
+      "observation": "Created `flow_gating_4.xlsx` from hand-built OOXML package with formulas, raw rows, pairwise checks, remediation calculations, priority scoring, and sensitivity sheet.",
+      "operation": "execute",
+      "output": "[EXCLUDED_GENERATED_ARTIFACT]",
+      "parallel_group": null,
+      "reasoning": "Maintains reproducibility under environment limits and preserves full formula auditability.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Created [EXCLUDED_GENERATED_ARTIFACT] with multiple worksheets and visible formulas.",
+      "step": 5,
+      "step_outcome": "neutral",
+      "success": true,
+      "tool": "python",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "causal_note": "Documentation requirement tied to workbook outputs",
+      "causal_type": "other",
+      "caused_by": [
+        5
+      ],
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "cat > [EXCLUDED_GENERATED_ARTIFACT]",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "includes_domain_expert_note": true,
+        "includes_needs_review": true,
+        "original_action": "author_memo",
+        "original_causal_type": "dependent",
+        "original_operation": "write_markdown",
+        "original_step_outcome": "Memo artifact created",
+        "raw_step": {
+          "action": "author_memo",
+          "actor": "worker",
+          "causal_note": "Documentation requirement tied to workbook outputs",
+          "causal_type": "dependent",
+          "caused_by": 5,
+          "error_message": null,
+          "error_type": null,
+          "input": "cat > [EXCLUDED_GENERATED_ARTIFACT]",
+          "metadata_json": {
+            "includes_domain_expert_note": true,
+            "includes_needs_review": true
+          },
+          "observation": "Wrote expert memo with assumptions, formulas, citations, sensitivity checks, and recommendation table.",
+          "operation": "write_markdown",
+          "output": "[EXCLUDED_GENERATED_ARTIFACT]",
+          "reasoning": "Need governance-ready narrative tied to formula outputs and packet rows.",
+          "state_change": "Created [EXCLUDED_GENERATED_ARTIFACT] with reproducibility methods and rank table.",
+          "step": 6,
+          "step_outcome": "Memo artifact created",
+          "success": true,
+          "tool": "exec_command",
+          "turn": 1
+        }
+      },
+      "observation": "Wrote expert memo with assumptions, formulas, citations, sensitivity checks, and recommendation table.",
+      "operation": "read",
+      "output": "[EXCLUDED_GENERATED_ARTIFACT]",
+      "parallel_group": null,
+      "reasoning": "Need governance-ready narrative tied to formula outputs and packet rows.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Created [EXCLUDED_GENERATED_ARTIFACT] with reproducibility methods and rank table.",
+      "step": 6,
+      "step_outcome": "neutral",
+      "success": true,
+      "tool": "Bash",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "artifact_refs": [
+        "./actual_outputs.json"
+      ],
+      "causal_note": "Final contract artifact",
+      "causal_type": "other",
+      "caused_by": [
+        6
+      ],
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "cat > actual_outputs.json",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "contains_paths": [
+          "[EXCLUDED_GENERATED_ARTIFACT]",
+          "[EXCLUDED_GENERATED_ARTIFACT]"
+        ],
+        "contract_ok": true,
+        "original_action": "emit_actual_outputs_manifest",
+        "original_causal_type": "compliance",
+        "original_operation": "write_json",
+        "original_step_outcome": "actual_outputs.json created",
+        "raw_step": {
+          "action": "emit_actual_outputs_manifest",
+          "actor": "worker",
+          "artifact_refs": [
+            "./actual_outputs.json"
+          ],
+          "causal_note": "Final contract artifact",
+          "causal_type": "compliance",
+          "caused_by": 6,
+          "error_message": null,
+          "error_type": null,
+          "input": "cat > actual_outputs.json",
+          "metadata_json": {
+            "contains_paths": [
+              "[EXCLUDED_GENERATED_ARTIFACT]",
+              "[EXCLUDED_GENERATED_ARTIFACT]"
+            ],
+            "contract_ok": true
+          },
+          "observation": "Recorded final artifact manifest and source paths.",
+          "operation": "write_json",
+          "output": "./actual_outputs.json",
+          "reasoning": "Required execution output contract for evaluator ingestion.",
+          "state_change": "Created ./actual_outputs.json.",
+          "step": 7,
+          "step_outcome": "actual_outputs.json created",
+          "success": true,
+          "tool": "exec_command",
+          "turn": 1
+        }
+      },
+      "observation": "Recorded final artifact manifest and source paths.",
+      "operation": "read",
+      "output": "./actual_outputs.json",
+      "parallel_group": null,
+      "reasoning": "Required execution output contract for evaluator ingestion.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Created ./actual_outputs.json.",
+      "step": 7,
+      "step_outcome": "neutral",
+      "success": true,
+      "tool": "Bash",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "artifact_refs": [
+        "./agent_trace.json"
+      ],
+      "causal_note": "Final trace artifact required by instruction",
+      "causal_type": "other",
+      "caused_by": [
+        7
+      ],
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "cat > agent_trace.json",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "original_action": "emit_trace",
+        "original_causal_type": "compliance",
+        "original_operation": "write_json",
+        "original_step_outcome": "Trace artifact created",
+        "raw_step": {
+          "action": "emit_trace",
+          "actor": "worker",
+          "artifact_refs": [
+            "./agent_trace.json"
+          ],
+          "causal_note": "Final trace artifact required by instruction",
+          "causal_type": "compliance",
+          "caused_by": 7,
+          "error_message": null,
+          "error_type": null,
+          "input": "cat > agent_trace.json",
+          "metadata_json": {
+            "total_steps": 8
+          },
+          "observation": "Serialized full execution trace with causal links and step outcomes.",
+          "operation": "write_json",
+          "output": "./agent_trace.json",
+          "reasoning": "Task explicitly requires structured workflow evidence file.",
+          "state_change": "Created ./agent_trace.json with canonical fields for each action.",
+          "step": 8,
+          "step_outcome": "Trace artifact created",
+          "success": true,
+          "tool": "exec_command",
+          "turn": 1
+        },
+        "total_steps": 8
+      },
+      "observation": "Serialized full execution trace with causal links and step outcomes.",
+      "operation": "read",
+      "output": "./agent_trace.json",
+      "parallel_group": null,
+      "reasoning": "Task explicitly requires structured workflow evidence file.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Created ./agent_trace.json with canonical fields for each action.",
+      "step": 8,
+      "step_outcome": "neutral",
+      "success": true,
+      "tool": "Bash",
+      "turn": 1
+    }
+  ],
+  "system_prompt": null,
+  "system_prompt_hash": null,
+  "task": "Produce a reproducible analysis and expert memo that quantifies operational consequences of gating reproducibility exceptions and ranks remediation actions by urgency and evidentiary strength using only the embedded packet. Deliver a spreadsheet (flow_gating_4.xlsx) with formulas and intermediate values and an expert memo (expert_memo.md) documenting methods, row-level citations, explicit assumptions, sensitivity checks, and a final recommendation table. Do not invent inputs; mark ambiguous items as needs_review.",
+  "task_family_id": null,
+  "original_internal_task_id": "aa_task_0584",
+  "task_id": "284",
+  "termination_reason": "task_complete",
+  "trace_id": "trace_284-baseline_normalized",
+  "trace_mode": "live"
+}

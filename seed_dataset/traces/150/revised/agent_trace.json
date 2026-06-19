@@ -1,0 +1,155 @@
+{
+  "actual_outputs": {
+    "original_internal_attempt_id": "aa_task_0350_revised",
+    "attempt_id": "150-revised",
+    "attempt_kind": "revised",
+    "error_message": null,
+    "error_type": null,
+    "metadata_json": {
+      "actual_outputs_discarded_field_count": 0,
+      "actual_outputs_normalized": true,
+      "expected_deliverable_items": [
+        "feed_strategy_table.xlsx"
+      ],
+      "produced_deliverable_items": [
+        "feed_strategy_table.xlsx"
+      ],
+      "raw_actual_outputs": {}
+    },
+    "output_summary": "Normalized actual outputs from artifact files.",
+    "status": "success",
+    "original_internal_task_id": "aa_task_0350",
+    "task_id": "150",
+    "required_deliverables": [
+      "feed_strategy_table.xlsx"
+    ],
+    "produced_deliverables": [
+      "feed_strategy_table.xlsx"
+    ],
+    "missing_required_deliverables": [],
+    "deliverable_produced": true,
+    "deliverable_file_included": false,
+    "included_generated_artifacts": false,
+    "artifacts_excluded_reason": "Generated output artifacts are excluded from the public seed dataset by default.",
+    "logs_included": false,
+    "logs_excluded_reason": "Raw runner logs are excluded from the public seed dataset."
+  },
+  "agent_config": null,
+  "agent_tools": [
+    "codex_cli",
+    "Bash",
+    "python",
+    "file_read",
+    "file_write"
+  ],
+  "artifacts": [],
+  "original_internal_attempt_id": "aa_task_0350_revised",
+  "attempt_id": "150-revised",
+  "attempt_kind": "revised",
+  "collection_id": null,
+  "completion_reason": null,
+  "ended_at": null,
+  "final_attempt_id": null,
+  "initial_attempt_id": null,
+  "iteration_index": null,
+  "learning": "When a live agent cannot write outputs, preserve logs and create a minimal failure trace.",
+  "memory": null,
+  "metadata_json": {
+    "codex_command": [
+      "codex",
+      "exec",
+      "--sandbox",
+      "workspace-write",
+      "<prompt>"
+    ],
+    "codex_sandbox": "workspace-write",
+    "fallback_reason": "missing_trace",
+    "fallback_trace_created": true,
+    "trace_valid": false
+  },
+  "preferred_attempt_id": null,
+  "previous_attempt_id": null,
+  "prior_trace_id": null,
+  "revision_attempt_ids": [],
+  "revision_group_id": null,
+  "schema_version": "aa-trace-v0.1",
+  "skills": [
+    "agent_trace_skill"
+  ],
+  "started_at": null,
+  "steps": [
+    {
+      "action": "user_message",
+      "actor": "user",
+      "alternatives_considered": null,
+      "causal_note": null,
+      "causal_type": null,
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "Advanced task: Bioreactor feed strategy screen. Assay packet: plate controls high=1.43, low=0.27, blank=0.14; samples A=1.10, B=0.30, C=1.68. Rule: sample above high control requires dilution; below low control is below quantifiable range; blank>0.08 invalidates plate. Produce the stated deliverable with calculations, assumptions, exceptions, and exact row/value citations. Do not invent additional records; mark missing inputs as needs_review. Include intermediate calculations, uncertainty or sensitivity notes, validation checks, and a final decision table that ties every recommendation back to the supplied values. The response should be executable from the embedded packet alone, with no external data lookup required beyond understanding the cited public removed context.",
+      "input_source": null,
+      "message_role": "direct_request",
+      "metadata_json": {},
+      "observation": null,
+      "operation": null,
+      "output": null,
+      "parallel_group": null,
+      "reasoning": null,
+      "retry_of": null,
+      "started_at": null,
+      "state_change": null,
+      "step": 1,
+      "step_outcome": null,
+      "success": null,
+      "tool": null,
+      "turn": 1
+    },
+    {
+      "action": "error",
+      "actor": "agent:reviser",
+      "alternatives_considered": null,
+      "causal_note": null,
+      "causal_type": "dependency_on_tool_result",
+      "caused_by": [
+        1
+      ],
+      "ended_at": null,
+      "error_message": "ese noncanonical top-level step fields: step_number, command, inputs, outputs, state_changes, decision_summary, eval, eval_reason, directive.\\nYour raw trace will be preserved exactly. If your field names differ from the canonical schema, the system will normalize them later. Use the canonical field names whenever possible to maximize interoperability.\\n\\n\\n## Input files\\n- ./input/task.json\\n- ./input/task_brief.md\\n\\n## Required output contract\\n- ./agent_trace.json\\n- ./actual_outputs.json\\n- [EXCLUDED_GENERATED_ARTIFACT] Task\\nAdvanced task: Bioreactor feed strategy screen. Assay packet: plate controls high=1.43, low=0.27, blank=0.14; samples A=1.10, B=0.30, C=1.68. Rule: sample above high control requires dilution; below low control is below quantifiable range; blank>0.08 invalidates plate. Produce the stated deliverable with calculations, assumptions, exceptions, and exact row/value citations. Do not invent additional records; mark missing inputs as needs_review. Include intermediate calculations, uncertainty or sensitivity notes, validation checks, and a final decision table that ties every recommendation back to the supplied values. The response should be executable from the embedded packet alone, with no external data lookup required beyond understanding the cited public removed context.\\n\\n## Worker-visible evaluation rubric\\n# Worker-visible rubric for 150\\n\\n- **Produce a fully executable, auditable feed_strategy_table.xlsx matching the task specification** (1.0): Deliver an Excel workbook named feed_strategy_table.xlsx that is fully self-contained and executable from the embedded packet alone. The workbook must include: (a) a 'raw_values' sheet containing verbatim supplied values and exact citations to the packet rows/fields used; (b) a 'calculations' sheet with intermediate numeric steps, clear formulas (no opaque hard-coded results), and reproducible computations; (c) a 'validation_checks' sheet that explicitly evaluates the control and blank rules (blank > 0.08 invalidates plate; sample > high control requires dilution; sample < low control => BQL), showing the exact comparison expressions and boolean/result cells; (d) an 'assumptions_and_exceptions' sheet documenting all assumptions, missing inputs flagged as needs_review, recommended standard dilution series if not specified (documented as an assumption), and propagated uncertainty method used; and (e) a 'final_decision_table' sheet mapping each sample to a recommended action (e.g., dilution required / report BQL / accept), with audit links (cell references) to the exact supplied values and the validation check rows that produced the decision. A compact companion summary sheet (one-sheet) must also be present listing key decisions, validation failures (if any), and short uncertainty/sensitivity notes. Maintain an explicit audit trail for every recommendation linking back to the exact supplied value(s) and rule evaluation(s).\\n\\n\"]' timed out after 900 seconds",
+      "error_type": "FileNotFoundError",
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "Validate required output contract for ./agent_trace.json and ./actual_outputs.json.",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {},
+      "observation": "Codex attempt ended without a valid agent_trace.json or actual_outputs.json.",
+      "operation": "other",
+      "output": "ese noncanonical top-level step fields: step_number, command, inputs, outputs, state_changes, decision_summary, eval, eval_reason, directive.\\nYour raw trace will be preserved exactly. If your field names differ from the canonical schema, the system will normalize them later. Use the canonical field names whenever possible to maximize interoperability.\\n\\n\\n## Input files\\n- ./input/task.json\\n- ./input/task_brief.md\\n\\n## Required output contract\\n- ./agent_trace.json\\n- ./actual_outputs.json\\n- [EXCLUDED_GENERATED_ARTIFACT] Task\\nAdvanced task: Bioreactor feed strategy screen. Assay packet: plate controls high=1.43, low=0.27, blank=0.14; samples A=1.10, B=0.30, C=1.68. Rule: sample above high control requires dilution; below low control is below quantifiable range; blank>0.08 invalidates plate. Produce the stated deliverable with calculations, assumptions, exceptions, and exact row/value citations. Do not invent additional records; mark missing inputs as needs_review. Include intermediate calculations, uncertainty or sensitivity notes, validation checks, and a final decision table that ties every recommendation back to the supplied values. The response should be executable from the embedded packet alone, with no external data lookup required beyond understanding the cited public removed context.\\n\\n## Worker-visible evaluation rubric\\n# Worker-visible rubric for 150\\n\\n- **Produce a fully executable, auditable feed_strategy_table.xlsx matching the task specification** (1.0): Deliver an Excel workbook named feed_strategy_table.xlsx that is fully self-contained and executable from the embedded packet alone. The workbook must include: (a) a 'raw_values' sheet containing verbatim supplied values and exact citations to the packet rows/fields used; (b) a 'calculations' sheet with intermediate numeric steps, clear formulas (no opaque hard-coded results), and reproducible computations; (c) a 'validation_checks' sheet that explicitly evaluates the control and blank rules (blank > 0.08 invalidates plate; sample > high control requires dilution; sample < low control => BQL), showing the exact comparison expressions and boolean/result cells; (d) an 'assumptions_and_exceptions' sheet documenting all assumptions, missing inputs flagged as needs_review, recommended standard dilution series if not specified (documented as an assumption), and propagated uncertainty method used; and (e) a 'final_decision_table' sheet mapping each sample to a recommended action (e.g., dilution required / report BQL / accept), with audit links (cell references) to the exact supplied values and the validation check rows that produced the decision. A compact companion summary sheet (one-sheet) must also be present listing key decisions, validation failures (if any), and short uncertainty/sensitivity notes. Maintain an explicit audit trail for every recommendation linking back to the exact supplied value(s) and rule evaluation(s).\\n\\n\"]' timed out after 900 seconds",
+      "parallel_group": null,
+      "reasoning": "The package must preserve failure evidence without fabricating a successful detailed trace.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "A minimal failure trace and failed actual_outputs.json were written by the runner.",
+      "step": 2,
+      "step_outcome": "failed",
+      "success": false,
+      "tool": "codex_cli",
+      "turn": 1
+    }
+  ],
+  "system_prompt": "# Agent Apprenticeship Workflow Task\n\nAttempt: revised\n\nYou are the worker/reviser agent for an agent apprenticeship data-generation run.\nProduce high-quality work artifacts for the task and preserve useful execution evidence while you work.\nWrite agent_trace.json as a structured workflow trace following the AgentTrace schema.\nEach step should represent one meaningful action: reading context, using a tool, creating or editing an artifact, validating output, handling an error, or delivering the final result.\nCapture exact commands, inputs, outputs, state changes, errors, retries, artifact references, and causality whenever available.\nUse concise visible decision summaries in reasoning fields. Do not include private hidden chain-of-thought.\nRecord success, step_outcome, error_type, and error_message where applicable.\nDo not grade your own work in the trace. Model-based grader, verifier, and evaluator roles will assess the attempt later.\nInput files are available under ./input/.\nWrite final deliverables under [EXCLUDED_GENERATED_ARTIFACT]\nWrite ./agent_trace.json and ./actual_outputs.json in the current attempt directory.\nDo not write final outputs to the package root or any parent directory.\n\nUse exactly these field names in every trace step:\nstep, turn, actor, action, operation, tool, observation, input, output, state_change, reasoning, caused_by, causal_type, causal_note, success, step_outcome, error_type, error_message, artifact_refs, metadata_json.\nDo not use these noncanonical top-level step fields: step_number, command, inputs, outputs, state_changes, decision_summary, eval, eval_reason, directive.\nYour raw trace will be preserved exactly. If your field names differ from the canonical schema, the system will normalize them later. Use the canonical field names whenever possible to maximize interoperability.\n\n\n## Input files\n- ./input/task.json\n- ./input/task_brief.md\n\n## Required output contract\n- ./agent_trace.json\n- ./actual_outputs.json\n- [EXCLUDED_GENERATED_ARTIFACT]\n\n## Task\nAdvanced task: Bioreactor feed strategy screen. Assay packet: plate controls high=1.43, low=0.27, blank=0.14; samples A=1.10, B=0.30, C=1.68. Rule: sample above high control requires dilution; below low control is below quantifiable range; blank>0.08 invalidates plate. Produce the stated deliverable with calculations, assumptions, exceptions, and exact row/value citations. Do not invent additional records; mark missing inputs as needs_review. Include intermediate calculations, uncertainty or sensitivity notes, validation checks, and a final decision table that ties every recommendation back to the supplied values. The response should be executable from the embedded packet alone, with no external data lookup required beyond understanding the cited public removed context.\n\n## Worker-visible evaluation rubric\n# Worker-visible rubric for 150\n\n- **Produce a fully executable, auditable feed_strategy_table.xlsx matching the task specification** (1.0): Deliver an Excel workbook named feed_strategy_table.xlsx that is fully self-contained and executable from the embedded packet alone. The workbook must include: (a) a 'raw_values' sheet containing verbatim supplied values and exact citations to the packet rows/fields used; (b) a 'calculations' sheet with intermediate numeric steps, clear formulas (no opaque hard-coded results), and reproducible computations; (c) a 'validation_checks' sheet that explicitly evaluates the control and blank rules (blank > 0.08 invalidates plate; sample > high control requires dilution; sample < low control => BQL), showing the exact comparison expressions and boolean/result cells; (d) an 'assumptions_and_exceptions' sheet documenting all assumptions, missing inputs flagged as needs_review, recommended standard dilution series if not specified (documented as an assumption), and propagated uncertainty method used; and (e) a 'final_decision_table' sheet mapping each sample to a recommended action (e.g., dilution required / report BQL / accept), with audit links (cell references) to the exact supplied values and the validation check rows that produced the decision. A compact companion summary sheet (one-sheet) must also be present listing key decisions, validation failures (if any), and short uncertainty/sensitivity notes. Maintain an explicit audit trail for every recommendation linking back to the exact supplied value(s) and rule evaluation(s).\n\n",
+  "system_prompt_hash": null,
+  "task": "Advanced task: Bioreactor feed strategy screen. Assay packet: plate controls high=1.43, low=0.27, blank=0.14; samples A=1.10, B=0.30, C=1.68. Rule: sample above high control requires dilution; below low control is below quantifiable range; blank>0.08 invalidates plate. Produce the stated deliverable with calculations, assumptions, exceptions, and exact row/value citations. Do not invent additional records; mark missing inputs as needs_review. Include intermediate calculations, uncertainty or sensitivity notes, validation checks, and a final decision table that ties every recommendation back to the supplied values. The response should be executable from the embedded packet alone, with no external data lookup required beyond understanding the cited public removed context.",
+  "task_family_id": null,
+  "original_internal_task_id": "aa_task_0350",
+  "task_id": "150",
+  "termination_reason": "agent_blocked",
+  "trace_id": "trace_150-revised_fallback",
+  "trace_mode": "live"
+}

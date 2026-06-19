@@ -1,0 +1,741 @@
+{
+  "actual_outputs": {
+    "original_internal_attempt_id": "aa_task_0683_revised",
+    "attempt_id": "383-revised",
+    "attempt_kind": "revised",
+    "error_message": null,
+    "error_type": null,
+    "metadata_json": {
+      "actual_outputs_discarded_field_count": 0,
+      "actual_outputs_normalized": true,
+      "expected_deliverable_items": [
+        "mutant_priority_table.csv",
+        "experiment_brief.md"
+      ],
+      "original_fields": {
+        "artifacts": [
+          {
+            "description": "Row-level mutant prioritization table with formulas, intermediate values, classifications, sensitivity classes, margin, remediation options, and cost accounting",
+            "source": "embedded_packet",
+            "type": "csv"
+          },
+          {
+            "description": "Methods, assumptions, calculation trace, validation checks, sensitivity testing, acceptance criteria, unresolved ambiguities, and final decision table",
+            "source": "embedded_packet",
+            "type": "markdown"
+          }
+        ],
+        "attempt_type": "revised",
+        "generated_at": "2026-06-16T00:00:00Z",
+        "notes": [
+          "Calculations use reconstructed normalization and weighting from embedded packet only.",
+          "No external datasets or files were imported."
+        ],
+        "schema_fields": {
+          "agent_trace": "agent_trace.json",
+          "required_task_outputs": [
+            "[EXCLUDED_GENERATED_ARTIFACT]",
+            "[EXCLUDED_GENERATED_ARTIFACT]"
+          ]
+        }
+      },
+      "produced_deliverable_items": [
+        "experiment_brief.md",
+        "mutant_priority_table.csv"
+      ],
+      "raw_actual_outputs": {
+        "artifacts": [
+          {
+            "description": "Row-level mutant prioritization table with formulas, intermediate values, classifications, sensitivity classes, margin, remediation options, and cost accounting",
+            "source": "embedded_packet",
+            "type": "csv"
+          },
+          {
+            "description": "Methods, assumptions, calculation trace, validation checks, sensitivity testing, acceptance criteria, unresolved ambiguities, and final decision table",
+            "source": "embedded_packet",
+            "type": "markdown"
+          }
+        ],
+        "attempt_type": "revised",
+        "generated_at": "2026-06-16T00:00:00Z",
+        "notes": [
+          "Calculations use reconstructed normalization and weighting from embedded packet only.",
+          "No external datasets or files were imported."
+        ],
+        "schema_fields": {
+          "agent_trace": "agent_trace.json",
+          "required_task_outputs": [
+            "[EXCLUDED_GENERATED_ARTIFACT]",
+            "[EXCLUDED_GENERATED_ARTIFACT]"
+          ]
+        },
+        "original_internal_task_id": "aa_task_0683",
+        "task_id": "383"
+      }
+    },
+    "output_summary": "Normalized actual outputs from artifact files.",
+    "status": "success",
+    "original_internal_task_id": "aa_task_0683",
+    "task_id": "383",
+    "required_deliverables": [
+      "mutant_priority_table.csv",
+      "experiment_brief.md"
+    ],
+    "produced_deliverables": [
+      "experiment_brief.md",
+      "mutant_priority_table.csv"
+    ],
+    "missing_required_deliverables": [],
+    "deliverable_produced": true,
+    "deliverable_file_included": false,
+    "included_generated_artifacts": false,
+    "artifacts_excluded_reason": "Generated output artifacts are excluded from the public seed dataset by default.",
+    "logs_included": false,
+    "logs_excluded_reason": "Raw runner logs are excluded from the public seed dataset."
+  },
+  "agent_config": null,
+  "agent_tools": [
+    "codex_cli",
+    "Bash",
+    "python",
+    "file_read",
+    "file_write",
+    "apply_patch"
+  ],
+  "artifacts": [],
+  "original_internal_attempt_id": "aa_task_0683_revised",
+  "attempt_id": "383-revised",
+  "attempt_kind": "revised",
+  "attempt_status": "completed",
+  "collection_id": null,
+  "completion_reason": null,
+  "ended_at": null,
+  "final_attempt_id": null,
+  "initial_attempt_id": null,
+  "iteration_index": null,
+  "learning": null,
+  "memory": null,
+  "metadata_json": {
+    "codex_command": [
+      "codex",
+      "exec",
+      "--sandbox",
+      "workspace-write",
+      "<prompt>"
+    ],
+    "codex_sandbox": "workspace-write",
+    "discarded_step_count": 0,
+    "raw_trace_list": [
+      {
+        "action": "Read task packet and instruction inputs",
+        "actor": "worker",
+        "artifact_refs": [
+          "input/task.json",
+          "input/task_brief.md"
+        ],
+        "causal_note": "Input acquisition",
+        "causal_type": "direct_task",
+        "caused_by": null,
+        "error_message": null,
+        "error_type": null,
+        "input": "cat input/task.json && cat input/task_brief.md",
+        "metadata_json": {
+          "normalized_task_domain": "computational_biology",
+          "policy": "no_external_data",
+          "original_internal_task_id": "aa_task_0683",
+          "task_id": "383"
+        },
+        "observation": "Loaded task inputs from provided files in ./input and identified explicit rules, records, thresholds, and options.",
+        "operation": "read",
+        "output": "Parsed record set R1..R4, threshold=55.0, budget=25000, options O1/O2/O3 with effects, margin/classification bands, and sensitivity requirement.",
+        "reasoning": "Used packet values only; no external inputs introduced.",
+        "state_change": "No filesystem state changed; context established for downstream artifact creation.",
+        "step": 1,
+        "step_outcome": "completed",
+        "success": true,
+        "tool": "exec_command",
+        "turn": 1
+      },
+      {
+        "action": "Create artifacts directory and initial mutant priority table",
+        "actor": "worker",
+        "causal_note": "Build outputs from extracted rules",
+        "causal_type": "sequence",
+        "caused_by": 1,
+        "error_message": null,
+        "error_type": null,
+        "input": "mkdir -p artifacts && cat > [EXCLUDED_GENERATED_ARTIFACT] <<'EOF'...",
+        "metadata_json": {
+          "format": "csv",
+          "formula": "0.40*lm_norm + 0.35*stability_norm + 0.15*syn_risk - 0.20*priority_norm",
+          "normalization": [
+            "lm_norm",
+            "stability_norm",
+            "synthesis_risk",
+            "priority_norm"
+          ]
+        },
+        "observation": "Generated initial mutant_priority_table.csv with per-record normalization, formula, risk, margin, sensitivity, and remediation fields.",
+        "operation": "write",
+        "output": "Created [EXCLUDED_GENERATED_ARTIFACT] containing 4 rows (R1-R4) and complete traceability columns.",
+        "reasoning": "Built executable-style risk equation and carried all calculations from embedded packet in one table artifact.",
+        "state_change": "New file created: [EXCLUDED_GENERATED_ARTIFACT]",
+        "step": 2,
+        "step_outcome": "completed",
+        "success": true,
+        "tool": "exec_command",
+        "turn": 1
+      },
+      {
+        "action": "Patch mutant priority table typo in R3 sensitivity entry",
+        "actor": "worker",
+        "causal_note": "Data quality correction",
+        "causal_type": "error_recovery",
+        "caused_by": 2,
+        "error_message": null,
+        "error_type": null,
+        "input": "apply_patch updating [EXCLUDED_GENERATED_ARTIFACT]",
+        "metadata_json": {
+          "field": "sensitivity_minus5pct_risk",
+          "record": "R3"
+        },
+        "observation": "Corrected malformed temporary stand-in string in R3 sensitivity_minus5pct_class cell.",
+        "operation": "write",
+        "output": "R3 row now contains numeric sensitivity_minus5pct_risk value and valid classification field, preserving CSV integrity.",
+        "reasoning": "Repairing accidental temporary stand-in to ensure machine-readable and review-safe output.",
+        "state_change": "Updated artifact in-place: [EXCLUDED_GENERATED_ARTIFACT]",
+        "step": 3,
+        "step_outcome": "completed",
+        "success": true,
+        "tool": "apply_patch",
+        "turn": 1
+      },
+      {
+        "action": "Write review-ready experiment brief",
+        "actor": "worker",
+        "causal_note": "Human-readable audit artifact",
+        "causal_type": "sequence",
+        "caused_by": 2,
+        "error_message": null,
+        "error_type": null,
+        "input": "cat > [EXCLUDED_GENERATED_ARTIFACT] <<'EOF'...",
+        "metadata_json": {
+          "sections": [
+            "Methods",
+            "Sensitivity analysis",
+            "Acceptance criteria",
+            "needs_review"
+          ]
+        },
+        "observation": "Created experiment_brief.md with methods, assumptions, explicit formulas, sensitivity checks, acceptance criteria, unresolved ambiguities, and final decision table.",
+        "operation": "write",
+        "output": "Created [EXCLUDED_GENERATED_ARTIFACT] with traceable calculations and decision rationale.",
+        "reasoning": "Required narrative deliverable requires non-tabular trace, assumptions, and ambiguities.",
+        "state_change": "New file created: [EXCLUDED_GENERATED_ARTIFACT]",
+        "step": 4,
+        "step_outcome": "completed",
+        "success": true,
+        "tool": "exec_command",
+        "turn": 1
+      },
+      {
+        "action": "Write actual_outputs.json manifest",
+        "actor": "worker",
+        "artifact_refs": [
+          "actual_outputs.json"
+        ],
+        "causal_note": "Package-level bookkeeping",
+        "causal_type": "sequence",
+        "caused_by": 4,
+        "error_message": null,
+        "error_type": null,
+        "input": "cat > actual_outputs.json <<'EOF'...",
+        "metadata_json": {
+          "attempt_type": "revised",
+          "requires_reviewer": true
+        },
+        "observation": "Written machine-readable manifest for evaluator-visible outputs with paths and descriptions.",
+        "operation": "write",
+        "output": "Created ./actual_outputs.json referencing required deliverables and manifest metadata.",
+        "reasoning": "Manifest supports reproducibility and artifact indexing.",
+        "state_change": "New file created: actual_outputs.json",
+        "step": 5,
+        "step_outcome": "completed",
+        "success": true,
+        "tool": "exec_command",
+        "turn": 1
+      },
+      {
+        "action": "Write structured workflow trace",
+        "actor": "worker",
+        "artifact_refs": [
+          "agent_trace.json",
+          "actual_outputs.json"
+        ],
+        "causal_note": "Final trace artifact",
+        "causal_type": "sequence",
+        "caused_by": 5,
+        "error_message": null,
+        "error_type": null,
+        "input": "cat > agent_trace.json <<'EOF'...",
+        "metadata_json": {
+          "required_fields_present": true,
+          "schema": "canonical_agent_trace",
+          "trace_steps": 6
+        },
+        "observation": "Recorded all meaningful workflow actions in canonical schema-compliant format with artifact references and causality.",
+        "operation": "write",
+        "output": "Created ./agent_trace.json containing 6 trace steps.",
+        "reasoning": "Agent_trace required by task contract for execution evidence.",
+        "state_change": "New file created: agent_trace.json",
+        "step": 6,
+        "step_outcome": "completed",
+        "success": true,
+        "tool": "exec_command",
+        "turn": 1
+      }
+    ],
+    "raw_trace_preserved": true,
+    "raw_trace_shape": "list",
+    "raw_trace_step_source": "steps",
+    "schema_valid": true,
+    "trace_normalization_status": "normalized",
+    "trace_valid": true
+  },
+  "preferred_attempt_id": null,
+  "previous_attempt_id": null,
+  "prior_trace_id": null,
+  "revision_attempt_ids": [],
+  "revision_group_id": null,
+  "schema_version": "aa-trace-v0.1",
+  "skills": null,
+  "started_at": null,
+  "steps": [
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "artifact_refs": [
+        "input/task.json",
+        "input/task_brief.md"
+      ],
+      "causal_note": null,
+      "causal_type": null,
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "cat input/task.json && cat input/task_brief.md",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "normalized_task_domain": "computational_biology",
+        "original_action": "Read task packet and instruction inputs",
+        "policy": "no_external_data",
+        "raw_step": {
+          "action": "Read task packet and instruction inputs",
+          "actor": "worker",
+          "artifact_refs": [
+            "input/task.json",
+            "input/task_brief.md"
+          ],
+          "causal_note": "Input acquisition",
+          "causal_type": "direct_task",
+          "caused_by": null,
+          "error_message": null,
+          "error_type": null,
+          "input": "cat input/task.json && cat input/task_brief.md",
+          "metadata_json": {
+            "normalized_task_domain": "computational_biology",
+            "policy": "no_external_data",
+            "original_internal_task_id": "aa_task_0683",
+            "task_id": "383"
+          },
+          "observation": "Loaded task inputs from provided files in ./input and identified explicit rules, records, thresholds, and options.",
+          "operation": "read",
+          "output": "Parsed record set R1..R4, threshold=55.0, budget=25000, options O1/O2/O3 with effects, margin/classification bands, and sensitivity requirement.",
+          "reasoning": "Used packet values only; no external inputs introduced.",
+          "state_change": "No filesystem state changed; context established for downstream artifact creation.",
+          "step": 1,
+          "step_outcome": "completed",
+          "success": true,
+          "tool": "exec_command",
+          "turn": 1
+        },
+        "original_internal_task_id": "aa_task_0683",
+        "task_id": "383"
+      },
+      "observation": "Loaded task inputs from provided files in ./input and identified explicit rules, records, thresholds, and options.",
+      "operation": "read",
+      "output": "Parsed record set R1..R4, threshold=55.0, budget=25000, options O1/O2/O3 with effects, margin/classification bands, and sensitivity requirement.",
+      "parallel_group": null,
+      "reasoning": "Used packet values only; no external inputs introduced.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "No filesystem state changed; context established for downstream artifact creation.",
+      "step": 1,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "Bash",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "causal_note": "Build outputs from extracted rules",
+      "causal_type": "execution_of_plan",
+      "caused_by": [
+        1
+      ],
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "mkdir -p artifacts && cat > [EXCLUDED_GENERATED_ARTIFACT] <<'EOF'...",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "format": "csv",
+        "formula": "0.40*lm_norm + 0.35*stability_norm + 0.15*syn_risk - 0.20*priority_norm",
+        "normalization": [
+          "lm_norm",
+          "stability_norm",
+          "synthesis_risk",
+          "priority_norm"
+        ],
+        "original_action": "Create artifacts directory and initial mutant priority table",
+        "original_causal_type": "sequence",
+        "raw_step": {
+          "action": "Create artifacts directory and initial mutant priority table",
+          "actor": "worker",
+          "causal_note": "Build outputs from extracted rules",
+          "causal_type": "sequence",
+          "caused_by": 1,
+          "error_message": null,
+          "error_type": null,
+          "input": "mkdir -p artifacts && cat > [EXCLUDED_GENERATED_ARTIFACT] <<'EOF'...",
+          "metadata_json": {
+            "format": "csv",
+            "formula": "0.40*lm_norm + 0.35*stability_norm + 0.15*syn_risk - 0.20*priority_norm",
+            "normalization": [
+              "lm_norm",
+              "stability_norm",
+              "synthesis_risk",
+              "priority_norm"
+            ]
+          },
+          "observation": "Generated initial mutant_priority_table.csv with per-record normalization, formula, risk, margin, sensitivity, and remediation fields.",
+          "operation": "write",
+          "output": "Created [EXCLUDED_GENERATED_ARTIFACT] containing 4 rows (R1-R4) and complete traceability columns.",
+          "reasoning": "Built executable-style risk equation and carried all calculations from embedded packet in one table artifact.",
+          "state_change": "New file created: [EXCLUDED_GENERATED_ARTIFACT]",
+          "step": 2,
+          "step_outcome": "completed",
+          "success": true,
+          "tool": "exec_command",
+          "turn": 1
+        }
+      },
+      "observation": "Generated initial mutant_priority_table.csv with per-record normalization, formula, risk, margin, sensitivity, and remediation fields.",
+      "operation": "write",
+      "output": "Created [EXCLUDED_GENERATED_ARTIFACT] containing 4 rows (R1-R4) and complete traceability columns.",
+      "parallel_group": null,
+      "reasoning": "Built executable-style risk equation and carried all calculations from embedded packet in one table artifact.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "New file created: [EXCLUDED_GENERATED_ARTIFACT]",
+      "step": 2,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "Bash",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "causal_note": "Data quality correction",
+      "causal_type": "other",
+      "caused_by": [
+        2
+      ],
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "apply_patch updating [EXCLUDED_GENERATED_ARTIFACT]",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "field": "sensitivity_minus5pct_risk",
+        "original_action": "Patch mutant priority table typo in R3 sensitivity entry",
+        "original_causal_type": "error_recovery",
+        "raw_step": {
+          "action": "Patch mutant priority table typo in R3 sensitivity entry",
+          "actor": "worker",
+          "causal_note": "Data quality correction",
+          "causal_type": "error_recovery",
+          "caused_by": 2,
+          "error_message": null,
+          "error_type": null,
+          "input": "apply_patch updating [EXCLUDED_GENERATED_ARTIFACT]",
+          "metadata_json": {
+            "field": "sensitivity_minus5pct_risk",
+            "record": "R3"
+          },
+          "observation": "Corrected malformed temporary stand-in string in R3 sensitivity_minus5pct_class cell.",
+          "operation": "write",
+          "output": "R3 row now contains numeric sensitivity_minus5pct_risk value and valid classification field, preserving CSV integrity.",
+          "reasoning": "Repairing accidental temporary stand-in to ensure machine-readable and review-safe output.",
+          "state_change": "Updated artifact in-place: [EXCLUDED_GENERATED_ARTIFACT]",
+          "step": 3,
+          "step_outcome": "completed",
+          "success": true,
+          "tool": "apply_patch",
+          "turn": 1
+        },
+        "record": "R3"
+      },
+      "observation": "Corrected malformed temporary stand-in string in R3 sensitivity_minus5pct_class cell.",
+      "operation": "write",
+      "output": "R3 row now contains numeric sensitivity_minus5pct_risk value and valid classification field, preserving CSV integrity.",
+      "parallel_group": null,
+      "reasoning": "Repairing accidental temporary stand-in to ensure machine-readable and review-safe output.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Updated artifact in-place: [EXCLUDED_GENERATED_ARTIFACT]",
+      "step": 3,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "apply_patch",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "causal_note": "Human-readable audit artifact",
+      "causal_type": "execution_of_plan",
+      "caused_by": [
+        2
+      ],
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "cat > [EXCLUDED_GENERATED_ARTIFACT] <<'EOF'...",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "original_action": "Write review-ready experiment brief",
+        "original_causal_type": "sequence",
+        "raw_step": {
+          "action": "Write review-ready experiment brief",
+          "actor": "worker",
+          "causal_note": "Human-readable audit artifact",
+          "causal_type": "sequence",
+          "caused_by": 2,
+          "error_message": null,
+          "error_type": null,
+          "input": "cat > [EXCLUDED_GENERATED_ARTIFACT] <<'EOF'...",
+          "metadata_json": {
+            "sections": [
+              "Methods",
+              "Sensitivity analysis",
+              "Acceptance criteria",
+              "needs_review"
+            ]
+          },
+          "observation": "Created experiment_brief.md with methods, assumptions, explicit formulas, sensitivity checks, acceptance criteria, unresolved ambiguities, and final decision table.",
+          "operation": "write",
+          "output": "Created [EXCLUDED_GENERATED_ARTIFACT] with traceable calculations and decision rationale.",
+          "reasoning": "Required narrative deliverable requires non-tabular trace, assumptions, and ambiguities.",
+          "state_change": "New file created: [EXCLUDED_GENERATED_ARTIFACT]",
+          "step": 4,
+          "step_outcome": "completed",
+          "success": true,
+          "tool": "exec_command",
+          "turn": 1
+        },
+        "sections": [
+          "Methods",
+          "Sensitivity analysis",
+          "Acceptance criteria",
+          "needs_review"
+        ]
+      },
+      "observation": "Created experiment_brief.md with methods, assumptions, explicit formulas, sensitivity checks, acceptance criteria, unresolved ambiguities, and final decision table.",
+      "operation": "write",
+      "output": "Created [EXCLUDED_GENERATED_ARTIFACT] with traceable calculations and decision rationale.",
+      "parallel_group": null,
+      "reasoning": "Required narrative deliverable requires non-tabular trace, assumptions, and ambiguities.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "New file created: [EXCLUDED_GENERATED_ARTIFACT]",
+      "step": 4,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "Bash",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "artifact_refs": [
+        "actual_outputs.json"
+      ],
+      "causal_note": "Package-level bookkeeping",
+      "causal_type": "execution_of_plan",
+      "caused_by": [
+        4
+      ],
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "cat > actual_outputs.json <<'EOF'...",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "attempt_type": "revised",
+        "original_action": "Write actual_outputs.json manifest",
+        "original_causal_type": "sequence",
+        "raw_step": {
+          "action": "Write actual_outputs.json manifest",
+          "actor": "worker",
+          "artifact_refs": [
+            "actual_outputs.json"
+          ],
+          "causal_note": "Package-level bookkeeping",
+          "causal_type": "sequence",
+          "caused_by": 4,
+          "error_message": null,
+          "error_type": null,
+          "input": "cat > actual_outputs.json <<'EOF'...",
+          "metadata_json": {
+            "attempt_type": "revised",
+            "requires_reviewer": true
+          },
+          "observation": "Written machine-readable manifest for evaluator-visible outputs with paths and descriptions.",
+          "operation": "write",
+          "output": "Created ./actual_outputs.json referencing required deliverables and manifest metadata.",
+          "reasoning": "Manifest supports reproducibility and artifact indexing.",
+          "state_change": "New file created: actual_outputs.json",
+          "step": 5,
+          "step_outcome": "completed",
+          "success": true,
+          "tool": "exec_command",
+          "turn": 1
+        },
+        "requires_reviewer": true
+      },
+      "observation": "Written machine-readable manifest for evaluator-visible outputs with paths and descriptions.",
+      "operation": "write",
+      "output": "Created ./actual_outputs.json referencing required deliverables and manifest metadata.",
+      "parallel_group": null,
+      "reasoning": "Manifest supports reproducibility and artifact indexing.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "New file created: actual_outputs.json",
+      "step": 5,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "Bash",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "artifact_refs": [
+        "agent_trace.json",
+        "actual_outputs.json"
+      ],
+      "causal_note": "Final trace artifact",
+      "causal_type": "execution_of_plan",
+      "caused_by": [
+        5
+      ],
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "cat > agent_trace.json <<'EOF'...",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "original_action": "Write structured workflow trace",
+        "original_causal_type": "sequence",
+        "raw_step": {
+          "action": "Write structured workflow trace",
+          "actor": "worker",
+          "artifact_refs": [
+            "agent_trace.json",
+            "actual_outputs.json"
+          ],
+          "causal_note": "Final trace artifact",
+          "causal_type": "sequence",
+          "caused_by": 5,
+          "error_message": null,
+          "error_type": null,
+          "input": "cat > agent_trace.json <<'EOF'...",
+          "metadata_json": {
+            "required_fields_present": true,
+            "schema": "canonical_agent_trace",
+            "trace_steps": 6
+          },
+          "observation": "Recorded all meaningful workflow actions in canonical schema-compliant format with artifact references and causality.",
+          "operation": "write",
+          "output": "Created ./agent_trace.json containing 6 trace steps.",
+          "reasoning": "Agent_trace required by task contract for execution evidence.",
+          "state_change": "New file created: agent_trace.json",
+          "step": 6,
+          "step_outcome": "completed",
+          "success": true,
+          "tool": "exec_command",
+          "turn": 1
+        },
+        "required_fields_present": true,
+        "schema": "canonical_agent_trace",
+        "trace_steps": 6
+      },
+      "observation": "Recorded all meaningful workflow actions in canonical schema-compliant format with artifact references and causality.",
+      "operation": "write",
+      "output": "Created ./agent_trace.json containing 6 trace steps.",
+      "parallel_group": null,
+      "reasoning": "Agent_trace required by task contract for execution evidence.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "New file created: agent_trace.json",
+      "step": 6,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "Bash",
+      "turn": 1
+    }
+  ],
+  "system_prompt": null,
+  "system_prompt_hash": null,
+  "task": "Using only the provided embedded packet, rebuild the decision logic for a protein-language-model-based mutant prioritization filter, identify any threshold crossings, perform sensitivity testing (including 5% shifts) of classifications, and produce review-ready deliverables: (1) mutant_priority_table.csv containing row-level calculations, formulas/executable logic, intermediate values, row-level citations to the embedded packet, classification, margin, remediation recommendation(s) and cost accounting; and (2) experiment_brief.md containing methods, traceable calculations, assumptions, validation checks, sensitivity analysis, acceptance criteria, unresolved ambiguities (marked needs_review), and a final decision table. Do not use external data or invent inputs. Mark expert-review required where the rules demand it.",
+  "task_family_id": null,
+  "original_internal_task_id": "aa_task_0683",
+  "task_id": "383",
+  "termination_reason": "task_complete",
+  "trace_id": "trace_383-revised_normalized",
+  "trace_mode": "live"
+}

@@ -1,0 +1,81 @@
+{
+  "schema_version": "aa-seed-task-v0.1",
+  "task_id": "496",
+  "title": "Aquaculture Feed Conversion Early-Warning Model",
+  "domain": "aquaculture_analytics",
+  "subdomain": "feed_conversion_warning",
+  "domains": [
+    "aquaculture_analytics"
+  ],
+  "subdomains": [
+    "feed_conversion_warning"
+  ],
+  "agent_apprentice_role": "aquaculture operations analyst",
+  "task_family": "early_warning_analytics",
+  "difficulty_tier": "hard",
+  "expected_economic_value": "$25,000-$100,000 advanced benchmark authoring/evaluation",
+  "expected_economic_value_for_agent_apprentice": "$100-$250",
+  "expected_deliverable": "feed_conversion_warning.xlsx + husbandry_action.md",
+  "deliverables": [
+    "feed_conversion_warning.xlsx",
+    "husbandry_action.md"
+  ],
+  "normalized_title": "Aquaculture Feed Conversion Early-Warning Model",
+  "instruction": "Context: a recirculating aquaculture system sees worsening feed conversion. Task packet: records: R1 feed_kg=36.01 biomass_gain_kg=23.55 water_temp_C=58.4 mortality_count=277; R2 feed_kg=35.09 biomass_gain_kg=78.13 water_temp_C=22.4 mortality_count=9; R3 feed_kg=63.67 biomass_gain_kg=69.33 water_temp_C=73.8 mortality_count=107; R4 feed_kg=34.63 biomass_gain_kg=73.9 water_temp_C=53.8 mortality_count=370; limit_feed_kg=47.3; limit_biomass_gain_kg=6.34; limit_water_temp_C=54.4; decision_budget_usd=115000; sensitivity_shift_pct=5; hard_threshold_record_count=1;. Rules and constraints: Treat confidence below 0.70, missing provenance, or contradictory record status as needs_review even when the numeric score passes. Recommendations cannot use external measurements, specialized licensed software, or hidden assumptions; all calculations must use only the task packet, and any contradictory or under-supported record must be marked needs_review. Required work: diagnose biological versus operations drivers; convert the packet into an auditable evidence table, cite the governing values, and list unresolved assumptions. Deliver feed_conversion_warning.xlsx + husbandry_action.md with formulas or executable logic, record-level citations, validation checks, sensitivity notes, and a final recommendation table suitable for expert review. This task is self-contained: use the task packet as the factual record, do not add source references or external datasets, and preserve a high-fidelity audit trail for every calculation, classification, and recommendation. State assumptions and unresolved evidence gaps explicitly. When executed locally, place final deliverables under the artifacts/ directory.",
+  "task_status": "ready_to_run",
+  "run_status": "not_run",
+  "seed_rank": 201,
+  "display_order": 201,
+  "allowed_tools": [
+    "Local text editor or Markdown editor",
+    "Local spreadsheet, CSV, JSON, YAML, or scripting tools for deterministic calculations",
+    "Local validation or linting commands",
+    "Local plotting or diagramming tools when useful"
+  ],
+  "disallowed_tools": [
+    "External fact lookup or live data pulls",
+    "Live production systems, cloud accounts, trading systems, clinical systems, or industrial controls",
+    "Secret discovery, credential testing, or any action outside the prepared task workspace"
+  ],
+  "privacy_classification": "synthetic",
+  "needs_expert_review": true,
+  "input_requirements": [
+    "Use the task packet as the sole factual input.",
+    "Cite row IDs, record IDs, thresholds, formulas, and option IDs from the packet wherever they control a conclusion.",
+    "Mark missing, contradictory, or under-supported values as needs_review instead of inventing them."
+  ],
+  "inputs": [
+    "All factual inputs are embedded in the task packet.",
+    "Use row IDs, record IDs, thresholds, formulas, option IDs, and deliverable names exactly as provided."
+  ],
+  "output_requirements": [
+    "Produce the required deliverable files with the specified filenames when filenames are provided.",
+    "Include intermediate calculations or executable logic sufficient for another reviewer to reproduce the result.",
+    "Include validation checks, sensitivity notes around controlling thresholds, and a final decision or recommendation table."
+  ],
+  "constraints": [
+    "Use the task packet as the factual record.",
+    "Do not browse, call live services, import external datasets, or invent missing values.",
+    "Treat regulated or safety-critical outputs as review packets, not authorization to act."
+  ],
+  "quality_bar": [
+    "Treat the task as realistic professional work with domain-appropriate rigor.",
+    "Preserve the packet's domain detail, identifiers, thresholds, and edge cases in the final deliverables.",
+    "Make every recommendation traceable to explicit task-packet evidence or mark it as needs_review."
+  ],
+  "validation_expectations": [
+    "Check required fields, row counts, totals, thresholds, and classifications before finalizing.",
+    "Show enough formulas, script logic, or tables for an independent reviewer to reproduce the result.",
+    "Flag any contradiction, missing input, or threshold-sensitive conclusion."
+  ],
+  "edge_cases": [
+    "If packet evidence is incomplete, do not infer missing values; label the item needs_review.",
+    "If multiple options satisfy hard constraints, rank them using the packet's stated priorities and explain ties.",
+    "If a regulated or safety-critical conclusion appears, frame the output as a review packet rather than authorization to act."
+  ],
+  "privacy_safety_expectations": [
+    "Do not use live systems, private accounts, credentials, or external datasets.",
+    "Do not include raw secrets or operational instructions that would execute real-world changes.",
+    "Keep synthetic identifiers from the packet only when needed for verification."
+  ]
+}

@@ -1,0 +1,81 @@
+{
+  "schema_version": "aa-seed-task-v0.1",
+  "task_id": "511",
+  "title": "Post-Market Pharmacovigilance Signal Triage With Disproportionality and Case Narrative Ranking",
+  "domain": "pharmacovigilance_postmarket_safety_signal",
+  "subdomain": "hepatic_safety_signal_disproportionality_and_case_triage",
+  "domains": [
+    "pharmacovigilance_postmarket_safety_signal"
+  ],
+  "subdomains": [
+    "hepatic_safety_signal_disproportionality_and_case_triage"
+  ],
+  "agent_apprentice_role": "pharmacovigilance signal management lead",
+  "task_family": "postmarket_signal_detection_and_regulatory_triage",
+  "difficulty_tier": "expert",
+  "expected_economic_value": "$155k-$285k pharmacovigilance signal management / safety science role",
+  "expected_economic_value_for_agent_apprentice": "$250+",
+  "expected_deliverable": "postmarket_signal_triage.xlsx + signal_review_memo.md",
+  "deliverables": [
+    "postmarket_signal_triage.xlsx",
+    "signal_review_memo.md"
+  ],
+  "normalized_title": "Post-Market Pharmacovigilance Signal Triage With Disproportionality and Case Narrative Ranking",
+  "instruction": "A pharmacovigilance safety team is preparing a signal-management meeting for a marketed therapy after a cluster of synthetic spontaneous reports mentions acute hepatic injury. The task is to triage signal strength and regulatory next steps, not to provide medical advice or infer individual causality. Embedded aggregate packet: product=RX-417, exposure estimate=410,000 patient-years, reporting window=2025Q4-2026Q2, event=serious hepatic injury. Database 2x2 counts after deduplication: RX-417 hepatic=46, RX-417 all_other_events=7,854, comparator_class hepatic=88, comparator_class all_other=31,412, full_database hepatic=4,920, full_database all_other=2,870,000. Duplicate candidates: case A and B same age=62 sex=F country=DE onset=16 days lot=L72 narrative similarity=0.91 count_as_one; cases C/D similarity=0.62 count_separate. Case excerpts: C1 age 48 F onset 9 days ALT=1,120 U/L bilirubin=3.1 mg/dL dechallenge=positive rechallenge=not_done concomitant valproate=no alcohol_history=none outcome=hospitalized; C2 age 71 M onset 42 days ALT=430 bilirubin=0.9 concomitant amiodarone=yes outcome=recovered; C3 age 39 F onset 6 days ALT=1,780 bilirubin=4.8 dechallenge=positive rechallenge=positive outcome=ICU; C4 age 66 M onset 120 days metastatic_liver_disease=yes ALT=310 bilirubin=2.2 outcome=fatal; C5 literature abstract reports 3 cases median onset 12 days, two positive dechallenges, no rechallenge. Listedness: current label includes mild transaminase elevation 1.8%, does not include serious hepatic injury; expected_background serious hepatic injury=7.5 per 100,000 patient-years; seriousness criteria hospitalization/death/life_threatening. Rules and constraints: compute PRR=(a/(a+b))/(c/(c+d)) using comparator_class; compute ROR=(a/b)/(c/d); flag statistical signal if cases>=3 and PRR>=2.0 and chi_square>=4 using chi_square=(abs(a*d-b*c)-0.5*(a+b+c+d))^2*(a+b+c+d)/((a+b)*(c+d)*(a+c)*(b+d)); clinical priority score = seriousness_count*8 + positive_rechallenge*18 + positive_dechallenge_count*6 + unlisted_event*15 + background_rate_ratio_excess*4 - strong_alternative_etiology_count*7; recommend actions: monitor, validate, label-safety-evaluation, or expedited escalation if statistical signal plus clinical_priority>=55. Required work: deliver postmarket_signal_triage.xlsx + signal_review_memo.md with deduped counts, PRR/ROR/chi-square, observed-vs-background rate, case-ranking table, regulatory rationale, and evidence gaps, using only the synthetic packet. This task is self-contained: use the task packet as the factual record, do not add source references or external datasets, and preserve a high-fidelity audit trail for every calculation, classification, and recommendation. State assumptions and unresolved evidence gaps explicitly. When executed locally, place final deliverables under the artifacts/ directory.",
+  "task_status": "ready_to_run",
+  "run_status": "not_run",
+  "seed_rank": 11,
+  "display_order": 11,
+  "allowed_tools": [
+    "Local text editor or Markdown editor",
+    "Local spreadsheet, CSV, JSON, YAML, or scripting tools for deterministic calculations",
+    "Local validation or linting commands",
+    "Local plotting or diagramming tools when useful"
+  ],
+  "disallowed_tools": [
+    "External fact lookup or live data pulls",
+    "Live production systems, cloud accounts, trading systems, clinical systems, or industrial controls",
+    "Secret discovery, credential testing, or any action outside the prepared task workspace"
+  ],
+  "privacy_classification": "synthetic",
+  "needs_expert_review": true,
+  "input_requirements": [
+    "Use the task packet as the sole factual input.",
+    "Cite row IDs, record IDs, thresholds, formulas, and option IDs from the packet wherever they control a conclusion.",
+    "Mark missing, contradictory, or under-supported values as needs_review instead of inventing them."
+  ],
+  "inputs": [
+    "All factual inputs are embedded in the task packet.",
+    "Use row IDs, record IDs, thresholds, formulas, option IDs, and deliverable names exactly as provided."
+  ],
+  "output_requirements": [
+    "Produce the required deliverable files with the specified filenames when filenames are provided.",
+    "Include intermediate calculations or executable logic sufficient for another reviewer to reproduce the result.",
+    "Include validation checks, sensitivity notes around controlling thresholds, and a final decision or recommendation table."
+  ],
+  "constraints": [
+    "Use the task packet as the factual record.",
+    "Do not browse, call live services, import external datasets, or invent missing values.",
+    "Treat regulated or safety-critical outputs as review packets, not authorization to act."
+  ],
+  "quality_bar": [
+    "Treat the task as realistic professional work with domain-appropriate rigor.",
+    "Preserve the packet's domain detail, identifiers, thresholds, and edge cases in the final deliverables.",
+    "Make every recommendation traceable to explicit task-packet evidence or mark it as needs_review."
+  ],
+  "validation_expectations": [
+    "Check required fields, row counts, totals, thresholds, and classifications before finalizing.",
+    "Show enough formulas, script logic, or tables for an independent reviewer to reproduce the result.",
+    "Flag any contradiction, missing input, or threshold-sensitive conclusion."
+  ],
+  "edge_cases": [
+    "If packet evidence is incomplete, do not infer missing values; label the item needs_review.",
+    "If multiple options satisfy hard constraints, rank them using the packet's stated priorities and explain ties.",
+    "If a regulated or safety-critical conclusion appears, frame the output as a review packet rather than authorization to act."
+  ],
+  "privacy_safety_expectations": [
+    "Do not use live systems, private accounts, credentials, or external datasets.",
+    "Do not include raw secrets or operational instructions that would execute real-world changes.",
+    "Keep synthetic identifiers from the packet only when needed for verification."
+  ]
+}

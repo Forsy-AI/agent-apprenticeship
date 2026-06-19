@@ -1,0 +1,510 @@
+{
+  "original_internal_attempt_id": "aa_task_0608_revised",
+  "attempt_id": "308-revised",
+  "attempt_kind": "revised",
+  "error_message": null,
+  "error_type": null,
+  "metadata_json": {
+    "actual_outputs_discarded_field_count": 0,
+    "actual_outputs_normalized": true,
+    "codex_sandbox": "workspace-write",
+    "expected_deliverable_items": [
+      "spatial_deconvolution_audit.ipynb",
+      "biology_memo.md"
+    ],
+    "original_fields": {
+      "artifacts": {
+        "biology_memo": "[EXCLUDED_GENERATED_ARTIFACT]",
+        "notebook": "[EXCLUDED_GENERATED_ARTIFACT]"
+      },
+      "decision_logic": {
+        "confirmed_failure_rule": "confirmed failure if max(tumor_pct, immune_pct) >= normalized_threshold_score; otherwise warning",
+        "economic_margin_formula": "remediation_budget_usd - total_option_cost_usd",
+        "safety_margin_formula": "normalized_threshold_score - max(tumor_pct, immune_pct)",
+        "threshold": 57.5,
+        "unresolved_ambiguities": [
+          "needs_review: no composite normalized deconvolution score formula supplied",
+          "needs_review: no independent warning band supplied",
+          "needs_review: no reads threshold supplied",
+          "needs_review: no numeric boundary-flag threshold supplied"
+        ]
+      },
+      "final_decision_table": [
+        {
+          "citation": "R1",
+          "classification": "warning",
+          "controlling_evidence": "immune_pct=56.68",
+          "expert_review_trigger": true,
+          "rationale": "Classification changes under +5% sensitivity; expert review required.",
+          "record_action": "retest",
+          "record_id": "R1",
+          "safety_margin": 0.82
+        },
+        {
+          "citation": "R2",
+          "classification": "warning",
+          "controlling_evidence": "immune_pct=50.07",
+          "expert_review_trigger": false,
+          "rationale": "Below threshold, sensitivity-stable, and boundary_flag=0.",
+          "record_action": "release",
+          "record_id": "R2",
+          "safety_margin": 7.43
+        },
+        {
+          "citation": "R3",
+          "classification": "warning",
+          "controlling_evidence": "tumor_pct=54.01",
+          "expert_review_trigger": false,
+          "rationale": "Boundary flag is unresolved margin evidence; no boundary threshold is supplied.",
+          "record_action": "retest",
+          "record_id": "R3",
+          "safety_margin": 3.49
+        },
+        {
+          "citation": "R4",
+          "classification": "warning",
+          "controlling_evidence": "tumor_pct=53.52",
+          "expert_review_trigger": false,
+          "rationale": "Below threshold, sensitivity-stable, and boundary_flag=0.",
+          "record_action": "release",
+          "record_id": "R4",
+          "safety_margin": 3.98
+        }
+      ],
+      "record_results": [
+        {
+          "boundary_flag": 1,
+          "citation": "Embedded packet row R1",
+          "classification": "warning",
+          "controlling_driver": "immune_pct",
+          "controlling_score": 56.68,
+          "expert_review_trigger": true,
+          "immune_pct": 56.68,
+          "margin_pct_of_threshold": -1.4261,
+          "margin_to_threshold": -0.82,
+          "reads": 21606,
+          "record_id": "R1",
+          "safety_margin": 0.82,
+          "tumor_pct": 52.69
+        },
+        {
+          "boundary_flag": 0,
+          "citation": "Embedded packet row R2",
+          "classification": "warning",
+          "controlling_driver": "immune_pct",
+          "controlling_score": 50.07,
+          "expert_review_trigger": false,
+          "immune_pct": 50.07,
+          "margin_pct_of_threshold": -12.9217,
+          "margin_to_threshold": -7.43,
+          "reads": 21609,
+          "record_id": "R2",
+          "safety_margin": 7.43,
+          "tumor_pct": 48.19
+        },
+        {
+          "boundary_flag": 1,
+          "citation": "Embedded packet row R3",
+          "classification": "warning",
+          "controlling_driver": "tumor_pct",
+          "controlling_score": 54.01,
+          "expert_review_trigger": false,
+          "immune_pct": 16.59,
+          "margin_pct_of_threshold": -6.0696,
+          "margin_to_threshold": -3.49,
+          "reads": 16613,
+          "record_id": "R3",
+          "safety_margin": 3.49,
+          "tumor_pct": 54.01
+        },
+        {
+          "boundary_flag": 0,
+          "citation": "Embedded packet row R4",
+          "classification": "warning",
+          "controlling_driver": "tumor_pct",
+          "controlling_score": 53.52,
+          "expert_review_trigger": false,
+          "immune_pct": 37.36,
+          "margin_pct_of_threshold": -6.9217,
+          "margin_to_threshold": -3.98,
+          "reads": 9538,
+          "record_id": "R4",
+          "safety_margin": 3.98,
+          "tumor_pct": 53.52
+        }
+      ],
+      "remediation_budget": {
+        "budget_usd": 130000,
+        "combinations": [
+          {
+            "allowed_under_budget": true,
+            "budget_margin_usd": 89700,
+            "combination": "O1",
+            "cost_usd": 40300,
+            "targets": "tumor_pct"
+          },
+          {
+            "allowed_under_budget": true,
+            "budget_margin_usd": 68900,
+            "combination": "O2",
+            "cost_usd": 61100,
+            "targets": "immune_pct"
+          },
+          {
+            "allowed_under_budget": true,
+            "budget_margin_usd": 59800,
+            "combination": "O3",
+            "cost_usd": 70200,
+            "targets": "boundary_flag margin driver"
+          },
+          {
+            "allowed_under_budget": true,
+            "budget_margin_usd": 28600,
+            "combination": "O1+O2",
+            "cost_usd": 101400,
+            "targets": "tumor_pct+immune_pct"
+          },
+          {
+            "allowed_under_budget": true,
+            "budget_margin_usd": 19500,
+            "combination": "O1+O3",
+            "cost_usd": 110500,
+            "targets": "tumor_pct+boundary_flag margin driver"
+          },
+          {
+            "allowed_under_budget": false,
+            "budget_margin_usd": -1300,
+            "combination": "O2+O3",
+            "cost_usd": 131300,
+            "targets": "immune_pct+boundary_flag margin driver"
+          },
+          {
+            "allowed_under_budget": false,
+            "budget_margin_usd": -41600,
+            "combination": "O1+O2+O3",
+            "cost_usd": 171600,
+            "targets": "tumor_pct+immune_pct+boundary_flag margin driver"
+          }
+        ],
+        "over_budget_combinations": [
+          {
+            "allowed_under_budget": false,
+            "budget_margin_usd": -1300,
+            "combination": "O2+O3",
+            "cost_usd": 131300,
+            "targets": "immune_pct+boundary_flag margin driver"
+          },
+          {
+            "allowed_under_budget": false,
+            "budget_margin_usd": -41600,
+            "combination": "O1+O2+O3",
+            "cost_usd": 171600,
+            "targets": "tumor_pct+immune_pct+boundary_flag margin driver"
+          }
+        ]
+      },
+      "sensitivity_changes": [
+        {
+          "changed_from_base": true,
+          "classification": "confirmed failure",
+          "controlling_driver": "immune_pct",
+          "controlling_score": 59.514,
+          "factor": 1.05,
+          "perturbed_drivers": "immune_pct",
+          "record_id": "R1",
+          "scenario": "immune_pct_plus_5pct"
+        },
+        {
+          "changed_from_base": true,
+          "classification": "confirmed failure",
+          "controlling_driver": "immune_pct",
+          "controlling_score": 59.514,
+          "factor": 1.05,
+          "perturbed_drivers": "tumor_pct+immune_pct",
+          "record_id": "R1",
+          "scenario": "all_risk_drivers_plus_5pct"
+        }
+      ],
+      "summary": {
+        "confirmed_failures": [],
+        "expert_review_records": [
+          "R1"
+        ],
+        "overall_action_reason": "No base record meets the supplied threshold, but R1 changes classification under +5% immune_pct sensitivity and R1/R3 carry boundary_flag=1. The combined O2+O3 mitigation that would address immune and boundary evidence costs $131,300, exceeding the $130,000 budget by $1,300; therefore release is not supported without retest/expert review.",
+        "overall_recommended_program_action": "retest",
+        "warnings": [
+          "R1",
+          "R2",
+          "R3",
+          "R4"
+        ]
+      },
+      "validation": {
+        "imputed_values": 0,
+        "missing_values": 0,
+        "options_checked": 3,
+        "records_checked": 4
+      }
+    },
+    "produced_deliverable_items": [
+      "biology_memo.md"
+    ],
+    "raw_actual_outputs": {
+      "artifacts": {
+        "biology_memo": "[EXCLUDED_GENERATED_ARTIFACT]",
+        "notebook": "[EXCLUDED_GENERATED_ARTIFACT]"
+      },
+      "decision_logic": {
+        "confirmed_failure_rule": "confirmed failure if max(tumor_pct, immune_pct) >= normalized_threshold_score; otherwise warning",
+        "economic_margin_formula": "remediation_budget_usd - total_option_cost_usd",
+        "safety_margin_formula": "normalized_threshold_score - max(tumor_pct, immune_pct)",
+        "threshold": 57.5,
+        "unresolved_ambiguities": [
+          "needs_review: no composite normalized deconvolution score formula supplied",
+          "needs_review: no independent warning band supplied",
+          "needs_review: no reads threshold supplied",
+          "needs_review: no numeric boundary-flag threshold supplied"
+        ]
+      },
+      "final_decision_table": [
+        {
+          "citation": "R1",
+          "classification": "warning",
+          "controlling_evidence": "immune_pct=56.68",
+          "expert_review_trigger": true,
+          "rationale": "Classification changes under +5% sensitivity; expert review required.",
+          "record_action": "retest",
+          "record_id": "R1",
+          "safety_margin": 0.82
+        },
+        {
+          "citation": "R2",
+          "classification": "warning",
+          "controlling_evidence": "immune_pct=50.07",
+          "expert_review_trigger": false,
+          "rationale": "Below threshold, sensitivity-stable, and boundary_flag=0.",
+          "record_action": "release",
+          "record_id": "R2",
+          "safety_margin": 7.43
+        },
+        {
+          "citation": "R3",
+          "classification": "warning",
+          "controlling_evidence": "tumor_pct=54.01",
+          "expert_review_trigger": false,
+          "rationale": "Boundary flag is unresolved margin evidence; no boundary threshold is supplied.",
+          "record_action": "retest",
+          "record_id": "R3",
+          "safety_margin": 3.49
+        },
+        {
+          "citation": "R4",
+          "classification": "warning",
+          "controlling_evidence": "tumor_pct=53.52",
+          "expert_review_trigger": false,
+          "rationale": "Below threshold, sensitivity-stable, and boundary_flag=0.",
+          "record_action": "release",
+          "record_id": "R4",
+          "safety_margin": 3.98
+        }
+      ],
+      "record_results": [
+        {
+          "boundary_flag": 1,
+          "citation": "Embedded packet row R1",
+          "classification": "warning",
+          "controlling_driver": "immune_pct",
+          "controlling_score": 56.68,
+          "expert_review_trigger": true,
+          "immune_pct": 56.68,
+          "margin_pct_of_threshold": -1.4261,
+          "margin_to_threshold": -0.82,
+          "reads": 21606,
+          "record_id": "R1",
+          "safety_margin": 0.82,
+          "tumor_pct": 52.69
+        },
+        {
+          "boundary_flag": 0,
+          "citation": "Embedded packet row R2",
+          "classification": "warning",
+          "controlling_driver": "immune_pct",
+          "controlling_score": 50.07,
+          "expert_review_trigger": false,
+          "immune_pct": 50.07,
+          "margin_pct_of_threshold": -12.9217,
+          "margin_to_threshold": -7.43,
+          "reads": 21609,
+          "record_id": "R2",
+          "safety_margin": 7.43,
+          "tumor_pct": 48.19
+        },
+        {
+          "boundary_flag": 1,
+          "citation": "Embedded packet row R3",
+          "classification": "warning",
+          "controlling_driver": "tumor_pct",
+          "controlling_score": 54.01,
+          "expert_review_trigger": false,
+          "immune_pct": 16.59,
+          "margin_pct_of_threshold": -6.0696,
+          "margin_to_threshold": -3.49,
+          "reads": 16613,
+          "record_id": "R3",
+          "safety_margin": 3.49,
+          "tumor_pct": 54.01
+        },
+        {
+          "boundary_flag": 0,
+          "citation": "Embedded packet row R4",
+          "classification": "warning",
+          "controlling_driver": "tumor_pct",
+          "controlling_score": 53.52,
+          "expert_review_trigger": false,
+          "immune_pct": 37.36,
+          "margin_pct_of_threshold": -6.9217,
+          "margin_to_threshold": -3.98,
+          "reads": 9538,
+          "record_id": "R4",
+          "safety_margin": 3.98,
+          "tumor_pct": 53.52
+        }
+      ],
+      "remediation_budget": {
+        "budget_usd": 130000,
+        "combinations": [
+          {
+            "allowed_under_budget": true,
+            "budget_margin_usd": 89700,
+            "combination": "O1",
+            "cost_usd": 40300,
+            "targets": "tumor_pct"
+          },
+          {
+            "allowed_under_budget": true,
+            "budget_margin_usd": 68900,
+            "combination": "O2",
+            "cost_usd": 61100,
+            "targets": "immune_pct"
+          },
+          {
+            "allowed_under_budget": true,
+            "budget_margin_usd": 59800,
+            "combination": "O3",
+            "cost_usd": 70200,
+            "targets": "boundary_flag margin driver"
+          },
+          {
+            "allowed_under_budget": true,
+            "budget_margin_usd": 28600,
+            "combination": "O1+O2",
+            "cost_usd": 101400,
+            "targets": "tumor_pct+immune_pct"
+          },
+          {
+            "allowed_under_budget": true,
+            "budget_margin_usd": 19500,
+            "combination": "O1+O3",
+            "cost_usd": 110500,
+            "targets": "tumor_pct+boundary_flag margin driver"
+          },
+          {
+            "allowed_under_budget": false,
+            "budget_margin_usd": -1300,
+            "combination": "O2+O3",
+            "cost_usd": 131300,
+            "targets": "immune_pct+boundary_flag margin driver"
+          },
+          {
+            "allowed_under_budget": false,
+            "budget_margin_usd": -41600,
+            "combination": "O1+O2+O3",
+            "cost_usd": 171600,
+            "targets": "tumor_pct+immune_pct+boundary_flag margin driver"
+          }
+        ],
+        "over_budget_combinations": [
+          {
+            "allowed_under_budget": false,
+            "budget_margin_usd": -1300,
+            "combination": "O2+O3",
+            "cost_usd": 131300,
+            "targets": "immune_pct+boundary_flag margin driver"
+          },
+          {
+            "allowed_under_budget": false,
+            "budget_margin_usd": -41600,
+            "combination": "O1+O2+O3",
+            "cost_usd": 171600,
+            "targets": "tumor_pct+immune_pct+boundary_flag margin driver"
+          }
+        ]
+      },
+      "sensitivity_changes": [
+        {
+          "changed_from_base": true,
+          "classification": "confirmed failure",
+          "controlling_driver": "immune_pct",
+          "controlling_score": 59.514,
+          "factor": 1.05,
+          "perturbed_drivers": "immune_pct",
+          "record_id": "R1",
+          "scenario": "immune_pct_plus_5pct"
+        },
+        {
+          "changed_from_base": true,
+          "classification": "confirmed failure",
+          "controlling_driver": "immune_pct",
+          "controlling_score": 59.514,
+          "factor": 1.05,
+          "perturbed_drivers": "tumor_pct+immune_pct",
+          "record_id": "R1",
+          "scenario": "all_risk_drivers_plus_5pct"
+        }
+      ],
+      "summary": {
+        "confirmed_failures": [],
+        "expert_review_records": [
+          "R1"
+        ],
+        "overall_action_reason": "No base record meets the supplied threshold, but R1 changes classification under +5% immune_pct sensitivity and R1/R3 carry boundary_flag=1. The combined O2+O3 mitigation that would address immune and boundary evidence costs $131,300, exceeding the $130,000 budget by $1,300; therefore release is not supported without retest/expert review.",
+        "overall_recommended_program_action": "retest",
+        "warnings": [
+          "R1",
+          "R2",
+          "R3",
+          "R4"
+        ]
+      },
+      "original_internal_task_id": "aa_task_0608",
+      "task_id": "308",
+      "validation": {
+        "imputed_values": 0,
+        "missing_values": 0,
+        "options_checked": 3,
+        "records_checked": 4
+      }
+    }
+  },
+  "output_summary": "{'confirmed_failures': [], 'warnings': ['R1', 'R2', 'R3', 'R4'], 'expert_review_records': ['R1'], 'overall_recommended_program_action': 'retest', 'overall_action_reason': 'No base record meets the supplied threshold, but R1 changes classification under +5% immune_pct sensitivity and R1/R3 carry boundary_flag=1. The combined O2+O3 mitigation that would address immune and boundary evidence costs $131,300, exceeding the $130,000 budget by $1,300; therefore release is not supported without retest/expert review.'}",
+  "status": "partial",
+  "original_internal_task_id": "aa_task_0608",
+  "task_id": "308",
+  "original_status": "success",
+  "required_deliverables": [
+    "spatial_deconvolution_audit.ipynb",
+    "biology_memo.md"
+  ],
+  "produced_deliverables": [
+    "biology_memo.md"
+  ],
+  "missing_required_deliverables": [
+    "spatial_deconvolution_audit.ipynb"
+  ],
+  "deliverable_produced": false,
+  "deliverable_file_included": false,
+  "included_generated_artifacts": false,
+  "artifacts_excluded_reason": "Generated output artifacts are excluded from the public seed dataset by default.",
+  "logs_included": false,
+  "logs_excluded_reason": "Raw runner logs are excluded from the public seed dataset."
+}

@@ -1,0 +1,81 @@
+{
+  "schema_version": "aa-seed-task-v0.1",
+  "task_id": "619",
+  "title": "ICU Ventilator Alarm Priority and Staffing Load Review",
+  "domain": "critical_care_operations",
+  "subdomain": "ventilator_alarm_prioritization",
+  "domains": [
+    "critical_care_operations"
+  ],
+  "subdomains": [
+    "ventilator_alarm_prioritization"
+  ],
+  "agent_apprentice_role": "clinical systems safety analyst",
+  "task_family": "alarm_risk_triage",
+  "difficulty_tier": "expert",
+  "expected_economic_value": "Clinical engineering and ICU safety systems specialist compensation",
+  "expected_economic_value_for_agent_apprentice": "$250+",
+  "expected_deliverable": "icu_alarm_priority.xlsx + clinical_engineering_memo.md",
+  "deliverables": [
+    "icu_alarm_priority.xlsx",
+    "clinical_engineering_memo.md"
+  ],
+  "normalized_title": "ICU Ventilator Alarm Priority and Staffing Load Review",
+  "instruction": "Context: an ICU device-integration team must tune ventilator alarms after nurses report alert fatigue while two clinically important events were nearly missed. Task packet: alarms: A1 high_pressure count=84 actionable_pct=18 median_response_s=42 severity=high, A2 low_minute_volume count=22 actionable=71 response=18 severity=critical, A3 circuit_disconnect count=9 actionable=89 response=9 severity=critical, A4 apnea count=46 actionable=36 response=31 severity=high; staffing nurses=7 ventilated_patients=21; thresholds nuisance if count>40 and actionable<30, workload risk if response>30 for high/critical, staffing_target<=2.5 ventilated per nurse. Rules and constraints: Classify nuisance vs safety-critical delay, compute staffing load, and recommend alarm tuning/escalation without suppressing critical alarms. Required work: deliver icu_alarm_priority.xlsx + clinical_engineering_memo.md. The deliverables must include formulas or executable logic, intermediate calculations, row-level citations to the task packet, validation checks, uncertainty notes, sensitivity checks around the controlling thresholds, and a final decision table with pass/warn/fail/needs_review labels. Use only the task packet. Do not import external data, invent missing values, or hide unresolved assumptions. This task is self-contained: use the task packet as the factual record, do not add source references or external datasets, and preserve a high-fidelity audit trail for every calculation, classification, and recommendation. State assumptions and unresolved evidence gaps explicitly. When executed locally, place final deliverables under the artifacts/ directory.",
+  "task_status": "ready_to_run",
+  "run_status": "not_run",
+  "seed_rank": 34,
+  "display_order": 34,
+  "allowed_tools": [
+    "Local text editor or Markdown editor",
+    "Local spreadsheet, CSV, JSON, YAML, or scripting tools for deterministic calculations",
+    "Local validation or linting commands",
+    "Local plotting or diagramming tools when useful"
+  ],
+  "disallowed_tools": [
+    "External fact lookup or live data pulls",
+    "Live production systems, cloud accounts, trading systems, clinical systems, or industrial controls",
+    "Secret discovery, credential testing, or any action outside the prepared task workspace"
+  ],
+  "privacy_classification": "synthetic",
+  "needs_expert_review": true,
+  "input_requirements": [
+    "Use the task packet as the sole factual input.",
+    "Cite row IDs, record IDs, thresholds, formulas, and option IDs from the packet wherever they control a conclusion.",
+    "Mark missing, contradictory, or under-supported values as needs_review instead of inventing them."
+  ],
+  "inputs": [
+    "All factual inputs are embedded in the task packet.",
+    "Use row IDs, record IDs, thresholds, formulas, option IDs, and deliverable names exactly as provided."
+  ],
+  "output_requirements": [
+    "Produce the required deliverable files with the specified filenames when filenames are provided.",
+    "Include intermediate calculations or executable logic sufficient for another reviewer to reproduce the result.",
+    "Include validation checks, sensitivity notes around controlling thresholds, and a final decision or recommendation table."
+  ],
+  "constraints": [
+    "Use the task packet as the factual record.",
+    "Do not browse, call live services, import external datasets, or invent missing values.",
+    "Treat regulated or safety-critical outputs as review packets, not authorization to act."
+  ],
+  "quality_bar": [
+    "Treat the task as realistic professional work with domain-appropriate rigor.",
+    "Preserve the packet's domain detail, identifiers, thresholds, and edge cases in the final deliverables.",
+    "Make every recommendation traceable to explicit task-packet evidence or mark it as needs_review."
+  ],
+  "validation_expectations": [
+    "Check required fields, row counts, totals, thresholds, and classifications before finalizing.",
+    "Show enough formulas, script logic, or tables for an independent reviewer to reproduce the result.",
+    "Flag any contradiction, missing input, or threshold-sensitive conclusion."
+  ],
+  "edge_cases": [
+    "If packet evidence is incomplete, do not infer missing values; label the item needs_review.",
+    "If multiple options satisfy hard constraints, rank them using the packet's stated priorities and explain ties.",
+    "If a regulated or safety-critical conclusion appears, frame the output as a review packet rather than authorization to act."
+  ],
+  "privacy_safety_expectations": [
+    "Do not use live systems, private accounts, credentials, or external datasets.",
+    "Do not include raw secrets or operational instructions that would execute real-world changes.",
+    "Keep synthetic identifiers from the packet only when needed for verification."
+  ]
+}

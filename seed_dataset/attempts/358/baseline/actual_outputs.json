@@ -1,0 +1,388 @@
+{
+  "original_internal_attempt_id": "baseline",
+  "attempt_id": "358-baseline",
+  "attempt_kind": "baseline",
+  "error_message": null,
+  "error_type": null,
+  "metadata_json": {
+    "actual_outputs_discarded_field_count": 0,
+    "actual_outputs_normalized": true,
+    "codex_sandbox": "workspace-write",
+    "expected_deliverable_items": [
+      "burden_mask_definition.tsv",
+      "analysis_plan.md"
+    ],
+    "original_fields": {
+      "derivations": {
+        "af_normalizer": 0.003,
+        "aggregated_driver_risk": {
+          "af": 23.3334,
+          "cadd": 41.5582,
+          "call": 0.0084,
+          "mask": 24.0
+        },
+        "baseline_normalized_risk": 88.9753,
+        "cadd_denom": 19.65,
+        "cadd_low_threshold": 15,
+        "call_rate_threshold": 0.95,
+        "governance_checks": {
+          "exceeds_threshold": true,
+          "excess_over_threshold": 1.4753
+        },
+        "ranking": [
+          "R3",
+          "R1",
+          "R4",
+          "R2"
+        ],
+        "record_classification_band_thresholds": {
+          "block_gte": 50,
+          "pass_lt": 20,
+          "review_gte": 20,
+          "review_lt": 50
+        },
+        "records": [
+          {
+            "classification": "REVIEW",
+            "governing_drivers": [
+              "AF",
+              "mask_include"
+            ],
+            "needs_review": true,
+            "normalized_score": 22.0,
+            "record_id": "R1"
+          },
+          {
+            "classification": "PASS",
+            "governing_drivers": [
+              "CADD_excess"
+            ],
+            "needs_review": true,
+            "normalized_score": 1.9056,
+            "record_id": "R2"
+          },
+          {
+            "classification": "BLOCK",
+            "governing_drivers": [
+              "CADD",
+              "mask_include"
+            ],
+            "needs_review": true,
+            "normalized_score": 53.6667,
+            "record_id": "R3"
+          },
+          {
+            "classification": "PASS",
+            "governing_drivers": [
+              "AF",
+              "call_rate"
+            ],
+            "needs_review": true,
+            "normalized_score": 11.3271,
+            "record_id": "R4"
+          }
+        ],
+        "weights": {
+          "af": 0.1,
+          "cadd": 0.35,
+          "call": 0.08,
+          "mask": 0.12
+        }
+      },
+      "embedded_packet": {
+        "normalized_threshold_score": 87.5,
+        "options": {
+          "O1": {
+            "cost_usd": 18600,
+            "risk_reduction_pct": 12,
+            "target": "allele_frequency driver"
+          },
+          "O2": {
+            "cost_usd": 28200,
+            "risk_reduction_pct": 18,
+            "target": "cadd driver"
+          },
+          "O3": {
+            "cost_usd": 32400,
+            "risk_reduction_pct": 9,
+            "target": "mask_include margin driver"
+          }
+        },
+        "remediation_budget_usd": 60000
+      },
+      "final_state": {
+        "final_decision": "Implement O1 now; open follow-up review for residual CADD+mask-include risk concentration in R3 and AF/mask interaction in R1",
+        "needs_review": true
+      },
+      "outputs": {
+        "analysis_plan_md": "[EXCLUDED_GENERATED_ARTIFACT]",
+        "burden_mask_definition_tsv": "[EXCLUDED_GENERATED_ARTIFACT]"
+      },
+      "remediation_evaluation": {
+        "budget_check_usd": 60000,
+        "options_tested": [
+          {
+            "cost_usd": 18600,
+            "meets_threshold": true,
+            "option_set": "O1",
+            "resulting_risk": 86.1753,
+            "within_budget": true
+          },
+          {
+            "cost_usd": 28200,
+            "meets_threshold": true,
+            "option_set": "O2",
+            "resulting_risk": 81.4948,
+            "within_budget": true
+          },
+          {
+            "cost_usd": 32400,
+            "meets_threshold": true,
+            "option_set": "O3",
+            "resulting_risk": 86.8153,
+            "within_budget": true
+          },
+          {
+            "cost_usd": 46800,
+            "meets_threshold": true,
+            "option_set": "O1+O2",
+            "resulting_risk": 78.6948,
+            "within_budget": true
+          },
+          {
+            "cost_usd": 51000,
+            "meets_threshold": true,
+            "option_set": "O1+O3",
+            "resulting_risk": 83.0153,
+            "within_budget": true
+          },
+          {
+            "cost_usd": 60600,
+            "meets_threshold": true,
+            "option_set": "O2+O3",
+            "resulting_risk": 79.3348,
+            "within_budget": false
+          },
+          {
+            "cost_usd": 79200,
+            "meets_threshold": true,
+            "option_set": "O1+O2+O3",
+            "resulting_risk": 76.5348,
+            "within_budget": false
+          }
+        ],
+        "recommended_cost_usd": 18600,
+        "recommended_option_set": "O1",
+        "recommended_residual_risk": 86.1753
+      },
+      "sensitivity": {
+        "expert_review_flag_by_rule": false,
+        "notes": [
+          "No PASS/REVIEW/BLOCK band changes for any record under +/-5% driver-threshold perturbations using the same formulas."
+        ],
+        "record_band_changes_detected": false,
+        "shift_pct": 5
+      }
+    },
+    "produced_deliverable_items": [
+      "analysis_plan.md"
+    ],
+    "raw_actual_outputs": {
+      "original_internal_attempt_id": "baseline",
+      "attempt_id": "358-baseline",
+      "derivations": {
+        "af_normalizer": 0.003,
+        "aggregated_driver_risk": {
+          "af": 23.3334,
+          "cadd": 41.5582,
+          "call": 0.0084,
+          "mask": 24.0
+        },
+        "baseline_normalized_risk": 88.9753,
+        "cadd_denom": 19.65,
+        "cadd_low_threshold": 15,
+        "call_rate_threshold": 0.95,
+        "governance_checks": {
+          "exceeds_threshold": true,
+          "excess_over_threshold": 1.4753
+        },
+        "ranking": [
+          "R3",
+          "R1",
+          "R4",
+          "R2"
+        ],
+        "record_classification_band_thresholds": {
+          "block_gte": 50,
+          "pass_lt": 20,
+          "review_gte": 20,
+          "review_lt": 50
+        },
+        "records": [
+          {
+            "classification": "REVIEW",
+            "governing_drivers": [
+              "AF",
+              "mask_include"
+            ],
+            "needs_review": true,
+            "normalized_score": 22.0,
+            "record_id": "R1"
+          },
+          {
+            "classification": "PASS",
+            "governing_drivers": [
+              "CADD_excess"
+            ],
+            "needs_review": true,
+            "normalized_score": 1.9056,
+            "record_id": "R2"
+          },
+          {
+            "classification": "BLOCK",
+            "governing_drivers": [
+              "CADD",
+              "mask_include"
+            ],
+            "needs_review": true,
+            "normalized_score": 53.6667,
+            "record_id": "R3"
+          },
+          {
+            "classification": "PASS",
+            "governing_drivers": [
+              "AF",
+              "call_rate"
+            ],
+            "needs_review": true,
+            "normalized_score": 11.3271,
+            "record_id": "R4"
+          }
+        ],
+        "weights": {
+          "af": 0.1,
+          "cadd": 0.35,
+          "call": 0.08,
+          "mask": 0.12
+        }
+      },
+      "embedded_packet": {
+        "normalized_threshold_score": 87.5,
+        "options": {
+          "O1": {
+            "cost_usd": 18600,
+            "risk_reduction_pct": 12,
+            "target": "allele_frequency driver"
+          },
+          "O2": {
+            "cost_usd": 28200,
+            "risk_reduction_pct": 18,
+            "target": "cadd driver"
+          },
+          "O3": {
+            "cost_usd": 32400,
+            "risk_reduction_pct": 9,
+            "target": "mask_include margin driver"
+          }
+        },
+        "remediation_budget_usd": 60000
+      },
+      "final_state": {
+        "final_decision": "Implement O1 now; open follow-up review for residual CADD+mask-include risk concentration in R3 and AF/mask interaction in R1",
+        "needs_review": true
+      },
+      "outputs": {
+        "analysis_plan_md": "[EXCLUDED_GENERATED_ARTIFACT]",
+        "burden_mask_definition_tsv": "[EXCLUDED_GENERATED_ARTIFACT]"
+      },
+      "remediation_evaluation": {
+        "budget_check_usd": 60000,
+        "options_tested": [
+          {
+            "cost_usd": 18600,
+            "meets_threshold": true,
+            "option_set": "O1",
+            "resulting_risk": 86.1753,
+            "within_budget": true
+          },
+          {
+            "cost_usd": 28200,
+            "meets_threshold": true,
+            "option_set": "O2",
+            "resulting_risk": 81.4948,
+            "within_budget": true
+          },
+          {
+            "cost_usd": 32400,
+            "meets_threshold": true,
+            "option_set": "O3",
+            "resulting_risk": 86.8153,
+            "within_budget": true
+          },
+          {
+            "cost_usd": 46800,
+            "meets_threshold": true,
+            "option_set": "O1+O2",
+            "resulting_risk": 78.6948,
+            "within_budget": true
+          },
+          {
+            "cost_usd": 51000,
+            "meets_threshold": true,
+            "option_set": "O1+O3",
+            "resulting_risk": 83.0153,
+            "within_budget": true
+          },
+          {
+            "cost_usd": 60600,
+            "meets_threshold": true,
+            "option_set": "O2+O3",
+            "resulting_risk": 79.3348,
+            "within_budget": false
+          },
+          {
+            "cost_usd": 79200,
+            "meets_threshold": true,
+            "option_set": "O1+O2+O3",
+            "resulting_risk": 76.5348,
+            "within_budget": false
+          }
+        ],
+        "recommended_cost_usd": 18600,
+        "recommended_option_set": "O1",
+        "recommended_residual_risk": 86.1753
+      },
+      "sensitivity": {
+        "expert_review_flag_by_rule": false,
+        "notes": [
+          "No PASS/REVIEW/BLOCK band changes for any record under +/-5% driver-threshold perturbations using the same formulas."
+        ],
+        "record_band_changes_detected": false,
+        "shift_pct": 5
+      },
+      "original_internal_task_id": "aa_task_0658",
+      "task_id": "358"
+    }
+  },
+  "output_summary": "Normalized actual outputs from artifact files.",
+  "status": "partial",
+  "original_internal_task_id": "aa_task_0658",
+  "task_id": "358",
+  "original_status": "success",
+  "required_deliverables": [
+    "burden_mask_definition.tsv",
+    "analysis_plan.md"
+  ],
+  "produced_deliverables": [
+    "analysis_plan.md"
+  ],
+  "missing_required_deliverables": [
+    "burden_mask_definition.tsv"
+  ],
+  "deliverable_produced": false,
+  "deliverable_file_included": false,
+  "included_generated_artifacts": false,
+  "artifacts_excluded_reason": "Generated output artifacts are excluded from the public seed dataset by default.",
+  "logs_included": false,
+  "logs_excluded_reason": "Raw runner logs are excluded from the public seed dataset."
+}

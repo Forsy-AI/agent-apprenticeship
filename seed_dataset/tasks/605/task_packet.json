@@ -1,0 +1,81 @@
+{
+  "schema_version": "aa-seed-task-v0.1",
+  "task_id": "605",
+  "title": "Geothermal Brine Scaling and Reinjection Availability Decision",
+  "domain": "geothermal_engineering",
+  "subdomain": "brine_scaling_reinjection",
+  "domains": [
+    "geothermal_engineering"
+  ],
+  "subdomains": [
+    "brine_scaling_reinjection"
+  ],
+  "agent_apprentice_role": "geothermal reservoir engineer",
+  "task_family": "scale_risk_and_operability",
+  "difficulty_tier": "expert",
+  "expected_economic_value": "$160k-$280k geothermal operations and reservoir engineering compensation",
+  "expected_economic_value_for_agent_apprentice": "$250+",
+  "expected_deliverable": "brine_scaling_model.xlsx + reinjection_decision_memo.md",
+  "deliverables": [
+    "brine_scaling_model.xlsx",
+    "reinjection_decision_memo.md"
+  ],
+  "normalized_title": "Geothermal Brine Scaling and Reinjection Availability Decision",
+  "instruction": "Context: a geothermal operator is deciding whether to run a higher-flow production schedule after silica and carbonate scaling increased reinjection pressure. Task packet: wells: W1 flow_kg_s=64 silica_mg_L=610 calcite_index=0.8 reinjection_pressure_bar=41 limit_bar=55, W2 flow=82 silica=760 calcite=1.4 pressure=53 limit=58, W3 flow=57 silica=690 calcite=1.1 pressure=49 limit=52; temperature_drop_C=38; inhibitor options: I1 silica_inhibitor cost_per_day=7400 reduces_silica_risk=45%, I2 acid_wash cost=52000 reduces_pressure=8bar downtime_h=10, I3 reduce_flow_15pct revenue_loss_day=31000 reduces_pressure=18%; max_daily_loss=42000. Rules and constraints: scale_index=silica_mg_L/700 + calcite_index + max(0,pressure/limit-0.9)*3. Fail if pressure>limit or scale_index>2.3; warn if pressure within 5bar of limit. Evaluate feasible mitigation packages over a 7-day run and choose the lowest expected loss that avoids fail. Required work: deliver brine_scaling_model.xlsx + reinjection_decision_memo.md. The deliverables must include formulas or executable logic, intermediate calculations, row-level citations to the task packet, validation checks, uncertainty notes, sensitivity checks around the controlling thresholds, and a final decision table with pass/warn/fail/needs_review labels. Use only the task packet. Do not import external data, invent missing values, or hide unresolved assumptions. This task is self-contained: use the task packet as the factual record, do not add source references or external datasets, and preserve a high-fidelity audit trail for every calculation, classification, and recommendation. State assumptions and unresolved evidence gaps explicitly. When executed locally, place final deliverables under the artifacts/ directory.",
+  "task_status": "ready_to_run",
+  "run_status": "not_run",
+  "seed_rank": 20,
+  "display_order": 20,
+  "allowed_tools": [
+    "Local text editor or Markdown editor",
+    "Local spreadsheet, CSV, JSON, YAML, or scripting tools for deterministic calculations",
+    "Local validation or linting commands",
+    "Local plotting or diagramming tools when useful"
+  ],
+  "disallowed_tools": [
+    "External fact lookup or live data pulls",
+    "Live production systems, cloud accounts, trading systems, clinical systems, or industrial controls",
+    "Secret discovery, credential testing, or any action outside the prepared task workspace"
+  ],
+  "privacy_classification": "synthetic",
+  "needs_expert_review": true,
+  "input_requirements": [
+    "Use the task packet as the sole factual input.",
+    "Cite row IDs, record IDs, thresholds, formulas, and option IDs from the packet wherever they control a conclusion.",
+    "Mark missing, contradictory, or under-supported values as needs_review instead of inventing them."
+  ],
+  "inputs": [
+    "All factual inputs are embedded in the task packet.",
+    "Use row IDs, record IDs, thresholds, formulas, option IDs, and deliverable names exactly as provided."
+  ],
+  "output_requirements": [
+    "Produce the required deliverable files with the specified filenames when filenames are provided.",
+    "Include intermediate calculations or executable logic sufficient for another reviewer to reproduce the result.",
+    "Include validation checks, sensitivity notes around controlling thresholds, and a final decision or recommendation table."
+  ],
+  "constraints": [
+    "Use the task packet as the factual record.",
+    "Do not browse, call live services, import external datasets, or invent missing values.",
+    "Treat regulated or safety-critical outputs as review packets, not authorization to act."
+  ],
+  "quality_bar": [
+    "Treat the task as realistic professional work with domain-appropriate rigor.",
+    "Preserve the packet's domain detail, identifiers, thresholds, and edge cases in the final deliverables.",
+    "Make every recommendation traceable to explicit task-packet evidence or mark it as needs_review."
+  ],
+  "validation_expectations": [
+    "Check required fields, row counts, totals, thresholds, and classifications before finalizing.",
+    "Show enough formulas, script logic, or tables for an independent reviewer to reproduce the result.",
+    "Flag any contradiction, missing input, or threshold-sensitive conclusion."
+  ],
+  "edge_cases": [
+    "If packet evidence is incomplete, do not infer missing values; label the item needs_review.",
+    "If multiple options satisfy hard constraints, rank them using the packet's stated priorities and explain ties.",
+    "If a regulated or safety-critical conclusion appears, frame the output as a review packet rather than authorization to act."
+  ],
+  "privacy_safety_expectations": [
+    "Do not use live systems, private accounts, credentials, or external datasets.",
+    "Do not include raw secrets or operational instructions that would execute real-world changes.",
+    "Keep synthetic identifiers from the packet only when needed for verification."
+  ]
+}

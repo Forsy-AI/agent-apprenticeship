@@ -1,0 +1,622 @@
+{
+  "actual_outputs": {
+    "original_internal_attempt_id": "aa_task_0675_revised",
+    "attempt_id": "375-revised",
+    "attempt_kind": "revised",
+    "error_message": null,
+    "error_type": null,
+    "metadata_json": {
+      "actual_outputs_discarded_field_count": 0,
+      "actual_outputs_normalized": true,
+      "expected_deliverable_items": [
+        "semantic_search_audit.csv",
+        "evaluation_memo.md"
+      ],
+      "original_fields": {
+        "artifacts": [
+          "[EXCLUDED_GENERATED_ARTIFACT]",
+          "[EXCLUDED_GENERATED_ARTIFACT]"
+        ],
+        "attempt": "revised",
+        "delivery_notes": {
+          "needs_expert_review": false,
+          "scope": "enterprise migration semantic code search error audit",
+          "source": "./input/task.json and ./input/task_brief.md",
+          "validation": [
+            "all formulas match task packet",
+            "threshold and warn band applied",
+            "remediation budget checks included",
+            "5% sensitivity shift evaluated with no classification changes"
+          ]
+        }
+      },
+      "produced_deliverable_items": [
+        "semantic_search_audit.csv",
+        "evaluation_memo.md"
+      ],
+      "raw_actual_outputs": {
+        "artifacts": [
+          "[EXCLUDED_GENERATED_ARTIFACT]",
+          "[EXCLUDED_GENERATED_ARTIFACT]"
+        ],
+        "attempt": "revised",
+        "delivery_notes": {
+          "needs_expert_review": false,
+          "scope": "enterprise migration semantic code search error audit",
+          "source": "./input/task.json and ./input/task_brief.md",
+          "validation": [
+            "all formulas match task packet",
+            "threshold and warn band applied",
+            "remediation budget checks included",
+            "5% sensitivity shift evaluated with no classification changes"
+          ]
+        },
+        "original_internal_task_id": "aa_task_0675",
+        "task_id": "375"
+      }
+    },
+    "output_summary": "Normalized actual outputs from artifact files.",
+    "status": "success",
+    "original_internal_task_id": "aa_task_0675",
+    "task_id": "375",
+    "required_deliverables": [
+      "semantic_search_audit.csv",
+      "evaluation_memo.md"
+    ],
+    "produced_deliverables": [
+      "semantic_search_audit.csv",
+      "evaluation_memo.md"
+    ],
+    "missing_required_deliverables": [],
+    "deliverable_produced": true,
+    "deliverable_file_included": false,
+    "included_generated_artifacts": false,
+    "artifacts_excluded_reason": "Generated output artifacts are excluded from the public seed dataset by default.",
+    "logs_included": false,
+    "logs_excluded_reason": "Raw runner logs are excluded from the public seed dataset."
+  },
+  "agent_config": null,
+  "agent_tools": [
+    "codex_cli",
+    "Bash",
+    "python",
+    "file_read",
+    "file_write",
+    "apply_patch"
+  ],
+  "artifacts": [],
+  "original_internal_attempt_id": "aa_task_0675_revised",
+  "attempt_id": "375-revised",
+  "attempt_kind": "revised",
+  "attempt_status": "completed",
+  "collection_id": null,
+  "completion_reason": null,
+  "ended_at": null,
+  "final_attempt_id": null,
+  "initial_attempt_id": null,
+  "iteration_index": null,
+  "learning": null,
+  "memory": null,
+  "metadata_json": {
+    "codex_command": [
+      "codex",
+      "exec",
+      "--sandbox",
+      "workspace-write",
+      "<prompt>"
+    ],
+    "codex_sandbox": "workspace-write",
+    "discarded_step_count": 0,
+    "raw_trace_list": [
+      {
+        "action": "Read embedded task instructions and packet",
+        "actor": "reviser_agent",
+        "artifact_refs": [
+          "input/task.json",
+          "input/task_brief.md"
+        ],
+        "causal_note": "Established raw inputs required for normalization, scoring, and classification rules.",
+        "causal_type": "direct",
+        "caused_by": "initial_task_start",
+        "error_message": null,
+        "error_type": null,
+        "input": "Read files: ./input/task.json and ./input/task_brief.md",
+        "metadata_json": {
+          "classification_rules": [
+            "Fail>threshold",
+            "Warn>=10%_below_threshold",
+            "Pass otherwise"
+          ],
+          "records_seen": [
+            "R1",
+            "R2",
+            "R3",
+            "R4"
+          ]
+        },
+        "observation": "Task packet loaded from ./input/task.json and ./input/task_brief.md with 4 records, threshold, budget, and remediation options.",
+        "operation": "read",
+        "output": "Extracted records R1..R4, normalized_threshold_score=82.5, remediation_budget_usd=42500, options O1/O2/O3 with costs 13175, 19975, 22950.",
+        "reasoning": "Need exact numeric inputs before computing audit; all downstream computations depend on embedded packet only.",
+        "state_change": "No file mutations in workspace; in-memory packet context initialized.",
+        "step": 1,
+        "step_outcome": "packet_parsed",
+        "success": true,
+        "tool": "functions.exec_command",
+        "turn": 1
+      },
+      {
+        "action": "Compute metrics, normalize units, score, and classify records",
+        "actor": "reviser_agent",
+        "artifact_refs": [
+          "input/task.json"
+        ],
+        "causal_note": "Metric formulas derive from count fields; no external substitution allowed by task brief.",
+        "causal_type": "analysis",
+        "caused_by": "step_1",
+        "error_message": null,
+        "error_type": null,
+        "input": "R1..R4: expected_files, relevant_returned, returned_total, release_blocker; formula: first=max(0,expected-relevant)/expected*100, second=(returned_total-relevant)/returned_total*100, third=(1-release_blocker)*100",
+        "metadata_json": {
+          "classifications": {
+            "R1": "Pass",
+            "R2": "Pass",
+            "R3": "Pass",
+            "R4": "Pass"
+          },
+          "sensitivity_shift_percent": 5,
+          "warn_lower_bound": 74.25
+        },
+        "observation": "Computed normalized metrics from packet counts and release_blocker under documented assumptions.",
+        "operation": "execute",
+        "output": "Scores: R1=17.0250, R2=12.3000, R3=-9.4583, R4=4.0278. Classifications: all Pass (warn band start=74.25).",
+        "reasoning": "Applied explicit unit normalization and packet formula; chosen metric semantics documented as recall shortfall, precision risk, and remaining release margin.",
+        "state_change": "Scoring context established for row-level table and sensitivity checks in-memory.",
+        "step": 2,
+        "step_outcome": "metrics_computed",
+        "success": true,
+        "tool": "internal",
+        "turn": 1
+      },
+      {
+        "action": "Run remediation feasibility, sensitivity checks, and generate required deliverables",
+        "actor": "reviser_agent",
+        "artifact_refs": [
+          "actual_outputs.json"
+        ],
+        "causal_note": "All required artifacts are generated in one write pass to avoid extra file mutation cycles.",
+        "causal_type": "direct",
+        "caused_by": "step_2",
+        "error_message": null,
+        "error_type": null,
+        "input": "Write [EXCLUDED_GENERATED_ARTIFACT] and [EXCLUDED_GENERATED_ARTIFACT] from computed table and checks; also create ./actual_outputs.json.",
+        "metadata_json": {
+          "actual_outputs_written": true,
+          "artifact_dir": "artifacts"
+        },
+        "observation": "Created audit CSV and memo with formulas, calculations, citations, validation, sensitivity, and final decision outputs.",
+        "operation": "write",
+        "output": "Wrote 3 artifacts with row-level metric columns, classification logic, score derivations, 5% sensitivity results, and budgeted remediation matrix.",
+        "reasoning": "These are required deliverables; outputs include reproducibility evidence and no external data usage.",
+        "state_change": "Created output files: [EXCLUDED_GENERATED_ARTIFACT] [EXCLUDED_GENERATED_ARTIFACT] actual_outputs.json.",
+        "step": 3,
+        "step_outcome": "artifacts_created",
+        "success": true,
+        "tool": "functions.exec_command",
+        "turn": 1
+      },
+      {
+        "action": "Persist workflow trace",
+        "actor": "reviser_agent",
+        "artifact_refs": [
+          "agent_trace.json"
+        ],
+        "causal_note": "Trace includes read->compute->write chain for audit reproducibility.",
+        "causal_type": "direct",
+        "caused_by": "step_3",
+        "error_message": null,
+        "error_type": null,
+        "input": "Write ./agent_trace.json containing 4 schema-mapped steps with inputs, outputs, state transitions, and causality links.",
+        "metadata_json": {
+          "trace_schema_fields": [
+            "step",
+            "turn",
+            "actor",
+            "action",
+            "operation",
+            "tool",
+            "observation",
+            "input",
+            "output",
+            "state_change",
+            "reasoning",
+            "caused_by",
+            "causal_type",
+            "causal_note",
+            "success",
+            "step_outcome",
+            "error_type",
+            "error_message",
+            "artifact_refs",
+            "metadata_json"
+          ]
+        },
+        "observation": "Serialized full step log using AgentTrace schema field set.",
+        "operation": "write",
+        "output": "agent_trace.json created with required fields and causal links across steps.",
+        "reasoning": "Trace is required output and must include exact commands, assumptions, artifact refs, and outcome status for each meaningful action.",
+        "state_change": "Created trace artifact ./agent_trace.json for review traceability.",
+        "step": 4,
+        "step_outcome": "trace_persisted",
+        "success": true,
+        "tool": "functions.exec_command",
+        "turn": 1
+      }
+    ],
+    "raw_trace_preserved": true,
+    "raw_trace_shape": "list",
+    "raw_trace_step_source": "steps",
+    "schema_valid": true,
+    "trace_normalization_status": "normalized",
+    "trace_valid": true
+  },
+  "preferred_attempt_id": null,
+  "previous_attempt_id": null,
+  "prior_trace_id": null,
+  "revision_attempt_ids": [],
+  "revision_group_id": null,
+  "schema_version": "aa-trace-v0.1",
+  "skills": null,
+  "started_at": null,
+  "steps": [
+    {
+      "action": "agent_step",
+      "actor": "reviser_agent",
+      "alternatives_considered": null,
+      "artifact_refs": [
+        "input/task.json",
+        "input/task_brief.md"
+      ],
+      "causal_note": "Established raw inputs required for normalization, scoring, and classification rules.",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "Read files: ./input/task.json and ./input/task_brief.md",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "classification_rules": [
+          "Fail>threshold",
+          "Warn>=10%_below_threshold",
+          "Pass otherwise"
+        ],
+        "original_action": "Read embedded task instructions and packet",
+        "original_causal_type": "direct",
+        "original_step_outcome": "packet_parsed",
+        "raw_step": {
+          "action": "Read embedded task instructions and packet",
+          "actor": "reviser_agent",
+          "artifact_refs": [
+            "input/task.json",
+            "input/task_brief.md"
+          ],
+          "causal_note": "Established raw inputs required for normalization, scoring, and classification rules.",
+          "causal_type": "direct",
+          "caused_by": "initial_task_start",
+          "error_message": null,
+          "error_type": null,
+          "input": "Read files: ./input/task.json and ./input/task_brief.md",
+          "metadata_json": {
+            "classification_rules": [
+              "Fail>threshold",
+              "Warn>=10%_below_threshold",
+              "Pass otherwise"
+            ],
+            "records_seen": [
+              "R1",
+              "R2",
+              "R3",
+              "R4"
+            ]
+          },
+          "observation": "Task packet loaded from ./input/task.json and ./input/task_brief.md with 4 records, threshold, budget, and remediation options.",
+          "operation": "read",
+          "output": "Extracted records R1..R4, normalized_threshold_score=82.5, remediation_budget_usd=42500, options O1/O2/O3 with costs 13175, 19975, 22950.",
+          "reasoning": "Need exact numeric inputs before computing audit; all downstream computations depend on embedded packet only.",
+          "state_change": "No file mutations in workspace; in-memory packet context initialized.",
+          "step": 1,
+          "step_outcome": "packet_parsed",
+          "success": true,
+          "tool": "functions.exec_command",
+          "turn": 1
+        },
+        "records_seen": [
+          "R1",
+          "R2",
+          "R3",
+          "R4"
+        ]
+      },
+      "observation": "Task packet loaded from ./input/task.json and ./input/task_brief.md with 4 records, threshold, budget, and remediation options.",
+      "operation": "read",
+      "output": "Extracted records R1..R4, normalized_threshold_score=82.5, remediation_budget_usd=42500, options O1/O2/O3 with costs 13175, 19975, 22950.",
+      "parallel_group": null,
+      "reasoning": "Need exact numeric inputs before computing audit; all downstream computations depend on embedded packet only.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "No file mutations in workspace; in-memory packet context initialized.",
+      "step": 1,
+      "step_outcome": "neutral",
+      "success": true,
+      "tool": "file_read",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "reviser_agent",
+      "alternatives_considered": null,
+      "artifact_refs": [
+        "input/task.json"
+      ],
+      "causal_note": "Metric formulas derive from count fields; no external substitution allowed by task brief.",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "R1..R4: expected_files, relevant_returned, returned_total, release_blocker; formula: first=max(0,expected-relevant)/expected*100, second=(returned_total-relevant)/returned_total*100, third=(1-release_blocker)*100",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "classifications": {
+          "R1": "Pass",
+          "R2": "Pass",
+          "R3": "Pass",
+          "R4": "Pass"
+        },
+        "original_action": "Compute metrics, normalize units, score, and classify records",
+        "original_causal_type": "analysis",
+        "original_step_outcome": "metrics_computed",
+        "raw_step": {
+          "action": "Compute metrics, normalize units, score, and classify records",
+          "actor": "reviser_agent",
+          "artifact_refs": [
+            "input/task.json"
+          ],
+          "causal_note": "Metric formulas derive from count fields; no external substitution allowed by task brief.",
+          "causal_type": "analysis",
+          "caused_by": "step_1",
+          "error_message": null,
+          "error_type": null,
+          "input": "R1..R4: expected_files, relevant_returned, returned_total, release_blocker; formula: first=max(0,expected-relevant)/expected*100, second=(returned_total-relevant)/returned_total*100, third=(1-release_blocker)*100",
+          "metadata_json": {
+            "classifications": {
+              "R1": "Pass",
+              "R2": "Pass",
+              "R3": "Pass",
+              "R4": "Pass"
+            },
+            "sensitivity_shift_percent": 5,
+            "warn_lower_bound": 74.25
+          },
+          "observation": "Computed normalized metrics from packet counts and release_blocker under documented assumptions.",
+          "operation": "execute",
+          "output": "Scores: R1=17.0250, R2=12.3000, R3=-9.4583, R4=4.0278. Classifications: all Pass (warn band start=74.25).",
+          "reasoning": "Applied explicit unit normalization and packet formula; chosen metric semantics documented as recall shortfall, precision risk, and remaining release margin.",
+          "state_change": "Scoring context established for row-level table and sensitivity checks in-memory.",
+          "step": 2,
+          "step_outcome": "metrics_computed",
+          "success": true,
+          "tool": "internal",
+          "turn": 1
+        },
+        "sensitivity_shift_percent": 5,
+        "warn_lower_bound": 74.25
+      },
+      "observation": "Computed normalized metrics from packet counts and release_blocker under documented assumptions.",
+      "operation": "execute",
+      "output": "Scores: R1=17.0250, R2=12.3000, R3=-9.4583, R4=4.0278. Classifications: all Pass (warn band start=74.25).",
+      "parallel_group": null,
+      "reasoning": "Applied explicit unit normalization and packet formula; chosen metric semantics documented as recall shortfall, precision risk, and remaining release margin.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Scoring context established for row-level table and sensitivity checks in-memory.",
+      "step": 2,
+      "step_outcome": "neutral",
+      "success": true,
+      "tool": "internal",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "reviser_agent",
+      "alternatives_considered": null,
+      "artifact_refs": [
+        "actual_outputs.json"
+      ],
+      "causal_note": "All required artifacts are generated in one write pass to avoid extra file mutation cycles.",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "Write [EXCLUDED_GENERATED_ARTIFACT] and [EXCLUDED_GENERATED_ARTIFACT] from computed table and checks; also create ./actual_outputs.json.",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "actual_outputs_written": true,
+        "artifact_dir": "artifacts",
+        "original_action": "Run remediation feasibility, sensitivity checks, and generate required deliverables",
+        "original_causal_type": "direct",
+        "original_step_outcome": "artifacts_created",
+        "raw_step": {
+          "action": "Run remediation feasibility, sensitivity checks, and generate required deliverables",
+          "actor": "reviser_agent",
+          "artifact_refs": [
+            "actual_outputs.json"
+          ],
+          "causal_note": "All required artifacts are generated in one write pass to avoid extra file mutation cycles.",
+          "causal_type": "direct",
+          "caused_by": "step_2",
+          "error_message": null,
+          "error_type": null,
+          "input": "Write [EXCLUDED_GENERATED_ARTIFACT] and [EXCLUDED_GENERATED_ARTIFACT] from computed table and checks; also create ./actual_outputs.json.",
+          "metadata_json": {
+            "actual_outputs_written": true,
+            "artifact_dir": "artifacts"
+          },
+          "observation": "Created audit CSV and memo with formulas, calculations, citations, validation, sensitivity, and final decision outputs.",
+          "operation": "write",
+          "output": "Wrote 3 artifacts with row-level metric columns, classification logic, score derivations, 5% sensitivity results, and budgeted remediation matrix.",
+          "reasoning": "These are required deliverables; outputs include reproducibility evidence and no external data usage.",
+          "state_change": "Created output files: [EXCLUDED_GENERATED_ARTIFACT] [EXCLUDED_GENERATED_ARTIFACT] actual_outputs.json.",
+          "step": 3,
+          "step_outcome": "artifacts_created",
+          "success": true,
+          "tool": "functions.exec_command",
+          "turn": 1
+        }
+      },
+      "observation": "Created audit CSV and memo with formulas, calculations, citations, validation, sensitivity, and final decision outputs.",
+      "operation": "write",
+      "output": "Wrote 3 artifacts with row-level metric columns, classification logic, score derivations, 5% sensitivity results, and budgeted remediation matrix.",
+      "parallel_group": null,
+      "reasoning": "These are required deliverables; outputs include reproducibility evidence and no external data usage.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Created output files: [EXCLUDED_GENERATED_ARTIFACT] [EXCLUDED_GENERATED_ARTIFACT] actual_outputs.json.",
+      "step": 3,
+      "step_outcome": "neutral",
+      "success": true,
+      "tool": "Bash",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "reviser_agent",
+      "alternatives_considered": null,
+      "artifact_refs": [
+        "agent_trace.json"
+      ],
+      "causal_note": "Trace includes read->compute->write chain for audit reproducibility.",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "Write ./agent_trace.json containing 4 schema-mapped steps with inputs, outputs, state transitions, and causality links.",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "original_action": "Persist workflow trace",
+        "original_causal_type": "direct",
+        "original_step_outcome": "trace_persisted",
+        "raw_step": {
+          "action": "Persist workflow trace",
+          "actor": "reviser_agent",
+          "artifact_refs": [
+            "agent_trace.json"
+          ],
+          "causal_note": "Trace includes read->compute->write chain for audit reproducibility.",
+          "causal_type": "direct",
+          "caused_by": "step_3",
+          "error_message": null,
+          "error_type": null,
+          "input": "Write ./agent_trace.json containing 4 schema-mapped steps with inputs, outputs, state transitions, and causality links.",
+          "metadata_json": {
+            "trace_schema_fields": [
+              "step",
+              "turn",
+              "actor",
+              "action",
+              "operation",
+              "tool",
+              "observation",
+              "input",
+              "output",
+              "state_change",
+              "reasoning",
+              "caused_by",
+              "causal_type",
+              "causal_note",
+              "success",
+              "step_outcome",
+              "error_type",
+              "error_message",
+              "artifact_refs",
+              "metadata_json"
+            ]
+          },
+          "observation": "Serialized full step log using AgentTrace schema field set.",
+          "operation": "write",
+          "output": "agent_trace.json created with required fields and causal links across steps.",
+          "reasoning": "Trace is required output and must include exact commands, assumptions, artifact refs, and outcome status for each meaningful action.",
+          "state_change": "Created trace artifact ./agent_trace.json for review traceability.",
+          "step": 4,
+          "step_outcome": "trace_persisted",
+          "success": true,
+          "tool": "functions.exec_command",
+          "turn": 1
+        },
+        "trace_schema_fields": [
+          "step",
+          "turn",
+          "actor",
+          "action",
+          "operation",
+          "tool",
+          "observation",
+          "input",
+          "output",
+          "state_change",
+          "reasoning",
+          "caused_by",
+          "causal_type",
+          "causal_note",
+          "success",
+          "step_outcome",
+          "error_type",
+          "error_message",
+          "artifact_refs",
+          "metadata_json"
+        ]
+      },
+      "observation": "Serialized full step log using AgentTrace schema field set.",
+      "operation": "write",
+      "output": "agent_trace.json created with required fields and causal links across steps.",
+      "parallel_group": null,
+      "reasoning": "Trace is required output and must include exact commands, assumptions, artifact refs, and outcome status for each meaningful action.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Created trace artifact ./agent_trace.json for review traceability.",
+      "step": 4,
+      "step_outcome": "neutral",
+      "success": true,
+      "tool": "file_write",
+      "turn": 1
+    }
+  ],
+  "system_prompt": null,
+  "system_prompt_hash": null,
+  "task": "Perform an auditable semantic code search error audit for enterprise migration using only the provided embedded packet. Produce two artifacts: semantic_search_audit.csv and evaluation_memo.md. Follow the embedded scoring rule: score = first_metric + 0.6 * second_metric - 0.25 * third_metric (after unit normalization). Classify records as Fail if score > normalized_threshold_score, Warn if score is within 10% below the threshold, otherwise Pass. Combine remediation options only if total cost <= remediation_budget_usd. Expert review is required when any record changes classification after a 5% sensitivity shift. Deliverables must include formulas or executable logic, intermediate calculations, row-level citations to the embedded packet, explicit assumptions, validation checks, sensitivity analyses, and a final decision table. Do not invent inputs or use external data; mark unresolved ambiguity as needs_review.",
+  "task_family_id": null,
+  "original_internal_task_id": "aa_task_0675",
+  "task_id": "375",
+  "termination_reason": "task_complete",
+  "trace_id": "trace_375-revised_normalized",
+  "trace_mode": "live"
+}

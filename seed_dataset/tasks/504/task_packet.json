@@ -1,0 +1,81 @@
+{
+  "schema_version": "aa-seed-task-v0.1",
+  "task_id": "504",
+  "title": "EUV Lithography Yield Excursion Root-Cause and Lot Disposition Optimizer",
+  "domain": "advanced_manufacturing_yield_engineering",
+  "subdomain": "euv_lithography_yield_excursion",
+  "domains": [
+    "advanced_manufacturing_yield_engineering"
+  ],
+  "subdomains": [
+    "euv_lithography_yield_excursion"
+  ],
+  "agent_apprentice_role": "semiconductor yield engineering lead",
+  "task_family": "yield_excursion_root_cause_and_disposition",
+  "difficulty_tier": "expert",
+  "expected_economic_value": "$190k-$330k advanced semiconductor yield engineering / process integration role",
+  "expected_economic_value_for_agent_apprentice": "$250+",
+  "expected_deliverable": "euv_yield_excursion_analysis.xlsx + fab_disposition_memo.md",
+  "deliverables": [
+    "euv_yield_excursion_analysis.xlsx",
+    "fab_disposition_memo.md"
+  ],
+  "normalized_title": "EUV Lithography Yield Excursion Root-Cause and Lot Disposition Optimizer",
+  "instruction": "Context: a high-volume fab sees a sudden bridge-defect and parametric-yield excursion on a high-ASP accelerator chiplet layer, and the yield engineering team must decide which lots to hold, scrap, rework, or release before downstream packaging consumes scarce interposer capacity. Task packet: product=ACCEL-X3 chiplet_layer=M2_cut EUV; die_per_wafer=612; good_die_value_usd=148; downstream_packaging_slot_value_usd=42000 per lot; baseline_yield_pct=91.8 baseline_bridge_defects_per_cm2=0.018 baseline_cd_mean_nm=18.0 baseline_cd_sigma_nm=0.62; control_limits cd_mean_nm 17.4-18.6, cd_sigma_nm<=0.82, overlay_3sigma_nm<=2.7, bridge_defects_per_cm2<=0.035, stochastic_missing_via_ppm<=7.5; lots: L41 scanner=S3 resist=R7 dose_mJ=31.2 focus_nm=-8 post_exposure_bake_C=94.5 overlay_3sigma=2.1 cd_mean=18.1 cd_sigma=0.66 bridge_defects=0.021 missing_via_ppm=5.8 e_test_yield_pct=91.2 wafers=24, L42 S3 R7 dose=30.8 focus=-11 bake=94.6 overlay=2.4 cd_mean=18.0 sigma=0.71 bridge=0.028 missing=6.3 yield=89.9 wafers=24, L43 S5 R7 dose=29.6 focus=-18 bake=95.8 overlay=3.4 cd_mean=17.2 sigma=0.96 bridge=0.071 missing=15.4 yield=78.6 wafers=25, L44 S5 R7 dose=29.4 focus=-21 bake=96.1 overlay=3.8 cd_mean=17.0 sigma=1.04 bridge=0.084 missing=19.6 yield=72.8 wafers=25, L45 S2 R9 dose=31.0 focus=-7 bake=94.3 overlay=2.2 cd_mean=18.2 sigma=0.64 bridge=0.020 missing=5.5 yield=91.5 wafers=24, L46 S5 R9 dose=30.1 focus=-19 bake=95.9 overlay=3.1 cd_mean=17.4 sigma=0.89 bridge=0.052 missing=10.8 yield=82.4 wafers=25; actions: A1 scanner_S5_focus_recenter cost_usd=180000 expected focus_plus_nm=14 overlay_minus_nm=0.8 applies_future_only, A2 hold_and_electrical_rescreen cost=52000 per_lot recovers 35% of yield_loss_vs_baseline if bridge<=0.06, A3 scrap_lot avoids packaging_slot_loss but loses wafer_value, A4 release_with_sort_guard cost=18000 per_lot allowed only if all hard control limits pass; max_excursion_budget_usd=310000. Rules and constraints: hard_fail if any control limit breached; root_cause_score for scanner = count of hard_fail lots by scanner plus mean absolute focus deviation/10 plus mean overlay_excess; financial_loss_lot=(baseline_yield-yield)/100*die_per_wafer*wafers*good_die_value plus packaging_slot_value if a hard-fail lot is incorrectly released; recommend lot disposition and one future corrective action set under budget minimizing expected loss. Required work: deliver euv_yield_excursion_analysis.xlsx + fab_disposition_memo.md with SPC flags, root-cause ranking, lot economics, action optimization, and a clear hold/scrap/rescreen/release decision. Use only supplied data; no fab tool software is required. This task is self-contained: use the task packet as the factual record, do not add source references or external datasets, and preserve a high-fidelity audit trail for every calculation, classification, and recommendation. State assumptions and unresolved evidence gaps explicitly. When executed locally, place final deliverables under the artifacts/ directory.",
+  "task_status": "ready_to_run",
+  "run_status": "not_run",
+  "seed_rank": 4,
+  "display_order": 4,
+  "allowed_tools": [
+    "Local text editor or Markdown editor",
+    "Local spreadsheet, CSV, JSON, YAML, or scripting tools for deterministic calculations",
+    "Local validation or linting commands",
+    "Local plotting or diagramming tools when useful"
+  ],
+  "disallowed_tools": [
+    "External fact lookup or live data pulls",
+    "Live production systems, cloud accounts, trading systems, clinical systems, or industrial controls",
+    "Secret discovery, credential testing, or any action outside the prepared task workspace"
+  ],
+  "privacy_classification": "synthetic",
+  "needs_expert_review": true,
+  "input_requirements": [
+    "Use the task packet as the sole factual input.",
+    "Cite row IDs, record IDs, thresholds, formulas, and option IDs from the packet wherever they control a conclusion.",
+    "Mark missing, contradictory, or under-supported values as needs_review instead of inventing them."
+  ],
+  "inputs": [
+    "All factual inputs are embedded in the task packet.",
+    "Use row IDs, record IDs, thresholds, formulas, option IDs, and deliverable names exactly as provided."
+  ],
+  "output_requirements": [
+    "Produce the required deliverable files with the specified filenames when filenames are provided.",
+    "Include intermediate calculations or executable logic sufficient for another reviewer to reproduce the result.",
+    "Include validation checks, sensitivity notes around controlling thresholds, and a final decision or recommendation table."
+  ],
+  "constraints": [
+    "Use the task packet as the factual record.",
+    "Do not browse, call live services, import external datasets, or invent missing values.",
+    "Treat regulated or safety-critical outputs as review packets, not authorization to act."
+  ],
+  "quality_bar": [
+    "Treat the task as realistic professional work with domain-appropriate rigor.",
+    "Preserve the packet's domain detail, identifiers, thresholds, and edge cases in the final deliverables.",
+    "Make every recommendation traceable to explicit task-packet evidence or mark it as needs_review."
+  ],
+  "validation_expectations": [
+    "Check required fields, row counts, totals, thresholds, and classifications before finalizing.",
+    "Show enough formulas, script logic, or tables for an independent reviewer to reproduce the result.",
+    "Flag any contradiction, missing input, or threshold-sensitive conclusion."
+  ],
+  "edge_cases": [
+    "If packet evidence is incomplete, do not infer missing values; label the item needs_review.",
+    "If multiple options satisfy hard constraints, rank them using the packet's stated priorities and explain ties.",
+    "If a regulated or safety-critical conclusion appears, frame the output as a review packet rather than authorization to act."
+  ],
+  "privacy_safety_expectations": [
+    "Do not use live systems, private accounts, credentials, or external datasets.",
+    "Do not include raw secrets or operational instructions that would execute real-world changes.",
+    "Keep synthetic identifiers from the packet only when needed for verification."
+  ]
+}

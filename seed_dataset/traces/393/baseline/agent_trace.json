@@ -1,0 +1,508 @@
+{
+  "actual_outputs": {
+    "original_internal_attempt_id": "aa_task_0693_baseline",
+    "attempt_id": "393-baseline",
+    "attempt_kind": "baseline",
+    "error_message": null,
+    "error_type": null,
+    "metadata_json": {
+      "actual_outputs_discarded_field_count": 0,
+      "actual_outputs_normalized": true,
+      "expected_deliverable_items": [
+        "telemetry_loss_analysis.csv",
+        "reliability_action.md"
+      ],
+      "original_fields": {
+        "deliverables": [
+          {
+            "status": "written"
+          },
+          {
+            "status": "written"
+          }
+        ],
+        "expert_review_required": true,
+        "notes": [
+          "R1 changes classification under a -5% perturbation of loss_pct.",
+          "The upstream normalization formula is not explicit in the embedded packet, so the analysis uses a documented packet-only reconstruction."
+        ],
+        "packet_status": "needs_review",
+        "trace_path": "agent_trace.json"
+      },
+      "produced_deliverable_items": [
+        "telemetry_loss_analysis.csv",
+        "reliability_action.md"
+      ],
+      "raw_actual_outputs": {
+        "deliverables": [
+          {
+            "status": "written"
+          },
+          {
+            "status": "written"
+          }
+        ],
+        "expert_review_required": true,
+        "notes": [
+          "R1 changes classification under a -5% perturbation of loss_pct.",
+          "The upstream normalization formula is not explicit in the embedded packet, so the analysis uses a documented packet-only reconstruction."
+        ],
+        "packet_status": "needs_review",
+        "original_internal_task_id": "aa_task_0693",
+        "task_id": "393",
+        "trace_path": "agent_trace.json"
+      }
+    },
+    "output_summary": "Normalized actual outputs from artifact files.",
+    "status": "success",
+    "original_internal_task_id": "aa_task_0693",
+    "task_id": "393",
+    "required_deliverables": [
+      "telemetry_loss_analysis.csv",
+      "reliability_action.md"
+    ],
+    "produced_deliverables": [
+      "telemetry_loss_analysis.csv",
+      "reliability_action.md"
+    ],
+    "missing_required_deliverables": [],
+    "deliverable_produced": true,
+    "deliverable_file_included": false,
+    "included_generated_artifacts": false,
+    "artifacts_excluded_reason": "Generated output artifacts are excluded from the public seed dataset by default.",
+    "logs_included": false,
+    "logs_excluded_reason": "Raw runner logs are excluded from the public seed dataset."
+  },
+  "agent_config": null,
+  "agent_tools": [
+    "codex_cli",
+    "Bash",
+    "python",
+    "file_read",
+    "file_write",
+    "apply_patch"
+  ],
+  "artifacts": [],
+  "original_internal_attempt_id": "aa_task_0693_baseline",
+  "attempt_id": "393-baseline",
+  "attempt_kind": "baseline",
+  "attempt_status": "completed",
+  "collection_id": null,
+  "completion_reason": null,
+  "ended_at": null,
+  "final_attempt_id": null,
+  "initial_attempt_id": null,
+  "iteration_index": null,
+  "learning": null,
+  "memory": null,
+  "metadata_json": {
+    "codex_command": [
+      "codex",
+      "exec",
+      "--sandbox",
+      "workspace-write",
+      "<prompt>"
+    ],
+    "codex_sandbox": "workspace-write",
+    "discarded_step_count": 0,
+    "raw_trace_preserved": true,
+    "raw_trace_step_source": "steps",
+    "schema_valid": true,
+    "trace_normalization_status": "partial",
+    "trace_valid": true
+  },
+  "preferred_attempt_id": null,
+  "previous_attempt_id": null,
+  "prior_trace_id": null,
+  "revision_attempt_ids": [],
+  "revision_group_id": null,
+  "schema_version": "aa-trace-v0.1",
+  "skills": null,
+  "started_at": null,
+  "steps": [
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "artifact_refs": [
+        "input/task.json",
+        "input/task_brief.md"
+      ],
+      "causal_note": null,
+      "causal_type": null,
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "sed -n '1,220p' input/task.json && printf '\\n--- TASK BRIEF ---\\n' && sed -n '1,260p' input/task_brief.md",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "normalization_warnings": [
+          "step value 'Read task inputs and embedded packet' was not numeric; defaulted to 1"
+        ],
+        "original_action": "read",
+        "original_step": "Read task inputs and embedded packet",
+        "raw_step": {
+          "action": "read",
+          "actor": "worker",
+          "artifact_refs": [
+            "input/task.json",
+            "input/task_brief.md"
+          ],
+          "causal_note": null,
+          "causal_type": null,
+          "caused_by": null,
+          "error_message": null,
+          "error_type": null,
+          "input": "sed -n '1,220p' input/task.json && printf '\\n--- TASK BRIEF ---\\n' && sed -n '1,260p' input/task_brief.md",
+          "metadata_json": {
+            "remediation_budget_usd": 42500,
+            "original_internal_task_id": "aa_task_0693",
+            "task_id": "393",
+            "threshold_score": 80.0
+          },
+          "observation": "Loaded input/task.json and input/task_brief.md. Confirmed embedded packet rows R1-R4, threshold score 80.0, remediation budget 42500, and options O1-O3.",
+          "operation": "read",
+          "output": "JSON task metadata and task brief text with embedded packet values and constraints.",
+          "reasoning": "Needed the packet values, threshold, budget, and constraints before reconstructing any decision logic.",
+          "state_change": "Context established from the two input assets.",
+          "step": "Read task inputs and embedded packet",
+          "step_outcome": "completed",
+          "success": true,
+          "tool": "exec_command",
+          "turn": 1
+        },
+        "remediation_budget_usd": 42500,
+        "original_internal_task_id": "aa_task_0693",
+        "task_id": "393",
+        "threshold_score": 80.0
+      },
+      "observation": "Loaded input/task.json and input/task_brief.md. Confirmed embedded packet rows R1-R4, threshold score 80.0, remediation budget 42500, and options O1-O3.",
+      "operation": "read",
+      "output": "JSON task metadata and task brief text with embedded packet values and constraints.",
+      "parallel_group": null,
+      "reasoning": "Needed the packet values, threshold, budget, and constraints before reconstructing any decision logic.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Context established from the two input assets.",
+      "step": 1,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "Bash",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "artifact_refs": [
+        "input/"
+      ],
+      "causal_note": "Workspace inspection followed input review to rule out additional local sources.",
+      "causal_type": "other",
+      "caused_by": [
+        1
+      ],
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "rg --files . && find . -maxdepth 3 -type f \\( -name '*.md' -o -name '*.json' -o -name '*.csv' -o -name '*.txt' \\) | sort",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "files_found": [
+          "input/task.json",
+          "input/task_brief.md"
+        ],
+        "normalization_warnings": [
+          "step value 'Inspect workspace contents' was not numeric; defaulted to 2"
+        ],
+        "original_action": "read",
+        "original_causal_type": "sequenced_from",
+        "original_step": "Inspect workspace contents",
+        "raw_step": {
+          "action": "read",
+          "actor": "worker",
+          "artifact_refs": [
+            "input/"
+          ],
+          "causal_note": "Workspace inspection followed input review to rule out additional local sources.",
+          "causal_type": "sequenced_from",
+          "caused_by": 1,
+          "error_message": null,
+          "error_type": null,
+          "input": "rg --files . && find . -maxdepth 3 -type f \\( -name '*.md' -o -name '*.json' -o -name '*.csv' -o -name '*.txt' \\) | sort",
+          "metadata_json": {
+            "files_found": [
+              "input/task.json",
+              "input/task_brief.md"
+            ]
+          },
+          "observation": "Confirmed the workspace contained only prompt.md, input/, and an empty artifacts/ directory; no extra source files or templates were available.",
+          "operation": "read",
+          "output": "File inventory showing no hidden task assets beyond the provided inputs.",
+          "reasoning": "Avoided inventing structure from absent templates and confirmed the analysis had to rely only on the embedded packet.",
+          "state_change": "Verified there were no additional local artifacts to consult.",
+          "step": "Inspect workspace contents",
+          "step_outcome": "completed",
+          "success": true,
+          "tool": "exec_command",
+          "turn": 2
+        }
+      },
+      "observation": "Confirmed the workspace contained only prompt.md, input/, and an empty artifacts/ directory; no extra source files or templates were available.",
+      "operation": "read",
+      "output": "File inventory showing no hidden task assets beyond the provided inputs.",
+      "parallel_group": null,
+      "reasoning": "Avoided inventing structure from absent templates and confirmed the analysis had to rely only on the embedded packet.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Verified there were no additional local artifacts to consult.",
+      "step": 2,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "Bash",
+      "turn": 2
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "artifact_refs": [
+        "input/task.json"
+      ],
+      "causal_note": "Analysis depended on the packet values confirmed in earlier steps.",
+      "causal_type": "other",
+      "caused_by": [
+        2
+      ],
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "node - <<'NODE' ... compute score = 100 - 2.5*loss_pct; +/-5% sensitivity; remediation combos within budget ... NODE",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "best_feasible_remediation": "O1+O2",
+        "best_feasible_remediation_cost": 33150,
+        "best_feasible_remediation_reduction_pct": 27.84,
+        "expert_review_trigger": "R1 changes classification under -5% loss_pct perturbation",
+        "formula": "normalized_score_proxy = 100 - 2.5 * loss_pct",
+        "normalization_warnings": [
+          "step value 'Reconstruct packet-only decision logic and sensitivity' was not numeric; defaulted to 3"
+        ],
+        "original_action": "analyze",
+        "original_causal_type": "sequenced_from",
+        "original_step": "Reconstruct packet-only decision logic and sensitivity",
+        "raw_step": {
+          "action": "analyze",
+          "actor": "worker",
+          "artifact_refs": [
+            "input/task.json"
+          ],
+          "causal_note": "Analysis depended on the packet values confirmed in earlier steps.",
+          "causal_type": "sequenced_from",
+          "caused_by": 2,
+          "error_message": null,
+          "error_type": null,
+          "input": "node - <<'NODE' ... compute score = 100 - 2.5*loss_pct; +/-5% sensitivity; remediation combos within budget ... NODE",
+          "metadata_json": {
+            "best_feasible_remediation": "O1+O2",
+            "best_feasible_remediation_cost": 33150,
+            "best_feasible_remediation_reduction_pct": 27.84,
+            "expert_review_trigger": "R1 changes classification under -5% loss_pct perturbation",
+            "formula": "normalized_score_proxy = 100 - 2.5 * loss_pct"
+          },
+          "observation": "Computed packet-only proxy scores from loss_pct and tested +/-5% perturbations. Results: R1 base 79.125 fails and flips to pass at -5%; R2 99.0 passes stably; R3 84.0 passes stably; R4 76.95 fails stably. Budget-feasible remediation combo with strongest quantified reduction was O1+O2 at cost 33150 and combined reduction 27.84%.",
+          "operation": "execute",
+          "output": "Base classifications, sensitivity outcomes, and budget-feasible remediation comparisons.",
+          "reasoning": "The packet does not expose the original normalization formula, so a documented packet-only reconstruction was required to produce a traceable review packet.",
+          "state_change": "Established the provisional decision rule and expert-review trigger condition.",
+          "step": "Reconstruct packet-only decision logic and sensitivity",
+          "step_outcome": "completed",
+          "success": true,
+          "tool": "exec_command",
+          "turn": 3
+        }
+      },
+      "observation": "Computed packet-only proxy scores from loss_pct and tested +/-5% perturbations. Results: R1 base 79.125 fails and flips to pass at -5%; R2 99.0 passes stably; R3 84.0 passes stably; R4 76.95 fails stably. Budget-feasible remediation combo with strongest quantified reduction was O1+O2 at cost 33150 and combined reduction 27.84%.",
+      "operation": "execute",
+      "output": "Base classifications, sensitivity outcomes, and budget-feasible remediation comparisons.",
+      "parallel_group": null,
+      "reasoning": "The packet does not expose the original normalization formula, so a documented packet-only reconstruction was required to produce a traceable review packet.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Established the provisional decision rule and expert-review trigger condition.",
+      "step": 3,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "exec_command",
+      "turn": 3
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "artifact_refs": [
+        "actual_outputs.json"
+      ],
+      "causal_note": "Artifact content was derived from the reconstruction and sensitivity results.",
+      "causal_type": "other",
+      "caused_by": [
+        3
+      ],
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "apply_patch adding the CSV, Markdown analysis, and actual_outputs.json files.",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "expert_review_required": true,
+        "normalization_warnings": [
+          "step value 'Write deliverable artifacts' was not numeric; defaulted to 4"
+        ],
+        "original_action": "write",
+        "original_causal_type": "sequenced_from",
+        "original_step": "Write deliverable artifacts",
+        "packet_status": "needs_review",
+        "raw_step": {
+          "action": "write",
+          "actor": "worker",
+          "artifact_refs": [
+            "actual_outputs.json"
+          ],
+          "causal_note": "Artifact content was derived from the reconstruction and sensitivity results.",
+          "causal_type": "sequenced_from",
+          "caused_by": 3,
+          "error_message": null,
+          "error_type": null,
+          "input": "apply_patch adding the CSV, Markdown analysis, and actual_outputs.json files.",
+          "metadata_json": {
+            "expert_review_required": true,
+            "packet_status": "needs_review",
+            "rows_written": 4
+          },
+          "observation": "Created [EXCLUDED_GENERATED_ARTIFACT] [EXCLUDED_GENERATED_ARTIFACT] and actual_outputs.json with row-level calculations, sensitivity notes, validation checks, and the final decision table.",
+          "operation": "write",
+          "output": "Three new files written successfully under ./artifacts/ and the attempt root.",
+          "reasoning": "The task required both deliverables plus an outputs manifest; writing them in one patch kept the artifacts aligned.",
+          "state_change": "Produced the required deliverables and the outputs manifest.",
+          "step": "Write deliverable artifacts",
+          "step_outcome": "completed",
+          "success": true,
+          "tool": "apply_patch",
+          "turn": 4
+        },
+        "rows_written": 4
+      },
+      "observation": "Created [EXCLUDED_GENERATED_ARTIFACT] [EXCLUDED_GENERATED_ARTIFACT] and actual_outputs.json with row-level calculations, sensitivity notes, validation checks, and the final decision table.",
+      "operation": "write",
+      "output": "Three new files written successfully under ./artifacts/ and the attempt root.",
+      "parallel_group": null,
+      "reasoning": "The task required both deliverables plus an outputs manifest; writing them in one patch kept the artifacts aligned.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Produced the required deliverables and the outputs manifest.",
+      "step": 4,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "apply_patch",
+      "turn": 4
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "artifact_refs": [
+        "actual_outputs.json"
+      ],
+      "causal_note": "Verification followed artifact creation to validate the final state.",
+      "causal_type": "other",
+      "caused_by": [
+        4
+      ],
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "wc -l [EXCLUDED_GENERATED_ARTIFACT] [EXCLUDED_GENERATED_ARTIFACT] actual_outputs.json && sed/tail preview commands",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "final_packet_status": "needs_review",
+        "normalization_warnings": [
+          "step value 'Verify final outputs' was not numeric; defaulted to 5"
+        ],
+        "original_action": "verify",
+        "original_causal_type": "sequenced_from",
+        "original_step": "Verify final outputs",
+        "raw_step": {
+          "action": "verify",
+          "actor": "worker",
+          "artifact_refs": [
+            "actual_outputs.json"
+          ],
+          "causal_note": "Verification followed artifact creation to validate the final state.",
+          "causal_type": "sequenced_from",
+          "caused_by": 4,
+          "error_message": null,
+          "error_type": null,
+          "input": "wc -l [EXCLUDED_GENERATED_ARTIFACT] [EXCLUDED_GENERATED_ARTIFACT] actual_outputs.json && sed/tail preview commands",
+          "metadata_json": {
+            "final_packet_status": "needs_review",
+            "verification": "nonempty files confirmed"
+          },
+          "observation": "Verified the deliverables were nonempty. `wc -l` showed 5 CSV lines, 122 Markdown lines, and 20 JSON lines; file previews matched the expected content and tables.",
+          "operation": "verify",
+          "output": "Nonempty deliverables confirmed and content checked for expected row counts and final decision table presence.",
+          "reasoning": "A verification pass was needed before closing out so the output contract could be satisfied with evidence.",
+          "state_change": "Confirmed the final artifact set is present and readable.",
+          "step": "Verify final outputs",
+          "step_outcome": "completed",
+          "success": true,
+          "tool": "exec_command",
+          "turn": 5
+        },
+        "verification": "nonempty files confirmed"
+      },
+      "observation": "Verified the deliverables were nonempty. `wc -l` showed 5 CSV lines, 122 Markdown lines, and 20 JSON lines; file previews matched the expected content and tables.",
+      "operation": "verify",
+      "output": "Nonempty deliverables confirmed and content checked for expected row counts and final decision table presence.",
+      "parallel_group": null,
+      "reasoning": "A verification pass was needed before closing out so the output contract could be satisfied with evidence.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Confirmed the final artifact set is present and readable.",
+      "step": 5,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "Bash",
+      "turn": 5
+    }
+  ],
+  "system_prompt": null,
+  "system_prompt_hash": null,
+  "task": "Rebuild the decision logic from the embedded packet, classify each record against the named thresholds exactly, test sensitivity (including a 5% perturbation) of classifications, and produce a review-ready decision packet using only the embedded packet. Deliver telemetry_loss_analysis.csv and reliability_action.md containing traceable calculations, formulas or executable logic, intermediate calculations, row-level citations to the embedded packet, explicit assumptions, validation checks, sensitivity notes, and a final decision table. Do not invent inputs, substitute outside data, or impute missing values; mark any unresolved ambiguity as needs_review. If any record changes classification after a 5% sensitivity shift, set the expert-review flag.",
+  "task_family_id": null,
+  "original_internal_task_id": "aa_task_0693",
+  "task_id": "393",
+  "termination_reason": "task_complete",
+  "trace_id": "trace_393-baseline_normalized",
+  "trace_mode": "live"
+}

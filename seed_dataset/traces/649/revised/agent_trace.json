@@ -1,0 +1,631 @@
+{
+  "actual_outputs": {
+    "original_internal_attempt_id": "aa_task_0049_revised",
+    "attempt_id": "649-revised",
+    "attempt_kind": "revised",
+    "error_message": null,
+    "error_type": null,
+    "metadata_json": {
+      "actual_outputs_discarded_field_count": 0,
+      "actual_outputs_normalized": true,
+      "expected_deliverable_items": [
+        "tailings_trigger_review.xlsx",
+        "deposition_decision_memo.md"
+      ],
+      "original_fields": {
+        "attempt": "revised",
+        "outputs": [
+          {
+            "required": true,
+            "type": "xlsx"
+          },
+          {
+            "required": true,
+            "type": "markdown"
+          }
+        ]
+      },
+      "produced_deliverable_items": [
+        "tailings_trigger_review.xlsx",
+        "deposition_decision_memo.md"
+      ],
+      "raw_actual_outputs": {
+        "attempt": "revised",
+        "outputs": [
+          {
+            "required": true,
+            "type": "xlsx"
+          },
+          {
+            "required": true,
+            "type": "markdown"
+          }
+        ],
+        "original_internal_task_id": "aa_task_0049",
+        "task_id": "649"
+      }
+    },
+    "output_summary": "Normalized actual outputs from artifact files.",
+    "status": "success",
+    "original_internal_task_id": "aa_task_0049",
+    "task_id": "649",
+    "required_deliverables": [
+      "tailings_trigger_review.xlsx",
+      "deposition_decision_memo.md"
+    ],
+    "produced_deliverables": [
+      "tailings_trigger_review.xlsx",
+      "deposition_decision_memo.md"
+    ],
+    "missing_required_deliverables": [],
+    "deliverable_produced": true,
+    "deliverable_file_included": false,
+    "included_generated_artifacts": false,
+    "artifacts_excluded_reason": "Generated output artifacts are excluded from the public seed dataset by default.",
+    "logs_included": false,
+    "logs_excluded_reason": "Raw runner logs are excluded from the public seed dataset."
+  },
+  "agent_config": null,
+  "agent_tools": [
+    "codex_cli",
+    "Bash",
+    "python",
+    "file_read",
+    "file_write",
+    "apply_patch"
+  ],
+  "artifacts": [],
+  "original_internal_attempt_id": "aa_task_0049_revised",
+  "attempt_id": "649-revised",
+  "attempt_kind": "revised",
+  "attempt_status": "completed",
+  "collection_id": null,
+  "completion_reason": null,
+  "ended_at": null,
+  "final_attempt_id": null,
+  "initial_attempt_id": null,
+  "iteration_index": null,
+  "learning": null,
+  "memory": null,
+  "metadata_json": {
+    "codex_command": [
+      "codex",
+      "exec",
+      "--sandbox",
+      "workspace-write",
+      "<prompt>"
+    ],
+    "codex_sandbox": "workspace-write",
+    "discarded_step_count": 0,
+    "raw_trace_list": [
+      {
+        "action": "Read task inputs and extracted packet values and constraints.",
+        "actor": "worker",
+        "artifact_refs": [
+          "input/task.json",
+          "input/task_brief.md"
+        ],
+        "causal_note": "All later calculations and narrative link back to these inputs.",
+        "causal_type": "read_context",
+        "caused_by": "initial_request",
+        "error_message": null,
+        "error_type": null,
+        "input": [
+          "./input/task.json",
+          "./input/task_brief.md"
+        ],
+        "metadata_json": {
+          "original_internal_task_id": "aa_task_0049",
+          "task_id": "649"
+        },
+        "observation": "task.json and task_brief.md parsed successfully with full packet values.",
+        "operation": "read",
+        "output": "Derived all inputs for deterministic model and memo references.",
+        "reasoning": "All outputs must be strictly auditable from packet numbers.",
+        "state_change": "Working state initialized with required packet-only dataset.",
+        "step": "context_ingest",
+        "step_outcome": "pass",
+        "success": true,
+        "tool": "functions.exec_command",
+        "turn": 1
+      },
+      {
+        "action": "Attempted spreadsheet generation via openpyxl dependency.",
+        "actor": "worker",
+        "causal_note": "No external package install allowed; fallback was necessary.",
+        "causal_type": "tool_constraint",
+        "caused_by": "context_ingest",
+        "error_message": "No module named 'openpyxl'",
+        "error_type": "ModuleNotFoundError",
+        "input": "python - <<PY ... openpyxl ...",
+        "metadata_json": {
+          "recovery_required": true
+        },
+        "observation": "Dependency not present in environment.",
+        "operation": "execute",
+        "output": "Runtime error before artifact generation.",
+        "reasoning": "Required fallback to raw OOXML write path.",
+        "state_change": "No artifact files changed in this substep.",
+        "step": "artifact_tooling_attempt",
+        "step_outcome": "fail",
+        "success": false,
+        "tool": "functions.exec_command",
+        "turn": 2
+      },
+      {
+        "action": "Build final spreadsheet with executable formulas via manual OOXML emission.",
+        "actor": "worker",
+        "causal_note": "Workbook formula cells are explicit and auditable.",
+        "causal_type": "artifact_generation",
+        "caused_by": "artifact_tooling_attempt",
+        "error_message": null,
+        "error_type": null,
+        "input": "Python script writing OOXML XML and ZIP for XLSX output.",
+        "metadata_json": {
+          "formula_cells": [
+            "Review!B16",
+            "Review!B17",
+            "Review!B24",
+            "Review!B41",
+            "Review!B44"
+          ],
+          "method": "manual_ooxml",
+          "sheets": [
+            "Review",
+            "Sensitivity"
+          ]
+        },
+        "observation": "Created review and sensitivity sheets with formulas and linked validation logic.",
+        "operation": "write",
+        "output": "Created [EXCLUDED_GENERATED_ARTIFACT]",
+        "reasoning": "Fallback path required to satisfy required artifact format.",
+        "state_change": "Updated artifact file in ./artifacts.",
+        "step": "artifact_authoring",
+        "step_outcome": "pass",
+        "success": true,
+        "tool": "functions.exec_command",
+        "turn": 3
+      },
+      {
+        "action": "Write decision memo aligned to workbook row/cell references.",
+        "actor": "worker",
+        "causal_note": "Memo references final decision cells and sensitivity block directly.",
+        "causal_type": "artifact_generation",
+        "caused_by": "artifact_authoring",
+        "error_message": null,
+        "error_type": null,
+        "input": "Cell-referenced narrative in deposition_decision_memo.md",
+        "metadata_json": {
+          "decision": "PAUSE_DEPOSITION",
+          "reason": "P2 trigger exceedance persists"
+        },
+        "observation": "Memo with controlling threshold rationale and uncertainty/sensitivity checks written.",
+        "operation": "write",
+        "output": "Created [EXCLUDED_GENERATED_ARTIFACT]",
+        "reasoning": "Reviewer requires clear rationale and reproducibility path.",
+        "state_change": "Added explanatory Markdown artifact under ./artifacts.",
+        "step": "memo_authoring",
+        "step_outcome": "pass",
+        "success": true,
+        "tool": "functions.exec_command",
+        "turn": 4
+      },
+      {
+        "action": "Write required attempt-level manifest files.",
+        "actor": "worker",
+        "artifact_refs": [
+          "agent_trace.json",
+          "actual_outputs.json"
+        ],
+        "causal_note": "Trace includes error/recovery and final artifact references.",
+        "causal_type": "artifact_generation",
+        "caused_by": "memo_authoring",
+        "error_message": null,
+        "error_type": null,
+        "input": "trace payload and output inventory.",
+        "metadata_json": {
+          "manifest_count": 2
+        },
+        "observation": "agent_trace.json and actual_outputs.json written with canonical fields and outputs.",
+        "operation": "write",
+        "output": "Created ./agent_trace.json and ./actual_outputs.json",
+        "reasoning": "Protocol requires traceable execution and manifest artifacts.",
+        "state_change": "Attempt metadata files now exist in root.",
+        "step": "manifests_written",
+        "step_outcome": "pass",
+        "success": true,
+        "tool": "functions.exec_command",
+        "turn": 5
+      }
+    ],
+    "raw_trace_preserved": true,
+    "raw_trace_shape": "list",
+    "raw_trace_step_source": "steps",
+    "schema_valid": true,
+    "trace_normalization_status": "partial",
+    "trace_valid": true
+  },
+  "preferred_attempt_id": null,
+  "previous_attempt_id": null,
+  "prior_trace_id": null,
+  "revision_attempt_ids": [],
+  "revision_group_id": null,
+  "schema_version": "aa-trace-v0.1",
+  "skills": null,
+  "started_at": null,
+  "steps": [
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "artifact_refs": [
+        "input/task.json",
+        "input/task_brief.md"
+      ],
+      "causal_note": "All later calculations and narrative link back to these inputs.",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "[\"./input/task.json\", \"./input/task_brief.md\"]",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "input": [
+          "./input/task.json",
+          "./input/task_brief.md"
+        ],
+        "normalization_warnings": [
+          "step value 'context_ingest' was not numeric; defaulted to 1"
+        ],
+        "original_action": "Read task inputs and extracted packet values and constraints.",
+        "original_causal_type": "read_context",
+        "original_step": "context_ingest",
+        "original_step_outcome": "pass",
+        "raw_step": {
+          "action": "Read task inputs and extracted packet values and constraints.",
+          "actor": "worker",
+          "artifact_refs": [
+            "input/task.json",
+            "input/task_brief.md"
+          ],
+          "causal_note": "All later calculations and narrative link back to these inputs.",
+          "causal_type": "read_context",
+          "caused_by": "initial_request",
+          "error_message": null,
+          "error_type": null,
+          "input": [
+            "./input/task.json",
+            "./input/task_brief.md"
+          ],
+          "metadata_json": {
+            "original_internal_task_id": "aa_task_0049",
+            "task_id": "649"
+          },
+          "observation": "task.json and task_brief.md parsed successfully with full packet values.",
+          "operation": "read",
+          "output": "Derived all inputs for deterministic model and memo references.",
+          "reasoning": "All outputs must be strictly auditable from packet numbers.",
+          "state_change": "Working state initialized with required packet-only dataset.",
+          "step": "context_ingest",
+          "step_outcome": "pass",
+          "success": true,
+          "tool": "functions.exec_command",
+          "turn": 1
+        },
+        "original_internal_task_id": "aa_task_0049",
+        "task_id": "649"
+      },
+      "observation": "task.json and task_brief.md parsed successfully with full packet values.",
+      "operation": "read",
+      "output": "Derived all inputs for deterministic model and memo references.",
+      "parallel_group": null,
+      "reasoning": "All outputs must be strictly auditable from packet numbers.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Working state initialized with required packet-only dataset.",
+      "step": 1,
+      "step_outcome": "neutral",
+      "success": true,
+      "tool": "file_read",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "causal_note": "No external package install allowed; fallback was necessary.",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": "No module named 'openpyxl'",
+      "error_type": "ModuleNotFoundError",
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "python - <<PY ... openpyxl ...",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "normalization_warnings": [
+          "step value 'artifact_tooling_attempt' was not numeric; defaulted to 2"
+        ],
+        "original_action": "Attempted spreadsheet generation via openpyxl dependency.",
+        "original_causal_type": "tool_constraint",
+        "original_step": "artifact_tooling_attempt",
+        "original_step_outcome": "fail",
+        "raw_step": {
+          "action": "Attempted spreadsheet generation via openpyxl dependency.",
+          "actor": "worker",
+          "causal_note": "No external package install allowed; fallback was necessary.",
+          "causal_type": "tool_constraint",
+          "caused_by": "context_ingest",
+          "error_message": "No module named 'openpyxl'",
+          "error_type": "ModuleNotFoundError",
+          "input": "python - <<PY ... openpyxl ...",
+          "metadata_json": {
+            "recovery_required": true
+          },
+          "observation": "Dependency not present in environment.",
+          "operation": "execute",
+          "output": "Runtime error before artifact generation.",
+          "reasoning": "Required fallback to raw OOXML write path.",
+          "state_change": "No artifact files changed in this substep.",
+          "step": "artifact_tooling_attempt",
+          "step_outcome": "fail",
+          "success": false,
+          "tool": "functions.exec_command",
+          "turn": 2
+        },
+        "recovery_required": true
+      },
+      "observation": "Dependency not present in environment.",
+      "operation": "execute",
+      "output": "Runtime error before artifact generation.",
+      "parallel_group": null,
+      "reasoning": "Required fallback to raw OOXML write path.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "No artifact files changed in this substep.",
+      "step": 2,
+      "step_outcome": "failed",
+      "success": false,
+      "tool": "python",
+      "turn": 2
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "causal_note": "Workbook formula cells are explicit and auditable.",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "Python script writing OOXML XML and ZIP for XLSX output.",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "formula_cells": [
+          "Review!B16",
+          "Review!B17",
+          "Review!B24",
+          "Review!B41",
+          "Review!B44"
+        ],
+        "method": "manual_ooxml",
+        "normalization_warnings": [
+          "step value 'artifact_authoring' was not numeric; defaulted to 3"
+        ],
+        "original_action": "Build final spreadsheet with executable formulas via manual OOXML emission.",
+        "original_causal_type": "artifact_generation",
+        "original_step": "artifact_authoring",
+        "original_step_outcome": "pass",
+        "raw_step": {
+          "action": "Build final spreadsheet with executable formulas via manual OOXML emission.",
+          "actor": "worker",
+          "causal_note": "Workbook formula cells are explicit and auditable.",
+          "causal_type": "artifact_generation",
+          "caused_by": "artifact_tooling_attempt",
+          "error_message": null,
+          "error_type": null,
+          "input": "Python script writing OOXML XML and ZIP for XLSX output.",
+          "metadata_json": {
+            "formula_cells": [
+              "Review!B16",
+              "Review!B17",
+              "Review!B24",
+              "Review!B41",
+              "Review!B44"
+            ],
+            "method": "manual_ooxml",
+            "sheets": [
+              "Review",
+              "Sensitivity"
+            ]
+          },
+          "observation": "Created review and sensitivity sheets with formulas and linked validation logic.",
+          "operation": "write",
+          "output": "Created [EXCLUDED_GENERATED_ARTIFACT]",
+          "reasoning": "Fallback path required to satisfy required artifact format.",
+          "state_change": "Updated artifact file in ./artifacts.",
+          "step": "artifact_authoring",
+          "step_outcome": "pass",
+          "success": true,
+          "tool": "functions.exec_command",
+          "turn": 3
+        },
+        "sheets": [
+          "Review",
+          "Sensitivity"
+        ]
+      },
+      "observation": "Created review and sensitivity sheets with formulas and linked validation logic.",
+      "operation": "write",
+      "output": "Created [EXCLUDED_GENERATED_ARTIFACT]",
+      "parallel_group": null,
+      "reasoning": "Fallback path required to satisfy required artifact format.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Updated artifact file in ./artifacts.",
+      "step": 3,
+      "step_outcome": "neutral",
+      "success": true,
+      "tool": "python",
+      "turn": 3
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "causal_note": "Memo references final decision cells and sensitivity block directly.",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "Cell-referenced narrative in deposition_decision_memo.md",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "decision": "PAUSE_DEPOSITION",
+        "normalization_warnings": [
+          "step value 'memo_authoring' was not numeric; defaulted to 4"
+        ],
+        "original_action": "Write decision memo aligned to workbook row/cell references.",
+        "original_causal_type": "artifact_generation",
+        "original_step": "memo_authoring",
+        "original_step_outcome": "pass",
+        "raw_step": {
+          "action": "Write decision memo aligned to workbook row/cell references.",
+          "actor": "worker",
+          "causal_note": "Memo references final decision cells and sensitivity block directly.",
+          "causal_type": "artifact_generation",
+          "caused_by": "artifact_authoring",
+          "error_message": null,
+          "error_type": null,
+          "input": "Cell-referenced narrative in deposition_decision_memo.md",
+          "metadata_json": {
+            "decision": "PAUSE_DEPOSITION",
+            "reason": "P2 trigger exceedance persists"
+          },
+          "observation": "Memo with controlling threshold rationale and uncertainty/sensitivity checks written.",
+          "operation": "write",
+          "output": "Created [EXCLUDED_GENERATED_ARTIFACT]",
+          "reasoning": "Reviewer requires clear rationale and reproducibility path.",
+          "state_change": "Added explanatory Markdown artifact under ./artifacts.",
+          "step": "memo_authoring",
+          "step_outcome": "pass",
+          "success": true,
+          "tool": "functions.exec_command",
+          "turn": 4
+        },
+        "reason": "P2 trigger exceedance persists"
+      },
+      "observation": "Memo with controlling threshold rationale and uncertainty/sensitivity checks written.",
+      "operation": "write",
+      "output": "Created [EXCLUDED_GENERATED_ARTIFACT]",
+      "parallel_group": null,
+      "reasoning": "Reviewer requires clear rationale and reproducibility path.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Added explanatory Markdown artifact under ./artifacts.",
+      "step": 4,
+      "step_outcome": "neutral",
+      "success": true,
+      "tool": "file_write",
+      "turn": 4
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "artifact_refs": [
+        "agent_trace.json",
+        "actual_outputs.json"
+      ],
+      "causal_note": "Trace includes error/recovery and final artifact references.",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "trace payload and output inventory.",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "manifest_count": 2,
+        "normalization_warnings": [
+          "step value 'manifests_written' was not numeric; defaulted to 5"
+        ],
+        "original_action": "Write required attempt-level manifest files.",
+        "original_causal_type": "artifact_generation",
+        "original_step": "manifests_written",
+        "original_step_outcome": "pass",
+        "raw_step": {
+          "action": "Write required attempt-level manifest files.",
+          "actor": "worker",
+          "artifact_refs": [
+            "agent_trace.json",
+            "actual_outputs.json"
+          ],
+          "causal_note": "Trace includes error/recovery and final artifact references.",
+          "causal_type": "artifact_generation",
+          "caused_by": "memo_authoring",
+          "error_message": null,
+          "error_type": null,
+          "input": "trace payload and output inventory.",
+          "metadata_json": {
+            "manifest_count": 2
+          },
+          "observation": "agent_trace.json and actual_outputs.json written with canonical fields and outputs.",
+          "operation": "write",
+          "output": "Created ./agent_trace.json and ./actual_outputs.json",
+          "reasoning": "Protocol requires traceable execution and manifest artifacts.",
+          "state_change": "Attempt metadata files now exist in root.",
+          "step": "manifests_written",
+          "step_outcome": "pass",
+          "success": true,
+          "tool": "functions.exec_command",
+          "turn": 5
+        }
+      },
+      "observation": "agent_trace.json and actual_outputs.json written with canonical fields and outputs.",
+      "operation": "write",
+      "output": "Created ./agent_trace.json and ./actual_outputs.json",
+      "parallel_group": null,
+      "reasoning": "Protocol requires traceable execution and manifest artifacts.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Attempt metadata files now exist in root.",
+      "step": 5,
+      "step_outcome": "neutral",
+      "success": true,
+      "tool": "file_write",
+      "turn": 5
+    }
+  ],
+  "system_prompt": null,
+  "system_prompt_hash": null,
+  "task": "Flagship expert task: Tailings Dam Pore-Pressure Trigger and Deposition Decision. Reality context: a mine must decide whether to keep depositing tailings after vibrating-wire piezometers cross alert levels. Embedded packet: piezometers: P1 elevation_m=244.2 trigger=246.0 rise_m_week=0.4, P2 elev=247.3 trigger=247.0 rise=0.9, P3 elev=245.8 trigger=246.5 rise=1.1; beach_freeboard_m=1.4 min=1.2; rainfall_72h_mm=86; actions pause_deposition lowers_rise 60%, move_spigot increases_freeboard 0.3 cost=18000. Rules and constraints: Classify trigger status, rainfall sensitivity, and recommend continue/pause/spigot move. Required work: deliver tailings_trigger_review.xlsx + deposition_decision_memo.md. The deliverables must include formulas or executable logic, intermediate calculations, row-level citations to the embedded packet, validation checks, uncertainty notes, sensitivity checks around the controlling thresholds, and a final decision table with pass/warn/fail/needs_review labels. Use only the embedded packet. Do not import external data, invent missing values, or hide unresolved assumptions.",
+  "task_family_id": null,
+  "original_internal_task_id": "aa_task_0049",
+  "task_id": "649",
+  "termination_reason": "task_complete",
+  "trace_id": "trace_649-revised_normalized",
+  "trace_mode": "live"
+}

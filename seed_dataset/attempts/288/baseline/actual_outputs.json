@@ -1,0 +1,465 @@
+{
+  "original_internal_attempt_id": "aa_task_0588_baseline",
+  "attempt_id": "288-baseline",
+  "attempt_kind": "baseline",
+  "error_message": null,
+  "error_type": null,
+  "metadata_json": {
+    "actual_outputs_discarded_field_count": 0,
+    "actual_outputs_normalized": true,
+    "codex_sandbox": "workspace-write",
+    "expected_deliverable_items": [
+      "SLO_burn_4.xlsx",
+      "expert_memo.md"
+    ],
+    "original_fields": {
+      "acceptance_checks": [
+        {
+          "check": "row_count == 3",
+          "failure_action": "needs_review",
+          "field": "Evidence_Packet",
+          "id": "AC-01",
+          "pass": "all three packet rows present"
+        },
+        {
+          "check": "required fields error_count, request_count, window_minutes non-null",
+          "failure_action": "needs_review",
+          "field": "Evidence_Packet",
+          "id": "AC-02",
+          "pass": "all required values present"
+        },
+        {
+          "check": "burn_rate = error_rate/(1-slo_target)",
+          "failure_action": "needs_review",
+          "field": "Derived_Metrics",
+          "id": "AC-03",
+          "pass": "formula match"
+        },
+        {
+          "check": "if policy_short/long fields missing -> short_window_burn/long_window_burn = needs_review",
+          "failure_action": "needs_review",
+          "field": "Derived_Metrics",
+          "id": "AC-04",
+          "pass": "short-circuit behavior"
+        },
+        {
+          "check": "page_decision='needs_review' unless both windows and thresholds are numeric",
+          "failure_action": "needs_review",
+          "field": "Derived_Metrics",
+          "id": "AC-05",
+          "pass": "avoid false paging"
+        },
+        {
+          "check": "contains scenarios [0.95,0.98,0.99,0.995,0.999]",
+          "failure_action": "needs_review",
+          "field": "Sensitivity_SLO",
+          "id": "AC-06",
+          "pass": "scenario presence + monotonic scaling"
+        },
+        {
+          "check": "factor+cost values for O1/O2/O3 match packet: O1(-12,80000), O2(-18,97200), O3(-25,56800)",
+          "failure_action": "needs_review",
+          "field": "Remediation_Options",
+          "id": "AC-07",
+          "pass": "all exact"
+        },
+        {
+          "check": "do not assume policy window and threshold values beyond packet",
+          "failure_action": "needs_review",
+          "field": "Assumptions_and_Policy",
+          "id": "AC-08",
+          "pass": "max_budget present, policy params marked needs_review"
+        }
+      ],
+      "contract": {
+        "ambiguity_tag": "needs_review",
+        "imputation_allowed": false,
+        "required_artifacts": [
+          "SLO_burn_4.xlsx",
+          "expert_memo.md",
+          "agent_trace.json",
+          "actual_outputs.json"
+        ],
+        "source": "embedded_packet_only"
+      },
+      "inputs": {
+        "embedded_records": {
+          "R1": {
+            "citation": "packet.R1",
+            "error_count": 49,
+            "request_count": 81,
+            "window_minutes": 8
+          },
+          "R2": {
+            "citation": "packet.R2",
+            "error_count": 58,
+            "request_count": 77,
+            "window_minutes": 11
+          },
+          "R3": {
+            "citation": "packet.R3",
+            "error_count": 44,
+            "request_count": 92,
+            "window_minutes": 7
+          }
+        }
+      },
+      "output_schema": {
+        "sheets": {
+          "Derived_Metrics": {
+            "computed": [
+              {
+                "expr": "error_count/request_count",
+                "name": "error_rate",
+                "row_level_inputs": "Evidence_Packet"
+              },
+              {
+                "expr": "error_rate/(1-slo_target)",
+                "name": "burn_rate"
+              },
+              {
+                "expr": "IF(policy_short AND threshold available, burn_rate*short_window/window_minutes, needs_review)",
+                "name": "short_window_burn"
+              },
+              {
+                "expr": "IF(policy_long AND threshold available, burn_rate*long_window/window_minutes, needs_review)",
+                "name": "long_window_burn"
+              },
+              {
+                "expr": "IF(short_violation AND long_violation, 'page', 'needs_review' if missing inputs)",
+                "name": "page_decision"
+              }
+            ]
+          },
+          "Evidence_Packet": {
+            "fields": [
+              {
+                "citation": "packet.*",
+                "name": "record_id",
+                "required": true,
+                "type": "string"
+              },
+              {
+                "name": "error_count",
+                "required": true,
+                "type": "integer"
+              },
+              {
+                "name": "request_count",
+                "required": true,
+                "type": "integer"
+              },
+              {
+                "name": "window_minutes",
+                "required": true,
+                "type": "number"
+              }
+            ],
+            "row_level_citation_column": "citation"
+          },
+          "Final_Recommendation": {
+            "fields": [
+              "recommendation_id",
+              "decision",
+              "rationale",
+              "risk",
+              "citation"
+            ]
+          },
+          "Remediation_Options": {
+            "constraints": {
+              "budget_gate": "within_budget if cost <= max_budget",
+              "max_budget": 122400
+            },
+            "fields": [
+              "option_id",
+              "cost",
+              "within_budget",
+              "error_factor",
+              "request_factor",
+              "window_factor",
+              "r1_burn",
+              "r2_burn",
+              "r3_burn",
+              "max_burn",
+              "delta_max_vs_baseline"
+            ]
+          },
+          "Sensitivity_SLO": {
+            "formula": "rX_burn_slo = rX_burn_baseline*(1-0.99)/(1-slo)",
+            "scenarios": [
+              0.95,
+              0.98,
+              0.99,
+              0.995,
+              0.999
+            ]
+          }
+        },
+        "workbook": "SLO_burn_4.xlsx"
+      },
+      "policy_missing_handling": {
+        "rationale": "short/long threshold and policy windows are required by prompt rule but absent in packet",
+        "result": "page decision blocked until provided",
+        "status": "needs_review"
+      },
+      "remediation_catalog": {
+        "O1": {
+          "cost": 80000,
+          "error_count_factor": 0.88,
+          "request_count_factor": 1.0,
+          "window_minutes_factor": 1.0
+        },
+        "O2": {
+          "cost": 97200,
+          "error_count_factor": 1.0,
+          "request_count_factor": 0.82,
+          "window_minutes_factor": 1.0
+        },
+        "O3": {
+          "cost": 56800,
+          "error_count_factor": 1.0,
+          "request_count_factor": 1.0,
+          "window_minutes_factor": 0.75
+        }
+      }
+    },
+    "produced_deliverable_items": [
+      "SLO_burn_4.xlsx",
+      "expert_memo.md"
+    ],
+    "raw_actual_outputs": {
+      "acceptance_checks": [
+        {
+          "check": "row_count == 3",
+          "failure_action": "needs_review",
+          "field": "Evidence_Packet",
+          "id": "AC-01",
+          "pass": "all three packet rows present"
+        },
+        {
+          "check": "required fields error_count, request_count, window_minutes non-null",
+          "failure_action": "needs_review",
+          "field": "Evidence_Packet",
+          "id": "AC-02",
+          "pass": "all required values present"
+        },
+        {
+          "check": "burn_rate = error_rate/(1-slo_target)",
+          "failure_action": "needs_review",
+          "field": "Derived_Metrics",
+          "id": "AC-03",
+          "pass": "formula match"
+        },
+        {
+          "check": "if policy_short/long fields missing -> short_window_burn/long_window_burn = needs_review",
+          "failure_action": "needs_review",
+          "field": "Derived_Metrics",
+          "id": "AC-04",
+          "pass": "short-circuit behavior"
+        },
+        {
+          "check": "page_decision='needs_review' unless both windows and thresholds are numeric",
+          "failure_action": "needs_review",
+          "field": "Derived_Metrics",
+          "id": "AC-05",
+          "pass": "avoid false paging"
+        },
+        {
+          "check": "contains scenarios [0.95,0.98,0.99,0.995,0.999]",
+          "failure_action": "needs_review",
+          "field": "Sensitivity_SLO",
+          "id": "AC-06",
+          "pass": "scenario presence + monotonic scaling"
+        },
+        {
+          "check": "factor+cost values for O1/O2/O3 match packet: O1(-12,80000), O2(-18,97200), O3(-25,56800)",
+          "failure_action": "needs_review",
+          "field": "Remediation_Options",
+          "id": "AC-07",
+          "pass": "all exact"
+        },
+        {
+          "check": "do not assume policy window and threshold values beyond packet",
+          "failure_action": "needs_review",
+          "field": "Assumptions_and_Policy",
+          "id": "AC-08",
+          "pass": "max_budget present, policy params marked needs_review"
+        }
+      ],
+      "contract": {
+        "ambiguity_tag": "needs_review",
+        "imputation_allowed": false,
+        "required_artifacts": [
+          "SLO_burn_4.xlsx",
+          "expert_memo.md",
+          "agent_trace.json",
+          "actual_outputs.json"
+        ],
+        "source": "embedded_packet_only"
+      },
+      "inputs": {
+        "embedded_records": {
+          "R1": {
+            "citation": "packet.R1",
+            "error_count": 49,
+            "request_count": 81,
+            "window_minutes": 8
+          },
+          "R2": {
+            "citation": "packet.R2",
+            "error_count": 58,
+            "request_count": 77,
+            "window_minutes": 11
+          },
+          "R3": {
+            "citation": "packet.R3",
+            "error_count": 44,
+            "request_count": 92,
+            "window_minutes": 7
+          }
+        }
+      },
+      "output_schema": {
+        "sheets": {
+          "Derived_Metrics": {
+            "computed": [
+              {
+                "expr": "error_count/request_count",
+                "name": "error_rate",
+                "row_level_inputs": "Evidence_Packet"
+              },
+              {
+                "expr": "error_rate/(1-slo_target)",
+                "name": "burn_rate"
+              },
+              {
+                "expr": "IF(policy_short AND threshold available, burn_rate*short_window/window_minutes, needs_review)",
+                "name": "short_window_burn"
+              },
+              {
+                "expr": "IF(policy_long AND threshold available, burn_rate*long_window/window_minutes, needs_review)",
+                "name": "long_window_burn"
+              },
+              {
+                "expr": "IF(short_violation AND long_violation, 'page', 'needs_review' if missing inputs)",
+                "name": "page_decision"
+              }
+            ]
+          },
+          "Evidence_Packet": {
+            "fields": [
+              {
+                "citation": "packet.*",
+                "name": "record_id",
+                "required": true,
+                "type": "string"
+              },
+              {
+                "name": "error_count",
+                "required": true,
+                "type": "integer"
+              },
+              {
+                "name": "request_count",
+                "required": true,
+                "type": "integer"
+              },
+              {
+                "name": "window_minutes",
+                "required": true,
+                "type": "number"
+              }
+            ],
+            "row_level_citation_column": "citation"
+          },
+          "Final_Recommendation": {
+            "fields": [
+              "recommendation_id",
+              "decision",
+              "rationale",
+              "risk",
+              "citation"
+            ]
+          },
+          "Remediation_Options": {
+            "constraints": {
+              "budget_gate": "within_budget if cost <= max_budget",
+              "max_budget": 122400
+            },
+            "fields": [
+              "option_id",
+              "cost",
+              "within_budget",
+              "error_factor",
+              "request_factor",
+              "window_factor",
+              "r1_burn",
+              "r2_burn",
+              "r3_burn",
+              "max_burn",
+              "delta_max_vs_baseline"
+            ]
+          },
+          "Sensitivity_SLO": {
+            "formula": "rX_burn_slo = rX_burn_baseline*(1-0.99)/(1-slo)",
+            "scenarios": [
+              0.95,
+              0.98,
+              0.99,
+              0.995,
+              0.999
+            ]
+          }
+        },
+        "workbook": "SLO_burn_4.xlsx"
+      },
+      "policy_missing_handling": {
+        "rationale": "short/long threshold and policy windows are required by prompt rule but absent in packet",
+        "result": "page decision blocked until provided",
+        "status": "needs_review"
+      },
+      "remediation_catalog": {
+        "O1": {
+          "cost": 80000,
+          "error_count_factor": 0.88,
+          "request_count_factor": 1.0,
+          "window_minutes_factor": 1.0
+        },
+        "O2": {
+          "cost": 97200,
+          "error_count_factor": 1.0,
+          "request_count_factor": 0.82,
+          "window_minutes_factor": 1.0
+        },
+        "O3": {
+          "cost": 56800,
+          "error_count_factor": 1.0,
+          "request_count_factor": 1.0,
+          "window_minutes_factor": 0.75
+        }
+      },
+      "original_internal_task_id": "aa_task_0588",
+      "task_id": "288"
+    }
+  },
+  "output_summary": "Normalized actual outputs from artifact files.",
+  "status": "success",
+  "original_internal_task_id": "aa_task_0588",
+  "task_id": "288",
+  "required_deliverables": [
+    "SLO_burn_4.xlsx",
+    "expert_memo.md"
+  ],
+  "produced_deliverables": [
+    "SLO_burn_4.xlsx",
+    "expert_memo.md"
+  ],
+  "missing_required_deliverables": [],
+  "deliverable_produced": true,
+  "deliverable_file_included": false,
+  "included_generated_artifacts": false,
+  "artifacts_excluded_reason": "Generated output artifacts are excluded from the public seed dataset by default.",
+  "logs_included": false,
+  "logs_excluded_reason": "Raw runner logs are excluded from the public seed dataset."
+}

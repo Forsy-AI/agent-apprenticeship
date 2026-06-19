@@ -1,0 +1,81 @@
+{
+  "schema_version": "aa-seed-task-v0.1",
+  "task_id": "501",
+  "title": "OIDC CI Token Compromise Blast Radius and Cloud Control Regression Pack",
+  "domain": "cybersecurity_cloud_infrastructure_incident_response",
+  "subdomain": "oidc_ci_token_blast_radius",
+  "domains": [
+    "cybersecurity_cloud_infrastructure_incident_response"
+  ],
+  "subdomains": [
+    "oidc_ci_token_blast_radius"
+  ],
+  "agent_apprentice_role": "cloud incident response engineer",
+  "task_family": "blast_radius_and_control_regression",
+  "difficulty_tier": "expert",
+  "expected_economic_value": "$190k-$320k senior cloud security incident response / platform security role",
+  "expected_economic_value_for_agent_apprentice": "$250+",
+  "expected_deliverable": "cloud_oidc_blast_radius.md + iam_regression_tests.yaml",
+  "deliverables": [
+    "cloud_oidc_blast_radius.md",
+    "iam_regression_tests.yaml"
+  ],
+  "normalized_title": "OIDC CI Token Compromise Blast Radius and Cloud Control Regression Pack",
+  "instruction": "Context: a cloud platform team discovered a stolen CI OIDC token minutes before a production deploy freeze and needs a precise blast-radius reconstruction plus policy regression tests before re-enabling automation. Task packet: compromised_subject=repo:payments/API:ref:refs/heads/release; token_iat=2026-06-17T10:12:04Z token_exp=10:57:04Z; federation_rules: R1 role=ci-payments-prod condition repo=payments/API branch=release aud=sts max_session_min=45 policies=deploy_payments,read_payment_params,pass_payments_task,assume_debug_if_ticket; R2 role=ci-analytics-dev condition repo=analytics/etl branch=* aud=sts policies=deploy_dev,read_dev_secrets; R3 role=breakglass-observer condition mfa=true policies=read_all_logs; policy_details: deploy_payments allows ecs:UpdateService cluster=prod-payments services=API,worker; read_payment_params allows ssm:GetParameter path=/prod/payments/* except tag:data_class=cardholder; pass_payments_task allows IAM:PassRole role=payments-task only when passed_to=ecs-tasks; assume_debug_if_ticket allows sts:AssumeRole role=payments-runtime-debug only when ticket_tag matches INC-[0-9]+; observed_events: E1 10:14:18 ssm:GetParameter /prod/payments/db_password tag=customer_data result=Success source_ip=198.51.100.17, E2 10:16:03 ssm:GetParameter /prod/payments/card_processor_key tag=cardholder result=Denied, E3 10:19:44 ecs:UpdateService prod-payments/API desired_count 18->22 result=Success, E4 10:22:11 sts:AssumeRole payments-runtime-debug ticket_tag=missing result=Denied, E5 10:31:09 IAM:PassRole payments-task passed_to=ecs-tasks result=Success, E6 10:43:20 ssm:GetParameter /prod/payments/refund_hmac tag=customer_data result=Success; resource_weights cardholder=100 customer_data=75 production_availability=55 privilege_escalation_enabler=65; containment_options: C1 disable_federation_provider impact_min=38 closes_all_roles, C2 pin_subject_to_signed_tag impact=14 blocks_branch_subjects, C3 deny_prod_payment_params impact=0 blocks_secret_reads, C4 remove_passrole impact=19 blocks_deploy, C5 rotate_customer_data_params impact=6 reduces_confirmed_secret_residual_by=80%; max_customer_impact_min=25. Rules and constraints: an action is allowed only if subject matches a federation rule, policy allows it, and no exception denies it; confirmed exposure requires Success; potential exposure includes allowed actions not observed before token_exp; residual_severity=sum(weight for confirmed/potential exposures not neutralized by containment), with confirmed secrets weighted 1.0 and potential exposures weighted 0.35; choose containment set with impact<=25 minimizing residual severity, then write regression tests for each observed allow/deny boundary. Required work: deliver cloud_oidc_blast_radius.md + iam_regression_tests.YAML with event allow/deny matrix, confirmed/potential exposure table, containment optimizer, chosen response, evidence gaps, and at least ten deterministic policy tests. Use only the task packet; do not assume access to live cloud accounts. This task is self-contained: use the task packet as the factual record, do not add source references or external datasets, and preserve a high-fidelity audit trail for every calculation, classification, and recommendation. State assumptions and unresolved evidence gaps explicitly. When executed locally, place final deliverables under the artifacts/ directory.",
+  "task_status": "ready_to_run",
+  "run_status": "not_run",
+  "seed_rank": 1,
+  "display_order": 1,
+  "allowed_tools": [
+    "Local text editor or Markdown editor",
+    "Local spreadsheet, CSV, JSON, YAML, or scripting tools for deterministic calculations",
+    "Local validation or linting commands",
+    "Local plotting or diagramming tools when useful"
+  ],
+  "disallowed_tools": [
+    "External fact lookup or live data pulls",
+    "Live production systems, cloud accounts, trading systems, clinical systems, or industrial controls",
+    "Secret discovery, credential testing, or any action outside the prepared task workspace"
+  ],
+  "privacy_classification": "synthetic",
+  "needs_expert_review": true,
+  "input_requirements": [
+    "Use the task packet as the sole factual input.",
+    "Cite row IDs, record IDs, thresholds, formulas, and option IDs from the packet wherever they control a conclusion.",
+    "Mark missing, contradictory, or under-supported values as needs_review instead of inventing them."
+  ],
+  "inputs": [
+    "All factual inputs are embedded in the task packet.",
+    "Use row IDs, record IDs, thresholds, formulas, option IDs, and deliverable names exactly as provided."
+  ],
+  "output_requirements": [
+    "Produce the required deliverable files with the specified filenames when filenames are provided.",
+    "Include intermediate calculations or executable logic sufficient for another reviewer to reproduce the result.",
+    "Include validation checks, sensitivity notes around controlling thresholds, and a final decision or recommendation table."
+  ],
+  "constraints": [
+    "Use the task packet as the factual record.",
+    "Do not browse, call live services, import external datasets, or invent missing values.",
+    "Treat regulated or safety-critical outputs as review packets, not authorization to act."
+  ],
+  "quality_bar": [
+    "Treat the task as realistic professional work with domain-appropriate rigor.",
+    "Preserve the packet's domain detail, identifiers, thresholds, and edge cases in the final deliverables.",
+    "Make every recommendation traceable to explicit task-packet evidence or mark it as needs_review."
+  ],
+  "validation_expectations": [
+    "Check required fields, row counts, totals, thresholds, and classifications before finalizing.",
+    "Show enough formulas, script logic, or tables for an independent reviewer to reproduce the result.",
+    "Flag any contradiction, missing input, or threshold-sensitive conclusion."
+  ],
+  "edge_cases": [
+    "If packet evidence is incomplete, do not infer missing values; label the item needs_review.",
+    "If multiple options satisfy hard constraints, rank them using the packet's stated priorities and explain ties.",
+    "If a regulated or safety-critical conclusion appears, frame the output as a review packet rather than authorization to act."
+  ],
+  "privacy_safety_expectations": [
+    "Do not use live systems, private accounts, credentials, or external datasets.",
+    "Do not include raw secrets or operational instructions that would execute real-world changes.",
+    "Keep synthetic identifiers from the packet only when needed for verification."
+  ]
+}

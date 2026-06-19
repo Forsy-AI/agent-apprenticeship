@@ -1,0 +1,610 @@
+{
+  "actual_outputs": {
+    "original_internal_attempt_id": "aa_task_0388_baseline",
+    "attempt_id": "188-baseline",
+    "attempt_kind": "baseline",
+    "error_message": null,
+    "error_type": null,
+    "metadata_json": {
+      "actual_outputs_discarded_field_count": 0,
+      "actual_outputs_normalized": true,
+      "expected_deliverable_items": [
+        "fiber_restoration_plan.csv",
+        "NOC_memo.md"
+      ],
+      "original_fields": {
+        "attempt": "baseline",
+        "outputs": [
+          {
+            "allocated_gbps": 260,
+            "rows": 3,
+            "status": "created",
+            "type": "csv",
+            "unmet_gbps": 0
+          },
+          {
+            "status": "created",
+            "summary": "Memo includes calculations, validation checks, sensitivity notes, and decision table.",
+            "type": "markdown"
+          }
+        ]
+      },
+      "produced_deliverable_items": [
+        "fiber_restoration_plan.csv",
+        "NOC_memo.md"
+      ],
+      "raw_actual_outputs": {
+        "attempt": "baseline",
+        "outputs": [
+          {
+            "allocated_gbps": 260,
+            "rows": 3,
+            "status": "created",
+            "type": "csv",
+            "unmet_gbps": 0
+          },
+          {
+            "status": "created",
+            "summary": "Memo includes calculations, validation checks, sensitivity notes, and decision table.",
+            "type": "markdown"
+          }
+        ],
+        "status": "completed",
+        "original_internal_task_id": "aa_task_0388",
+        "task_id": "188"
+      }
+    },
+    "output_summary": "Normalized actual outputs from artifact files.",
+    "status": "success",
+    "original_internal_task_id": "aa_task_0388",
+    "task_id": "188",
+    "required_deliverables": [
+      "fiber_restoration_plan.csv",
+      "NOC_memo.md"
+    ],
+    "produced_deliverables": [
+      "fiber_restoration_plan.csv",
+      "NOC_memo.md"
+    ],
+    "missing_required_deliverables": [],
+    "deliverable_produced": true,
+    "deliverable_file_included": false,
+    "included_generated_artifacts": false,
+    "artifacts_excluded_reason": "Generated output artifacts are excluded from the public seed dataset by default.",
+    "logs_included": false,
+    "logs_excluded_reason": "Raw runner logs are excluded from the public seed dataset."
+  },
+  "agent_config": null,
+  "agent_tools": [
+    "codex_cli",
+    "Bash",
+    "python",
+    "file_read",
+    "file_write",
+    "apply_patch"
+  ],
+  "artifacts": [],
+  "original_internal_attempt_id": "aa_task_0388_baseline",
+  "attempt_id": "188-baseline",
+  "attempt_kind": "baseline",
+  "collection_id": null,
+  "completion_reason": null,
+  "ended_at": null,
+  "final_attempt_id": null,
+  "initial_attempt_id": null,
+  "iteration_index": null,
+  "learning": null,
+  "memory": null,
+  "metadata_json": {
+    "codex_command": [
+      "codex",
+      "exec",
+      "--sandbox",
+      "workspace-write",
+      "<prompt>"
+    ],
+    "codex_sandbox": "workspace-write",
+    "discarded_step_count": 0,
+    "original_fields": {
+      "schema": "AgentTrace"
+    },
+    "raw_trace_preserved": true,
+    "raw_trace_step_source": "steps",
+    "schema_valid": true,
+    "trace_normalization_status": "partial",
+    "trace_valid": true
+  },
+  "preferred_attempt_id": null,
+  "previous_attempt_id": null,
+  "prior_trace_id": null,
+  "revision_attempt_ids": [],
+  "revision_group_id": null,
+  "schema_version": "aa-trace-v0.1",
+  "skills": null,
+  "started_at": null,
+  "steps": [
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "causal_note": null,
+      "causal_type": null,
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "{\"commands\": [\"sed -n '1,220p' input/task.json\", \"sed -n '1,220p' input/task_brief.md\"]}",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "cwd": "[REDACTED_LOCAL_PATH]",
+        "inputs": {
+          "commands": [
+            "sed -n '1,220p' input/task.json",
+            "sed -n '1,220p' input/task_brief.md"
+          ]
+        },
+        "normalization_warnings": [
+          "step value 'read_packet' was not numeric; defaulted to 1"
+        ],
+        "original_action": "read",
+        "original_operation": "inspect input packet and task brief",
+        "original_step": "read_packet",
+        "outputs": {
+          "key_values": {
+            "demands_total_gbps": 260,
+            "failed_link": "L1",
+            "failed_traffic_gbps": 260,
+            "spares_total_gbps": 320
+          }
+        },
+        "raw_step": {
+          "action": "read",
+          "actor": "worker",
+          "causal_note": "Started from the supplied task packet.",
+          "causal_type": "initial_context",
+          "caused_by": null,
+          "error_message": null,
+          "error_type": null,
+          "input": {
+            "commands": [
+              "sed -n '1,220p' input/task.json",
+              "sed -n '1,220p' input/task_brief.md"
+            ]
+          },
+          "metadata_json": {
+            "cwd": "[REDACTED_LOCAL_PATH]"
+          },
+          "observation": "Read input/task.json and input/task_brief.md. Extracted one failed link (L1, 260Gbps traffic), three spare links (L2=90, L3=160, L4=70), and three demands (D1=120 critical, D2=80 high, D3=60 normal).",
+          "operation": "inspect input packet and task brief",
+          "output": {
+            "key_values": {
+              "demands_total_gbps": 260,
+              "failed_link": "L1",
+              "failed_traffic_gbps": 260,
+              "spares_total_gbps": 320
+            }
+          },
+          "reasoning": "Need the embedded values before allocating; the packet already contains all required numbers.",
+          "state_change": "Established the full constraint set and confirmed enough aggregate spare capacity to restore all traffic.",
+          "step": "read_packet",
+          "step_outcome": "completed",
+          "success": true,
+          "tool": "functions.exec_command",
+          "turn": 1
+        }
+      },
+      "observation": "Read input/task.json and input/task_brief.md. Extracted one failed link (L1, 260Gbps traffic), three spare links (L2=90, L3=160, L4=70), and three demands (D1=120 critical, D2=80 high, D3=60 normal).",
+      "operation": "read",
+      "output": "{\"key_values\": {\"demands_total_gbps\": 260, \"failed_link\": \"L1\", \"failed_traffic_gbps\": 260, \"spares_total_gbps\": 320}}",
+      "parallel_group": null,
+      "reasoning": "Need the embedded values before allocating; the packet already contains all required numbers.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Established the full constraint set and confirmed enough aggregate spare capacity to restore all traffic.",
+      "step": 1,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "Bash",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "causal_note": "Allocation is directly determined by the supplied capacities and priorities.",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "{\"formulae\": [\"120 + 80 + 60 = 260\", \"90 + 160 + 70 = 320\", \"320 - 260 = 60\"]}",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "chunk_rule": "split chunks must be >=20Gbps",
+        "inputs": {
+          "formulae": [
+            "120 + 80 + 60 = 260",
+            "90 + 160 + 70 = 320",
+            "320 - 260 = 60"
+          ]
+        },
+        "normalization_warnings": [
+          "step value 'derive_plan' was not numeric; defaulted to 2"
+        ],
+        "original_action": "analyze",
+        "original_causal_type": "derived_from_input",
+        "original_operation": "compute feasible restoration allocation",
+        "original_step": "derive_plan",
+        "outputs": {
+          "allocation": [
+            {
+              "allocated_gbps": 120,
+              "demand_id": "D1",
+              "priority": "critical",
+              "target_link": "L3"
+            },
+            {
+              "allocated_gbps": 80,
+              "demand_id": "D2",
+              "priority": "high",
+              "target_link": "L2"
+            },
+            {
+              "allocated_gbps": 60,
+              "demand_id": "D3",
+              "priority": "normal",
+              "target_link": "L4"
+            }
+          ],
+          "unmet_gbps": 0
+        },
+        "raw_step": {
+          "action": "analyze",
+          "actor": "worker",
+          "causal_note": "Allocation is directly determined by the supplied capacities and priorities.",
+          "causal_type": "derived_from_input",
+          "caused_by": "read_packet",
+          "error_message": null,
+          "error_type": null,
+          "input": {
+            "formulae": [
+              "120 + 80 + 60 = 260",
+              "90 + 160 + 70 = 320",
+              "320 - 260 = 60"
+            ]
+          },
+          "metadata_json": {
+            "chunk_rule": "split chunks must be >=20Gbps",
+            "split_used": false
+          },
+          "observation": "Computed totals: demand 260Gbps, spare 320Gbps, headroom 60Gbps. Confirmed each demand fits a single spare target and all values are multiples of 20Gbps, so no split is required.",
+          "operation": "compute feasible restoration allocation",
+          "output": {
+            "allocation": [
+              {
+                "allocated_gbps": 120,
+                "demand_id": "D1",
+                "priority": "critical",
+                "target_link": "L3"
+              },
+              {
+                "allocated_gbps": 80,
+                "demand_id": "D2",
+                "priority": "high",
+                "target_link": "L2"
+              },
+              {
+                "allocated_gbps": 60,
+                "demand_id": "D3",
+                "priority": "normal",
+                "target_link": "L4"
+              }
+            ],
+            "unmet_gbps": 0
+          },
+          "reasoning": "Critical-first ordering is satisfied while keeping every allocation within spare limits.",
+          "state_change": "Selected a priority-respecting, no-split allocation that fully restores failed-link traffic.",
+          "step": "derive_plan",
+          "step_outcome": "completed",
+          "success": true,
+          "tool": "manual_reasoning",
+          "turn": 1
+        },
+        "split_used": false
+      },
+      "observation": "Computed totals: demand 260Gbps, spare 320Gbps, headroom 60Gbps. Confirmed each demand fits a single spare target and all values are multiples of 20Gbps, so no split is required.",
+      "operation": "other",
+      "output": "{\"allocation\": [{\"allocated_gbps\": 120, \"demand_id\": \"D1\", \"priority\": \"critical\", \"target_link\": \"L3\"}, {\"allocated_gbps\": 80, \"demand_id\": \"D2\", \"priority\": \"high\", \"target_link\": \"L2\"}, {\"allocated_gbps\": 60, \"demand_id\": \"D3\", \"priority\": \"normal\", \"target_link\": \"L4\"}], \"unmet_gbps\": 0}",
+      "parallel_group": null,
+      "reasoning": "Critical-first ordering is satisfied while keeping every allocation within spare limits.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Selected a priority-respecting, no-split allocation that fully restores failed-link traffic.",
+      "step": 2,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "manual_reasoning",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "causal_note": "The CSV encodes the computed no-split restoration plan.",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "{\"file\": \"[EXCLUDED_GENERATED_ARTIFACT]\"}",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "format": "csv",
+        "inputs": {
+          "file": "[EXCLUDED_GENERATED_ARTIFACT]"
+        },
+        "normalization_warnings": [
+          "step value 'write_csv' was not numeric; defaulted to 3"
+        ],
+        "original_action": "create_artifact",
+        "original_causal_type": "implements",
+        "original_operation": "write fiber_restoration_plan.csv",
+        "original_step": "write_csv",
+        "outputs": {
+          "allocated_total_gbps": 260,
+          "rows_written": 3
+        },
+        "raw_step": {
+          "action": "create_artifact",
+          "actor": "worker",
+          "causal_note": "The CSV encodes the computed no-split restoration plan.",
+          "causal_type": "implements",
+          "caused_by": "derive_plan",
+          "error_message": null,
+          "error_type": null,
+          "input": {
+            "file": "[EXCLUDED_GENERATED_ARTIFACT]"
+          },
+          "metadata_json": {
+            "format": "csv"
+          },
+          "observation": "Created [EXCLUDED_GENERATED_ARTIFACT] with three allocation rows and traceable spare-before/spare-after fields.",
+          "operation": "write fiber_restoration_plan.csv",
+          "output": {
+            "allocated_total_gbps": 260,
+            "rows_written": 3
+          },
+          "reasoning": "The CSV is the structured allocation artifact requested by the task.",
+          "state_change": "Persisted the restoration allocation table as a CSV deliverable.",
+          "step": "write_csv",
+          "step_outcome": "completed",
+          "success": true,
+          "tool": "functions.apply_patch",
+          "turn": 1
+        }
+      },
+      "observation": "Created [EXCLUDED_GENERATED_ARTIFACT] with three allocation rows and traceable spare-before/spare-after fields.",
+      "operation": "other",
+      "output": "{\"allocated_total_gbps\": 260, \"rows_written\": 3}",
+      "parallel_group": null,
+      "reasoning": "The CSV is the structured allocation artifact requested by the task.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Persisted the restoration allocation table as a CSV deliverable.",
+      "step": 3,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "functions.apply_patch",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "causal_note": "The memo documents the same allocation logic used in the CSV.",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "{\"file\": \"[EXCLUDED_GENERATED_ARTIFACT]\"}",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "format": "markdown",
+        "inputs": {
+          "file": "[EXCLUDED_GENERATED_ARTIFACT]"
+        },
+        "normalization_warnings": [
+          "step value 'write_memo' was not numeric; defaulted to 4"
+        ],
+        "original_action": "create_artifact",
+        "original_causal_type": "implements",
+        "original_operation": "write NOC_memo.md",
+        "original_step": "write_memo",
+        "outputs": {
+          "sections": [
+            "Situation Summary",
+            "Intermediate Calculations",
+            "Restoration Allocation",
+            "Validation Checks",
+            "Uncertainty / Sensitivity Notes",
+            "Final Decision Table",
+            "Conclusion"
+          ]
+        },
+        "raw_step": {
+          "action": "create_artifact",
+          "actor": "worker",
+          "causal_note": "The memo documents the same allocation logic used in the CSV.",
+          "causal_type": "implements",
+          "caused_by": "derive_plan",
+          "error_message": null,
+          "error_type": null,
+          "input": {
+            "file": "[EXCLUDED_GENERATED_ARTIFACT]"
+          },
+          "metadata_json": {
+            "format": "markdown"
+          },
+          "observation": "Created [EXCLUDED_GENERATED_ARTIFACT] with calculations, validation checks, sensitivity notes, and a final decision table tied to the supplied values.",
+          "operation": "write NOC_memo.md",
+          "output": {
+            "sections": [
+              "Situation Summary",
+              "Intermediate Calculations",
+              "Restoration Allocation",
+              "Validation Checks",
+              "Uncertainty / Sensitivity Notes",
+              "Final Decision Table",
+              "Conclusion"
+            ]
+          },
+          "reasoning": "The memo needs to explain the allocation arithmetic and operational checks in plain language.",
+          "state_change": "Persisted the human-readable restoration memo as a Markdown deliverable.",
+          "step": "write_memo",
+          "step_outcome": "completed",
+          "success": true,
+          "tool": "functions.apply_patch",
+          "turn": 1
+        }
+      },
+      "observation": "Created [EXCLUDED_GENERATED_ARTIFACT] with calculations, validation checks, sensitivity notes, and a final decision table tied to the supplied values.",
+      "operation": "other",
+      "output": "{\"sections\": [\"Situation Summary\", \"Intermediate Calculations\", \"Restoration Allocation\", \"Validation Checks\", \"Uncertainty / Sensitivity Notes\", \"Final Decision Table\", \"Conclusion\"]}",
+      "parallel_group": null,
+      "reasoning": "The memo needs to explain the allocation arithmetic and operational checks in plain language.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Persisted the human-readable restoration memo as a Markdown deliverable.",
+      "step": 4,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "functions.apply_patch",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "artifact_refs": [
+        "agent_trace.json",
+        "actual_outputs.json"
+      ],
+      "causal_note": "The verification step checks the artifacts created from the computed allocation.",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "{\"commands\": [\"test -f agent_trace.json && test -f actual_outputs.json && test -f [EXCLUDED_GENERATED_ARTIFACT] && test -f [EXCLUDED_GENERATED_ARTIFACT]\", \"sed -n '1,120p' [EXCLUDED_GENERATED_ARTIFACT]\", \"sed -n '1,220p' [EXCLUDED_GENERATED_ARTIFACT]\"]}",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "inputs": {
+          "commands": [
+            "test -f agent_trace.json && test -f actual_outputs.json && test -f [EXCLUDED_GENERATED_ARTIFACT] && test -f [EXCLUDED_GENERATED_ARTIFACT]",
+            "sed -n '1,120p' [EXCLUDED_GENERATED_ARTIFACT]",
+            "sed -n '1,220p' [EXCLUDED_GENERATED_ARTIFACT]"
+          ]
+        },
+        "normalization_warnings": [
+          "step value 'validate_outputs' was not numeric; defaulted to 5"
+        ],
+        "original_action": "verify",
+        "original_causal_type": "verification",
+        "original_operation": "check generated files and inspect contents",
+        "original_step": "validate_outputs",
+        "outputs": {
+          "validation": {
+            "allocated_total_gbps": 260,
+            "csv_rows": 3,
+            "files_present": true,
+            "unmet_gbps": 0
+          }
+        },
+        "raw_step": {
+          "action": "verify",
+          "actor": "worker",
+          "artifact_refs": [
+            "agent_trace.json",
+            "actual_outputs.json"
+          ],
+          "causal_note": "The verification step checks the artifacts created from the computed allocation.",
+          "causal_type": "verification",
+          "caused_by": "write_csv",
+          "error_message": null,
+          "error_type": null,
+          "input": {
+            "commands": [
+              "test -f agent_trace.json && test -f actual_outputs.json && test -f [EXCLUDED_GENERATED_ARTIFACT] && test -f [EXCLUDED_GENERATED_ARTIFACT]",
+              "sed -n '1,120p' [EXCLUDED_GENERATED_ARTIFACT]",
+              "sed -n '1,220p' [EXCLUDED_GENERATED_ARTIFACT]"
+            ]
+          },
+          "metadata_json": {
+            "validation_method": "file_existence_and_content_review"
+          },
+          "observation": "Verified the presence of agent_trace.json, actual_outputs.json, [EXCLUDED_GENERATED_ARTIFACT] and [EXCLUDED_GENERATED_ARTIFACT] Confirmed the CSV and memo contents match the planned allocation.",
+          "operation": "check generated files and inspect contents",
+          "output": {
+            "validation": {
+              "allocated_total_gbps": 260,
+              "csv_rows": 3,
+              "files_present": true,
+              "unmet_gbps": 0
+            }
+          },
+          "reasoning": "Validation is needed to ensure the final artifacts reflect the computed plan exactly.",
+          "state_change": "Confirmed deliverables are present and internally consistent.",
+          "step": "validate_outputs",
+          "step_outcome": "completed",
+          "success": true,
+          "tool": "functions.exec_command",
+          "turn": 1
+        },
+        "validation_method": "file_existence_and_content_review"
+      },
+      "observation": "Verified the presence of agent_trace.json, actual_outputs.json, [EXCLUDED_GENERATED_ARTIFACT] and [EXCLUDED_GENERATED_ARTIFACT] Confirmed the CSV and memo contents match the planned allocation.",
+      "operation": "verify",
+      "output": "{\"validation\": {\"allocated_total_gbps\": 260, \"csv_rows\": 3, \"files_present\": true, \"unmet_gbps\": 0}}",
+      "parallel_group": null,
+      "reasoning": "Validation is needed to ensure the final artifacts reflect the computed plan exactly.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Confirmed deliverables are present and internally consistent.",
+      "step": 5,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "Bash",
+      "turn": 1
+    }
+  ],
+  "system_prompt": null,
+  "system_prompt_hash": null,
+  "task": "Given the supplied link capacities, spare capacities, link failure status, and demands with priorities, produce a restoration allocation plan and unmet-demand summary that reroutes traffic from failed links onto available spares. Follow these rules: prioritize critical demands first, never exceed spare capacities, allow splitting of demands only in chunks >=20Gbps, and use only the provided data (no external lookups). Deliver a CSV restoration allocation (fiber_restoration_plan.csv) and a NOC memo (NOC_memo.md) that include intermediate calculations, validation checks, uncertainty/sensitivity notes, and a final decision table tying every recommendation to the supplied values. The output must be executable from the embedded packet alone.",
+  "task_family_id": null,
+  "original_internal_task_id": "aa_task_0388",
+  "task_id": "188",
+  "termination_reason": "task_complete",
+  "trace_id": "trace_188-baseline_normalized",
+  "trace_mode": "live"
+}

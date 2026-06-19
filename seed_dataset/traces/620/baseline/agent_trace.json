@@ -1,0 +1,928 @@
+{
+  "actual_outputs": {
+    "original_internal_attempt_id": "aa_task_0020_baseline",
+    "attempt_id": "620-baseline",
+    "attempt_kind": "baseline",
+    "error_message": null,
+    "error_type": null,
+    "metadata_json": {
+      "actual_outputs_discarded_field_count": 0,
+      "actual_outputs_normalized": true,
+      "expected_deliverable_items": [
+        "vcn_release_workbook.xlsx",
+        "qa_release_memo.md"
+      ],
+      "original_fields": {
+        "deliverables": [
+          {
+            "description": "Release decision workbook with formula-driven lot assessment, rework logic, validation checks, sensitivity checks, and final decision table.",
+            "type": "xlsx"
+          },
+          {
+            "description": "QA memo documenting per-lot release logic, assumptions, uncertainty notes, patient-slot impact, and final recommendations.",
+            "type": "markdown"
+          }
+        ],
+        "lot_decisions": {
+          "L1": "PASS",
+          "L2": "FAIL",
+          "L3": "NEEDS_REVIEW"
+        }
+      },
+      "produced_deliverable_items": [
+        "qa_release_memo.md",
+        "vcn_release_workbook.xlsx"
+      ],
+      "raw_actual_outputs": {
+        "deliverables": [
+          {
+            "description": "Release decision workbook with formula-driven lot assessment, rework logic, validation checks, sensitivity checks, and final decision table.",
+            "type": "xlsx"
+          },
+          {
+            "description": "QA memo documenting per-lot release logic, assumptions, uncertainty notes, patient-slot impact, and final recommendations.",
+            "type": "markdown"
+          }
+        ],
+        "lot_decisions": {
+          "L1": "PASS",
+          "L2": "FAIL",
+          "L3": "NEEDS_REVIEW"
+        },
+        "original_internal_task_id": "aa_task_0020",
+        "task_id": "620"
+      }
+    },
+    "output_summary": "Normalized actual outputs from artifact files.",
+    "status": "success",
+    "original_internal_task_id": "aa_task_0020",
+    "task_id": "620",
+    "required_deliverables": [
+      "vcn_release_workbook.xlsx",
+      "qa_release_memo.md"
+    ],
+    "produced_deliverables": [
+      "qa_release_memo.md",
+      "vcn_release_workbook.xlsx"
+    ],
+    "missing_required_deliverables": [],
+    "deliverable_produced": true,
+    "deliverable_file_included": false,
+    "included_generated_artifacts": false,
+    "artifacts_excluded_reason": "Generated output artifacts are excluded from the public seed dataset by default.",
+    "logs_included": false,
+    "logs_excluded_reason": "Raw runner logs are excluded from the public seed dataset."
+  },
+  "agent_config": null,
+  "agent_tools": [
+    "codex_cli",
+    "Bash",
+    "python",
+    "file_read",
+    "file_write",
+    "apply_patch"
+  ],
+  "artifacts": [],
+  "original_internal_attempt_id": "aa_task_0020_baseline",
+  "attempt_id": "620-baseline",
+  "attempt_kind": "baseline",
+  "attempt_status": "completed",
+  "collection_id": null,
+  "completion_reason": null,
+  "ended_at": null,
+  "final_attempt_id": null,
+  "initial_attempt_id": null,
+  "iteration_index": null,
+  "learning": null,
+  "memory": null,
+  "metadata_json": {
+    "codex_command": [
+      "codex",
+      "exec",
+      "--sandbox",
+      "workspace-write",
+      "<prompt>"
+    ],
+    "codex_sandbox": "workspace-write",
+    "discarded_step_count": 0,
+    "raw_trace_list": [
+      {
+        "action": "Read task payload and instruction packet from provided input files",
+        "actor": "worker",
+        "artifact_refs": [
+          "input/task.json",
+          "input/task_brief.md"
+        ],
+        "causal_note": "Task artifacts define allowed data and required deliverables",
+        "causal_type": "direct_input",
+        "caused_by": "user request",
+        "error_message": null,
+        "error_type": null,
+        "input": "cat input/task.json && cat input/task_brief.md",
+        "metadata_json": {
+          "original_internal_task_id": "aa_task_0020",
+          "task_id": "620",
+          "turn_date": "2026-06-18"
+        },
+        "observation": "Captured embedded packet values for L1/L2/L3 and full release criteria from task.json and task_brief.md",
+        "operation": "read",
+        "output": "Recovered all required packet values and constraints, including rework actions and output contract",
+        "reasoning": "Need exact source values before any calculation or file generation",
+        "state_change": "No filesystem state changed",
+        "step": "read_task_inputs",
+        "step_outcome": "success",
+        "success": true,
+        "tool": "functions.exec_command",
+        "turn": 1
+      },
+      {
+        "action": "List current workspace and artifacts directory",
+        "actor": "worker",
+        "causal_note": "Ensures artifact write targets are valid",
+        "causal_type": "prerequisite",
+        "caused_by": "read_task_inputs",
+        "error_message": null,
+        "error_type": null,
+        "input": "ls -la && ls -la artifacts",
+        "metadata_json": {
+          "workspace_root": "[REDACTED_LOCAL_PATH]"
+        },
+        "observation": "artifacts directory existed and was initially empty of deliverables",
+        "operation": "read",
+        "output": "Baseline structure confirmed: input/ and artifacts/ only, no existing output files",
+        "reasoning": "Required to write files in correct location and avoid overwriting unrelated files",
+        "state_change": "No filesystem state changed",
+        "step": "inspect_workspace",
+        "step_outcome": "success",
+        "success": true,
+        "tool": "functions.exec_command",
+        "turn": 2
+      },
+      {
+        "action": "Attempted to generate XLSX via openpyxl",
+        "actor": "worker",
+        "causal_note": "Workbook generation still required, so dependency-free fallback was needed",
+        "causal_type": "error_recovery",
+        "caused_by": "inspect_workspace",
+        "error_message": "No module named 'openpyxl'",
+        "error_type": "ModuleNotFoundError",
+        "input": "python3 - <<'PY' ... openpyxl Workbook ... PY",
+        "metadata_json": {
+          "attempted_library": "openpyxl"
+        },
+        "observation": "Python environment does not include openpyxl",
+        "operation": "execute",
+        "output": "ModuleNotFoundError: No module named 'openpyxl'",
+        "reasoning": "Required dependency was missing; switched to dependency-free OOXML generation to continue without environment changes",
+        "state_change": "No filesystem state changed",
+        "step": "excel_lib_attempt_failed",
+        "step_outcome": "failed",
+        "success": false,
+        "tool": "functions.exec_command",
+        "turn": 3
+      },
+      {
+        "action": "Built vcn_release_workbook.xlsx directly from OOXML with embedded packet and formula logic",
+        "actor": "worker",
+        "causal_note": "Used only packet inputs and embedded rules to populate model tables",
+        "causal_type": "implementation",
+        "caused_by": "excel_lib_attempt_failed",
+        "error_message": null,
+        "error_type": null,
+        "input": "python3 [REDACTED_LOCAL_PATH]",
+        "metadata_json": {
+          "formula_links": [
+            "lot_assessment!G:J",
+            "validation!B2:B6",
+            "final_decision!A:F"
+          ],
+          "sheets": [
+            "packet",
+            "rules",
+            "validation",
+            "lot_assessment",
+            "sensitivity",
+            "final_decision"
+          ]
+        },
+        "observation": "Created a valid .xlsx zip package containing packet, rules, validation, lot_assessment, sensitivity, and final_decision sheets",
+        "operation": "write",
+        "output": "WROTE [EXCLUDED_GENERATED_ARTIFACT]",
+        "reasoning": "Manual OOXML generation avoids external dependencies while preserving executable formulas and reproducible structure",
+        "state_change": "Added [EXCLUDED_GENERATED_ARTIFACT]",
+        "step": "build_xlsx_from_packet",
+        "step_outcome": "success",
+        "success": true,
+        "tool": "functions.exec_command",
+        "turn": 4
+      },
+      {
+        "action": "Wrote qa_release_memo.md with row citations and recommendations",
+        "actor": "worker",
+        "causal_note": "Output contract explicitly requests memo alongside workbook",
+        "causal_type": "documentation",
+        "caused_by": "build_xlsx_from_packet",
+        "error_message": null,
+        "error_type": null,
+        "input": "cat > [EXCLUDED_GENERATED_ARTIFACT] << 'EOF' ... EOF",
+        "metadata_json": {
+          "decision_labels_used": [
+            "pass",
+            "warn",
+            "fail",
+            "needs_review"
+          ],
+          "row_level_citations": [
+            "embedded_packet:L1",
+            "embedded_packet:L2",
+            "embedded_packet:L3"
+          ]
+        },
+        "observation": "Memo includes per-lot citations, formulas used, uncertainty notes, sensitivity notes, and final labels",
+        "operation": "write",
+        "output": "WROTE [EXCLUDED_GENERATED_ARTIFACT]",
+        "reasoning": "Required textual release rationale cannot be inferred from workbook alone; memo captures assumptions and unresolved items",
+        "state_change": "Added [EXCLUDED_GENERATED_ARTIFACT]",
+        "step": "create_qa_memo",
+        "step_outcome": "success",
+        "success": true,
+        "tool": "functions.exec_command",
+        "turn": 5
+      },
+      {
+        "action": "Spot-checked workbook and memo files for presence and key sheet content",
+        "actor": "worker",
+        "causal_note": "Verification supports traceability requirement for workflow evidence",
+        "causal_type": "validation",
+        "caused_by": "create_qa_memo",
+        "error_message": null,
+        "error_type": null,
+        "input": "unzip -l [EXCLUDED_GENERATED_ARTIFACT] && unzip -p [EXCLUDED_GENERATED_ARTIFACT] xl/worksheets/sheet4.xml | sed -n '1,220p' && sed -n '1,120p' [EXCLUDED_GENERATED_ARTIFACT]",
+        "metadata_json": {
+          "file_count": 10,
+          "lot_assessment_sheet_rows": 4
+        },
+        "observation": "workbook package contains 10 OOXML parts and lot_assessment formulas were present with formula-cell markup",
+        "operation": "verify",
+        "output": "Confirmed sheet and formula content and readable memo; no missing output files",
+        "reasoning": "Needs evidence that deliverables are materialized in expected format and include executable logic",
+        "state_change": "No filesystem changes",
+        "step": "spot_check_outputs",
+        "step_outcome": "success",
+        "success": true,
+        "tool": "functions.exec_command",
+        "turn": 6
+      },
+      {
+        "action": "Created actual_outputs.json summarizing deliverables and lot decisions",
+        "actor": "worker",
+        "artifact_refs": [
+          "actual_outputs.json"
+        ],
+        "causal_note": "Provides explicit machine-readable output manifest",
+        "causal_type": "artifact_metadata",
+        "caused_by": "spot_check_outputs",
+        "error_message": null,
+        "error_type": null,
+        "input": "cat > actual_outputs.json << 'EOF' ... EOF",
+        "metadata_json": {
+          "output_schema": "lightweight-manifest"
+        },
+        "observation": "actual_outputs.json now captures file paths and lot-level outcome labels",
+        "operation": "write",
+        "output": "WROTE actual_outputs.json",
+        "reasoning": "Required by task contract for downstream grading/assembly",
+        "state_change": "Added actual_outputs.json",
+        "step": "write_actual_outputs",
+        "step_outcome": "success",
+        "success": true,
+        "tool": "functions.exec_command",
+        "turn": 7
+      },
+      {
+        "action": "Created agent_trace.json containing trace steps with required schema fields",
+        "actor": "worker",
+        "artifact_refs": [
+          "agent_trace.json"
+        ],
+        "causal_note": "Closes workflow with complete required artifact list",
+        "causal_type": "finalization",
+        "caused_by": "write_actual_outputs",
+        "error_message": null,
+        "error_type": null,
+        "input": "cat > agent_trace.json << 'EOF' ... EOF",
+        "metadata_json": {
+          "trace_length": 8
+        },
+        "observation": "Trace captured each meaningful action with inputs, outputs, causality, and outcomes",
+        "operation": "write",
+        "output": "WROTE agent_trace.json",
+        "reasoning": "Task requires explicit trace of context handling, tool use, file creation, and decision actions",
+        "state_change": "Added agent_trace.json",
+        "step": "write_agent_trace",
+        "step_outcome": "success",
+        "success": true,
+        "tool": "functions.exec_command",
+        "turn": 8
+      }
+    ],
+    "raw_trace_preserved": true,
+    "raw_trace_shape": "list",
+    "raw_trace_step_source": "steps",
+    "schema_valid": true,
+    "trace_normalization_status": "partial",
+    "trace_valid": true
+  },
+  "preferred_attempt_id": null,
+  "previous_attempt_id": null,
+  "prior_trace_id": null,
+  "revision_attempt_ids": [],
+  "revision_group_id": null,
+  "schema_version": "aa-trace-v0.1",
+  "skills": null,
+  "started_at": null,
+  "steps": [
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "artifact_refs": [
+        "input/task.json",
+        "input/task_brief.md"
+      ],
+      "causal_note": "Task artifacts define allowed data and required deliverables",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "cat input/task.json && cat input/task_brief.md",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "normalization_warnings": [
+          "step value 'read_task_inputs' was not numeric; defaulted to 1"
+        ],
+        "original_action": "Read task payload and instruction packet from provided input files",
+        "original_causal_type": "direct_input",
+        "original_step": "read_task_inputs",
+        "original_step_outcome": "success",
+        "raw_step": {
+          "action": "Read task payload and instruction packet from provided input files",
+          "actor": "worker",
+          "artifact_refs": [
+            "input/task.json",
+            "input/task_brief.md"
+          ],
+          "causal_note": "Task artifacts define allowed data and required deliverables",
+          "causal_type": "direct_input",
+          "caused_by": "user request",
+          "error_message": null,
+          "error_type": null,
+          "input": "cat input/task.json && cat input/task_brief.md",
+          "metadata_json": {
+            "original_internal_task_id": "aa_task_0020",
+            "task_id": "620",
+            "turn_date": "2026-06-18"
+          },
+          "observation": "Captured embedded packet values for L1/L2/L3 and full release criteria from task.json and task_brief.md",
+          "operation": "read",
+          "output": "Recovered all required packet values and constraints, including rework actions and output contract",
+          "reasoning": "Need exact source values before any calculation or file generation",
+          "state_change": "No filesystem state changed",
+          "step": "read_task_inputs",
+          "step_outcome": "success",
+          "success": true,
+          "tool": "functions.exec_command",
+          "turn": 1
+        },
+        "original_internal_task_id": "aa_task_0020",
+        "task_id": "620",
+        "turn_date": "2026-06-18"
+      },
+      "observation": "Captured embedded packet values for L1/L2/L3 and full release criteria from task.json and task_brief.md",
+      "operation": "read",
+      "output": "Recovered all required packet values and constraints, including rework actions and output contract",
+      "parallel_group": null,
+      "reasoning": "Need exact source values before any calculation or file generation",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "No filesystem state changed",
+      "step": 1,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "Bash",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "causal_note": "Ensures artifact write targets are valid",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "ls -la && ls -la artifacts",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "normalization_warnings": [
+          "step value 'inspect_workspace' was not numeric; defaulted to 2"
+        ],
+        "original_action": "List current workspace and artifacts directory",
+        "original_causal_type": "prerequisite",
+        "original_step": "inspect_workspace",
+        "original_step_outcome": "success",
+        "raw_step": {
+          "action": "List current workspace and artifacts directory",
+          "actor": "worker",
+          "causal_note": "Ensures artifact write targets are valid",
+          "causal_type": "prerequisite",
+          "caused_by": "read_task_inputs",
+          "error_message": null,
+          "error_type": null,
+          "input": "ls -la && ls -la artifacts",
+          "metadata_json": {
+            "workspace_root": "[REDACTED_LOCAL_PATH]"
+          },
+          "observation": "artifacts directory existed and was initially empty of deliverables",
+          "operation": "read",
+          "output": "Baseline structure confirmed: input/ and artifacts/ only, no existing output files",
+          "reasoning": "Required to write files in correct location and avoid overwriting unrelated files",
+          "state_change": "No filesystem state changed",
+          "step": "inspect_workspace",
+          "step_outcome": "success",
+          "success": true,
+          "tool": "functions.exec_command",
+          "turn": 2
+        },
+        "workspace_root": "[REDACTED_LOCAL_PATH]"
+      },
+      "observation": "artifacts directory existed and was initially empty of deliverables",
+      "operation": "read",
+      "output": "Baseline structure confirmed: input/ and artifacts/ only, no existing output files",
+      "parallel_group": null,
+      "reasoning": "Required to write files in correct location and avoid overwriting unrelated files",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "No filesystem state changed",
+      "step": 2,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "Bash",
+      "turn": 2
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "causal_note": "Workbook generation still required, so dependency-free fallback was needed",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": "No module named 'openpyxl'",
+      "error_type": "ModuleNotFoundError",
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "python3 - <<'PY' ... openpyxl Workbook ... PY",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "attempted_library": "openpyxl",
+        "normalization_warnings": [
+          "step value 'excel_lib_attempt_failed' was not numeric; defaulted to 3"
+        ],
+        "original_action": "Attempted to generate XLSX via openpyxl",
+        "original_causal_type": "error_recovery",
+        "original_step": "excel_lib_attempt_failed",
+        "raw_step": {
+          "action": "Attempted to generate XLSX via openpyxl",
+          "actor": "worker",
+          "causal_note": "Workbook generation still required, so dependency-free fallback was needed",
+          "causal_type": "error_recovery",
+          "caused_by": "inspect_workspace",
+          "error_message": "No module named 'openpyxl'",
+          "error_type": "ModuleNotFoundError",
+          "input": "python3 - <<'PY' ... openpyxl Workbook ... PY",
+          "metadata_json": {
+            "attempted_library": "openpyxl"
+          },
+          "observation": "Python environment does not include openpyxl",
+          "operation": "execute",
+          "output": "ModuleNotFoundError: No module named 'openpyxl'",
+          "reasoning": "Required dependency was missing; switched to dependency-free OOXML generation to continue without environment changes",
+          "state_change": "No filesystem state changed",
+          "step": "excel_lib_attempt_failed",
+          "step_outcome": "failed",
+          "success": false,
+          "tool": "functions.exec_command",
+          "turn": 3
+        }
+      },
+      "observation": "Python environment does not include openpyxl",
+      "operation": "execute",
+      "output": "ModuleNotFoundError: No module named 'openpyxl'",
+      "parallel_group": null,
+      "reasoning": "Required dependency was missing; switched to dependency-free OOXML generation to continue without environment changes",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "No filesystem state changed",
+      "step": 3,
+      "step_outcome": "failed",
+      "success": false,
+      "tool": "python",
+      "turn": 3
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "causal_note": "Used only packet inputs and embedded rules to populate model tables",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "python3 [REDACTED_LOCAL_PATH]",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "formula_links": [
+          "lot_assessment!G:J",
+          "validation!B2:B6",
+          "final_decision!A:F"
+        ],
+        "normalization_warnings": [
+          "step value 'build_xlsx_from_packet' was not numeric; defaulted to 4"
+        ],
+        "original_action": "Built vcn_release_workbook.xlsx directly from OOXML with embedded packet and formula logic",
+        "original_causal_type": "implementation",
+        "original_step": "build_xlsx_from_packet",
+        "original_step_outcome": "success",
+        "raw_step": {
+          "action": "Built vcn_release_workbook.xlsx directly from OOXML with embedded packet and formula logic",
+          "actor": "worker",
+          "causal_note": "Used only packet inputs and embedded rules to populate model tables",
+          "causal_type": "implementation",
+          "caused_by": "excel_lib_attempt_failed",
+          "error_message": null,
+          "error_type": null,
+          "input": "python3 [REDACTED_LOCAL_PATH]",
+          "metadata_json": {
+            "formula_links": [
+              "lot_assessment!G:J",
+              "validation!B2:B6",
+              "final_decision!A:F"
+            ],
+            "sheets": [
+              "packet",
+              "rules",
+              "validation",
+              "lot_assessment",
+              "sensitivity",
+              "final_decision"
+            ]
+          },
+          "observation": "Created a valid .xlsx zip package containing packet, rules, validation, lot_assessment, sensitivity, and final_decision sheets",
+          "operation": "write",
+          "output": "WROTE [EXCLUDED_GENERATED_ARTIFACT]",
+          "reasoning": "Manual OOXML generation avoids external dependencies while preserving executable formulas and reproducible structure",
+          "state_change": "Added [EXCLUDED_GENERATED_ARTIFACT]",
+          "step": "build_xlsx_from_packet",
+          "step_outcome": "success",
+          "success": true,
+          "tool": "functions.exec_command",
+          "turn": 4
+        },
+        "sheets": [
+          "packet",
+          "rules",
+          "validation",
+          "lot_assessment",
+          "sensitivity",
+          "final_decision"
+        ]
+      },
+      "observation": "Created a valid .xlsx zip package containing packet, rules, validation, lot_assessment, sensitivity, and final_decision sheets",
+      "operation": "write",
+      "output": "WROTE [EXCLUDED_GENERATED_ARTIFACT]",
+      "parallel_group": null,
+      "reasoning": "Manual OOXML generation avoids external dependencies while preserving executable formulas and reproducible structure",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Added [EXCLUDED_GENERATED_ARTIFACT]",
+      "step": 4,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "python",
+      "turn": 4
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "causal_note": "Output contract explicitly requests memo alongside workbook",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "cat > [EXCLUDED_GENERATED_ARTIFACT] << 'EOF' ... EOF",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "decision_labels_used": [
+          "pass",
+          "warn",
+          "fail",
+          "needs_review"
+        ],
+        "normalization_warnings": [
+          "step value 'create_qa_memo' was not numeric; defaulted to 5"
+        ],
+        "original_action": "Wrote qa_release_memo.md with row citations and recommendations",
+        "original_causal_type": "documentation",
+        "original_step": "create_qa_memo",
+        "original_step_outcome": "success",
+        "raw_step": {
+          "action": "Wrote qa_release_memo.md with row citations and recommendations",
+          "actor": "worker",
+          "causal_note": "Output contract explicitly requests memo alongside workbook",
+          "causal_type": "documentation",
+          "caused_by": "build_xlsx_from_packet",
+          "error_message": null,
+          "error_type": null,
+          "input": "cat > [EXCLUDED_GENERATED_ARTIFACT] << 'EOF' ... EOF",
+          "metadata_json": {
+            "decision_labels_used": [
+              "pass",
+              "warn",
+              "fail",
+              "needs_review"
+            ],
+            "row_level_citations": [
+              "embedded_packet:L1",
+              "embedded_packet:L2",
+              "embedded_packet:L3"
+            ]
+          },
+          "observation": "Memo includes per-lot citations, formulas used, uncertainty notes, sensitivity notes, and final labels",
+          "operation": "write",
+          "output": "WROTE [EXCLUDED_GENERATED_ARTIFACT]",
+          "reasoning": "Required textual release rationale cannot be inferred from workbook alone; memo captures assumptions and unresolved items",
+          "state_change": "Added [EXCLUDED_GENERATED_ARTIFACT]",
+          "step": "create_qa_memo",
+          "step_outcome": "success",
+          "success": true,
+          "tool": "functions.exec_command",
+          "turn": 5
+        },
+        "row_level_citations": [
+          "embedded_packet:L1",
+          "embedded_packet:L2",
+          "embedded_packet:L3"
+        ]
+      },
+      "observation": "Memo includes per-lot citations, formulas used, uncertainty notes, sensitivity notes, and final labels",
+      "operation": "write",
+      "output": "WROTE [EXCLUDED_GENERATED_ARTIFACT]",
+      "parallel_group": null,
+      "reasoning": "Required textual release rationale cannot be inferred from workbook alone; memo captures assumptions and unresolved items",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Added [EXCLUDED_GENERATED_ARTIFACT]",
+      "step": 5,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "Bash",
+      "turn": 5
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "causal_note": "Verification supports traceability requirement for workflow evidence",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "unzip -l [EXCLUDED_GENERATED_ARTIFACT] && unzip -p [EXCLUDED_GENERATED_ARTIFACT] xl/worksheets/sheet4.xml | sed -n '1,220p' && sed -n '1,120p' [EXCLUDED_GENERATED_ARTIFACT]",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "file_count": 10,
+        "lot_assessment_sheet_rows": 4,
+        "normalization_warnings": [
+          "step value 'spot_check_outputs' was not numeric; defaulted to 6"
+        ],
+        "original_action": "Spot-checked workbook and memo files for presence and key sheet content",
+        "original_causal_type": "validation",
+        "original_step": "spot_check_outputs",
+        "original_step_outcome": "success",
+        "raw_step": {
+          "action": "Spot-checked workbook and memo files for presence and key sheet content",
+          "actor": "worker",
+          "causal_note": "Verification supports traceability requirement for workflow evidence",
+          "causal_type": "validation",
+          "caused_by": "create_qa_memo",
+          "error_message": null,
+          "error_type": null,
+          "input": "unzip -l [EXCLUDED_GENERATED_ARTIFACT] && unzip -p [EXCLUDED_GENERATED_ARTIFACT] xl/worksheets/sheet4.xml | sed -n '1,220p' && sed -n '1,120p' [EXCLUDED_GENERATED_ARTIFACT]",
+          "metadata_json": {
+            "file_count": 10,
+            "lot_assessment_sheet_rows": 4
+          },
+          "observation": "workbook package contains 10 OOXML parts and lot_assessment formulas were present with formula-cell markup",
+          "operation": "verify",
+          "output": "Confirmed sheet and formula content and readable memo; no missing output files",
+          "reasoning": "Needs evidence that deliverables are materialized in expected format and include executable logic",
+          "state_change": "No filesystem changes",
+          "step": "spot_check_outputs",
+          "step_outcome": "success",
+          "success": true,
+          "tool": "functions.exec_command",
+          "turn": 6
+        }
+      },
+      "observation": "workbook package contains 10 OOXML parts and lot_assessment formulas were present with formula-cell markup",
+      "operation": "verify",
+      "output": "Confirmed sheet and formula content and readable memo; no missing output files",
+      "parallel_group": null,
+      "reasoning": "Needs evidence that deliverables are materialized in expected format and include executable logic",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "No filesystem changes",
+      "step": 6,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "Bash",
+      "turn": 6
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "artifact_refs": [
+        "actual_outputs.json"
+      ],
+      "causal_note": "Provides explicit machine-readable output manifest",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "cat > actual_outputs.json << 'EOF' ... EOF",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "normalization_warnings": [
+          "step value 'write_actual_outputs' was not numeric; defaulted to 7"
+        ],
+        "original_action": "Created actual_outputs.json summarizing deliverables and lot decisions",
+        "original_causal_type": "artifact_metadata",
+        "original_step": "write_actual_outputs",
+        "original_step_outcome": "success",
+        "output_schema": "lightweight-manifest",
+        "raw_step": {
+          "action": "Created actual_outputs.json summarizing deliverables and lot decisions",
+          "actor": "worker",
+          "artifact_refs": [
+            "actual_outputs.json"
+          ],
+          "causal_note": "Provides explicit machine-readable output manifest",
+          "causal_type": "artifact_metadata",
+          "caused_by": "spot_check_outputs",
+          "error_message": null,
+          "error_type": null,
+          "input": "cat > actual_outputs.json << 'EOF' ... EOF",
+          "metadata_json": {
+            "output_schema": "lightweight-manifest"
+          },
+          "observation": "actual_outputs.json now captures file paths and lot-level outcome labels",
+          "operation": "write",
+          "output": "WROTE actual_outputs.json",
+          "reasoning": "Required by task contract for downstream grading/assembly",
+          "state_change": "Added actual_outputs.json",
+          "step": "write_actual_outputs",
+          "step_outcome": "success",
+          "success": true,
+          "tool": "functions.exec_command",
+          "turn": 7
+        }
+      },
+      "observation": "actual_outputs.json now captures file paths and lot-level outcome labels",
+      "operation": "write",
+      "output": "WROTE actual_outputs.json",
+      "parallel_group": null,
+      "reasoning": "Required by task contract for downstream grading/assembly",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Added actual_outputs.json",
+      "step": 7,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "Bash",
+      "turn": 7
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "artifact_refs": [
+        "agent_trace.json"
+      ],
+      "causal_note": "Closes workflow with complete required artifact list",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "cat > agent_trace.json << 'EOF' ... EOF",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "normalization_warnings": [
+          "step value 'write_agent_trace' was not numeric; defaulted to 8"
+        ],
+        "original_action": "Created agent_trace.json containing trace steps with required schema fields",
+        "original_causal_type": "finalization",
+        "original_step": "write_agent_trace",
+        "original_step_outcome": "success",
+        "raw_step": {
+          "action": "Created agent_trace.json containing trace steps with required schema fields",
+          "actor": "worker",
+          "artifact_refs": [
+            "agent_trace.json"
+          ],
+          "causal_note": "Closes workflow with complete required artifact list",
+          "causal_type": "finalization",
+          "caused_by": "write_actual_outputs",
+          "error_message": null,
+          "error_type": null,
+          "input": "cat > agent_trace.json << 'EOF' ... EOF",
+          "metadata_json": {
+            "trace_length": 8
+          },
+          "observation": "Trace captured each meaningful action with inputs, outputs, causality, and outcomes",
+          "operation": "write",
+          "output": "WROTE agent_trace.json",
+          "reasoning": "Task requires explicit trace of context handling, tool use, file creation, and decision actions",
+          "state_change": "Added agent_trace.json",
+          "step": "write_agent_trace",
+          "step_outcome": "success",
+          "success": true,
+          "tool": "functions.exec_command",
+          "turn": 8
+        },
+        "trace_length": 8
+      },
+      "observation": "Trace captured each meaningful action with inputs, outputs, causality, and outcomes",
+      "operation": "write",
+      "output": "WROTE agent_trace.json",
+      "parallel_group": null,
+      "reasoning": "Task requires explicit trace of context handling, tool use, file creation, and decision actions",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Added agent_trace.json",
+      "step": 8,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "Bash",
+      "turn": 8
+    }
+  ],
+  "system_prompt": null,
+  "system_prompt_hash": null,
+  "task": "Flagship expert task: Cell-Therapy Vector Copy Number Release Gate. Reality context: a cell-therapy manufacturing team must release or hold three patient lots before infusion slots expire. Embedded packet: lots: L1 viability_pct=84 VCN=3.7 residual_beads_ppm=18 sterility=pass, L2 viability=76 VCN=5.4 beads=31 sterility=pass, L3 viability=81 VCN=2.1 beads=22 sterility=pending; specs viability>=80, VCN 1.0-5.0, beads<=25, sterility pass required; deviation actions: repeat_VCN 8h, bead_wash 6h reduces beads 45pct viability_loss=3pct, medical_director_exception allowed only for VCN<=5.5 with risk memo. Rules and constraints: Classify each lot, evaluate whether rework preserves viability, and recommend release/hold/exception with patient-slot impact. Required work: deliver vcn_release_workbook.xlsx + qa_release_memo.md. The deliverables must include formulas or executable logic, intermediate calculations, row-level citations to the embedded packet, validation checks, uncertainty notes, sensitivity checks around the controlling thresholds, and a final decision table with pass/warn/fail/needs_review labels. Use only the embedded packet. Do not import external data, invent missing values, or hide unresolved assumptions.",
+  "task_family_id": null,
+  "original_internal_task_id": "aa_task_0020",
+  "task_id": "620",
+  "termination_reason": "task_complete",
+  "trace_id": "trace_620-baseline_normalized",
+  "trace_mode": "live"
+}

@@ -1,0 +1,591 @@
+{
+  "actual_outputs": {
+    "original_internal_attempt_id": "aa_task_0780_baseline",
+    "attempt_id": "480-baseline",
+    "attempt_kind": "baseline",
+    "error_message": null,
+    "error_type": null,
+    "metadata_json": {
+      "actual_outputs_discarded_field_count": 0,
+      "actual_outputs_normalized": true,
+      "expected_deliverable_items": [
+        "sonar_threshold_review.csv",
+        "threshold_memo.md"
+      ],
+      "original_fields": {
+        "deliverables": {
+          "sonar_threshold_review_csv": "[EXCLUDED_GENERATED_ARTIFACT]",
+          "threshold_memo_md": "[EXCLUDED_GENERATED_ARTIFACT]"
+        },
+        "recommendation": {
+          "anchor_record": "R4",
+          "selected_threshold_echo_snr_dB": 23.2,
+          "status": "provisional_recommendation"
+        },
+        "record_status_counts": {
+          "accepted": 1,
+          "needs_review": 3
+        }
+      },
+      "produced_deliverable_items": [
+        "threshold_memo.md",
+        "sonar_threshold_review.csv"
+      ],
+      "raw_actual_outputs": {
+        "deliverables": {
+          "sonar_threshold_review_csv": "[EXCLUDED_GENERATED_ARTIFACT]",
+          "threshold_memo_md": "[EXCLUDED_GENERATED_ARTIFACT]"
+        },
+        "recommendation": {
+          "anchor_record": "R4",
+          "selected_threshold_echo_snr_dB": 23.2,
+          "status": "provisional_recommendation"
+        },
+        "record_status_counts": {
+          "accepted": 1,
+          "needs_review": 3
+        },
+        "original_internal_task_id": "aa_task_0780",
+        "task_id": "480"
+      }
+    },
+    "output_summary": "Normalized actual outputs from artifact files.",
+    "status": "success",
+    "original_internal_task_id": "aa_task_0780",
+    "task_id": "480",
+    "required_deliverables": [
+      "sonar_threshold_review.csv",
+      "threshold_memo.md"
+    ],
+    "produced_deliverables": [
+      "threshold_memo.md",
+      "sonar_threshold_review.csv"
+    ],
+    "missing_required_deliverables": [],
+    "deliverable_produced": true,
+    "deliverable_file_included": false,
+    "included_generated_artifacts": false,
+    "artifacts_excluded_reason": "Generated output artifacts are excluded from the public seed dataset by default.",
+    "logs_included": false,
+    "logs_excluded_reason": "Raw runner logs are excluded from the public seed dataset."
+  },
+  "agent_config": null,
+  "agent_tools": [
+    "codex_cli",
+    "Bash",
+    "python",
+    "file_read",
+    "file_write",
+    "apply_patch"
+  ],
+  "artifacts": [],
+  "original_internal_attempt_id": "aa_task_0780_baseline",
+  "attempt_id": "480-baseline",
+  "attempt_kind": "baseline",
+  "attempt_status": "completed",
+  "collection_id": null,
+  "completion_reason": null,
+  "ended_at": null,
+  "final_attempt_id": null,
+  "initial_attempt_id": null,
+  "iteration_index": null,
+  "learning": null,
+  "memory": null,
+  "metadata_json": {
+    "codex_command": [
+      "codex",
+      "exec",
+      "--sandbox",
+      "workspace-write",
+      "<prompt>"
+    ],
+    "codex_sandbox": "workspace-write",
+    "discarded_step_count": 0,
+    "raw_trace_preserved": true,
+    "raw_trace_step_source": "steps",
+    "schema_valid": true,
+    "trace_normalization_status": "partial",
+    "trace_valid": true
+  },
+  "preferred_attempt_id": null,
+  "previous_attempt_id": null,
+  "prior_trace_id": null,
+  "revision_attempt_ids": [],
+  "revision_group_id": null,
+  "schema_version": "aa-trace-v0.1",
+  "skills": null,
+  "started_at": null,
+  "steps": [
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "artifact_refs": [
+        "./input/task.json",
+        "./input/task_brief.md"
+      ],
+      "causal_note": "The packet defines the only admissible data for the threshold review.",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "pwd && printf '\\n---\\n' && rg --files ./input ./artifacts . | sed 's#^./##' | sort; sed -n '1,220p' ./input/task.json && printf '\\n---TASK_BRIEF---\\n' && sed -n '1,220p' ./input/task_brief.md",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "normalization_warnings": [
+          "step value 'Inspect task inputs and repository contents' was not numeric; defaulted to 1"
+        ],
+        "original_action": "read_context",
+        "original_causal_type": "prerequisite",
+        "original_step": "Inspect task inputs and repository contents",
+        "parsed_records": [
+          "R1",
+          "R2",
+          "R3",
+          "R4"
+        ],
+        "raw_step": {
+          "action": "read_context",
+          "actor": "worker",
+          "artifact_refs": [
+            "./input/task.json",
+            "./input/task_brief.md"
+          ],
+          "causal_note": "The packet defines the only admissible data for the threshold review.",
+          "causal_type": "prerequisite",
+          "caused_by": "user_request",
+          "error_message": null,
+          "error_type": null,
+          "input": "pwd && printf '\\n---\\n' && rg --files ./input ./artifacts . | sed 's#^./##' | sort; sed -n '1,220p' ./input/task.json && printf '\\n---TASK_BRIEF---\\n' && sed -n '1,220p' ./input/task_brief.md",
+          "metadata_json": {
+            "parsed_records": [
+              "R1",
+              "R2",
+              "R3",
+              "R4"
+            ],
+            "workdir": "[REDACTED_LOCAL_PATH]"
+          },
+          "observation": "Found the input packet and deliverable contract in ./input/task.json and ./input/task_brief.md.",
+          "operation": "read",
+          "output": "Extracted governing packet values: records R1-R4; limits limit_echo_snr_dB=23.5, limit_doppler_Hz=111.9, limit_false_alarm_cost=124047; decision_budget_usd=47500; sensitivity_shift_pct=5; hard_threshold_record_count=1.",
+          "reasoning": "Need the exact embedded values and deliverable format before deriving a threshold or writing artifacts.",
+          "state_change": "No files changed; task inputs and constraints were read into working context.",
+          "step": "Inspect task inputs and repository contents",
+          "step_outcome": "completed",
+          "success": true,
+          "tool": "functions.exec_command",
+          "turn": 1
+        },
+        "workdir": "[REDACTED_LOCAL_PATH]"
+      },
+      "observation": "Found the input packet and deliverable contract in ./input/task.json and ./input/task_brief.md.",
+      "operation": "read",
+      "output": "Extracted governing packet values: records R1-R4; limits limit_echo_snr_dB=23.5, limit_doppler_Hz=111.9, limit_false_alarm_cost=124047; decision_budget_usd=47500; sensitivity_shift_pct=5; hard_threshold_record_count=1.",
+      "parallel_group": null,
+      "reasoning": "Need the exact embedded values and deliverable format before deriving a threshold or writing artifacts.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "No files changed; task inputs and constraints were read into working context.",
+      "step": 1,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "Bash",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "causal_note": "Threshold logic depends on the parsed records and limits from the packet.",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "node <<'NODE'\nconst records = [\n  {id:'R1', snr:21.8, doppler:-104.5, fa:237367, miss:499792},\n  {id:'R2', snr:14.3, doppler:50.7, fa:93554, miss:186916},\n  {id:'R3', snr:24.5, doppler:42, fa:178827, miss:697273},\n  {id:'R4', snr:23.2, doppler:91.7, fa:10919, miss:148458},\n];\nconst limits = {snr:23.5, doppler:111.9, fa:124047};\nfor (const t of [23.2, 23.5]) {\n  console.log(`threshold ${t}`);\n  for (const r of records) {\n    const pass = r.snr >= t && r.doppler <= limits.doppler && r.fa <= limits.fa;\n    console.log(r.id, pass ? 'PASS' : 'FAIL');\n  }\n}\nconst t = 23.2;\nconst lo = +(t * 0.95).toFixed(2);\nconst hi = +(t * 1.05).toFixed(2);\nconsole.log('band', lo, hi, 'cap', limits.snr);\nNODE",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "anchor_record": "R4",
+        "capped_upper_sensitivity_dB": 23.5,
+        "normalization_warnings": [
+          "step value 'Derive the threshold and sensitivity implications' was not numeric; defaulted to 2"
+        ],
+        "original_action": "analyze",
+        "original_causal_type": "depends_on",
+        "original_step": "Derive the threshold and sensitivity implications",
+        "raw_step": {
+          "action": "analyze",
+          "actor": "worker",
+          "causal_note": "Threshold logic depends on the parsed records and limits from the packet.",
+          "causal_type": "depends_on",
+          "caused_by": "step 1",
+          "error_message": null,
+          "error_type": null,
+          "input": "node <<'NODE'\nconst records = [\n  {id:'R1', snr:21.8, doppler:-104.5, fa:237367, miss:499792},\n  {id:'R2', snr:14.3, doppler:50.7, fa:93554, miss:186916},\n  {id:'R3', snr:24.5, doppler:42, fa:178827, miss:697273},\n  {id:'R4', snr:23.2, doppler:91.7, fa:10919, miss:148458},\n];\nconst limits = {snr:23.5, doppler:111.9, fa:124047};\nfor (const t of [23.2, 23.5]) {\n  console.log(`threshold ${t}`);\n  for (const r of records) {\n    const pass = r.snr >= t && r.doppler <= limits.doppler && r.fa <= limits.fa;\n    console.log(r.id, pass ? 'PASS' : 'FAIL');\n  }\n}\nconst t = 23.2;\nconst lo = +(t * 0.95).toFixed(2);\nconst hi = +(t * 1.05).toFixed(2);\nconsole.log('band', lo, hi, 'cap', limits.snr);\nNODE",
+          "metadata_json": {
+            "anchor_record": "R4",
+            "capped_upper_sensitivity_dB": 23.5,
+            "raw_upper_sensitivity_dB": 24.36,
+            "selected_threshold_echo_snr_dB": 23.2
+          },
+          "observation": "Computed packet-only pass/fail logic and confirmed that R4 is the only fully eligible record under the governing limits.",
+          "operation": "execute",
+          "output": "At threshold 23.2, only R4 passes all checks; at 23.5, no record passes. Sensitivity band is 22.04 to 24.36 before clipping to the packet ceiling of 23.5.",
+          "reasoning": "The threshold must be derived from the embedded packet only and must preserve at least one fully eligible record.",
+          "state_change": "Established the recommendation candidate and the sensitivity interpretation used in the memo.",
+          "step": "Derive the threshold and sensitivity implications",
+          "step_outcome": "completed",
+          "success": true,
+          "tool": "functions.exec_command",
+          "turn": 2
+        },
+        "raw_upper_sensitivity_dB": 24.36,
+        "selected_threshold_echo_snr_dB": 23.2
+      },
+      "observation": "Computed packet-only pass/fail logic and confirmed that R4 is the only fully eligible record under the governing limits.",
+      "operation": "execute",
+      "output": "At threshold 23.2, only R4 passes all checks; at 23.5, no record passes. Sensitivity band is 22.04 to 24.36 before clipping to the packet ceiling of 23.5.",
+      "parallel_group": null,
+      "reasoning": "The threshold must be derived from the embedded packet only and must preserve at least one fully eligible record.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Established the recommendation candidate and the sensitivity interpretation used in the memo.",
+      "step": 2,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "functions.exec_command",
+      "turn": 2
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "causal_note": "The files reflect the selected threshold and the validated pass/fail logic.",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "Add [EXCLUDED_GENERATED_ARTIFACT] and [EXCLUDED_GENERATED_ARTIFACT] with record-level evidence, formulas, validation checks, sensitivity notes, and a final recommendation table.",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "normalization_warnings": [
+          "step value 'Write the evidence table and threshold memo' was not numeric; defaulted to 3"
+        ],
+        "original_action": "create_artifact",
+        "original_causal_type": "depends_on",
+        "original_step": "Write the evidence table and threshold memo",
+        "raw_step": {
+          "action": "create_artifact",
+          "actor": "worker",
+          "causal_note": "The files reflect the selected threshold and the validated pass/fail logic.",
+          "causal_type": "depends_on",
+          "caused_by": "step 2",
+          "error_message": null,
+          "error_type": null,
+          "input": "Add [EXCLUDED_GENERATED_ARTIFACT] and [EXCLUDED_GENERATED_ARTIFACT] with record-level evidence, formulas, validation checks, sensitivity notes, and a final recommendation table.",
+          "metadata_json": {
+            "record_statuses": {
+              "accepted": [
+                "R4"
+              ],
+              "needs_review": [
+                "R1",
+                "R2",
+                "R3"
+              ]
+            },
+            "selected_threshold_echo_snr_dB": 23.2
+          },
+          "observation": "Created the required CSV and markdown memo under [EXCLUDED_GENERATED_ARTIFACT]",
+          "operation": "write",
+          "output": "Wrote sonar_threshold_review.csv and threshold_memo.md.",
+          "reasoning": "The task requires both an auditable table and a narrative memo; both must stay inside [EXCLUDED_GENERATED_ARTIFACT]",
+          "state_change": "Added two deliverable files in the required artifacts directory.",
+          "step": "Write the evidence table and threshold memo",
+          "step_outcome": "completed",
+          "success": true,
+          "tool": "functions.apply_patch",
+          "turn": 3
+        },
+        "record_statuses": {
+          "accepted": [
+            "R4"
+          ],
+          "needs_review": [
+            "R1",
+            "R2",
+            "R3"
+          ]
+        },
+        "selected_threshold_echo_snr_dB": 23.2
+      },
+      "observation": "Created the required CSV and markdown memo under [EXCLUDED_GENERATED_ARTIFACT]",
+      "operation": "write",
+      "output": "Wrote sonar_threshold_review.csv and threshold_memo.md.",
+      "parallel_group": null,
+      "reasoning": "The task requires both an auditable table and a narrative memo; both must stay inside [EXCLUDED_GENERATED_ARTIFACT]",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Added two deliverable files in the required artifacts directory.",
+      "step": 3,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "file_write",
+      "turn": 3
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "causal_note": "Validation depends on the written artifacts being present on disk.",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "sed -n '1,220p' [EXCLUDED_GENERATED_ARTIFACT] sed -n '1,260p' [EXCLUDED_GENERATED_ARTIFACT] node <<'NODE' ... NODE",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "normalization_warnings": [
+          "step value 'Validate the generated deliverables' was not numeric; defaulted to 4"
+        ],
+        "original_action": "verify",
+        "original_causal_type": "depends_on",
+        "original_step": "Validate the generated deliverables",
+        "raw_step": {
+          "action": "verify",
+          "actor": "worker",
+          "causal_note": "Validation depends on the written artifacts being present on disk.",
+          "causal_type": "depends_on",
+          "caused_by": "step 3",
+          "error_message": null,
+          "error_type": null,
+          "input": "sed -n '1,220p' [EXCLUDED_GENERATED_ARTIFACT] sed -n '1,260p' [EXCLUDED_GENERATED_ARTIFACT] node <<'NODE' ... NODE",
+          "metadata_json": {
+            "validation": {
+              "accepted": [
+                "R4"
+              ],
+              "needsReview": [
+                "R1",
+                "R2",
+                "R3"
+              ],
+              "rowCount": 5,
+              "selectedThreshold": "23.2"
+            }
+          },
+          "observation": "Inspected the CSV and memo contents and parsed the CSV to confirm the selected threshold and record status counts.",
+          "operation": "execute",
+          "output": "Validation JSON confirmed rowCount=5, selectedThreshold=23.2, accepted=[R4], needsReview=[R1,R2,R3], and both deliverables existed.",
+          "reasoning": "The deliverables need a direct file-level verification pass before final packaging.",
+          "state_change": "No content changes; validation evidence gathered for the completed artifacts.",
+          "step": "Validate the generated deliverables",
+          "step_outcome": "completed",
+          "success": true,
+          "tool": "functions.exec_command",
+          "turn": 4
+        },
+        "validation": {
+          "accepted": [
+            "R4"
+          ],
+          "needsReview": [
+            "R1",
+            "R2",
+            "R3"
+          ],
+          "rowCount": 5,
+          "selectedThreshold": "23.2"
+        }
+      },
+      "observation": "Inspected the CSV and memo contents and parsed the CSV to confirm the selected threshold and record status counts.",
+      "operation": "execute",
+      "output": "Validation JSON confirmed rowCount=5, selectedThreshold=23.2, accepted=[R4], needsReview=[R1,R2,R3], and both deliverables existed.",
+      "parallel_group": null,
+      "reasoning": "The deliverables need a direct file-level verification pass before final packaging.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "No content changes; validation evidence gathered for the completed artifacts.",
+      "step": 4,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "Bash",
+      "turn": 4
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "artifact_refs": [
+        "./actual_outputs.json"
+      ],
+      "causal_note": "The manifest should reflect the already validated deliverables.",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "Add ./actual_outputs.json with task_id, deliverable paths, selected threshold 23.2 dB, anchor record R4, and record status counts.",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "anchor_record": "R4",
+        "normalization_warnings": [
+          "step value 'Write the output manifest' was not numeric; defaulted to 5"
+        ],
+        "original_action": "write_manifest",
+        "original_causal_type": "depends_on",
+        "original_step": "Write the output manifest",
+        "raw_step": {
+          "action": "write_manifest",
+          "actor": "worker",
+          "artifact_refs": [
+            "./actual_outputs.json"
+          ],
+          "causal_note": "The manifest should reflect the already validated deliverables.",
+          "causal_type": "depends_on",
+          "caused_by": "step 4",
+          "error_message": null,
+          "error_type": null,
+          "input": "Add ./actual_outputs.json with task_id, deliverable paths, selected threshold 23.2 dB, anchor record R4, and record status counts.",
+          "metadata_json": {
+            "anchor_record": "R4",
+            "recommended_threshold_echo_snr_dB": 23.2
+          },
+          "observation": "Created actual_outputs.json with the deliverable paths, recommendation, and status counts.",
+          "operation": "write",
+          "output": "Wrote actual_outputs.json.",
+          "reasoning": "The task contract explicitly requires an actual_outputs.json file alongside the artifacts and trace.",
+          "state_change": "Added the required output manifest at the attempt root.",
+          "step": "Write the output manifest",
+          "step_outcome": "completed",
+          "success": true,
+          "tool": "functions.apply_patch",
+          "turn": 5
+        },
+        "recommended_threshold_echo_snr_dB": 23.2
+      },
+      "observation": "Created actual_outputs.json with the deliverable paths, recommendation, and status counts.",
+      "operation": "write",
+      "output": "Wrote actual_outputs.json.",
+      "parallel_group": null,
+      "reasoning": "The task contract explicitly requires an actual_outputs.json file alongside the artifacts and trace.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Added the required output manifest at the attempt root.",
+      "step": 5,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "file_write",
+      "turn": 5
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "artifact_refs": [
+        "./agent_trace.json"
+      ],
+      "causal_note": "The trace summarizes the completed run and must be written last.",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "Add ./agent_trace.json with canonical per-step fields: step, turn, actor, action, operation, tool, observation, input, output, state_change, reasoning, caused_by, causal_type, causal_note, success, step_outcome, error_type, error_message, artifact_refs, metadata_json.",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "deliverables": [
+          "[EXCLUDED_GENERATED_ARTIFACT]",
+          "[EXCLUDED_GENERATED_ARTIFACT]",
+          "./actual_outputs.json"
+        ],
+        "normalization_warnings": [
+          "step value 'Serialize the workflow trace' was not numeric; defaulted to 6"
+        ],
+        "original_action": "finalize_trace",
+        "original_causal_type": "depends_on",
+        "original_step": "Serialize the workflow trace",
+        "raw_step": {
+          "action": "finalize_trace",
+          "actor": "worker",
+          "artifact_refs": [
+            "./agent_trace.json"
+          ],
+          "causal_note": "The trace summarizes the completed run and must be written last.",
+          "causal_type": "depends_on",
+          "caused_by": "step 5",
+          "error_message": null,
+          "error_type": null,
+          "input": "Add ./agent_trace.json with canonical per-step fields: step, turn, actor, action, operation, tool, observation, input, output, state_change, reasoning, caused_by, causal_type, causal_note, success, step_outcome, error_type, error_message, artifact_refs, metadata_json.",
+          "metadata_json": {
+            "deliverables": [
+              "[EXCLUDED_GENERATED_ARTIFACT]",
+              "[EXCLUDED_GENERATED_ARTIFACT]",
+              "./actual_outputs.json"
+            ]
+          },
+          "observation": "Prepared the final agent_trace.json capturing the read, compute, write, and verify sequence.",
+          "operation": "write",
+          "output": "Wrote agent_trace.json.",
+          "reasoning": "The preserved trace must document the exact evidence chain and the artifact provenance for downstream review.",
+          "state_change": "Added the required execution trace file at the attempt root.",
+          "step": "Serialize the workflow trace",
+          "step_outcome": "completed",
+          "success": true,
+          "tool": "functions.apply_patch",
+          "turn": 6
+        }
+      },
+      "observation": "Prepared the final agent_trace.json capturing the read, compute, write, and verify sequence.",
+      "operation": "write",
+      "output": "Wrote agent_trace.json.",
+      "parallel_group": null,
+      "reasoning": "The preserved trace must document the exact evidence chain and the artifact provenance for downstream review.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Added the required execution trace file at the attempt root.",
+      "step": 6,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "Bash",
+      "turn": 6
+    }
+  ],
+  "system_prompt": null,
+  "system_prompt_hash": null,
+  "task": "Launch-quality advanced task: Active Sonar Echo Classifier Threshold Review. Reality context: an acoustic monitoring system needs threshold tuning from controlled test echoes. Embedded packet: metric map: metric1=echo_snr_dB, metric2=doppler_Hz, metric3=false_alarm_cost, metric4=miss_cost; records: R1 echo_snr_dB=21.8 doppler_Hz=-104.5 false_alarm_cost=237367 miss_cost=499792; R2 echo_snr_dB=14.3 doppler_Hz=50.7 false_alarm_cost=93554 miss_cost=186916; R3 echo_snr_dB=24.5 doppler_Hz=42 false_alarm_cost=178827 miss_cost=697273; R4 echo_snr_dB=23.2 doppler_Hz=91.7 false_alarm_cost=10919 miss_cost=148458; limit_echo_snr_dB=23.5; limit_doppler_Hz=111.9; limit_false_alarm_cost=124047; decision_budget_usd=47500; sensitivity_shift_pct=5; hard_threshold_record_count=1; removed_context=\"case study linked operational metrics to economic or safety decisions\". Rules and constraints: Treat confidence below 0.70, missing provenance, or contradictory record status as needs_review even when the numeric score passes. Options or recommendations cannot use external measurements, specialized licensed software, or hidden assumptions; all calculations must use only the embedded packet, and any contradictory or under-supported record must be marked needs_review. Required work: choose threshold under asymmetric costs; convert the packet into an auditable evidence table, cite the governing values, and list unresolved assumptions. Deliver sonar_threshold_review.csv + threshold_memo.md with formulas or executable logic, record-level citations, validation checks, sensitivity notes, and a final recommendation table suitable for expert review.",
+  "task_family_id": null,
+  "original_internal_task_id": "aa_task_0780",
+  "task_id": "480",
+  "termination_reason": "task_complete",
+  "trace_id": "trace_480-baseline_normalized",
+  "trace_mode": "live"
+}

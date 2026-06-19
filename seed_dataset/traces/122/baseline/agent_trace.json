@@ -1,0 +1,590 @@
+{
+  "actual_outputs": {
+    "original_internal_attempt_id": "aa_task_0322_baseline",
+    "attempt_id": "122-baseline",
+    "attempt_kind": "baseline",
+    "error_message": null,
+    "error_type": null,
+    "metadata_json": {
+      "actual_outputs_discarded_field_count": 0,
+      "actual_outputs_normalized": true,
+      "expected_deliverable_items": [
+        "mesh_convergence_plan.md"
+      ],
+      "original_fields": {
+        "attempt": "baseline",
+        "decision": {
+          "basis": {
+            "disp_change_percent": 1.3071895424836613,
+            "disp_threshold_percent": 2,
+            "stress_change_percent": 1.507537688442211,
+            "stress_threshold_percent": 3
+          },
+          "converged_pair": "B -> C",
+          "recommended_mesh": "C"
+        },
+        "deliverables": [
+          {
+            "notes": "Self-contained finite-element mesh convergence plan with calculations, assumptions, validation, exceptions, and final decision table.",
+            "status": "written"
+          }
+        ],
+        "needs_review": [
+          "Rows B and C omit explicit displacement units in the packet; interpreted as mm for consistency with the task context.",
+          "The packet does not provide solver settings, boundary conditions, or other model-equivalence metadata."
+        ]
+      },
+      "produced_deliverable_items": [
+        "mesh_convergence_plan.md"
+      ],
+      "raw_actual_outputs": {
+        "attempt": "baseline",
+        "decision": {
+          "basis": {
+            "disp_change_percent": 1.3071895424836613,
+            "disp_threshold_percent": 2,
+            "stress_change_percent": 1.507537688442211,
+            "stress_threshold_percent": 3
+          },
+          "converged_pair": "B -> C",
+          "recommended_mesh": "C"
+        },
+        "deliverables": [
+          {
+            "notes": "Self-contained finite-element mesh convergence plan with calculations, assumptions, validation, exceptions, and final decision table.",
+            "status": "written"
+          }
+        ],
+        "needs_review": [
+          "Rows B and C omit explicit displacement units in the packet; interpreted as mm for consistency with the task context.",
+          "The packet does not provide solver settings, boundary conditions, or other model-equivalence metadata."
+        ],
+        "original_internal_task_id": "aa_task_0322",
+        "task_id": "122"
+      }
+    },
+    "output_summary": "Normalized actual outputs from artifact files.",
+    "status": "success",
+    "original_internal_task_id": "aa_task_0322",
+    "task_id": "122",
+    "required_deliverables": [
+      "mesh_convergence_plan.md"
+    ],
+    "produced_deliverables": [
+      "mesh_convergence_plan.md"
+    ],
+    "missing_required_deliverables": [],
+    "deliverable_produced": true,
+    "deliverable_file_included": false,
+    "included_generated_artifacts": false,
+    "artifacts_excluded_reason": "Generated output artifacts are excluded from the public seed dataset by default.",
+    "logs_included": false,
+    "logs_excluded_reason": "Raw runner logs are excluded from the public seed dataset."
+  },
+  "agent_config": null,
+  "agent_tools": [
+    "codex_cli",
+    "Bash",
+    "python",
+    "file_read",
+    "file_write",
+    "apply_patch"
+  ],
+  "artifacts": [],
+  "original_internal_attempt_id": "aa_task_0322_baseline",
+  "attempt_id": "122-baseline",
+  "attempt_kind": "baseline",
+  "collection_id": null,
+  "completion_reason": null,
+  "ended_at": null,
+  "final_attempt_id": null,
+  "initial_attempt_id": null,
+  "iteration_index": null,
+  "learning": null,
+  "memory": null,
+  "metadata_json": {
+    "codex_command": [
+      "codex",
+      "exec",
+      "--sandbox",
+      "workspace-write",
+      "<prompt>"
+    ],
+    "codex_sandbox": "workspace-write",
+    "discarded_step_count": 0,
+    "original_fields": {
+      "schema": "AgentTrace"
+    },
+    "raw_trace_preserved": true,
+    "raw_trace_step_source": "steps",
+    "schema_valid": true,
+    "trace_normalization_status": "normalized",
+    "trace_valid": true
+  },
+  "preferred_attempt_id": null,
+  "previous_attempt_id": null,
+  "prior_trace_id": null,
+  "revision_attempt_ids": [],
+  "revision_group_id": null,
+  "schema_version": "aa-trace-v0.1",
+  "skills": null,
+  "started_at": null,
+  "steps": [
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "causal_note": null,
+      "causal_type": null,
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "pwd && rg --files ./input ./artifacts . | sed 's#^./##' | sort && sed -n '1,220p' input/task.json && printf '\\n---TASK_BRIEF---\\n' && sed -n '1,220p' input/task_brief.md",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "inputs": {
+          "cmd": "pwd && rg --files ./input ./artifacts . | sed 's#^./##' | sort && sed -n '1,220p' input/task.json && printf '\\n---TASK_BRIEF---\\n' && sed -n '1,220p' input/task_brief.md"
+        },
+        "original_action": "read_context",
+        "original_operation": "inspect_inputs_and_workspace",
+        "original_step_outcome": "success",
+        "outputs": {
+          "files": [
+            "input/task.json",
+            "input/task_brief.md"
+          ],
+          "packet": {
+            "A": {
+              "disp_mm": 1.44,
+              "elements": 13000,
+              "stress_mpa": 185
+            },
+            "B": {
+              "disp_mm": 1.53,
+              "elements": 50000,
+              "stress_mpa": 199
+            },
+            "C": {
+              "disp_mm": 1.55,
+              "elements": 113000,
+              "stress_mpa": 202
+            }
+          },
+          "rule": {
+            "disp_change_lt_percent": 2,
+            "stress_change_lt_percent": 3
+          }
+        },
+        "raw_step": {
+          "action": "read_context",
+          "actor": "worker",
+          "causal_note": "Initial context gathering from provided files.",
+          "causal_type": "start",
+          "caused_by": null,
+          "error_message": null,
+          "error_type": null,
+          "input": {
+            "cmd": "pwd && rg --files ./input ./artifacts . | sed 's#^./##' | sort && sed -n '1,220p' input/task.json && printf '\\n---TASK_BRIEF---\\n' && sed -n '1,220p' input/task_brief.md"
+          },
+          "metadata_json": {
+            "workdir": "[REDACTED_LOCAL_PATH]"
+          },
+          "observation": "Located input files and task brief; extracted the embedded packet values from task.json.",
+          "operation": "inspect_inputs_and_workspace",
+          "output": {
+            "files": [
+              "input/task.json",
+              "input/task_brief.md"
+            ],
+            "packet": {
+              "A": {
+                "disp_mm": 1.44,
+                "elements": 13000,
+                "stress_mpa": 185
+              },
+              "B": {
+                "disp_mm": 1.53,
+                "elements": 50000,
+                "stress_mpa": 199
+              },
+              "C": {
+                "disp_mm": 1.55,
+                "elements": 113000,
+                "stress_mpa": 202
+              }
+            },
+            "rule": {
+              "disp_change_lt_percent": 2,
+              "stress_change_lt_percent": 3
+            }
+          },
+          "reasoning": "Need exact row values and threshold rule before drafting the plan.",
+          "state_change": "Context established; no artifacts written yet.",
+          "step": "1",
+          "step_outcome": "success",
+          "success": true,
+          "tool": "exec_command",
+          "turn": 1
+        },
+        "workdir": "[REDACTED_LOCAL_PATH]"
+      },
+      "observation": "Located input files and task brief; extracted the embedded packet values from task.json.",
+      "operation": "read",
+      "output": "{\"files\": [\"input/task.json\", \"input/task_brief.md\", \"prompt.md\"], \"packet\": {\"A\": {\"disp_mm\": 1.44, \"elements\": 13000, \"stress_mpa\": 185}, \"B\": {\"disp_mm\": 1.53, \"elements\": 50000, \"stress_mpa\": 199}, \"C\": {\"disp_mm\": 1.55, \"elements\": 113000, \"stress_mpa\": 202}}, \"rule\": {\"disp_change_lt_percent\": 2, \"stress_change_lt_percent\": 3}}",
+      "parallel_group": null,
+      "reasoning": "Need exact row values and threshold rule before drafting the plan.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Context established; no artifacts written yet.",
+      "step": 1,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "Bash",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "causal_note": "Uses extracted packet values and threshold rule from the task brief.",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "node - <<'NODE'\\nconst meshes = { A: {elements:13000, stress:185, disp:1.44}, B: {elements:50000, stress:199, disp:1.53}, C: {elements:113000, stress:202, disp:1.55} };\\nfunction pct(a,b){return Math.abs(b-a)/a*100;}\\nfor (const [from,to] of [['A','B'],['B','C'],['A','C']]) {\\n  const x=meshes[from], y=meshes[to];\\n  console.log(`${from}->${to} stress rel to ${from}:`, pct(x.stress,y.stress));\\n  console.log(`${from}->${to} disp rel to ${from}:`, pct(x.disp,y.disp));\\n  console.log(`${from}->${to} stress rel to ${to}:`, Math.abs(y.stress-x.stress)/y.stress*100);\\n  console.log(`${from}->${to} disp rel to ${to}:`, Math.abs(y.disp-x.disp)/y.disp*100);\\n}\\nNODE",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "formula": "abs(new-old)/old*100",
+        "inputs": {
+          "cmd": "node - <<'NODE'\\nconst meshes = { A: {elements:13000, stress:185, disp:1.44}, B: {elements:50000, stress:199, disp:1.53}, C: {elements:113000, stress:202, disp:1.55} };\\nfunction pct(a,b){return Math.abs(b-a)/a*100;}\\nfor (const [from,to] of [['A','B'],['B','C'],['A','C']]) {\\n  const x=meshes[from], y=meshes[to];\\n  console.log(`${from}->${to} stress rel to ${from}:`, pct(x.stress,y.stress));\\n  console.log(`${from}->${to} disp rel to ${from}:`, pct(x.disp,y.disp));\\n  console.log(`${from}->${to} stress rel to ${to}:`, Math.abs(y.stress-x.stress)/y.stress*100);\\n  console.log(`${from}->${to} disp rel to ${to}:`, Math.abs(y.disp-x.disp)/y.disp*100);\\n}\\nNODE"
+        },
+        "original_action": "calculate",
+        "original_causal_type": "dependency",
+        "original_operation": "compute_mesh_to_mesh_percent_changes",
+        "original_step_outcome": "success",
+        "outputs": {
+          "A_to_B": {
+            "disp_change_percent_ref_coarse": 6.250000000000005,
+            "stress_change_percent_ref_coarse": 7.567567567567568
+          },
+          "A_to_C": {
+            "disp_change_percent_ref_coarse": 7.638888888888896,
+            "stress_change_percent_ref_coarse": 9.18918918918919
+          },
+          "B_to_C": {
+            "disp_change_percent_ref_coarse": 1.3071895424836613,
+            "stress_change_percent_ref_coarse": 1.507537688442211
+          }
+        },
+        "raw_step": {
+          "action": "calculate",
+          "actor": "worker",
+          "causal_note": "Uses extracted packet values and threshold rule from the task brief.",
+          "causal_type": "dependency",
+          "caused_by": "step 1",
+          "error_message": null,
+          "error_type": null,
+          "input": {
+            "cmd": "node - <<'NODE'\\nconst meshes = { A: {elements:13000, stress:185, disp:1.44}, B: {elements:50000, stress:199, disp:1.53}, C: {elements:113000, stress:202, disp:1.55} };\\nfunction pct(a,b){return Math.abs(b-a)/a*100;}\\nfor (const [from,to] of [['A','B'],['B','C'],['A','C']]) {\\n  const x=meshes[from], y=meshes[to];\\n  console.log(`${from}->${to} stress rel to ${from}:`, pct(x.stress,y.stress));\\n  console.log(`${from}->${to} disp rel to ${from}:`, pct(x.disp,y.disp));\\n  console.log(`${from}->${to} stress rel to ${to}:`, Math.abs(y.stress-x.stress)/y.stress*100);\\n  console.log(`${from}->${to} disp rel to ${to}:`, Math.abs(y.disp-x.disp)/y.disp*100);\\n}\\nNODE"
+          },
+          "metadata_json": {
+            "formula": "abs(new-old)/old*100",
+            "reference_basis": "earlier/coarser mesh"
+          },
+          "observation": "Computed absolute and percent changes for A->B, B->C, and A->C sensitivity checks.",
+          "operation": "compute_mesh_to_mesh_percent_changes",
+          "output": {
+            "A_to_B": {
+              "disp_change_percent_ref_coarse": 6.250000000000005,
+              "stress_change_percent_ref_coarse": 7.567567567567568
+            },
+            "A_to_C": {
+              "disp_change_percent_ref_coarse": 7.638888888888896,
+              "stress_change_percent_ref_coarse": 9.18918918918919
+            },
+            "B_to_C": {
+              "disp_change_percent_ref_coarse": 1.3071895424836613,
+              "stress_change_percent_ref_coarse": 1.507537688442211
+            }
+          },
+          "reasoning": "The convergence rule depends on successive-mesh deltas, so A->B and B->C must be checked explicitly; A->C is retained as sensitivity evidence.",
+          "state_change": "Calculated all comparison metrics needed for the final decision table.",
+          "step": "2",
+          "step_outcome": "success",
+          "success": true,
+          "tool": "exec_command",
+          "turn": 1
+        },
+        "reference_basis": "earlier/coarser mesh"
+      },
+      "observation": "Computed absolute and percent changes for A->B, B->C, and A->C sensitivity checks.",
+      "operation": "other",
+      "output": "{\"A_to_B\": {\"disp_change_percent_ref_coarse\": 6.250000000000005, \"stress_change_percent_ref_coarse\": 7.567567567567568}, \"A_to_C\": {\"disp_change_percent_ref_coarse\": 7.638888888888896, \"stress_change_percent_ref_coarse\": 9.18918918918919}, \"B_to_C\": {\"disp_change_percent_ref_coarse\": 1.3071895424836613, \"stress_change_percent_ref_coarse\": 1.507537688442211}}",
+      "parallel_group": null,
+      "reasoning": "The convergence rule depends on successive-mesh deltas, so A->B and B->C must be checked explicitly; A->C is retained as sensitivity evidence.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Calculated all comparison metrics needed for the final decision table.",
+      "step": 2,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "exec_command",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "causal_note": "Calculations drive the convergence recommendation and table entries.",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "{\"patch\": \"*** Begin Patch ... Add File: [EXCLUDED_GENERATED_ARTIFACT] ... End Patch\"}",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "format": "markdown",
+        "inputs": {
+          "patch": "*** Begin Patch ... Add File: [EXCLUDED_GENERATED_ARTIFACT] ... End Patch"
+        },
+        "original_action": "create_artifact",
+        "original_causal_type": "dependency",
+        "original_operation": "write_mesh_convergence_plan_md",
+        "original_step_outcome": "success",
+        "outputs": {
+          "artifact_path": "[EXCLUDED_GENERATED_ARTIFACT]",
+          "status": "created"
+        },
+        "raw_step": {
+          "action": "create_artifact",
+          "actor": "worker",
+          "causal_note": "Calculations drive the convergence recommendation and table entries.",
+          "causal_type": "dependency",
+          "caused_by": "step 2",
+          "error_message": null,
+          "error_type": null,
+          "input": {
+            "patch": "*** Begin Patch ... Add File: [EXCLUDED_GENERATED_ARTIFACT] ... End Patch"
+          },
+          "metadata_json": {
+            "format": "markdown"
+          },
+          "observation": "Created [EXCLUDED_GENERATED_ARTIFACT] with citations, intermediate calculations, assumptions, validation checks, exceptions, and final recommendation table.",
+          "operation": "write_mesh_convergence_plan_md",
+          "output": {
+            "artifact_path": "[EXCLUDED_GENERATED_ARTIFACT]",
+            "status": "created"
+          },
+          "reasoning": "Need a single self-contained markdown deliverable directly traceable to the packet.",
+          "state_change": "Primary deliverable written to the artifacts directory.",
+          "step": "3",
+          "step_outcome": "success",
+          "success": true,
+          "tool": "apply_patch",
+          "turn": 1
+        }
+      },
+      "observation": "Created [EXCLUDED_GENERATED_ARTIFACT] with citations, intermediate calculations, assumptions, validation checks, exceptions, and final recommendation table.",
+      "operation": "other",
+      "output": "{\"artifact_path\": \"[EXCLUDED_GENERATED_ARTIFACT]\", \"status\": \"created\"}",
+      "parallel_group": null,
+      "reasoning": "Need a single self-contained markdown deliverable directly traceable to the packet.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Primary deliverable written to the artifacts directory.",
+      "step": 3,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "Bash",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "causal_note": "Confirms the markdown artifact was created without truncation.",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "sed -n '1,240p' [EXCLUDED_GENERATED_ARTIFACT] && node -e \"const fs=require('fs'); const p='[EXCLUDED_GENERATED_ARTIFACT]'; console.log({exists:fs.existsSync(p), bytes:fs.readFileSync(p,'utf8').length})\"",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "inputs": {
+          "cmd": "sed -n '1,240p' [EXCLUDED_GENERATED_ARTIFACT] && node -e \"const fs=require('fs'); const p='[EXCLUDED_GENERATED_ARTIFACT]'; console.log({exists:fs.existsSync(p), bytes:fs.readFileSync(p,'utf8').length})\""
+        },
+        "original_action": "validate_output",
+        "original_causal_type": "verification",
+        "original_operation": "read_back_and_size_check",
+        "original_step_outcome": "success",
+        "outputs": {
+          "bytes": 4633,
+          "exists": true
+        },
+        "raw_step": {
+          "action": "validate_output",
+          "actor": "worker",
+          "causal_note": "Confirms the markdown artifact was created without truncation.",
+          "causal_type": "verification",
+          "caused_by": "step 3",
+          "error_message": null,
+          "error_type": null,
+          "input": {
+            "cmd": "sed -n '1,240p' [EXCLUDED_GENERATED_ARTIFACT] && node -e \"const fs=require('fs'); const p='[EXCLUDED_GENERATED_ARTIFACT]'; console.log({exists:fs.existsSync(p), bytes:fs.readFileSync(p,'utf8').length})\""
+          },
+          "metadata_json": {
+            "validation": [
+              "file_exists",
+              "content_readback",
+              "byte_count_confirmed"
+            ]
+          },
+          "observation": "Read back the deliverable successfully; file exists and is 4633 bytes.",
+          "operation": "read_back_and_size_check",
+          "output": {
+            "bytes": 4633,
+            "exists": true
+          },
+          "reasoning": "A read-back check is enough here because the artifact is deterministic and fully derived from the packet.",
+          "state_change": "Validated the artifact content and confirmed the file was written correctly.",
+          "step": "4",
+          "step_outcome": "success",
+          "success": true,
+          "tool": "exec_command",
+          "turn": 1
+        },
+        "validation": [
+          "file_exists",
+          "content_readback",
+          "byte_count_confirmed"
+        ]
+      },
+      "observation": "Read back the deliverable successfully; file exists and is 4633 bytes.",
+      "operation": "verify",
+      "output": "{\"bytes\": 4633, \"exists\": true}",
+      "parallel_group": null,
+      "reasoning": "A read-back check is enough here because the artifact is deterministic and fully derived from the packet.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Validated the artifact content and confirmed the file was written correctly.",
+      "step": 4,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "Bash",
+      "turn": 1
+    },
+    {
+      "action": "output",
+      "actor": "worker",
+      "alternatives_considered": null,
+      "artifact_refs": [
+        "agent_trace.json",
+        "actual_outputs.json"
+      ],
+      "causal_note": "Finalization depends on validated deliverable contents.",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "{\"patch\": \"*** Begin Patch ... Add File: agent_trace.json ... Add File: actual_outputs.json ... End Patch\"}",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "inputs": {
+          "patch": "*** Begin Patch ... Add File: agent_trace.json ... Add File: actual_outputs.json ... End Patch"
+        },
+        "manifest_kind": "attempt_output_summary",
+        "original_action": "finalize",
+        "original_causal_type": "dependency",
+        "original_operation": "write_trace_and_output_manifest",
+        "original_step_outcome": "success",
+        "outputs": {
+          "artifact_paths": [
+            "agent_trace.json",
+            "actual_outputs.json"
+          ]
+        },
+        "raw_step": {
+          "action": "finalize",
+          "actor": "worker",
+          "artifact_refs": [
+            "agent_trace.json",
+            "actual_outputs.json"
+          ],
+          "causal_note": "Finalization depends on validated deliverable contents.",
+          "causal_type": "dependency",
+          "caused_by": "step 4",
+          "error_message": null,
+          "error_type": null,
+          "input": {
+            "patch": "*** Begin Patch ... Add File: agent_trace.json ... Add File: actual_outputs.json ... End Patch"
+          },
+          "metadata_json": {
+            "manifest_kind": "attempt_output_summary"
+          },
+          "observation": "Prepared agent_trace.json and actual_outputs.json for the attempt directory.",
+          "operation": "write_trace_and_output_manifest",
+          "output": {
+            "artifact_paths": [
+              "agent_trace.json",
+              "actual_outputs.json"
+            ]
+          },
+          "reasoning": "Need a machine-readable execution record and an output manifest for downstream evaluation.",
+          "state_change": "Run metadata serialized alongside the deliverable.",
+          "step": "5",
+          "step_outcome": "success",
+          "success": true,
+          "tool": "apply_patch",
+          "turn": 1
+        }
+      },
+      "observation": "Prepared agent_trace.json and actual_outputs.json for the attempt directory.",
+      "operation": "other",
+      "output": "{\"artifact_paths\": [\"agent_trace.json\", \"actual_outputs.json\"]}",
+      "parallel_group": null,
+      "reasoning": "Need a machine-readable execution record and an output manifest for downstream evaluation.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Run metadata serialized alongside the deliverable.",
+      "step": 5,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "apply_patch",
+      "turn": 1
+    }
+  ],
+  "system_prompt": null,
+  "system_prompt_hash": null,
+  "task": "Advanced task: Finite-element mesh convergence plan. FEA packet: mesh A elements=13000 stress=185MPa disp=1.44mm; mesh B elements=50000 stress=199MPa disp=1.53; mesh C elements=113000 stress=202MPa disp=1.55. Rule: convergence if stress change<3% and displacement change<2%. Produce the stated deliverable with calculations, assumptions, exceptions, and exact row/value citations. Do not invent additional records; mark missing inputs as needs_review. Include intermediate calculations, uncertainty or sensitivity notes, validation checks, and a final decision table that ties every recommendation back to the supplied values. The response should be executable from the embedded packet alone, with no external data lookup required beyond understanding the cited public removed context.",
+  "task_family_id": null,
+  "original_internal_task_id": "aa_task_0322",
+  "task_id": "122",
+  "termination_reason": "task_complete",
+  "trace_id": "trace_122-baseline_normalized",
+  "trace_mode": "live"
+}

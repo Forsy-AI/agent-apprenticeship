@@ -1,0 +1,845 @@
+{
+  "actual_outputs": {
+    "original_internal_attempt_id": "aa_task_0047_baseline",
+    "attempt_id": "647-baseline",
+    "attempt_kind": "baseline",
+    "error_message": null,
+    "error_type": null,
+    "metadata_json": {
+      "actual_outputs_discarded_field_count": 0,
+      "actual_outputs_normalized": true,
+      "expected_deliverable_items": [
+        "black_mass_leach_gate.xlsx",
+        "process_gate_memo.md"
+      ],
+      "original_fields": {
+        "artifacts": [
+          {
+            "description": "Reproducible scenario model with packet-based formulas, option simulations, gate checks, sensitivity checks, validation checks, and final decision outputs.",
+            "type": "excel"
+          },
+          {
+            "description": "Process gate memo with row-level packet citations, intermediate calculations, sensitivity checks, uncertainty notes, and final pass/warn/fail/needs_review matrix.",
+            "type": "memo"
+          }
+        ],
+        "input_files": [
+          "./input/task.json",
+          "./input/task_brief.md"
+        ],
+        "summary": {
+          "assumptions_flagged": [
+            "Option losses treated as relative percentage reductions; absolute-point loss interpretation was not specified and was flagged for review"
+          ],
+          "continuous_trial_recommendation": "Advance only R3_Base (unmitigated).",
+          "key_gate_outcomes": {
+            "R1": "FAIL (Li insufficient in base and simulated variants)",
+            "R2": "FAIL (multiple spec failures in base and simulated variants)",
+            "R3": "PASS in base; option variants flagged NEEDS_REVIEW due unresolved loss interpretation"
+          }
+        }
+      },
+      "produced_deliverable_items": [
+        "black_mass_leach_gate.xlsx",
+        "process_gate_memo.md"
+      ],
+      "raw_actual_outputs": {
+        "artifacts": [
+          {
+            "description": "Reproducible scenario model with packet-based formulas, option simulations, gate checks, sensitivity checks, validation checks, and final decision outputs.",
+            "type": "excel"
+          },
+          {
+            "description": "Process gate memo with row-level packet citations, intermediate calculations, sensitivity checks, uncertainty notes, and final pass/warn/fail/needs_review matrix.",
+            "type": "memo"
+          }
+        ],
+        "input_files": [
+          "./input/task.json",
+          "./input/task_brief.md"
+        ],
+        "status": "completed",
+        "summary": {
+          "assumptions_flagged": [
+            "Option losses treated as relative percentage reductions; absolute-point loss interpretation was not specified and was flagged for review"
+          ],
+          "continuous_trial_recommendation": "Advance only R3_Base (unmitigated).",
+          "key_gate_outcomes": {
+            "R1": "FAIL (Li insufficient in base and simulated variants)",
+            "R2": "FAIL (multiple spec failures in base and simulated variants)",
+            "R3": "PASS in base; option variants flagged NEEDS_REVIEW due unresolved loss interpretation"
+          }
+        },
+        "original_internal_task_id": "aa_task_0047",
+        "task_id": "647"
+      }
+    },
+    "output_summary": "{'continuous_trial_recommendation': 'Advance only R3_Base (unmitigated).', 'key_gate_outcomes': {'R1': 'FAIL (Li insufficient in base and simulated variants)', 'R2': 'FAIL (multiple spec failures in base and simulated variants)', 'R3': 'PASS in base; option variants flagged NEEDS_REVIEW due unresolved loss interpretation'}, 'assumptions_flagged': ['Option losses treated as relative percentage reductions; absolute-point loss interpretation was not specified and was flagged for review']}",
+    "status": "success",
+    "original_internal_task_id": "aa_task_0047",
+    "task_id": "647",
+    "required_deliverables": [
+      "black_mass_leach_gate.xlsx",
+      "process_gate_memo.md"
+    ],
+    "produced_deliverables": [
+      "black_mass_leach_gate.xlsx",
+      "process_gate_memo.md"
+    ],
+    "missing_required_deliverables": [],
+    "deliverable_produced": true,
+    "deliverable_file_included": false,
+    "included_generated_artifacts": false,
+    "artifacts_excluded_reason": "Generated output artifacts are excluded from the public seed dataset by default.",
+    "logs_included": false,
+    "logs_excluded_reason": "Raw runner logs are excluded from the public seed dataset."
+  },
+  "agent_config": null,
+  "agent_tools": [
+    "codex_cli",
+    "Bash",
+    "python",
+    "file_read",
+    "file_write",
+    "apply_patch"
+  ],
+  "artifacts": [],
+  "original_internal_attempt_id": "aa_task_0047_baseline",
+  "attempt_id": "647-baseline",
+  "attempt_kind": "baseline",
+  "attempt_status": "completed",
+  "collection_id": null,
+  "completion_reason": null,
+  "ended_at": null,
+  "final_attempt_id": null,
+  "initial_attempt_id": null,
+  "iteration_index": null,
+  "learning": null,
+  "memory": null,
+  "metadata_json": {
+    "codex_command": [
+      "codex",
+      "exec",
+      "--sandbox",
+      "workspace-write",
+      "<prompt>"
+    ],
+    "codex_sandbox": "workspace-write",
+    "discarded_step_count": 0,
+    "raw_trace_list": [
+      {
+        "action": "Read task.json and task_brief.md",
+        "actor": "agent",
+        "artifact_refs": [
+          "./input/task.json",
+          "./input/task_brief.md"
+        ],
+        "causal_note": "Baseline context needed before any calculations.",
+        "causal_type": "start",
+        "caused_by": "start_of_run",
+        "error_message": null,
+        "error_type": null,
+        "input": "cat ./input/task.json && cat ./input/task_brief.md",
+        "metadata_json": {
+          "options": [
+            "pH_polish",
+            "acid_reduce_10pct"
+          ],
+          "specs": [
+            "Li>=90",
+            "Ni>=90",
+            "Co>=90",
+            "Fe<=1000",
+            "acid<=170"
+          ]
+        },
+        "observation": "Loaded runs, specs, options, and output contract from input files.",
+        "operation": "read",
+        "output": "Parsed packet values: R1, R2, R3 metrics and mitigation options.",
+        "reasoning": "Established authoritative source-of-truth inputs and confirmed packet-only scope.",
+        "state_change": "No filesystem changes.",
+        "step": "Read embedded task packet",
+        "step_outcome": "success",
+        "success": true,
+        "tool": "functions.exec_command",
+        "turn": 1
+      },
+      {
+        "action": "Build Scenario_Model workbook using Python/openpyxl",
+        "actor": "agent",
+        "causal_note": "This was an implementation attempt; formulas were still valid conceptually but container lacked stable toolability.",
+        "causal_type": "failure",
+        "caused_by": "step 1",
+        "error_message": "Malformed f-string in python script while composing formulas.",
+        "error_type": "SyntaxError",
+        "input": "python3 script with Workbook, multi-sheet formula layout, and validation table",
+        "metadata_json": {
+          "attempted_method": "openpyxl"
+        },
+        "observation": "Openpyxl dependency path worked for first run but script had syntax defects.",
+        "operation": "execute",
+        "output": "Script failed before any artifact write.",
+        "reasoning": "Need deterministic fallback once syntax and dependency issues are addressed.",
+        "state_change": "No output file created.",
+        "step": "Attempted direct xlsx generation with openpyxl",
+        "step_outcome": "failed",
+        "success": false,
+        "tool": "functions.exec_command",
+        "turn": 1
+      },
+      {
+        "action": "Verify xlsx generation runtime/tools",
+        "actor": "agent",
+        "causal_note": "Environment constraints required custom XLSX writer.",
+        "causal_type": "adaptation",
+        "caused_by": "failed direct xlsx attempt",
+        "error_message": null,
+        "error_type": null,
+        "input": "python3 import tests; which checks for converter binaries",
+        "metadata_json": {
+          "available_tools": [
+            "unzip",
+            "python3"
+          ]
+        },
+        "observation": "openpyxl and xlsxwriter were unavailable; no soffice/ssconvert present.",
+        "operation": "verify",
+        "output": "ModuleNotFoundError for openpyxl and xlsxwriter; no spreadsheet CLI converter found.",
+        "reasoning": "Switched to OOXML zip assembly to preserve requirement without external libraries.",
+        "state_change": "No filesystem changes.",
+        "step": "Dependency check for spreadsheet tooling",
+        "step_outcome": "success",
+        "success": true,
+        "tool": "functions.exec_command",
+        "turn": 1
+      },
+      {
+        "action": "Create OOXML workbook from Python zip writer",
+        "actor": "agent",
+        "causal_note": "Fallback generation path succeeded after dependency check.",
+        "causal_type": "recovery",
+        "caused_by": "tool availability step",
+        "error_message": null,
+        "error_type": null,
+        "input": "Python script writing [Content_Types].xml, rels, sheet XML, and workbook XML to [EXCLUDED_GENERATED_ARTIFACT]",
+        "metadata_json": {
+          "decision_labels": [
+            "PASS",
+            "WARN",
+            "FAIL",
+            "NEEDS_REVIEW"
+          ],
+          "scenario_rows": 12
+        },
+        "observation": "Workbook created with sheets Packet_Data, Spec_and_Options, Scenario_Model, Final_Decision, Validation.",
+        "operation": "write",
+        "output": "[EXCLUDED_GENERATED_ARTIFACT] created.",
+        "reasoning": "Satisfied requirement for executable logic and scenario-by-scenario gate computations without external packages.",
+        "state_change": "Added reproducible formula-based Excel artifact in artifacts directory.",
+        "step": "Generate black_mass_leach_gate.xlsx",
+        "step_outcome": "success",
+        "success": true,
+        "tool": "functions.exec_command",
+        "turn": 1
+      },
+      {
+        "action": "Write process_gate_memo.md with citations and sensitivity results",
+        "actor": "agent",
+        "causal_note": "Paired narrative and workbook artifacts completed.",
+        "causal_type": "artifact",
+        "caused_by": "workbook generation",
+        "error_message": null,
+        "error_type": null,
+        "input": "cat <<EOF > [EXCLUDED_GENERATED_ARTIFACT]",
+        "metadata_json": {
+          "uncertainty_note": "Losses treated as relative percentages; alternative absolute interpretation noted."
+        },
+        "observation": "Memo now includes row-level packet references, formulas, assumption flags, sensitivity checks, and decision table.",
+        "operation": "write",
+        "output": "[EXCLUDED_GENERATED_ARTIFACT] written.",
+        "reasoning": "Required narrative proof for intermediate calculations and reproducibility evidence.",
+        "state_change": "Added process gate memo artifact in artifacts directory.",
+        "step": "Author process gate memo",
+        "step_outcome": "success",
+        "success": true,
+        "tool": "functions.exec_command",
+        "turn": 1
+      },
+      {
+        "action": "Create actual_outputs.json with artifact contract",
+        "actor": "agent",
+        "artifact_refs": [
+          "./actual_outputs.json"
+        ],
+        "causal_note": "Final output index emitted.",
+        "causal_type": "delivery",
+        "caused_by": "artifact completion",
+        "error_message": null,
+        "error_type": null,
+        "input": "cat <<EOF > ./actual_outputs.json",
+        "metadata_json": {
+          "artifact_count": 2
+        },
+        "observation": "actual_outputs.json records produced files and decision summary for evaluator consumption.",
+        "operation": "write",
+        "output": "./actual_outputs.json created.",
+        "reasoning": "Needed for required output contract and downstream verification.",
+        "state_change": "Added machine-readable run summary at attempt root.",
+        "step": "Write actual outputs summary",
+        "step_outcome": "success",
+        "success": true,
+        "tool": "functions.exec_command",
+        "turn": 1
+      },
+      {
+        "action": "Persist agent_trace.json",
+        "actor": "agent",
+        "artifact_refs": [
+          "./agent_trace.json"
+        ],
+        "causal_note": "Final trace step closed with structured schema fields.",
+        "causal_type": "delivery",
+        "caused_by": "completion of all artifact writes",
+        "error_message": null,
+        "error_type": null,
+        "input": "cat <<EOF > ./agent_trace.json",
+        "metadata_json": {
+          "trace_steps": 7
+        },
+        "observation": "agent_trace.json now contains a full trace with action, tool, causality, artifacts, and errors.",
+        "operation": "write",
+        "output": "./agent_trace.json persisted.",
+        "reasoning": "Trace is required for apprenticeship workflow reproducibility and auditability.",
+        "state_change": "Created final required execution trace artifact.",
+        "step": "Write workflow trace",
+        "step_outcome": "success",
+        "success": true,
+        "tool": "functions.exec_command",
+        "turn": 1
+      }
+    ],
+    "raw_trace_preserved": true,
+    "raw_trace_shape": "list",
+    "raw_trace_step_source": "steps",
+    "schema_valid": true,
+    "trace_normalization_status": "partial",
+    "trace_valid": true
+  },
+  "preferred_attempt_id": null,
+  "previous_attempt_id": null,
+  "prior_trace_id": null,
+  "revision_attempt_ids": [],
+  "revision_group_id": null,
+  "schema_version": "aa-trace-v0.1",
+  "skills": null,
+  "started_at": null,
+  "steps": [
+    {
+      "action": "agent_step",
+      "actor": "agent",
+      "alternatives_considered": null,
+      "artifact_refs": [
+        "./input/task.json",
+        "./input/task_brief.md"
+      ],
+      "causal_note": "Baseline context needed before any calculations.",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "cat ./input/task.json && cat ./input/task_brief.md",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "normalization_warnings": [
+          "step value 'Read embedded task packet' was not numeric; defaulted to 1"
+        ],
+        "options": [
+          "pH_polish",
+          "acid_reduce_10pct"
+        ],
+        "original_action": "Read task.json and task_brief.md",
+        "original_causal_type": "start",
+        "original_step": "Read embedded task packet",
+        "original_step_outcome": "success",
+        "raw_step": {
+          "action": "Read task.json and task_brief.md",
+          "actor": "agent",
+          "artifact_refs": [
+            "./input/task.json",
+            "./input/task_brief.md"
+          ],
+          "causal_note": "Baseline context needed before any calculations.",
+          "causal_type": "start",
+          "caused_by": "start_of_run",
+          "error_message": null,
+          "error_type": null,
+          "input": "cat ./input/task.json && cat ./input/task_brief.md",
+          "metadata_json": {
+            "options": [
+              "pH_polish",
+              "acid_reduce_10pct"
+            ],
+            "specs": [
+              "Li>=90",
+              "Ni>=90",
+              "Co>=90",
+              "Fe<=1000",
+              "acid<=170"
+            ]
+          },
+          "observation": "Loaded runs, specs, options, and output contract from input files.",
+          "operation": "read",
+          "output": "Parsed packet values: R1, R2, R3 metrics and mitigation options.",
+          "reasoning": "Established authoritative source-of-truth inputs and confirmed packet-only scope.",
+          "state_change": "No filesystem changes.",
+          "step": "Read embedded task packet",
+          "step_outcome": "success",
+          "success": true,
+          "tool": "functions.exec_command",
+          "turn": 1
+        },
+        "specs": [
+          "Li>=90",
+          "Ni>=90",
+          "Co>=90",
+          "Fe<=1000",
+          "acid<=170"
+        ]
+      },
+      "observation": "Loaded runs, specs, options, and output contract from input files.",
+      "operation": "read",
+      "output": "Parsed packet values: R1, R2, R3 metrics and mitigation options.",
+      "parallel_group": null,
+      "reasoning": "Established authoritative source-of-truth inputs and confirmed packet-only scope.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "No filesystem changes.",
+      "step": 1,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "Bash",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "agent",
+      "alternatives_considered": null,
+      "causal_note": "This was an implementation attempt; formulas were still valid conceptually but container lacked stable toolability.",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": "Malformed f-string in python script while composing formulas.",
+      "error_type": "SyntaxError",
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "python3 script with Workbook, multi-sheet formula layout, and validation table",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "attempted_method": "openpyxl",
+        "normalization_warnings": [
+          "step value 'Attempted direct xlsx generation with openpyxl' was not numeric; defaulted to 2"
+        ],
+        "original_action": "Build Scenario_Model workbook using Python/openpyxl",
+        "original_causal_type": "failure",
+        "original_step": "Attempted direct xlsx generation with openpyxl",
+        "raw_step": {
+          "action": "Build Scenario_Model workbook using Python/openpyxl",
+          "actor": "agent",
+          "causal_note": "This was an implementation attempt; formulas were still valid conceptually but container lacked stable toolability.",
+          "causal_type": "failure",
+          "caused_by": "step 1",
+          "error_message": "Malformed f-string in python script while composing formulas.",
+          "error_type": "SyntaxError",
+          "input": "python3 script with Workbook, multi-sheet formula layout, and validation table",
+          "metadata_json": {
+            "attempted_method": "openpyxl"
+          },
+          "observation": "Openpyxl dependency path worked for first run but script had syntax defects.",
+          "operation": "execute",
+          "output": "Script failed before any artifact write.",
+          "reasoning": "Need deterministic fallback once syntax and dependency issues are addressed.",
+          "state_change": "No output file created.",
+          "step": "Attempted direct xlsx generation with openpyxl",
+          "step_outcome": "failed",
+          "success": false,
+          "tool": "functions.exec_command",
+          "turn": 1
+        }
+      },
+      "observation": "Openpyxl dependency path worked for first run but script had syntax defects.",
+      "operation": "execute",
+      "output": "Script failed before any artifact write.",
+      "parallel_group": null,
+      "reasoning": "Need deterministic fallback once syntax and dependency issues are addressed.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "No output file created.",
+      "step": 2,
+      "step_outcome": "failed",
+      "success": false,
+      "tool": "python",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "agent",
+      "alternatives_considered": null,
+      "causal_note": "Environment constraints required custom XLSX writer.",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "python3 import tests; which checks for converter binaries",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "available_tools": [
+          "unzip",
+          "python3"
+        ],
+        "normalization_warnings": [
+          "step value 'Dependency check for spreadsheet tooling' was not numeric; defaulted to 3"
+        ],
+        "original_action": "Verify xlsx generation runtime/tools",
+        "original_causal_type": "adaptation",
+        "original_step": "Dependency check for spreadsheet tooling",
+        "original_step_outcome": "success",
+        "raw_step": {
+          "action": "Verify xlsx generation runtime/tools",
+          "actor": "agent",
+          "causal_note": "Environment constraints required custom XLSX writer.",
+          "causal_type": "adaptation",
+          "caused_by": "failed direct xlsx attempt",
+          "error_message": null,
+          "error_type": null,
+          "input": "python3 import tests; which checks for converter binaries",
+          "metadata_json": {
+            "available_tools": [
+              "unzip",
+              "python3"
+            ]
+          },
+          "observation": "openpyxl and xlsxwriter were unavailable; no soffice/ssconvert present.",
+          "operation": "verify",
+          "output": "ModuleNotFoundError for openpyxl and xlsxwriter; no spreadsheet CLI converter found.",
+          "reasoning": "Switched to OOXML zip assembly to preserve requirement without external libraries.",
+          "state_change": "No filesystem changes.",
+          "step": "Dependency check for spreadsheet tooling",
+          "step_outcome": "success",
+          "success": true,
+          "tool": "functions.exec_command",
+          "turn": 1
+        }
+      },
+      "observation": "openpyxl and xlsxwriter were unavailable; no soffice/ssconvert present.",
+      "operation": "verify",
+      "output": "ModuleNotFoundError for openpyxl and xlsxwriter; no spreadsheet CLI converter found.",
+      "parallel_group": null,
+      "reasoning": "Switched to OOXML zip assembly to preserve requirement without external libraries.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "No filesystem changes.",
+      "step": 3,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "python",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "agent",
+      "alternatives_considered": null,
+      "causal_note": "Fallback generation path succeeded after dependency check.",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "Python script writing [Content_Types].xml, rels, sheet XML, and workbook XML to [EXCLUDED_GENERATED_ARTIFACT]",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "decision_labels": [
+          "PASS",
+          "WARN",
+          "FAIL",
+          "NEEDS_REVIEW"
+        ],
+        "normalization_warnings": [
+          "step value 'Generate black_mass_leach_gate.xlsx' was not numeric; defaulted to 4"
+        ],
+        "original_action": "Create OOXML workbook from Python zip writer",
+        "original_causal_type": "recovery",
+        "original_step": "Generate black_mass_leach_gate.xlsx",
+        "original_step_outcome": "success",
+        "raw_step": {
+          "action": "Create OOXML workbook from Python zip writer",
+          "actor": "agent",
+          "causal_note": "Fallback generation path succeeded after dependency check.",
+          "causal_type": "recovery",
+          "caused_by": "tool availability step",
+          "error_message": null,
+          "error_type": null,
+          "input": "Python script writing [Content_Types].xml, rels, sheet XML, and workbook XML to [EXCLUDED_GENERATED_ARTIFACT]",
+          "metadata_json": {
+            "decision_labels": [
+              "PASS",
+              "WARN",
+              "FAIL",
+              "NEEDS_REVIEW"
+            ],
+            "scenario_rows": 12
+          },
+          "observation": "Workbook created with sheets Packet_Data, Spec_and_Options, Scenario_Model, Final_Decision, Validation.",
+          "operation": "write",
+          "output": "[EXCLUDED_GENERATED_ARTIFACT] created.",
+          "reasoning": "Satisfied requirement for executable logic and scenario-by-scenario gate computations without external packages.",
+          "state_change": "Added reproducible formula-based Excel artifact in artifacts directory.",
+          "step": "Generate black_mass_leach_gate.xlsx",
+          "step_outcome": "success",
+          "success": true,
+          "tool": "functions.exec_command",
+          "turn": 1
+        },
+        "scenario_rows": 12
+      },
+      "observation": "Workbook created with sheets Packet_Data, Spec_and_Options, Scenario_Model, Final_Decision, Validation.",
+      "operation": "write",
+      "output": "[EXCLUDED_GENERATED_ARTIFACT] created.",
+      "parallel_group": null,
+      "reasoning": "Satisfied requirement for executable logic and scenario-by-scenario gate computations without external packages.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Added reproducible formula-based Excel artifact in artifacts directory.",
+      "step": 4,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "python",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "agent",
+      "alternatives_considered": null,
+      "causal_note": "Paired narrative and workbook artifacts completed.",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "cat <<EOF > [EXCLUDED_GENERATED_ARTIFACT]",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "normalization_warnings": [
+          "step value 'Author process gate memo' was not numeric; defaulted to 5"
+        ],
+        "original_action": "Write process_gate_memo.md with citations and sensitivity results",
+        "original_causal_type": "artifact",
+        "original_step": "Author process gate memo",
+        "original_step_outcome": "success",
+        "raw_step": {
+          "action": "Write process_gate_memo.md with citations and sensitivity results",
+          "actor": "agent",
+          "causal_note": "Paired narrative and workbook artifacts completed.",
+          "causal_type": "artifact",
+          "caused_by": "workbook generation",
+          "error_message": null,
+          "error_type": null,
+          "input": "cat <<EOF > [EXCLUDED_GENERATED_ARTIFACT]",
+          "metadata_json": {
+            "uncertainty_note": "Losses treated as relative percentages; alternative absolute interpretation noted."
+          },
+          "observation": "Memo now includes row-level packet references, formulas, assumption flags, sensitivity checks, and decision table.",
+          "operation": "write",
+          "output": "[EXCLUDED_GENERATED_ARTIFACT] written.",
+          "reasoning": "Required narrative proof for intermediate calculations and reproducibility evidence.",
+          "state_change": "Added process gate memo artifact in artifacts directory.",
+          "step": "Author process gate memo",
+          "step_outcome": "success",
+          "success": true,
+          "tool": "functions.exec_command",
+          "turn": 1
+        },
+        "uncertainty_note": "Losses treated as relative percentages; alternative absolute interpretation noted."
+      },
+      "observation": "Memo now includes row-level packet references, formulas, assumption flags, sensitivity checks, and decision table.",
+      "operation": "write",
+      "output": "[EXCLUDED_GENERATED_ARTIFACT] written.",
+      "parallel_group": null,
+      "reasoning": "Required narrative proof for intermediate calculations and reproducibility evidence.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Added process gate memo artifact in artifacts directory.",
+      "step": 5,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "Bash",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "agent",
+      "alternatives_considered": null,
+      "artifact_refs": [
+        "./actual_outputs.json"
+      ],
+      "causal_note": "Final output index emitted.",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "cat <<EOF > ./actual_outputs.json",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "artifact_count": 2,
+        "normalization_warnings": [
+          "step value 'Write actual outputs summary' was not numeric; defaulted to 6"
+        ],
+        "original_action": "Create actual_outputs.json with artifact contract",
+        "original_causal_type": "delivery",
+        "original_step": "Write actual outputs summary",
+        "original_step_outcome": "success",
+        "raw_step": {
+          "action": "Create actual_outputs.json with artifact contract",
+          "actor": "agent",
+          "artifact_refs": [
+            "./actual_outputs.json"
+          ],
+          "causal_note": "Final output index emitted.",
+          "causal_type": "delivery",
+          "caused_by": "artifact completion",
+          "error_message": null,
+          "error_type": null,
+          "input": "cat <<EOF > ./actual_outputs.json",
+          "metadata_json": {
+            "artifact_count": 2
+          },
+          "observation": "actual_outputs.json records produced files and decision summary for evaluator consumption.",
+          "operation": "write",
+          "output": "./actual_outputs.json created.",
+          "reasoning": "Needed for required output contract and downstream verification.",
+          "state_change": "Added machine-readable run summary at attempt root.",
+          "step": "Write actual outputs summary",
+          "step_outcome": "success",
+          "success": true,
+          "tool": "functions.exec_command",
+          "turn": 1
+        }
+      },
+      "observation": "actual_outputs.json records produced files and decision summary for evaluator consumption.",
+      "operation": "write",
+      "output": "./actual_outputs.json created.",
+      "parallel_group": null,
+      "reasoning": "Needed for required output contract and downstream verification.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Added machine-readable run summary at attempt root.",
+      "step": 6,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "Bash",
+      "turn": 1
+    },
+    {
+      "action": "agent_step",
+      "actor": "agent",
+      "alternatives_considered": null,
+      "artifact_refs": [
+        "./agent_trace.json"
+      ],
+      "causal_note": "Final trace step closed with structured schema fields.",
+      "causal_type": "other",
+      "caused_by": null,
+      "ended_at": null,
+      "error_message": null,
+      "error_type": null,
+      "execution_mode": null,
+      "feedback_content": null,
+      "feedback_type": null,
+      "input": "cat <<EOF > ./agent_trace.json",
+      "input_source": null,
+      "message_role": null,
+      "metadata_json": {
+        "normalization_warnings": [
+          "step value 'Write workflow trace' was not numeric; defaulted to 7"
+        ],
+        "original_action": "Persist agent_trace.json",
+        "original_causal_type": "delivery",
+        "original_step": "Write workflow trace",
+        "original_step_outcome": "success",
+        "raw_step": {
+          "action": "Persist agent_trace.json",
+          "actor": "agent",
+          "artifact_refs": [
+            "./agent_trace.json"
+          ],
+          "causal_note": "Final trace step closed with structured schema fields.",
+          "causal_type": "delivery",
+          "caused_by": "completion of all artifact writes",
+          "error_message": null,
+          "error_type": null,
+          "input": "cat <<EOF > ./agent_trace.json",
+          "metadata_json": {
+            "trace_steps": 7
+          },
+          "observation": "agent_trace.json now contains a full trace with action, tool, causality, artifacts, and errors.",
+          "operation": "write",
+          "output": "./agent_trace.json persisted.",
+          "reasoning": "Trace is required for apprenticeship workflow reproducibility and auditability.",
+          "state_change": "Created final required execution trace artifact.",
+          "step": "Write workflow trace",
+          "step_outcome": "success",
+          "success": true,
+          "tool": "functions.exec_command",
+          "turn": 1
+        },
+        "trace_steps": 7
+      },
+      "observation": "agent_trace.json now contains a full trace with action, tool, causality, artifacts, and errors.",
+      "operation": "write",
+      "output": "./agent_trace.json persisted.",
+      "parallel_group": null,
+      "reasoning": "Trace is required for apprenticeship workflow reproducibility and auditability.",
+      "retry_of": null,
+      "started_at": null,
+      "state_change": "Created final required execution trace artifact.",
+      "step": 7,
+      "step_outcome": "completed",
+      "success": true,
+      "tool": "Bash",
+      "turn": 1
+    }
+  ],
+  "system_prompt": null,
+  "system_prompt_hash": null,
+  "task": "Using only the embedded packet (runs R1-R3 and specified options/specs), classify each run against specs, simulate the provided mitigation options, compute impacts on recoveries and impurities, perform sensitivity checks around controlling thresholds, and recommend whether to advance the recipe to continuous trial. Deliver a reproducible Excel workbook (black_mass_leach_gate.xlsx) containing formulas/executable logic and a process gate memo (process_gate_memo.md) that documents intermediate calculations, row-level citations to the embedded packet, validation checks, uncertainty notes, sensitivity analyses, and a final decision table labeling each run/recipe as pass/warn/fail/needs_review. Do not import external data, invent missing values, or hide unresolved assumptions.",
+  "task_family_id": null,
+  "original_internal_task_id": "aa_task_0047",
+  "task_id": "647",
+  "termination_reason": "task_complete",
+  "trace_id": "trace_647-baseline_normalized",
+  "trace_mode": "live"
+}

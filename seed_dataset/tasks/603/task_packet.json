@@ -1,0 +1,81 @@
+{
+  "schema_version": "aa-seed-task-v0.1",
+  "task_id": "603",
+  "title": "Fusion Divertor Heat-Flux Strike-Point Protection Review",
+  "domain": "fusion_energy",
+  "subdomain": "divertor_heat_flux_protection",
+  "domains": [
+    "fusion_energy"
+  ],
+  "subdomains": [
+    "divertor_heat_flux_protection"
+  ],
+  "agent_apprentice_role": "fusion plasma operations engineer",
+  "task_family": "plasma_facing_component_risk",
+  "difficulty_tier": "expert",
+  "expected_economic_value": "$170k-$300k fusion plasma operations specialist compensation",
+  "expected_economic_value_for_agent_apprentice": "$250+",
+  "expected_deliverable": "divertor_heatflux_analysis.ipynb + pulse_authorization_note.md",
+  "deliverables": [
+    "divertor_heatflux_analysis.ipynb",
+    "pulse_authorization_note.md"
+  ],
+  "normalized_title": "Fusion Divertor Heat-Flux Strike-Point Protection Review",
+  "instruction": "Context: a tokamak operations team wants to extend pulse length, but infrared data suggests a possible divertor tile heat-flux excursion near a strike-point sweep boundary. Task packet: pulse_id=DVT-224; planned_pulse_s=7.5; tile_limit_MW_m2=8.0; tile stored_energy_limit_MJ_m2=42; IR rows: R1 tile=D12 heatflux=6.2 duration=4.0 sweep_mm=18 confidence=0.92, R2 D13 heatflux=8.7 duration=3.8 sweep=4 confidence=0.88, R3 D14 heatflux=7.9 duration=5.6 sweep=6 confidence=0.71, R4 D15 heatflux=9.4 duration=2.1 sweep=2 confidence=0.63; mitigation: broaden_sweep reduces heatflux 18% cost=1 pulse setup, reduce_NBI_power reduces 25% cost=12% fusion_power, shorten_pulse_to_5s reduces duration. Rules and constraints: energy_density=heatflux*duration. Fail if heatflux>limit and confidence>=0.70, warn if energy_density exceeds 85% of stored-energy limit, needs_review if confidence<0.70 but heatflux>limit. Evaluate mitigations for safety and performance loss; no mitigation may rely on unmeasured tile properties. Required work: deliver divertor_heatflux_analysis.ipynb + pulse_authorization_note.md. The deliverables must include formulas or executable logic, intermediate calculations, row-level citations to the task packet, validation checks, uncertainty notes, sensitivity checks around the controlling thresholds, and a final decision table with pass/warn/fail/needs_review labels. Use only the task packet. Do not import external data, invent missing values, or hide unresolved assumptions. This task is self-contained: use the task packet as the factual record, do not add source references or external datasets, and preserve a high-fidelity audit trail for every calculation, classification, and recommendation. State assumptions and unresolved evidence gaps explicitly. When executed locally, place final deliverables under the artifacts/ directory.",
+  "task_status": "ready_to_run",
+  "run_status": "not_run",
+  "seed_rank": 18,
+  "display_order": 18,
+  "allowed_tools": [
+    "Local text editor or Markdown editor",
+    "Local spreadsheet, CSV, JSON, YAML, or scripting tools for deterministic calculations",
+    "Local validation or linting commands",
+    "Local plotting or diagramming tools when useful"
+  ],
+  "disallowed_tools": [
+    "External fact lookup or live data pulls",
+    "Live production systems, cloud accounts, trading systems, clinical systems, or industrial controls",
+    "Secret discovery, credential testing, or any action outside the prepared task workspace"
+  ],
+  "privacy_classification": "synthetic",
+  "needs_expert_review": true,
+  "input_requirements": [
+    "Use the task packet as the sole factual input.",
+    "Cite row IDs, record IDs, thresholds, formulas, and option IDs from the packet wherever they control a conclusion.",
+    "Mark missing, contradictory, or under-supported values as needs_review instead of inventing them."
+  ],
+  "inputs": [
+    "All factual inputs are embedded in the task packet.",
+    "Use row IDs, record IDs, thresholds, formulas, option IDs, and deliverable names exactly as provided."
+  ],
+  "output_requirements": [
+    "Produce the required deliverable files with the specified filenames when filenames are provided.",
+    "Include intermediate calculations or executable logic sufficient for another reviewer to reproduce the result.",
+    "Include validation checks, sensitivity notes around controlling thresholds, and a final decision or recommendation table."
+  ],
+  "constraints": [
+    "Use the task packet as the factual record.",
+    "Do not browse, call live services, import external datasets, or invent missing values.",
+    "Treat regulated or safety-critical outputs as review packets, not authorization to act."
+  ],
+  "quality_bar": [
+    "Treat the task as realistic professional work with domain-appropriate rigor.",
+    "Preserve the packet's domain detail, identifiers, thresholds, and edge cases in the final deliverables.",
+    "Make every recommendation traceable to explicit task-packet evidence or mark it as needs_review."
+  ],
+  "validation_expectations": [
+    "Check required fields, row counts, totals, thresholds, and classifications before finalizing.",
+    "Show enough formulas, script logic, or tables for an independent reviewer to reproduce the result.",
+    "Flag any contradiction, missing input, or threshold-sensitive conclusion."
+  ],
+  "edge_cases": [
+    "If packet evidence is incomplete, do not infer missing values; label the item needs_review.",
+    "If multiple options satisfy hard constraints, rank them using the packet's stated priorities and explain ties.",
+    "If a regulated or safety-critical conclusion appears, frame the output as a review packet rather than authorization to act."
+  ],
+  "privacy_safety_expectations": [
+    "Do not use live systems, private accounts, credentials, or external datasets.",
+    "Do not include raw secrets or operational instructions that would execute real-world changes.",
+    "Keep synthetic identifiers from the packet only when needed for verification."
+  ]
+}
