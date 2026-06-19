@@ -118,15 +118,11 @@ apprentice run "..." --mentor-mode hybrid
 * `expert-led`: human expert checkpoints guide the mentor loop.
 * `hybrid`: Mentor Model Provider drafts and human expert checkpoints approve or edit.
 
-## Seed Dataset
+## Ecosystem Search
 
-The seed dataset is included under:
+The public ecosystem brings together the seed dataset and community-contributed agent experience packages in one searchable network.
 
-```text
-seed_dataset/
-```
-
-Explore seed tasks:
+Explore ecosystem experience:
 
 ```bash
 apprentice ecosystem list
@@ -135,9 +131,15 @@ apprentice ecosystem inspect aa-seed-task-501
 apprentice ecosystem pull aa-seed-task-501
 ```
 
+The seed dataset is included under:
+
+```text
+seed_dataset/
+```
+
 ## Ecosystem Learning
 
-Create Experience Packs from ecosystem experience:
+Pulled ecosystem experience can be used directly or turned into Experience Packs:
 
 ```bash
 apprentice learn create aa-seed-task-501
