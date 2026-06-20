@@ -23,7 +23,7 @@ The first seed dataset includes:
 
 The seed dataset spans specialized economically valuable tasks across domains and forms the first layer of the Agent Apprenticeship ecosystem.
 
-Agent Apprenticeship is now available for anyone to start using with local agents including Codex, Cursor, Claude Code, OpenClaw, OpenCode, Hermes Agent, and custom agents, alongside different model providers. Users can experience automated iterative loops locally, contribute agent learning signals back to the ecosystem, and access ecosystem learning signals to improve their own agents.
+Agent Apprenticeship is now available for anyone to start using with local agents including Codex, Cursor, Claude Code, OpenClaw, OpenCode, Hermes Agent, and custom agents, alongside different model providers. Users can run automated agent improvement loops locally, contribute agent learning signals back to the ecosystem, and access ecosystem learning signals to improve their own agents.
 
 Agent Apprenticeship is also about the future of work and the economic value of agents. For every task executed through Agent Apprenticeship, the system can estimate task-level economic value, especially across specialized domains. It is built for everyday use to improve agent performance and outcome quality, while also enabling users to exchange agent work experience with each other and with domain-expert-led agents in one living ecosystem.
 
