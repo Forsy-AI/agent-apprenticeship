@@ -33,6 +33,7 @@ Agent Apprenticeship is about the future of work and the economic value of agent
 npx agent-apprenticeship init
 ```
 
+Or install globally:
 ```bash
 npm install -g agent-apprenticeship
 apprentice init
