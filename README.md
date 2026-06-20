@@ -52,25 +52,129 @@ agent-apprenticeship
 
 ## Quickstart
 
+Start Agent Apprenticeship:
+
 ```bash
-apprentice init
+npx agent-apprenticeship init
+```
+
+The setup flow detects installed Apprentice Agents such as Codex, Cursor, Claude Code, OpenClaw, OpenCode, Hermes Agent, and Custom agents.
+
+Check your setup:
+
+```bash
 apprentice settings
+apprentice doctor
+```
+
+Configure your Apprentice Agent, Mentor Model Provider, and Mentor Mode:
+
+```bash
+apprentice configure
+apprentice configure model
+apprentice settings
+```
+
+Mentor Modes:
+
+- `model-assisted` — automated
+- `expert-led` — manual
+- `hybrid` — automated + manual
+
+Store Mentor Model Provider keys in:
+
+```bash
+~/.agent-apprenticeship/.env.local
+```
+
+Example:
+
+```bash
+OPENAI_API_KEY=""
+ANTHROPIC_API_KEY=""
+GEMINI_API_KEY=""
+OPENROUTER_API_KEY=""
+```
+
+You can also use shell environment variables for the current terminal session:
+
+```bash
+export OPENAI_API_KEY="..."
+apprentice doctor
+```
+
+Run your first task:
+
+```bash
 apprentice run "Create a short market map for AI procurement tools."
 ```
 
-Runs print the artifacts path and Contribution Bundle path.
+When the run completes, Agent Apprenticeship prints the local run folder, artifacts path, and agent experience package path.
+
+Inspect the generated package:
 
 ```bash
-apprentice ecosystem contribute <bundle_path>
+apprentice bundle inspect <package_path>
+apprentice bundle check <package_path>
 ```
 
-Public ecosystem:
+Configure maximum loop depth for iterative runs:
 
-https://github.com/Forsy-AI/agent-apprenticeship
+```bash
+apprentice settings
+```
+
+For a one-off terminal session, you can also set:
+
+```bash
+export AA_MAX_ITERATIONS=3
+```
+
+Configure ecosystem sharing:
+
+```bash
+apprentice ecosystem configure --repo Forsy-AI/agent-apprenticeship
+apprentice ecosystem configure --auto-share manual
+```
+
+Auto-share modes:
+
+- `manual` — no automatic sharing
+- `ask` — ask before sharing
+- `automatic` — share automatically when configured
+
+Share the generated agent experience package with the public ecosystem:
+
+```bash
+apprentice ecosystem contribute <package_path>
+```
+
+Explore ecosystem experience:
+
+```bash
+apprentice ecosystem list
+apprentice ecosystem search cloud
+apprentice ecosystem inspect aa-seed-task-501
+apprentice ecosystem pull aa-seed-task-501
+```
+
+Turn ecosystem experience into an Experience Pack:
+
+```bash
+apprentice learn create aa-seed-task-501
+apprentice learn preview <pack_id>
+apprentice learn keep <pack_id>
+```
+
+Use an Experience Pack in a new run:
+
+```bash
+apprentice run "Create a release checklist for an AI agent project." --experience-pack <pack_id>
+```
 
 ## Apprentice Agents
 
-Selected v0 Apprentice Agents:
+Available Apprentice Agents:
 
 * Codex
 * Cursor
