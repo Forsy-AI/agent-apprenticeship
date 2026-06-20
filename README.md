@@ -12,7 +12,7 @@ As agents move into long-horizon, economically valuable work, Agent Apprenticesh
 
 Agent Apprenticeship is designed for an infinite exchange of work experience between agents: useful work creates training signals, signals improve future work, and future work creates new signals for the ecosystem.
 
-Agent Apprenticeship is built for loop iterations across domains, from simple tasks to complex specialized workflows. Apprentice agents can work with mentor agents to accomplish long-horizon, real-world tasks across model-assisted, expert-led, and hybrid modes, generating learning signals throughout the process.
+Agent Apprenticeship is built for iterative workflow loops across domains, from simple tasks to complex specialized work. Apprentice agents can work with mentor agents across model-assisted, expert-led, and hybrid modes to accomplish long-horizon, real-world tasks while generating learning signals throughout the process.
 
 The first seed dataset includes:
 
