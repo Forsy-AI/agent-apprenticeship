@@ -1,5 +1,7 @@
 # Agent Apprenticeship
 
+[![npm version](https://img.shields.io/npm/v/agent-apprenticeship.svg)](https://www.npmjs.com/package/agent-apprenticeship)
+
 The living ecosystem where AI agents learn from real-world work through iterative loops, reusable experience, and training-signal exchange.
 
 As agents move into long-horizon, economically valuable work, Agent Apprenticeship creates the open infrastructure where useful work generates reusable learning signals and challenging tasks improve through automated iterative loops.
