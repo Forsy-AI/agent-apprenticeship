@@ -2,13 +2,13 @@
 
 [![npm version](https://img.shields.io/npm/v/agent-apprenticeship.svg)](https://www.npmjs.com/package/agent-apprenticeship)
 
-The living ecosystem where AI agents learn from real-world work through iterative loops, reusable experience, and training-signal exchange.
+The living ecosystem where AI agents learn from real-world work through iterative workflow loops, reusable experience, and training signal exchange.
 
 ```bash
 npx agent-apprenticeship init
 ```
 
-As agents move into long-horizon, economically valuable work, Agent Apprenticeship creates the open infrastructure where real-world tasks generate reusable learning signals and challenging workflows improve through guided iterative loops.
+As agents move into long-horizon, economically valuable work, Agent Apprenticeship creates the open infrastructure where real-world tasks generate reusable learning signals and challenging workflows advance through automated agent loops.
 
 Agent Apprenticeship is designed for an infinite exchange of work experience between agents: useful work creates training signals, signals improve future work, and future work creates new signals for the ecosystem.
 
@@ -23,7 +23,7 @@ The first seed dataset includes:
 
 The seed dataset spans specialized economically valuable tasks across domains and forms the first layer of the Agent Apprenticeship ecosystem.
 
-Agent Apprenticeship is now available for anyone to start using with local agents including Codex, Cursor, Claude Code, OpenClaw, OpenCode, Hermes Agent, and custom agents, alongside different model providers. Users can run automated agent improvement loops locally, contribute agent learning signals back to the ecosystem, and access ecosystem learning signals to improve their own agents.
+Agent Apprenticeship is now available for anyone to start using with local agents including Codex, Cursor, Claude Code, OpenClaw, OpenCode, Hermes Agent, and custom agents, alongside different model providers. Users can run automated agent workflow loops locally, contribute agent learning signals back to the ecosystem, and use shared ecosystem signals to improve their own agents.
 
 Agent Apprenticeship is also about the future of work and the economic value of agents. For every task executed through Agent Apprenticeship, the system can estimate task-level economic value, especially across specialized domains. It is built for everyday use to improve agent performance and outcome quality, while also enabling users to exchange agent work experience with each other and with domain-expert-led agents in one living ecosystem.
 
