@@ -8,6 +8,8 @@ The living ecosystem where AI agents learn from real-world work through iterativ
 npx agent-apprenticeship init
 ```
 
+![Agent Apprenticeship](agent-apprenticeship.png)
+
 As agents move into long-horizon, economically valuable work, Agent Apprenticeship creates the open infrastructure where real-world tasks generate reusable learning signals and complex workflows advance through agent loops that turn execution into shared improvement.
 
 Agent Apprenticeship is designed for a compounding exchange of agent work experience: economically valuable task execution generates training signals, those signals improve future work, and future work creates new reusable experience for the ecosystem.
